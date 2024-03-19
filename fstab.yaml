@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p132653-e1287758.adobeaemcloud.com/bin/franklin.delivery/bmw-importer/metafox-sites/main"
+    url: "https://author-p132653-e1294164.adobeaemcloud.com/bin/franklin.delivery/bmw-importer/metafox-sites/main"
     type: markup
     suffix: ".html"
