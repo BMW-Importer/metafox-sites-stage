@@ -192,8 +192,10 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "fileReference",
         "label": "Image",
+        "value": "",
+        "description": "Image path from AEM DAM - only choose from the dedicated asset folder", 
         "multi": false
       },
       {
@@ -201,13 +203,16 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Alt text",
+        "description": "Image alt text - highly recommended for SEO", 
         "value": ""
       },
       {
         "component": "text-area",
         "name": "text",
-        "value": "",
+        "value": "Kindly edit the content here !",
         "label": "Text",
+        "description": "Optionaö text for the text image component",
+        "placeholder": "Please provide some text of your choice here!",
         "valueType": "string"
       },
       {
@@ -227,6 +232,26 @@
             "value": "right"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Do you need to display meta text ?",
+        "name": "reveal",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-input",
+        "label": "Meta text",
+        "name": "meta-text",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "reveal"
+            },
+            true
+          ]
+        }
       }
     ]
   },
