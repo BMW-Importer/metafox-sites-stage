@@ -408,6 +408,14 @@ main .section {
   main .section {
     padding: 20px var(--section-desktop-padding);
   }
+
+  .appear.white-background main .section {
+    padding: 0;
+  }
+  
+  .appear.white-background main .section.columns-container .default-content-wrapper p {
+    margin: 0
+  }
 }
 
 /* large-desktop */

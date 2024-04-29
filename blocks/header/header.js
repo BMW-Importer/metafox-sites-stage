@@ -164,9 +164,11 @@ export default async function decorate(block) {
   block.append(navWrapper);
   // background related changes
   const headerType = getMetadata('headertype');
+  const bodyClass = document.getElementsByTagName('body');
   const header = document.getElementsByTagName('header');
   if (headerType && headerType === 'whitebackground') {
     header[0].classList.add('white-background');
+    bodyClass[0].classList.add('white-background');
   } else {
     header[0].classList.add('transparent');
   }
@@ -177,28 +179,32 @@ export default async function decorate(block) {
       event.preventDefault();
       const parentMenu = event.target.parentNode.parentElement;
       const mainParentMenu = event.target.parentNode.parentElement.parentElement;
+      const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
         if (item !== parentMenu && item.classList.contains('showfly')) {
-          document.body.style.overflowY = (isDesktop.matches) ? '' : 'hidden';
-          document.body.style.width = (isDesktop.matches) ? '' : '100%';
-          document.body.style.position = (isDesktop.matches) ? '' : 'fixed';
-          document.body.style.top = (isDesktop.matches) ? '' : '0';
           item.classList.remove('showfly');
         }
       });
       parentMenu.classList.toggle('showfly', !isOpen);
       mainParentMenu.classList.toggle('mobile-flyout', !isOpen);
+      bodyContent.classList.toggle('content-page', !isOpen);
       if (headerType && headerType === 'whitebackground' && event.target.parentNode.parentElement.classList.contains('showfly')) {
         header[0].classList.remove('white-background');
         header[0].classList.add('transparent');
       } else {
+        if (headerType === 'transparent') {
+          return false;
+        }
         header[0].classList.add('white-background');
         header[0].classList.remove('transparent');
       }
+      return true;
     });
   });
 
-  const linkListSelector = document.querySelector('.menu-flyout-wrapper .link-list-title');
-  linkListSelector?.addEventListener('click', handleHeaderLinkList);
+  const linkListSelector = document.querySelectorAll('.menu-flyout-wrapper .link-list-title');
+  linkListSelector.forEach((anchor) => {
+    anchor.addEventListener('click', (handleHeaderLinkList));
+  });
 }
