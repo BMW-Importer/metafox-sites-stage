@@ -166,7 +166,7 @@ export default async function decorate(block) {
   const headerType = getMetadata('headertype');
   const bodyClass = document.getElementsByTagName('body');
   const header = document.getElementsByTagName('header');
-  if (headerType && headerType === 'white-background') {
+  if (headerType && headerType === 'whitebackground') {
     header[0].classList.add('white-background');
     bodyClass[0].classList.add('white-background');
   } else {
