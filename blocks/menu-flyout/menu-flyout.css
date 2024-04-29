@@ -96,7 +96,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
-    margin-bottom: 0.75rem;
+    margin: 0 0 1.5rem 1.2rem;
     display: flex;
 }
 
@@ -104,7 +104,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     overflow-wrap: normal;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "liga";
-    content: "arrow_up_right";
+    content: " ";
     direction: ltr;
     display: block;
     font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;

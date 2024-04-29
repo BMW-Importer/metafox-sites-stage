@@ -1,7 +1,7 @@
 export function geenerateMenulink(props) {
   const [linkLabel, linkTitle, link] = props;
   const logoDOM = document.createRange().createContextualFragment(`
-     <a href="${link.textContent}" title="${linkLabel.textContent}">
+     <a href="${link.textContent}" aria-label="${linkLabel.textContent}">
         ${linkTitle.textContent}
      </a>
     `);

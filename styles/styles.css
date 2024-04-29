@@ -27,6 +27,7 @@
   --light-grey: #f6f6f6;
   --light-bbb: #bbb;  
   --fixed-font-family: bmwtypenextweb,arial,helvetica,roboto,sans-serif;
+  --icon-font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
 
   /* base font size */
   --base-font-size: 16px;
@@ -219,6 +220,7 @@ a.button.ghost-dark {
   min-height: 3.334rem;
   align-content: center;
   text-rendering: optimizespeed;
+  margin-bottom: 0;
 }
 
 a.button.ghost-dark.button-fixed-width {
@@ -246,11 +248,11 @@ a.button.hyperlink {
   color: rgb(38 38 38 / 100%);
   font-weight: 700;
   font-family: var(--fixed-font-family);
+  margin-bottom: 0;
 }
 
 .align-icon {
   display: flex;
-  padding: .625rem;
 }
 
 a.button.hyperlink:hover,
@@ -284,7 +286,7 @@ a.button.hyperlink:hover,
 
 .align-icon > .align-center {
   align-self: center;
-  margin: 3px 0 0 3px;
+  margin-top: 1rem;
 }
 
 .button-container.button-align-right > .align-icon {
@@ -329,6 +331,11 @@ a.button.hyperlink:hover,
   text-align: right;
 }
 
+p.button-container
+{
+  margin-bottom: 0;
+}
+
 main img {
   max-width: 100%;
   width: auto;
@@ -359,6 +366,43 @@ main .section {
   }
 }
 
+@media (width >= 768px) and (width < 1280px) {
+  a.button.ghost-dark
+  {
+    margin-top: 0.5rem;
+    background-color: transparent;
+    border: 1px solid var(--light-text-color);
+    color: var(--light-text-color);
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    font-family: var(--fixed-font-family);
+    text-align: center;
+    padding: .25rem;
+    min-height: 3.334rem;
+    align-content: center;
+    text-rendering: optimizespeed;
+    margin-bottom: 0;
+  }
+
+  a.button.hyperlink {
+    background: transparent;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: rgb(38 38 38 / 100%);
+    font-weight: 700;
+    font-family: var(--fixed-font-family);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .align-icon > .align-center {
+    align-self: center;
+    margin-top: 0.5rem;
+  }
+}
+
 /* desktop */
 @media (width >= 1280px){
   main .section {
@@ -375,7 +419,43 @@ main .section {
   }
 }
 
+/* mobile */
+@media (width >= 360px) and (width < 768px) {
+  a.button.ghost-dark
+  {
+    margin-top: 0.5rem;
+    background-color: transparent;
+    border: 1px solid var(--light-text-color);
+    color: var(--light-text-color);
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    font-family: var(--fixed-font-family);
+    text-align: center;
+    padding: .25rem;
+    min-height: 3.334rem;
+    align-content: center;
+    text-rendering: optimizespeed;
+    margin-bottom: 0;
+  }
 
+  a.button.hyperlink {
+    background: transparent;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: rgb(38 38 38 / 100%);
+    font-weight: 700;
+    font-family: var(--fixed-font-family);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .align-icon > .align-center {
+    align-self: center;
+    margin-top: 0.5rem;
+  }
+}
 
 /* section metadata */
 main .section.light,

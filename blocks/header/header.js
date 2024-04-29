@@ -21,6 +21,19 @@ function closeOnEscape(e) {
   }
 }
 
+function handleHeaderLinkList(e) {
+  const { target } = e;
+  if (!isDesktop.matches) {
+    if (target.classList.contains('expand')) {
+      target.nextElementSibling.style.maxHeight = null;
+      target.classList.remove('expand');
+    } else {
+      target.nextElementSibling.style.maxHeight = `${target.nextElementSibling.scrollHeight}px`;
+      target.classList.add('expand');
+    }
+  }
+}
+
 // function openOnKeydown(e) {
 //   const focused = document.activeElement;
 //   const isNavDrop = focused.className === 'nav-drop';
@@ -158,18 +171,24 @@ export default async function decorate(block) {
     header[0].classList.add('transparent');
   }
 
-  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper');
+  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout-link');
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
       const parentMenu = event.target.parentNode.parentElement;
+      const mainParentMenu = event.target.parentNode.parentElement.parentElement;
       const isOpen = parentMenu.classList.contains('showfly');
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
         if (item !== parentMenu && item.classList.contains('showfly')) {
+          document.body.style.overflowY = (isDesktop.matches) ? '' : 'hidden';
+          document.body.style.width = (isDesktop.matches) ? '' : '100%';
+          document.body.style.position = (isDesktop.matches) ? '' : 'fixed';
+          document.body.style.top = (isDesktop.matches) ? '' : '0';
           item.classList.remove('showfly');
         }
       });
       parentMenu.classList.toggle('showfly', !isOpen);
+      mainParentMenu.classList.toggle('mobile-flyout', !isOpen);
       if (headerType && headerType === 'whitebackground' && event.target.parentNode.parentElement.classList.contains('showfly')) {
         header[0].classList.remove('white-background');
         header[0].classList.add('transparent');
@@ -179,4 +198,7 @@ export default async function decorate(block) {
       }
     });
   });
+
+  const linkListSelector = document.querySelector('.menu-flyout-wrapper .link-list-title');
+  linkListSelector?.addEventListener('click', handleHeaderLinkList);
 }

@@ -145,21 +145,20 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-function launchVariables() {
-  if (window.adobeDataLayer) {
-    if (window.location.hostname.startsWith('main') || window.location.pathname.endsWith('ancestor')) {
-      window.adobeDataLayer.push({ event: 'aem page loaded', foo: 'bar', key: 'value' });
-    } else {
-      window.adobeDataLayer.push({ event: 'Configurator Start', foo: 'bar', key: 'value' });
-    }
-  }
-}
+// function launchVariables() {
+//   const header = document.querySelector('header');
+//   const script = header.createElement('script');
+//   script.src = 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js';
+//   if (window.adobeDataLayer) {
+//     console.log(window.adobeDataLayer.version);
+//   }
+// }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  launchVariables();
+  // launchVariables();
 }
 
 loadPage();
