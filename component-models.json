@@ -366,6 +366,15 @@
         "description": "Optional link title for the text image component",
         "placeholder": "Please provide some link title!",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "fg_linkText",
+        "value": "",
+        "label": "Link Text",
+        "description": "Optional link text for the text image component",
+        "placeholder": "Please provide some link text!",
+        "valueType": "string"
       }
     ]
   },

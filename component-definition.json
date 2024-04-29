@@ -199,7 +199,8 @@
                   "fg_details": "Kindly edit the content here !",
                   "fg_summary": "Kindly edit the Summary here !",
                   "fg_link": "Kindly provide the link here !",
-                  "fg_linkTitle": "Kindly provide the link title here !"
+                  "fg_linkTitle": "Kindly provide the link title here !",
+                  "fg_linkText": "Kindly provide the link text here !"
                 }
               }
             }

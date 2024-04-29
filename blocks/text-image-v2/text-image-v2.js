@@ -1,6 +1,6 @@
 export function generateTextImageDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
-  const [pictureContainer, altText, textarea, summary] = props;
+  const [pictureContainer, altText, details, summary, link, linktitle, linktext] = props;
   const picture = pictureContainer.querySelector('picture');
   const image = picture.querySelector('image');
   if (Boolean(image) && Boolean(altText)) {
@@ -19,9 +19,12 @@ export function generateTextImageDOM(props) {
 
   const foregroundContainer = document.createElement('div');
   foregroundContainer.classList.add('fg');
-  foregroundContainer.text = summary.text;
   const textContainer = document.createElement('div');
-  textContainer.textContent = textarea.textContent;
+  textContainer.textContent = details.textContent;
+  foregroundContainer.text = summary.text;
+  foregroundContainer.text = link.text;
+  foregroundContainer.text = linktitle.text;
+  foregroundContainer.text = linktext.text;
   foregroundContainer.append(textContainer);
   textImageDOM.append(foregroundContainer);
 
