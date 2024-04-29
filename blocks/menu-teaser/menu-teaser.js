@@ -3,12 +3,12 @@ export function generateMenuTeaserDOM(props) {
   const menuteaserDOM = document.createRange().createContextualFragment(`
       <div class="flyout-menu-teaser">
           <div class="menu-teaser-image">
-            ${menuTeaserImage ? menuTeaserImage.outerHTML : ''}
+            ${menuTeaserImage ? menuTeaserImage?.outerHTML : ''}
           </div>
-          <div class="copy-text">${copyText.textContent}</div>
+          <div class="copy-text">${copyText?.textContent}</div>
           <div class="link-label">
-            <a class="link-url" aria-label="${linkLabel.textContent}" href="${linkLabel.href}">
-              ${linkLabel.textContent}
+            <a class="link-url" aria-label="${linkLabel?.textContent}" href="${linkLabel?.href}">
+              ${linkLabel?.textContent}
             </a>
           </div>
        </div>

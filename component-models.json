@@ -200,6 +200,55 @@
     ]
   },
   {
+    "id": "flexible_width_section",
+    "fields": [
+      {
+        "component": "select",
+        "name": "style",
+        "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
+        "value": "centre",
+        "label": "Width",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "10/12",
+            "value": "grid-10"
+          },
+          {
+            "name":"8/12",
+            "value": "grid-8"
+          },
+          {
+            "name": "6/12",
+            "value": "grid-6"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "description":"Defines the alignment of the elements added to the Section.",
+        "value": "centre",
+        "label": "Alignment",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -603,7 +652,7 @@
     "fields": [
       {
         "component": "select",
-        "name": "link list",
+        "name": "linkListSelect",
         "value": "vertical",
         "label": "Orientation",
         "valueType": "string",
@@ -622,14 +671,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "link list title",
+        "name": "linkListTitle",
         "label": "Link List Title",
         "value": ""
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "link-list",
+        "name": "linkListRichText",
         "value": "",
         "required": true,
         "label": "Link List"
@@ -735,14 +784,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "menuflyoutText",
+        "name": "menuFlyoutText",
         "label": "Link Text",
         "value": ""
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "menuflyoutTitle",
+        "name": "menuFlyoutTitle",
         "label": "Link Title",
         "value": ""
       }
@@ -769,41 +818,41 @@
         {
           "component": "text-input",
           "valueType": "string",
-          "name": "img_imageAlt",
+          "name": "menuTeaserImgAlt",
           "value": "Default alt",
           "label": "Alt Text"
         },
         {
           "component": "richtext",
           "valueType": "string",
-          "name": "text_CopyText",
+          "name": "menuTeaserCopyText",
           "value": "",
           "label": "Copy Text"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "link_",
+          "name": "menuTeaserprop",
           "value": "",
           "label": "Link Label"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "link_Title",
+          "name": "menuTeaserpropTitle",
           "value": "",
           "label": "Link Title"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "link_Text",
+          "name": "menuTeaserpropText",
           "value": "",
           "label": "Link"
         },
         {
           "component": "select",
-          "name": "Link_Type",
+          "name": "menuTeaserpropType",
           "value": "",
           "label": "Second CTA Type",
           "valueType": "string",

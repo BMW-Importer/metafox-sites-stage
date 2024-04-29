@@ -24,17 +24,20 @@ margin-bottom: 48px;
 }
 
 .columns.left .button-container,
-.columns.left > div > div > p {
+.columns.left
+{
   text-align: left;
 }
 
 .columns.right .button-container,
-.columns.right > div > div > p {
+.columns.right
+{
   text-align: right;
 }
 
 .columns.center .button-container,
-.columns.center > div > div > p {
+.columns.center
+{
   text-align: center;
 }
 

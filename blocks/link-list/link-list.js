@@ -5,12 +5,21 @@ function toggleLinkListDetail(e) {
       target.nextSibling.style.maxHeight = null;
       target.classList.remove('expand');
     } else {
-      target.nextSibling.style.maxHeight = `${target.nextSibling.scrollHeight}px`;
-      target.classList.add('expand');
+      let listOfTitle;
+      const parentElem = e.target.closest('.section.link-list-container');
+      if (parentElem) {
+        listOfTitle = parentElem.querySelectorAll('.link-list-wrapper.vertical .link-list-title.expand');
+        // let expand = document.querySelectorAll('.link-list-title.expand');
+        for (let j = 0; j < listOfTitle.length; j += 1) {
+          listOfTitle[j].classList.remove('expand');
+          listOfTitle[j].nextElementSibling.style.maxHeight = null;
+        }
+        target.nextSibling.style.maxHeight = `${target.nextSibling.scrollHeight}px`;
+        target.classList.add('expand');
+      }
     }
   }
 }
-
 export function generateLinkListDom(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const [linkListOrientation, linkListTitle, linkListDetail] = props;
@@ -29,8 +38,11 @@ export function generateLinkListDom(block) {
   return [linkListTitleElem, linkListRTEElem];
 }
 
-export function genreateHeaderLinkList(props) {
-  const [, b, ulList] = props;
+export function generateHeaderLinkList(props) {
+  const [a, b, ulList] = props;
+  console.log(a);
+  console.log(b);
+  console.log(ulList);
   const menuteaserDOM = document.createRange().createContextualFragment(`
       <div class="flyout-link-list">     
         <div class ="link-list-wrapper vertical">
