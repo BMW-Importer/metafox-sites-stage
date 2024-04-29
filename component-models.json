@@ -332,6 +332,15 @@
         ]
       },
       {
+        "component": "text-area",
+        "name": "fg_details",
+        "value": "",
+        "label": "Text",
+        "description": "Optional text for the text image component",
+        "placeholder": "Please provide some text of your choice here!",
+        "valueType": "string"
+      },
+      {
         "component": "text",
         "name": "fg_summary",
         "value": "",
@@ -341,12 +350,21 @@
         "valueType": "string"
       },
       {
-        "component": "text-area",
-        "name": "fg_details",
+        "component": "text",
+        "name": "fg_link",
         "value": "",
-        "label": "Text",
-        "description": "Optional text for the text image component",
-        "placeholder": "Please provide some text of your choice here!",
+        "label": "Link",
+        "description": "Optional link for text image component",
+        "placeholder": "Please provide some link!",
+        "valueType": "string"
+      },      
+      {
+        "component": "text",
+        "name": "fg_linkTitle",
+        "value": "",
+        "label": "Link Title",
+        "description": "Optional link title for the text image component",
+        "placeholder": "Please provide some link title!",
         "valueType": "string"
       }
     ]

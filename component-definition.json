@@ -196,8 +196,10 @@
                   "bg_fileReference": "/content/dam/metafox/placeholder_image.png",
                   "bg_fileReferenceAlt": "Alt text",
                   "classes": "Left",
+                  "fg_details": "Kindly edit the content here !",
                   "fg_summary": "Kindly edit the Summary here !",
-                  "fg_details": "Kindly edit the content here !"
+                  "fg_link": "Kindly provide the link here !",
+                  "fg_linkTitle": "Kindly provide the link title here !"
                 }
               }
             }
