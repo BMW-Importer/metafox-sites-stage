@@ -84,6 +84,7 @@ body.appear {
 }
 
 body {
+  display: none;
   background-color: var(--background-color);
 }
 
