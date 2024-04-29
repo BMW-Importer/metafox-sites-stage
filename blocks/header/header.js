@@ -164,9 +164,11 @@ export default async function decorate(block) {
   block.append(navWrapper);
   // background related changes
   const headerType = getMetadata('headertype');
+  const bodyClass = document.getElementsByTagName('body');
   const header = document.getElementsByTagName('header');
-  if (headerType && headerType === 'whitebackground') {
+  if (headerType && headerType === 'white-background') {
     header[0].classList.add('white-background');
+    bodyClass[0].classList.add('white-background');
   } else {
     header[0].classList.add('transparent');
   }
