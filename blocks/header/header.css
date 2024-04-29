@@ -979,6 +979,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
     width: 100%;
     opacity: 0;
     transform: scaleY(0);
+
     /* transition: all 0.3s cubic-bezier(.5,0,.5,1);
     transform-origin: top;
     transition-delay: .5s, 0s;
@@ -997,6 +998,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
     left: 0;
     opacity: 0;
     position: absolute;
+    
     /* transition: opacity .05s cubic-bezier(0, .5, .5, 1);
     width: 100%;
     z-index: 0; */
