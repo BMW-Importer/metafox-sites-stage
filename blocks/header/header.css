@@ -1,13 +1,10 @@
 /* header and nav layout */
+
 .content-page {
   overflow-y: hidden;
   width: 100%;
   position: fixed;
   top: 0;
-}
-
-header .menu-flyout-wrapper {
-  display: none;
 }
 
 header {
@@ -323,10 +320,12 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     text-transform: capitalize;
     display: flex;
     cursor: pointer;
+    letter-spacing: 0;
   }
 
-  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title :hover{
-    color: var(--link-color);
+
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover {
+    color: var(--link-hover-color);
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
@@ -351,7 +350,6 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     white-space: nowrap;
     width: auto;
     position: absolute;
-    top: 1.2rem;
     right: 1rem;
    }
 
@@ -372,6 +370,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     max-height: 0;
     overflow: hidden;
     transition: max-height .25s ease;
+    margin-left: 1.5rem;
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-link-list .link-list .link-list-title.expand::after{
@@ -747,6 +746,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
 
 /* Desktop  */
 @media (width >= 1280px) { 
+
   header nav {
     display: flex;
     justify-content: space-between;

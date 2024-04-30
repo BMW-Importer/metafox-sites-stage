@@ -1,7 +1,6 @@
 /* menu-flyout css */
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
-    order: 1;
     margin-left: 25%;
     display: block;
     width: 50%;
@@ -9,7 +8,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
-    order: 2;
     margin-right: 25%;
     display: block;
     width: 50%;
@@ -124,4 +122,19 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 
 .flyout-menu-teaser p {
     margin: 0;
+}
+
+/* BMW info tab css */
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container{
+    flex-wrap: wrap;
+    height: 400px;
+    overflow-y: auto;
+    align-items: revert;
+    row-gap: 4rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list {
+ margin-left: 0;
+ flex: 0 0 20%
 }

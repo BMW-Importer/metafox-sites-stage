@@ -1,5 +1,3 @@
-/*
-
 import { generateMenuTeaserDOM } from '../menu-teaser/menu-teaser.js';
 import { generateHeaderLinkList } from '../link-list/link-list.js';
 
@@ -7,9 +5,9 @@ export function generateMenuFlyoutLink(props) {
   const [menuflyoutText] = props;
   const menuFlyoutLinkDOM = document.createRange().createContextualFragment(`
     <span id="${menuflyoutText.textContent}"
- class="${menuflyoutText.textContent} menu-flyout-link">
-      ${menuflyoutText.textContent}
-    </span>
+      class="${menuflyoutText.textContent} menu-flyout-link">
+            ${menuflyoutText.textContent}
+          </span>
   `);
   return menuFlyoutLinkDOM;
 }
@@ -48,9 +46,9 @@ export default function decorate(block) {
   });
   const flyoutWrapperDiv = document.createElement('div');
   flyoutWrapperDiv.classList.add('flyout-wrapper');
-
+  const menuPropsText = menuProps[0].textContent;
+  const sanitizedClassName = menuPropsText.replace(/\s+/g, '-'); // Replace spaces with hyphens
+  flyoutWrapperDiv.classList.add(sanitizedClassName.toLowerCase());
   flyoutWrapperDiv.appendChild(wrapperDiv);
   block.appendChild(flyoutWrapperDiv);
 }
-
-*/
