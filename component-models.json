@@ -401,6 +401,156 @@
     ]
   },
   {
+    "id": "text-with-image",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "textwithimageTab1"
+      },     
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "value": "left",
+        "label": "Image Alignment",
+        "description":"Defines on which side the image will appear.",
+        "required": true,
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow",
+        "value": "",
+        "label": "Eyebrow",
+        "description":"Defines the text that will appear above the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "",
+        "label": "Eyebrow Type",
+        "description":"Defines the styling of the text that will appear above the headline.",
+        "options": [
+          {
+            "name": "Eyebrow Bold 1",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow Bold 2",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headline",
+        "value": "",
+        "label": "Headline",
+        "description":"Defines the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "h2",
+        "label": "Headline Type",
+        "description":"Defines the styling of the headline.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "copytext",
+        "value": "",
+        "label": "Copy Text",
+        "description": "Defines the text that will appear in the paragraph styling.",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Image",
+        "name": "textwithimageTab2"
+      }, 
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "Image",
+        "value": "",
+        "description": "Defines the image to be displayed.",
+        "required":true,
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt text",
+        "description": "Defines the alternative text that will be read by screen-readers for the image.",
+        "value": "",
+        "required":true
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "textwithimageTab3"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linklabel",
+        "value": "",
+        "label": "Link Label",
+        "description":"Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link",
+        "value": "",
+        "label": "Link",
+        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "linkbutton",
+        "label": "Button Styling",
+        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "Link Button",
+            "value": "linkbutton"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "iframe",
     "fields": [
       {
