@@ -439,6 +439,10 @@ main .section {
     margin-bottom: 0;
   }
 
+  a.button.ghost-dark.button-fixed-width {
+    width: 100%;
+  }
+
   a.button.hyperlink {
     background: transparent;
     padding: 0;
