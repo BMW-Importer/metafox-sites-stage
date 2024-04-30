@@ -406,7 +406,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textwithimageTab1"
+        "name": "textWithImageTab1"
       },     
       {
         "component": "select",
@@ -491,7 +491,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "textwithimageTab2"
+        "name": "textWithImageTab2"
       }, 
       {
         "component": "reference",
@@ -515,7 +515,223 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textwithimageTab3"
+        "name": "textWithImageTab3"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkLabel",
+        "value": "",
+        "label": "Link Label",
+        "description":"Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link",
+        "value": "",
+        "label": "Link",
+        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "linkbutton",
+        "label": "Button Styling",
+        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "Link Button",
+            "value": "linkbutton"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-with-video",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "textWithVideoTab1"
+      },     
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "value": "left",
+        "label": "Video Alignment",
+        "description":"Defines on which side the Video will appear.",
+        "required": true,
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "eyebrow",
+        "value": "",
+        "label": "Eyebrow",
+        "description":"Defines the text that will appear above the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "",
+        "label": "Eyebrow Type",
+        "description":"Defines the styling of the text that will appear above the headline.",
+        "options": [
+          {
+            "name": "Eyebrow Bold 1",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow Bold 2",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headline",
+        "value": "",
+        "label": "Headline",
+        "description":"Defines the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "h2",
+        "label": "Headline Type",
+        "description":"Defines the styling of the headline.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "copytext",
+        "value": "",
+        "label": "Copy Text",
+        "description": "Defines the text that will appear in the paragraph styling.",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Video",
+        "name": "textWithVideoTab2"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoTitle",
+        "value": "",
+        "label": "Video Title",
+        "description":"Defines the title of the video.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoDescription",
+        "value": "",
+        "label": "Video Description",
+        "description":"Defines the description of the video.",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "desktopFileReference",
+        "label": "Desktop Video Path",
+        "value": "",
+        "description": "Defines video that will play on desktop.",
+        "required":true,
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileFileReference",
+        "label": "Mobile Video Path",
+        "value": "",
+        "description": "Defines video that will play on mobile.",
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "desktopPosterFileReference",
+        "label": "Desktop Poster Image",
+        "value": "",
+        "description": "Defines the the poster image of the video that will play on desktop. It will be displayed while loading the page.",
+        "required":true,
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobilePosterFileReference",
+        "label": "Mobile Poster Image",
+        "value": "",
+        "description": "Defines the the poster image of the video that will play on mobile. It will be displayed while loading the page.",
+        "multi": false
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "loopVideo",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop."
+      },
+      {
+        "component": "boolean",
+        "label": "Autoplay",
+        "name": "autoplay",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "videoControls",
+        "valueType": "boolean",
+        "value":false,
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video",
+        "name": "muteVideo",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "textWithVideoTab3"
       }, 
       {
         "component": "text",
