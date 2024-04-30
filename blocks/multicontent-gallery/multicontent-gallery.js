@@ -16,35 +16,37 @@ const showLessText = 'Prikaži manje';
 
     window.addEventListener('resize',function() {      
       enableShowMoreButton();
-      
-      //if screen widht is greater than 1280 then enable first element as opened card
-      if(screen.width >= 1280){
-        const multiMediaBlocks = document.querySelectorAll(".multicontent-gallery.block");
-
-        multiMediaBlocks.forEach(item => {
-          //scroll to starting of detail childs
-          const detailContainer = item.querySelector('.video-image-detail-container');
-          detailContainer.scrollTo({
-            left: 0,
-            behavior: 'smooth'
-          });
-
-          const mediaContainer = item.querySelector('.video-image-slide-conatiner').querySelectorAll('.video-image-slide.media');
-          mediaContainer.forEach((media,index) => {
-            media.classList.remove('visible');
-          });
-
-          //make first detail as open state
-          // call click event for first click 
-          const firstDetailHeadingElem = item.querySelector('.vid-img-slide-cover');
-          if(firstDetailHeadingElem) {
-            firstDetailHeadingElem.click();
-          }
-        });  
-      }
-    });
-   
+      triggerAfterResize();
+    });   
 })();
+
+function triggerAfterResize(){
+   //if screen widht is greater than 1280 then enable first element as opened card
+   if(screen.width >= 1280){
+    const multiMediaBlocks = document.querySelectorAll(".multicontent-gallery.block");
+
+    multiMediaBlocks.forEach(item => {
+      //scroll to starting of detail childs
+      const detailContainer = item.querySelector('.video-image-detail-container');
+      detailContainer.scrollTo({
+        left: 0,
+        behavior: 'smooth'
+      });
+
+      const mediaContainer = item.querySelector('.video-image-slide-conatiner').querySelectorAll('.video-image-slide.media');
+      mediaContainer.forEach((media,index) => {
+        media.classList.remove('visible');
+      });
+
+      //make first detail as open state
+      // call click event for first click 
+      const firstDetailHeadingElem = item.querySelector('.vid-img-slide-cover');
+      if(firstDetailHeadingElem) {
+        firstDetailHeadingElem.click();
+      }
+    });  
+  }
+}
 
 function attachDetailHeadingClickEvent(block) {
   const desktopDetailHeadingElem = block.querySelectorAll(".vid-img-slide-cover");
@@ -194,7 +196,7 @@ export default function decorate(block) {
 
       // generating video
       //delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
-      loadVideoEmbed(videoDOMContainer,'https://www.youtube.com/watch?v=g0VWqaYROwQ',true,videoSlideLoopVideo.textContent.trim(),false,true,desktopVideoPosterImgPath)
+      loadVideoEmbed(videoDOMContainer,videoSlideDesktopVideoRef.textContent.trim(),true,videoSlideLoopVideo.textContent.trim(),false,true,desktopVideoPosterImgPath)
 
       //call function for generating video slide UI
       videoImageContainer.append(videoDOMContainer);
@@ -203,9 +205,7 @@ export default function decorate(block) {
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([videoSlideHeadline.textContent.trim(),videoSlideCopyText.innerHTML,videoSlideTitle.textContent.trim(),videoSlideDescription.textContent.trim(),videoSlideLinkLabel.textContent.trim(),videoSlideLink.textContent.trim(),videoSlideButtonStyling.textContent.trim(),index]));
       
     }
-    //delete
-    //else if([...classes].includes('image-slide')){
-    else {
+    else if([...classes].includes('image-slide')){    
       const [imageSlideClassname,imageSlideTab1,imageSlideHeadline,imageSlideCopyText,imageSlideTab2,
         imageSlideImgRef,imageSlideAltText,imageSlideTab3,imageSlideLinkLabel,imageSlideLink,imageSlideButtonStyling] = panel.children;
 
@@ -239,4 +239,6 @@ export default function decorate(block) {
   attachShowMoreEvents(block);
   // attach click event for desktop heading click
   attachDetailHeadingClickEvent(block);
+  triggerAfterResize();
 }
+
