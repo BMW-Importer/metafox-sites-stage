@@ -1,3 +1,5 @@
+/*
+
 import { generateMenuTeaserDOM } from '../menu-teaser/menu-teaser.js';
 import { generateHeaderLinkList } from '../link-list/link-list.js';
 
@@ -50,3 +52,5 @@ export default function decorate(block) {
   flyoutWrapperDiv.appendChild(wrapperDiv);
   block.appendChild(flyoutWrapperDiv);
 }
+
+*/

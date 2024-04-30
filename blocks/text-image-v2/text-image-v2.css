@@ -1,3 +1,8 @@
+.fg div {
+  max-width: 600px;
+  color: grey;
+}
+
 main .text-image-v2-container > div {
   max-width: unset;
 }
@@ -42,7 +47,3 @@ main .text-image-v2-container {
   text-align: center;
 }
 
-.fg div {
-  max-width: 600px;
-  color: grey;
-}
