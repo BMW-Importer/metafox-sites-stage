@@ -299,19 +299,7 @@
                 "template": {
                   "name": "Menu Flyout",
                   "model": "menu-flyout",
-                  "filter": "menu-flyout",
-                  "link-list" : {
-                    "name": "Link List",
-                    "model": "link-list",
-                    "filter": "link-list",
-                    "linkListClassname":"link-list"
-                  },
-                  "menu-teaser" : {
-                    "name": "Menu Teaser",
-                    "model": "menu-teaser",
-                    "filter": "menu-teaser",
-                    "menuTeaserClassname":"menu-teaser"
-                  }
+                  "filter": "menu-flyout"
                 }                
               }
             }
@@ -327,7 +315,8 @@
                 "template": {
                   "name": "Link List",
                   "model": "link-list",
-                  "filter": "link-list"
+                  "filter": "link-list",
+                  "linkListClassname":"link-list"
                 }
               }
             }
@@ -404,7 +393,8 @@
                 "template": {
                   "name": "Menu Teaser",
                   "model": "menu-teaser",
-                  "filter": "menu-teaser"
+                  "filter": "menu-teaser",
+                  "menuTeaserClassname":"menu-teaser"
                 }
               }
             }
