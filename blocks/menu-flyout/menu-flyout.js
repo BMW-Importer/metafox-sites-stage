@@ -26,7 +26,8 @@
 //   [...panels].forEach((panel) => {
 //     const [, , , field4] = panel.children;
 //     const classesText = field4?.textContent.trim();
-//     const classes = (classesText ? classesText.split(',') : []).map((c) => c && c.trim()).filter((c) => !!c);
+//     const classes = (classesText ? classesText.split(',') : [])
+// .map((c) => c && c.trim()).filter((c) => !!c);
 //     if ([...classes].includes('link-list')) {
 //       const props = [...panel.children].map((row) => row.firstElementChild);
 //       panel.textContent = '';
@@ -36,7 +37,8 @@
 //   [...panels].forEach((panel) => {
 //     const [, field2, ,] = panel.children;
 //     const classesText = field2?.textContent.trim();
-//     const classes = (classesText ? classesText.split(',') : []).map((c) => c && c.trim()).filter((c) => !!c);
+//     const classes = (classesText ? classesText.split(',') : [])
+// .map((c) => c && c.trim()).filter((c) => !!c);
 //     if ([...classes].includes('menu-teaser')) {
 //       const props = [...panel.children].map((row) => row.firstElementChild);
 //       panel.textContent = '';
