@@ -44,9 +44,9 @@ export function generateHeaderLinkList(props) {
       <div class="flyout-link-list">     
         <div class ="link-list-wrapper vertical">
           <div class="link-list block" data-block-name="link-list" data-block-status="loaded">
-            <h3 class="link-list-title">${b.textContent}</h3>
+            <h3 class="link-list-title">${b?.textContent}</h3>
               <div class="link-list-detail">
-               ${ulList.innerHTML}
+               ${ulList?.innerHTML}
               </div>
         </div>
       </div>
