@@ -225,7 +225,7 @@
           }
         },
         {
-          "title": "Text-with-Media",
+          "title": "Text with Media",
           "id": "text-with-media",
           "plugins": {
             "xwalk": {
@@ -241,7 +241,7 @@
           }
         },
         {
-          "title": "Text-with-Image",
+          "title": "Text with Image",
           "id": "text-with-image",
           "plugins": {
             "xwalk": {
@@ -256,7 +256,7 @@
           }
         },
         {
-          "title": "Text-with-Video",
+          "title": "Text with Video",
           "id": "text-with-video",
           "plugins": {
             "xwalk": {
