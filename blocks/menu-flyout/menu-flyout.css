@@ -1,4 +1,9 @@
 /* menu-flyout css */
+/* delete this later */
+header.header-wrapper .nav-brand .menu-flyout-wrapper {
+    display: none !important;
+}
+
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
     order: 1;
     margin-left: 25%;
