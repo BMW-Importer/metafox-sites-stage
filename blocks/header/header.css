@@ -6,6 +6,10 @@
   top: 0;
 }
 
+header .menu-flyout-wrapper {
+  display: none;
+}
+
 header {
   min-width: 100%;
 }
