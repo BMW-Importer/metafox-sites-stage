@@ -145,20 +145,20 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-function launchVariables() {
-  const header = document.querySelector('header');
-  const script = header.createElement('script');
-  script.src = 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js';
-  if (window.adobeDataLayer) {
-    console.log(window.adobeDataLayer.version);
-  }
-}
+// function launchVariables() {
+//   const header = document.querySelector('header');
+//   const script = header.createElement('script');
+//   script.src = 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js';
+//   if (window.adobeDataLayer) {
+//     console.log(window.adobeDataLayer.version);
+//   }
+// }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  launchVariables();
+  // launchVariables();
 }
 
 loadPage();
