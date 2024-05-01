@@ -128,10 +128,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container{
     flex-wrap: wrap;
-    height: 400px;
+    height: auto;
     overflow-y: auto;
     align-items: revert;
     row-gap: 4rem;
+    max-height: calc(100vh - 149px);
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list {
