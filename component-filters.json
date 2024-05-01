@@ -70,6 +70,14 @@
     ]
   },
   {
+    "id": "text-with-image",
+    "components": []
+  },
+  {
+    "id": "text-with-video",
+    "components": []
+  },
+  {
     "id": "section",
     "components": [
       "copy_text",
