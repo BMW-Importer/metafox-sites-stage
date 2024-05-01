@@ -8,6 +8,7 @@
 .section.flexible-width-section > div {
   grid-area: content;
 }
+
 .section.flexible-width-section.grid-8 {
  /* 8/12 = 66.66% */
   grid-template-columns: 1fr 4fr 1fr;
