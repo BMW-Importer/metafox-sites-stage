@@ -468,7 +468,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "headlineType",
         "value": "h2",
         "label": "Headline Type",
         "description":"Defines the styling of the headline.",
@@ -536,7 +536,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "buttonStyling",
         "value": "linkbutton",
         "label": "Button Styling",
         "description":"Defines the styling applied to the button or if the button will displayed as a link.",
@@ -618,7 +618,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "headlineType",
         "value": "h2",
         "label": "Headline Type",
         "description":"Defines the styling of the headline.",
@@ -752,7 +752,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "buttonStyling",
         "value": "linkbutton",
         "label": "Button Styling",
         "description":"Defines the styling applied to the button or if the button will displayed as a link.",
