@@ -203,26 +203,12 @@
     "id": "flexible-width-section",
     "fields": [
       {
-        "component": "select",
+        "component": "text-input",
         "name": "style",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Width",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "10/12",
-            "value": "grid-10"
-          },
-          {
-            "name":"8/12",
-            "value": "grid-8"
-          },
-          {
-            "name": "6/12",
-            "value": "grid-6"
-          }
-        ]
+        "valueType": "string"
       },
       {
         "component": "select",
