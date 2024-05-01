@@ -1,30 +1,27 @@
 export function generateVideoScript() {
   // Build DOM
   const videoScriptDOM = document.createRange().createContextualFragment(`
-  <script type="application/ld+json">
-  {
-"contentUrl" : https://bmw.scene7.com/is/content/BMW/neue-klasse-x_joy_psf-AVS.m3u8,
-"uploadDate" : "Wed Mar 13 2024 16:26:15",
-"@type" : "VideoObject",
-"name" : "BMW Vision Neue Klasse X Video",
-"description" : "BMW Vision Neue Klasse X Video",
-"publisher" : {
-"@type" : "Organization",
-"logo" : {
-"@type" : "ImageObject"
-}
-},
-"@context" : https://schema.org,
-"thumbnailUrl" : https://bmw.scene7.com/is/image/BMW/neue-klasse-x_joy_fb?qlt=80&wid=1024&fmt=webp
-}
-</script>
-  `);
+  <div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>
+  <script type="text/javascript" src="http://bmw.scene7.com/s7viewers/html5/js/SmartCropVideoViewer.js"></script>
+  <script type="text/javascript">
+  console.log("Hello DM Video Player");
+  var videoViewer = new s7viewers.SmartCropVideoViewer();
+videoViewer.setContainerId("s7viewer");
+videoViewer.setParam("serverurl", "http://bmw.scene7.com/is/image/");
+videoViewer.setParam("videoserverurl", "http://bmw.scene7.com/is/content/");
+videoViewer.setAsset("BMW/bmw-x-series-ix-onepager-gallery-charging-01-AVS");
+videoViewer.setParam("autoplay", "1");
+videoViewer.setParam("loop", "1");
+videoViewer.setParam("transition", "none");
+videoViewer.init();
+   </script>
+    `);
   return videoScriptDOM;
 }
 export default function decorate(block) {
   // get the first and only cell from each row
-  const props = [...block.children].map((row) => row.firstElementChild);
-  const videoScriptDOM = generateVideoScript(props);
+  // const props = [...block.children].map((row) => row.firstElementChild);
+  const videoScriptDOM = generateVideoScript();
   block.textContent = '';
   block.append(videoScriptDOM);
 }
