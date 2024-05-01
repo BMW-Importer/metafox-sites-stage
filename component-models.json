@@ -245,6 +245,12 @@
             "value": "right"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Display Top Margin",
+        "name": "sectiontopmargin",
+        "valueType": "boolean"
       }
     ]
   },
