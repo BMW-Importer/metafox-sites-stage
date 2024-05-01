@@ -1,6 +1,6 @@
 export function generateTextImageDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
-  const [pictureContainer, altText, textarea, imagePosition, showMeta, metaText] = props;
+  const [pictureContainer, altText, details, summary, link, linktitle, linktext] = props;
   const picture = pictureContainer.querySelector('picture');
   const image = picture.querySelector('image');
   if (Boolean(image) && Boolean(altText)) {
@@ -8,31 +8,32 @@ export function generateTextImageDOM(props) {
   }
 
   // Build DOM
-  const textImageDOM = document.createRange().createContextualFragment(`
-    <div style="height: 350px; background-color: khaki;">
-        <div class='background' style='float:${imagePosition.innerHTML.indexOf('right') > -1 ? 'right' : 'left'}'>${picture ? picture.outerHTML : ''}</div>
-        <div class='foreground'>
-          <div class='text'>
-            <div class='textarea'>${textarea.innerHTML}</div>
-            <div style='display:${showMeta.innerHTML.indexOf('true') > -1 ? 'block' : 'none'}'>
-                <p>${metaText.innerHTML}</p>
-            </div>
-          </div>
-          <div class='spacer'>
-          </div>
-        </div>
-    </div>
-  `);
+  const textImageDOM = document.createElement('div');
 
-  // add final teaser DOM and classes if used as child component
+  const backgroundContainer = document.createElement('div');
+  backgroundContainer.classList.add('bg');
+  if (picture) {
+    backgroundContainer.append(picture);
+  }
+  textImageDOM.append(backgroundContainer);
+
+  const foregroundContainer = document.createElement('div');
+  foregroundContainer.classList.add('fg');
+  const textContainer = document.createElement('div');
+  textContainer.textContent = details.textContent;
+  foregroundContainer.text = summary.text;
+  foregroundContainer.text = link.text;
+  foregroundContainer.text = linktitle.text;
+  foregroundContainer.text = linktext.text;
+  foregroundContainer.append(textContainer);
+  textImageDOM.append(foregroundContainer);
+
+  // Add final teaser DOM and classes if used as child component
   return textImageDOM;
 }
 
 export default function decorate(block) {
-  // get the first and only cell from each row
-  [...block.children].forEach((column) => {
-    const [ImageWrapper, TextWrapper] = column.children;
-    ImageWrapper.classList.add('tiv2-image');
-    TextWrapper.classList.add('tiv2-text');
-  });
+  const [bg, fg] = block.children;
+  bg.className = 'bg';
+  fg.className = 'fg';
 }

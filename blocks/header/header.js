@@ -21,6 +21,19 @@ function closeOnEscape(e) {
   }
 }
 
+function handleHeaderLinkList(e) {
+  const { target } = e;
+  if (!isDesktop.matches) {
+    if (target.classList.contains('expand')) {
+      target.nextElementSibling.style.maxHeight = null;
+      target.classList.remove('expand');
+    } else {
+      target.nextElementSibling.style.maxHeight = `${target.nextElementSibling.scrollHeight}px`;
+      target.classList.add('expand');
+    }
+  }
+}
+
 // function openOnKeydown(e) {
 //   const focused = document.activeElement;
 //   const isNavDrop = focused.className === 'nav-drop';
@@ -151,18 +164,22 @@ export default async function decorate(block) {
   block.append(navWrapper);
   // background related changes
   const headerType = getMetadata('headertype');
+  const bodyClass = document.getElementsByTagName('body');
   const header = document.getElementsByTagName('header');
   if (headerType && headerType === 'whitebackground') {
     header[0].classList.add('white-background');
+    bodyClass[0].classList.add('white-background');
   } else {
     header[0].classList.add('transparent');
   }
 
-  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper');
+  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout-link');
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
       const parentMenu = event.target.parentNode.parentElement;
+      const mainParentMenu = event.target.parentNode.parentElement.parentElement;
+      const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
         if (item !== parentMenu && item.classList.contains('showfly')) {
@@ -170,13 +187,24 @@ export default async function decorate(block) {
         }
       });
       parentMenu.classList.toggle('showfly', !isOpen);
+      mainParentMenu.classList.toggle('mobile-flyout', !isOpen);
+      bodyContent.classList.toggle('content-page', !isOpen);
       if (headerType && headerType === 'whitebackground' && event.target.parentNode.parentElement.classList.contains('showfly')) {
         header[0].classList.remove('white-background');
         header[0].classList.add('transparent');
       } else {
+        if (headerType === 'transparent') {
+          return false;
+        }
         header[0].classList.add('white-background');
         header[0].classList.remove('transparent');
       }
+      return true;
     });
+  });
+
+  const linkListSelector = document.querySelectorAll('.menu-flyout-wrapper .link-list-title');
+  linkListSelector.forEach((anchor) => {
+    anchor.addEventListener('click', (handleHeaderLinkList));
   });
 }

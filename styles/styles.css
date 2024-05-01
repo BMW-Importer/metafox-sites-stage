@@ -27,6 +27,7 @@
   --light-grey: #f6f6f6;
   --light-bbb: #bbb;  
   --fixed-font-family: bmwtypenextweb,arial,helvetica,roboto,sans-serif;
+  --icon-font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
 
   /* base font size */
   --base-font-size: 16px;
@@ -83,6 +84,7 @@ body.appear {
 }
 
 body {
+  display: none;
   background-color: var(--background-color);
 }
 
@@ -215,7 +217,7 @@ a.button.ghost-dark {
   font-weight: 700;
   font-family: var(--fixed-font-family);
   text-align: center;
-  padding: .25rem;
+  padding: .25rem 1.5rem;
   min-height: 3.334rem;
   align-content: center;
   text-rendering: optimizespeed;
@@ -407,6 +409,14 @@ main .section {
   main .section {
     padding: 20px var(--section-desktop-padding);
   }
+
+  .appear.white-background main .section {
+    padding: 0;
+  }
+  
+  .appear.white-background main .section.columns-container .default-content-wrapper p {
+    margin: 0
+  }
 }
 
 /* large-desktop */
@@ -436,6 +446,10 @@ main .section {
     align-content: center;
     text-rendering: optimizespeed;
     margin-bottom: 0;
+  }
+
+  a.button.ghost-dark.button-fixed-width {
+    width: 100%;
   }
 
   a.button.hyperlink {
