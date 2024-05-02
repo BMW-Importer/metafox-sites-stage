@@ -80,7 +80,7 @@
       "list": [],
       "insert": ["link"],
       "blocks": [],
-      "advanced": ["paragraph"],
+      "advanced": [""],
       "extensions": [],
       "editor": ["removeformat"]
     }
@@ -96,7 +96,7 @@
       "list": [],
       "insert": ["link"],
       "blocks": [],
-      "advanced": ["paragraph"],
+      "advanced": [""],
       "extensions": [],
       "editor": ["removeformat"]
     }
