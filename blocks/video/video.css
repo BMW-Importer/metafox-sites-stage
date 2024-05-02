@@ -1,5 +1,6 @@
-.section.video-container.bmw-video-container {
-  padding: 0;
+
+.video-container.bmw-video-container {
+    padding: 0;
 }
 
 .video-wrapper,.bmw-video-wrapper {
@@ -11,6 +12,7 @@
 .video, .bmw-video {
   position: relative;
   text-align: center;
+  width: 100%;
 }
 
 .bmw-video > div {
@@ -165,9 +167,29 @@
   content: "pause" !important;
 }
 
+@media (width >= 768px){ 
+  .video-js {
+    height: 392px;
+    max-height: 100%;
+  }
+}
+
 /* desktop */
 @media (width >=1280px) {
-  .video-js {
-    width: 100vw;
+  .video-container.bmw-video-container {
+    padding: 20px var(--section-desktop-padding);
   }
+
+  .video-js {
+    width: 100%;
+    height: 985.5px;
+    max-height: 100%;
+  }
+}
+
+@media (width >=1920px) {
+  .video-container.bmw-video-container {
+    padding-left: calc((100vw -(var(--max-component-width) -(var(--section-desktop-padding)* 2))) / 2);
+    padding-right: calc((100vw -(var(--max-component-width) -(var(--section-desktop-padding)* 2))) / 2);
+}
 }
