@@ -200,13 +200,13 @@
     ]
   },
   {
-    "id": "flexible_width_section",
+    "id": "flexible-width-section",
     "fields": [
       {
         "component": "select",
         "name": "style",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
-        "value": "centre",
+        "value": "",
         "label": "Width",
         "valueType": "string",
         "options": [
@@ -227,13 +227,13 @@
       {
         "component": "select",
         "name": "classes",
-        "description":"Defines the alignment of the elements added to the Section.",
-        "value": "centre",
+        "description":"Defines the alignment of the Default Content added within the Section.",
+        "value": "",
         "label": "Alignment",
         "valueType": "string",
         "options": [
           {
-            "name": "Center",
+            "name": "Centre",
             "value": "center"
           },
           {
@@ -245,6 +245,12 @@
             "value": "right"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Display Top Margin",
+        "name": "sectiontopmargin",
+        "valueType": "boolean"
       }
     ]
   },
@@ -381,6 +387,15 @@
         ]
       },
       {
+        "component": "text-area",
+        "name": "fg_details",
+        "value": "",
+        "label": "Text",
+        "description": "Optional text for the text image component",
+        "placeholder": "Please provide some text of your choice here!",
+        "valueType": "string"
+      },
+      {
         "component": "text",
         "name": "fg_summary",
         "value": "",
@@ -390,12 +405,30 @@
         "valueType": "string"
       },
       {
-        "component": "text-area",
-        "name": "fg_details",
+        "component": "text",
+        "name": "fg_link",
         "value": "",
-        "label": "Text",
-        "description": "Optional text for the text image component",
-        "placeholder": "Please provide some text of your choice here!",
+        "label": "Link",
+        "description": "Optional link for text image component",
+        "placeholder": "Please provide some link!",
+        "valueType": "string"
+      },      
+      {
+        "component": "text",
+        "name": "fg_linkTitle",
+        "value": "",
+        "label": "Link Title",
+        "description": "Optional link title for the text image component",
+        "placeholder": "Please provide some link title!",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "fg_linkText",
+        "value": "",
+        "label": "Link Text",
+        "description": "Optional link text for the text image component",
+        "placeholder": "Please provide some link text!",
         "valueType": "string"
       }
     ]

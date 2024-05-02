@@ -76,13 +76,7 @@
               }
             }
           }
-        }
-      ]
-    },
-    {
-      "title": "Flexible Width Sections",
-      "id": "flexible-width-sections",
-      "components": [
+        },
         {
           "title": "Flexible Width Section",
           "id": "flexible-width-section",
@@ -92,7 +86,8 @@
                 "resourceType": "core/franklin/components/section/v1/section",
                 "template": {
                   "name":"Flexible Width Section",
-                  "model":"flexible-width-section"
+                  "model":"flexible-width-section",
+                  "classes":"center"
                 }
               }
             }
@@ -217,8 +212,11 @@
                   "bg_fileReference": "/content/dam/metafox/placeholder_image.png",
                   "bg_fileReferenceAlt": "Alt text",
                   "classes": "Left",
+                  "fg_details": "Kindly edit the content here !",
                   "fg_summary": "Kindly edit the Summary here !",
-                  "fg_details": "Kindly edit the content here !"
+                  "fg_link": "Kindly provide the link here !",
+                  "fg_linkTitle": "Kindly provide the link title here !",
+                  "fg_linkText": "Kindly provide the link text here !"
                 }
               }
             }
