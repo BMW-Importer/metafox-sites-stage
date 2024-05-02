@@ -153,9 +153,6 @@ const loadVideoEmbed = (
     block.append(getVideoElement(link, '.m3u8', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
   }
 
-  const videoElement = getVideoElement(link, '.mp4', autoplay, loop, enableControls, muted, placeholder, onHoverPlay);
-  block.appendChild(videoElement);
-
   block.dataset.embedIsLoaded = true;
 };
 
