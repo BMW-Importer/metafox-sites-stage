@@ -41,6 +41,17 @@
             "value": "h6"
           }
         ]
+      },
+      {
+        "component": "radio-group",
+        "valueType": "string",
+        "name": "classes",
+        "value": "wrap-headline",
+        "label": "Break Word ?",
+        "options": [
+          { "name": "True", "value": "break-headline" },
+          { "name": "False", "value": "wrap-headline" }
+        ]
       }
     ]
   },
