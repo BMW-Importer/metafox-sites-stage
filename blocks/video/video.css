@@ -30,7 +30,7 @@
 }
 
 .video video {
-  background-color: #262626;
+  background-color: var(--light-text-color);
   cursor: pointer;
   height: 100%;
   object-fit: cover;
@@ -108,7 +108,7 @@
   bottom: 0;
   content: "";
   display: block;
-  height: 6pc;
+  height: 6rem;
   left: 0;
   pointer-events: none;
   position: absolute;
@@ -145,7 +145,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "liga";
   content: "play";
-  color: #FFF;
+  color: var(--background-color);
   font-size: 4rem;
   direction: ltr;
   display: block;
