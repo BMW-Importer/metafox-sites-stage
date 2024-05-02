@@ -186,16 +186,16 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     line-height: 24px;
   }
 
+  header nav .section ul, header nav .section p {
+    width: 83.3333%;
+    margin: 0 auto;
+  }
+
   header nav[aria-expanded="true"] .menu-flyout-wrapper .menu-flyout.block p{
     margin: 0;
     width: 100%;
   }
 
-  header nav .section ul, header nav .section p {
-    width: 83.3333%;
-    margin: 0 auto;
-  }
- 
   .header nav .section .default-content-wrapper {
     padding: 1.75rem 1.5rem 0;
   }
@@ -304,6 +304,11 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     overflow-y: scroll;
     
   }
+  
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {   
+    width: 100%;
+    position: relative;
+  }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper .flyout-main-container {
    padding: 1rem 2.5rem;
@@ -360,11 +365,6 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     position: absolute;
     right: 2.5rem;
    }
-
-   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {   
-    width: 100%;
-    position: relative;
-  }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list {
     padding: 0.75rem;
@@ -849,14 +849,15 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
   
 }
-/*ipad pro*/
 
+/* ipad pro */
 @media (width >= 830px) and (width < 1280px) {
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after{
     display: none;
     content: " ";
   }
 }
+
 /* Desktop  */
 @media (width >= 1280px) { 
   header nav {

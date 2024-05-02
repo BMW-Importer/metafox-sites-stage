@@ -148,8 +148,13 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
  flex: 0 0 20%
 }
 
-/*ipad mini and ipad air*/
+/* ipad mini and ipad air */
 @media (width >= 768px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
+        width: 100%;
+    }
+    
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
         width: 50%;  
     }
@@ -161,12 +166,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         row-gap:0;
         padding: 1rem 3rem;
     }
-
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
-        width: 100%;
-    }
 }
+
 /* ipad pro */
 @media (width >= 830px) and (width < 1280px) {
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list,
@@ -179,10 +180,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         margin-left: 0;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
-        width: 25%;  
-    }
 
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
+    }
+    
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
@@ -190,12 +192,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         row-gap:0;
         padding: 1rem 3rem;
     }
-    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
-        display: flex;
-    }
+
+   
 }
 
-/*mobile*/
+/* mobile */
 @media (width < 768px) {
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
         padding: 0;
