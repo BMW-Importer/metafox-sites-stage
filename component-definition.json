@@ -76,13 +76,7 @@
               }
             }
           }
-        }
-      ]
-    },
-    {
-      "title": "Flexible Width Sections",
-      "id": "flexible-width-sections",
-      "components": [
+        },
         {
           "title": "Flexible Width Section",
           "id": "flexible-width-section",
