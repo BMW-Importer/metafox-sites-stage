@@ -507,7 +507,7 @@
         "component": "text-input",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt text",
+        "label": "Alt Text",
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
         "value": "",
         "required":true
