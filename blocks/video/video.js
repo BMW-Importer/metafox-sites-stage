@@ -87,6 +87,8 @@ function getVideoElement(
         video.pause();
       }
     });
+  } else {
+    return false;
   }
 
   video.addEventListener('touchstart', () => {
