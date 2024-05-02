@@ -3,7 +3,6 @@ import {
   loadHeader,
   loadFooter,
   decorateIcons,
-  // decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForLCP,
