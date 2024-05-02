@@ -29,8 +29,7 @@
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
                   "name": "Headline",
-                  "model": "headline",
-                  "classes": "wrap-headline"
+                  "model": "headline"
                 }
               }
             }
