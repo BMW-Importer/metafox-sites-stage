@@ -3,7 +3,7 @@ import {
   loadHeader,
   loadFooter,
   decorateIcons,
-  decorateSections,
+  // decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForLCP,
@@ -11,7 +11,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-import { decorateBMWButtons } from './bmw-util.js';
+import { decorateBMWButtons, decorateBMWSections } from './bmw-util.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -83,7 +83,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateIcons(main);
   buildAutoBlocks(main);
-  decorateSections(main);
+  decorateBMWSections(main);
   decorateBlocks(main);
   decorateBMWButtons(main);
 }

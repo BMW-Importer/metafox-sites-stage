@@ -1,8 +1,12 @@
+import { readBlockConfig, toCamelCase, toClassName } from './aem.js';
+
 const alignClassList = { center: 'alignment-center', right: 'alignment-right', left: 'alignment-left' };
 
-function getAlignmentStyle(element) {
+const flexSectionAlignClassList = ['center', 'left', 'right'];
+
+function getAlignmentStyle(element, selector) {
   let alignClass = '';
-  element.querySelectorAll('div.section').forEach((childElemet) => {
+  element.querySelectorAll(selector).forEach((childElemet) => {
     childElemet.classList.forEach((className) => {
       if (className.includes('alignment-')) {
         alignClass = className;
@@ -43,7 +47,19 @@ function removeClass(callElement, bindElemet, eventName, className) {
   });
 }
 
-export function decorateBMWButtons(element) {
+function getSectionAlignmentClass(element, selector) {
+  let sectionAlignment = '';
+  element.querySelectorAll(selector).forEach((childElemet) => {
+    childElemet.classList.forEach((className) => {
+      if (flexSectionAlignClassList.includes(className)) {
+        sectionAlignment = className;
+      }
+    });
+  });
+  return sectionAlignment;
+}
+
+function decorateBMWButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
@@ -56,7 +72,7 @@ export function decorateBMWButtons(element) {
           // default
           up.ariaLabel = up.textContent;
           a.className = '';
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, up);
         }
         if (
@@ -65,7 +81,7 @@ export function decorateBMWButtons(element) {
           a.className = 'button ghost-dark button-fixed-width';
           up.ariaLabel = up.textContent;
           twoup.classList.add('button-container');
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, twoup);
         }
         if (
@@ -75,7 +91,7 @@ export function decorateBMWButtons(element) {
           twoup.ariaLabel = up.textContent;
           twoup.classList.add('button-container');
           up.classList.add('align-icon');
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, twoup);
           addIcon(up, 'arrow_chevron_right', 'align-center');
           addClass(a, twoup, 'mouseover', 'align-icon-hover');
@@ -86,4 +102,55 @@ export function decorateBMWButtons(element) {
   });
 }
 
-export default decorateBMWButtons;
+function decorateBMWSections(element) {
+  element.querySelectorAll(':scope > div:not([data-section-status])').forEach((section) => {
+    const wrappers = [];
+    let defaultContent = false;
+    [...section.children].forEach((e) => {
+      if (e.tagName === 'DIV' || !defaultContent) {
+        const wrapper = document.createElement('div');
+        wrappers.push(wrapper);
+        defaultContent = e.tagName !== 'DIV';
+        if (defaultContent) wrapper.classList.add('default-content-wrapper');
+      }
+      wrappers[wrappers.length - 1].append(e);
+    });
+    wrappers.forEach((wrapper) => section.append(wrapper));
+    section.classList.add('section');
+    section.dataset.sectionStatus = 'initialized';
+    section.style.display = 'none';
+
+    // Process section metadata
+    const sectionMeta = section.querySelector('div.section-metadata');
+    const sectionAlignmentClass = getSectionAlignmentClass(section, 'div.section-metadata');
+
+    if (sectionAlignmentClass) {
+      section.classList.add(sectionAlignmentClass);
+    }
+
+    if (sectionMeta) {
+      const meta = readBlockConfig(sectionMeta);
+      Object.keys(meta).forEach((key) => {
+        if (key === 'style') {
+          const styles = meta.style
+            .split(',')
+            .filter((style) => style)
+            .map((style) => toClassName(style.trim()));
+          styles.forEach((style) => section.classList.add(style));
+        } else if (key === 'sectiontopmargin') {
+          if (meta.sectiontopmargin === 'true') {
+            section.classList.add('flex-top-margin');
+          }
+        } else {
+          section.dataset[toCamelCase(key)] = meta[key];
+        }
+      });
+      sectionMeta.parentNode.remove();
+    }
+  });
+}
+
+export {
+  decorateBMWButtons,
+  decorateBMWSections,
+};

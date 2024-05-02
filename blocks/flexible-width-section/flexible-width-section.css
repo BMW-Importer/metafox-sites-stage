@@ -7,9 +7,9 @@
   grid-template-areas: "leftEmpty content rightEmpty";
 }
 
-.section.grid-6 > div
-.section.grid-8 > div
-.section.grid-10 > div {
+.section.grid-6 > div.default-content-wrapper,
+.section.grid-8 > div.default-content-wrapper,
+.section.grid-10 > div.default-content-wrapper {
   grid-area: content;
 }
 
@@ -28,21 +28,41 @@
   grid-template-columns: 1fr 10fr 1fr;
 }
 
-.section .center {
+.section.center.grid-6,
+.section.center.grid-8,
+.section.center.grid-10,
+.section.center.grid-6 .button-container > .align-icon,
+.section.center.grid-8 .button-container > .align-icon,
+.section.center.grid-10 .button-container > .align-icon {
   text-align: center;
   justify-content: center;
 }
 
-.section .left{
+.section.left.grid-6,
+.section.left.grid-8,
+.section.left.grid-10,
+.section.left.grid-6 .button-container > .align-icon,
+.section.left.grid-8 .button-container > .align-icon,
+.section.left.grid-10 .button-container > .align-icon  {
   text-align: left;
   justify-content: left;
 }
 
-.section .right {
+.section.right.grid-6,
+.section.right.grid-8,
+.section.right.grid-10,
+.section.right.grid-6  .button-container > .align-icon,
+.section.right.grid-8  .button-container > .align-icon,
+.section.right.grid-10 .button-container > .align-icon  {
   text-align: right;
   justify-content: right;
 }
 
+.flex-top-margin {
+  margin-top: 48px;
+}
+
+/* tablet */
 @media (width >=768px) and (width < 1280px) {
   .section.grid-6,
   .section.grid-8,
@@ -67,8 +87,13 @@
      /* 10/12 = 83.33% */
      grid-template-columns: 1fr 10fr 1fr;
    }
+
+   .flex-top-margin {
+    margin-top: 40px;
+  }
 }
 
+/* mobile */
 @media (width >=360px) and (width < 768px) {
   .section.grid-10,
   .section.grid-8,
@@ -77,5 +102,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-gap: 0;
+  }
+
+  .flex-top-margin {
+    margin-top: 40px;
   }
 }
