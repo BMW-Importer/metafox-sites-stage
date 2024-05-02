@@ -2,15 +2,18 @@
   padding: 0;
 }
 
-.video-wrapper {
+.video-wrapper,.bmw-video-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.video {
+.video, .bmw-video {
   position: relative;
   text-align: center;
+}
+.bmw-video > div {
+  width: 100vw !important;
 }
 
 .video.lazy-loading {
