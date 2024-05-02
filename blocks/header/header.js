@@ -177,8 +177,8 @@ export default async function decorate(block) {
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
-      const parentMenu = event.target.parentNode.parentElement;
-      const mainParentMenu = event.target.parentNode.parentElement.parentElement;
+      const parentMenu = event.target.parentNode.parentElement.parentElement;
+      const mainParentMenu = event.target.parentNode.parentElement.parentElement.parentElement;
       const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {

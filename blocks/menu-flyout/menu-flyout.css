@@ -1,7 +1,11 @@
 /* menu-flyout css */
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {    
+    width: 25%;
+}
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
-    margin-left: 25%;
+    margin-left: 16%;
     display: block;
     width: 50%;
     padding: 0 0.75rem;
@@ -10,8 +14,12 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
     margin-right: 25%;
     display: block;
-    width: 50%;
+    width: 100%;
     padding: 0 0.75rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+    width: 21.5%;    
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
@@ -138,4 +146,20 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
 header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list {
  margin-left: 0;
  flex: 0 0 20%
+}
+
+@media (width >= 768px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 100%;  
+    }
+}
+
+@media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 100%;  
+    }
 }

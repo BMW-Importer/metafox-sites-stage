@@ -186,11 +186,16 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     line-height: 24px;
   }
 
+  header nav[aria-expanded="true"] .menu-flyout-wrapper .menu-flyout.block p{
+    margin: 0;
+    width: 100%;
+  }
+
   header nav .section ul, header nav .section p {
     width: 83.3333%;
     margin: 0 auto;
   }
-
+ 
   .header nav .section .default-content-wrapper {
     padding: 1.75rem 1.5rem 0;
   }
@@ -629,6 +634,10 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper .flyout-wrapper {
     display: none;
 }
 
+header nav[aria-expanded="true"] .menu-flyout-wrapper .menu-flyout.block p{
+  margin: 0;
+}
+
 header nav[aria-expanded="true"] .menu-flyout-wrapper::after {       
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -796,7 +805,6 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
 /* Desktop  */
 @media (width >= 1280px) { 
-
   header nav {
     display: flex;
     justify-content: space-between;
