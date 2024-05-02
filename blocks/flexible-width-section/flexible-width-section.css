@@ -30,31 +30,37 @@
 
 .section.center.grid-6,
 .section.center.grid-8,
-.section.center.grid-10,
-.section.center.grid-6 .button-container > .align-icon,
-.section.center.grid-8 .button-container > .align-icon,
-.section.center.grid-10 .button-container > .align-icon {
+.section.center.grid-10 {
   text-align: center;
-  justify-content: center;
 }
 
 .section.left.grid-6,
 .section.left.grid-8,
-.section.left.grid-10,
-.section.left.grid-6 .button-container > .align-icon,
-.section.left.grid-8 .button-container > .align-icon,
-.section.left.grid-10 .button-container > .align-icon  {
+.section.left.grid-10  {
   text-align: left;
-  justify-content: left;
 }
 
 .section.right.grid-6,
 .section.right.grid-8,
-.section.right.grid-10,
-.section.right.grid-6  .button-container > .align-icon,
-.section.right.grid-8  .button-container > .align-icon,
-.section.right.grid-10 .button-container > .align-icon  {
+.section.right.grid-10  {
   text-align: right;
+}
+
+.section.center.grid-6 .button-container > .align-icon,
+.section.center.grid-8 .button-container > .align-icon,
+.section.center.grid-10 .button-container > .align-icon {
+  justify-content: center;
+}
+
+.section.left.grid-6 .button-container > .align-icon,
+.section.left.grid-8 .button-container > .align-icon,
+.section.left.grid-10 .button-container > .align-icon {
+  justify-content: left;
+}
+
+.section.right.grid-6 .button-container > .align-icon,
+.section.right.grid-8 .button-container > .align-icon,
+.section.right.grid-10 .button-container > .align-icon {
   justify-content: right;
 }
 
