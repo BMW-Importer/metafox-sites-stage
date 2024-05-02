@@ -71,11 +71,35 @@
   },
   {
     "id": "text-with-image",
-    "components": []
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": ["paragraph"],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
   },
   {
     "id": "text-with-video",
-    "components": []
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": ["paragraph"],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
   },
   {
     "id": "section",
