@@ -148,15 +148,59 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
  flex: 0 0 20%
 }
 
+/*ipad mini and ipad air*/
 @media (width >= 768px) and (width < 1280px) {
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
-        width: 100%;  
+        width: 50%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
+        width: 100%;
+    }
+}
+/* ipad pro */
+@media (width >= 830px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {
+        width: 50%;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
+        overflow: unset;
+        margin-left: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 25%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
     }
 }
 
+/*mobile*/
 @media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
+        padding: 0;
+    }
+
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
