@@ -180,6 +180,9 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         margin-left: 0;
     }
 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 25%;  
+    }
 
     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
         display: flex;
