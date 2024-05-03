@@ -114,7 +114,6 @@ function set_page_tracking(){
       page_tracking.page.campaign.campaignID = queryParam.get('utm_id');
       page_tracking.page.campaign.campaignTerm = queryParam.get('utm_term');
       page_tracking.page.campaign.campaignContent = queryParam.get('utm_content');
-
     }
 
     if (window.matchMedia("(min-width: 1024px)").matches) {
