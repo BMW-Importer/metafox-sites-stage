@@ -28,39 +28,27 @@
   grid-template-columns: 1fr 10fr 1fr;
 }
 
-.section.center.grid-6,
-.section.center.grid-8,
-.section.center.grid-10 {
+.section.center:where(.grid-6,.grid-8,.grid-10) {
   text-align: center;
 }
 
-.section.left.grid-6,
-.section.left.grid-8,
-.section.left.grid-10  {
+.section.left:where(.grid-6,.grid-8,.grid-10) {
   text-align: left;
 }
 
-.section.right.grid-6,
-.section.right.grid-8,
-.section.right.grid-10  {
+.section.right:where(.grid-6,.grid-8,.grid-10) {
   text-align: right;
 }
 
-.section.center.grid-6 .button-container > .align-icon,
-.section.center.grid-8 .button-container > .align-icon,
-.section.center.grid-10 .button-container > .align-icon {
+.section.center:where(.grid-6,.grid-8,.grid-10) .button-container > .align-icon {
   justify-content: center;
 }
 
-.section.left.grid-6 .button-container > .align-icon,
-.section.left.grid-8 .button-container > .align-icon,
-.section.left.grid-10 .button-container > .align-icon {
+.section.left:where(.grid-6,.grid-8,.grid-10) .button-container > .align-icon {
   justify-content: left;
 }
 
-.section.right.grid-6 .button-container > .align-icon,
-.section.right.grid-8 .button-container > .align-icon,
-.section.right.grid-10 .button-container > .align-icon {
+.section.right:where(.grid-6,.grid-8,.grid-10) .button-container > .align-icon {
   justify-content: right;
 }
 
