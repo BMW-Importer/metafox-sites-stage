@@ -105,14 +105,14 @@ function getVideoElement(
       if (video) {
         if (entry.isIntersecting) {
           if (video.paused) {
-            video.play().catch((e) => console.error('Error attempting to play video:', e.message));
+            video.play();
           }
         } else if (!video.paused) {
           video.pause();
         }
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.1 });
 
   observer.observe(video);
   return video;
