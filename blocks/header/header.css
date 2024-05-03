@@ -1153,6 +1153,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     opacity: 1;
     transform: scaleY(1);
     transition-delay: 0s, 0s;
+    align-items: revert;
   }
 
 }
