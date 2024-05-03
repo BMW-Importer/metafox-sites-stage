@@ -299,10 +299,9 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
    display: flex;
    border-top: 1px solid var(--light-bbb);
    position: sticky;
-    top: 0;
-    height: 425px;
-    overflow-y: scroll;
-    
+   top: 0;
+   height: auto;
+   overflow-y: scroll;    
   }
   
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {   
