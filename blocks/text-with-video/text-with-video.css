@@ -1,0 +1,44 @@
+main .text-video-container > div {
+  max-width: unset;
+}
+  
+main .text-video-container {
+  padding: 30px;
+}
+
+.text-video {
+  position: relative;
+  padding: 32px;
+  min-height: 300px;
+}
+
+.text-video p {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: grey;
+}
+
+.text-video img {
+  width: 800px;
+  height: 350px;
+}
+
+.foreground {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.text-video .foreground .text {
+  font-weight: 900;
+  font-size: xxx-large;
+}
+
+.textarea {
+  line-height:normal;
+}
+
