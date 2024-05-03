@@ -23,7 +23,16 @@ function embedVimeo(url, autoplay) {
     </div>`;
 }
 
-function getVideoElement(source, videoFormat, autoplay, enableLoop, enableControls, muted, poster) {
+function getVideoElement(
+  source,
+  videoFormat,
+  autoplay,
+  enableLoop,
+  enableControls,
+  muted,
+  poster,
+  onHoverPlay,
+) {
   const video = document.createElement('video');
   video.dataset.loading = 'true';
   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
@@ -33,14 +42,19 @@ function getVideoElement(source, videoFormat, autoplay, enableLoop, enableContro
   if (autoplay) {
     video.setAttribute('autoplay', '');
   }
+
   if (enableLoop) {
     video.setAttribute('loop', '');
   }
   if (muted) {
     video.setAttribute('muted', '');
   }
+  if (onHoverPlay) {
+    video.setAttribute('playOnHover', '');
+  }
   video.setAttribute('preload', 'auto');
   video.setAttribute('class', 'video-js');
+
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
@@ -54,10 +68,66 @@ function getVideoElement(source, videoFormat, autoplay, enableLoop, enableContro
   }
   video.append(sourceEl);
 
+  video.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+  if (onHoverPlay) {
+    video.addEventListener('mouseenter', () => {
+      if (video.paused) {
+        video.play();
+      }
+    });
+
+    video.addEventListener('mouseleave', () => {
+      if (!video.paused) {
+        video.pause();
+      }
+    });
+  } else {
+    return false;
+  }
+
+  video.addEventListener('touchstart', () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  video.dataset.autoplay = autoplay ? 'true' : 'false';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (video) {
+        if (entry.isIntersecting) {
+          if (video.paused) {
+            video.play();
+          }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(video);
   return video;
 }
 
-const loadVideoEmbed = (block, link, autoplay, loop, enableControls, muted, placeholder) => {
+const loadVideoEmbed = (
+  block,
+  link,
+  autoplay,
+  loop,
+  enableControls,
+  muted,
+  placeholder,
+  onHoverPlay,
+) => {
   if (block.dataset.embedIsLoaded) {
     return;
   }
@@ -76,11 +146,11 @@ const loadVideoEmbed = (block, link, autoplay, loop, enableControls, muted, plac
   } else if (isMp4) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.mp4', autoplay, loop, enableControls, muted, placeholder));
+    block.append(getVideoElement(link, '.mp4', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.m3u8', autoplay, loop, enableControls, muted, placeholder));
+    block.append(getVideoElement(link, '.m3u8', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
   }
 
   block.dataset.embedIsLoaded = true;
@@ -91,16 +161,18 @@ export default async function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const [videoPoster, , videoControls] = props;
   const placeholder = block.querySelector('picture');
+
   const link = block.querySelector('a').href;
   block.textContent = '';
-  const videoControlProperties = videoControls.innerText.split(',');
+  const videoControlProperties = videoControls ? videoControls.innerText.split(',') : [];
   const autoplay = !!videoControlProperties.includes('autoplay');
   const loop = !!videoControlProperties.includes('loop');
   const enableControls = !!videoControlProperties.includes('enableVideoControls');
   const muted = !!videoControlProperties.includes('muted');
+  const onHoverPlay = !!videoControlProperties.includes('playOnHover');
 
   if (placeholder) {
-    loadVideoEmbed(block, link, autoplay, loop, enableControls, muted, videoPoster.querySelector('img').getAttribute('src'));
+    loadVideoEmbed(block, link, autoplay, loop, enableControls, muted, onHoverPlay, videoPoster.querySelector('img').getAttribute('src'));
   } else {
     block.classList.add('lazy-loading');
     const observer = new IntersectionObserver((entries) => {

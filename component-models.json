@@ -226,7 +226,7 @@
       },
       {
         "component": "select",
-        "name": "classes",
+        "name": "section-alignment",
         "description":"Defines the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Alignment",
