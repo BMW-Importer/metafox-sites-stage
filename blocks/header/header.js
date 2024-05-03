@@ -23,13 +23,22 @@ function closeOnEscape(e) {
 
 function handleHeaderLinkList(e) {
   const { target } = e;
-  if (!isDesktop.matches) {
+  if (window.innerWidth < 768) {
     if (target.classList.contains('expand')) {
       target.nextElementSibling.style.maxHeight = null;
       target.classList.remove('expand');
     } else {
-      target.nextElementSibling.style.maxHeight = `${target.nextElementSibling.scrollHeight}px`;
-      target.classList.add('expand');
+      let listOfTitle;
+      const parentElem = e.target.closest('.flyout-main-container');
+      if (parentElem) {
+        listOfTitle = parentElem.querySelectorAll('.link-list-wrapper.vertical .link-list-title.expand');
+        for (let j = 0; j < listOfTitle.length; j += 1) {
+          listOfTitle[j].classList.remove('expand');
+          listOfTitle[j].nextElementSibling.style.maxHeight = null;
+        }
+        target.nextElementSibling.style.maxHeight = `${target.nextElementSibling.scrollHeight}px`;
+        target.classList.add('expand');
+      }
     }
   }
 }
@@ -67,6 +76,12 @@ function toggleAllNavSections(sections, expanded = false) {
  * @param {Element} navSections The nav sections within the container element
  * @param {*} forceExpanded Optional param to force nav expand behavior when not null
  */
+
+function resetFlyoutNavSection() {
+  const navBrandSelector = document.querySelector('.nav-brand');
+  navBrandSelector?.classList.remove('mobile-flyout');
+}
+
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
@@ -99,6 +114,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
     // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
   } else {
+    resetFlyoutNavSection();
     window.removeEventListener('keydown', closeOnEscape);
   }
 }
@@ -177,8 +193,8 @@ export default async function decorate(block) {
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       event.preventDefault();
-      const parentMenu = event.target.parentNode.parentElement;
-      const mainParentMenu = event.target.parentNode.parentElement.parentElement;
+      const parentMenu = event.target.parentNode.parentElement.parentElement;
+      const mainParentMenu = event.target.parentNode.parentElement.parentElement.parentElement;
       const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {

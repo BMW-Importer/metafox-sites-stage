@@ -27,7 +27,10 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/title/v1/title",
-                "template": {}
+                "template": {
+                  "name": "Headline",
+                  "model": "headline"
+                }
               }
             }
           }
