@@ -141,24 +141,22 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => import('./delayed.js'), 1000);
   // load anything that can be postponed to the latest here
 }
 
-// function launchVariables() {
-//   const header = document.querySelector('header');
-//   const script = header.createElement('script');
-//   script.src = 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js';
-//   if (window.adobeDataLayer) {
-//     console.log(window.adobeDataLayer.version);
-//   }
-// }
+function launchVariables() {
+  const headElement = document.querySelector('head');
+  const scriptElement1 = document.createElement('script');
+  scriptElement1.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
+  headElement.appendChild(scriptElement1);
+}
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
+  await launchVariables();
   loadDelayed();
-  // launchVariables();
 }
 
 loadPage();
