@@ -251,6 +251,13 @@
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
         "valueType": "boolean"
+      },
+      {
+        "component": "text-input",
+        "name": "classes",
+        "valueType": "string",
+        "hidden":true,
+        "value": "flexible-width-section"
       }
     ]
   },
