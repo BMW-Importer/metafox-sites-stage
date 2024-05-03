@@ -254,7 +254,7 @@
       },
       {
         "component": "text-input",
-        "name": "classes",
+        "name": "identifier",
         "valueType": "string",
         "hidden":true,
         "value": "flexible-width-section"
