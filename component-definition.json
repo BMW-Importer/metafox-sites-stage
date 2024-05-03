@@ -91,7 +91,7 @@
                   "name":"Flexible Width Section",
                   "model":"flexible-width-section",
                   "classes":"flexible-width-section",
-                  "section-alignment":"center";
+                  "section-alignment":"center"
                 }
               }
             }
