@@ -23,7 +23,7 @@ function closeOnEscape(e) {
 
 function handleHeaderLinkList(e) {
   const { target } = e;
-  if (window.innerWidth < 768) {
+  if (!isDesktop.matches) {
     if (target.classList.contains('expand')) {
       target.nextElementSibling.style.maxHeight = null;
       target.classList.remove('expand');
