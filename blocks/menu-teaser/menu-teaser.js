@@ -1,8 +1,8 @@
 export function generateMenuTeaserDOM(props) {
-  const [menuTeaserImage, , copyText, linkLabel] = props;
+  const [menuTeaserImage, , altText, copyText, linkLabel] = props;
   const menuteaserDOM = document.createRange().createContextualFragment(`
       <div class="flyout-menu-teaser">
-          <div class="menu-teaser-image">
+          <div class="menu-teaser-image" aria-label="${altText}">
             ${menuTeaserImage ? menuTeaserImage?.outerHTML : ''}
           </div>
           <div class="copy-text">${copyText?.textContent}</div>

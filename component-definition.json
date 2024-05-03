@@ -27,7 +27,10 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/title/v1/title",
-                "template": {}
+                "template": {
+                  "name": "Headline",
+                  "model": "headline"
+                }
               }
             }
           }
@@ -76,13 +79,7 @@
               }
             }
           }
-        }
-      ]
-    },
-    {
-      "title": "Flexible Width Sections",
-      "id": "flexible-width-sections",
-      "components": [
+        },
         {
           "title": "Flexible Width Section",
           "id": "flexible-width-section",
@@ -92,7 +89,9 @@
                 "resourceType": "core/franklin/components/section/v1/section",
                 "template": {
                   "name":"Flexible Width Section",
-                  "model":"flexible-width-section"
+                  "model":"flexible-width-section",
+                  "classes":"flexible-width-section",
+                  "section-alignment":"center"
                 }
               }
             }

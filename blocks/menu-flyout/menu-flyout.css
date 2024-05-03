@@ -1,19 +1,22 @@
 /* menu-flyout css */
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {    
+    width: 25%;
+}
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
-    order: 1;
-    margin-left: 25%;
-    display: block;
-    width: 50%;
     padding: 0 0.75rem;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
-    order: 2;
     margin-right: 25%;
     display: block;
-    width: 50%;
+    width: 100%;
     padding: 0 0.75rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
+    width: 21.5%;    
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
@@ -22,8 +25,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
-    width: 100%;
-    height: 165px;
+    width: 15.625rem;
+    height: 9.375rem;
     object-fit: cover;
     vertical-align: middle;
 }
@@ -33,6 +36,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     font-weight: 300;
     line-height: 1.5rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    margin-bottom: 0.75rem;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
@@ -45,6 +49,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     text-decoration: none;
     align-items: center;
     display: inline-flex;
+    text-wrap: pretty;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
@@ -124,4 +129,106 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 
 .flyout-menu-teaser p {
     margin: 0;
+}
+
+/* BMW info tab css */
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
+    flex-wrap: wrap;
+    height: auto;
+    overflow-y: auto;
+    align-items: revert;
+    row-gap: 4rem;
+    max-height: calc(100vh - 15rem);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-link-list {
+ margin-left: 0;
+ flex: 0 0 20%
+}
+
+/* ipad mini and ipad air */
+@media (width >= 768px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
+        width: 100%;
+    }
+    
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
+        width: 50%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+    width: 100%;
+    height: 19.5rem;
+    }
+}
+
+/* ipad pro */
+@media (width >= 830px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {
+        width: 50%;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
+        overflow: unset;
+        margin-left: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
+        width: 25%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
+    }
+    
+    
+
+   
+}
+
+/* mobile */
+@media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
+        padding: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture, header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+        height: 9.375rem;
+        width: 100%;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 100%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
+        flex-wrap: wrap;
+        height: auto;
+        overflow-y: auto;
+        align-items: revert;
+        row-gap: 4rem;
+        max-height: calc(100vh - 9rem);
+    }
 }

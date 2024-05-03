@@ -29,6 +29,7 @@
   --light-grey-1:#e6e6e6;
   --fixed-font-family: bmwtypenextweb,arial,helvetica,roboto,sans-serif;
   --icon-font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+  --opacity-color: #0006;
 
   /* base font size */
   --base-font-size: 16px;
@@ -218,7 +219,7 @@ a.button.ghost-dark {
   font-weight: 700;
   font-family: var(--fixed-font-family);
   text-align: center;
-  padding: .25rem;
+  padding: .25rem 1.5rem;
   min-height: 3.334rem;
   align-content: center;
   text-rendering: optimizespeed;
@@ -380,7 +381,7 @@ main .section {
     font-weight: 700;
     font-family: var(--fixed-font-family);
     text-align: center;
-    padding: .25rem;
+    padding: .25rem 1.5rem;
     min-height: 3.334rem;
     align-content: center;
     text-rendering: optimizespeed;
@@ -447,6 +448,10 @@ main .section {
     align-content: center;
     text-rendering: optimizespeed;
     margin-bottom: 0;
+  }
+
+  a.button.ghost-dark.button-fixed-width {
+    width: 100%;
   }
 
   a.button.hyperlink {
