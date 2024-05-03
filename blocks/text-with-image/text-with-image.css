@@ -1,3 +1,8 @@
+.video > div {
+  display: flex;
+  justify-content: center;
+}
+
 main .text-image-container > div {
   max-width: unset;
 }
@@ -52,11 +57,6 @@ main .text-image-container {
 .video.lazy-loading {
   /* reserve an approximate space to avoid extensive layout shifts */
   aspect-ratio: 16 / 9;
-}
-
-.video > div {
-  display: flex;
-  justify-content: center;
 }
 
 .video video {
