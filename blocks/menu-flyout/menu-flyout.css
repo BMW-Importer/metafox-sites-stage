@@ -5,9 +5,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
-    margin-left: 16%;
-    display: block;
-    width: 50%;
     padding: 0 0.75rem;
 }
 
@@ -18,7 +15,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     padding: 0 0.75rem;
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
     width: 21.5%;    
 }
 
@@ -28,8 +25,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
-    width: 100%;
-    height: 165px;
+    width: 15.625rem;
+    height: 9.375rem;
     object-fit: cover;
     vertical-align: middle;
 }
@@ -39,6 +36,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     font-weight: 300;
     line-height: 1.5rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    margin-bottom: 0.75rem;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
@@ -51,6 +49,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     text-decoration: none;
     align-items: center;
     display: inline-flex;
+    text-wrap: pretty;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
@@ -133,17 +132,16 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 }
 
 /* BMW info tab css */
-
-header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container{
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
     flex-wrap: wrap;
     height: auto;
     overflow-y: auto;
     align-items: revert;
     row-gap: 4rem;
-    max-height: calc(100vh - 149px);
+    max-height: calc(100vh - 249px);
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list {
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-link-list {
  margin-left: 0;
  flex: 0 0 20%
 }
@@ -155,11 +153,12 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         width: 100%;
     }
     
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
         width: 50%;  
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0;
@@ -180,21 +179,23 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
         margin-left: 0;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
         width: 25%;  
     }
 
-    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
-        display: flex;
-    }
-    
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0;
         row-gap:0;
         padding: 1rem 3rem;
     }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
+    }
+    
+    
 
    
 }
@@ -203,6 +204,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .
 @media (width < 768px) {
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
         padding: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture, header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+        height: 9.375rem;
+        width: 100%;
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 

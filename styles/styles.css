@@ -29,6 +29,7 @@
   --light-bbb: #bbb;  
   --fixed-font-family: bmwtypenextweb,arial,helvetica,roboto,sans-serif;
   --icon-font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+  --opacity-color: #0006;
 
   /* base font size */
   --base-font-size: 16px;
