@@ -35,33 +35,42 @@ export default function decorate(block) {
   // loop through all children blocks
   [...panels].forEach((panel) => {
     // generate the  panel
-    const [, f2, , f4] = panel.children;
+    const [, menuTeaserContent, , linkListContent] = panel.children;
 
-    if (f2) {
-      const classesText = f2?.textContent.trim();
+    if (menuTeaserContent) {
+      const classesText = menuTeaserContent?.textContent.trim();
       const classes = (classesText ? classesText.split(',') : []).map((c) => c?.trim()).filter((c) => !!c);
 
       if ([...classes].includes('menu-teaser')) {
         const props = [...panel.children].map((row) => row.firstElementChild);
         panel.textContent = '';
         panel.append(generateMenuTeaserDOM(props));
+        panel.classList.add('container-menu-teaser');
         panelContainer.append(panel);
       }
     }
 
-    if (f4) {
-      const classesText = f4?.textContent.trim();
+    if (linkListContent) {
+      const classesText = linkListContent?.textContent.trim();
       const classes = (classesText ? classesText.split(',') : []).map((c) => c?.trim()).filter((c) => !!c);
 
       if ([...classes].includes('link-list')) {
         const props = [...panel.children].map((row) => row.firstElementChild);
         panel.textContent = '';
         panel.append(generateHeaderLinkList(props));
+        panel.classList.add('container-link-list');
         panelContainer.append(panel);
       }
     }
   });
+  const flyoutWrapper = document.createElement('div');
+  flyoutWrapper.classList.add('flyout-wrapper');
+  const menuPropsText = menuFlyoutProps[0].textContent;
+  const sanitizedClassName = menuPropsText.replace(/\s+/g, '-');
+  flyoutWrapper.classList.add(sanitizedClassName.toLowerCase());
+  flyoutWrapper.appendChild(panelContainer);
+
   block.textContent = '';
   block.append(menuFlyoutDom);
-  block.append(panelContainer);
+  block.append(flyoutWrapper);
 }

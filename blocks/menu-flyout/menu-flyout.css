@@ -1,19 +1,25 @@
 /* menu-flyout css */
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {    
+    width: 25%;
+}
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
-    order: 1;
-    margin-left: 25%;
+    margin-left: 16%;
     display: block;
     width: 50%;
     padding: 0 0.75rem;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
-    order: 2;
     margin-right: 25%;
     display: block;
-    width: 50%;
+    width: 100%;
     padding: 0 0.75rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+    width: 21.5%;    
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
@@ -124,4 +130,84 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 
 .flyout-menu-teaser p {
     margin: 0;
+}
+
+/* BMW info tab css */
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container{
+    flex-wrap: wrap;
+    height: auto;
+    overflow-y: auto;
+    align-items: revert;
+    row-gap: 4rem;
+    max-height: calc(100vh - 149px);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list {
+ margin-left: 0;
+ flex: 0 0 20%
+}
+
+/* ipad mini and ipad air */
+@media (width >= 768px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
+        width: 100%;
+    }
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 50%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+}
+
+/* ipad pro */
+@media (width >= 830px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {
+        width: 50%;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
+        overflow: unset;
+        margin-left: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 25%;  
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
+    }
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 1rem 3rem;
+    }
+
+   
+}
+
+/* mobile */
+@media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
+        padding: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        width: 100%;  
+    }
 }
