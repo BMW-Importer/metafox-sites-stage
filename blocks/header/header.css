@@ -1140,6 +1140,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     left: 0;
     right: 0;
     transition: left .15s cubic-bezier(0, .5, .5, 1);
+    background-color: var(--opacity-color);
   }
 
   .showfly .flyout-wrapper::before {

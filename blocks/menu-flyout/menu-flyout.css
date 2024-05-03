@@ -36,6 +36,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     font-weight: 300;
     line-height: 1.5rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    margin-bottom: 0.75rem;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
@@ -137,7 +138,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     overflow-y: auto;
     align-items: revert;
     row-gap: 4rem;
-    max-height: calc(100vh - 149px);
+    max-height: calc(100vh - 249px);
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-link-list {
