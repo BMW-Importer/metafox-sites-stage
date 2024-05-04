@@ -11,7 +11,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-import { decorateBMWButtons, decorateBMWSections } from './bmw-util.js';
+import { decorateBMWButtons } from './bmw-util.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
