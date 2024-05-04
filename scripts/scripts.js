@@ -4,6 +4,7 @@ import {
   loadFooter,
   decorateIcons,
   decorateBlocks,
+  decorateSections,
   decorateTemplateAndTheme,
   waitForLCP,
   loadBlocks,
@@ -82,7 +83,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateIcons(main);
   buildAutoBlocks(main);
-  decorateBMWSections(main);
+  decorateSections(main);
   decorateBlocks(main);
   decorateBMWButtons(main);
 }
