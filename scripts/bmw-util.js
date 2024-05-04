@@ -1,8 +1,4 @@
-import { readBlockConfig, toCamelCase, toClassName } from './aem.js';
-
 const alignClassList = { center: 'alignment-center', right: 'alignment-right', left: 'alignment-left' };
-
-const flexSectionAlignClassList = ['center', 'left', 'right'];
 
 function getAlignmentStyle(element, selector) {
   let alignClass = '';
@@ -47,19 +43,7 @@ function removeClass(callElement, bindElemet, eventName, className) {
   });
 }
 
-function getSectionAlignmentClass(element, selector) {
-  let sectionAlignment = '';
-  element.querySelectorAll(selector).forEach((childElemet) => {
-    childElemet.classList.forEach((className) => {
-      if (flexSectionAlignClassList.includes(className)) {
-        sectionAlignment = className;
-      }
-    });
-  });
-  return sectionAlignment;
-}
-
-function decorateBMWButtons(element) {
+export function decorateBMWButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
     if (a.href !== a.textContent) {
@@ -102,55 +86,4 @@ function decorateBMWButtons(element) {
   });
 }
 
-function decorateBMWSections(element) {
-  element.querySelectorAll(':scope > div:not([data-section-status])').forEach((section) => {
-    const wrappers = [];
-    let defaultContent = false;
-    [...section.children].forEach((e) => {
-      if (e.tagName === 'DIV' || !defaultContent) {
-        const wrapper = document.createElement('div');
-        wrappers.push(wrapper);
-        defaultContent = e.tagName !== 'DIV';
-        if (defaultContent) wrapper.classList.add('default-content-wrapper');
-      }
-      wrappers[wrappers.length - 1].append(e);
-    });
-    wrappers.forEach((wrapper) => section.append(wrapper));
-    section.classList.add('section');
-    section.dataset.sectionStatus = 'initialized';
-    section.style.display = 'none';
-
-    // Process section metadata
-    const sectionMeta = section.querySelector('div.section-metadata');
-    const sectionAlignmentClass = getSectionAlignmentClass(section, 'div.section-metadata');
-
-    if (sectionAlignmentClass) {
-      section.classList.add(sectionAlignmentClass);
-    }
-
-    if (sectionMeta) {
-      const meta = readBlockConfig(sectionMeta);
-      Object.keys(meta).forEach((key) => {
-        if (key === 'style') {
-          const styles = meta.style
-            .split(',')
-            .filter((style) => style)
-            .map((style) => toClassName(style.trim()));
-          styles.forEach((style) => section.classList.add(style));
-        } else if (key === 'sectiontopmargin') {
-          if (meta.sectiontopmargin === 'true') {
-            section.classList.add('flex-top-margin');
-          }
-        } else {
-          section.dataset[toCamelCase(key)] = meta[key];
-        }
-      });
-      sectionMeta.parentNode.remove();
-    }
-  });
-}
-
-export {
-  decorateBMWButtons,
-  decorateBMWSections,
-};
+export default decorateBMWButtons;
