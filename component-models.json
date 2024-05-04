@@ -204,7 +204,7 @@
     "fields": [
       {
         "component": "select",
-        "name": "style",
+        "name": "gridWidth",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Width",
@@ -226,7 +226,7 @@
       },
       {
         "component": "select",
-        "name": "section-alignment",
+        "name": "alignment",
         "description":"Defines the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Alignment",
@@ -251,13 +251,6 @@
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
         "valueType": "boolean"
-      },
-      {
-        "component": "text-input",
-        "name": "identifier",
-        "valueType": "string",
-        "hidden":true,
-        "value": "flexible-width-section"
       }
     ]
   },
