@@ -204,7 +204,7 @@
     "fields": [
       {
         "component": "select",
-        "name": "gridWidth",
+        "name": "gridwidth",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Width",

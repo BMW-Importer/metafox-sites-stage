@@ -52,7 +52,8 @@
   justify-content: right;
 }
 
-.flex-top-margin {
+.flex-top-margin,
+.section[data-sectiontopmargin='true'] {
   margin-top: 48px;
 }
 
@@ -82,8 +83,8 @@
      grid-template-columns: 1fr 10fr 1fr;
    }
 
-   .flex-top-margin {
-    margin-top: 40px;
+   .section[data-sectiontopmargin='true'] {
+    margin-top: 48px;
   }
 }
 
@@ -98,7 +99,7 @@
     grid-gap: 0;
   }
 
-  .flex-top-margin {
-    margin-top: 40px;
+  .section[data-sectiontopmargin='true'] {
+    margin-top: 48px;
   }
 }
