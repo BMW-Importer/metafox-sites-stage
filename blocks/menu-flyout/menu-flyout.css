@@ -42,7 +42,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
     font-family: var(--fixed-font-family);
     font-size: 0.875rem;
-    color: var(--medium-text-color);
+    color: var(--light-text-color);
     line-height: 1.25rem;
     font-weight: 700;
     word-break: break-all;
@@ -55,6 +55,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
     align-items: center;
     display: inline-flex;
+    color: var(--light-text-color);
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a:hover,
@@ -83,12 +84,13 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     width: auto;
     outline: transparent solid 1px;
     white-space: nowrap;
+    color: var(--light-text-color)
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-title {
     padding-right: 0;
     margin: 0 0 1rem;
-    color: var(--medium-text-color);
+    color: var(--light-text-color);
     font-size: 0.625rem;
     font-weight: 300;
     line-height: 0.75rem;
