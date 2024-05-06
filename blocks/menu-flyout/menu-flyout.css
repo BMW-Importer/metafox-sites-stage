@@ -274,6 +274,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
-        display: none;
+        bottom: 4.5%;
+        position: absolute;
     }
 }
