@@ -370,10 +370,10 @@ export default function decorate(block) {
         imageSlideHeadline.textContent.trim(), imageSlideCopyText.textContent.trim(),
         imgSlideBtn, index]));
     }
-    panel.textContent = '';
+    // panel.textContent = '';
   });
 
-  block.textContent = '';
+  // block.textContent = '';
   block.append(videoImageContainer);
   block.append(videoImageDetailsContainer);
 
