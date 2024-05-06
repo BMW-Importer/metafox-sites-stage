@@ -21,6 +21,12 @@ function generateMenuFlyoutLink(props) {
   return menuFlyoutDom;
 }
 
+function generateArrowBtnDOM() {
+  const arrowDOM = document.createElement('div');
+  arrowDOM.classList.add('flyout-scroll-indicator-arrow');
+  return arrowDOM;
+}
+
 export default function decorate(block) {
   const panelContainer = document.createElement('div');
   panelContainer.classList.add('flyout-main-container');
@@ -69,8 +75,9 @@ export default function decorate(block) {
   const sanitizedClassName = menuPropsText.replace(/\s+/g, '-');
   flyoutWrapper.classList.add(sanitizedClassName.toLowerCase());
   flyoutWrapper.appendChild(panelContainer);
-
+  const arrowbtnDOM = generateArrowBtnDOM();
   block.textContent = '';
+  panelContainer.append(arrowbtnDOM);
   block.append(menuFlyoutDom);
   block.append(flyoutWrapper);
 }
