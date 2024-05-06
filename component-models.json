@@ -261,6 +261,29 @@
         "component": "tab",
         "label": "Anchor",
         "name": "flexiblewidthsectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description":"",
+        "name": "contentnavigation",
+        "valueType": "boolean"
       }
     ]
   },
