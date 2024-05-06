@@ -72,7 +72,14 @@
 
 .block.multicontent-gallery .vid-img-slide-link-btn {
     margin-bottom: 0.75rem;
+    margin-top: 0;
     display: block;
+}
+
+.block.multicontent-gallery .vid-img-slide-link-btn a {
+    margin-top: 0;
+    font-size: 0.875rem;
+    min-height: 2.25rem;
 }
 
 .block.multicontent-gallery .overlay-effect {
