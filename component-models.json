@@ -912,16 +912,13 @@
         "label": "Headline"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Headline Type",
         "name": "videoSlideHeadlineType",
         "valueType": "string",
         "description":"Defines multiple styling options for the Headline",
         "value":"h4",
-        "hidden":true,
-        "options": [
-          { "name": "H4", "value": "h4" }
-        ]
+        "hidden":true
       },
       {
         "component": "richtext",
