@@ -194,6 +194,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
   header nav[aria-expanded="true"] .menu-flyout-wrapper .menu-flyout.block p{
     margin: 0;
     width: 100%;
+    cursor: pointer;
   }
 
   .header nav .section .default-content-wrapper {
@@ -333,8 +334,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     display: flex;
     cursor: pointer;
     letter-spacing: 0;
+    margin-bottom: 1.5rem;
   }
-
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover {
     color: var(--link-hover-color);
@@ -366,7 +367,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
    }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list {
-    padding: 0.75rem;
+    padding: 1.5rem 0 0;
     width: 100%;
     margin: 0 auto;
     font-size: .875rem;
