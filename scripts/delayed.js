@@ -16,7 +16,6 @@ const page_tracking = {"page": {
             "language": "sr",
             "websiteEnv": "prod",
             "pageTitle": "BMW Srbija",
-            "pageName": "web:home",
             "windowInfo": {
                 "screenWidth": 3840,
                 "screenHeight": 2160,
@@ -126,7 +125,15 @@ function set_page_tracking(){
         page_tracking.page.pageInfo.sysEnv = "mobile";
     }
 
+    
+    const path = window.location.pathname;
+    const pathParts = path.split('/');
+    const lastPart = pathParts[pathParts.length - 1];
+    if(lastPart !== ''){
+        page_tracking.page.pageInfo.pageName = "web:" + lastPart;
+    }
     window.adobeDataLayer.push(page_tracking);
+    
 }
 
 function set_ecid(){
