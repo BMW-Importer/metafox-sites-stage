@@ -87,8 +87,6 @@ function getVideoElement(
         video.pause();
       }
     });
-  } else {
-    return false;
   }
 
   video.addEventListener('touchstart', () => {
@@ -118,20 +116,32 @@ function getVideoElement(
   return video;
 }
 
-const loadVideoEmbed = (
+// function to check given url is absolute or relative
+function isAbsoluteUrl(url) {
+  return /^(https?:)?\/\//i.test(url);
+}
+
+export function loadVideoEmbed(
   block,
   link,
   autoplay,
   loop,
   enableControls,
   muted,
-  placeholder,
   onHoverPlay,
-) => {
+  placeholder,
+) {
   if (block.dataset.embedIsLoaded) {
     return;
   }
-  const url = new URL(link);
+  const baseUrl = window.location.origin;
+  let url;
+
+  if (isAbsoluteUrl(link)) {
+    url = new URL(link);
+  } else {
+    url = new URL(link, baseUrl);
+  }
 
   const isYoutube = link.includes('youtube') || link.includes('youtu.be');
   const isVimeo = link.includes('vimeo');
@@ -154,10 +164,9 @@ const loadVideoEmbed = (
   }
 
   block.dataset.embedIsLoaded = true;
-};
+}
 
 export default async function decorate(block) {
-  // const placeholder = [...block.children].map((row) => row.firstElementChild);
   const props = [...block.children].map((row) => row.firstElementChild);
   const [videoPoster, , videoControls] = props;
   const placeholder = block.querySelector('picture');
