@@ -2,16 +2,25 @@ export function changeAllVidSrcOnResize() {
   window.addEventListener('resize', () => {
     const listOfVideos = document.querySelectorAll('video');
     listOfVideos.forEach((video) => {
-      if (window.screen >= 768) {
-        const desktopVidPath = video.getAttribute('data-desktop-vid');
-        const sourceEl = video.querySelector('source');
+      const sourceEl = video.querySelector('source');
+      const posterDiv = video.parentElement.querySelector('.vjs-poster picture img');
+
+      const desktopVidPath = sourceEl.getAttribute('data-desktop-vid');
+      const mobileVidPath = sourceEl.getAttribute('data-mobile-vid');
+
+      const desktopPosterPath = video.getAttribute('data-desktop-poster');
+      const mobilePosterPath = video.getAttribute('data-mobile-poster');
+
+      if (window.innerWidth >= 768) {
         video.src = desktopVidPath;
         sourceEl.src = desktopVidPath;
+        video.poster = desktopPosterPath;
+        posterDiv.src = desktopPosterPath;
       } else {
-        const MobVidePath = video.getAttribute('data-mobile-vid');
-        const sourceEl = video.querySelector('source');
-        video.src = MobVidePath;
-        sourceEl.src = MobVidePath;
+        video.src = mobileVidPath;
+        sourceEl.src = mobileVidPath;
+        video.poster = mobilePosterPath;
+        posterDiv.src = mobilePosterPath;
       }
     });
   });
@@ -56,13 +65,15 @@ function embedVimeo(url, autoplay) {
 }
 
 function getVideoElement(
+  videoTitle,
+  videoDescp,
   source,
   videoFormat,
   autoplay,
   enableLoop,
   enableControls,
   muted,
-  poster,
+  posters,
   onHoverPlay,
 ) {
   const video = document.createElement('video');
@@ -90,15 +101,22 @@ function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('poster', poster);
+  video.setAttribute('title', videoTitle.textContent);
+  video.setAttribute('data-description', videoDescp.textContent);
+
   const sourceEl = document.createElement('source');
 
   const mobileWidth = window.innerWidth <= 768;
   if (source.desktop && !mobileWidth) {
     sourceEl.setAttribute('src', source.desktop);
+    video.setAttribute('poster', posters.desktop);
   } else {
     sourceEl.setAttribute('src', source.mobile);
+    video.setAttribute('poster', posters.mobile);
   }
+
+  video.setAttribute('data-desktop-poster', posters.desktop);
+  video.setAttribute('data-mobile-poster', posters.mobile);
 
   sourceEl.setAttribute('data-desktop-vid', source.desktop);
   sourceEl.setAttribute('data-mobile-vid', source.mobile);
@@ -174,11 +192,14 @@ function isAbsoluteUrl(url) {
 
 export function loadVideoEmbed(
   block,
+  videoTitle,
+  videoDescp,
   linkObject,
   autoplay,
   loop,
   enableControls,
   muted,
+  posters,
   onHoverPlay,
   placeholder,
 ) {
@@ -211,11 +232,11 @@ export function loadVideoEmbed(
   } else if (isMp4) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(linkObject, '.mp4', autoplay, loop, enableControls, muted, onHoverPlay, placeholder));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay, placeholder));
   } else if (isM3U8) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(linkObject, '.m3u8', autoplay, loop, enableControls, muted, onHoverPlay, placeholder));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay, placeholder));
   }
 
   block.dataset.embedIsLoaded = true;
@@ -244,6 +265,12 @@ export default async function decorate(block) {
     desktop: desktopVideolink,
     mobile: mobileVideolink,
   };
+
+  const posters = {
+    desktop: videoDesktopPoster?.querySelector('img')?.getAttribute('src'),
+    mobile: videoMobPoster?.querySelector('img')?.getAttribute('src'),
+  };
+
   block.textContent = '';
   const autoplay = videoAutoPlay.textContent.trim() === 'true';
   const loop = videoLoop.textContent.trim() === 'true';
@@ -252,7 +279,19 @@ export default async function decorate(block) {
   const onHoverPlay = playonHover.textContent.trim() === 'true';
 
   if (placeholder) {
-    loadVideoEmbed(block, linkObject, videoTitle, videoDescp, videoDesktopPath, videoMobPath, autoplay, loop, enableControls, muted, onHoverPlay, videoMobPoster?.querySelector('img')?.getAttribute('src'), videoDesktopPoster.querySelector('img').getAttribute('src'));
+    loadVideoEmbed(
+      block,
+      videoTitle,
+      videoDescp,
+      linkObject,
+      autoplay,
+      loop,
+      enableControls,
+      muted,
+      posters,
+      onHoverPlay,
+      placeholder,
+    );
   } else {
     block.classList.add('lazy-loading');
     const observer = new IntersectionObserver((entries) => {
@@ -260,13 +299,16 @@ export default async function decorate(block) {
         observer.disconnect();
         loadVideoEmbed(
           block,
+          videoTitle,
+          videoDescp,
           linkObject,
-          autoplay,
           autoplay,
           loop,
           enableControls,
           muted,
+          posters,
           onHoverPlay,
+          placeholder,
         );
         block.classList.remove('lazy-loading');
       }
