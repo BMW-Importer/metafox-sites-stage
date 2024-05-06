@@ -302,8 +302,7 @@ export default function decorate(block) {
       const [, , videoSlideHeadline, videoSlideCopyText, ,
         videoSlideTitle, videoSlideDescription, videoSlideDesktopVideoRef, ,
         videoSlideDesktopPosterImgRef, , videoSlideLoopVideo, videoSlideAutoPlayVideo, ,
-        videoSlideLinkLabel, videoSlideLink,
-        videoSlideButtonStyling] = panel.children;
+        videoSlideButton] = panel.children;
 
       const videoDOMContainer = document.createElement('div');
       videoDOMContainer.classList.add('video-image-slide', 'media');
@@ -343,12 +342,10 @@ export default function decorate(block) {
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline.textContent.trim(), videoSlideCopyText.innerHTML,
         videoSlideTitle.textContent.trim(), videoSlideDescription.textContent.trim(),
-        videoSlideLinkLabel.textContent.trim(), videoSlideLink.textContent.trim(),
-        videoSlideButtonStyling.textContent.trim(), index]));
+        videoSlideButton, index]));
     } else if ([...classes].includes('image-slide')) {
       const [imageSlideClassname, , imageSlideHeadline, imageSlideCopyText, ,
-        imageSlideImgRef, imageSlideAltText, , imageSlideLinkLabel,
-        imageSlideLink, imageSlideButtonStyling] = panel.children;
+        imageSlideImgRef, imageSlideAltText, , imgSlideBtn] = panel.children;
 
       const imgDOMContainer = document.createElement('div');
       imgDOMContainer.classList.add('video-image-slide', 'media');
@@ -371,8 +368,7 @@ export default function decorate(block) {
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline.textContent.trim(), imageSlideCopyText.textContent.trim(),
-        imageSlideLinkLabel.textContent.trim(), imageSlideLink.textContent.trim(),
-        imageSlideButtonStyling.textContent.trim(), index]));
+        imgSlideBtn, index]));
     }
     panel.textContent = '';
   });

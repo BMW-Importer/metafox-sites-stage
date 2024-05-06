@@ -8,8 +8,7 @@ export function generateImgSlidePicture(props) {
 }
 
 export function generateImgSlideDetailMarkUp(props) {
-  const [imageSlideHeadline, imageSlideCopyText, imageSlideLinkLabel, imageSlideLink,
-    imageSlideButtonStyling, index] = props;
+  const [imageSlideHeadline, imageSlideCopyText, imgSlideBtn, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -33,11 +32,10 @@ export function generateImgSlideDetailMarkUp(props) {
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
   vidImgDetailExpandDesp.textContent = imageSlideCopyText;
-  const vidImgDetailLinkBtn = document.createElement('a');
+
+  const vidImgDetailLinkBtn = imgSlideBtn.querySelector('p');
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
-  if (imageSlideButtonStyling) {
-    vidImgDetailLinkBtn.classList.add(imageSlideButtonStyling);
-  }
+
   const showMoreShowLessBtnContainer = document.createElement('div');
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');
   const showMoreShowLessBtn = document.createElement('button');
@@ -45,8 +43,6 @@ export function generateImgSlideDetailMarkUp(props) {
   showMoreShowLessBtn.classList.add('vid-img-slide-showmore-btn-link');
   showMoreShowLessBtnContainer.append(showMoreShowLessBtn);
 
-  vidImgDetailLinkBtn.href = imageSlideLink;
-  vidImgDetailLinkBtn.textContent = imageSlideLinkLabel;
   vidImgDetailExpandedCover.append(vidImgDetailExpandTitle);
   vidImgDetailExpandedCover.append(vidImgDetailExpandDesp);
   vidImgDetailExpandedCover.append(vidImgDetailLinkBtn);

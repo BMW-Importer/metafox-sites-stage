@@ -1,6 +1,6 @@
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText, , ,
-    videoSlideLinkLabel, videoSlideLink, videoSlideButtonStyling, index] = props;
+    videoSlideButton, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -30,11 +30,8 @@ export default function generateVideoDetailMarkUp(props) {
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
   vidImgDetailExpandDesp.innerHTML = videoSlideCopyText;
 
-  const vidImgDetailLinkBtn = document.createElement('a');
+  const vidImgDetailLinkBtn = videoSlideButton.querySelector('p');
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
-  vidImgDetailLinkBtn.classList.add(videoSlideButtonStyling);
-  vidImgDetailLinkBtn.href = videoSlideLink;
-  vidImgDetailLinkBtn.textContent = videoSlideLinkLabel;
 
   const showMoreShowLessBtnContainer = document.createElement('div');
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');
