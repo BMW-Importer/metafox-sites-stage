@@ -26,7 +26,8 @@
   --light-text-color: #262626;
   --light-link-hover-color: #1c69d4;
   --light-grey: #f6f6f6;
-  --light-bbb: #bbb;  
+  --light-bbb: #bbb;
+  --light-grey-1:#e6e6e6;
   --fixed-font-family: bmwtypenextweb,arial,helvetica,roboto,sans-serif;
   --icon-font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
   --opacity-color: #0006;
@@ -524,4 +525,12 @@ textarea{
 
 [hidden]{
   display:none
+<<<<<<< HEAD
 }
+=======
+}
+
+.hidden {
+  display: none;
+}
+>>>>>>> 4dd81237bc06638f0528ab8d07c1536ad46c028f

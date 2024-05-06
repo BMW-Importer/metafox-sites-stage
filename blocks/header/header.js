@@ -205,7 +205,7 @@ export default async function decorate(block) {
       parentMenu.classList.toggle('showfly', !isOpen);
       mainParentMenu.classList.toggle('mobile-flyout', !isOpen);
       bodyContent.classList.toggle('content-page', !isOpen);
-      if (headerType && headerType === 'whitebackground' && event.target.parentNode.parentElement.classList.contains('showfly')) {
+      if (headerType && headerType === 'whitebackground' && event.target.parentNode.parentElement.parentElement.classList.contains('showfly')) {
         header[0].classList.remove('white-background');
         header[0].classList.add('transparent');
       } else {
