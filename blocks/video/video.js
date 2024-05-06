@@ -39,7 +39,6 @@ function getVideoElement(
   if (enableControls) {
     video.setAttribute('controls', '');
   }
-  console.log(onHoverPlay);
   if (autoplay) {
     video.setAttribute('autoplay', '');
   }
