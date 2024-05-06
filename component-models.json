@@ -750,6 +750,80 @@
             "value": "muted"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoTitle",
+        "value": "",
+        "label": "Video Title",
+        "required":true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoDescription",
+        "value": "",
+        "label": "Video Description",
+        "required":true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "video=DesktopVideoRef",
+        "label": "Desktop Video Path",
+        "multi": false,
+        "required":true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoMobileVideoRef",
+        "label": "Mobile Video Path",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoDesktopPosterImgRef",
+        "label": "Desktop Poster Image Path",
+        "multi": false,
+        "required":true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoMobilePosterImgRef",
+        "label": "Mobile Poster Image Path",
+        "multi": false
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "videoLoopVideo",
+        "valueType": "boolean",
+        "value":true
+      },
+      {
+        "component": "boolean",
+        "label": "Autoplay",
+        "name": "videoAutoplay",
+        "valueType": "boolean",
+        "value":true
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Video Controls",
+        "name": "videoVideoControls",
+        "valueType": "boolean",
+        "value":true
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video Sound",
+        "name": "videoMuteVideoSound",
+        "valueType": "boolean",
+        "value":true
       }
     ]
   },
@@ -904,7 +978,7 @@
         "name": "videoSlideTab1"
       },     
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideHeadline",
         "description":"Defines the headline of the text that will appear in the page.",
@@ -937,7 +1011,7 @@
         "name": "videoSlideTab2"
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideTitle",
         "value": "",
@@ -946,7 +1020,7 @@
         "required":true
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideDescription",
         "description":"Defines the description of the video.",
@@ -1010,30 +1084,27 @@
         "name": "videoSlideTab3"
       },
       {
-        "component":"text",
-        "name":"videoSlideLinkLabel",
+        "component":"text-input",
+        "name":"videoSlideLinkText",
         "label":"Link Label",
         "description":"Defines the text to be displayed in the button or as the link. ",
         "valueType":"string"
       },
       {
-        "component":"text",
+        "component":"text-input",
         "name":"videoSlideLink",
         "label":"Link",
         "description":"Defines the page to which the user will be directed to.",
         "valueType":"string"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Button Styling",
-        "name": "videoSlideButtonStyling",
+        "name": "videoSlideLinkType",
         "valueType": "string",
         "description":"Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
-        "value":"linkButton",
-        "hidden":true,
-        "options": [
-          { "name": "Link Button", "value": "linkButton" }
-        ]
+        "value":"primary",
+        "hidden":true
       }
     ]
   },
@@ -1054,7 +1125,7 @@
         "name": "imageSlideTab1"
       },     
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "imageSlideHeadline",
         "description":"Defines the headline of the text that will appear in the page.",
@@ -1095,7 +1166,7 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "imageSlideAltText",
         "description":"Defines textual description of images for users with visual limitation.",
@@ -1108,30 +1179,27 @@
         "name": "imageSlideTab3"
       },
       {
-        "component":"text",
-        "name":"imageSlideLinkLabel",
+        "component":"text-input",
+        "name":"imageSlideLinkText",
         "description":"Defines the text to be displayed in the button or as the link. ",
         "label":"Link Label",
         "valueType":"string"
       },
       {
-        "component":"text",
+        "component":"text-input",
         "name":"imageSlideLink",
         "description":"Defines the page to which the user will be directed to.",
         "label":"Link",
         "valueType":"string"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Button Styling",
-        "name": "imageSlideButtonStyling",
+        "name": "imageSlideLinkType",
         "description":"Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "valueType": "string",
-        "value":"linkButton",
-        "hidden":true,
-        "options": [
-          { "name": "Link Button", "value": "linkButton" }
-        ]
+        "value":"primary",
+        "hidden":true        
       }
     ]
   }

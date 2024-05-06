@@ -433,7 +433,7 @@
                   "videoSlideHeadlineType":"h4",
                   "videoSlideLoopVideo":true,
                   "videoSlideAutoplay":true,
-                  "videoSlideButtonStyling":"linkButton"
+                  "videoSlideLinkType":"primary"
                 }
               }
             }
@@ -452,7 +452,7 @@
                   "filter": "image-slide",
                   "imageSlideClassname":"image-slide",
                   "imageSlideHeadlineType":"h4",
-                  "imageSlideButtonStyling":"linkButton"
+                  "imageSlideLinkType":"primary"
                 }
               }
             }

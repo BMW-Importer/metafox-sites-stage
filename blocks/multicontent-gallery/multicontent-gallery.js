@@ -301,7 +301,7 @@ export default function decorate(block) {
     if ([...classes].includes('video-slide')) {
       const [, , videoSlideHeadline, videoSlideCopyText, ,
         videoSlideTitle, videoSlideDescription, videoSlideDesktopVideoRef, ,
-        videoSlideDesktopPosterImgRef, , videoSlideLoopVideo, , ,
+        videoSlideDesktopPosterImgRef, , videoSlideLoopVideo, videoSlideAutoPlayVideo, ,
         videoSlideLinkLabel, videoSlideLink,
         videoSlideButtonStyling] = panel.children;
 
@@ -314,21 +314,31 @@ export default function decorate(block) {
 
       const desktopVideoPosterImgPath = videoSlideDesktopPosterImgRef.querySelector('img').getAttribute('src');
 
+      // extracting video link
+      let videoLink = '';
+      if (videoSlideDesktopVideoRef) videoLink = videoSlideDesktopVideoRef.querySelector('a').href;
+
+      // converting string to boolen
+      const isLoopVideo = videoSlideLoopVideo.textContent.trim() === 'true';
+      const isAutoPlayVideo = videoSlideAutoPlayVideo.textContent.trim() === 'true';
+      const isEnableControls = false;
+      const isMuted = false;
+      const onHoverPlay = false;
       // generating video
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
       loadVideoEmbed(
         videoDOMContainer,
-        videoSlideDesktopVideoRef.textContent.trim(),
-        true,
-        videoSlideLoopVideo.textContent.trim(),
-        false,
-        true,
+        videoLink,
+        isAutoPlayVideo,
+        isLoopVideo,
+        isEnableControls,
+        isMuted,
+        onHoverPlay,
         desktopVideoPosterImgPath,
       );
 
       // call function for generating video slide UI
       videoImageContainer.append(videoDOMContainer);
-
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline.textContent.trim(), videoSlideCopyText.innerHTML,

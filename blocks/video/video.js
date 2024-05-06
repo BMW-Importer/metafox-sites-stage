@@ -87,8 +87,6 @@ function getVideoElement(
         video.pause();
       }
     });
-  } else {
-    return false;
   }
 
   video.addEventListener('touchstart', () => {
@@ -123,15 +121,15 @@ function isAbsoluteUrl(url) {
   return /^(https?:)?\/\//i.test(url);
 }
 
-function loadVideoEmbed(
+export function loadVideoEmbed(
   block,
   link,
   autoplay,
   loop,
   enableControls,
   muted,
-  placeholder,
   onHoverPlay,
+  placeholder,
 ) {
   if (block.dataset.embedIsLoaded) {
     return;
@@ -139,13 +137,11 @@ function loadVideoEmbed(
   const baseUrl = window.location.origin;
   let url;
 
-  if(isAbsoluteUrl(link)){
+  if (isAbsoluteUrl(link)) {
     url = new URL(link);
+  } else {
+    url = new URL(link, baseUrl);
   }
-  else{
-    url = new URL(link,baseUrl);
-  }
- 
 
   const isYoutube = link.includes('youtube') || link.includes('youtu.be');
   const isVimeo = link.includes('vimeo');
