@@ -904,9 +904,10 @@
         "name": "videoSlideTab1"
       },     
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideHeadline",
+        "description":"Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
       },
@@ -915,6 +916,7 @@
         "label": "Headline Type",
         "name": "videoSlideHeadlineType",
         "valueType": "string",
+        "description":"Defines multiple styling options for the Headline",
         "value":"h4",
         "hidden":true,
         "options": [
@@ -925,6 +927,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "videoSlideCopyText",
+        "description":"Defines the text that will appear in the page.",
         "value": "",
         "label": "Copy Text"
       },
@@ -934,17 +937,19 @@
         "name": "videoSlideTab2"
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideTitle",
         "value": "",
+        "description":"Defines the title of the video. ",
         "label": "Video Title",
         "required":true
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "videoSlideDescription",
+        "description":"Defines the description of the video.",
         "value": "",
         "label": "Video Description",
         "required":true
@@ -953,6 +958,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "videoSlideDesktopVideoRef",
+        "description":"Defines the path to a video on the desktop.",
         "label": "Desktop Video Path",
         "multi": false,
         "required":true
@@ -961,6 +967,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "videoSlideMobileVideoRef",
+        "description":"Defines the path to a video on the mobile.",
         "label": "Mobile Video Path",
         "multi": false
       },
@@ -968,6 +975,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "videoSlideDesktopPosterImgRef",
+        "description":"Defines the path that will be displaying poster image on desktop while loading the page.",
         "label": "Desktop Poster Image Path",
         "multi": false,
         "required":true
@@ -976,6 +984,7 @@
         "component": "reference",
         "valueType": "string",
         "name": "videoSlideMobilePosterImgRef",
+        "description":"Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
       },
@@ -983,6 +992,7 @@
         "component": "boolean",
         "label": "Loop Video",
         "name": "videoSlideLoopVideo",
+        "description":"Defines how video will be played.",
         "valueType": "boolean",
         "value":true
       },
@@ -990,6 +1000,7 @@
         "component": "boolean",
         "label": "Autoplay",
         "name": "videoSlideAutoplay",
+        "description":"Defines how video will be played.",
         "valueType": "boolean",
         "value":true
       },
@@ -999,27 +1010,27 @@
         "name": "videoSlideTab3"
       },
       {
-        "component":"text",
-        "name":"videoSlideLinkLabel",
+        "component":"text-input",
+        "name":"videoSlideLinkText",
         "label":"Link Label",
+        "description":"Defines the text to be displayed in the button or as the link. ",
         "valueType":"string"
       },
       {
-        "component":"text",
+        "component":"text-input",
         "name":"videoSlideLink",
         "label":"Link",
+        "description":"Defines the page to which the user will be directed to.",
         "valueType":"string"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Button Styling",
-        "name": "videoSlideButtonStyling",
+        "name": "videoSlideLinkType",
         "valueType": "string",
-        "value":"linkButton",
-        "hidden":true,
-        "options": [
-          { "name": "Link Button", "value": "linkButton" }
-        ]
+        "description":"Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
+        "value":"primary",
+        "hidden":true
       }
     ]
   },
@@ -1040,9 +1051,10 @@
         "name": "imageSlideTab1"
       },     
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "imageSlideHeadline",
+        "description":"Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
       },
@@ -1050,6 +1062,7 @@
         "component": "select",
         "label": "Headline Type",
         "name": "imageSlideHeadlineType",
+        "description":"Defines multiple styling options for the Headline",
         "valueType": "string",
         "value":"h4",
         "hidden":true,
@@ -1061,6 +1074,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "imageSlideCopyText",
+        "description":"Defines the text that will appear in the page. ",
         "value": "",
         "label": "Copy Text"
       },
@@ -1073,13 +1087,15 @@
         "component": "reference",
         "valueType": "string",
         "name": "imageSlideImgRef",
+        "description":"Defines media object that can be displayed on the right side.",
         "label": "Image",
         "multi": false
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "imageSlideAltText",
+        "description":"Defines textual description of images for users with visual limitation.",
         "value": "",
         "label": "Alt Text"
       },
@@ -1089,27 +1105,27 @@
         "name": "imageSlideTab3"
       },
       {
-        "component":"text",
-        "name":"imageSlideLinkLabel",
+        "component":"text-input",
+        "name":"imageSlideLinkText",
+        "description":"Defines the text to be displayed in the button or as the link. ",
         "label":"Link Label",
         "valueType":"string"
       },
       {
-        "component":"text",
+        "component":"text-input",
         "name":"imageSlideLink",
+        "description":"Defines the page to which the user will be directed to.",
         "label":"Link",
         "valueType":"string"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Button Styling",
-        "name": "imageSlideButtonStyling",
+        "name": "imageSlideLinkType",
+        "description":"Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "valueType": "string",
-        "value":"linkButton",
-        "hidden":true,
-        "options": [
-          { "name": "Link Button", "value": "linkButton" }
-        ]
+        "value":"primary",
+        "hidden":true        
       }
     ]
   }

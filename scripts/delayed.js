@@ -1,7 +1,11 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM } from './aem.js';
+import { multiContentGalFunAfterPageLoad } from '../blocks/multicontent-gallery/multicontent-gallery.js';
+
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
+multiContentGalFunAfterPageLoad();
+
 const page_tracking = {"page": {
         "pageInfo": {
             "pageID": "/content/bmw/marketB4R1/bmw_rs/sr_RS/index",
