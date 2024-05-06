@@ -223,4 +223,33 @@ export default async function decorate(block) {
   linkListSelector.forEach((anchor) => {
     anchor.addEventListener('click', (handleHeaderLinkList));
   });
+
+  const flyoutContainers = document.querySelectorAll('.flyout-main-container');
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function debouncedFunction(...args) {
+      const context = this;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(context, args);
+      }, delay);
+    };
+  }
+
+  const handleScroll = debounce((event) => {
+    const scrolledHeight = event.target.scrollTop;
+    const targetElement = event.target.querySelector('.flyout-scroll-indicator-arrow');
+    if (scrolledHeight > 0) {
+      targetElement.style.opacity = '0';
+      targetElement.style.transition = 'opacity 0.3s ease';
+    } else {
+      targetElement.style.opacity = '1';
+      targetElement.style.transition = 'opacity 0.3s ease';
+    }
+  }, 200);
+
+  flyoutContainers.forEach((container) => {
+    container.addEventListener('scroll', handleScroll);
+  });
 }
