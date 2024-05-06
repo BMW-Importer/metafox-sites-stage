@@ -24,10 +24,8 @@ const writeToFile = async (modelName, data, apiFolder) => {
 const callApi = async (url, options = {}) => {
   try {
     const response = await axios(url, options);
-    console.log('Successful WDH API invocation');
     return response.data;
   } catch (error) {
-    console.error(`Error calling API ${url}:`, error);
     await writeToFile(`error_${url}.txt`, 'API call failed');
     return null;
   }

@@ -13,10 +13,6 @@ function getModelDetailsByModelCode(modelsArray) {
   });
 }
 
-function getModelTechnicalData(modelsArray) {
-  console.log(modelsArray);
-}
-
 function getModelsRange(modelsArray) {
   modelsArray.forEach((modelObject) => {
     const modelRange = modelObject.modelRangeCode;
@@ -33,7 +29,6 @@ async function callWdhApi() {
       const allModelsJson = JSON.parse(allModelsData);
       const modelsArray = allModelsJson.models;
       getModelDetailsByModelCode(modelsArray);
-      getModelTechnicalData(modelsArray);
       getModelsRange(modelsArray);
     }
   } catch (error) {

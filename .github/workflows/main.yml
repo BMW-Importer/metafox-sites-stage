@@ -1,4 +1,4 @@
-name: Call WDH API
+name: Call WDH API New
  
 on: [workflow_dispatch]
 
