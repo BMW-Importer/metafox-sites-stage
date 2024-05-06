@@ -788,6 +788,13 @@
         "name": "muteVideo",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Play On Hover",
+        "name": "playonHover",
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
