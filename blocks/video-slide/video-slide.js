@@ -28,10 +28,24 @@ export default function generateVideoDetailMarkUp(props) {
 
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText;
+  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText.firstChild.innerHTML;
 
   const vidImgDetailLinkBtn = videoSlideButton.querySelector('p');
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
+  const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');
+
+  const anchorElem = document.createElement('a');
+  anchorElem.href = vidImgDetailAnchorElm.href;
+  anchorElem.classList = vidImgDetailAnchorElm.classList;
+  anchorElem.textContent = vidImgDetailAnchorElm.textContent;
+
+  if (vidImgDetailLinkBtn.querySelector('strong')) {
+    vidImgDetailLinkBtn.querySelector('strong').textContent = '';
+    vidImgDetailLinkBtn.querySelector('strong').append(anchorElem);
+  } else if (vidImgDetailLinkBtn.querySelector('em')) {
+    vidImgDetailLinkBtn.querySelector('em').textContent = '';
+    vidImgDetailLinkBtn.querySelector('em').append(anchorElem);
+  }
 
   const showMoreShowLessBtnContainer = document.createElement('div');
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');

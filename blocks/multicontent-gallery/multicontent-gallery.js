@@ -297,6 +297,9 @@ export default function decorate(block) {
     const classesText = classList.textContent.trim();
     const classes = (classesText ? classesText.split(',') : []).map((c) => c?.trim()).filter((c) => !!c);
 
+    // hidding origin div so that in author page its not visible
+    panel.classList.add('hidden');
+
     // checking which is current block children
     if ([...classes].includes('video-slide')) {
       const [, , videoSlideHeadline, videoSlideCopyText, ,
@@ -338,9 +341,10 @@ export default function decorate(block) {
 
       // call function for generating video slide UI
       videoImageContainer.append(videoDOMContainer);
+
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline.textContent.trim(), videoSlideCopyText.innerHTML,
+        videoSlideHeadline.textContent.trim(), videoSlideCopyText,
         videoSlideTitle.textContent.trim(), videoSlideDescription.textContent.trim(),
         videoSlideButton, index]));
     } else if ([...classes].includes('image-slide')) {
@@ -367,7 +371,7 @@ export default function decorate(block) {
 
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
-        imageSlideHeadline.textContent.trim(), imageSlideCopyText.textContent.trim(),
+        imageSlideHeadline.textContent.trim(), imageSlideCopyText,
         imgSlideBtn, index]));
     }
     // panel.textContent = '';
