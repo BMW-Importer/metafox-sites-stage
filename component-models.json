@@ -203,6 +203,11 @@
     "id": "flexible-width-section",
     "fields": [
       {
+        "component": "tab",
+        "label": "General",
+        "name": "flexiblewidthsectiontab1"
+      },
+      {
         "component": "select",
         "name": "sectionwidth",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
@@ -251,6 +256,11 @@
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
         "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "flexiblewidthsectiontab2"
       }
     ]
   },
