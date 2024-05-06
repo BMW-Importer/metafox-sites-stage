@@ -1,8 +1,8 @@
 const alignClassList = { center: 'alignment-center', right: 'alignment-right', left: 'alignment-left' };
 
-function getAlignmentStyle(element) {
+function getAlignmentStyle(element, selector) {
   let alignClass = '';
-  element.querySelectorAll('div.section').forEach((childElemet) => {
+  element.querySelectorAll(selector).forEach((childElemet) => {
     childElemet.classList.forEach((className) => {
       if (className.includes('alignment-')) {
         alignClass = className;
@@ -56,7 +56,7 @@ export function decorateBMWButtons(element) {
           // default
           up.ariaLabel = up.textContent;
           a.className = '';
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, up);
         }
         if (
@@ -65,7 +65,7 @@ export function decorateBMWButtons(element) {
           a.className = 'button ghost-dark button-fixed-width';
           up.ariaLabel = up.textContent;
           twoup.classList.add('button-container');
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, twoup);
         }
         if (
@@ -75,7 +75,7 @@ export function decorateBMWButtons(element) {
           twoup.ariaLabel = up.textContent;
           twoup.classList.add('button-container');
           up.classList.add('align-icon');
-          const alignment = getAlignmentStyle(element);
+          const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, twoup);
           addIcon(up, 'arrow_chevron_right', 'align-center');
           addClass(a, twoup, 'mouseover', 'align-icon-hover');

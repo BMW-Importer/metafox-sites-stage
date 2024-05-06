@@ -1,4 +1,35 @@
 /* menu-flyout css */
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+    position: absolute;
+    bottom: 0;    
+    left: 47%;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-scroll-indicator-arrow::before{
+    position: absolute;
+    bottom: 0;
+    overflow-wrap: normal;
+    font-size: 2rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga";
+    content: "arrow_chevron_down";
+    direction: ltr;
+    display: block;
+    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    text-transform: none;
+    width: auto;
+    outline: transparent solid 1px;
+    white-space: nowrap;
+    color: var(--light-text-color)    
+}
+
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {    
     width: 25%;
@@ -36,13 +67,14 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     font-weight: 300;
     line-height: 1.5rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.55rem;
+    color: var(--light-text-color);
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
     font-family: var(--fixed-font-family);
     font-size: 0.875rem;
-    color: var(--medium-text-color);
+    color: var(--light-text-color);
     line-height: 1.25rem;
     font-weight: 700;
     word-break: break-all;
@@ -55,6 +87,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
     align-items: center;
     display: inline-flex;
+    color: var(--light-text-color);
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a:hover,
@@ -83,12 +116,13 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     width: auto;
     outline: transparent solid 1px;
     white-space: nowrap;
+    color: var(--light-text-color)
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-title {
     padding-right: 0;
     margin: 0 0 1rem;
-    color: var(--medium-text-color);
+    color: var(--light-text-color);
     font-size: 0.625rem;
     font-weight: 300;
     line-height: 0.75rem;
@@ -171,6 +205,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     width: 100%;
     height: 19.5rem;
     }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+       left: 45%;
+       position: absolute;
+    }
 }
 
 /* ipad pro */
@@ -201,6 +240,9 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         display: flex;
     }
     
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+        display: none;
+     }
     
 
    
@@ -208,6 +250,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
 
 /* mobile */
 @media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
+        margin: 0 0 1.5rem;
+        display: flex;
+    }
+
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
         padding: 0;
     }
@@ -230,5 +277,18 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         align-items: revert;
         row-gap: 4rem;
         max-height: calc(100vh - 9rem);
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list-title {    
+        margin-bottom: .75rem !important;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list .link-list-title.expand{    
+        margin-bottom: 1.5rem !important;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+        bottom: 4.5%;
+        position: absolute;
     }
 }

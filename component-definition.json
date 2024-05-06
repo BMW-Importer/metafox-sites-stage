@@ -90,8 +90,8 @@
                 "template": {
                   "name":"Flexible Width Section",
                   "model":"flexible-width-section",
-                  "classes":"flexible-width-section",
-                  "section-alignment":"center"
+                  "sectiontopmargin":true,
+                  "sectionalignment":"center"
                 }
               }
             }
