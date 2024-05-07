@@ -1,18 +1,17 @@
 {
-  "code": "BC41",
+  "code": "AE41",
   "modelRangeCode": "G15",
   "brand": "BM",
-  "name": "M850i xDrive",
-  "shortName": "M850i xDrive",
-  "originalCode": "BC41",
+  "name": "840i xDrive",
+  "shortName": "840i xDrive",
+  "originalCode": "AE41",
   "cosyBrand": "WBBM",
-  "marketingVehicleType": "M",
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
   "effectDate": "2024-05-07",
   "hybridCode": "NOHY",
-  "fromPrice": 145340,
+  "fromPrice": 121180,
   "seats": 4,
   "fuelType": "O",
   "posiSpec": {
@@ -31,29 +30,29 @@
       "technicalData": {
         "powerTrain": {
           "fuelType": "O",
-          "systemPower": "390 (530)",
-          "systemMaxTorque": "750",
+          "systemPower": "245 (333)",
+          "systemMaxTorque": "500",
           "gearBox": "8 - automatisch",
           "driveType": "AR"
         },
         "engine": {
-          "cylinders": "8",
-          "technicalCapacity": "4395",
-          "nominalPower": "390 (530) / 5500 - 6000",
-          "nominalTorque": "750 / 1800 - 4600"
+          "cylinders": "6",
+          "technicalCapacity": "2998",
+          "nominalPower": "245 (333) / 5500 - 6250",
+          "nominalTorque": "500 / 1700 - 4000"
         },
         "electric": {
           "systemPower": "-",
           "systemMaxTorque": "-"
         },
         "performance": {
-          "acceleration": "3.9",
+          "acceleration": "4.9",
           "topSpeed": "250",
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "10.8 - 10.5",
-          "emissionsWltpCombined": "245 - 239",
+          "consumptionWltpCombined": "8.9 - 8.6",
+          "emissionsWltpCombined": "204 - 195",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
           "co2EquivalentOverallBest": "-",
@@ -73,9 +72,9 @@
           "height": "1346",
           "widthMirrors": "2137 (1074 / 1063)",
           "wheelTurn": "2822",
-          "weightNotLoaded": "2015",
-          "weightMax": "2395",
-          "permittedLoad": "455",
+          "weightNotLoaded": "1870",
+          "weightMax": "2280",
+          "permittedLoad": "485",
           "trailerLoad": "-",
           "trunkCapacity": "420",
           "tankCapacity": "68"
