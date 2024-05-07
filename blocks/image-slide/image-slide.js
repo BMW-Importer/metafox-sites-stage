@@ -34,7 +34,7 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailExpandTitle.textContent = imageSlideHeadline;
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.textContent = imageSlideCopyText.firstChild.innerHTML;
+  vidImgDetailExpandDesp.innerHTML = imageSlideCopyText.innerHTML;
 
   const vidImgDetailLinkBtn = imgSlideBtn.querySelector('p');
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');

@@ -11,7 +11,15 @@ function enableShowMoreButton() {
   const detailContainer = document.querySelectorAll('.vid-img-slide-expand-cover');
   detailContainer.forEach((item) => {
     const showMoreBtn = item.querySelector('.vid-img-slide-showmore-btn');
+    
     if (showMoreBtn) {
+      // if showmore button is already clicked then click showless before enabling it
+      if(showMoreBtn.classList.contains("showless")) {
+        const showMoreBtnElm = showMoreBtn.querySelector('button');
+        showMoreBtnElm.click();
+      }
+
+      // enable showmore button based on overflowing content
       if (item.scrollHeight > item.clientHeight) {
         showMoreBtn.classList.remove('hidden');
       } else {
