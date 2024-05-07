@@ -13,8 +13,8 @@ export function generateImgSlidePicture(props) {
 }
 
 export function generateImgSlideDetailMarkUp(props) {
-  const [imageSlideHeadline, imageSlideCopyText, imgSlideBtn,
-    imgSlideBtnText, index] = props;
+  const [imageSlideHeadline, imageSlideCopyText,
+    button, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -39,7 +39,7 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
   vidImgDetailExpandDesp.innerHTML = imageSlideCopyText.outerHTML;
 
-  const vidImgDetailLinkBtn = imgSlideBtn;
+  const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
 
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');
@@ -47,7 +47,7 @@ export function generateImgSlideDetailMarkUp(props) {
   const anchorElem = document.createElement('a');
   anchorElem.href = vidImgDetailAnchorElm.href;
   anchorElem.classList = vidImgDetailAnchorElm.classList;
-  anchorElem.textContent = imgSlideBtnText;
+  anchorElem.textContent = vidImgDetailAnchorElm.textContent;
 
   if (vidImgDetailLinkBtn.querySelector('strong')) {
     vidImgDetailLinkBtn.querySelector('strong').textContent = '';

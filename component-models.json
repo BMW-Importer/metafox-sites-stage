@@ -1521,18 +1521,18 @@
       },
       {
         "component": "text-input",
-        "name": "cta_imageSlideLinkText",
-        "description": "Defines the text to be displayed in the button or as the link. ",
-        "label": "Link Label",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
         "name": "cta_imageSlideLink",
         "description": "Defines the page to which the user will be directed to.",
         "label": "Link",
         "valueType": "string"
       },
+      {
+        "component": "text-input",
+        "name": "cta_imageSlideLinkText",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "label": "Link Label",
+        "valueType": "string"
+      },      
       {
         "component": "text",
         "label": "Button Styling",

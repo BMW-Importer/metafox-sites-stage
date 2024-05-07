@@ -322,11 +322,7 @@ export default function decorate(block) {
 
       const videoContentPictureTags = vidOrImg.querySelectorAll('picture');
       const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
-      const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
-
-      const videoBtnContentPtags = button.querySelectorAll('p');
-      const videoSlideBtnText = videoBtnContentPtags[0].textContent;
-      const videoSlideButton = videoBtnContentPtags[1];
+      const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');      
 
       const videoDOMContainer = document.createElement('div');
       videoDOMContainer.classList.add('video-image-slide', 'media');
@@ -372,7 +368,7 @@ export default function decorate(block) {
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline.textContent.trim(), videoSlideCopyText,
-        videoSlideButton, videoSlideBtnText, index]));
+        button, index]));
     } else {
       // content details
       const contentElem = content.children;
@@ -380,12 +376,7 @@ export default function decorate(block) {
       const imageSlideCopyText = contentElem[1];
 
       // image
-      const imageSlideImgRef = vidOrImg.querySelector('picture');
-
-      // button
-      const videoBtnContentPtags = button.querySelectorAll('p');
-      const imgSlideBtnText = videoBtnContentPtags[0].textContent;
-      const imgSlideBtn = videoBtnContentPtags[1];
+      const imageSlideImgRef = vidOrImg.querySelector('picture');      
 
       const imgDOMContainer = document.createElement('div');
       imgDOMContainer.classList.add('video-image-slide', 'media', 'image-slide');
@@ -403,7 +394,7 @@ export default function decorate(block) {
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline.textContent.trim(), imageSlideCopyText,
-        imgSlideBtn, imgSlideBtnText, index]));
+        button, index]));
     }
     // panel.textContent = '';
   });
