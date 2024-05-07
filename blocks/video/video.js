@@ -179,6 +179,7 @@ function getVideoElement(
   video.dataset.autoplay = autoplay ? 'true' : 'false';
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      observer.disconnect();
       if (video) {
         if (entry.isIntersecting) {
           if (video.paused) {
