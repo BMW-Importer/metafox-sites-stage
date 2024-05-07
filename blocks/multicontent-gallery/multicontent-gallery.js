@@ -236,7 +236,7 @@ function attachSlideEvents(galleryContainer) {
 
   // below events for swipe left and right of mob, tab and desktop
   galleryContainer.addEventListener('touchstart', (e) => {
-    if (e.target === document.querySelector('.vid-img-slide-showmore-btn-link')) {
+    if (e.target.classList.contains('vid-img-slide-showmore-btn-link')) {
       return;
     }
     startTouchX = e.touches[0].clientX;
@@ -245,6 +245,9 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('vid-img-slide-showmore-btn-link')) {
+      return;
+    }
     isDesktopDragging = true;
     startTouchX = e.clientX;
     desktopScrollLeft = galleryContainer.scrollLeft;
@@ -266,6 +269,7 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('mouseup', (e) => {
+    if (!isDesktopDragging) return;
     isDesktopDragging = false;
     endTouchX = e.clientX;
     handleSwipe(galleryContainer);
