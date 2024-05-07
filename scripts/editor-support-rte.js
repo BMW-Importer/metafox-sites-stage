@@ -40,12 +40,14 @@ export function decorateRichtext(container = document) {
       if (editable) {
         orphanElements = editable.querySelectorAll(`[data-richtext-prop="${richtextProp}"]`);
       } else {
+        // eslint-disable-next-line no-console
         console.warn(`Editable parent not found or richtext property ${richtextProp}`);
         return;
       }
     }
 
     if (orphanElements.length) {
+      // eslint-disable-next-line no-console
       console.warn('Found orphan elements of a richtext, that were not consecutive siblings of '
         + 'the first paragraph', orphanElements);
       orphanElements.forEach((orphanElement) => deleteInstrumentation(orphanElement));
