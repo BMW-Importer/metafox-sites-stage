@@ -1,0 +1,44 @@
+{
+  "model": {
+    "modelCode": "31EF",
+    "brand": "BM",
+    "description": "X1 xDrive30e",
+    "shortName": "X1 xDrive30e",
+    "shortRangeName": "U11",
+    "modelRangeCode": "U11",
+    "modelRanges": [
+      "U11"
+    ],
+    "seriesCode": "X1",
+    "series": [
+      "X1"
+    ],
+    "seriesDescription": "BMW X1",
+    "seriesDescriptions": [
+      "BMW X1"
+    ],
+    "hybridCode": "PHEV",
+    "fromPrice": 60752,
+    "acceleration": "5.6",
+    "trunkCapacity": 490,
+    "seats": 5,
+    "horsePower": 326,
+    "topSpeed": "205",
+    "bodyTypeCode": "GF",
+    "marketingBodyTypeCode": "SUV",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "31EF",
+      "paint": "P0C5A",
+      "fabric": "FKGNL",
+      "options": "S0337,P0C5A,S01EU,FKGNL,S04LP, S01EU,S07EV,S07M9"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "240 (326)",
+      "systemMaxTorque": "477",
+      "gearBox": "7 - automatisch",
+      "driveType": "AR"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": {
+    "modelCode": "41EJ",
+    "brand": "BM",
+    "description": "i7 eDrive50",
+    "shortName": "i7 eDrive50",
+    "shortRangeName": "G70",
+    "modelRangeCode": "G70",
+    "modelRanges": [
+      "G70"
+    ],
+    "seriesCode": "7",
+    "series": [
+      "7"
+    ],
+    "seriesDescription": "BMW Serije 7",
+    "seriesDescriptions": [
+      "BMW Serije 7"
+    ],
+    "hybridCode": "BEVE",
+    "fromPrice": 128568,
+    "acceleration": "-",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "pureElectricRange": 612,
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "21EJ",
+      "paint": "P0C64",
+      "fabric": "FVDF2",
+      "options": "S02VS,S03DM,S03DN,S0407,S0453,S04A2,S04FM,S04T7,S05AU,S05DW,S06FR,S06U3"
+    },
+    "powerTrain": {
+      "fuelType": "E",
+      "systemPower": "-",
+      "systemMaxTorque": "-",
+      "gearBox": "-",
+      "driveType": "HR"
+    }
+  }
+}

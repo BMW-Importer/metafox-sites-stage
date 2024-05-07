@@ -1,0 +1,85 @@
+{
+  "code": "31AW",
+  "modelRangeCode": "G26",
+  "brand": "BM",
+  "name": "i4 M50",
+  "shortName": "i4 M50",
+  "originalCode": "31AW",
+  "cosyBrand": "WBBM",
+  "marketingVehicleType": "M",
+  "bodyTypeCode": "CO",
+  "marketingBodyTypeCode": "CP",
+  "bodyTypeDescription": "COU",
+  "effectDate": "2024-05-06",
+  "hybridCode": "BEVE",
+  "fromPrice": 85895,
+  "fuelType": "E",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "31AW",
+    "paint": "P0X1E",
+    "fabric": "FMANL",
+    "options": "S0302,S0316,S0322,S0403,S0420,S0428,S0430,S0459,S0488,S0490,S0493,S0494,S0508,S0534,S0544,S0654,S0688,S0710,S0711,S0715,S0760,S0775,S02NH,S02PA,S02VB,S02VF,S02VL,S03AG,S03MF,S04AW,S04GQ,S04U9,S04UR,S04V1,S05AC,S05AL,S05AQ,S05AU,S05AZ,S05DA,S05DN,S06AC,S06AE,S06AF,S06AG,S06AK,S06C4,S06CP,S06DR,S06NX,S06U3,S06U8,S04MC,S03FT"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "A",
+      "hybridCode": "BEVE",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "E",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-",
+          "systemMaxTorque": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "-",
+          "emissionsWltpCombined": "0",
+          "electricConsumption": "22.6 - 18",
+          "electricRangeWltpCombined": "414 - 520",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "emissionsConsumptionWltp": [
+          "f4"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    }
+  ]
+}

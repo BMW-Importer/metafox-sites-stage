@@ -1,0 +1,46 @@
+{
+  "model": {
+    "modelCode": "81EH",
+    "brand": "BM",
+    "description": "i7 M70 xDrive",
+    "shortName": "i7 M70 xDrive",
+    "shortRangeName": "G70",
+    "modelRangeCode": "G70",
+    "modelRanges": [
+      "G70"
+    ],
+    "seriesCode": "7",
+    "series": [
+      "7"
+    ],
+    "seriesDescription": "BMW Serije 7",
+    "seriesDescriptions": [
+      "BMW Serije 7"
+    ],
+    "hybridCode": "BEVE",
+    "fromPrice": 176928,
+    "acceleration": "3.7",
+    "trunkCapacity": 500,
+    "seats": 5,
+    "topSpeed": "250",
+    "marketingVehicleType": "M",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "pureElectricRange": 560,
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "21EJ",
+      "paint": "P0C64",
+      "fabric": "FVDF2",
+      "options": "S02VS,S03DM,S03DN,S0407,S0453,S04A2,S04FM,S04T7,S05AU,S05DW,S06FR,S06U3"
+    },
+    "powerTrain": {
+      "fuelType": "E",
+      "systemPower": "485 (659)",
+      "systemMaxTorque": "1015",
+      "gearBox": "1 - automatisch",
+      "driveType": "AR"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "code": "DZ01",
+  "modelRangeCode": "F91",
+  "brand": "BM",
+  "name": "M8",
+  "shortName": "M8",
+  "originalCode": "DZ01",
+  "cosyBrand": "WBBM",
+  "marketingVehicleType": "M",
+  "bodyTypeCode": "CA",
+  "marketingBodyTypeCode": "CARO",
+  "bodyTypeDescription": "CAB",
+  "effectDate": "2024-05-07",
+  "hybridCode": "NOHY",
+  "fromPrice": 177434,
+  "seats": 4,
+  "fuelType": "O",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "DZ01",
+    "paint": "P0621",
+    "fabric": "FX3JT",
+    "options": "S01MA,S01MD,S02NK,S02PA,S02T4,S02VB,S0302,S0316,S0319,S0322,S0323,S0358,S03DS,S03MF,S0428,S0453,S0488,S04GQ,S04HB,S04NH,S0548,S05AC,S05AU,S05AZ,S05DN,S0654,S06AE,S06AF,S06AK,S06CP,S06C4,S06F1,S06NW,S06U3,S06WD,S0712,S0760,S07M9,S07MA,S07ME,S07MN"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "A",
+      "hybridCode": "NOHY",
+      "iD_LEIST_KONST": "00",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "O",
+          "systemPower": "441 (600)",
+          "systemMaxTorque": "750",
+          "gearBox": "8 - automatisch",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "8",
+          "technicalCapacity": "4395",
+          "nominalPower": "441 (600) / 6000",
+          "nominalTorque": "750 / 1800 - 5600"
+        },
+        "electric": {
+          "systemPower": "-",
+          "systemMaxTorque": "-"
+        },
+        "performance": {
+          "acceleration": "3.4",
+          "topSpeed": "250",
+          "electricTopSpeed": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "11.6 - 11.4",
+          "emissionsWltpCombined": "264 - 261",
+          "electricConsumption": "-",
+          "electricRangeWltpCombined": "-",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "length": "4867",
+          "width": "1907",
+          "height": "1353",
+          "widthMirrors": "2137 (1074 / 1063)",
+          "wheelTurn": "2827",
+          "weightNotLoaded": "2100",
+          "weightMax": "2440",
+          "permittedLoad": "415",
+          "trailerLoad": "-",
+          "trunkCapacity": "350",
+          "tankCapacity": "68"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "weightMeasurements_weightNotLoaded_label": [
+          "f8"
+        ]
+      },
+      "footnotesData": {
+        "overboostMax": "-",
+        "overboostKW": "-"
+      }
+    }
+  ]
+}
