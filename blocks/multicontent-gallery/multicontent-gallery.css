@@ -248,7 +248,7 @@
     display: block;
 }
 
-.block.multicontent-gallery .video-image-slide-conatiner .video-image-slide.media div {
+.block.multicontent-gallery .video-image-slide-conatiner .video-image-slide.media > div {
     height: inherit !important;
     width: 100% !important;
     padding: 0 !important;
