@@ -13,6 +13,7 @@
  */
 @import url('../blocks/flexible-width-section/flexible-width-section.css');
 @import url('../blocks/video/video.css');
+
  :root {
   /* colors */
   --link-color: #035fe6;
