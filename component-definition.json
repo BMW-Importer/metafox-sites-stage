@@ -252,11 +252,11 @@
                   "name": "Text with Image",
                   "model": "text-with-image",
                   "filter": "text-with-image",
-                  "fileReference": "/content/dam/metafox/placeholder_image.png",
-                  "eyebrow": "",
-                  "headline": "",
-                  "copytext": "",
-                  "buttonStyling": "linkButton"
+                  "media_fileReference": "/content/dam/metafox/placeholder_image.png",
+                  "general_eyebrow": "",
+                  "general_headline": "",
+                  "general_copytext": "",
+                  "general_buttonStyling": "linkButton"
                 }
               }
             }
@@ -273,10 +273,10 @@
                   "name": "Text with Video",
                   "model": "text-with-video",
                   "filter": "text-with-video",
-                  "eyebrow": "",
-                  "headline": "",
-                  "copytext": "",
-                  "buttonStyling": "linkButton"
+                  "general_eyebrow": "",
+                  "general_headline": "",
+                  "general_copytext": "",
+                  "general_buttonStyling": "linkButton"
                 }
               }
             }
