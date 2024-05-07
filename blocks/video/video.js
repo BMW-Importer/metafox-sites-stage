@@ -11,21 +11,20 @@ export function changeAllVidSrcOnResize() {
       const desktopPosterPath = video.getAttribute('data-desktop-poster');
       const mobilePosterPath = video.getAttribute('data-mobile-poster');
 
-      if (window.innerWidth >= 768) {
-        video.src = desktopVidPath;
-        sourceEl.src = desktopVidPath;
-        video.poster = desktopPosterPath;
-        posterDiv.src = desktopPosterPath;
+      if (window.innerWidth > 768) {
+        if (video.src !== desktopVidPath) {
+          video.src = desktopVidPath;
+          sourceEl.src = desktopVidPath;
+          video.poster = desktopPosterPath;
+          posterDiv.src = desktopPosterPath;
+        }
       } else if (mobileVidPath) {
-        video.src = mobileVidPath;
-        sourceEl.src = mobileVidPath;
-        video.poster = mobilePosterPath;
-        posterDiv.src = mobilePosterPath;
-      } else {
-        video.src = desktopVidPath;
-        sourceEl.src = desktopVidPath;
-        video.poster = desktopPosterPath;
-        posterDiv.src = desktopPosterPath;
+        if (video.src !== mobileVidPath) {
+          video.src = mobileVidPath;
+          sourceEl.src = mobileVidPath;
+          video.poster = mobilePosterPath;
+          posterDiv.src = mobilePosterPath;
+        }
       }
     });
   });
@@ -161,7 +160,8 @@ function getVideoElement(
     });
   }
 
-  video.addEventListener('touchstart', () => {
+  video.addEventListener('touchstart', (event) => {
+    event.preventDefault();
     if (video.paused) {
       video.play();
     } else {
