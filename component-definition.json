@@ -92,7 +92,7 @@
                   "model":"flexible-width-section",
                   "sectiontopmargin":true,
                   "sectionalignment":"center",
-                  "filter": "multicontent-gallery"
+                  "filter": "flexible-width-section"
                 }
               }
             }
