@@ -100,7 +100,7 @@
   background-color: unset;
 }
 
-.video-js .vjs-poster {
+.video-js .vjs-poster:hover {
   z-index: -1;
 }
 
