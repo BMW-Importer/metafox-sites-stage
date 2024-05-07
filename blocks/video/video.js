@@ -98,20 +98,20 @@ function getVideoElement(
 
   const sourceEl = document.createElement('source');
 
-  const mobileWidth = window.innerWidth <= 768;
+  const mobileWidth = window.innerWidth < 768;
   if (source.desktop && !mobileWidth) {
     sourceEl.setAttribute('src', source?.desktop);
     video.setAttribute('poster', posters?.desktop);
   } else if (source.mobile) {
     sourceEl.setAttribute('src', source?.mobile);
-    video.setAttribute('poster', posters?.mobile);
+    video.setAttribute('poster', posters?.mobile || '');
   } else {
     sourceEl.setAttribute('src', source?.desktop);
     video.setAttribute('poster', posters?.desktop);
   }
 
   video.setAttribute('data-desktop-poster', posters?.desktop);
-  video.setAttribute('data-mobile-poster', posters?.mobile);
+  video.setAttribute('data-mobile-poster', posters?.mobile || '');
 
   sourceEl.setAttribute('data-desktop-vid', source?.desktop);
   sourceEl.setAttribute('data-mobile-vid', source?.mobile);
@@ -139,15 +139,22 @@ function getVideoElement(
       video.pause();
     }
   });
+
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
+        video.setAttribute('poster', '');
         video.play();
       }
     });
 
     video.addEventListener('mouseleave', () => {
       if (!video.paused) {
+        if (posters.desktop && !mobileWidth) {
+          video.setAttribute('poster', posters.desktop);
+        } else {
+          video.setAttribute('poster', posters.mobile);
+        }
         video.pause();
       }
     });
@@ -282,8 +289,8 @@ export default async function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const enableControls = videoHideControls?.textContent.trim() === 'true';
   const muted = videoMute?.textContent.trim() === 'true';
-  const onHoverPlay = playonHover?.textContent.trim() === 'true';
-
+  const onHoverPlay = playonHover?.textContent;
+  console.log(onHoverPlay);
   if (placeholder) {
     loadVideoEmbed(
       block,
