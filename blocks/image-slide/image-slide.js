@@ -26,7 +26,7 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailCover.classList.add('vid-img-slide-cover');
   const vidImgDetailCoverTitle = document.createElement('h4');
   vidImgDetailCoverTitle.classList.add('vid-img-slide-cover-title');
-  vidImgDetailCoverTitle.textContent = imageSlideHeadline;
+  vidImgDetailCoverTitle.textContent = imageSlideHeadline || '';
   vidImgDetailCover.append(vidImgDetailCoverTitle);
 
   // desktop, tab and mobile open state detail cover
@@ -34,29 +34,30 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
   const vidImgDetailExpandTitle = document.createElement('h4');
   vidImgDetailExpandTitle.classList.add('vid-img-slide-expand-title');
-  vidImgDetailExpandTitle.textContent = imageSlideHeadline;
+  vidImgDetailExpandTitle.textContent = imageSlideHeadline || '';
+
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = imageSlideCopyText.outerHTML;
+  vidImgDetailExpandDesp.innerHTML = imageSlideCopyText?.outerHTML || '';
 
   const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
-
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');
 
-  const anchorElem = document.createElement('a');
-  anchorElem.href = vidImgDetailAnchorElm.href;
-  anchorElem.classList = vidImgDetailAnchorElm.classList;
-  anchorElem.textContent = vidImgDetailAnchorElm.textContent;
+  if (vidImgDetailAnchorElm) {
+    const anchorElem = document.createElement('a');
+    anchorElem.href = vidImgDetailAnchorElm.href;
+    anchorElem.classList = vidImgDetailAnchorElm.classList;
+    anchorElem.textContent = vidImgDetailAnchorElm.textContent;
 
-  if (vidImgDetailLinkBtn.querySelector('strong')) {
-    vidImgDetailLinkBtn.querySelector('strong').textContent = '';
-    vidImgDetailLinkBtn.querySelector('strong').append(anchorElem);
-  } else if (vidImgDetailLinkBtn.querySelector('em')) {
-    vidImgDetailLinkBtn.querySelector('em').textContent = '';
-    vidImgDetailLinkBtn.querySelector('em').append(anchorElem);
+    if (vidImgDetailLinkBtn.querySelector('strong')) {
+      vidImgDetailLinkBtn.querySelector('strong').textContent = '';
+      vidImgDetailLinkBtn.querySelector('strong').append(anchorElem);
+    } else if (vidImgDetailLinkBtn.querySelector('em')) {
+      vidImgDetailLinkBtn.querySelector('em').textContent = '';
+      vidImgDetailLinkBtn.querySelector('em').append(anchorElem);
+    }
   }
-
   const showMoreShowLessBtnContainer = document.createElement('div');
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');
   const showMoreShowLessBtn = document.createElement('button');
