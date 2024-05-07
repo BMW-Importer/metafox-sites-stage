@@ -927,15 +927,7 @@
   },
   {
     "id": "video-slide",
-    "fields": [
-      {
-        "component": "text",
-        "label": "Video Slide Classname",
-        "name": "videoSlideClassname",
-        "value": "video-slide",
-        "valueType": "string",
-        "hidden": true
-      },
+    "fields": [      
       {
         "component": "tab",
         "label": "General",
@@ -944,7 +936,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "videoSlideHeadline",
+        "name": "content_videoSlideHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
@@ -952,7 +944,7 @@
       {
         "component": "text",
         "label": "Headline Type",
-        "name": "videoSlideHeadlineType",
+        "name": "content_videoSlideHeadlineType",
         "valueType": "string",
         "description": "Defines multiple styling options for the Headline",
         "value": "h4",
@@ -961,7 +953,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "videoSlideCopyText",
+        "name": "content_videoSlideCopyText",
         "description": "Defines the text that will appear in the page.",
         "value": "",
         "label": "Copy Text"
@@ -974,7 +966,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "videoSlideTitle",
+        "name": "media_videoSlideTitle",
         "value": "",
         "description": "Defines the title of the video. ",
         "label": "Video Title",
@@ -983,7 +975,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "videoSlideDescription",
+        "name": "media_videoSlideText",
         "description": "Defines the description of the video.",
         "value": "",
         "label": "Video Description",
@@ -992,7 +984,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoSlideDesktopVideoRef",
+        "name": "media_videoSlide",
         "description": "Defines the path to a video on the desktop.",
         "label": "Desktop Video Path",
         "multi": false,
@@ -1001,7 +993,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoSlideMobileVideoRef",
+        "name": "media_videoSlideMobile",
         "description": "Defines the path to a video on the mobile.",
         "label": "Mobile Video Path",
         "multi": false
@@ -1009,7 +1001,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoSlideDesktopPosterImgRef",
+        "name": "media_videoSlidePoster",
         "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
         "label": "Desktop Poster Image Path",
         "multi": false,
@@ -1018,7 +1010,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoSlideMobilePosterImgRef",
+        "name": "media_videoSlidePosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
@@ -1026,7 +1018,7 @@
       {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "videoSlideLoopVideo",
+        "name": "media_videoSlideLoopVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -1034,7 +1026,7 @@
       {
         "component": "boolean",
         "label": "Autoplay",
-        "name": "videoSlideAutoplay",
+        "name": "media_videoSlideAutoplay",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -1046,14 +1038,14 @@
       },
       {
         "component": "text-input",
-        "name": "videoSlideLinkText",
+        "name": "content_videoSlideCtaLinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "valueType": "string"
       },
       {
         "component": "text-input",
-        "name": "videoSlideLink",
+        "name": "content_videoSlideCtaLink",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to.",
         "valueType": "string"
@@ -1061,7 +1053,7 @@
       {
         "component": "text",
         "label": "Button Styling",
-        "name": "videoSlideLinkType",
+        "name": "content_videoSlideCtaLinkType",
         "valueType": "string",
         "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "value": "primary",
@@ -1073,14 +1065,6 @@
     "id": "image-slide",
     "fields": [
       {
-        "component": "text",
-        "label": "Image Slide Classname",
-        "name": "imageSlideClassname",
-        "value": "image-slide",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "tab",
         "label": "General",
         "name": "imageSlideTab1"
@@ -1088,30 +1072,24 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageSlideHeadline",
+        "name": "content_imageSlideHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
       },
       {
-        "component": "select",
+        "component": "text",
         "label": "Headline Type",
-        "name": "imageSlideHeadlineType",
+        "name": "content_imageSlideHeadlineType",
         "description": "Defines multiple styling options for the Headline",
         "valueType": "string",
         "value": "h4",
-        "hidden": true,
-        "options": [
-          {
-            "name": "H4",
-            "value": "h4"
-          }
-        ]
+        "hidden": true
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "imageSlideCopyText",
+        "name": "content_imageSlideCopyText",
         "description": "Defines the text that will appear in the page. ",
         "value": "",
         "label": "Copy Text"
@@ -1124,7 +1102,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "imageSlideImgRef",
+        "name": "media_imageSlideImg",
         "description": "Defines media object that can be displayed on the right side.",
         "label": "Image",
         "multi": false
@@ -1132,7 +1110,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageSlideAltText",
+        "name": "media_imageSlideImgAlt",
         "description": "Defines textual description of images for users with visual limitation.",
         "value": "",
         "label": "Alt Text"
@@ -1144,14 +1122,14 @@
       },
       {
         "component": "text-input",
-        "name": "imageSlideLinkText",
+        "name": "content_imageSlideLinkText",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "label": "Link Label",
         "valueType": "string"
       },
       {
         "component": "text-input",
-        "name": "imageSlideLink",
+        "name": "content_imageSlideLink",
         "description": "Defines the page to which the user will be directed to.",
         "label": "Link",
         "valueType": "string"
@@ -1159,7 +1137,7 @@
       {
         "component": "text",
         "label": "Button Styling",
-        "name": "imageSlideLinkType",
+        "name": "content_imageSlideLinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "valueType": "string",
         "value": "primary",
