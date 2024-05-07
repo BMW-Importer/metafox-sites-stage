@@ -209,10 +209,6 @@
 
 /* desktop */
 @media (width >=1280px) {
-  .video-container.bmw-video-container {
-    padding: 1.25rem var(--section-desktop-padding);
-  }
-
   .video-js {
     width: 100%;
   }
