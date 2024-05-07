@@ -203,6 +203,11 @@
     "id": "flexible-width-section",
     "fields": [
       {
+        "component": "tab",
+        "label": "General",
+        "name": "flexiblewidthsectiontab1"
+      },
+      {
         "component": "select",
         "name": "sectionwidth",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
@@ -250,6 +255,34 @@
         "component": "boolean",
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "flexiblewidthsectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description":"",
+        "name": "contentnavigation",
         "valueType": "boolean"
       }
     ]
@@ -1038,14 +1071,14 @@
       },
       {
         "component": "text-input",
-        "name": "content_videoSlideCtaLinkText",
+        "name": "cta_videoSlideCtaLinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "valueType": "string"
       },
       {
         "component": "text-input",
-        "name": "content_videoSlideCtaLink",
+        "name": "cta_videoSlideCtaLink",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to.",
         "valueType": "string"
@@ -1053,7 +1086,7 @@
       {
         "component": "text",
         "label": "Button Styling",
-        "name": "content_videoSlideCtaLinkType",
+        "name": "cta_videoSlideCtaLinkType",
         "valueType": "string",
         "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "value": "primary",
@@ -1122,14 +1155,14 @@
       },
       {
         "component": "text-input",
-        "name": "content_imageSlideLinkText",
+        "name": "cta_imageSlideLinkText",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "label": "Link Label",
         "valueType": "string"
       },
       {
         "component": "text-input",
-        "name": "content_imageSlideLink",
+        "name": "cta_imageSlideLink",
         "description": "Defines the page to which the user will be directed to.",
         "label": "Link",
         "valueType": "string"
@@ -1137,7 +1170,7 @@
       {
         "component": "text",
         "label": "Button Styling",
-        "name": "content_imageSlideLinkType",
+        "name": "cta_imageSlideLinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
         "valueType": "string",
         "value": "primary",
