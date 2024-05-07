@@ -203,6 +203,11 @@
     "id": "flexible-width-section",
     "fields": [
       {
+        "component": "tab",
+        "label": "General",
+        "name": "flexiblewidthsectiontab1"
+      },
+      {
         "component": "select",
         "name": "sectionwidth",
         "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
@@ -250,6 +255,34 @@
         "component": "boolean",
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "flexiblewidthsectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description":"",
+        "name": "anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description":"",
+        "name": "contentnavigation",
         "valueType": "boolean"
       }
     ]
