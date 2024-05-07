@@ -1,0 +1,203 @@
+{
+  "code": "21FS",
+  "modelRangeCode": "G20",
+  "brand": "BM",
+  "name": "330e",
+  "shortName": "330e",
+  "originalCode": "21FS",
+  "cosyBrand": "WBBM",
+  "bodyTypeCode": "LI",
+  "marketingBodyTypeCode": "LI",
+  "bodyTypeDescription": "LIM",
+  "effectDate": "2024-05-06",
+  "hybridCode": "PHEV",
+  "fromPrice": 64202,
+  "fuelType": "X",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "21FS",
+    "paint": "P0C4P",
+    "fabric": "FKHG7",
+    "options": "S04LN,S01R3,S02VC,S02VL,S0322,S03M2,S03MF,S0420,S01CB,S0230,S02PA,S0494,S04NE,S0548,S06AE,S06AF,S08S3,S08TF,S0337,S07M9,S0459,S0316,S0322,S0481,S04UR,S0552,S05AS,S05DF,S05DM,S0676,S06NX,S09QX,S06UX,S0710,S0715,S0775"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "S02TE",
+      "hybridCode": "PHEV",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "X",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "HR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "null (null) / null",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-",
+          "systemMaxTorque": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "1.9 - 1.4",
+          "emissionsWltpCombined": "43 - 32",
+          "electricConsumption": "20.1 - 18.1",
+          "electricRangeWltpCombined": "49 - 57",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1",
+          "f2"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "electric": [
+          "f2",
+          "f3"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumption_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumptionBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    },
+    {
+      "transmissionCode": "S02TB",
+      "hybridCode": "PHEV",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "X",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "HR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "null (null) / null",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-",
+          "systemMaxTorque": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "1.9 - 1.4",
+          "emissionsWltpCombined": "43 - 32",
+          "electricConsumption": "20.1 - 18.1",
+          "electricRangeWltpCombined": "49 - 57",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1",
+          "f2"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "electric": [
+          "f2",
+          "f3"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumption_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumptionBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    }
+  ]
+}

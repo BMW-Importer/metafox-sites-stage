@@ -1,0 +1,49 @@
+{
+  "modelRangeCode": "G60",
+  "description": "G60",
+  "seriesCode": "5",
+  "series": [
+    "5"
+  ],
+  "seriesDescription": "BMW Serije 5",
+  "seriesDescriptions": [
+    "BMW Serije 5"
+  ],
+  "models": [
+    {
+      "modelCode": "11FL",
+      "description": "520d",
+      "modelRangeCode": "G60",
+      "shortName": "520d",
+      "shortRangeName": "G60"
+    },
+    {
+      "modelCode": "21FL",
+      "description": "520d xDrive",
+      "modelRangeCode": "G60",
+      "shortName": "520d xDrive",
+      "shortRangeName": "G60"
+    },
+    {
+      "modelCode": "11FJ",
+      "description": "520i",
+      "modelRangeCode": "G60",
+      "shortName": "520i",
+      "shortRangeName": "G60"
+    },
+    {
+      "modelCode": "31FK",
+      "description": "i5 eDrive40",
+      "modelRangeCode": "G60",
+      "shortName": "i5 eDrive40",
+      "shortRangeName": "G60"
+    }
+  ],
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "71AG",
+    "paint": "P0C4F",
+    "fabric": "FKHSW",
+    "options": "S01CB,S01CE,S01DF,S01RB,S0230,S0258,S02PA,S02TE,S02VB,S0302,S0337,S0423,S0428,S0465,S0481,S0494,S04KH,S04NE,S04UR,S0508,S0534,S0548,S05AV,S0654,S06AC,S06AE,S06AK,S06C4,S06U3,S06WD,S0704,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08WL,S09QX"
+  }
+}

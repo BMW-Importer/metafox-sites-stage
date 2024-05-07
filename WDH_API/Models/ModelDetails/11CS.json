@@ -1,0 +1,45 @@
+{
+  "model": {
+    "modelCode": "11CS",
+    "brand": "BM",
+    "description": "XM 50e",
+    "shortName": "XM 50e",
+    "shortRangeName": "G09",
+    "modelRangeCode": "G09",
+    "modelRanges": [
+      "G09"
+    ],
+    "seriesCode": "XM",
+    "series": [
+      "XM"
+    ],
+    "seriesDescription": "XM",
+    "seriesDescriptions": [
+      "XM"
+    ],
+    "hybridCode": "PHEV",
+    "fromPrice": 143600,
+    "acceleration": "5.1",
+    "trunkCapacity": 527,
+    "seats": 5,
+    "horsePower": 476,
+    "topSpeed": "250",
+    "marketingVehicleType": "M",
+    "bodyTypeCode": "GF",
+    "marketingBodyTypeCode": "SUV",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "21CS",
+      "paint": "P0C5Y",
+      "fabric": "FVDIP",
+      "options": "S01FZ,S02PA,S02T4,S02TB,S02VB,S02VC,S02VW,S0302,S0322,S0323,S03DN,S03M3,S0420,S0423,S0428,S044A,S0453,S04FL,S04HA,S04HB,S04MA,S04T2,S04T3,S04T7,S04U9,S04UR,S04V1,S0548,S05AC,S05AU,S05AV,S05DN,S0645,S06AE,S06AF,S06AK,S06CP,S06C4,S06F1,S06NX,S06U3,S06U8,S07RS"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "350 (476)",
+      "systemMaxTorque": "700",
+      "gearBox": "8 - automatisch",
+      "driveType": "AR"
+    }
+  }
+}

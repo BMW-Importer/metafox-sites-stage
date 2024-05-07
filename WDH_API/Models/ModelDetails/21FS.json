@@ -1,0 +1,41 @@
+{
+  "model": {
+    "modelCode": "21FS",
+    "brand": "BM",
+    "description": "330e",
+    "shortName": "330e",
+    "shortRangeName": "G20",
+    "modelRangeCode": "G20",
+    "modelRanges": [
+      "G20"
+    ],
+    "seriesCode": "3",
+    "series": [
+      "3"
+    ],
+    "seriesDescription": "BMW Serije 3 Touring",
+    "seriesDescriptions": [
+      "BMW Serije 3 Touring"
+    ],
+    "hybridCode": "PHEV",
+    "fromPrice": 64202,
+    "acceleration": "-",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "21FS",
+      "paint": "P0C4P",
+      "fabric": "FKHG7",
+      "options": "S04LN,S01R3,S02VC,S02VL,S0322,S03M2,S03MF,S0420,S01CB,S0230,S02PA,S0494,S04NE,S0548,S06AE,S06AF,S08S3,S08TF,S0337,S07M9,S0459,S0316,S0322,S0481,S04UR,S0552,S05AS,S05DF,S05DM,S0676,S06NX,S09QX,S06UX,S0710,S0715,S0775"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "-",
+      "systemMaxTorque": "-",
+      "gearBox": "-",
+      "driveType": "HR"
+    }
+  }
+}
