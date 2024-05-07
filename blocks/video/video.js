@@ -144,14 +144,10 @@ function getVideoElement(
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
         video.setAttribute('poster', '');
-        video.play();
-      }
-    });
-
-    video.addEventListener('mouseover', () => {
-      if (video.paused) {
-        video.setAttribute('poster', '');
-        video.play();
+        video.muted = true;
+        video.play().then(() => {
+          video.muted = false;
+        }).catch(() => {});
       }
     });
 
