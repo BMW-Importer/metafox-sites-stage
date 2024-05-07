@@ -148,6 +148,13 @@ function getVideoElement(
       }
     });
 
+    video.addEventListener('mouseover', () => {
+      if (video.paused) {
+        video.setAttribute('poster', '');
+        video.play();
+      }
+    });
+
     video.addEventListener('mouseleave', () => {
       if (!video.paused) {
         if (posters.desktop && !mobileWidth) {
