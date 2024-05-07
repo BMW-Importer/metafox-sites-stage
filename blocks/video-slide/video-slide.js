@@ -1,6 +1,6 @@
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText,
-    videoSlideButton, videoSlideBtnText, index] = props;
+    button, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -30,14 +30,14 @@ export default function generateVideoDetailMarkUp(props) {
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
   vidImgDetailExpandDesp.innerHTML = videoSlideCopyText.outerHTML;
 
-  const vidImgDetailLinkBtn = videoSlideButton;
+  const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');
 
   const anchorElem = document.createElement('a');
   anchorElem.href = vidImgDetailAnchorElm.href;
   anchorElem.classList = vidImgDetailAnchorElm.classList;
-  anchorElem.textContent = videoSlideBtnText;
+  anchorElem.textContent = vidImgDetailAnchorElm.textContent;
 
   if (vidImgDetailLinkBtn.querySelector('strong')) {
     vidImgDetailLinkBtn.querySelector('strong').textContent = '';
