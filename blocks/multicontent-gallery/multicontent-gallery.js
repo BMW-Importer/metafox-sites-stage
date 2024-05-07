@@ -322,7 +322,7 @@ export default function decorate(block) {
 
       const videoContentPictureTags = vidOrImg.querySelectorAll('picture');
       const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
-      const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');      
+      const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
 
       const videoDOMContainer = document.createElement('div');
       videoDOMContainer.classList.add('video-image-slide', 'media');
@@ -376,7 +376,7 @@ export default function decorate(block) {
       const imageSlideCopyText = contentElem[1];
 
       // image
-      const imageSlideImgRef = vidOrImg.querySelector('picture');      
+      const imageSlideImgRef = vidOrImg.querySelector('picture');
 
       const imgDOMContainer = document.createElement('div');
       imgDOMContainer.classList.add('video-image-slide', 'media', 'image-slide');
