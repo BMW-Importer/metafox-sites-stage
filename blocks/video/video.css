@@ -24,12 +24,12 @@
   aspect-ratio: 16 / 9;
 }
 
-.video>div {
+.video-js {
   display: flex;
   justify-content: center;
 }
 
-.video video {
+.video-js video {
   background-color: var(--light-text-color);
   cursor: pointer;
   height: 100%;
@@ -101,6 +101,14 @@
 
 .video-wrapper .video-js .vjs-control-bar {
   background-color: unset;
+}
+
+.video-js.vjs-playing .vjs-poster {
+  opacity: 0;
+}
+
+.video-js.vjs-paused .vjs-poster {
+  opacity: 1;
 }
 
 .video-js .vjs-control-bar::before {

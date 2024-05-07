@@ -132,7 +132,8 @@ function getVideoElement(
     video.append(sourceEl);
   }
 
-  video.addEventListener('click', () => {
+  video.addEventListener('click', (event) => {
+    event.stopImmediatePropagation();
     if (video.paused) {
       video.play();
     } else {
