@@ -79,6 +79,10 @@
    .section[data-sectiontopmargin='true'] {
     margin-top: 40px;
   }
+
+  .section[data-sectionwidth^='grid'] >  div.default-content-wrapper {
+    word-break: break-word
+  }
 }
 
 /* mobile */
@@ -92,5 +96,9 @@
 
   .section[data-sectiontopmargin='true'] {
     margin-top: 40px;
+  }
+
+  .section[data-sectionwidth^='grid'] >  div.default-content-wrapper {
+    word-break: break-word
   }
 }
