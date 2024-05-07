@@ -178,12 +178,12 @@ function attachShowMoreEvents(block) {
       if (e.target.closest('.vid-img-slide-showmore-btn').classList.contains('showless')) {
         e.target.closest('.vid-img-slide-showmore-btn').classList.remove('showless');
         e.target.text = showMoreText;
-        e.target.closest('.vid-img-slide-expand-cover').style.minHeight = 'unset';
+        e.target.closest('.vid-img-slide-expand-cover').style.cssText = 'unset';
       } else {
         e.target.closest('.vid-img-slide-showmore-btn').classList.add('showless');
         e.target.text = showLessText;
         const parentDivScrollHeight = parentDiv.scrollHeight - boxPaddingBottom;
-        e.target.closest('.vid-img-slide-expand-cover').style.minHeight = `${parentDivScrollHeight}px`;
+        e.target.closest('.vid-img-slide-expand-cover').style.height = `${parentDivScrollHeight}px`;
       }
     });
   });
