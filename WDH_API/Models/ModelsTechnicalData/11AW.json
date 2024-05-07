@@ -1,0 +1,85 @@
+{
+  "code": "11AW",
+  "modelRangeCode": "G26",
+  "brand": "BM",
+  "name": "M440i xDrive",
+  "shortName": "M440i xDrive",
+  "originalCode": "11AW",
+  "cosyBrand": "WBBM",
+  "marketingVehicleType": "M",
+  "bodyTypeCode": "CO",
+  "marketingBodyTypeCode": "CP",
+  "bodyTypeDescription": "COU",
+  "effectDate": "2024-05-06",
+  "hybridCode": "NOHY",
+  "fromPrice": 74504,
+  "fuelType": "O",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "11AW",
+    "paint": "P0X1F",
+    "fabric": "FMAOI",
+    "options": "S03FX,S0XED,S02NH,S02PA,S02T4,S02TB,S02VB,S02VC,S02VF,S02VL,S0302,S0316,S0322,S033T,S03AG,S03M2,S03MF,S0403,S0420,S0428,S0430,S0459,S0488,S0490,S0493,S0494,S04GQ,S04M5,S04UR,S0508,S0534,S05AC,S05AL,S05AQ,S05AU,S05AZ,S05DA,S05DN,S0610,S0654,S0688,S06AC,S06AE,S06AF,S06AK,S06CP,S06C4,S06DR,S06NW,S06UH,S06U3,S06U8,S06WD,S0704,S0710,S0715,S0754,S0760,S0775,S07M9"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "S02TB",
+      "hybridCode": "NOHY",
+      "volt48": true,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "O",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "8.5 - 8",
+          "emissionsWltpCombined": "194 - 181",
+          "electricConsumption": "-",
+          "electricRangeWltpCombined": "-",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    }
+  ]
+}
