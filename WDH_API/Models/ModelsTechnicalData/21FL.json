@@ -1,0 +1,84 @@
+{
+  "code": "21FL",
+  "modelRangeCode": "G60",
+  "brand": "BM",
+  "name": "520d xDrive",
+  "shortName": "520d xDrive",
+  "originalCode": "21FL",
+  "cosyBrand": "WBBM",
+  "bodyTypeCode": "LI",
+  "marketingBodyTypeCode": "LI",
+  "bodyTypeDescription": "LIM",
+  "effectDate": "2024-05-06",
+  "hybridCode": "NOHY",
+  "fromPrice": 64912,
+  "fuelType": "D",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "71AG",
+    "paint": "P0C4F",
+    "fabric": "FKHSW",
+    "options": "S01CB,S01CE,S01DF,S01RB,S0230,S0258,S02PA,S02TE,S02VB,S0302,S0337,S0423,S0428,S0465,S0481,S0494,S04KH,S04NE,S04UR,S0508,S0534,S0548,S05AV,S0654,S06AC,S06AE,S06AK,S06C4,S06U3,S06WD,S0704,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08WL,S09QX"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "S02TE",
+      "hybridCode": "NOHY",
+      "volt48": true,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "D",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "6.1 - 5.5",
+          "emissionsWltpCombined": "159 - 144",
+          "electricConsumption": "-",
+          "electricRangeWltpCombined": "-",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    }
+  ]
+}

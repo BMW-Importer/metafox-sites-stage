@@ -1,0 +1,45 @@
+{
+  "model": {
+    "modelCode": "41EH",
+    "brand": "BM",
+    "description": "750e xDrive",
+    "shortName": "750e xDrive",
+    "shortRangeName": "G70",
+    "modelRangeCode": "G70",
+    "modelRanges": [
+      "G70"
+    ],
+    "seriesCode": "7",
+    "series": [
+      "7"
+    ],
+    "seriesDescription": "BMW Serije 7",
+    "seriesDescriptions": [
+      "BMW Serije 7"
+    ],
+    "hybridCode": "PHEV",
+    "fromPrice": 132021,
+    "acceleration": "4.8",
+    "trunkCapacity": 525,
+    "seats": 5,
+    "horsePower": 489,
+    "topSpeed": "250",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "41EH",
+      "paint": "P0C4P",
+      "fabric": "FVDSW",
+      "options": "S0337,S033E,S03DN,S0760,S09T1,S02TB,S04V1,S02VH,S02VS,S03M1,S05AU,S05DW,S02VB,S0428,S04NR,S03CD,S046A,S04F4,S04F5,S04FM,S04T6,S04T7,S04V1,S06NX,S06PA,S06U3,S06U7,S06F1,S06FR,S0654,S06C4,S06CP,S0302,S03CD,S0453,S0454,S04T6,S04T7,S0465,S04FL,S03DM,S43CA,S1FCA"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "360 (489)",
+      "systemMaxTorque": "700",
+      "gearBox": "8 - automatisch",
+      "driveType": "AR"
+    }
+  }
+}
