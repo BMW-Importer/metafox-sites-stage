@@ -108,11 +108,15 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.windowInfo.url = window.location.href;
     page_tracking.page.pageInfo.windowInfo.urlClean = window.location.href.split('?')[0]
     // timeinfo
+    var lang = document.querySelector('meta[name="language"]');
+    var geoReg = document.querySelector('meta[name="georegion"]');
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
     page_tracking.page.pageInfo.pageID = window.location.pathname;
     page_tracking.page.pageInfo.version = timestamp;
-    page_tracking.page.pageInfo.language = navigator.languages[1];
+    page_tracking.page.pageInfo.destinationURL = window.location.href;
+    page_tracking.page.pageInfo.language = lang.getAttribute('content');
+    page_tracking.page.pageInfo.geoRegion = geoReg.getAttribute('content');
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
     const randomNum = 1000000000 + Math.random() * 9000000000;
