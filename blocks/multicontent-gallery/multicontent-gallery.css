@@ -134,20 +134,12 @@
     transition: transform .25s ease-in-out;
 }
 
-.block.multicontent-gallery .vid-img-slide-showmore-btn.showless {
-    position: relative;
-    display: block;
+.block.multicontent-gallery .vid-img-slide-showmore-btn.showless {    
     box-shadow: unset;
 }
 
 .block.multicontent-gallery .vid-img-slide-showmore-btn.showless .vid-img-slide-showmore-btn-link::before {
     transform: translateY(-50%) rotate(-180deg);
-}
-
-.block.multicontent-gallery .vid-img-slide-showmore-btn.showless .vid-img-slide-showmore-btn-link {
-    margin-left: 0;
-    padding-bottom: 0;
-    padding-top: 0.5px;
 }
 
 .block.multicontent-gallery .video-image-slide-conatiner {
