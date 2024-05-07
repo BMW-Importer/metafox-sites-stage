@@ -393,7 +393,7 @@ export default function decorate(block) {
 
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline.textContent.trim(), videoSlideCopyText,
+        videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
         button, index]));
     } else {
       // content details
