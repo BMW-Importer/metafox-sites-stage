@@ -146,7 +146,6 @@ function getVideoElement(
         video.setAttribute('poster', '');
         video.muted = true;
         video.play().then(() => {
-          video.muted = false;
         }).catch(() => {});
       }
     });
