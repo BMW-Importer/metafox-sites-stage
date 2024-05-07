@@ -142,7 +142,7 @@ function getVideoElement(
 
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
-      if (!video.paused) {
+      if (video.paused) {
         video.setAttribute('poster', '');
         video.muted = true;
         video.play().then(() => {
