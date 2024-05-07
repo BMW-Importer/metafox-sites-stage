@@ -223,10 +223,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         margin-left: 0;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
-        width: 50%;  
-    }
-
     header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
