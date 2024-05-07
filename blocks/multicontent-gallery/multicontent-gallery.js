@@ -137,8 +137,12 @@ function attachDetailHeadingClickEvent(block) {
       listOfDetailHeading.forEach((childElem, index) => {
         const parentBlock = childElem.closest('.multicontent-gallery.block');
         let mediaElement;
+        let mediaContainer;
         if (parentBlock) {
           mediaElement = parentBlock.querySelectorAll('.video-image-slide-conatiner .video-image-slide.media');
+          mediaContainer = parentBlock.querySelector('.video-image-slide-conatiner');
+          // adding class to display overlay effect and removing it after 0.25s
+          if (mediaContainer) mediaContainer.classList.add('overlay-effect');
         }
         if (elem === childElem) {
           // adding class to show slide in effects
@@ -148,7 +152,8 @@ function attachDetailHeadingClickEvent(block) {
           setTimeOutForSlideIn(childElem);
 
           if (mediaElement) {
-            mediaElement[index].classList.add('visible');
+            // delaying to show video so that overlay effect can be visible
+            setTimeout(() => mediaElement[index].classList.add('visible'), 200);
           }
 
           // adding visible class to detail text div so that overlay
@@ -161,6 +166,11 @@ function attachDetailHeadingClickEvent(block) {
           mediaElement[index].classList.remove('visible');
           setTimeOutForSlideOut(childElem);
         }
+
+        // removing class to remove overlay effects on media change
+        setTimeout(() => {
+          if (mediaContainer) mediaContainer.classList.remove('overlay-effect');
+        }, 200);
       });
     });
   });
@@ -169,6 +179,7 @@ function attachDetailHeadingClickEvent(block) {
 function attachShowMoreEvents(block) {
   const showMoreBtn = block.querySelectorAll('.vid-img-slide-showmore-btn-link');
   const boxPaddingBottom = 14;
+  const detailBoxColumnGaps = 12;
   showMoreBtn.forEach((btnElem) => {
     btnElem.addEventListener('click', (e) => {
       e.preventDefault();
@@ -178,12 +189,20 @@ function attachShowMoreEvents(block) {
       if (e.target.closest('.vid-img-slide-showmore-btn').classList.contains('showless')) {
         e.target.closest('.vid-img-slide-showmore-btn').classList.remove('showless');
         e.target.text = showMoreText;
-        e.target.closest('.vid-img-slide-expand-cover').style.minHeight = 'unset';
+        e.target.closest('.vid-img-slide-expand-cover').style.cssText = 'unset';
       } else {
         e.target.closest('.vid-img-slide-showmore-btn').classList.add('showless');
         e.target.text = showLessText;
-        const parentDivScrollHeight = parentDiv.scrollHeight - boxPaddingBottom;
-        e.target.closest('.vid-img-slide-expand-cover').style.minHeight = `${parentDivScrollHeight}px`;
+        const showMoreBtnElm = parentDiv.querySelector('.vid-img-slide-showmore-btn');
+        let showMoreBtnHeight = 0;
+
+        if (showMoreBtnElm) {
+          showMoreBtnHeight = (showMoreBtnElm.clientHeight / 2) + detailBoxColumnGaps;
+        }
+
+        const parentDivScrollHeight = (parentDiv.scrollHeight + (showMoreBtnHeight))
+         - boxPaddingBottom;
+        e.target.closest('.vid-img-slide-expand-cover').style.height = `${parentDivScrollHeight}px`;
       }
     });
   });
@@ -236,7 +255,9 @@ function attachSlideEvents(galleryContainer) {
 
   // below events for swipe left and right of mob, tab and desktop
   galleryContainer.addEventListener('touchstart', (e) => {
-    if (e.target === document.querySelector('.vid-img-slide-showmore-btn-link')) {
+    if (e.target.classList.contains('vid-img-slide-showmore-btn-link')
+    || e.target.classList.contains('vid-img-slide-cover')
+    || e.target.classList.contains('vid-img-slide-cover-title')) {
       return;
     }
     startTouchX = e.touches[0].clientX;
@@ -245,6 +266,10 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('vid-img-slide-showmore-btn-link') || e.target.classList.contains('vid-img-slide-cover')
+    || e.target.classList.contains('vid-img-slide-cover-title')) {
+      return;
+    }
     isDesktopDragging = true;
     startTouchX = e.clientX;
     desktopScrollLeft = galleryContainer.scrollLeft;
@@ -266,6 +291,7 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('mouseup', (e) => {
+    if (!isDesktopDragging) return;
     isDesktopDragging = false;
     endTouchX = e.clientX;
     handleSwipe(galleryContainer);
@@ -367,7 +393,7 @@ export default function decorate(block) {
 
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline.textContent.trim(), videoSlideCopyText,
+        videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
         button, index]));
     } else {
       // content details
