@@ -133,12 +133,10 @@ function set_page_tracking(){
       page_tracking.page.campaign.campaignID = queryParam.get('utm_id');
       page_tracking.page.campaign.campaignTerm = queryParam.get('utm_term');
       page_tracking.page.campaign.campaignContent = queryParam.get('utm_content');
-    }
-
-    if(queryParam.has('intCampID')){
+      if(queryParam.has('intCampID')){
       page_tracking.page.pageInfo.windowInfo.internalCampaign = 'intCampID='+queryParam.get('intCampID');
     }
-
+    }
     if (window.matchMedia("(min-width: 1024px)").matches) {
         page_tracking.page.pageInfo.sysEnv = "desktop";
     } else {
