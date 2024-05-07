@@ -11,7 +11,15 @@ function enableShowMoreButton() {
   const detailContainer = document.querySelectorAll('.vid-img-slide-expand-cover');
   detailContainer.forEach((item) => {
     const showMoreBtn = item.querySelector('.vid-img-slide-showmore-btn');
+
     if (showMoreBtn) {
+      // if showmore button is already clicked then click showless before enabling it
+      if (showMoreBtn.classList.contains('showless')) {
+        const showMoreBtnElm = showMoreBtn.querySelector('button');
+        showMoreBtnElm.click();
+      }
+
+      // enable showmore button based on overflowing content
       if (item.scrollHeight > item.clientHeight) {
         showMoreBtn.classList.remove('hidden');
       } else {
@@ -29,15 +37,20 @@ function generateViewForDesktop() {
   multiMediaBlocks.forEach((item) => {
     // scroll to startshowMoreTextg of detail childs
     const detailContainer = item.querySelector('.video-image-detail-container');
-    detailContainer.scrollTo({
-      left: 0,
-      behavior: 'smooth',
-    });
 
-    const mediaContainer = item.querySelector('.video-image-slide-conatiner').querySelectorAll('.video-image-slide.media');
-    mediaContainer.forEach((media) => {
-      media.classList.remove('visible');
-    });
+    if (detailContainer) {
+      detailContainer.scrollTo({
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+
+    if (item.querySelector('.video-image-slide-conatiner')) {
+      const mediaContainer = item.querySelector('.video-image-slide-conatiner').querySelectorAll('.video-image-slide.media');
+      mediaContainer.forEach((media) => {
+        media.classList.remove('visible');
+      });
+    }
 
     // make first detail as open state
     // call click event for first click
@@ -221,19 +234,11 @@ function attachSlideEvents(galleryContainer) {
   let isDesktopDragging = false;
   let desktopScrollLeft = 0;
 
-  // prevent touchstart event not to trigger when some click events happens inside details cover div
-  galleryContainer.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
-
   // below events for swipe left and right of mob, tab and desktop
   galleryContainer.addEventListener('touchstart', (e) => {
     if (e.target === document.querySelector('.vid-img-slide-showmore-btn-link')) {
       return;
     }
-
     startTouchX = e.touches[0].clientX;
     const vidImgContainer = galleryContainer.previousElementSibling;
     vidImgContainer.classList.add('overlay-effect');
@@ -297,12 +302,15 @@ export default function decorate(block) {
     const classesText = classList.textContent.trim();
     const classes = (classesText ? classesText.split(',') : []).map((c) => c?.trim()).filter((c) => !!c);
 
+    // hidding origin div so that in author page its not visible
+    panel.classList.add('hidden');
+
     // checking which is current block children
     if ([...classes].includes('video-slide')) {
       const [, , videoSlideHeadline, videoSlideCopyText, ,
-        videoSlideTitle, videoSlideDescription, videoSlideDesktopVideoRef, ,
-        videoSlideDesktopPosterImgRef, , videoSlideLoopVideo, videoSlideAutoPlayVideo, ,
-        videoSlideButton] = panel.children;
+        videoSlideTitle, videoSlideDescription, videoSlideDesktopVideoRef,
+        videoSlideMobVideoRef, videoSlideDesktopPosterImgRef, videoSlideMobPosterImgRef,
+        videoSlideLoopVideo, videoSlideAutoPlayVideo, , videoSlideButton] = panel.children;
 
       const videoDOMContainer = document.createElement('div');
       videoDOMContainer.classList.add('video-image-slide', 'media');
@@ -311,11 +319,15 @@ export default function decorate(block) {
         videoDOMContainer.classList.add('visible');
       }
 
-      const desktopVideoPosterImgPath = videoSlideDesktopPosterImgRef.querySelector('img').getAttribute('src');
-
       // extracting video link
-      let videoLink = '';
-      if (videoSlideDesktopVideoRef) videoLink = videoSlideDesktopVideoRef.querySelector('a').href;
+      const videoLinkObj = {};
+      const posterObj = {};
+
+      if (videoSlideDesktopVideoRef) videoLinkObj.desktop = videoSlideDesktopVideoRef.querySelector('a').href;
+      if (videoSlideMobVideoRef) videoLinkObj.mobile = videoSlideMobVideoRef.querySelector('a').href;
+
+      if (videoSlideDesktopPosterImgRef) posterObj.desktop = videoSlideDesktopPosterImgRef?.querySelector('img')?.getAttribute('src');
+      if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef?.querySelector('img')?.getAttribute('src');
 
       // converting string to boolen
       const isLoopVideo = videoSlideLoopVideo.textContent.trim() === 'true';
@@ -327,20 +339,23 @@ export default function decorate(block) {
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
       loadVideoEmbed(
         videoDOMContainer,
-        videoLink,
+        videoSlideTitle.textContent,
+        videoSlideDescription.textContent,
+        videoLinkObj,
         isAutoPlayVideo,
         isLoopVideo,
         isEnableControls,
         isMuted,
+        posterObj,
         onHoverPlay,
-        desktopVideoPosterImgPath,
       );
 
       // call function for generating video slide UI
       videoImageContainer.append(videoDOMContainer);
+
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline.textContent.trim(), videoSlideCopyText.innerHTML,
+        videoSlideHeadline.textContent.trim(), videoSlideCopyText,
         videoSlideTitle.textContent.trim(), videoSlideDescription.textContent.trim(),
         videoSlideButton, index]));
     } else if ([...classes].includes('image-slide')) {
@@ -367,7 +382,7 @@ export default function decorate(block) {
 
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
-        imageSlideHeadline.textContent.trim(), imageSlideCopyText.textContent.trim(),
+        imageSlideHeadline.textContent.trim(), imageSlideCopyText,
         imgSlideBtn, index]));
     }
     // panel.textContent = '';

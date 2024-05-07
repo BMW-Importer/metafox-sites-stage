@@ -429,12 +429,11 @@
                 "template": {
                   "name": "Video Slide",
                   "model": "video-slide",
-                  "filter": "video-slide",
-                  "videoSlideClassname":"video-slide",
-                  "videoSlideHeadlineType":"h4",
-                  "videoSlideLoopVideo":true,
-                  "videoSlideAutoplay":true,
-                  "videoSlideLinkType":"primary"
+                  "filter": "video-slide",                  
+                  "content_videoSlideHeadlineType":"h4",
+                  "media_videoSlideLoopVideo":true,
+                  "media_videoSlideAutoplay":true,
+                  "cta_videoSlideCtaLinkType":"primary"
                 }
               }
             }
@@ -450,10 +449,9 @@
                 "template": {
                   "name": "Image Slide",
                   "model": "image-slide",
-                  "filter": "image-slide",
-                  "imageSlideClassname":"image-slide",
-                  "imageSlideHeadlineType":"h4",
-                  "imageSlideLinkType":"primary"
+                  "filter": "image-slide",                  
+                  "content_imageSlideHeadlineType":"h4",
+                  "cta_imageSlideLinkType":"primary"
                 }
               }
             }

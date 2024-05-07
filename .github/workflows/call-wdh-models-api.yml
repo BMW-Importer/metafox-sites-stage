@@ -1,0 +1,62 @@
+name: Call WDH Models API
+ 
+on:
+
+  workflow_dispatch:
+    inputs:
+      modelName:
+        description: 'Enter model code for running the workflow'
+        required: true
+        default: '7K11'
+
+permissions: write-all
+ 
+jobs:
+  make_api_call:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+         fetch-depth: 0
+         token: ${{ secrets.BOT_ACCESS_TOKEN }}
+
+      - name: Setup Git
+        run: |
+           git config --global user.name 'Call WDH Github Action'
+           git config --global user.email 'aaditya.batra@accenture.com'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Specify the Node.js version
+          
+      - name: Install Node.js dependencies
+        run: npm install axios
+        
+      - name: Call API
+        id: api_call
+        env:
+         API_TOKEN: ${{ secrets.API_TOKEN }}
+         MODEL_NAME: ${{ github.event.inputs.modelName }}
+        run: |
+         printenv
+         node scripts/api_utility/model-details-api.js
+         
+      - name: Check for changes
+        id: check_changes
+        run: |
+         if git status --porcelain | grep -q 'WDH_API/'; then
+          echo "::set-output name=has_changes::true"
+         else
+          echo "::set-output name=has_changes::false"
+         fi
+
+      - name: Commit and push if there are changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+         git add WDH_API/Models/ModelDetails/
+         git commit -m "Update API responses"
+         git push

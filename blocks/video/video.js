@@ -1,3 +1,36 @@
+export function changeAllVidSrcOnResize() {
+  window.addEventListener('resize', () => {
+    const listOfVideos = document.querySelectorAll('video');
+    listOfVideos.forEach((video) => {
+      const sourceEl = video.querySelector('source');
+      const posterDiv = video.parentElement.querySelector('.vjs-poster picture img');
+
+      const desktopVidPath = sourceEl.getAttribute('data-desktop-vid');
+      const mobileVidPath = sourceEl.getAttribute('data-mobile-vid');
+
+      const desktopPosterPath = video.getAttribute('data-desktop-poster');
+      const mobilePosterPath = video.getAttribute('data-mobile-poster');
+
+      if (window.innerWidth >= 768) {
+        video.src = desktopVidPath;
+        sourceEl.src = desktopVidPath;
+        video.poster = desktopPosterPath;
+        posterDiv.src = desktopPosterPath;
+      } else if (mobileVidPath) {
+        video.src = mobileVidPath;
+        sourceEl.src = mobileVidPath;
+        video.poster = mobilePosterPath;
+        posterDiv.src = mobilePosterPath;
+      } else {
+        video.src = desktopVidPath;
+        sourceEl.src = desktopVidPath;
+        video.poster = desktopPosterPath;
+        posterDiv.src = desktopPosterPath;
+      }
+    });
+  });
+}
+
 function embedYoutube(url, autoplay) {
   const usp = new URLSearchParams(url.search);
   const suffix = autoplay ? '&muted=1&autoplay=1' : '';
@@ -24,13 +57,15 @@ function embedVimeo(url, autoplay) {
 }
 
 function getVideoElement(
+  videoTitle,
+  videoDescp,
   source,
   videoFormat,
   autoplay,
   enableLoop,
   enableControls,
   muted,
-  poster,
+  posters,
   onHoverPlay,
 ) {
   const video = document.createElement('video');
@@ -58,15 +93,44 @@ function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('poster', poster);
+  video.setAttribute('title', videoTitle?.textContent);
+  video.setAttribute('data-description', videoDescp?.textContent);
+
   const sourceEl = document.createElement('source');
-  sourceEl.setAttribute('src', source);
-  if (videoFormat === '.mp4') {
-    sourceEl.setAttribute('type', `video/${source.split('.').pop()}`);
-  } else if (videoFormat === '.m3u8') {
-    sourceEl.setAttribute('type', 'application/x-mpegURL');
+
+  const mobileWidth = window.innerWidth < 768;
+  if (source.desktop && !mobileWidth) {
+    sourceEl.setAttribute('src', source?.desktop);
+    video.setAttribute('poster', posters?.desktop);
+  } else if (source.mobile) {
+    sourceEl.setAttribute('src', source?.mobile);
+    video.setAttribute('poster', posters?.mobile || '');
+  } else {
+    sourceEl.setAttribute('src', source?.desktop);
+    video.setAttribute('poster', posters?.desktop);
   }
-  video.append(sourceEl);
+
+  video.setAttribute('data-desktop-poster', posters?.desktop);
+  video.setAttribute('data-mobile-poster', posters?.mobile || '');
+
+  sourceEl.setAttribute('data-desktop-vid', source?.desktop);
+  sourceEl.setAttribute('data-mobile-vid', source?.mobile);
+
+  if (source.desktop && !mobileWidth) {
+    if (videoFormat === '.mp4') {
+      sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
+    } else if (videoFormat === '.m3u8') {
+      sourceEl.setAttribute('type', 'application/x-mpegURL');
+    }
+    video.append(sourceEl);
+  } else {
+    if (videoFormat === '.mp4') {
+      sourceEl.setAttribute('type', `video/${source.mobile.split('.').pop()}`);
+    } else if (videoFormat === '.m3u8') {
+      sourceEl.setAttribute('type', 'application/x-mpegURL');
+    }
+    video.append(sourceEl);
+  }
 
   video.addEventListener('click', () => {
     if (video.paused) {
@@ -75,15 +139,22 @@ function getVideoElement(
       video.pause();
     }
   });
+
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
+        video.setAttribute('poster', '');
         video.play();
       }
     });
 
     video.addEventListener('mouseleave', () => {
       if (!video.paused) {
+        if (posters.desktop && !mobileWidth) {
+          video.setAttribute('poster', posters.desktop);
+        } else {
+          video.setAttribute('poster', posters.mobile);
+        }
         video.pause();
       }
     });
@@ -123,44 +194,62 @@ function isAbsoluteUrl(url) {
 
 export function loadVideoEmbed(
   block,
-  link,
+  videoTitle,
+  videoDescp,
+  linkObject,
   autoplay,
   loop,
   enableControls,
   muted,
+  posters,
   onHoverPlay,
-  placeholder,
 ) {
   if (block.dataset.embedIsLoaded) {
     return;
   }
-  const baseUrl = window.location.origin;
-  let url;
 
-  if (isAbsoluteUrl(link)) {
-    url = new URL(link);
+  const baseUrl = window.location.origin;
+  let desktopUrl;
+  let mobileUrl;
+  if (isAbsoluteUrl(linkObject.desktop)) {
+    desktopUrl = new URL(linkObject.desktop);
   } else {
-    url = new URL(link, baseUrl);
+    desktopUrl = new URL(linkObject.desktop, baseUrl);
+  }
+  if (isAbsoluteUrl(linkObject.mobile)) {
+    mobileUrl = new URL(linkObject.mobile);
+  } else {
+    mobileUrl = new URL(linkObject.mobile, baseUrl);
   }
 
-  const isYoutube = link.includes('youtube') || link.includes('youtu.be');
-  const isVimeo = link.includes('vimeo');
-  const isMp4 = link.includes('.mp4');
-  const isM3U8 = link.includes('.m3u8');
+  const isYoutube = linkObject.desktop ? linkObject.desktop.includes('youtube') || linkObject.desktop.includes('youtu.be')
+    : linkObject.mobile.includes('youtube') || linkObject.mobile.includes('youtu.be');
+  const isVimeo = linkObject.desktop ? linkObject.desktop.includes('vimeo')
+    : linkObject.mobile.includes('vimeo');
+  const isMp4 = linkObject.desktop ? linkObject.desktop.includes('.mp4')
+    : linkObject.mobile.includes('.mp4');
+  const isM3U8 = linkObject.desktop ? linkObject.desktop.includes('.m3u8')
+    : linkObject.mobile.includes('.m3u8');
+
+  const isMobile = window.innerWidth < 768;
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
   if (isYoutube) {
-    block.innerHTML = embedYoutube(url, autoplay);
+    const desktopEmbed = embedYoutube(desktopUrl, autoplay);
+    const mobileEmbed = embedYoutube(mobileUrl, autoplay);
+    block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
   } else if (isVimeo) {
-    block.innerHTML = embedVimeo(url, autoplay);
+    const desktopEmbed = embedVimeo(desktopUrl, autoplay);
+    const mobileEmbed = embedVimeo(mobileUrl, autoplay);
+    block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
   } else if (isMp4) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.mp4', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.m3u8', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   }
 
   block.dataset.embedIsLoaded = true;
@@ -168,26 +257,70 @@ export function loadVideoEmbed(
 
 export default async function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  const [videoPoster, , videoControls] = props;
+  const [
+    videoTitle,
+    videoDescp,
+    videoDesktopPath,
+    videoMobPath,
+    videoDesktopPoster,
+    videoMobPoster,
+    videoLoop,
+    videoAutoPlay,
+    videoHideControls,
+    videoMute,
+    playonHover] = props;
+
   const placeholder = block.querySelector('picture');
+  const desktopVideolink = videoDesktopPath?.textContent;
+  const mobileVideolink = videoMobPath?.textContent;
 
-  const link = block.querySelector('a').href;
+  const linkObject = {
+    desktop: desktopVideolink,
+    mobile: mobileVideolink,
+  };
+
+  const posters = {
+    desktop: videoDesktopPoster?.querySelector('img')?.getAttribute('src'),
+    mobile: videoMobPoster?.querySelector('img')?.getAttribute('src'),
+  };
+
   block.textContent = '';
-  const videoControlProperties = videoControls ? videoControls.innerText.split(',') : [];
-  const autoplay = !!videoControlProperties.includes('autoplay');
-  const loop = !!videoControlProperties.includes('loop');
-  const enableControls = !!videoControlProperties.includes('enableVideoControls');
-  const muted = !!videoControlProperties.includes('muted');
-  const onHoverPlay = !!videoControlProperties.includes('playOnHover');
-
+  const autoplay = videoAutoPlay?.textContent.trim() === 'true';
+  const loop = videoLoop?.textContent.trim() === 'true';
+  const enableControls = videoHideControls?.textContent.trim() === 'true';
+  const muted = videoMute?.textContent.trim() === 'true';
+  const onHoverPlay = playonHover?.textContent;
+  console.log(onHoverPlay);
   if (placeholder) {
-    loadVideoEmbed(block, link, autoplay, loop, enableControls, muted, onHoverPlay, videoPoster.querySelector('img').getAttribute('src'));
+    loadVideoEmbed(
+      block,
+      videoTitle,
+      videoDescp,
+      linkObject,
+      autoplay,
+      loop,
+      enableControls,
+      muted,
+      posters,
+      onHoverPlay,
+    );
   } else {
     block.classList.add('lazy-loading');
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
-        loadVideoEmbed(block, link, autoplay, videoControls);
+        loadVideoEmbed(
+          block,
+          videoTitle,
+          videoDescp,
+          linkObject,
+          autoplay,
+          loop,
+          enableControls,
+          muted,
+          posters,
+          onHoverPlay,
+        );
         block.classList.remove('lazy-loading');
       }
     });
