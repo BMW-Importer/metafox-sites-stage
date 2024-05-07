@@ -132,7 +132,8 @@ function getVideoElement(
     video.append(sourceEl);
   }
 
-  video.addEventListener('click', () => {
+  video.addEventListener('click', (event) => {
+    event.stopImmediatePropagation();
     if (video.paused) {
       video.play();
     } else {
@@ -290,7 +291,7 @@ export default async function decorate(block) {
   const enableControls = videoHideControls?.textContent.trim() === 'true';
   const muted = videoMute?.textContent.trim() === 'true';
   const onHoverPlay = playonHover?.textContent;
-  console.log(onHoverPlay);
+
   if (placeholder) {
     loadVideoEmbed(
       block,

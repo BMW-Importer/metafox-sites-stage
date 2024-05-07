@@ -1,6 +1,8 @@
 export function generateImgSlidePicture(props) {
-  const [imgDOMContainer, imageSlideImgRef, imageSlideAltText] = props;
+  const [imgDOMContainer, imageSlideImgRef] = props;
   const propImgElem = imageSlideImgRef.querySelector('img');
+  const imageSlideAltText = propImgElem.getAttribute('alt');
+
   const pictureElement = document.createElement('picture');
   const imgElem = document.createElement('img');
   imgElem.src = propImgElem.src;
@@ -11,7 +13,8 @@ export function generateImgSlidePicture(props) {
 }
 
 export function generateImgSlideDetailMarkUp(props) {
-  const [imageSlideHeadline, imageSlideCopyText, imgSlideBtn, index] = props;
+  const [imageSlideHeadline, imageSlideCopyText,
+    button, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -21,7 +24,7 @@ export function generateImgSlideDetailMarkUp(props) {
   // desktop view collapsed state detail cover
   const vidImgDetailCover = document.createElement('div');
   vidImgDetailCover.classList.add('vid-img-slide-cover');
-  const vidImgDetailCoverTitle = document.createElement('h3');
+  const vidImgDetailCoverTitle = document.createElement('h4');
   vidImgDetailCoverTitle.classList.add('vid-img-slide-cover-title');
   vidImgDetailCoverTitle.textContent = imageSlideHeadline;
   vidImgDetailCover.append(vidImgDetailCoverTitle);
@@ -29,14 +32,14 @@ export function generateImgSlideDetailMarkUp(props) {
   // desktop, tab and mobile open state detail cover
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
-  const vidImgDetailExpandTitle = document.createElement('h3');
+  const vidImgDetailExpandTitle = document.createElement('h4');
   vidImgDetailExpandTitle.classList.add('vid-img-slide-expand-title');
   vidImgDetailExpandTitle.textContent = imageSlideHeadline;
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = imageSlideCopyText.innerHTML;
+  vidImgDetailExpandDesp.innerHTML = imageSlideCopyText.outerHTML;
 
-  const vidImgDetailLinkBtn = imgSlideBtn.querySelector('p');
+  const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
 
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');

@@ -1,66 +1,65 @@
 {
-  "code": "BC41",
-  "modelRangeCode": "G15",
+  "code": "GW01",
+  "modelRangeCode": "G16",
   "brand": "BM",
-  "name": "M850i xDrive",
-  "shortName": "M850i xDrive",
-  "originalCode": "BC41",
+  "name": "840d xDrive",
+  "shortName": "840d xDrive",
+  "originalCode": "GW01",
   "cosyBrand": "WBBM",
-  "marketingVehicleType": "M",
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
   "effectDate": "2024-05-07",
   "hybridCode": "NOHY",
-  "fromPrice": 145340,
-  "seats": 4,
-  "fuelType": "O",
+  "fromPrice": 126300,
+  "seats": 5,
+  "fuelType": "D",
   "posiSpec": {
     "cosyBrand": "WBBM",
-    "agCode": "AE41",
-    "paint": "P0C31",
-    "fabric": "FVASW",
-    "options": "S01DF,S01PZ,S0230,S0258,S02NH,S02PA,S02VB,S02VH,S0302,S0322,S0323,S03D0,S03DS,S0428,S0494,S04FM,S04L8,S04NE,S0548,S0552,S05AC,S05AS,S05DM,S0654,S06AE,S06AF,S06AK,S06C4,S06NW,S06U3,S06UX,S06WD,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08TL"
+    "agCode": "GV21",
+    "paint": "P0X1G",
+    "fabric": "FVARI",
+    "options": "S01CB,S01DF,S01PZ,S0230,S0258,S02NH,S02PA,S02T4,S02VB,S0302, S0322,S0323,S03D0,S03DS,S0428,S0494,S04FM,S04L8,S04NB,S04NE,S0548,S0552,S05AC,S05AS,S05DM,S0654,S06AE,S06AF,S06AK, S06C4,S06NW,S06U3,S06UX,S06WD,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08TL"
   },
   "vehicles": [
     {
       "transmissionCode": "A",
       "hybridCode": "NOHY",
-      "iD_LEIST_KONST": "00",
-      "volt48": false,
+      "iD_LEIST_KONST": "10",
+      "volt48": true,
       "technicalData": {
         "powerTrain": {
-          "fuelType": "O",
-          "systemPower": "390 (530)",
-          "systemMaxTorque": "750",
+          "fuelType": "D",
+          "systemPower": "250 (340)",
+          "systemMaxTorque": "700",
           "gearBox": "8 - automatisch",
           "driveType": "AR"
         },
         "engine": {
-          "cylinders": "8",
-          "technicalCapacity": "4395",
-          "nominalPower": "390 (530) / 5500 - 6000",
-          "nominalTorque": "750 / 1800 - 4600"
+          "cylinders": "6",
+          "technicalCapacity": "2993",
+          "nominalPower": "250 (340) / 4400",
+          "nominalTorque": "700 / 1750 - 2250"
         },
         "electric": {
-          "systemPower": "-",
-          "systemMaxTorque": "-"
+          "systemPower": "8 (11) / -",
+          "systemMaxTorque": "25"
         },
         "performance": {
-          "acceleration": "3.9",
+          "acceleration": "5",
           "topSpeed": "250",
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "10.8 - 10.5",
-          "emissionsWltpCombined": "245 - 239",
+          "consumptionWltpCombined": "7.3 - 6.9",
+          "emissionsWltpCombined": "192 - 180",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
         "charging": {
-          "batteryCapacity": "-",
+          "batteryCapacity": "0.4",
           "chargeACDC": "-",
           "charge_AC_0_100": "-",
           "charge_DC_10_80": "-",
@@ -68,17 +67,17 @@
           "chargingMaxAC": "-"
         },
         "weightMeasurements": {
-          "length": "4851",
-          "width": "1902",
-          "height": "1346",
+          "length": "5082",
+          "width": "1932",
+          "height": "1407",
           "widthMirrors": "2137 (1074 / 1063)",
-          "wheelTurn": "2822",
-          "weightNotLoaded": "2015",
-          "weightMax": "2395",
-          "permittedLoad": "455",
+          "wheelTurn": "3023",
+          "weightNotLoaded": "2070",
+          "weightMax": "2600",
+          "permittedLoad": "605",
           "trailerLoad": "-",
-          "trunkCapacity": "420",
-          "tankCapacity": "68"
+          "trunkCapacity": "440",
+          "tankCapacity": "66"
         }
       },
       "footnotes": {
@@ -91,6 +90,9 @@
         "emissionsConsumptionWltp": [
           "f1",
           "f4"
+        ],
+        "charging": [
+          "f7"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

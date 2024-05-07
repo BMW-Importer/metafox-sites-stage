@@ -1,0 +1,7 @@
+main .text-video-container > div {
+  max-width: unset;
+}
+  
+main .text-video-container {
+  padding: 30px;
+}

@@ -64,6 +64,45 @@
     ]
   },
   {
+    "id": "text-with-media",
+    "components": [
+      "text-with-image",
+      "text-with-video"
+    ]
+  },
+  {
+    "id": "text-with-image",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "text-with-video",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "section",
     "components": [
       "copy_text",
@@ -83,7 +122,8 @@
       "link-list",
       "copy_text",
       "video",
-      "multicontent-gallery"
+      "multicontent-gallery",
+      "text-with-media"
     ]
   },
   {

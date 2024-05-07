@@ -12,6 +12,7 @@
  * governing permissions and limitations under the License.
  */
 @import url('../blocks/flexible-width-section/flexible-width-section.css');
+@import url('../blocks/video/video.css');
 
  :root {
   /* colors */

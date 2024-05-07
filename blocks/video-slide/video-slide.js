@@ -1,6 +1,6 @@
 export default function generateVideoDetailMarkUp(props) {
-  const [videoSlideHeadline, videoSlideCopyText, , ,
-    videoSlideButton, index] = props;
+  const [videoSlideHeadline, videoSlideCopyText,
+    button, index] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -13,7 +13,7 @@ export default function generateVideoDetailMarkUp(props) {
   // desktop view collapsed state detail cover
   const vidImgDetailCover = document.createElement('div');
   vidImgDetailCover.classList.add('vid-img-slide-cover');
-  const vidImgDetailCoverTitle = document.createElement('h3');
+  const vidImgDetailCoverTitle = document.createElement('h4');
   vidImgDetailCoverTitle.classList.add('vid-img-slide-cover-title');
   vidImgDetailCoverTitle.textContent = videoSlideHeadline;
   vidImgDetailCover.append(vidImgDetailCoverTitle);
@@ -22,15 +22,15 @@ export default function generateVideoDetailMarkUp(props) {
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
 
-  const vidImgDetailExpandTitle = document.createElement('h3');
+  const vidImgDetailExpandTitle = document.createElement('h4');
   vidImgDetailExpandTitle.classList.add('vid-img-slide-expand-title');
   vidImgDetailExpandTitle.textContent = videoSlideHeadline;
 
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText.innerHTML;
+  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText.outerHTML;
 
-  const vidImgDetailLinkBtn = videoSlideButton.querySelector('p');
+  const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn.querySelector('a');
 

@@ -25,7 +25,6 @@ const page_tracking = {"page": {
                 "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
                 "server": "www.bmw.rs",
                 "url": "https://www.bmw.rs/sr/index.html",
-                "previousDomain": "",
                 "urlClean": "https://www.bmw.rs/sr/index.html",
             },
             "timeInfo": {
@@ -78,8 +77,23 @@ function opt_in_info(){
     }]
   });
 }
+var dateTime = new Date();
 
-const dateTime = new Date();
+// Format the date components
+var year = dateTime.getFullYear();
+var month = (dateTime.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+var day = dateTime.getDate().toString().padStart(2, '0');
+var hours = dateTime.getHours().toString().padStart(2, '0');
+var minutes = dateTime.getMinutes().toString().padStart(2, '0');
+var seconds = dateTime.getSeconds().toString().padStart(2, '0');
+var milliseconds = dateTime.getMilliseconds().toString().padStart(3, '0');
+var timezoneOffset = -dateTime.getTimezoneOffset();
+var timezoneOffsetHours = Math.floor(Math.abs(timezoneOffset) / 60).toString().padStart(2, '0');
+var timezoneOffsetMinutes = (Math.abs(timezoneOffset) % 60).toString().padStart(2, '0');
+var timezoneSign = timezoneOffset >= 0 ? '+' : '-';
+
+// Construct the timestamp string
+var timestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
 function set_page_tracking(){
   // adding page tracking properties
   if(document.referrer !== ''){
@@ -97,6 +111,7 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
     page_tracking.page.pageInfo.pageID = window.location.pathname;
+    page_tracking.page.pageInfo.version = timestamp;
     page_tracking.page.pageInfo.language = navigator.languages[1];
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
@@ -110,8 +125,7 @@ function set_page_tracking(){
       var queryParam = new URLSearchParams(window.location.search);
       page_tracking.page['campaign'] = {};
       page_tracking.page.pageInfo.windowInfo.campaign = window.location.search.slice(1);
-      page_tracking.page.pageInfo.windowInfo.queryParam = window.location.search;
-      page_tracking.page.pageInfo.windowInfo.internalCampaign = queryParam.get('intCampID');
+      page_tracking.page.pageInfo.windowInfo.queryParam = window.location.search.slice(1);
       page_tracking.page.campaign.trackingCode = window.location.search.slice(1);
       page_tracking.page.campaign.campaignSource = queryParam.get('utm_source');
       page_tracking.page.campaign.campaignMedium = queryParam.get('utm_medium');
@@ -119,8 +133,10 @@ function set_page_tracking(){
       page_tracking.page.campaign.campaignID = queryParam.get('utm_id');
       page_tracking.page.campaign.campaignTerm = queryParam.get('utm_term');
       page_tracking.page.campaign.campaignContent = queryParam.get('utm_content');
+      if(queryParam.has('intCampID')){
+      page_tracking.page.pageInfo.windowInfo.internalCampaign = 'intCampID='+queryParam.get('intCampID');
     }
-
+    }
     if (window.matchMedia("(min-width: 1024px)").matches) {
         page_tracking.page.pageInfo.sysEnv = "desktop";
     } else {

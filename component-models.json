@@ -467,6 +467,372 @@
     ]
   },
   {
+    "id": "text-with-image",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "textWithImageTab1"
+      },     
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "value": "left",
+        "label": "Image Alignment",
+        "description":"Defines on which side the image will appear.",
+        "required": true,
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_eyebrow",
+        "value": "",
+        "label": "Eyebrow",
+        "description":"Defines the text that will appear above the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "",
+        "label": "Eyebrow Type",
+        "description":"Defines the styling of the text that will appear above the headline.",
+        "options": [
+          {
+            "name": "Eyebrow Bold 1",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow Bold 2",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_headline",
+        "value": "",
+        "label": "Headline",
+        "description":"Defines the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "general_headlineType",
+        "value": "h2",
+        "label": "Headline Type",
+        "description":"Defines the styling of the headline.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "general_copytext",
+        "value": "",
+        "label": "Copy Text",
+        "description": "Defines the text that will appear in the paragraph styling.",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Image",
+        "name": "textWithImageTab2"
+      }, 
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_fileReference",
+        "label": "Image",
+        "value": "",
+        "description": "Defines the image to be displayed.",
+        "required":true,
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "media_fileReferenceAlt",
+        "label": "Alt Text",
+        "description": "Defines the alternative text that will be read by screen-readers for the image.",
+        "value": "",
+        "required":true
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "textWithImageTab3"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_linkLabel",
+        "value": "",
+        "label": "Link Label",
+        "description":"Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_link",
+        "value": "",
+        "label": "Link",
+        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "general_buttonStyling",
+        "value": "linkbutton",
+        "label": "Button Styling",
+        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "Link Button",
+            "value": "linkbutton"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-with-video",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "textWithVideoTab1"
+      },     
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "value": "left",
+        "label": "Video Alignment",
+        "description":"Defines on which side the Video will appear.",
+        "required": true,
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_eyebrow",
+        "value": "",
+        "label": "Eyebrow",
+        "description":"Defines the text that will appear above the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "style",
+        "value": "",
+        "label": "Eyebrow Type",
+        "description":"Defines the styling of the text that will appear above the headline.",
+        "options": [
+          {
+            "name": "Eyebrow Bold 1",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow Bold 2",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_headline",
+        "value": "",
+        "label": "Headline",
+        "description":"Defines the headline."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "general_headlineType",
+        "value": "h2",
+        "label": "Headline Type",
+        "description":"Defines the styling of the headline.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "general_copytext",
+        "value": "",
+        "label": "Copy Text",
+        "description": "Defines the text that will appear in the paragraph styling.",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Video",
+        "name": "textWithVideoTab2"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoTitle",
+        "value": "",
+        "label": "Video Title",
+        "description":"Defines the title of the video.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoDescription",
+        "value": "",
+        "label": "Video Description",
+        "description":"Defines the description of the video.",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktopFileReference",
+        "label": "Desktop Video Path",
+        "value": "",
+        "description": "Defines video that will play on desktop.",
+        "required":true,
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobileFileReference",
+        "label": "Mobile Video Path",
+        "value": "",
+        "description": "Defines video that will play on mobile.",
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktopPosterFileReference",
+        "label": "Desktop Poster Image",
+        "value": "",
+        "description": "Defines the the poster image of the video that will play on desktop. It will be displayed while loading the page.",
+        "required":true,
+        "multi": false
+      },{
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobilePosterFileReference",
+        "label": "Mobile Poster Image",
+        "value": "",
+        "description": "Defines the the poster image of the video that will play on mobile. It will be displayed while loading the page.",
+        "multi": false
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "media_loopVideo",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop."
+      },
+      {
+        "component": "boolean",
+        "label": "Autoplay",
+        "name": "media_autoplay",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "media_videoControls",
+        "valueType": "boolean",
+        "value":false,
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video",
+        "name": "media_muteVideo",
+        "valueType": "boolean",
+        "value":true,
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "textWithVideoTab3"
+      }, 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_linklabel",
+        "value": "",
+        "label": "Link Label",
+        "description":"Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "general_link",
+        "value": "",
+        "label": "Link",
+        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "general_buttonStyling",
+        "value": "linkbutton",
+        "label": "Button Styling",
+        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden":true,
+        "options": [
+          {
+            "name": "Link Button",
+            "value": "linkbutton"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "iframe",
     "fields": [
       {
@@ -1071,18 +1437,18 @@
       },
       {
         "component": "text-input",
-        "name": "cta_videoSlideCtaLinkText",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link. ",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
         "name": "cta_videoSlideCtaLink",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to.",
         "valueType": "string"
       },
+      {
+        "component": "text-input",
+        "name": "cta_videoSlideCtaLinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "valueType": "string"
+      },     
       {
         "component": "text",
         "label": "Button Styling",
@@ -1155,18 +1521,18 @@
       },
       {
         "component": "text-input",
-        "name": "cta_imageSlideLinkText",
-        "description": "Defines the text to be displayed in the button or as the link. ",
-        "label": "Link Label",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
         "name": "cta_imageSlideLink",
         "description": "Defines the page to which the user will be directed to.",
         "label": "Link",
         "valueType": "string"
       },
+      {
+        "component": "text-input",
+        "name": "cta_imageSlideLinkText",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "label": "Link Label",
+        "valueType": "string"
+      },      
       {
         "component": "text",
         "label": "Button Styling",

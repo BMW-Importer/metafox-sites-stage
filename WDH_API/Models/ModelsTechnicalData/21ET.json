@@ -1,37 +1,37 @@
 {
-  "code": "BC41",
-  "modelRangeCode": "G15",
+  "code": "21ET",
+  "modelRangeCode": "F96",
   "brand": "BM",
-  "name": "M850i xDrive",
-  "shortName": "M850i xDrive",
-  "originalCode": "BC41",
+  "name": "X6 M Competition",
+  "shortName": "X6 M Competition",
+  "originalCode": "21ET",
   "cosyBrand": "WBBM",
   "marketingVehicleType": "M",
-  "bodyTypeCode": "CO",
-  "marketingBodyTypeCode": "CP",
-  "bodyTypeDescription": "COU",
+  "bodyTypeCode": "SC",
+  "marketingBodyTypeCode": "SUV",
+  "bodyTypeDescription": "SAC",
   "effectDate": "2024-05-07",
   "hybridCode": "NOHY",
-  "fromPrice": 145340,
-  "seats": 4,
+  "fromPrice": 184910,
+  "seats": 5,
   "fuelType": "O",
   "posiSpec": {
     "cosyBrand": "WBBM",
-    "agCode": "AE41",
-    "paint": "P0C31",
-    "fabric": "FVASW",
-    "options": "S01DF,S01PZ,S0230,S0258,S02NH,S02PA,S02VB,S02VH,S0302,S0322,S0323,S03D0,S03DS,S0428,S0494,S04FM,S04L8,S04NE,S0548,S0552,S05AC,S05AS,S05DM,S0654,S06AE,S06AF,S06AK,S06C4,S06NW,S06U3,S06UX,S06WD,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08TL"
+    "agCode": "CY01",
+    "paint": "P0A04",
+    "fabric": "FHEJA",
+    "options": "S01TF,S04MC,S07MA,S03ME,S03MG,S01MD,S0760,S0423,S04M5,S0776,S01MA,S02T4,S05AU,S05DN,S06DR,S0610,S06NW,S06U3,S06F1,S0453,S0459,S0488,S0494,S04GQ,S04HA,S04MA,S04T7,S044A,S04T8,S04UR,S0552,S05AC,S05AZ,S0402,S0420,S04HB,S04NB,S04MN"
   },
   "vehicles": [
     {
       "transmissionCode": "A",
       "hybridCode": "NOHY",
-      "iD_LEIST_KONST": "00",
-      "volt48": false,
+      "iD_LEIST_KONST": "10",
+      "volt48": true,
       "technicalData": {
         "powerTrain": {
           "fuelType": "O",
-          "systemPower": "390 (530)",
+          "systemPower": "460 (625)",
           "systemMaxTorque": "750",
           "gearBox": "8 - automatisch",
           "driveType": "AR"
@@ -39,12 +39,12 @@
         "engine": {
           "cylinders": "8",
           "technicalCapacity": "4395",
-          "nominalPower": "390 (530) / 5500 - 6000",
-          "nominalTorque": "750 / 1800 - 4600"
+          "nominalPower": "460 (625) / 6000",
+          "nominalTorque": "750 / 1800 - 5800"
         },
         "electric": {
-          "systemPower": "-",
-          "systemMaxTorque": "-"
+          "systemPower": "9 (12) / -",
+          "systemMaxTorque": "200"
         },
         "performance": {
           "acceleration": "3.9",
@@ -52,8 +52,8 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "10.8 - 10.5",
-          "emissionsWltpCombined": "245 - 239",
+          "consumptionWltpCombined": "12.9 - 12.6",
+          "emissionsWltpCombined": "293 - 284",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
           "co2EquivalentOverallBest": "-",
@@ -68,17 +68,17 @@
           "chargingMaxAC": "-"
         },
         "weightMeasurements": {
-          "length": "4851",
-          "width": "1902",
-          "height": "1346",
-          "widthMirrors": "2137 (1074 / 1063)",
-          "wheelTurn": "2822",
-          "weightNotLoaded": "2015",
-          "weightMax": "2395",
-          "permittedLoad": "455",
-          "trailerLoad": "-",
-          "trunkCapacity": "420",
-          "tankCapacity": "68"
+          "length": "4948",
+          "width": "2019",
+          "height": "1695",
+          "widthMirrors": "2212 (1119 / 1093)",
+          "wheelTurn": "2972",
+          "weightNotLoaded": "2445",
+          "weightMax": "3040",
+          "permittedLoad": "670",
+          "trailerLoad": "2700 / 140",
+          "trunkCapacity": "580 - 1530",
+          "tankCapacity": "83"
         }
       },
       "footnotes": {
@@ -92,8 +92,14 @@
           "f1",
           "f4"
         ],
+        "charging": [
+          "f7"
+        ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"
+        ],
+        "weightMeasurements_trailerLoad_label": [
+          "f13"
         ]
       },
       "footnotesData": {
