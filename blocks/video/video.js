@@ -139,14 +139,22 @@ function getVideoElement(
       video.pause();
     }
   });
-
+  let hovered = false;
+  let userUnmuted = false;
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
         video.setAttribute('poster', '');
         video.muted = true;
         video.play().then(() => {
+          hovered = true;
         }).catch(() => {});
+      }
+    });
+
+    video.addEventListener('volumechange', () => {
+      if (!video.muted && hovered) {
+        userUnmuted = true;
       }
     });
 
@@ -158,6 +166,10 @@ function getVideoElement(
           video.setAttribute('poster', posters.mobile);
         }
         video.pause();
+        hovered = false;
+        if (!userUnmuted) {
+          video.muted = true;
+        }
       }
     });
   }
