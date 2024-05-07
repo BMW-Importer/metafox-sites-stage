@@ -298,19 +298,35 @@ export default function decorate(block) {
 
   // loop through all children blocks
   [...panels].forEach((panel, index) => {
-    const [classList] = panel.children;
-    const classesText = classList.textContent.trim();
-    const classes = (classesText ? classesText.split(',') : []).map((c) => c?.trim()).filter((c) => !!c);
+    const [, content, , vidOrImg, , button] = panel.children;
 
     // hidding origin div so that in author page its not visible
     panel.classList.add('hidden');
 
     // checking which is current block children
-    if ([...classes].includes('video-slide')) {
-      const [, , videoSlideHeadline, videoSlideCopyText, ,
-        videoSlideTitle, videoSlideDescription, videoSlideDesktopVideoRef,
-        videoSlideMobVideoRef, videoSlideDesktopPosterImgRef, videoSlideMobPosterImgRef,
-        videoSlideLoopVideo, videoSlideAutoPlayVideo, , videoSlideButton] = panel.children;
+    if (vidOrImg.children.length > 1) {
+      // headline and copy text under general tab
+      const contentElem = content.children;
+      const videoSlideHeadline = content.querySelector('h4');
+      const videoSlideCopyText = contentElem[1];
+
+      // video tab details
+      const videoContentPtags = vidOrImg.querySelectorAll('p');
+      const videoSlideTitle = videoContentPtags[0];
+      const videoSlideDescription = videoContentPtags[1];
+
+      // video tab media
+      const videoContentAtags = vidOrImg.querySelectorAll('a');
+      const videoSlideDesktopVideoRef = videoContentAtags[0];
+      const videoSlideMobVideoRef = videoContentAtags[1];
+
+      const videoContentPictureTags = vidOrImg.querySelectorAll('picture');
+      const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
+      const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
+
+      const videoBtnContentPtags = button.querySelectorAll('p');
+      const videoSlideBtnText = videoBtnContentPtags[0].textContent;
+      const videoSlideButton = videoBtnContentPtags[1];
 
       const videoDOMContainer = document.createElement('div');
       videoDOMContainer.classList.add('video-image-slide', 'media');
@@ -323,15 +339,15 @@ export default function decorate(block) {
       const videoLinkObj = {};
       const posterObj = {};
 
-      if (videoSlideDesktopVideoRef) videoLinkObj.desktop = videoSlideDesktopVideoRef.querySelector('a').href;
-      if (videoSlideMobVideoRef) videoLinkObj.mobile = videoSlideMobVideoRef.querySelector('a').href;
+      if (videoSlideDesktopVideoRef) videoLinkObj.desktop = videoSlideDesktopVideoRef.href;
+      if (videoSlideMobVideoRef) videoLinkObj.mobile = videoSlideMobVideoRef.href;
 
-      if (videoSlideDesktopPosterImgRef) posterObj.desktop = videoSlideDesktopPosterImgRef?.querySelector('img')?.getAttribute('src');
-      if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef?.querySelector('img')?.getAttribute('src');
+      if (videoSlideDesktopPosterImgRef) posterObj.desktop = videoSlideDesktopPosterImgRef;
+      if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
       // converting string to boolen
-      const isLoopVideo = videoSlideLoopVideo.textContent.trim() === 'true';
-      const isAutoPlayVideo = videoSlideAutoPlayVideo.textContent.trim() === 'true';
+      const isLoopVideo = videoContentPtags[videoContentPtags.length - 2].textContent.trim() === 'true';
+      const isAutoPlayVideo = videoContentPtags[videoContentPtags.length - 1].textContent.trim() === 'true';
       const isEnableControls = false;
       const isMuted = false;
       const onHoverPlay = false;
@@ -356,26 +372,30 @@ export default function decorate(block) {
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline.textContent.trim(), videoSlideCopyText,
-        videoSlideTitle.textContent.trim(), videoSlideDescription.textContent.trim(),
-        videoSlideButton, index]));
-    } else if ([...classes].includes('image-slide')) {
-      const [imageSlideClassname, , imageSlideHeadline, imageSlideCopyText, ,
-        imageSlideImgRef, imageSlideAltText, , imgSlideBtn] = panel.children;
+        videoSlideButton, videoSlideBtnText, index]));
+    } else {
+      // content details
+      const contentElem = content.children;
+      const imageSlideHeadline = content.querySelector('h4');
+      const imageSlideCopyText = contentElem[1];
+
+      // image
+      const imageSlideImgRef = vidOrImg.querySelector('picture');
+
+      // button
+      const videoBtnContentPtags = button.querySelectorAll('p');
+      const imgSlideBtnText = videoBtnContentPtags[0].textContent;
+      const imgSlideBtn = videoBtnContentPtags[1];
 
       const imgDOMContainer = document.createElement('div');
-      imgDOMContainer.classList.add('video-image-slide', 'media');
+      imgDOMContainer.classList.add('video-image-slide', 'media', 'image-slide');
       imgDOMContainer.classList.add(`video-image-slide-${index}`);
 
       if (index === 0) {
         imgDOMContainer.classList.add('visible');
       }
-      if (imageSlideClassname?.textContent) {
-        imgDOMContainer.classList.add(imageSlideClassname.textContent);
-      }
-
       // append picture to imgDomContainer div
-      generateImgSlidePicture([imgDOMContainer,
-        imageSlideImgRef, imageSlideAltText.textContent.trim()]);
+      generateImgSlidePicture([imgDOMContainer, imageSlideImgRef]);
 
       // call function for generating image slide UI
       videoImageContainer.append(imgDOMContainer);
@@ -383,7 +403,7 @@ export default function decorate(block) {
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline.textContent.trim(), imageSlideCopyText,
-        imgSlideBtn, index]));
+        imgSlideBtn, imgSlideBtnText, index]));
     }
     // panel.textContent = '';
   });
