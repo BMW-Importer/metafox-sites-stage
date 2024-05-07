@@ -349,7 +349,7 @@ export default function decorate(block) {
       const isLoopVideo = videoContentPtags[videoContentPtags.length - 2].textContent.trim() === 'true';
       const isAutoPlayVideo = videoContentPtags[videoContentPtags.length - 1].textContent.trim() === 'true';
       const isEnableControls = false;
-      const isMuted = false;
+      const isMuted = true;
       const onHoverPlay = false;
       // generating video
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()

@@ -1437,18 +1437,18 @@
       },
       {
         "component": "text-input",
-        "name": "cta_videoSlideCtaLinkText",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link. ",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
         "name": "cta_videoSlideCtaLink",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to.",
         "valueType": "string"
       },
+      {
+        "component": "text-input",
+        "name": "cta_videoSlideCtaLinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "valueType": "string"
+      },     
       {
         "component": "text",
         "label": "Button Styling",
