@@ -24,12 +24,15 @@
   aspect-ratio: 16 / 9;
 }
 
-.video>div {
+.video-js {
   display: flex;
   justify-content: center;
+  width: 100vw;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.video video {
+.video-js video {
   background-color: var(--light-text-color);
   cursor: pointer;
   height: 100%;
@@ -89,18 +92,20 @@
   left: 0.438rem;
 }
 
-.video-js {
-  width: 100vw;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
 .video-js:hover {
   cursor: pointer;
 }
 
 .video-wrapper .video-js .vjs-control-bar {
   background-color: unset;
+}
+
+.video-js.vjs-playing .vjs-poster {
+  opacity: 0;
+}
+
+.video-js.vjs-paused .vjs-poster {
+  opacity: 1;
 }
 
 .video-js .vjs-control-bar::before {
