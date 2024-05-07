@@ -112,6 +112,16 @@
   opacity: 1;
 }
 
+.video-js .vjs-poster img {
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  left: 0;
+  position: absolute;
+  transition: opacity 0s, .5s;
+  width: 100%;
+}
+
 .video-js .vjs-control-bar::before {
   background: linear-gradient(0deg, #000, transparent);
   bottom: 0;
