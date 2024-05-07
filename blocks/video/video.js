@@ -1,22 +1,63 @@
+export function changeAllVidSrcOnResize() {
+  window.addEventListener('resize', () => {
+    const listOfVideos = document.querySelectorAll('video');
+    listOfVideos.forEach((video) => {
+      const sourceEl = video.querySelector('source');
+      const posterDiv = video.parentElement.querySelector('.vjs-poster picture img');
+
+      const desktopVidPath = sourceEl.getAttribute('data-desktop-vid');
+      const mobileVidPath = sourceEl.getAttribute('data-mobile-vid');
+
+      const desktopPosterPath = video.getAttribute('data-desktop-poster');
+      const mobilePosterPath = video.getAttribute('data-mobile-poster');
+
+      if (window.innerWidth >= 768) {
+        video.src = desktopVidPath;
+        sourceEl.src = desktopVidPath;
+        video.poster = desktopPosterPath;
+        posterDiv.src = desktopPosterPath;
+      } else {
+        video.src = mobileVidPath;
+        sourceEl.src = mobileVidPath;
+        video.poster = mobilePosterPath;
+        posterDiv.src = mobilePosterPath;
+      }
+    });
+  });
+}
 function embedYoutube(url, autoplay) {
-  const usp = new URLSearchParams(url.search);
+  const uspDesktop = new URLSearchParams(url.source.desktop.search);
+  const uspMobile = new URLSearchParams(url.source.mobile.search);
   const suffix = autoplay ? '&muted=1&autoplay=1' : '';
-  let vid = usp.get('v') ? encodeURIComponent(usp.get('v')) : '';
+  let vidDesktop = uspDesktop.get('v') ? encodeURIComponent(uspDesktop.get('v')) : '';
+  let vidMobile = uspMobile.get('v') ? encodeURIComponent(uspMobile.get('v')) : '';
+
   const embed = url.pathname;
-  if (url.origin.includes('youtu.be')) {
-    [, vid] = url.pathname.split('/');
+  if (url.source.desktop.origin.includes('youtu.be')) {
+    [, vidDesktop] = url.source.desktop.pathname.split('/');
+  }
+  if (url.source.mobile.origin.includes('youtu.be')) {
+    [, vidMobile] = url.source.mobile.pathname.split('/');
+  }
+  if (window.innerWidth > 768) {
+    return `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+    <iframe src="https://www.youtube.com${vidDesktop ? `/embed/${vidDesktop}?rel=0&v=${vidDesktop}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" allowfullscreen="" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
+  </div>`;
   }
   return `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-      <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"
-      allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" allowfullscreen="" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
-    </div>`;
+    <iframe src="https://www.youtube.com${vidMobile ? `/embed/${vidMobile}?rel=0&v=${vidMobile}${suffix}` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" allowfullscreen="" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
+  </div>`;
 }
 
 function embedVimeo(url, autoplay) {
-  const [, video] = url.pathname.split('/');
+  const [, videoDesktop] = url.source.desktop.pathname.split('/');
+  const [, videoMobile] = url.source.mobile.pathname.split('/');
+
   const suffix = autoplay ? '?muted=1&autoplay=1' : '';
   return `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-      <iframe src="https://player.vimeo.com/video/${video}${suffix}"
+      <iframe src="https://player.vimeo.com/video/${videoDesktop || videoMobile}${suffix}"
       style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;"
       frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen  
       title="Content from Vimeo" loading="lazy"></iframe>
@@ -24,13 +65,15 @@ function embedVimeo(url, autoplay) {
 }
 
 function getVideoElement(
+  videoTitle,
+  videoDescp,
   source,
   videoFormat,
   autoplay,
   enableLoop,
   enableControls,
   muted,
-  poster,
+  posters,
   onHoverPlay,
 ) {
   const video = document.createElement('video');
@@ -58,15 +101,41 @@ function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('poster', poster);
+  video.setAttribute('title', videoTitle.textContent);
+  video.setAttribute('data-description', videoDescp.textContent);
+
   const sourceEl = document.createElement('source');
-  sourceEl.setAttribute('src', source);
-  if (videoFormat === '.mp4') {
-    sourceEl.setAttribute('type', `video/${source.split('.').pop()}`);
-  } else if (videoFormat === '.m3u8') {
-    sourceEl.setAttribute('type', 'application/x-mpegURL');
+
+  const mobileWidth = window.innerWidth <= 768;
+  if (source.desktop && !mobileWidth) {
+    sourceEl.setAttribute('src', source.desktop);
+    video.setAttribute('poster', posters.desktop);
+  } else {
+    sourceEl.setAttribute('src', source.mobile);
+    video.setAttribute('poster', posters.mobile);
   }
-  video.append(sourceEl);
+
+  video.setAttribute('data-desktop-poster', posters.desktop);
+  video.setAttribute('data-mobile-poster', posters.mobile);
+
+  sourceEl.setAttribute('data-desktop-vid', source.desktop);
+  sourceEl.setAttribute('data-mobile-vid', source.mobile);
+
+  if (source.desktop && !mobileWidth) {
+    if (videoFormat === '.mp4') {
+      sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
+    } else if (videoFormat === '.m3u8') {
+      sourceEl.setAttribute('type', 'application/x-mpegURL');
+    }
+    video.append(sourceEl);
+  } else {
+    if (videoFormat === '.mp4') {
+      sourceEl.setAttribute('type', `video/${source.mobile.split('.').pop()}`);
+    } else if (videoFormat === '.m3u8') {
+      sourceEl.setAttribute('type', 'application/x-mpegURL');
+    }
+    video.append(sourceEl);
+  }
 
   video.addEventListener('click', () => {
     if (video.paused) {
@@ -123,30 +192,37 @@ function isAbsoluteUrl(url) {
 
 export function loadVideoEmbed(
   block,
-  link,
+  videoTitle,
+  videoDescp,
+  linkObject,
   autoplay,
   loop,
   enableControls,
   muted,
+  posters,
   onHoverPlay,
   placeholder,
 ) {
   if (block.dataset.embedIsLoaded) {
     return;
   }
+
   const baseUrl = window.location.origin;
   let url;
-
-  if (isAbsoluteUrl(link)) {
-    url = new URL(link);
+  if (isAbsoluteUrl(linkObject)) {
+    url = new URL(linkObject);
   } else {
-    url = new URL(link, baseUrl);
+    url = new URL(linkObject, baseUrl);
   }
 
-  const isYoutube = link.includes('youtube') || link.includes('youtu.be');
-  const isVimeo = link.includes('vimeo');
-  const isMp4 = link.includes('.mp4');
-  const isM3U8 = link.includes('.m3u8');
+  const isYoutube = linkObject.desktop ? linkObject.desktop.includes('youtube') || linkObject.desktop.includes('youtu.be')
+    : linkObject.mobile.includes('youtube') || linkObject.mobile.includes('youtu.be');
+  const isVimeo = linkObject.desktop ? linkObject.desktop.includes('vimeo')
+    : linkObject.mobile.includes('vimeo');
+  const isMp4 = linkObject.desktop ? linkObject.desktop.includes('.mp4')
+    : linkObject.mobile.includes('.mp4');
+  const isM3U8 = linkObject.desktop ? linkObject.desktop.includes('.m3u8')
+    : linkObject.mobile.includes('.m3u8');
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
   if (isYoutube) {
@@ -156,11 +232,11 @@ export function loadVideoEmbed(
   } else if (isMp4) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.mp4', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay, placeholder));
   } else if (isM3U8) {
     block.textContent = '';
     block.append(videoScriptDOM);
-    block.append(getVideoElement(link, '.m3u8', autoplay, loop, enableControls, muted, placeholder, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay, placeholder));
   }
 
   block.dataset.embedIsLoaded = true;
@@ -168,26 +244,72 @@ export function loadVideoEmbed(
 
 export default async function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  const [videoPoster, , videoControls] = props;
-  const placeholder = block.querySelector('picture');
+  const [
+    videoTitle,
+    videoDescp,
+    videoDesktopPath,
+    videoMobPath,
+    videoDesktopPoster,
+    videoMobPoster,
+    videoLoop,
+    videoAutoPlay,
+    videoHideControls,
+    videoMute,
+    playonHover] = props;
 
-  const link = block.querySelector('a').href;
+  const placeholder = block.querySelector('picture');
+  const desktopVideolink = videoDesktopPath?.textContent;
+  const mobileVideolink = videoMobPath?.textContent;
+
+  const linkObject = {
+    desktop: desktopVideolink,
+    mobile: mobileVideolink,
+  };
+
+  const posters = {
+    desktop: videoDesktopPoster?.querySelector('img')?.getAttribute('src'),
+    mobile: videoMobPoster?.querySelector('img')?.getAttribute('src'),
+  };
+
   block.textContent = '';
-  const videoControlProperties = videoControls ? videoControls.innerText.split(',') : [];
-  const autoplay = !!videoControlProperties.includes('autoplay');
-  const loop = !!videoControlProperties.includes('loop');
-  const enableControls = !!videoControlProperties.includes('enableVideoControls');
-  const muted = !!videoControlProperties.includes('muted');
-  const onHoverPlay = !!videoControlProperties.includes('playOnHover');
+  const autoplay = videoAutoPlay.textContent.trim() === 'true';
+  const loop = videoLoop.textContent.trim() === 'true';
+  const enableControls = videoHideControls.textContent.trim() === 'true';
+  const muted = videoMute.textContent.trim() === 'true';
+  const onHoverPlay = playonHover.textContent.trim() === 'true';
 
   if (placeholder) {
-    loadVideoEmbed(block, link, autoplay, loop, enableControls, muted, onHoverPlay, videoPoster.querySelector('img').getAttribute('src'));
+    loadVideoEmbed(
+      block,
+      videoTitle,
+      videoDescp,
+      linkObject,
+      autoplay,
+      loop,
+      enableControls,
+      muted,
+      posters,
+      onHoverPlay,
+      placeholder,
+    );
   } else {
     block.classList.add('lazy-loading');
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
-        loadVideoEmbed(block, link, autoplay, videoControls);
+        loadVideoEmbed(
+          block,
+          videoTitle,
+          videoDescp,
+          linkObject,
+          autoplay,
+          loop,
+          enableControls,
+          muted,
+          posters,
+          onHoverPlay,
+          placeholder,
+        );
         block.classList.remove('lazy-loading');
       }
     });
