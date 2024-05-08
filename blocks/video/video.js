@@ -169,6 +169,10 @@ function getVideoElement(
         video.pause();
       }
     });
+  } else {
+    video.removeAttribute('playOnHover');
+    video.removeEventListener('mouseenter', () => {});
+    video.removeEventListener('mouseleave', () => {});
   }
 
   video.addEventListener('touchstart', (event) => {
@@ -301,7 +305,7 @@ export default async function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const enableControls = videoHideControls?.textContent.trim() === 'true';
   const muted = videoMute?.textContent.trim() === 'true';
-  const onHoverPlay = playonHover?.textContent;
+  const onHoverPlay = playonHover?.textContent.trim() === 'true';
 
   if (placeholder) {
     loadVideoEmbed(
