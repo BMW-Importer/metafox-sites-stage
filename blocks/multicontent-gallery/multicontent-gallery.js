@@ -224,6 +224,15 @@ function handleSwipe(galleryContainer) {
     indexToSwipe = Math.floor(containerSwipedDistance / cardWidth);
   }
 
+  // if show more is enabled then click it again to reduce show more details
+  children.forEach((detailElem) => {
+    const detailCard = detailElem.querySelector('.vid-img-slide-showmore-btn');
+    if (detailCard?.classList.contains('showless')) {
+      const showMoreBtn = detailCard.querySelector('button');
+      if (showMoreBtn) showMoreBtn.click();
+    }
+  });
+
   if (indexToSwipe === 0) {
     galleryContainer.scrollTo({
       left: 0,
@@ -251,6 +260,7 @@ function handleSwipe(galleryContainer) {
 
 function attachSlideEvents(galleryContainer) {
   let isDesktopDragging = false;
+  let isMobileSwipe = false;
   let desktopScrollLeft = 0;
 
   // below events for swipe left and right of mob, tab and desktop
@@ -260,6 +270,7 @@ function attachSlideEvents(galleryContainer) {
     || e.target.classList.contains('vid-img-slide-cover-title')) {
       return;
     }
+    isMobileSwipe = true;
     startTouchX = e.touches[0].clientX;
     const vidImgContainer = galleryContainer.previousElementSibling;
     vidImgContainer.classList.add('overlay-effect');
@@ -284,8 +295,10 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('touchend', (e) => {
+    if (!isMobileSwipe) return;
     endTouchX = e.changedTouches[0].clientX;
     handleSwipe(galleryContainer);
+    isMobileSwipe = false;
     const vidImgContainer = galleryContainer.previousElementSibling;
     vidImgContainer.classList.remove('overlay-effect');
   });
