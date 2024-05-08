@@ -250,9 +250,7 @@ export function loadVideoEmbed(
   const isMobile = window.innerWidth < 768;
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
-
   const headElement = document.querySelector('head');
-  headElement.append();
 
   if (isYoutube) {
     const desktopEmbed = embedYoutube(desktopUrl, autoplay);
