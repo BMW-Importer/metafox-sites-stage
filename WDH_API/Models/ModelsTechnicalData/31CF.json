@@ -1,0 +1,84 @@
+{
+  "code": "31CF",
+  "modelRangeCode": "I20",
+  "brand": "BI",
+  "name": "iX M60",
+  "shortName": "iX M60",
+  "originalCode": "31CF",
+  "cosyBrand": "WBBI",
+  "marketingVehicleType": "M",
+  "bodyTypeCode": "GF",
+  "marketingBodyTypeCode": "SUV",
+  "effectDate": "2024-05-07",
+  "hybridCode": "BEVE",
+  "fromPrice": 148370,
+  "fuelType": "E",
+  "posiSpec": {
+    "cosyBrand": "WBBI",
+    "agCode": "31CF",
+    "paint": "P0C3N",
+    "fabric": "FSCHA",
+    "options": "S01EV, S042A, S0248, S02VH, S02VR, S0319, S0322, S0323, S0330, S03L7, S0407, S0453, S0494, S04AA, S04FM, S04HC, S04NB, S04NR, S04V1, S05AU, S05AZ, S05DW, S0654, S06C4, S06F1, S06NX, S06U3, S06U7"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "A",
+      "hybridCode": "BEVE",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "E",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "-",
+          "systemMaxTorque": "-"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "-",
+          "emissionsWltpCombined": "0",
+          "electricConsumption": "24.7 - 21.8",
+          "electricRangeWltpCombined": "500 - 567",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "-",
+          "chargeACDC": "-",
+          "charge_AC_0_100": "-",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "-"
+        },
+        "weightMeasurements": {
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "emissionsConsumptionWltp": [
+          "f4"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ]
+      },
+      "footnotesData": {}
+    }
+  ]
+}

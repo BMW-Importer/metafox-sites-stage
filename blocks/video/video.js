@@ -140,11 +140,22 @@ function getVideoElement(
     }
   });
 
+  let userUnmuted = false;
+
+  video.addEventListener('volumechange', () => {
+    if (!video.muted && video.volume > 0 && !userUnmuted) {
+      userUnmuted = true;
+    }
+  });
+
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
         video.setAttribute('poster', '');
-        video.play();
+        if (!userUnmuted) {
+          video.muted = true;
+        }
+        video.play().then(() => {}).catch(() => {});
       }
     });
 
