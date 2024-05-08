@@ -674,7 +674,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout > .menu-link-wrapper {
 header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
  display: flex;
  border-top: 1px solid var(--light-bbb);
- padding: 1rem 5.5rem;
+ padding: 0 5.5rem;
  position: sticky;
   top: 0;
   height: auto;
@@ -713,6 +713,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
   display: flex;
   cursor: pointer;
   letter-spacing: 0;
+  margin-bottom: 1.5rem;
 }
 
  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list-title {
@@ -784,6 +785,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {   
   width: 100%;
   position: relative;
+  margin: 2rem 0 1.5rem;
 }
 
 header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list {
