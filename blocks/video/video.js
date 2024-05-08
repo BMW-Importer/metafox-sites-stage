@@ -170,7 +170,6 @@ function getVideoElement(
       }
     });
   } else {
-    video.removeAttribute('playOnHover');
     video.removeEventListener('mouseenter', () => {});
     video.removeEventListener('mouseleave', () => {});
   }
