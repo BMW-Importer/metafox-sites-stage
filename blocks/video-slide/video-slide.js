@@ -28,7 +28,7 @@ export default function generateVideoDetailMarkUp(props) {
 
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText?.outerHTML || '';
+  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText?.innerHTML || '';
 
   const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
