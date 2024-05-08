@@ -1,10 +1,10 @@
 /* header and nav layout */
 
 .content-page {
-  overflow-y: hidden;
   width: 100%;
   position: fixed;
   top: 0;
+  overflow-y: scroll;
 }
 
 header {
