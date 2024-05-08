@@ -4,8 +4,8 @@ import { generateImgSlidePicture, generateImgSlideDetailMarkUp } from '../image-
 
 let startTouchX = 0;
 let endTouchX = 0;
-const showMoreText = 'Prikaži više';
-const showLessText = 'Prikaži manje';
+const showMoreText = 'Prikaži manje';
+const showLessText = 'Prikaži više';
 
 function enableShowMoreButton() {
   const detailContainer = document.querySelectorAll('.vid-img-slide-expand-cover');
@@ -188,11 +188,11 @@ function attachShowMoreEvents(block) {
       const parentDiv = e.target.closest('.vid-img-slide-expand-cover');
       if (e.target.closest('.vid-img-slide-showmore-btn').classList.contains('showless')) {
         e.target.closest('.vid-img-slide-showmore-btn').classList.remove('showless');
-        e.target.text = showMoreText;
+        e.target.textContent = showMoreText;
         e.target.closest('.vid-img-slide-expand-cover').style.cssText = 'unset';
       } else {
         e.target.closest('.vid-img-slide-showmore-btn').classList.add('showless');
-        e.target.text = showLessText;
+        e.target.textContent = showLessText;
         const showMoreBtnElm = parentDiv.querySelector('.vid-img-slide-showmore-btn');
         let showMoreBtnHeight = 0;
 
@@ -224,6 +224,15 @@ function handleSwipe(galleryContainer) {
     indexToSwipe = Math.floor(containerSwipedDistance / cardWidth);
   }
 
+  // if show more is enabled then click it again to reduce show more details
+  children.forEach((detailElem) => {
+    const detailCard = detailElem.querySelector('.vid-img-slide-showmore-btn');
+    if (detailCard?.classList.contains('showless')) {
+      const showMoreBtn = detailCard.querySelector('button');
+      if (showMoreBtn) showMoreBtn.click();
+    }
+  });
+
   if (indexToSwipe === 0) {
     galleryContainer.scrollTo({
       left: 0,
@@ -251,6 +260,7 @@ function handleSwipe(galleryContainer) {
 
 function attachSlideEvents(galleryContainer) {
   let isDesktopDragging = false;
+  let isMobileSwipe = false;
   let desktopScrollLeft = 0;
 
   // below events for swipe left and right of mob, tab and desktop
@@ -260,6 +270,7 @@ function attachSlideEvents(galleryContainer) {
     || e.target.classList.contains('vid-img-slide-cover-title')) {
       return;
     }
+    isMobileSwipe = true;
     startTouchX = e.touches[0].clientX;
     const vidImgContainer = galleryContainer.previousElementSibling;
     vidImgContainer.classList.add('overlay-effect');
@@ -284,8 +295,10 @@ function attachSlideEvents(galleryContainer) {
   });
 
   galleryContainer.addEventListener('touchend', (e) => {
+    if (!isMobileSwipe) return;
     endTouchX = e.changedTouches[0].clientX;
     handleSwipe(galleryContainer);
+    isMobileSwipe = false;
     const vidImgContainer = galleryContainer.previousElementSibling;
     vidImgContainer.classList.remove('overlay-effect');
   });
