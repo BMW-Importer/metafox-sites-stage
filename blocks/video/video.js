@@ -1,3 +1,4 @@
+let isScriptAdded = false;
 export function changeAllVidSrcOnResize() {
   window.addEventListener('resize', () => {
     const listOfVideos = document.querySelectorAll('video');
@@ -249,6 +250,8 @@ export function loadVideoEmbed(
   const isMobile = window.innerWidth < 768;
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
+  const headElement = document.querySelector('head');
+
   if (isYoutube) {
     const desktopEmbed = embedYoutube(desktopUrl, autoplay);
     const mobileEmbed = embedYoutube(mobileUrl, autoplay);
@@ -259,11 +262,17 @@ export function loadVideoEmbed(
     block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
   } else if (isMp4) {
     block.textContent = '';
-    block.append(videoScriptDOM);
+
+    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    isScriptAdded = true;
+
     block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
-    block.append(videoScriptDOM);
+
+    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    isScriptAdded = true;
+
     block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   }
 
