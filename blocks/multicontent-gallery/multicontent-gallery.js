@@ -4,8 +4,8 @@ import { generateImgSlidePicture, generateImgSlideDetailMarkUp } from '../image-
 
 let startTouchX = 0;
 let endTouchX = 0;
-const showMoreText = 'Prikaži više';
-const showLessText = 'Prikaži manje';
+const showMoreText = 'Prikaži manje';
+const showLessText = 'Prikaži više';
 
 function enableShowMoreButton() {
   const detailContainer = document.querySelectorAll('.vid-img-slide-expand-cover');
@@ -188,11 +188,11 @@ function attachShowMoreEvents(block) {
       const parentDiv = e.target.closest('.vid-img-slide-expand-cover');
       if (e.target.closest('.vid-img-slide-showmore-btn').classList.contains('showless')) {
         e.target.closest('.vid-img-slide-showmore-btn').classList.remove('showless');
-        e.target.text = showMoreText;
+        e.target.textContent = showMoreText;
         e.target.closest('.vid-img-slide-expand-cover').style.cssText = 'unset';
       } else {
         e.target.closest('.vid-img-slide-showmore-btn').classList.add('showless');
-        e.target.text = showLessText;
+        e.target.textContent = showLessText;
         const showMoreBtnElm = parentDiv.querySelector('.vid-img-slide-showmore-btn');
         let showMoreBtnHeight = 0;
 
