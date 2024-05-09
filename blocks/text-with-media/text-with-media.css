@@ -1,7 +1,51 @@
-main .text-video-container > div {
+main .text-with-media > div {
   max-width: unset;
 }
   
-main .text-video-container {
+main .text-with-media {
   padding: 30px;
+}
+
+.text-with-media {
+  margin-top: 4rem;
+  background-color: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.bg {
+  height: 350px;
+  width: auto;
+}
+
+.text-with-media p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.general div {
+  max-width: 600px;
+  color: grey;
+}
+
+.text-with-media .general {
+  padding: 0px;
+  font-size: 2em;
+  font-weight: 300;
+  width: 40%;
+  width: fit-content;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.text-with-media .media img{
+  width: 60%;
 }
