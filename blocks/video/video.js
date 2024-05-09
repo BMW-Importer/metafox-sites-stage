@@ -190,7 +190,10 @@ function getVideoElement(
       if (video) {
         if (entry.isIntersecting) {
           if (video.paused) {
-            video.play();
+            if (!userUnmuted) {
+              video.muted = true;
+            }
+            video.play().then(() => {}).catch(() => {});
           }
         } else if (!video.paused) {
           video.pause();
