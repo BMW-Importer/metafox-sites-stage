@@ -1600,11 +1600,13 @@
         "label": "Copy Text"
       },
       {
-        "component": "boolean",
-        "label": "Collapse Accordion Item",
-        "name": "collapseAccordion",
+        "component": "collapse",
+        "label": "On/OfF",
+        "name": "collapseAccordionIcon",
         "valueType": "boolean",
-        "value": false
+        "value": false,
+        "headline": "collapseAccordionIcon",
+        "description": "If enabled, the Accordion Item will be collapsed by default"
       }
     ]
   }
