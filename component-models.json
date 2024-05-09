@@ -1600,7 +1600,7 @@
         "label": "Copy Text"
       },
       {
-        "component": "collapse",
+        "component": "boolean",
         "label": "On/OfF",
         "name": "collapseAccordionIcon",
         "valueType": "boolean",
