@@ -183,7 +183,7 @@ function getVideoElement(
       video.pause();
     }
   });
-
+  video.dataset.autoplay = autoplay ? 'true' : 'false';
   if (window.IntersectionObserver) {
     let isPaused = false;
     const observer = new IntersectionObserver((entries) => {
