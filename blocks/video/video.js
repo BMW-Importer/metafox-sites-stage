@@ -195,8 +195,6 @@ function getVideoElement(
     }, { threshold: 0.1 });
     observer.observe(video);
   } else document.querySelector('#warning').style.display = 'block';
-
-  video.dataset.autoplay = autoplay ? 'true' : 'false';
   return video;
 }
 
