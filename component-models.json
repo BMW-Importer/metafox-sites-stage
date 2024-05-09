@@ -845,6 +845,18 @@
     ]
   },
   {
+    "id": "modelcard",
+    "fields": [
+      {
+        "component": "bmw-text",
+        "valueType": "string",
+        "name": "model",
+        "label": "Modelii",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "footer-section",
     "fields": [
       {
