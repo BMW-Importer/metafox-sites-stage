@@ -1580,5 +1580,32 @@
         ]
       }
     ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "accordionItemLabel",
+        "label": "Accordion Item Label",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "CopyText",
+        "value": "",
+        "label": "Copy Text"
+      },
+      {
+        "component": "boolean",
+        "label": "Collapse Accordion Item",
+        "name": "collapseAccordion",
+        "valueType": "boolean",
+        "value": false
+      }
+    ]
   }
 ]
