@@ -192,6 +192,7 @@ export default async function decorate(block) {
   const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout-link');
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
+      event.stopPropagation();
       event.preventDefault();
       const parentMenu = event.target.parentNode.parentElement.parentElement;
       const mainParentMenu = event.target.parentNode.parentElement.parentElement.parentElement;
@@ -217,6 +218,18 @@ export default async function decorate(block) {
       }
       return true;
     });
+  });
+
+  document.body.addEventListener('click', (event) => {
+    const { target } = event;
+    if (!target.closest('.header-wrapper') && !target.closest('.menu-flyout-wrapper.showfly')) {
+      document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
+        item.classList.remove('showfly');
+      });
+      if (document.querySelector('.appear').classList.contains('content-page')) {
+        document.querySelector('.appear').classList.remove('content-page');
+      }
+    }
   });
 
   const linkListSelector = document.querySelectorAll('.menu-flyout-wrapper .link-list-title');

@@ -9,9 +9,10 @@
   "bodyTypeCode": "LI",
   "marketingBodyTypeCode": "LI",
   "bodyTypeDescription": "LIM",
-  "effectDate": "2024-05-06",
+  "effectDate": "2024-05-08",
   "hybridCode": "NOHY",
   "fromPrice": 57972,
+  "seats": 5,
   "fuelType": "O",
   "posiSpec": {
     "cosyBrand": "WBBM",
@@ -24,23 +25,30 @@
     {
       "transmissionCode": "S02TE",
       "hybridCode": "NOHY",
+      "iD_LEIST_KONST": "10",
       "volt48": true,
       "technicalData": {
         "powerTrain": {
           "fuelType": "O",
-          "systemPower": "-",
-          "systemMaxTorque": "-",
-          "gearBox": "-",
+          "systemPower": "140 (190)",
+          "systemMaxTorque": "310",
+          "gearBox": "8 - automatisch",
           "driveType": "HR"
         },
         "engine": {
-          "cylinders": "-",
-          "technicalCapacity": "-",
-          "nominalPower": "-",
-          "nominalTorque": "-"
+          "cylinders": "4",
+          "technicalCapacity": "1998",
+          "nominalPower": "140 (190) / 4400 - 6500",
+          "nominalTorque": "310 / 1500 - 4000"
         },
         "electric": {
-          "systemPower": "-"
+          "systemPower": "8 (11) / -",
+          "systemMaxTorque": "25"
+        },
+        "performance": {
+          "acceleration": "8.1",
+          "topSpeed": "230",
+          "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
           "consumptionWltpCombined": "6.4 - 5.8",
@@ -51,7 +59,7 @@
           "co2EquivalentOverall": "-"
         },
         "charging": {
-          "batteryCapacity": "-",
+          "batteryCapacity": "0.9",
           "chargeACDC": "-",
           "charge_AC_0_100": "-",
           "charge_DC_10_80": "-",
@@ -59,8 +67,17 @@
           "chargingMaxAC": "-"
         },
         "weightMeasurements": {
-          "trunkCapacity": "-",
-          "tankCapacity": "-"
+          "length": "5060",
+          "width": "1900",
+          "height": "1515",
+          "widthMirrors": "2156 (1081 / 1075)",
+          "wheelTurn": "2995",
+          "weightNotLoaded": "1800",
+          "weightMax": "2335",
+          "permittedLoad": "610",
+          "trailerLoad": "2000 / 100",
+          "trunkCapacity": "520",
+          "tankCapacity": "60"
         }
       },
       "footnotes": {
@@ -76,9 +93,18 @@
         ],
         "charging": [
           "f7"
+        ],
+        "weightMeasurements_weightNotLoaded_label": [
+          "f8"
+        ],
+        "weightMeasurements_trailerLoad_label": [
+          "f13"
         ]
       },
-      "footnotesData": {}
+      "footnotesData": {
+        "overboostMax": "-",
+        "overboostKW": "-"
+      }
     }
   ]
 }

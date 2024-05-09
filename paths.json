@@ -2,7 +2,7 @@
   "mappings": [
     "/content/metafox/:/",
     "/content/metafox/index/price-list:/auto-price-list.json",
-    "/content/metafox/index/placeholders:/placeholders.json",
+    "/content/metafox/placeholders:/placeholders.json",
     "/content/metafox/metadata:/metadata.json",
     "/content/dam/metafox/:/assets/"
 ],

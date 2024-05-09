@@ -9,7 +9,7 @@
   "marketingVehicleType": "M",
   "bodyTypeCode": "GF",
   "marketingBodyTypeCode": "SUV",
-  "effectDate": "2024-05-07",
+  "effectDate": "2024-05-08",
   "hybridCode": "BEVE",
   "fromPrice": 82246,
   "seats": 5,
@@ -61,7 +61,7 @@
         "charging": {
           "batteryCapacity": "73.9",
           "chargeACDC": "11 (-) / 150",
-          "charge_AC_0_100": "7.5 (-)",
+          "charge_AC_0_100": "7.5",
           "charge_DC_10_80": "31",
           "additionalRangeDC": "133 - 147",
           "chargingMaxAC": "11"
