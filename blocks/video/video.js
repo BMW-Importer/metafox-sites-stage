@@ -1,3 +1,4 @@
+let isScriptAdded = false;
 export function changeAllVidSrcOnResize() {
   window.addEventListener('resize', () => {
     const listOfVideos = document.querySelectorAll('video');
@@ -11,21 +12,20 @@ export function changeAllVidSrcOnResize() {
       const desktopPosterPath = video.getAttribute('data-desktop-poster');
       const mobilePosterPath = video.getAttribute('data-mobile-poster');
 
-      if (window.innerWidth >= 768) {
-        video.src = desktopVidPath;
-        sourceEl.src = desktopVidPath;
-        video.poster = desktopPosterPath;
-        posterDiv.src = desktopPosterPath;
+      if (window.innerWidth > 768) {
+        if (video.src !== desktopVidPath) {
+          video.src = desktopVidPath;
+          sourceEl.src = desktopVidPath;
+          video.poster = desktopPosterPath;
+          posterDiv.src = desktopPosterPath;
+        }
       } else if (mobileVidPath) {
-        video.src = mobileVidPath;
-        sourceEl.src = mobileVidPath;
-        video.poster = mobilePosterPath;
-        posterDiv.src = mobilePosterPath;
-      } else {
-        video.src = desktopVidPath;
-        sourceEl.src = desktopVidPath;
-        video.poster = desktopPosterPath;
-        posterDiv.src = desktopPosterPath;
+        if (video.src !== mobileVidPath) {
+          video.src = mobileVidPath;
+          sourceEl.src = mobileVidPath;
+          video.poster = mobilePosterPath;
+          posterDiv.src = mobilePosterPath;
+        }
       }
     });
   });
@@ -141,11 +141,22 @@ function getVideoElement(
     }
   });
 
+  let userUnmuted = false;
+
+  video.addEventListener('volumechange', () => {
+    if (!video.muted && video.volume > 0 && !userUnmuted) {
+      userUnmuted = true;
+    }
+  });
+
   if (onHoverPlay) {
     video.addEventListener('mouseenter', () => {
       if (video.paused) {
         video.setAttribute('poster', '');
-        video.play();
+        if (!userUnmuted) {
+          video.muted = true;
+        }
+        video.play().then(() => {}).catch(() => {});
       }
     });
 
@@ -159,9 +170,13 @@ function getVideoElement(
         video.pause();
       }
     });
+  } else {
+    video.removeEventListener('mouseenter', () => {});
+    video.removeEventListener('mouseleave', () => {});
   }
 
-  video.addEventListener('touchstart', () => {
+  video.addEventListener('touchstart', (event) => {
+    event.preventDefault();
     if (video.paused) {
       video.play();
     } else {
@@ -235,6 +250,8 @@ export function loadVideoEmbed(
   const isMobile = window.innerWidth < 768;
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
+  const headElement = document.querySelector('head');
+
   if (isYoutube) {
     const desktopEmbed = embedYoutube(desktopUrl, autoplay);
     const mobileEmbed = embedYoutube(mobileUrl, autoplay);
@@ -245,11 +262,17 @@ export function loadVideoEmbed(
     block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
   } else if (isMp4) {
     block.textContent = '';
-    block.append(videoScriptDOM);
+
+    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    isScriptAdded = true;
+
     block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
-    block.append(videoScriptDOM);
+
+    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    isScriptAdded = true;
+
     block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   }
 
@@ -290,7 +313,7 @@ export default async function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const enableControls = videoHideControls?.textContent.trim() === 'true';
   const muted = videoMute?.textContent.trim() === 'true';
-  const onHoverPlay = playonHover?.textContent;
+  const onHoverPlay = playonHover?.textContent.trim() === 'true';
 
   if (placeholder) {
     loadVideoEmbed(

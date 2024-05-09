@@ -19,7 +19,11 @@
     ],
     "hybridCode": "NOHY",
     "fromPrice": 57972,
-    "acceleration": "-",
+    "acceleration": "8.1",
+    "trunkCapacity": 520,
+    "seats": 5,
+    "horsePower": 190,
+    "topSpeed": "230",
     "bodyTypeCode": "LI",
     "marketingBodyTypeCode": "LI",
     "bodyTypeDescription": "LIM",
@@ -32,9 +36,9 @@
     },
     "powerTrain": {
       "fuelType": "O",
-      "systemPower": "-",
-      "systemMaxTorque": "-",
-      "gearBox": "-",
+      "systemPower": "140 (190)",
+      "systemMaxTorque": "310",
+      "gearBox": "8 - automatisch",
       "driveType": "HR"
     }
   }

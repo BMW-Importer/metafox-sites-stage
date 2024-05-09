@@ -1,0 +1,112 @@
+{
+  "code": "51EJ",
+  "modelRangeCode": "G70",
+  "brand": "BM",
+  "name": "i7 xDrive60",
+  "shortName": "i7 xDrive60",
+  "originalCode": "51EJ",
+  "cosyBrand": "WBBM",
+  "bodyTypeCode": "LI",
+  "marketingBodyTypeCode": "LI",
+  "bodyTypeDescription": "LIM",
+  "effectDate": "2024-05-08",
+  "hybridCode": "BEVE",
+  "fromPrice": 159368,
+  "seats": 5,
+  "fuelType": "E",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "21EJ",
+    "paint": "P0C64",
+    "fabric": "FVDF2",
+    "options": "S02VS,S03DM,S03DN,S0407,S0453,S04A2,S04FM,S04T7,S05AU,S05DW,S06FR,S06U3"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "A",
+      "hybridCode": "BEVE",
+      "iD_LEIST_KONST": "30",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "E",
+          "systemPower": "400 (544)",
+          "systemMaxTorque": "745",
+          "gearBox": "1 - automatisch",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
+        },
+        "electric": {
+          "systemPower": "400 (544) / 135 (184)",
+          "systemMaxTorque": "745"
+        },
+        "performance": {
+          "acceleration": "4.7",
+          "topSpeed": "-",
+          "electricTopSpeed": "240"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "-",
+          "emissionsWltpCombined": "0",
+          "electricConsumption": "22.3 - 18.4",
+          "electricRangeWltpCombined": "516 - 625",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "101.7",
+          "chargeACDC": "11 (-) / 195",
+          "charge_AC_0_100": "10.75",
+          "charge_DC_10_80": "34",
+          "additionalRangeDC": "151 - 186",
+          "chargingMaxAC": "11"
+        },
+        "weightMeasurements": {
+          "length": "5391",
+          "width": "1950",
+          "height": "1544",
+          "widthMirrors": "2192 (1099 / 1093)",
+          "wheelTurn": "3215",
+          "weightNotLoaded": "2715",
+          "weightMax": "3250",
+          "permittedLoad": "610",
+          "trailerLoad": "2000 / 80",
+          "trunkCapacity": "500",
+          "tankCapacity": "-"
+        }
+      },
+      "footnotes": {
+        "emissionsConsumptionWltp": [
+          "f4"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ],
+        "weightMeasurements_weightNotLoaded_label": [
+          "f8"
+        ],
+        "weightMeasurements_trailerLoad_label": [
+          "f13"
+        ],
+        "charging_additionalRangeDC_label": [
+          "f7"
+        ]
+      },
+      "footnotesData": {
+        "overboostMax": "-",
+        "overboostKW": "-"
+      }
+    }
+  ]
+}

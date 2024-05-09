@@ -15,6 +15,6 @@ async function getModelsData(modelName) {
   return data;
 }
 
-// getModelsData();
+getModelsData(process.env.MODEL_NAME);
 
 module.exports = getModelsData;

@@ -1,0 +1,46 @@
+{
+  "model": {
+    "modelCode": "31AY",
+    "brand": "BM",
+    "description": "M3 Competition",
+    "shortName": "M3 Competition",
+    "shortRangeName": "G80",
+    "modelRangeCode": "G80",
+    "modelRanges": [
+      "G80"
+    ],
+    "seriesCode": "3",
+    "series": [
+      "3"
+    ],
+    "seriesDescription": "BMW Serije 3 Touring",
+    "seriesDescriptions": [
+      "BMW Serije 3 Touring"
+    ],
+    "hybridCode": "NOHY",
+    "fromPrice": 101364,
+    "acceleration": "3.9",
+    "trunkCapacity": 480,
+    "seats": 5,
+    "horsePower": 510,
+    "topSpeed": "250",
+    "marketingVehicleType": "M",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "31AY",
+      "paint": "P0300",
+      "fabric": "FLKSW",
+      "options": "S07M9,S0230,S02T4,S0465,S08R3,S0493,S0494,S01CB,S02TB,S0488,S06WC,S0676,S08KH,S0431,S06VB,S0544,S0548,S05DA,S0459,S04UR,S08WD,S0508,S08WM,S04NE,S08EK,S02MD,S0775,S0534,S05AV,S0888,S0760,S06U2,S0712,S02VB,S02VC,S08R9,S02VF,S08S3,S01DF,S06AF,S0851,S08TF"
+    },
+    "powerTrain": {
+      "fuelType": "O",
+      "systemPower": "375 (510)",
+      "systemMaxTorque": "650",
+      "gearBox": "8 - automatisch",
+      "driveType": "HR"
+    }
+  }
+}

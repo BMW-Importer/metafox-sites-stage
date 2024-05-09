@@ -1,0 +1,145 @@
+{
+  "code": "31CS",
+  "modelRangeCode": "G09",
+  "brand": "BM",
+  "name": "XM Label",
+  "shortName": "XM Label",
+  "originalCode": "31CS",
+  "cosyBrand": "WBBM",
+  "marketingVehicleType": "M",
+  "bodyTypeCode": "GF",
+  "marketingBodyTypeCode": "SUV",
+  "effectDate": "2024-05-07",
+  "hybridCode": "PHEV",
+  "fromPrice": 229900,
+  "seats": 5,
+  "fuelType": "X",
+  "posiSpec": {
+    "cosyBrand": "WBBM",
+    "agCode": "21CS",
+    "paint": "P0C5Y",
+    "fabric": "FVDIP",
+    "options": "S01FZ,S02PA,S02T4,S02TB,S02VB,S02VC,S02VW,S0302,S0322,S0323,S03DN,S03M3,S0420,S0423,S0428,S044A,S0453,S04FL,S04HA,S04HB,S04MA,S04T2,S04T3,S04T7,S04U9,S04UR,S04V1,S0548,S05AC,S05AU,S05AV,S05DN,S0645,S06AE,S06AF,S06AK,S06CP,S06C4,S06F1,S06NX,S06U3,S06U8,S07RS"
+  },
+  "vehicles": [
+    {
+      "transmissionCode": "S02TB",
+      "hybridCode": "PHEV",
+      "iD_LEIST_KONST": "20",
+      "volt48": false,
+      "technicalData": {
+        "powerTrain": {
+          "fuelType": "X",
+          "systemPower": "550 (748)",
+          "systemMaxTorque": "1000",
+          "gearBox": "8 - automatisch",
+          "driveType": "AR"
+        },
+        "engine": {
+          "cylinders": "8",
+          "technicalCapacity": "4395",
+          "nominalPower": "430 (585) / 5600 - 6500",
+          "nominalTorque": "750 / 1800 - 5400"
+        },
+        "electric": {
+          "systemPower": "145 (197)",
+          "systemMaxTorque": "280"
+        },
+        "performance": {
+          "acceleration": "3.8",
+          "topSpeed": "250",
+          "electricTopSpeed": "140"
+        },
+        "emissionsConsumptionWltp": {
+          "consumptionWltpCombined": "2 - 1.7",
+          "emissionsWltpCombined": "45 - 37",
+          "electricConsumption": "33.5 - 32.7",
+          "electricRangeWltpCombined": "76 - 81",
+          "co2EquivalentOverallBest": "-",
+          "co2EquivalentOverall": "-"
+        },
+        "charging": {
+          "batteryCapacity": "25.7",
+          "chargeACDC": "7.4 (-) / -",
+          "charge_AC_0_100": "4.5",
+          "charge_DC_10_80": "-",
+          "additionalRangeDC": "-",
+          "chargingMaxAC": "7.4"
+        },
+        "weightMeasurements": {
+          "length": "5110",
+          "width": "2005",
+          "height": "1755",
+          "widthMirrors": "2235 (1127 / 1108)",
+          "wheelTurn": "3105",
+          "weightNotLoaded": "2795",
+          "weightMax": "3300",
+          "permittedLoad": "580",
+          "trailerLoad": "2700 / 140",
+          "trunkCapacity": "527 - 1820",
+          "tankCapacity": "69"
+        }
+      },
+      "footnotes": {
+        "powerTrain": [
+          "f1",
+          "f2"
+        ],
+        "powerTrain_systemPower_value": [
+          "f11"
+        ],
+        "powerTrain_systemMaxTorque_value": [
+          "f11"
+        ],
+        "engine": [
+          "f1"
+        ],
+        "electric": [
+          "f2",
+          "f3"
+        ],
+        "emissionsConsumptionWltp": [
+          "f1",
+          "f4"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumption_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricConsumptionBest_label": [
+          "f5"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+          "f6"
+        ],
+        "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+          "f6"
+        ],
+        "charging": [
+          "f7"
+        ],
+        "weightMeasurements_weightNotLoaded_label": [
+          "f8"
+        ],
+        "weightMeasurements_trailerLoad_label": [
+          "f13"
+        ]
+      },
+      "footnotesData": {
+        "overboostMax": 430,
+        "overboostKW": 145
+      }
+    }
+  ]
+}
