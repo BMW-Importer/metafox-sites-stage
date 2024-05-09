@@ -9,7 +9,7 @@
   "bodyTypeCode": "LI",
   "marketingBodyTypeCode": "LI",
   "bodyTypeDescription": "LIM",
-  "effectDate": "2024-05-07",
+  "effectDate": "2024-05-08",
   "hybridCode": "BEVE",
   "fromPrice": 159368,
   "seats": 5,
@@ -61,7 +61,7 @@
         "charging": {
           "batteryCapacity": "101.7",
           "chargeACDC": "11 (-) / 195",
-          "charge_AC_0_100": "10.75 (-)",
+          "charge_AC_0_100": "10.75",
           "charge_DC_10_80": "34",
           "additionalRangeDC": "151 - 186",
           "chargingMaxAC": "11"
