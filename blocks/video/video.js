@@ -93,7 +93,7 @@ function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('title', videoTitle?.textContent);
+  video.setAttribute('title', videoTitle?.textContent !== undefined ? videoTitle?.textContent : '');
   video.setAttribute('data-description', videoDescp?.textContent);
 
   const sourceEl = document.createElement('source');
