@@ -114,6 +114,10 @@
   z-index: -1;
 }
 
+.video-js[data-autoplay="true"] .vjs-poster {
+  z-index: -1;
+}
+
 .video-js.vjs-playing .vjs-poster {
   opacity: 0;
 }

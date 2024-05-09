@@ -184,22 +184,19 @@ function getVideoElement(
     }
   });
 
-  video.dataset.autoplay = autoplay ? 'true' : 'false';
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (video) {
-        if (entry.isIntersecting) {
-          if (video.paused) {
-            video.play();
-          }
-        } else if (!video.paused) {
-          video.pause();
-        }
-      }
-    });
-  }, { threshold: 0.1 });
+  if (window.IntersectionObserver) {
+    let isPaused = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio !== 1 && !video.paused) {
+          video.pause(); isPaused = true;
+        } else if (isPaused) { video.play(); isPaused = false; }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(video);
+  } else document.querySelector('#warning').style.display = 'block';
 
-  observer.observe(video);
+  video.dataset.autoplay = autoplay ? 'true' : 'false';
   return video;
 }
 
@@ -265,7 +262,6 @@ export function loadVideoEmbed(
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-
     block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
@@ -297,7 +293,6 @@ export default async function decorate(block) {
   const placeholder = block.querySelector('picture');
   const desktopVideolink = videoDesktopPath?.textContent;
   const mobileVideolink = videoMobPath?.textContent;
-
   const linkObject = {
     desktop: desktopVideolink,
     mobile: mobileVideolink,
