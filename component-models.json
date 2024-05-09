@@ -1552,7 +1552,7 @@
     "fields": [
       {
         "component": "text-input",
-        "valueType": "text",
+        "valueType": "string",
         "name": "eyebrow",
         "label": "Eyebrow",
         "value": ""
@@ -1562,7 +1562,7 @@
         "name": "eyebrowType",
         "value": "",
         "label": "Eyebrow Type",
-        "valueType": "Dropdown",
+        "valueType": "string",
         "required": true,
         "options": [
           {
