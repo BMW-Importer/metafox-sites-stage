@@ -1627,16 +1627,27 @@
         "valueType": "string",
         "name": "button_linkLabel",
         "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
+        "label": "Link Label"        
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "buttton_link",
         "value": "",
-        "label": "Link",
-        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
+        "label": "Link"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Button styling",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Money Button",
+            "value": "Money Button"
+          }
+        ]
       }
     ]
   }
