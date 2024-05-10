@@ -720,7 +720,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list-title {
   padding-right: 0;
   margin: 0 0 1rem;
-  color: var(--medium-text-color);
+  color: var(--light-text-color);
   font-size: 0.625rem;
   font-weight: 300;
   line-height: 0.75rem;
@@ -801,6 +801,10 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-m
   overflow: hidden;
   transition: max-height .25s ease;
   margin-left: 1.5rem;
+}
+
+.pronađite-online .link-list-detail {
+  margin-bottom: 24px;
 }
 
 header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list .link-list .link-list-detail {
