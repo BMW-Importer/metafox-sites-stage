@@ -72,14 +72,13 @@ function getVideoElement(
   video.setAttribute('height', '400');
   video.setAttribute('title', videoTitle?.textContent);
   video.setAttribute('data-description', videoDescp?.textContent);
-
+  video.classList.add('text-with-video');
   const sourceEl = document.createElement('source');
 
   const mobileWidth = window.innerWidth < 768;
   if (source.desktop && !mobileWidth) {
     sourceEl.setAttribute('src', source?.desktop);
     video.setAttribute('poster', posters?.desktop);
-    video.classList.add('text-with-video');
   } else if (source.mobile) {
     sourceEl.setAttribute('src', source?.mobile);
     video.setAttribute('poster', posters?.mobile || '');

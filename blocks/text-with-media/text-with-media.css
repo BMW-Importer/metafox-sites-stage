@@ -1,5 +1,5 @@
 .video-js.text-with-video {
-  width: 60%;
+  width: 60vw;
 }
 
 .eyebrowbold1 {
@@ -50,6 +50,7 @@
 .text-alignment {
   text-align: left;
   padding: 0 12px;
+  width: 40vw;
 }
 
 .text-with-video-button {
@@ -67,7 +68,8 @@
 }
 
 @media (width >= 360px) and (width < 768px) {
-  .wrapper-div {
+  .wrapper-div.left,
+  .wrapper-div.right {
     display: flex;
     flex-direction: column;
   }
@@ -92,5 +94,6 @@
   .text-alignment {
     text-align: left;
     padding: 0 8px;
+    width: fit-content;
   }
 }
