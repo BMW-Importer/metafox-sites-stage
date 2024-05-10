@@ -155,13 +155,14 @@ function getVideoElement(
   return video;
 }
 
-function addWrapperDiv(block, element) {
+function addWrapperDiv(block, element, alignment = 'left') {
   if (block.getElementsByClassName('wrapper-div')?.length) {
     const wrapperDiv = block.getElementsByClassName('wrapper-div');
     wrapperDiv[0].appendChild(element);
   } else {
     const div = document.createElement('div');
     div.classList.add('wrapper-div');
+    div.classList.add(alignment);
     div.append(element);
     block.append(div);
   }
@@ -215,15 +216,17 @@ export function generateTextDOM(
   headlineElement,
   description,
   buttonElement,
-  componentName,
+  componentNameAndAlignment,
 ) {
   const div = document.createElement('div');
   const headline = document.createElement('h2');
+  const componentName = componentNameAndAlignment.textContent.split(',')[0];
+  const videoAlignment = componentNameAndAlignment.textContent.split(',')[1];
   div.classList.add('text-alignment');
-  eyebrow.classList.add(`${componentName.textContent}-eyebrow`);
-  headline.classList.add(`${componentName.textContent}-headline`);
-  description.classList.add(`${componentName.textContent}-description`);
-  buttonElement.classList.add(`${componentName.textContent}-button`);
+  eyebrow.classList.add(`${componentName}-eyebrow`);
+  headline.classList.add(`${componentName}-headline`);
+  description.classList.add(`${componentName}-description`);
+  buttonElement.classList.add(`${componentName}-button`);
   if (eyebrowStyle === 'eyebrowbold1') {
     eyebrow.classList.add(eyebrowStyle.textContent);
   } else if (eyebrowStyle === 'eyebrowbold2') {
@@ -234,7 +237,7 @@ export function generateTextDOM(
   headline.innerHTML = headlineElement.innerHTML;
   if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
   div.append(eyebrow, headline, description, buttonElement);
-  addWrapperDiv(block, div);
+  addWrapperDiv(block, div, videoAlignment);
 }
 
 export default function decorate(block) {

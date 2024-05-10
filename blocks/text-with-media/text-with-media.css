@@ -37,9 +37,14 @@
   margin-top: 24px;
 }
 
-.wrapper-div {
+.wrapper-div.left {
   display: flex;
   flex-direction: row;
+}
+
+.wrapper-div.right {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .text-alignment {
@@ -48,7 +53,7 @@
 }
 
 .text-with-video-button {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
 }
 
