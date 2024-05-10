@@ -1580,5 +1580,48 @@
         ]
       }
     ]
+  },
+  {
+    "id": "content-navigation",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "General"
+      },
+      {
+        "component": "text",
+        "name": "Content Navigation Description",
+        "label": "Content Navigation Description"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "description": "change background color white or transparent",
+        "value": "",
+        "label": "Button Styling",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "White",
+            "value": "White"
+          },
+          {
+            "name": "Transparent",
+            "value": "Transparent"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "Display Content Navigation",
+        "label": "Display Content Navigation"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "Button/Link"
+      }
+    ]
   }
 ]
