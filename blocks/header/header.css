@@ -801,9 +801,6 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-m
   overflow: hidden;
   transition: max-height .25s ease;
   margin-left: 1.5rem;
-}
-
-.pronađite-online .link-list-detail {
   margin-bottom: 24px;
 }
 
