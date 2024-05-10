@@ -112,7 +112,7 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
     page_tracking.page.pageInfo.pageID = window.location.pathname;
-    page_tracking.page.pageInfo.version = timestamp;
+    page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
@@ -149,7 +149,7 @@ function set_page_tracking(){
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
     const formattedPath = pathParts.join(':');
     if(formattedPath !== ''){
-        page_tracking.page.pageInfo.pageName = "web:" + formattedPath;
+        page_tracking.page.pageInfo.pageName = "web:" +formattedPath;
     }
 
     const metaTag = document.querySelector('meta[name="env"]');
