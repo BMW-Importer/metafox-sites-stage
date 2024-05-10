@@ -1,3 +1,5 @@
+import { addIcon } from '../../scripts/bmw-util.js';
+
 let isScriptAdded = false;
 
 export function changeAllVidSrcOnResize() {
@@ -153,10 +155,6 @@ function getVideoElement(
   return video;
 }
 
-function isAbsoluteUrl(url) {
-  return /^(https?:)?\/\//i.test(url);
-}
-
 function addWrapperDiv(block, element) {
   if (block.getElementsByClassName('wrapper-div')?.length) {
     const wrapperDiv = block.getElementsByClassName('wrapper-div');
@@ -184,26 +182,10 @@ export function loadVideoEmbed(
     return;
   }
 
-  const baseUrl = window.location.origin;
-  let desktopUrl;
-  let mobileUrl;
-  if (isAbsoluteUrl(linkObject.desktop)) {
-    desktopUrl = new URL(linkObject.desktop);
-  } else {
-    desktopUrl = new URL(linkObject.desktop, baseUrl);
-  }
-  if (isAbsoluteUrl(linkObject.mobile)) {
-    mobileUrl = new URL(linkObject.mobile);
-  } else {
-    mobileUrl = new URL(linkObject.mobile, baseUrl);
-  }
-
   const isMp4 = linkObject.desktop ? linkObject.desktop.includes('.mp4')
     : linkObject.mobile.includes('.mp4');
   const isM3U8 = linkObject.desktop ? linkObject.desktop.includes('.m3u8')
     : linkObject.mobile.includes('.m3u8');
-
-  const isMobile = window.innerWidth < 768;
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
   const headElement = document.querySelector('head');
@@ -242,10 +224,15 @@ export function generateTextDOM(
   headline.classList.add(`${componentName.textContent}-headline`);
   description.classList.add(`${componentName.textContent}-description`);
   buttonElement.classList.add(`${componentName.textContent}-button`);
-  if (eyebrowStyle === 'eyebrowbold1' || eyebrowStyle === 'eyebrowbold2') {
-    eyebrow.classList.add('eyebrowbold');
+  if (eyebrowStyle === 'eyebrowbold1') {
+    eyebrow.classList.add(eyebrowStyle.textContent);
+  } else if (eyebrowStyle === 'eyebrowbold2') {
+    eyebrow.classList.add(eyebrowStyle.textContent);
+  } else {
+    eyebrow.classList.add(eyebrowStyle.textContent);
   }
   headline.innerHTML = headlineElement.innerHTML;
+  if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
   div.append(eyebrow, headline, description, buttonElement);
   addWrapperDiv(block, div);
 }
@@ -257,14 +244,7 @@ export default function decorate(block) {
     videoPropsGrp1,
     eyebrowStyleV,
     videoPropsGrp2,
-  ] = [...video.children].filter((row) => row.children.length);
-
-  const [
-    componentNameI,
-    imageDetails,
-    imageEyebrowStyle,
-    imageLink,
-  ] = [...image.children].filter((row) => row.children.length);
+  ] = video ? [...video.children || []].filter((row) => row.children.length) : [];
 
   const [
     videoEyebrow,
@@ -272,7 +252,7 @@ export default function decorate(block) {
     description,
     videoButtonName,
     videoButtonElement,
-  ] = videoPropsGrp1.children;
+  ] = videoPropsGrp1?.children || [];
 
   const [
     videoTitle,
@@ -285,15 +265,20 @@ export default function decorate(block) {
     videoAutoPlay,
     videoControl,
     videoMute,
-  ] = videoPropsGrp2.children;
-
+  ] = videoPropsGrp2?.children || [];
+  const [
+    componentNameI,
+    imageDetails,
+    imageEyebrowStyle,
+    imageLink,
+  ] = image ? [...image.children || []].filter((row) => row.children.length) : [];
   const [
     imageEyebrow,
     imageHeadline,
     imageDescp,
     imageButtonName,
     imageButtonElement,
-  ] = imageDetails.children;
+  ] = imageDetails?.children || [];
 
   const placeholder = block.querySelectorAll('picture');
 
@@ -311,11 +296,13 @@ export default function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
   const mute = videoMute?.textContent.trim() === 'true';
-  imageButtonElement.ariaLabel = imageButtonName.textContent;
-  videoButtonElement.ariaLabel = videoButtonName.textContent;
-  const videoButtonAnchor = videoButtonElement.querySelector('a');
-  videoButtonAnchor.textContent = videoButtonName.textContent;
-  videoButtonAnchor.title = videoButtonName.textContent;
+  if (imageButtonElement) imageButtonElement.ariaLabel = imageButtonName?.textContent;
+  if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
+  const videoButtonAnchor = videoButtonElement?.querySelector('a');
+  if (videoButtonAnchor) {
+    videoButtonAnchor.textContent = videoButtonName?.textContent;
+    videoButtonAnchor.title = videoButtonName?.textContent;
+  }
   if (placeholder) {
     loadVideoEmbed(
       block,
@@ -337,25 +324,5 @@ export default function decorate(block) {
       videoButtonElement,
       componentNameV,
     );
-  } else {
-    block.classList.add('lazy-loading');
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        observer.disconnect();
-        loadVideoEmbed(
-          block,
-          videoTitle,
-          videoDescp,
-          videoLinkObject,
-          autoplay,
-          loop,
-          enablecontrols,
-          mute,
-          posters,
-        );
-        block.classList.remove('lazy-loading');
-      }
-    });
-    observer.observe(block);
   }
 }

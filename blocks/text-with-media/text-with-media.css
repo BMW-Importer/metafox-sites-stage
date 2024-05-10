@@ -1,61 +1,28 @@
-/* main .text-with-media > div {
-  max-width: unset;
-}
-  
-main .text-with-media {
-  padding: 30px;
-}
-
-.text-with-media {
-  margin-top: 4rem;
-  background-color: pink;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-}
-
-.bg {
-  height: 350px;
-  width: auto;
-}
-
-.text-with-media p {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.general div {
-  max-width: 600px;
-  color: grey;
-}
-
-.text-with-media .general {
-  padding: 0px;
-  font-size: 2em;
-  font-weight: 300;
-  width: 40%;
-  width: fit-content;
-  background-color: lightblue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.text-with-media .media img{
-  width: 60%;
-} */
-
 .video-js.text-with-video {
   width: 60%;
 }
 
-.eyebrowbold {
-  font-weight: bold;
+.eyebrowbold1 {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+  font-family: var(--fixed-font-family);
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--light-border-color);
+}
+
+.eyebrowbold2 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 300;
+  font-family: var(--fixed-font-family);
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--light-border-color);
+}
+
+.iconization {
+  font-size: 14px;
+  line-height: 12px;
 }
 
 .text-with-video-eyebrow {
@@ -77,4 +44,48 @@ main .text-with-media {
 
 .text-alignment {
   text-align: left;
+  padding: 0 12px;
+}
+
+.text-with-video-button {
+  display: flex;
+  flex-direction: row;
+}
+
+.text-with-video-button:hover{
+  color: var(--link-hover-color);
+  cursor: pointer;
+}
+
+.text-with-video-headline {
+  margin: 0;
+}
+
+@media (width >= 360px) and (width < 768px) {
+  .wrapper-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-js.text-with-video {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .text-with-video-eyebrow {
+    margin-bottom: 8px;
+  }
+  
+  .text-with-video-description {
+    margin-top: 8px;
+  }
+  
+  .text-with-video-button {
+    margin-top: 20px;
+  }
+
+  .text-alignment {
+    text-align: left;
+    padding: 0 8px;
+  }
 }

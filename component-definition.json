@@ -275,10 +275,12 @@
                   "name": "Text with Video",
                   "model": "text-with-video",
                   "filter": "text-with-video",
-                  "general_eyebrow": "",
-                  "general_headline": "",
-                  "general_copytext": "",
-                  "general_buttonStyling": "linkButton"
+                  "general_buttonStyling": "linkButton",
+                  "classes":"left",
+                  "media_loopVideo":true,
+                  "media_autoplay":true,
+                  "media_videoControls":false,
+                  "media_muteVideo":true
                 }
               }
             }
