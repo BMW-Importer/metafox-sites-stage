@@ -1580,5 +1580,35 @@
         ]
       }
     ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "accordionItemLabel",
+        "label": "Accordion Item Label",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "CopyText",
+        "value": "",
+        "label": "Copy Text",
+        "required": true
+
+      },
+      {
+        "component": "boolean",
+        "label": "Collapse Accordion Icon",
+        "name": "collapseAccordionIcon",
+        "valueType": "boolean",
+        "value": false,
+        "description": "If enabled, the Accordion Item will be collapsed by default"
+      }
+    ]
   }
 ]
