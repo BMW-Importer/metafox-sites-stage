@@ -7,8 +7,7 @@
       "footer-section",
       "header-section",
       "bmw-video",
-      "flexible-width-section",
-      "content-navigation"
+      "flexible-width-section"
     ]
   },
   {
@@ -125,7 +124,8 @@
       "video",
       "multicontent-gallery",
       "text-with-media",
-      "modelcard"
+      "modelcard",
+      "content-navigation"
     ]
   },
   {
