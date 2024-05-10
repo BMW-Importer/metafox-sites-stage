@@ -801,7 +801,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-m
   overflow: hidden;
   transition: max-height .25s ease;
   margin-left: 1.5rem;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .flyout-link-list .link-list .link-list-detail {
