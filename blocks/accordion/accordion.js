@@ -3,5 +3,8 @@ export default async function decorate(block) {
   const accordionContainer = document.createElement('div');
   accordionContainer.classList.add('accordion-container');
   // loop through all children blocks
-  [...panels].forEach((panel) => panel.children);
+  [...panels]?.forEach((panel) => {
+    const [accordionLabel, copyText, accorCollapes] = panel.children;
+    console.log(accordionLabel.textContent, copyText.textContent, accorCollapes.textContent);
+  });
 }
