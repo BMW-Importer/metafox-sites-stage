@@ -1597,14 +1597,15 @@
         "valueType": "string",
         "name": "CopyText",
         "value": "",
-        "label": "Copy Text"
+        "label": "Copy Text",
+        "required": true
+
       },
       {
         "component": "boolean",
-        "label": "On/OfF",
+        "label": "Collapse Accordion Icon",
         "name": "collapseAccordionIcon",
         "valueType": "boolean",
-        "placeholder":"collapseAccordionIcon",
         "value": false,
         "description": "If enabled, the Accordion Item will be collapsed by default"
       }
