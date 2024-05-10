@@ -16,7 +16,6 @@ const page_tracking = {"page": {
             "variant": "real page",
             "geoRegion": "RS",
             "language": "sr",
-            "websiteEnv": "prod",
             "pageTitle": "BMW Srbija",
             "windowInfo": {
                 "screenWidth": 3840,
@@ -154,8 +153,14 @@ function set_page_tracking(){
     if(lastPart !== ''){
         page_tracking.page.pageInfo.pageName = "web:" + lastPart;
     }
-    window.adobeDataLayer.push(page_tracking);
+
+    const metaTag = document.querySelector('meta[name="env"]');
+    if (metaTag && metaTag.content) {
+      page_tracking.page.pageInfo.websiteEnv = metaTag.content;
+    }
     
+    window.adobeDataLayer.push(page_tracking);
+
 }
 
 function set_ecid(){
