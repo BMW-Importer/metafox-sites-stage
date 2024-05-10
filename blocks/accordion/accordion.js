@@ -11,7 +11,7 @@ export function generateAccordionDOM(props) {
 }
 export default async function decorate(block) {
   const props = [...block.children].map((row) => {
-    const [accordionItemLabel, CopyText, collapseAccordion] = Array.from(row.querySelectorAll('p')).map((p) => p.textContent);
+    const [accordionItemLabel, CopyText, collapseAccordion] = Array.from(row.querySelectorAll('p')).map((p) => p?.textContent);
     return { accordionItemLabel, CopyText, collapseAccordion };
   });
 
