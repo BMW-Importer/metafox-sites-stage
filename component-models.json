@@ -848,6 +848,18 @@
     ]
   },
   {
+    "id": "modelcard",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "value": "",
+        "label": "AEM Content Picker",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "footer-section",
     "fields": [
       {
