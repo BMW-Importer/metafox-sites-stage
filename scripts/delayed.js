@@ -154,10 +154,9 @@ function set_page_tracking(){
         page_tracking.page.pageInfo.pageName = "web:" + lastPart;
     }
 
-    var metaTag = document.querySelector('meta[name="env"]');
-    if (metaTag !== '') {
-        var envValue = metaTag.getAttribute('content');
-        page_tracking.page.pageInfo.websiteEnv = envValue;
+    const metaTag = document.querySelector('meta[name="env"]');
+    if (metaTag && metaTag.content) {
+      page_tracking.page.pageInfo.websiteEnv = metaTag.content;
     }
     
     window.adobeDataLayer.push(page_tracking);
