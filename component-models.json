@@ -1599,7 +1599,7 @@
         "name": "type",
         "description": "change background color white or transparent",
         "value": "",
-        "label": "Button Styling",
+        "label": "Background Color",
         "valueType": "string",
         "options": [
           {
