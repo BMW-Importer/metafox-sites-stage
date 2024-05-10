@@ -146,10 +146,10 @@ function set_page_tracking(){
 
     
     const path = window.location.pathname;
-    const pathParts = path.split('/');
-    const lastPart = pathParts[pathParts.length - 1];
-    if(lastPart !== ''){
-        page_tracking.page.pageInfo.pageName = "web:" + lastPart;
+    const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
+    const formattedPath = pathParts.join(':');
+    if(formattedPath !== ''){
+        page_tracking.page.pageInfo.pageName = "web:" + formattedPath;
     }
 
     const metaTag = document.querySelector('meta[name="env"]');
