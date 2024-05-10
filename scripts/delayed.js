@@ -114,8 +114,6 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.pageID = window.location.pathname;
     page_tracking.page.pageInfo.version = timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
-    page_tracking.page.pageInfo.language = lang.getAttribute('content');
-    page_tracking.page.pageInfo.geoRegion = geoReg.getAttribute('content');
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
     const randomNum = 1000000000 + Math.random() * 9000000000;
@@ -157,6 +155,12 @@ function set_page_tracking(){
     const metaTag = document.querySelector('meta[name="env"]');
     if (metaTag && metaTag.content) {
       page_tracking.page.pageInfo.websiteEnv = metaTag.content;
+    }
+    if (lang && lang.content) {
+      page_tracking.page.pageInfo.language = lang.content;
+    }
+    if (geoReg && geoReg.content) {
+      page_tracking.page.pageInfo.language = geoReg.content;
     }
     
     window.adobeDataLayer.push(page_tracking);
