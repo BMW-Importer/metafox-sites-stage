@@ -1,4 +1,4 @@
-main .text-with-media > div {
+/* main .text-with-media > div {
   max-width: unset;
 }
   
@@ -48,4 +48,33 @@ main .text-with-media {
 
 .text-with-media .media img{
   width: 60%;
+} */
+
+.video-js.text-with-video {
+  width: 60%;
+}
+
+.eyebrowbold {
+  font-weight: bold;
+}
+
+.text-with-video-eyebrow {
+  margin-bottom: 8px;
+}
+
+.text-with-video-description {
+  margin-top: 12px;
+}
+
+.text-with-video-button {
+  margin-top: 24px;
+}
+
+.wrapper-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.text-alignment {
+  text-align: left;
 }

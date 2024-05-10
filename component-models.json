@@ -660,11 +660,11 @@
         "description":"Defines the styling of the text that will appear above the headline.",
         "options": [
           {
-            "name": "Eyebrow Bold 1",
+            "name": "Eyebrow 1 Bold",
             "value": "eyebrowbold1"
           },
           {
-            "name": "Eyebrow Bold 2",
+            "name": "Eyebrow 2 Bold",
             "value": "eyebrowbold2"
           },
           {
