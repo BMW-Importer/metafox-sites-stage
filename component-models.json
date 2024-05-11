@@ -852,7 +852,7 @@
         "name": "picker",
         "label": "Content Fragment Picker",
         "valueType": "string",
-        "variationName": "master"
+        "variationName": "contentFragmentVariation"
       }
     ]
   },
