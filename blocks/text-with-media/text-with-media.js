@@ -167,7 +167,7 @@ function addWrapperDiv(block, element, alignment = 'left') {
   }
 }
 
-export function loadVideoEmbed(
+export function loadVideo(
   block,
   videoTitle,
   videoDescp,
@@ -219,8 +219,7 @@ export function generateTextDOM(
 ) {
   const div = document.createElement('div');
   const headline = document.createElement('h2');
-  const componentName = componentNameAndAlignment.textContent.split(',')[0];
-  const videoAlignment = componentNameAndAlignment.textContent.split(',')[1];
+  const [componentName, alignment] = componentNameAndAlignment.textContent.split(',');
   div.classList.add('text-alignment');
   eyebrow.classList.add(`${componentName}-eyebrow`);
   headline.classList.add(`${componentName}-headline`);
@@ -236,11 +235,11 @@ export function generateTextDOM(
   headline.innerHTML = headlineElement.innerHTML;
   if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
   div.append(eyebrow, headline, description, buttonElement);
-  addWrapperDiv(block, div, videoAlignment);
+  addWrapperDiv(block, div, alignment);
 }
 
 export default function decorate(block) {
-  const [video, image] = block.children;
+  const [video] = block.children;
   const [
     componentNameV,
     videoPropsGrp1,
@@ -268,19 +267,6 @@ export default function decorate(block) {
     videoControl,
     videoMute,
   ] = videoPropsGrp2?.children || [];
-  const [
-    componentNameI,
-    imageDetails,
-    imageEyebrowStyle,
-    imageLink,
-  ] = image ? [...image.children || []].filter((row) => row.children.length) : [];
-  const [
-    imageEyebrow,
-    imageHeadline,
-    imageDescp,
-    imageButtonName,
-    imageButtonElement,
-  ] = imageDetails?.children || [];
 
   const placeholder = block.querySelectorAll('picture');
 
@@ -298,7 +284,6 @@ export default function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
   const mute = videoMute?.textContent.trim() === 'true';
-  if (imageButtonElement) imageButtonElement.ariaLabel = imageButtonName?.textContent;
   if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
   const videoButtonAnchor = videoButtonElement?.querySelector('a');
   if (videoButtonAnchor) {
@@ -306,7 +291,7 @@ export default function decorate(block) {
     videoButtonAnchor.title = videoButtonName?.textContent;
   }
   if (placeholder) {
-    loadVideoEmbed(
+    loadVideo(
       block,
       videoTitle,
       videoDescp,

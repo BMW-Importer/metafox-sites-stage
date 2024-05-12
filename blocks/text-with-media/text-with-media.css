@@ -7,8 +7,8 @@
   line-height: 20px;
   font-weight: 300;
   font-family: var(--fixed-font-family);
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--light-border-color);
+  background-color: rgb(255 255 255 / 100%);
+  color: rgb(102 102 102 / 100%);
 }
 
 .eyebrowbold2 {
@@ -16,8 +16,8 @@
   line-height: 16px;
   font-weight: 300;
   font-family: var(--fixed-font-family);
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--light-border-color);
+  background-color: rgba(255 255 255 / 100%);
+  color: rgb(102 102 102 / 100%);
 }
 
 .iconization {
@@ -31,10 +31,6 @@
 
 .text-with-video-description {
   margin-top: 12px;
-}
-
-.text-with-video-button {
-  margin-top: 24px;
 }
 
 .wrapper-div.left {
@@ -56,6 +52,7 @@
 .text-with-video-button {
   display: inline-flex;
   flex-direction: row;
+  margin-top: 24px;
 }
 
 .text-with-video-button:hover{
