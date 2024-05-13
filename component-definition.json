@@ -56,7 +56,7 @@
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/text/v1/text",
+                "resourceType": "core/franklin/components/title/v1/text",
                 "template": {
                   "name": "Eyebrow",
                   "model": "eyebrow"
