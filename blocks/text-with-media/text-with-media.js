@@ -260,86 +260,84 @@ export function generateTextDOM(
 }
 
 export default function decorate(block) {
-  const [image, video] = block.children;
-  if (video.tagName.toLowerCase() === 'video') {
-    const [
-      componentNameV,
-      videoPropsGrp1,
-      eyebrowStyleV,
-      videoPropsGrp2,
-    ] = video.children.filter((row) => row.children.length);
+  const [video, image] = block.children;
+  const [
+    componentNameV,
+    videoPropsGrp1,
+    eyebrowStyleV,
+    videoPropsGrp2,
+  ] = [...video.children].filter((row) => row.children.length);
 
-    const [
+  const [
+    videoEyebrow,
+    headline,
+    description,
+    videoButtonName,
+    videoButtonElement,
+  ] = videoPropsGrp1?.children || [];
+
+  const [
+    videoTitle,
+    videoDescp,
+    desktopVidPath,
+    mobileVidPath,
+    desktopPosterPath,
+    mobilePosterPath,
+    videoLoop,
+    videoAutoPlay,
+    videoControl,
+    videoMute,
+  ] = videoPropsGrp2?.children || [];
+
+  const placeholder = block.querySelectorAll('picture');
+
+  const posters = {
+    desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
+    mobile: mobilePosterPath?.querySelector('img')?.getAttribute('src'),
+  };
+
+  const videoLinkObject = {
+    desktop: desktopVidPath?.textContent,
+    mobile: mobileVidPath?.textContent,
+  };
+  block.textContent = '';
+  const enablecontrols = videoControl?.textContent.trim() === 'true';
+  const loop = videoLoop?.textContent.trim() === 'true';
+  const autoplay = videoAutoPlay?.textContent.trim() === 'true';
+  const mute = videoMute?.textContent.trim() === 'true';
+  if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
+  const videoButtonAnchor = videoButtonElement?.querySelector('a');
+  if (videoButtonAnchor) {
+    videoButtonAnchor.textContent = videoButtonName?.textContent;
+    videoButtonAnchor.title = videoButtonName?.textContent;
+  }
+  if (placeholder) {
+    loadVideo(
+      block,
+      videoTitle,
+      videoDescp,
+      videoLinkObject,
+      autoplay,
+      loop,
+      enablecontrols,
+      mute,
+      posters,
+    );
+    generateTextDOM(
+      block,
+      eyebrowStyleV,
       videoEyebrow,
       headline,
       description,
-      videoButtonName,
       videoButtonElement,
-    ] = videoPropsGrp1?.children || [];
-
-    const [
-      videoTitle,
-      videoDescp,
-      desktopVidPath,
-      mobileVidPath,
-      desktopPosterPath,
-      mobilePosterPath,
-      videoLoop,
-      videoAutoPlay,
-      videoControl,
-      videoMute,
-    ] = videoPropsGrp2?.children || [];
-
-    const placeholder = block.querySelectorAll('picture');
-
-    const posters = {
-      desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
-      mobile: mobilePosterPath?.querySelector('img')?.getAttribute('src'),
-    };
-
-    const videoLinkObject = {
-      desktop: desktopVidPath?.textContent,
-      mobile: mobileVidPath?.textContent,
-    };
+      componentNameV,
+    );
+  } else if (image) {
+    // eslint-disable-next-line max-len
+    const [imageAlignment, pictureContainer, altText] = [...image.children || []].filter((row) => row.children.length);
+    // eslint-disable-next-line max-len
+    const textWithImageDOM = generateTextWithImageDOM([imageAlignment, pictureContainer, altText]);
     block.textContent = '';
-    const enablecontrols = videoControl?.textContent.trim() === 'true';
-    const loop = videoLoop?.textContent.trim() === 'true';
-    const autoplay = videoAutoPlay?.textContent.trim() === 'true';
-    const mute = videoMute?.textContent.trim() === 'true';
-    if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
-    const videoButtonAnchor = videoButtonElement?.querySelector('a');
-    if (videoButtonAnchor) {
-      videoButtonAnchor.textContent = videoButtonName?.textContent;
-      videoButtonAnchor.title = videoButtonName?.textContent;
-    }
-    if (placeholder) {
-      loadVideo(
-        block,
-        videoTitle,
-        videoDescp,
-        videoLinkObject,
-        autoplay,
-        loop,
-        enablecontrols,
-        mute,
-        posters,
-      );
-      generateTextDOM(
-        block,
-        eyebrowStyleV,
-        videoEyebrow,
-        headline,
-        description,
-        videoButtonElement,
-        componentNameV,
-      );
-    } else if (image.tagName.toLowerCase() === 'picture') {
-      // eslint-disable-next-line max-len
-      const [imageAlignment, pictureContainer, altText] = [...image.children || []].filter((row) => row.children.length);
-      // eslint-disable-next-line max-len
-      const textWithImageDOM = generateTextWithImageDOM([imageAlignment, pictureContainer, altText]);
-      block.textContent = '';
-      block.appendChild(textWithImageDOM);
-    }
+    block.appendChild(textWithImageDOM);
   }
 }

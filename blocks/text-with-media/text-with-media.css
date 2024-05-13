@@ -1,5 +1,5 @@
 .video-js.text-with-video {
-  width: 60vw;
+  width: 60%;
 }
 
 .image {
@@ -31,10 +31,12 @@
 
 .text-with-video-eyebrow {
   margin-bottom: 8px;
+  padding: 0 12px;
 }
 
 .text-with-video-description {
   margin-top: 12px;
+  padding: 0 12px;
 }
 
 .wrapper-div.left {
@@ -49,14 +51,16 @@
 
 .text-alignment {
   text-align: left;
-  padding: 0 12px;
-  width: 40vw;
+  padding: 0 0 0 40px;
+  width: 40%;
 }
 
 .text-with-video-button {
   display: inline-flex;
   flex-direction: row;
   margin-top: 24px;
+  padding: 0 12px;
+  margin-bottom: 0;
 }
 
 .text-with-video-button:hover{
@@ -66,8 +70,23 @@
 
 .text-with-video-headline {
   margin: 0;
+  padding: 0 12px;
 }
 
+/* tablet */
+@media (width >= 768px) and (width < 1280px) {
+  .video-js.text-with-video {
+    width: 50%;
+  }
+
+  .text-alignment {
+    text-align: left;
+    padding: 0 0 0 16px;
+    width: 50%;
+  }
+}
+
+/* mobile */
 @media (width >= 360px) and (width < 768px) {
   .wrapper-div.left,
   .wrapper-div.right {
@@ -82,14 +101,17 @@
 
   .text-with-video-eyebrow {
     margin-bottom: 8px;
+    padding: 0 8px;
   }
   
   .text-with-video-description {
     margin-top: 8px;
+    padding: 0 8px;
   }
   
   .text-with-video-button {
     margin-top: 20px;
+    padding: 0 8px;
   }
 
     .image {
