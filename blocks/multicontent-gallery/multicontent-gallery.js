@@ -1,11 +1,12 @@
 import { loadVideoEmbed } from '../video/video.js';
 import generateVideoDetailMarkUp from '../video-slide/video-slide.js';
 import { generateImgSlidePicture, generateImgSlideDetailMarkUp } from '../image-slide/image-slide.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
 let startTouchX = 0;
 let endTouchX = 0;
-const showMoreText = 'Prikaži manje';
-const showLessText = 'Prikaži više';
+const placeholders = await fetchPlaceholders();
+const { showmore, showless } = placeholders;
 
 function enableShowMoreButton() {
   const detailContainer = document.querySelectorAll('.vid-img-slide-expand-cover');
@@ -188,11 +189,11 @@ function attachShowMoreEvents(block) {
       const parentDiv = e.target.closest('.vid-img-slide-expand-cover');
       if (e.target.closest('.vid-img-slide-showmore-btn').classList.contains('showless')) {
         e.target.closest('.vid-img-slide-showmore-btn').classList.remove('showless');
-        e.target.textContent = showMoreText;
+        e.target.textContent = showless;
         e.target.closest('.vid-img-slide-expand-cover').style.cssText = 'unset';
       } else {
         e.target.closest('.vid-img-slide-showmore-btn').classList.add('showless');
-        e.target.textContent = showLessText;
+        e.target.textContent = showmore;
         const showMoreBtnElm = parentDiv.querySelector('.vid-img-slide-showmore-btn');
         let showMoreBtnHeight = 0;
 
@@ -407,7 +408,7 @@ export default function decorate(block) {
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
-        button, index]));
+        button, index, showless]));
     } else {
       // content details
       const contentElem = content.children;
@@ -433,7 +434,7 @@ export default function decorate(block) {
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline.textContent.trim(), imageSlideCopyText,
-        button, index]));
+        button, index, showless]));
     }
     // panel.textContent = '';
   });

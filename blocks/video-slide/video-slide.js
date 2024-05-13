@@ -1,6 +1,6 @@
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText,
-    button, index] = props;
+    button, index, showless] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -28,7 +28,7 @@ export default function generateVideoDetailMarkUp(props) {
 
   const vidImgDetailExpandDesp = document.createElement('p');
   vidImgDetailExpandDesp.classList.add('vid-img-slide-expand-descp');
-  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText?.outerHTML || '';
+  vidImgDetailExpandDesp.innerHTML = videoSlideCopyText?.innerHTML || '';
 
   const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn.classList.add('vid-img-slide-link-btn');
@@ -53,7 +53,7 @@ export default function generateVideoDetailMarkUp(props) {
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');
 
   const showMoreShowLessBtn = document.createElement('button');
-  showMoreShowLessBtn.textContent = 'Prikaži manje';
+  showMoreShowLessBtn.textContent = showless;
   showMoreShowLessBtn.classList.add('vid-img-slide-showmore-btn-link');
   showMoreShowLessBtnContainer.append(showMoreShowLessBtn);
 
