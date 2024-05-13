@@ -1,6 +1,6 @@
 async function buildGetPlaceholder(modelCode) {
   try {
-    const endpointUrl = `/${modelCode[0]}/.json`;
+    const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode[0]}/.json`;
     const response = await fetch(endpointUrl);
     const responseJson = await response.json();
     console.log(responseJson);
