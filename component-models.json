@@ -1697,6 +1697,14 @@
     "id": "headline",
     "fields": [
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "copyrig",
+        "value": "",
+        "label": "Text",
+        "required": true
+      },
+      {
         "component": "select",
         "name": "headline type",
         "value": "",
