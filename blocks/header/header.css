@@ -1089,7 +1089,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
   header.header-wrapper nav .nav-brand .icon-link-list-wrapper .icon-link-list-container .icon {
     height: auto;
-    padding: 0 12px;
+    padding: 0 0.75rem;
   }
 
   header.header-wrapper nav .nav-brand .icon-link-list-wrapper .icon-link-list-container .icon .search {
@@ -1105,7 +1105,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     position: absolute;
     left: 0;
     right: 0;
-    padding: 2rem 5.25rem;
+    padding: 2.5rem 5.25rem;
     height: auto;
     width: 100%;
     opacity: 0;
