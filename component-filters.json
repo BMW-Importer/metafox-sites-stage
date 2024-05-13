@@ -130,10 +130,12 @@
       "video",
       "multicontent-gallery",
       "text-with-media",
-      "modelcard",
+      "model-card",
       "content-navigation",
       "accordion",
-      "disclaimer"
+      "disclaimer",
+      "eyebrow",
+      "headline"
     ]
   },
   {
@@ -145,7 +147,9 @@
       "image",
       "video",
       "accordion",
-      "disclaimer"
+      "disclaimer",
+      "eyebrow",
+      "headline"
     ]
   },
   {
