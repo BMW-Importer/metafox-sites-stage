@@ -22,6 +22,7 @@ export function buildGetPlaceholder(responseJson) {
   modelPlaceholderObject.bodyTypeCode = responseJson.model.bodyTypeCode;
   modelPlaceholderObject.hybridCode = responseJson.model.hybridCode;
   modelPlaceholderObject.seriesCode = responseJson.model.seriesCode;
+  modelPlaceholderObject.acceleration = responseJson.model.acceleration;
 }
 
 export function getModelPlaceholderObject() {
