@@ -1,44 +1,48 @@
 [
   {
-    "id": "title",
+    "id": "headline",
     "fields": [
       {
         "component": "text-input",
         "valueType": "string",
         "name": "jcr:title",
         "value": "",
-        "label": "Text"
+        "label": "Headline",
+        "required": true,
+        "description": "Defines the headline text that will appear on the page."
       },
       {
         "component": "select",
-        "name": "type",
-        "value": "h1",
-        "label": "Type",
+        "name": "headlineType",
+        "value": "",
+        "label": "Headline Type",
         "valueType": "string",
+        "required": true,
+        "description": "Defines the styling of the headline that will be displayed on the page.",
         "options": [
           {
-            "name": "h1",
-            "value": "h1"
+            "name": "Headline 1",
+            "value": "headline1"
           },
           {
-            "name": "h2",
-            "value": "h2"
+            "name": "Headline 2",
+            "value": "headline2"
           },
           {
-            "name": "h3",
-            "value": "h3"
+            "name": "Headline 3",
+            "value": "headline3"
           },
           {
-            "name": "h4",
-            "value": "h4"
+            "name": "Subsection 1",
+            "value": "subsection1"
           },
           {
-            "name": "h5",
-            "value": "h5"
+            "name": "Subsection 2",
+            "value": "subsection2"
           },
           {
-            "name": "h6",
-            "value": "h6"
+            "name": "Stage Model",
+            "value": "stagemodel"
           }
         ]
       }
@@ -1690,55 +1694,6 @@
         "valueType": "boolean",
         "value": false,
         "description": "If enabled, the Accordion Item will be collapsed by default"
-      }
-    ]
-  },
-  {
-    "id": "headline",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "headline",
-        "value": "",
-        "label": "Headline",
-        "required": true,
-        "description": "Defines the headline text that will appear on the page."
-      },
-      {
-        "component": "select",
-        "name": "headline type",
-        "value": "",
-        "label": "Headline Type",
-        "valueType": "string",
-        "required": true,
-        "description": "Defines the styling of the headline that will be displayed on the page.",
-        "options": [
-          {
-            "name": "Headline 1",
-            "value": "headline1"
-          },
-          {
-            "name": "Headline 2",
-            "value": "headline2"
-          },
-          {
-            "name": "Headline 3",
-            "value": "headline3"
-          },
-          {
-            "name": "Subsection 1",
-            "value": "subsection1"
-          },
-          {
-            "name": "Subsection 2",
-            "value": "subsection2"
-          },
-          {
-            "name": "Stage Model",
-            "value": "stagemodel"
-          }
-        ]
       }
     ]
   }

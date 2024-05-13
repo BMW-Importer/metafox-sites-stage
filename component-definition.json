@@ -21,21 +21,6 @@
           }
         },
         {
-          "title": "Title",
-          "id": "title",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/title/v1/title",
-                "template": {
-                  "name": "Headline",
-                  "model": "headline"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Headline",
           "id": "headline",
           "plugins": {
