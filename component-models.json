@@ -851,10 +851,9 @@
     "id": "modelcard",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "reference",
-        "value": "",
-        "label": "AEM Content Picker",
+        "component": "aem-content-fragment",
+        "name": "contentfragment",
+        "label": "Content Fragment Picker",
         "valueType": "string"
       }
     ]
