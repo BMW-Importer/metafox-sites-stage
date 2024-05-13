@@ -14,8 +14,6 @@ const page_tracking = {"page": {
             "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
             "destinationURL": "https://www.bmw.rs/sr/index.html",
             "variant": "real page",
-            "geoRegion": "RS",
-            "language": "sr",
             "pageTitle": "BMW Srbija",
             "windowInfo": {
                 "screenWidth": 3840,
@@ -160,7 +158,7 @@ function set_page_tracking(){
       page_tracking.page.pageInfo.language = lang.content;
     }
     if (geoReg && geoReg.content) {
-      page_tracking.page.pageInfo.language = geoReg.content;
+      page_tracking.page.pageInfo.geoReg = geoReg.content;
     }
     
     window.adobeDataLayer.push(page_tracking);
