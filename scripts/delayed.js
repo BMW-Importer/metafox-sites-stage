@@ -158,7 +158,7 @@ function set_page_tracking(){
       page_tracking.page.pageInfo.language = lang.content;
     }
     if (geoReg && geoReg.content) {
-      page_tracking.page.pageInfo.geoReg = geoReg.content;
+      page_tracking.page.pageInfo.geoRegion = geoReg.content;
     }
     
     window.adobeDataLayer.push(page_tracking);
