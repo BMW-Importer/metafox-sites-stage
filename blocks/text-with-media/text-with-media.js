@@ -1,6 +1,8 @@
 import { addIcon } from '../../scripts/bmw-util.js';
 
 let isScriptAdded = false;
+const videoComponentwrapper = 'video';
+const imageComponentWrapper = 'image';
 
 export function changeAllVidSrcOnResize() {
   window.addEventListener('resize', () => {
@@ -154,34 +156,13 @@ function getVideoElement(
   return video;
 }
 
-function generateTextWithImageDOM(props) {
-  const [imageAlignment, pictureContainer, altText = props] = props;
-  const picture = pictureContainer.querySelector('picture');
-  const image = picture.querySelector('image');
-  if (Boolean(image) && Boolean(altText)) {
-    image.alt = altText;
-  }
-
-  const textWithImageDOM = document.createElement('div');
-
-  const imageContainer = document.createElement('div');
-  imageContainer.classList.add('image');
-  imageContainer.style.float = imageAlignment.innerHTML.indexOf('right') > -1 ? 'right' : 'left';
-  if (picture) {
-    imageContainer.append(picture);
-  }
-  textWithImageDOM.append(imageContainer);
-
-  return textWithImageDOM;
-}
-
-function addWrapperDiv(block, element, alignment = 'left') {
-  if (block.getElementsByClassName('wrapper-div')?.length) {
-    const wrapperDiv = block.getElementsByClassName('wrapper-div');
+function addWrapperDiv(block, element, componentWrapper, alignment = 'left') {
+  if (block.getElementsByClassName(`${componentWrapper}-wrapper-div`)?.length) {
+    const wrapperDiv = block.getElementsByClassName(`${componentWrapper}-wrapper-div`);
     wrapperDiv[0].appendChild(element);
   } else {
     const div = document.createElement('div');
-    div.classList.add('wrapper-div');
+    div.classList.add(`${componentWrapper}-wrapper-div`);
     div.classList.add(alignment);
     div.append(element);
     block.append(div);
@@ -216,14 +197,14 @@ export function loadVideo(
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters));
+    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters), videoComponentwrapper);
   } else if (isM3U8) {
     block.textContent = '';
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
 
-    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters));
+    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters), videoComponentwrapper);
   }
 
   block.dataset.embedIsLoaded = true;
@@ -237,6 +218,7 @@ export function generateTextDOM(
   description,
   buttonElement,
   componentNameAndAlignment,
+  componentWrapper,
 ) {
   const div = document.createElement('div');
   const headline = document.createElement('h2');
@@ -256,7 +238,24 @@ export function generateTextDOM(
   headline.innerHTML = headlineElement.innerHTML;
   if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
   div.append(eyebrow, headline, description, buttonElement);
-  addWrapperDiv(block, div, alignment);
+  addWrapperDiv(block, div, componentWrapper, alignment?.trim());
+}
+
+function generateTextWithImageDOM(
+  block,
+  imageLink,
+  imageComponentName,
+) {
+  const alignment = imageComponentName.textContent.split(',')[1];
+  const picture = imageLink.querySelector('picture');
+
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('image');
+  imageContainer.style.float = alignment?.trim()?.toLowerCase();
+  if (picture) {
+    imageContainer.append(picture);
+  }
+  addWrapperDiv(block, imageContainer, imageComponentWrapper);
 }
 
 export default function decorate(block) {
@@ -266,7 +265,7 @@ export default function decorate(block) {
     videoPropsGrp1,
     eyebrowStyleV,
     videoPropsGrp2,
-  ] = [...video.children].filter((row) => row.children.length);
+  ] = video ? [...video.children].filter((row) => row.children.length) : [];
 
   const [
     videoEyebrow,
@@ -331,13 +330,44 @@ export default function decorate(block) {
       description,
       videoButtonElement,
       componentNameV,
+      videoComponentwrapper,
     );
-  } else if (image) {
-    // eslint-disable-next-line max-len
-    const [imageAlignment, pictureContainer, altText] = [...image.children || []].filter((row) => row.children.length);
-    // eslint-disable-next-line max-len
-    const textWithImageDOM = generateTextWithImageDOM([imageAlignment, pictureContainer, altText]);
-    block.textContent = '';
-    block.appendChild(textWithImageDOM);
   }
+
+  const [
+    componentNameI,
+    imageDetails,
+    imageEyebrowStyle,
+    imageLink,
+  ] = image ? [...image.children || []].filter((row) => row.children.length) : [];
+  const [
+    imageEyebrow,
+    imageHeadline,
+    imageDescp,
+    imageButtonName,
+    imageButtonElement,
+  ] = imageDetails?.children || [];
+  if (imageButtonElement) imageButtonElement.ariaLabel = imageButtonName?.textContent;
+  const imageButtonAnchor = imageButtonElement?.querySelector('a');
+  if (imageButtonAnchor) {
+    imageButtonAnchor.textContent = imageButtonName?.textContent;
+    imageButtonAnchor.title = imageButtonName?.textContent;
+  }
+  const textWithImageDOM = generateTextWithImageDOM(
+    block,
+    imageLink,
+    componentNameI,
+  );
+  generateTextDOM(
+    block,
+    imageEyebrowStyle,
+    imageEyebrow,
+    imageHeadline,
+    imageDescp,
+    imageButtonElement,
+    componentNameI,
+    imageComponentWrapper,
+  );
+  if (!video) block.textContent = '';
+  block.appendChild(textWithImageDOM);
 }
