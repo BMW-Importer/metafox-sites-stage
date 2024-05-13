@@ -1,10 +1,33 @@
-export default async function decorate(block) {
-  const panels = [...block.children];
-  const accordionContainer = document.createElement('div');
-  accordionContainer.classList.add('accordion-container');
-  // loop through all children blocks
-  [...panels]?.forEach((panel) => {
-    const [accordionLabel, copyText, accorCollapes] = panel.children;
-    console.log(accordionLabel.textContent, copyText.textContent, accorCollapes.textContent);
+/* function hasWrapper(el) {
+ return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
+ } */
+export default function decorate(block) {
+  [...block.children].forEach((row) => {
+    // decorate accordion item label
+    const label = row.children[0];
+    const summary = document.createElement('summary');
+    summary.className = 'accordion-item-label';
+    summary.append(...label.childNodes);
+    // if (!hasWrapper(summary)) {
+    // summary.innerHTML = `<p>${summary.innerHTML}</p>`;
+    // }
+    // decorate accordion item body
+    const body = row.children[1];
+    body.className = 'accordion-item-body';
+    // if (!hasWrapper(body)) {
+    // body.innerHTML = `<p>${body.innerHTML}</p>`;
+    // }
+
+    const collapse = row.children[2].firstElementChild?.textContent.trim() === 'true';
+    // decorate accordion item
+    const details = document.createElement('details');
+    details.className = 'accordion-item';
+    // collapse by default if toggle is on
+    if (collapse) {
+      details.setAttribute('open', '');
+    }
+    details.append(summary, body);
+    // details.setAttribute("open");
+    row.replaceWith(details);
   });
 }
