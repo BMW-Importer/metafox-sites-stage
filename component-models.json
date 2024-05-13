@@ -49,6 +49,43 @@
     ]
   },
   {
+    "id": "eyebrow",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Eyebrow",
+        "value": "",
+        "required": true,
+        "description": "Defines the pre-headline that will appear on the page."
+      },
+      {
+        "component": "select",
+        "name": "eyebrowType",
+        "value": "",
+        "label": "Eyebrow Type",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling of the eyebrow that will be displayed on the page.",
+        "options": [
+          {
+            "name": "Eyebrow 1 Bold",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow 2 Bold",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "copyright",
     "fields": [
       {
@@ -1560,40 +1597,6 @@
         "valueType": "string",
         "value": "primary",
         "hidden": true
-      }
-    ]
-  },
-  {
-    "id": "eyebrow",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "eyebrow",
-        "label": "Eyebrow",
-        "value": ""
-      },
-      {
-        "component": "select",
-        "name": "eyebrowType",
-        "value": "",
-        "label": "Eyebrow Type",
-        "valueType": "string",
-        "required": true,
-        "options": [
-          {
-            "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
-          },
-          {
-            "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
-          },
-          {
-            "name": "Iconization",
-            "value": "iconization"
-          }
-        ]
       }
     ]
   },
