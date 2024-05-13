@@ -2,7 +2,8 @@
  return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
  } */
 export default function decorate(block) {
-  [...block.children].forEach((row) => {
+  const panels = [...block.children];
+  [...panels].forEach((row) => {
     // decorate accordion item label
     const label = row.children[0];
     const summary = document.createElement('summary');
