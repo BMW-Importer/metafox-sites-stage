@@ -14,11 +14,11 @@ async function modelPlaceholder(modelCode) {
 }
 
 function replacePlaceholder(string, data) {
-  return string.replace(/{model(.*?)}/g, (match, expression) => {
+  return string.replace(/\${model(.*?)}/g, (match, expression) => {
     const key = expression.split('.');
     let value = data;
-    if (key[0] in value) {
-      value = value[key[0]];
+    if (key[1] in value) {
+      value = value[key[1]];
     } else {
       return match;
     }
@@ -33,8 +33,9 @@ export default function decorate(block) {
   const modelCode = ['7K11', '61FF'];
   // const placeholder = '${model.description} this is test ${model.series}';
   modelPlaceholder(modelCode).then((wdhPlaceholderObject) => {
-    const updatedPlaceholder = replacePlaceholder(placeholder, wdhPlaceholderObject);
-    console.log(updatedPlaceholder);
+    const updatedPlaceholder = replacePlaceholder(placeholder.innerText, wdhPlaceholderObject);
+    block.textContent = '';
+    block.append(updatedPlaceholder);
   });
   // console.log('Placeholder value', placeholderValue);
 }
