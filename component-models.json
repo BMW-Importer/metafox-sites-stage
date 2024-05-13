@@ -1680,5 +1680,44 @@
         "description": "If enabled, the Accordion Item will be collapsed by default"
       }
     ]
+  },
+  {
+    "id": "headline",
+    "fields": [
+      {
+        "component": "select",
+        "name": "headline type",
+        "value": "",
+        "label": "Headline Type",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Headline 1",
+            "value": "headline1"
+          },
+          {
+            "name": "Headline 2",
+            "value": "headline2"
+          },
+          {
+            "name": "Headline 3",
+            "value": "headline3"
+          },
+          {
+            "name": "Subsection 1",
+            "value": "subsection1"
+          },
+          {
+            "name": "Subsection 2",
+            "value": "subsection2"
+          },
+          {
+            "name": "Stage Model",
+            "value": "stagemodel"
+          }
+        ]
+      }
+    ]
   }
 ]
