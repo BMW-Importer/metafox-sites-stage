@@ -132,7 +132,8 @@
       "text-with-media",
       "modelcard",
       "content-navigation",
-      "accordion"
+      "accordion",
+      "disclaimer"
     ]
   },
   {
@@ -143,7 +144,8 @@
       "title",
       "image",
       "video",
-      "accordion"
+      "accordion",
+      "disclaimer"
     ]
   },
   {

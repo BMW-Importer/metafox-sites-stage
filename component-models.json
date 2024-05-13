@@ -1692,5 +1692,17 @@
         "description": "If enabled, the Accordion Item will be collapsed by default"
       }
     ]
+  },
+  {
+    "id": "disclaimer",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "reference",
+        "name": "referenceField",
+        "label": "Reference Field",
+        "value": "",
+        "required": true
+      }] 
   }
 ]
