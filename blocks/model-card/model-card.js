@@ -9,6 +9,7 @@ async function buildGetPlaceholder(modelCode) {
   }
 }
 export default function decorate(block) {
+  console.log('Hello');
   const props = [...block.children].map((row) => row.firstElementChild);
   const [contentfragment] = props;
   console.log(contentfragment);

@@ -848,7 +848,7 @@
     ]
   },
   {
-    "id": "modelcard",
+    "id": "model-card",
     "fields": [
       {
         "component": "aem-content-fragment",
