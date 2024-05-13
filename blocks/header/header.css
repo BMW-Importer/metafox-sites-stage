@@ -1105,7 +1105,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     position: absolute;
     left: 0;
     right: 0;
-    padding: 2rem 0;
+    padding: 2rem 5.25rem;
     height: auto;
     width: 100%;
     opacity: 0;
