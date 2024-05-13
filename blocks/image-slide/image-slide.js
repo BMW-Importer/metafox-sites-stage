@@ -14,7 +14,7 @@ export function generateImgSlidePicture(props) {
 
 export function generateImgSlideDetailMarkUp(props) {
   const [imageSlideHeadline, imageSlideCopyText,
-    button, index] = props;
+    button, index, showless] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
@@ -61,7 +61,7 @@ export function generateImgSlideDetailMarkUp(props) {
   const showMoreShowLessBtnContainer = document.createElement('div');
   showMoreShowLessBtnContainer.classList.add('vid-img-slide-showmore-btn', 'hidden');
   const showMoreShowLessBtn = document.createElement('button');
-  showMoreShowLessBtn.textContent = 'Prikaži manje';
+  showMoreShowLessBtn.textContent = showless;
   showMoreShowLessBtn.classList.add('vid-img-slide-showmore-btn-link');
   showMoreShowLessBtnContainer.append(showMoreShowLessBtn);
 
