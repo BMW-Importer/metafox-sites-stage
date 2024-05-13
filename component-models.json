@@ -1022,6 +1022,11 @@
             "value": "transparent"
           }
         ]
+      },
+      {
+        "component": "text-input",
+        "name": "pageTitle",
+        "label": "Page Title"
       }
     ]
   },
