@@ -1081,19 +1081,19 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   header.header-wrapper nav .nav-brand .icon-link-list-wrapper {
     position: absolute;
     right: 0;
-    top: 30px;
+  }
+
+  header.header-wrapper nav .nav-brand .icon-link-list-wrapper .icon-link-list-container {
+    display: flex;
   }
 
   header.header-wrapper nav .nav-brand .icon-link-list-wrapper .icon-link-list-container .icon {
-    margin-right: 1.88rem;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    padding: 0 12px;
   }
 
   header.header-wrapper nav .nav-brand .icon-link-list-wrapper .icon-link-list-container .icon .search {
    position: relative;
-   left: 5px;
   }
 
   /* css for flyout */
@@ -1130,10 +1130,12 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   .showfly .flyout-wrapper::before {
     opacity: 1;
   }
-
+  .showfly .flyout-wrapper.pronađite-online .flyout-main-container {
+    justify-content: center;
+  }
   .showfly .flyout-main-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     opacity: 1;
     transform: scaleY(1);
     transition-delay: 0s, 0s;
