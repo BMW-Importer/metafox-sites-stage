@@ -855,6 +855,13 @@
         "name": "contentfragment",
         "label": "Content Fragment Picker",
         "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "placeholder",
+        "value": "",
+        "label": "WDH Placeholder Text"
       }
     ]
   },
