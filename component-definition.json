@@ -28,8 +28,8 @@
               "page": {
                 "resourceType": "core/franklin/components/title/v1/title",
                 "template": {
-                  "name": "Title",
-                  "model": "Title"
+                  "name": "Headline",
+                  "model": "headline"
                 }
               }
             }
