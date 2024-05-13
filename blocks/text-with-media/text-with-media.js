@@ -154,6 +154,27 @@ function getVideoElement(
   return video;
 }
 
+function generateTextWithImageDOM(props) {
+  const [imageAlignment, pictureContainer, altText = props] = props;
+  const picture = pictureContainer.querySelector('picture');
+  const image = picture.querySelector('image');
+  if (Boolean(image) && Boolean(altText)) {
+    image.alt = altText;
+  }
+
+  const textWithImageDOM = document.createElement('div');
+
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('image');
+  imageContainer.style.float = imageAlignment.innerHTML.indexOf('right') > -1 ? 'right' : 'left';
+  if (picture) {
+    imageContainer.append(picture);
+  }
+  textWithImageDOM.append(imageContainer);
+
+  return textWithImageDOM;
+}
+
 function addWrapperDiv(block, element, alignment = 'left') {
   if (block.getElementsByClassName('wrapper-div')?.length) {
     const wrapperDiv = block.getElementsByClassName('wrapper-div');
@@ -239,77 +260,86 @@ export function generateTextDOM(
 }
 
 export default function decorate(block) {
-  const [video] = block.children;
-  const [
-    componentNameV,
-    videoPropsGrp1,
-    eyebrowStyleV,
-    videoPropsGrp2,
-  ] = video ? [...video.children || []].filter((row) => row.children.length) : [];
-
-  const [
-    videoEyebrow,
-    headline,
-    description,
-    videoButtonName,
-    videoButtonElement,
-  ] = videoPropsGrp1?.children || [];
-
-  const [
-    videoTitle,
-    videoDescp,
-    desktopVidPath,
-    mobileVidPath,
-    desktopPosterPath,
-    mobilePosterPath,
-    videoLoop,
-    videoAutoPlay,
-    videoControl,
-    videoMute,
-  ] = videoPropsGrp2?.children || [];
-
-  const placeholder = block.querySelectorAll('picture');
-
-  const posters = {
-    desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
-    mobile: mobilePosterPath?.querySelector('img')?.getAttribute('src'),
-  };
-
-  const videoLinkObject = {
-    desktop: desktopVidPath?.textContent,
-    mobile: mobileVidPath?.textContent,
-  };
-  block.textContent = '';
-  const enablecontrols = videoControl?.textContent.trim() === 'true';
-  const loop = videoLoop?.textContent.trim() === 'true';
-  const autoplay = videoAutoPlay?.textContent.trim() === 'true';
-  const mute = videoMute?.textContent.trim() === 'true';
-  if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
-  const videoButtonAnchor = videoButtonElement?.querySelector('a');
-  if (videoButtonAnchor) {
-    videoButtonAnchor.textContent = videoButtonName?.textContent;
-    videoButtonAnchor.title = videoButtonName?.textContent;
-  }
-  if (placeholder) {
-    loadVideo(
-      block,
-      videoTitle,
-      videoDescp,
-      videoLinkObject,
-      autoplay,
-      loop,
-      enablecontrols,
-      mute,
-      posters,
-    );
-    generateTextDOM(
-      block,
+  const [image, video] = block.children;
+  if (video.tagName.toLowerCase() === 'video') {
+    const [
+      componentNameV,
+      videoPropsGrp1,
       eyebrowStyleV,
+      videoPropsGrp2,
+    ] = video.children.filter((row) => row.children.length);
+
+    const [
       videoEyebrow,
       headline,
       description,
+      videoButtonName,
       videoButtonElement,
-      componentNameV,
-    );
+    ] = videoPropsGrp1?.children || [];
+
+    const [
+      videoTitle,
+      videoDescp,
+      desktopVidPath,
+      mobileVidPath,
+      desktopPosterPath,
+      mobilePosterPath,
+      videoLoop,
+      videoAutoPlay,
+      videoControl,
+      videoMute,
+    ] = videoPropsGrp2?.children || [];
+
+    const placeholder = block.querySelectorAll('picture');
+
+    const posters = {
+      desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
+      mobile: mobilePosterPath?.querySelector('img')?.getAttribute('src'),
+    };
+
+    const videoLinkObject = {
+      desktop: desktopVidPath?.textContent,
+      mobile: mobileVidPath?.textContent,
+    };
+    block.textContent = '';
+    const enablecontrols = videoControl?.textContent.trim() === 'true';
+    const loop = videoLoop?.textContent.trim() === 'true';
+    const autoplay = videoAutoPlay?.textContent.trim() === 'true';
+    const mute = videoMute?.textContent.trim() === 'true';
+    if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
+    const videoButtonAnchor = videoButtonElement?.querySelector('a');
+    if (videoButtonAnchor) {
+      videoButtonAnchor.textContent = videoButtonName?.textContent;
+      videoButtonAnchor.title = videoButtonName?.textContent;
+    }
+    if (placeholder) {
+      loadVideo(
+        block,
+        videoTitle,
+        videoDescp,
+        videoLinkObject,
+        autoplay,
+        loop,
+        enablecontrols,
+        mute,
+        posters,
+      );
+      generateTextDOM(
+        block,
+        eyebrowStyleV,
+        videoEyebrow,
+        headline,
+        description,
+        videoButtonElement,
+        componentNameV,
+      );
+    } else if (image.tagName.toLowerCase() === 'picture') {
+      // eslint-disable-next-line max-len
+      const [imageAlignment, pictureContainer, altText] = [...image.children || []].filter((row) => row.children.length);
+      // eslint-disable-next-line max-len
+      const textWithImageDOM = generateTextWithImageDOM([imageAlignment, pictureContainer, altText]);
+      block.textContent = '';
+      block.appendChild(textWithImageDOM);
+    }
   }
 }

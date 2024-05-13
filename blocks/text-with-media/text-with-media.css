@@ -2,6 +2,10 @@
   width: 60vw;
 }
 
+.image {
+  max-width: 60vw;
+}
+
 .eyebrowbold1 {
   font-size: 14px;
   line-height: 20px;
@@ -86,6 +90,11 @@
   
   .text-with-video-button {
     margin-top: 20px;
+  }
+
+    .image {
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 
   .text-alignment {
