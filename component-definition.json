@@ -36,6 +36,21 @@
           }
         },
         {
+          "title": "Headline",
+          "id": "headline",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/title/v1/title",
+                "template": {
+                  "name": "Headline",
+                  "model": "headline"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Eyebrow",
           "id": "eyebrow",
           "plugins": {

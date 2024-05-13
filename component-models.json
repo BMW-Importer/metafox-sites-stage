@@ -7,8 +7,7 @@
         "valueType": "string",
         "name": "jcr:title",
         "value": "",
-        "label": "Text",
-        "required": true
+        "label": "Text"
       },
       {
         "component": "select",
@@ -1698,12 +1697,22 @@
     "id": "headline",
     "fields": [
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "headline",
+        "value": "",
+        "label": "Headline",
+        "required": true,
+        "description": "Defines the headline text that will appear on the page."
+      },
+      {
         "component": "select",
         "name": "headline type",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",
         "required": true,
+        "description": "Defines the styling of the headline that will be displayed on the page.",
         "options": [
           {
             "name": "Headline 1",
