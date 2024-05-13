@@ -1698,7 +1698,7 @@
     "fields": [
       {
         "component": "reference",
-        "valueType": "reference",
+        "valueType": "string",
         "name": "referenceField",
         "label": "Reference Field",
         "value": "",
