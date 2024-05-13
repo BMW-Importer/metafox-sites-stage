@@ -13,17 +13,28 @@ async function modelPlaceholder(modelCode) {
   }
 }
 
+function replacePlaceholder(string, data) {
+  return string.replace(/{model(.*?)}/g, (match, expression) => {
+    const key = expression.split('.');
+    let value = data;
+    if (key[0] in value) {
+      value = value[key[0]];
+    } else {
+      return match;
+    }
+    return value;
+  });
+}
+
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const [, placeholder] = props;
-  const wdhModelPlaceholder = placeholder.match(/\$\{model.\w*\}/g);
-  if (wdhModelPlaceholder) {
-    const modelCode = ['7K11', '61FF'];
-    let placeholderValue = '';
-    modelPlaceholder(modelCode).then((wdhPlaceholderObject) => {
-      placeholderValue = wdhPlaceholderObject[wdhModelPlaceholder[0]];
-      console.log('Placeholder Value', placeholderValue);
-    });
-  }
+  // const wdhModelPlaceholder = placeholder.match(/\$\{model.\w*\}/g);
+  const modelCode = ['7K11', '61FF'];
+  // const placeholder = '${model.description} this is test ${model.series}';
+  modelPlaceholder(modelCode).then((wdhPlaceholderObject) => {
+    const updatedPlaceholder = replacePlaceholder(placeholder, wdhPlaceholderObject);
+    console.log(updatedPlaceholder);
+  });
   // console.log('Placeholder value', placeholderValue);
 }
