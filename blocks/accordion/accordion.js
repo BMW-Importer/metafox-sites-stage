@@ -21,7 +21,7 @@ export default function decorate(block) {
     details.append(summary, body);
     // row.textContent = '';
     // row.append(details);
-    row.replaceWith(details);
-    // block.append(details);
+    // row.replaceWith(details);
+    block.append(details);
   });
 }
