@@ -122,6 +122,6 @@
 
   .text-alignment {
     text-align: left;
-    padding: 0;
+    padding: 0 8px;
   }
 }
