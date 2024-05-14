@@ -184,10 +184,10 @@ export function loadVideo(
     return;
   }
 
-  const isMp4 = linkObject.desktop ? linkObject.desktop.includes('.mp4')
-    : linkObject.mobile.includes('.mp4');
-  const isM3U8 = linkObject.desktop ? linkObject.desktop.includes('.m3u8')
-    : linkObject.mobile.includes('.m3u8');
+  const isMp4 = linkObject?.desktop ? linkObject?.desktop?.includes('.mp4')
+    : linkObject?.mobile?.includes('.mp4');
+  const isM3U8 = linkObject?.desktop ? linkObject?.desktop?.includes('.m3u8')
+    : linkObject?.mobile?.includes('.m3u8');
 
   const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
   const headElement = document.querySelector('head');
@@ -224,18 +224,18 @@ export function generateTextDOM(
   const headline = document.createElement('h2');
   const [componentName, alignment] = componentNameAndAlignment.textContent.split(',');
   div.classList.add('text-alignment');
-  eyebrow.classList.add(`${componentName}-eyebrow`);
-  headline.classList.add(`${componentName}-headline`);
-  description.classList.add(`${componentName}-description`);
-  buttonElement.classList.add(`${componentName}-button`);
-  if (eyebrowStyle === 'eyebrowbold1') {
+  if (eyebrow) eyebrow.classList.add(`${componentName}-eyebrow`);
+  if (headline) headline.classList.add(`${componentName}-headline`);
+  if (description) description.classList.add(`${componentName}-description`);
+  if (buttonElement) buttonElement.classList.add(`${componentName}-button`);
+  if (eyebrowStyle === 'eyebrowbold1' && eyebrow) {
     eyebrow.classList.add(eyebrowStyle.textContent);
-  } else if (eyebrowStyle === 'eyebrowbold2') {
+  } else if (eyebrowStyle === 'eyebrowbold2' && eyebrow) {
     eyebrow.classList.add(eyebrowStyle.textContent);
-  } else {
+  } else if (eyebrowStyle === 'iconization' && eyebrow) {
     eyebrow.classList.add(eyebrowStyle.textContent);
   }
-  headline.innerHTML = headlineElement.innerHTML;
+  headline.innerHTML = headlineElement?.innerHTML;
   if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
   div.append(eyebrow, headline, description, buttonElement);
   addWrapperDiv(block, div, componentWrapper, alignment?.trim());
@@ -269,7 +269,7 @@ export default function decorate(block) {
       image = row;
     }
   });
-  // const [video, image] = block.children;
+
   const [
     componentNameV,
     videoPropsGrp1,
@@ -362,7 +362,8 @@ export default function decorate(block) {
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
   if (image) {
-    const textWithImageDOM = generateTextWithImageDOM(
+    // if (!video) block.textContent = '';
+    generateTextWithImageDOM(
       block,
       imageLink,
       componentNameI,
@@ -377,7 +378,5 @@ export default function decorate(block) {
       componentNameI,
       imageComponentWrapper,
     );
-    if (!video) block.textContent = '';
-    block.appendChild(textWithImageDOM);
   }
 }

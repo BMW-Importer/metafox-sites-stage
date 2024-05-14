@@ -295,6 +295,7 @@
                   "general_copytext": "",
                   "general_buttonStyling": "linkButton",
                   "classes":"left",
+                  "style":"",
                   "media_loopVideo":true,
                   "media_autoplay":true,
                   "media_videoControls":false,
