@@ -140,6 +140,10 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     display: flex;
 }
 
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li:last-child {
+    margin-bottom: 0;
+}
+
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li:not(:first-child) a::after {
     overflow-wrap: normal;
     -webkit-font-smoothing: antialiased;
@@ -171,7 +175,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     height: auto;
     overflow-y: auto;
     align-items: revert;
-    row-gap: 4rem;
+    row-gap: 3rem;
     max-height: calc(100vh - 15rem);
 }
 
