@@ -248,7 +248,8 @@ function generateTextWithImageDOM(
 ) {
   const alignment = imageComponentName.textContent.split(',')[1];
   const picture = imageLink.querySelector('picture');
-
+  const image = picture.querySelector('img');
+  image.setAttribute('fetchpriority', 'low');
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('image');
   imageContainer.style.float = alignment?.trim()?.toLowerCase();
