@@ -362,7 +362,6 @@ export default function decorate(block) {
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
   if (image) {
-    // if (!video) block.textContent = '';
     generateTextWithImageDOM(
       block,
       imageLink,
