@@ -298,8 +298,6 @@ export default function decorate(block) {
     videoMute,
   ] = videoPropsGrp2?.children || [];
 
-  const placeholder = block.querySelectorAll('picture');
-
   const posters = {
     desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
     mobile: mobilePosterPath?.querySelector('img')?.getAttribute('src'),
@@ -320,7 +318,7 @@ export default function decorate(block) {
     videoButtonAnchor.textContent = videoButtonName?.textContent;
     videoButtonAnchor.title = videoButtonName?.textContent;
   }
-  if (placeholder && video) {
+  if (video) {
     loadVideo(
       block,
       videoTitle,
@@ -363,21 +361,23 @@ export default function decorate(block) {
     imageButtonAnchor.textContent = imageButtonName?.textContent;
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
-  const textWithImageDOM = generateTextWithImageDOM(
-    block,
-    imageLink,
-    componentNameI,
-  );
-  generateTextDOM(
-    block,
-    imageEyebrowStyle,
-    imageEyebrow,
-    imageHeadline,
-    imageDescp,
-    imageButtonElement,
-    componentNameI,
-    imageComponentWrapper,
-  );
-  if (!video) block.textContent = '';
-  block.appendChild(textWithImageDOM);
+  if (image) {
+    const textWithImageDOM = generateTextWithImageDOM(
+      block,
+      imageLink,
+      componentNameI,
+    );
+    generateTextDOM(
+      block,
+      imageEyebrowStyle,
+      imageEyebrow,
+      imageHeadline,
+      imageDescp,
+      imageButtonElement,
+      componentNameI,
+      imageComponentWrapper,
+    );
+    if (!video) block.textContent = '';
+    block.appendChild(textWithImageDOM);
+  }
 }
