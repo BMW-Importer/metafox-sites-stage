@@ -1,10 +1,12 @@
 function iframeLoader() {
   const iframeCont = document.getElementById('bmwIframe');
-  const loading = document.querySelector('.loader');
-  iframeCont.addEventListener('load', () => {
-    loading.style.display = 'none';
-    iframeCont.style.opacity = 1;
-  });
+  if(iframeCont){
+    const loading = document.querySelector('.loader');
+    iframeCont.addEventListener('load', () => {
+      loading.style.display = 'none';
+      iframeCont.style.opacity = 1;
+    });
+  }
 }
 export function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
