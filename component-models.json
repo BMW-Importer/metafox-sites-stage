@@ -1709,5 +1709,16 @@
         "description": "If enabled, the Accordion Item will be collapsed by default"
       }
     ]
+  },
+  {
+    "id": "disclaimer",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "disclaimerCF",
+        "label": "Content Fragment Picker",
+        "valueType": "string"
+      }
+    ]
   }
 ]
