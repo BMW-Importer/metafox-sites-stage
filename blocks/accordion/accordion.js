@@ -5,7 +5,6 @@ export default async function decorate(block) {
   // loop through all children blocks
   [...panels]?.forEach((panel) => {
     const [accordionLabel, copyText, accorCollapes] = panel.children;
-    console.log(accordionLabel.textContent, copyText.textContent, accorCollapes.textContent);
     const summary = document.createElement('summary');
     summary.className = 'accordion-item-label';
     summary.append(accordionLabel);
