@@ -62,7 +62,7 @@
       },
       {
         "component": "select",
-        "name": "eyebrowType",
+        "name": "type",
         "value": "",
         "label": "Eyebrow Type",
         "valueType": "string",
@@ -71,15 +71,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
+            "value": "h1"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
+            "value": "h2"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h3"
           }
         ]
       }
