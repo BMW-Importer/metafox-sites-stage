@@ -71,6 +71,12 @@
     ]
   },
   {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
     "id": "text-with-image",
     "components": [],
     "rte": {
@@ -124,7 +130,11 @@
       "video",
       "multicontent-gallery",
       "text-with-media",
-      "modelcard"
+      "model-card",
+      "content-navigation",
+      "accordion",
+      "eyebrow",
+      "headline"
     ]
   },
   {
@@ -134,7 +144,10 @@
       "button",
       "title",
       "image",
-      "video"
+      "video",
+      "accordion",
+      "eyebrow",
+      "headline"
     ]
   },
   {

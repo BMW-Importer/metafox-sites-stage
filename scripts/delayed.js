@@ -14,9 +14,6 @@ const page_tracking = {"page": {
             "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
             "destinationURL": "https://www.bmw.rs/sr/index.html",
             "variant": "real page",
-            "geoRegion": "RS",
-            "language": "sr",
-            "websiteEnv": "prod",
             "pageTitle": "BMW Srbija",
             "windowInfo": {
                 "screenWidth": 3840,
@@ -113,10 +110,8 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
     page_tracking.page.pageInfo.pageID = window.location.pathname;
-    page_tracking.page.pageInfo.version = timestamp;
+    page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
-    page_tracking.page.pageInfo.language = lang.getAttribute('content');
-    page_tracking.page.pageInfo.geoRegion = geoReg.getAttribute('content');
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
     const randomNum = 1000000000 + Math.random() * 9000000000;
@@ -149,13 +144,25 @@ function set_page_tracking(){
 
     
     const path = window.location.pathname;
-    const pathParts = path.split('/');
-    const lastPart = pathParts[pathParts.length - 1];
-    if(lastPart !== ''){
-        page_tracking.page.pageInfo.pageName = "web:" + lastPart;
+    const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
+    const formattedPath = pathParts.join(':');
+    if(formattedPath !== ''){
+        page_tracking.page.pageInfo.pageName = "web:" +formattedPath;
     }
-    window.adobeDataLayer.push(page_tracking);
+
+    const metaTag = document.querySelector('meta[name="env"]');
+    if (metaTag && metaTag.content) {
+      page_tracking.page.pageInfo.websiteEnv = metaTag.content;
+    }
+    if (lang && lang.content) {
+      page_tracking.page.pageInfo.language = lang.content;
+    }
+    if (geoReg && geoReg.content) {
+      page_tracking.page.pageInfo.geoRegion = geoReg.content;
+    }
     
+    window.adobeDataLayer.push(page_tracking);
+
 }
 
 function set_ecid(){

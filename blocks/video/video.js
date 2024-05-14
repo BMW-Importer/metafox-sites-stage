@@ -63,7 +63,7 @@ function getVideoElement(
   videoFormat,
   autoplay,
   enableLoop,
-  enableControls,
+  enableHideControls,
   muted,
   posters,
   onHoverPlay,
@@ -71,7 +71,8 @@ function getVideoElement(
   const video = document.createElement('video');
   video.dataset.loading = 'true';
   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
-  if (enableControls) {
+
+  if (!enableHideControls) {
     video.setAttribute('controls', '');
   }
   if (autoplay) {
@@ -93,7 +94,7 @@ function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('title', videoTitle?.textContent);
+  video.setAttribute('title', videoTitle?.textContent ?? '');
   video.setAttribute('data-description', videoDescp?.textContent);
 
   const sourceEl = document.createElement('source');
@@ -131,7 +132,6 @@ function getVideoElement(
     }
     video.append(sourceEl);
   }
-
   video.addEventListener('click', (event) => {
     event.stopImmediatePropagation();
     if (video.paused) {
@@ -183,23 +183,18 @@ function getVideoElement(
       video.pause();
     }
   });
-
   video.dataset.autoplay = autoplay ? 'true' : 'false';
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (video) {
-        if (entry.isIntersecting) {
-          if (video.paused) {
-            video.play();
-          }
-        } else if (!video.paused) {
-          video.pause();
-        }
-      }
-    });
-  }, { threshold: 0.1 });
-
-  observer.observe(video);
+  if (window.IntersectionObserver) {
+    let isPaused = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio !== 1 && !video.paused) {
+          video.pause(); isPaused = true;
+        } else if (isPaused) { video.play(); isPaused = false; }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(video);
+  } else document.querySelector('#warning').style.display = 'block';
   return video;
 }
 
@@ -215,7 +210,7 @@ export function loadVideoEmbed(
   linkObject,
   autoplay,
   loop,
-  enableControls,
+  enableHideControls,
   muted,
   posters,
   onHoverPlay,
@@ -265,15 +260,14 @@ export function loadVideoEmbed(
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-
-    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableHideControls, muted, posters, onHoverPlay));
   } else if (isM3U8) {
     block.textContent = '';
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
 
-    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters, onHoverPlay));
+    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableHideControls, muted, posters, onHoverPlay));
   }
 
   block.dataset.embedIsLoaded = true;
@@ -297,7 +291,6 @@ export default async function decorate(block) {
   const placeholder = block.querySelector('picture');
   const desktopVideolink = videoDesktopPath?.textContent;
   const mobileVideolink = videoMobPath?.textContent;
-
   const linkObject = {
     desktop: desktopVideolink,
     mobile: mobileVideolink,
@@ -311,7 +304,7 @@ export default async function decorate(block) {
   block.textContent = '';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
   const loop = videoLoop?.textContent.trim() === 'true';
-  const enableControls = videoHideControls?.textContent.trim() === 'true';
+  const enableHideControls = videoHideControls?.textContent.trim() === 'true';
   const muted = videoMute?.textContent.trim() === 'true';
   const onHoverPlay = playonHover?.textContent.trim() === 'true';
 
@@ -323,7 +316,7 @@ export default async function decorate(block) {
       linkObject,
       autoplay,
       loop,
-      enableControls,
+      enableHideControls,
       muted,
       posters,
       onHoverPlay,
@@ -340,7 +333,7 @@ export default async function decorate(block) {
           linkObject,
           autoplay,
           loop,
-          enableControls,
+          enableHideControls,
           muted,
           posters,
           onHoverPlay,

@@ -1,44 +1,85 @@
 [
   {
-    "id": "title",
+    "id": "headline",
     "fields": [
       {
         "component": "text-input",
         "valueType": "string",
         "name": "jcr:title",
         "value": "",
-        "label": "Text"
+        "label": "Headline",
+        "required": true,
+        "description": "Defines the headline text that will appear on the page."
       },
       {
         "component": "select",
-        "name": "type",
-        "value": "h1",
-        "label": "Type",
+        "name": "headlineType",
+        "value": "",
+        "label": "Headline Type",
         "valueType": "string",
+        "required": true,
+        "description": "Defines the styling of the headline that will be displayed on the page.",
         "options": [
           {
-            "name": "h1",
-            "value": "h1"
+            "name": "Headline 1",
+            "value": "headline1"
           },
           {
-            "name": "h2",
-            "value": "h2"
+            "name": "Headline 2",
+            "value": "headline2"
           },
           {
-            "name": "h3",
-            "value": "h3"
+            "name": "Headline 3",
+            "value": "headline3"
           },
           {
-            "name": "h4",
-            "value": "h4"
+            "name": "Subsection 1",
+            "value": "subsection1"
           },
           {
-            "name": "h5",
-            "value": "h5"
+            "name": "Subsection 2",
+            "value": "subsection2"
           },
           {
-            "name": "h6",
-            "value": "h6"
+            "name": "Stage Model",
+            "value": "stagemodel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eyebrow",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Eyebrow",
+        "value": "",
+        "required": true,
+        "description": "Defines the pre-headline that will appear on the page."
+      },
+      {
+        "component": "select",
+        "name": "eyebrowType",
+        "value": "",
+        "label": "Eyebrow Type",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling of the eyebrow that will be displayed on the page.",
+        "options": [
+          {
+            "name": "Eyebrow 1 Bold",
+            "value": "eyebrowbold1"
+          },
+          {
+            "name": "Eyebrow 2 Bold",
+            "value": "eyebrowbold2"
+          },
+          {
+            "name": "Iconization",
+            "value": "iconization"
           }
         ]
       }
@@ -210,7 +251,7 @@
       {
         "component": "select",
         "name": "sectionwidth",
-        "description":"Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
+        "description": "Defines the grid size of the page the content added within the section will occupy and the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Width",
         "valueType": "string",
@@ -232,7 +273,7 @@
       {
         "component": "select",
         "name": "sectionalignment",
-        "description":"Defines the alignment of the Default Content added within the Section.",
+        "description": "Defines the alignment of the Default Content added within the Section.",
         "value": "",
         "label": "Alignment",
         "valueType": "string",
@@ -265,7 +306,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "description":"",
+        "description": "",
         "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
@@ -273,7 +314,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "description":"",
+        "description": "",
         "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
@@ -281,7 +322,7 @@
       {
         "component": "boolean",
         "label": "Display in Content Navigation",
-        "description":"",
+        "description": "",
         "name": "contentnavigation",
         "valueType": "boolean"
       }
@@ -473,14 +514,14 @@
         "component": "tab",
         "label": "General",
         "name": "textWithImageTab1"
-      },     
+      },
       {
         "component": "select",
         "valueType": "string",
         "name": "classes",
         "value": "left",
         "label": "Image Alignment",
-        "description":"Defines on which side the image will appear.",
+        "description": "Defines on which side the image will appear.",
         "required": true,
         "options": [
           {
@@ -499,7 +540,7 @@
         "name": "general_eyebrow",
         "value": "",
         "label": "Eyebrow",
-        "description":"Defines the text that will appear above the headline."
+        "description": "Defines the text that will appear above the headline."
       },
       {
         "component": "select",
@@ -507,7 +548,7 @@
         "name": "style",
         "value": "",
         "label": "Eyebrow Type",
-        "description":"Defines the styling of the text that will appear above the headline.",
+        "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow Bold 1",
@@ -529,7 +570,7 @@
         "name": "general_headline",
         "value": "",
         "label": "Headline",
-        "description":"Defines the headline."
+        "description": "Defines the headline."
       },
       {
         "component": "select",
@@ -537,8 +578,8 @@
         "name": "general_headlineType",
         "value": "h2",
         "label": "Headline Type",
-        "description":"Defines the styling of the headline.",
-        "hidden":true,
+        "description": "Defines the styling of the headline.",
+        "hidden": true,
         "options": [
           {
             "name": "H2",
@@ -558,7 +599,7 @@
         "component": "tab",
         "label": "Image",
         "name": "textWithImageTab2"
-      }, 
+      },
       {
         "component": "reference",
         "valueType": "string",
@@ -566,7 +607,7 @@
         "label": "Image",
         "value": "",
         "description": "Defines the image to be displayed.",
-        "required":true,
+        "required": true,
         "multi": false
       },
       {
@@ -576,20 +617,20 @@
         "label": "Alt Text",
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
         "value": "",
-        "required":true
+        "required": true
       },
       {
         "component": "tab",
         "label": "Button/Link",
         "name": "textWithImageTab3"
-      }, 
+      },
       {
         "component": "text",
         "valueType": "string",
         "name": "general_linkLabel",
         "value": "",
         "label": "Link Label",
-        "description":"Defines the text to be displayed in the button or as the link."
+        "description": "Defines the text to be displayed in the button or as the link."
       },
       {
         "component": "text",
@@ -597,7 +638,7 @@
         "name": "general_link",
         "value": "",
         "label": "Link",
-        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
         "component": "select",
@@ -605,8 +646,8 @@
         "name": "general_buttonStyling",
         "value": "linkbutton",
         "label": "Button Styling",
-        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden":true,
+        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden": true,
         "options": [
           {
             "name": "Link Button",
@@ -623,14 +664,14 @@
         "component": "tab",
         "label": "General",
         "name": "textWithVideoTab1"
-      },     
+      },
       {
         "component": "select",
         "valueType": "string",
         "name": "classes",
         "value": "left",
         "label": "Video Alignment",
-        "description":"Defines on which side the Video will appear.",
+        "description": "Defines on which side the Video will appear.",
         "required": true,
         "options": [
           {
@@ -649,7 +690,7 @@
         "name": "general_eyebrow",
         "value": "",
         "label": "Eyebrow",
-        "description":"Defines the text that will appear above the headline."
+        "description": "Defines the text that will appear above the headline."
       },
       {
         "component": "select",
@@ -657,7 +698,7 @@
         "name": "style",
         "value": "",
         "label": "Eyebrow Type",
-        "description":"Defines the styling of the text that will appear above the headline.",
+        "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow 1 Bold",
@@ -679,7 +720,7 @@
         "name": "general_headline",
         "value": "",
         "label": "Headline",
-        "description":"Defines the headline."
+        "description": "Defines the headline."
       },
       {
         "component": "select",
@@ -687,8 +728,8 @@
         "name": "general_headlineType",
         "value": "h2",
         "label": "Headline Type",
-        "description":"Defines the styling of the headline.",
-        "hidden":true,
+        "description": "Defines the styling of the headline.",
+        "hidden": true,
         "options": [
           {
             "name": "H2",
@@ -708,14 +749,14 @@
         "component": "tab",
         "label": "Video",
         "name": "textWithVideoTab2"
-      }, 
+      },
       {
         "component": "text",
         "valueType": "string",
         "name": "media_videoTitle",
         "value": "",
         "label": "Video Title",
-        "description":"Defines the title of the video.",
+        "description": "Defines the title of the video.",
         "required": true
       },
       {
@@ -724,7 +765,7 @@
         "name": "media_videoDescription",
         "value": "",
         "label": "Video Description",
-        "description":"Defines the description of the video.",
+        "description": "Defines the description of the video.",
         "required": true
       },
       {
@@ -734,9 +775,10 @@
         "label": "Desktop Video Path",
         "value": "",
         "description": "Defines video that will play on desktop.",
-        "required":true,
+        "required": true,
         "multi": false
-      },{
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_mobileFileReference",
@@ -744,16 +786,18 @@
         "value": "",
         "description": "Defines video that will play on mobile.",
         "multi": false
-      },{
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_desktopPosterFileReference",
         "label": "Desktop Poster Image",
         "value": "",
         "description": "Defines the the poster image of the video that will play on desktop. It will be displayed while loading the page.",
-        "required":true,
+        "required": true,
         "multi": false
-      },{
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_mobilePosterFileReference",
@@ -767,7 +811,7 @@
         "label": "Loop Video",
         "name": "media_loopVideo",
         "valueType": "boolean",
-        "value":true,
+        "value": true,
         "description": "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
@@ -775,7 +819,7 @@
         "label": "Autoplay",
         "name": "media_autoplay",
         "valueType": "boolean",
-        "value":true,
+        "value": true,
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
       },
       {
@@ -783,7 +827,7 @@
         "label": "Video Controls",
         "name": "media_videoControls",
         "valueType": "boolean",
-        "value":false,
+        "value": false,
         "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
@@ -791,21 +835,21 @@
         "label": "Mute Video",
         "name": "media_muteVideo",
         "valueType": "boolean",
-        "value":true,
+        "value": true,
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
       },
       {
         "component": "tab",
         "label": "Button/Link",
         "name": "textWithVideoTab3"
-      }, 
+      },
       {
         "component": "text",
         "valueType": "string",
         "name": "general_linklabel",
         "value": "",
         "label": "Link Label",
-        "description":"Defines the text to be displayed in the button or as the link."
+        "description": "Defines the text to be displayed in the button or as the link."
       },
       {
         "component": "text",
@@ -813,7 +857,7 @@
         "name": "general_link",
         "value": "",
         "label": "Link",
-        "description":"Defines the page to which the user will be directed to. Please add the full URL including https://"
+        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
         "component": "select",
@@ -821,8 +865,8 @@
         "name": "general_buttonStyling",
         "value": "linkbutton",
         "label": "Button Styling",
-        "description":"Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden":true,
+        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
+        "hidden": true,
         "options": [
           {
             "name": "Link Button",
@@ -841,6 +885,24 @@
         "name": "iFrameUrl",
         "label": "IFrame URL",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "model-card",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "contentfragment",
+        "label": "Content Fragment Picker",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "placeholder",
+        "value": "",
+        "label": "WDH Placeholder Text"
       }
     ]
   },
@@ -1008,6 +1070,11 @@
             "value": "transparent"
           }
         ]
+      },
+      {
+        "component": "text-input",
+        "name": "pageTitle",
+        "label": "Page Title"
       }
     ]
   },
@@ -1326,7 +1393,7 @@
   },
   {
     "id": "video-slide",
-    "fields": [      
+    "fields": [
       {
         "component": "tab",
         "label": "General",
@@ -1448,7 +1515,7 @@
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "valueType": "string"
-      },     
+      },
       {
         "component": "text",
         "label": "Button Styling",
@@ -1532,7 +1599,7 @@
         "description": "Defines the text to be displayed in the button or as the link. ",
         "label": "Link Label",
         "valueType": "string"
-      },      
+      },
       {
         "component": "text",
         "label": "Button Styling",
@@ -1541,6 +1608,106 @@
         "valueType": "string",
         "value": "primary",
         "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "content-navigation",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "General"
+      },
+      {
+        "component": "text",
+        "name": "Content Navigation Description",
+        "label": "Content Navigation Description"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "description": "change background color white or transparent",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "White",
+            "value": "White"
+          },
+          {
+            "name": "Transparent",
+            "value": "Transparent"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "Display Content Navigation",
+        "label": "Display Content Navigation"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "Button/Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button_linkLabel",
+        "value": "",
+        "label": "Link Label"        
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttton_link",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Button styling",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Money Button",
+            "value": "Money Button"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "accordionItemLabel",
+        "label": "Accordion Item Label",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "CopyText",
+        "value": "",
+        "label": "Copy Text",
+        "required": true
+
+      },
+      {
+        "component": "boolean",
+        "label": "Collapse Accordion Icon",
+        "name": "collapseAccordionIcon",
+        "valueType": "boolean",
+        "value": false,
+        "description": "If enabled, the Accordion Item will be collapsed by default"
       }
     ]
   }
