@@ -311,7 +311,7 @@ export default function decorate(block) {
     videoButtonAnchor.textContent = videoButtonName?.textContent;
     videoButtonAnchor.title = videoButtonName?.textContent;
   }
-  if (placeholder) {
+  if (placeholder && video) {
     loadVideo(
       block,
       videoTitle,
