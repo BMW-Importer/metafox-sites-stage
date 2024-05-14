@@ -1,3 +1,11 @@
+function iframeLoader() {
+  const iframeCont = document.getElementById('bmwIframe');
+  const loading = document.querySelector('.loader');
+  iframeCont.addEventListener('load', () => {
+    loading.style.display = 'none';
+    iframeCont.style.opacity = 1;
+  });
+}
 export function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
@@ -15,15 +23,8 @@ export function generateIFrameDOM(props) {
       <div class="loader"></div>
        </div>
     `);
+  iframeLoader();
   return iFrameDOM;
-}
-function iframeLoader() {
-  const iframeCont = document.getElementById('bmwIframe');
-  const loading = document.querySelector('.loader');
-  iframeCont.addEventListener('load', () => {
-    loading.style.display = 'none';
-    iframeCont.style.opacity = 1;
-  });
 }
 export default function decorate(block) {
   // get the first and only cell from each row
@@ -31,5 +32,4 @@ export default function decorate(block) {
   const iFrameDOM = window.setTimeout(() => { generateIFrameDOM(props) }, 2000);
   block.textContent = '';
   block.append(iFrameDOM);
-  iframeLoader();
 }
