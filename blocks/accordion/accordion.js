@@ -9,7 +9,6 @@ export default function decorate(block) {
     const summary = document.createElement('summary');
     summary.append(...label.childNodes);
     // decorate accordion item body
-    const body = row.children[1];
     const collapse = row.children[2].firstElementChild?.textContent.trim() === 'true';
     // decorate accordion item
     const details = document.createElement('details');
@@ -18,6 +17,7 @@ export default function decorate(block) {
     if (collapse) {
       details.setAttribute('open', '');
     }
+    const body = row.children[1];
     details.append(summary, body);
     row.textContent = '';
     row.append(details);
