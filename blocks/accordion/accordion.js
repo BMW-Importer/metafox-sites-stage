@@ -13,11 +13,11 @@ export default function decorate(block) {
       summary.innerHTML = `<p>${summary.innerHTML}</p>`;
     }
     // decorate accordion item body
-    const body = row.children[2];
-    body.className = 'accordion-item-body';
-    if (!hasWrapper(body)) {
+    // const body = row.children[2];
+    // body.className = 'accordion-item-body';
+    /* if (!hasWrapper(body)) {
       body.innerHTML = `<p>${body.innerHTML}</p>`;
-    }
+    } */
 
     const collapse = row.children[1].firstElementChild?.textContent.trim() === 'true';
     // decorate accordion item
@@ -27,7 +27,7 @@ export default function decorate(block) {
     if (collapse) {
       details.setAttribute('open', '');
     }
-    details.append(summary, body);
+    details.append(summary);
     row.textContent = '';
     row.append(details);
     block.append(row);
