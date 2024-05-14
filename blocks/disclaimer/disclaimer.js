@@ -4,7 +4,7 @@ import {
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   try {
-    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath;
+    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
     const response = await fetch(endpointUrl);
     return await response.json();
   } catch (error) {

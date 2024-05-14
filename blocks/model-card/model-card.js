@@ -1,35 +1,41 @@
-import {
-  DEV, STAGE, PROD, disclaimerGQlEndpoint,
-} from '../../scripts/common/constants.js';
+import { buildGetPlaceholder, getModelPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
 
-async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
+async function modelPlaceholder(modelCode) {
   try {
-    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
+    const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode[0]}.json`;
     const response = await fetch(endpointUrl);
-    return await response.json();
+    const responseJson = await response.json();
+    buildGetPlaceholder(responseJson);
+    return getModelPlaceholderObject();
   } catch (error) {
-    console.log('Error fetching data for content fragment', error);
+    console.log('Error fetching data for building get placeholder', error);
     throw error;
   }
 }
+
+function replacePlaceholder(string, data) {
+  return string.replace(/\${model(.*?)}/g, (match, expression) => {
+    const key = expression.split('.');
+    let value = data;
+    if (key[1] in value) {
+      value = value[key[1]];
+    } else {
+      return match;
+    }
+    return value;
+  });
+}
+
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  const env = 'dev';
-  let publishDomain = '';
-  const [contentFragment] = props;
-  if (env === 'dev') {
-    publishDomain = DEV.hostName;
-  } else if (env === 'stage') {
-    publishDomain = STAGE.hostName;
-  } else {
-    publishDomain = PROD.hostName;
-  }
-  window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
-  getContentFragmentData(contentFragment, window.gqlOrigin).then((response) => {
-    const cfData = response.data;
-    if (cfData) {
-      block.textContent = '';
-      block.append(cfData.disclaimercfmodelByPath.item.disclaimer.html);
-    }
+  const [, placeholder] = props;
+  // const wdhModelPlaceholder = placeholder.match(/\$\{model.\w*\}/g);
+  const modelCode = ['7K11', '61FF'];
+  // const placeholder = '${model.description} this is test ${model.series}';
+  modelPlaceholder(modelCode).then((wdhPlaceholderObject) => {
+    const updatedPlaceholder = replacePlaceholder(placeholder.innerText, wdhPlaceholderObject);
+    block.textContent = '';
+    block.append(updatedPlaceholder);
   });
+  // console.log('Placeholder value', placeholderValue);
 }
