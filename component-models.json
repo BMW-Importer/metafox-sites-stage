@@ -1663,21 +1663,21 @@
         "required": true
       },
       {
-        "component": "boolean",
-        "label": "Collapse Accordion Icon",
-        "name": "accordionItemIcon",
-        "valueType": "boolean",
-        "value": false,
-        "description": "If enabled, the Accordion Item will be collapsed by default"
-      },
-      {
         "component": "richtext",
         "valueType": "string",
         "name": "accordionItemCopyText",
         "value": "",
         "label": "Copy Text",
         "required": true
-      }   
+      },   
+      {
+        "component": "boolean",
+        "label": "Collapse Accordion Icon",
+        "name": "accordionItemIcon",
+        "valueType": "boolean",
+        "value": false,
+        "description": "If enabled, the Accordion Item will be collapsed by default"
+      }
     ]
   }
 ]
