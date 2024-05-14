@@ -56,7 +56,6 @@
   flex-direction: row;
   margin-top: 24px;
   padding: 0 12px;
-  margin-bottom: 0;
 }
 
 .text-with-video-button:hover,
@@ -133,6 +132,6 @@
 
   .text-alignment {
     text-align: left;
-    padding: 0 8px;
+    /* padding: 0 8px; */
   }
 }
