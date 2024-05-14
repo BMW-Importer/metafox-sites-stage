@@ -107,6 +107,7 @@
                   "model": "flexible-width-section",
                   "sectiontopmargin": true,
                   "sectionalignment": "center",
+                  "sectionwidth":"10/12",
                   "filter": "flexible-width-section"
                 }
               }
