@@ -66,7 +66,7 @@ function getVideoElement(
     video.setAttribute('muted', '');
   }
 
-  video.setAttribute('preload', 'auto');
+  video.setAttribute('preload', 'true');
   video.setAttribute('class', 'video-js');
 
   video.setAttribute('data-setup', '{}');
