@@ -25,12 +25,14 @@
   line-height: 12px;
 }
 
-.text-with-video-eyebrow, .text-with-image-eyebrow {
+.text-with-video-eyebrow, 
+.text-with-image-eyebrow {
   margin-bottom: 8px;
   padding: 0 12px;
 }
 
-.text-with-video-description, .text-with-image-description {
+.text-with-video-description, 
+.text-with-image-description {
   margin-top: 12px;
   padding: 0 12px;
 }
@@ -108,16 +110,19 @@
   .text-with-video-eyebrow, 
   .text-with-image-eyebrow {
     margin-bottom: 8px;
+    padding: 0;
   }
   
   .text-with-video-description, 
   .text-with-image-description {
     margin-top: 8px;
+    padding: 0;
   }
   
   .text-with-video-button, 
   .text-with-image-button {
     margin-top: 20px;
+    padding: 0;
   }
 
   .text-alignment {
