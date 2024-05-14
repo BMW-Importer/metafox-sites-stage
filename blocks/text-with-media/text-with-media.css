@@ -121,6 +121,6 @@
   .text-alignment {
     text-align: left;
     padding: 0 8px;
-    width: fit-content;
+    width: 100%;
   }
 }
