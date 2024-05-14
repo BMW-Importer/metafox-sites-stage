@@ -260,7 +260,16 @@ function generateTextWithImageDOM(
 }
 
 export default function decorate(block) {
-  const [video, image] = block.children;
+  let video;
+  let image;
+  [...block.children].forEach((row) => {
+    if (row.textContent.includes('text-with-video')) {
+      video = row;
+    } else {
+      image = row;
+    }
+  });
+  // const [video, image] = block.children;
   const [
     componentNameV,
     videoPropsGrp1,
