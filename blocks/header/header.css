@@ -800,7 +800,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-m
   max-height: 0;
   overflow: hidden;
   transition: max-height .25s ease;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   margin-bottom: 1.5rem;
 }
 
