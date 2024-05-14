@@ -25,7 +25,6 @@ export function generateIFrameDOM(props) {
       <div class="loader"></div>
        </div>
     `);
-  iframeLoader();
   return iFrameDOM;
 }
 export default function decorate(block) {
