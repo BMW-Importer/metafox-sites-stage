@@ -1,10 +1,8 @@
-import {
-  DEV, STAGE, PROD, disclaimerGQlEndpoint,
-} from '../../scripts/common/constants.js';
+import { DEV, STAGE, PROD, disclaimerGQlEndpoint } from '../../scripts/common/constants.js';
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   try {
-    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
+    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath;
     const response = await fetch(endpointUrl);
     return await response.json();
   } catch (error) {
@@ -16,7 +14,7 @@ export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const env = 'dev';
   let publishDomain = '';
-  const [contentFragment] = props;
+  const [disclaimerCF] = props;
   if (env === 'dev') {
     publishDomain = DEV.hostName;
   } else if (env === 'stage') {
@@ -25,7 +23,7 @@ export default function decorate(block) {
     publishDomain = PROD.hostName;
   }
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
-  getContentFragmentData(contentFragment, window.gqlOrigin).then((response) => {
+  getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
     const cfData = response.data;
     if (cfData) {
       block.textContent = '';
