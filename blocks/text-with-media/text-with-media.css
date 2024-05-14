@@ -1,9 +1,5 @@
-.video-js.text-with-video {
+.video-js.text-with-video, .image {
   width: 60%;
-}
-
-.image {
-  max-width: 60vw;
 }
 
 .eyebrowbold1 {
@@ -29,12 +25,12 @@
   line-height: 12px;
 }
 
-.text-with-video-eyebrow {
+.text-with-video-eyebrow, .text-with-image-eyebrow {
   margin-bottom: 8px;
   padding: 0 12px;
 }
 
-.text-with-video-description {
+.text-with-video-description, .text-with-image-description {
   margin-top: 12px;
   padding: 0 12px;
 }
@@ -72,14 +68,14 @@
   cursor: pointer;
 }
 
-.text-with-video-headline {
+.text-with-video-headline, .text-with-image-headline {
   margin: 0;
   padding: 0 12px;
 }
 
 /* tablet */
 @media (width >= 768px) and (width < 1280px) {
-  .video-js.text-with-video {
+  .video-js.text-with-video, .image {
     width: 50%;
   }
 
@@ -93,34 +89,31 @@
 /* mobile */
 @media (width >= 360px) and (width < 768px) {
   .video-wrapper-div.left,
-  .video-wrapper-div.right {
+  .video-wrapper-div.right,
+  .image-wrapper-div.left,
+  .image-wrapper-div.right {
     display: flex;
     flex-direction: column;
   }
 
-  .video-js.text-with-video {
+  .video-js.text-with-video, .image {
     width: 100%;
     margin-bottom: 20px;
   }
 
-  .text-with-video-eyebrow {
+  .text-with-video-eyebrow, .text-with-image-eyebrow {
     margin-bottom: 8px;
     padding: 0 8px;
   }
   
-  .text-with-video-description {
+  .text-with-video-description, .text-with-image-description {
     margin-top: 8px;
     padding: 0 8px;
   }
   
-  .text-with-video-button {
+  .text-with-video-button, .text-with-image-button {
     margin-top: 20px;
     padding: 0 8px;
-  }
-
-    .image {
-    max-width: 100%;
-    margin-bottom: 20px;
   }
 
   .text-alignment {
