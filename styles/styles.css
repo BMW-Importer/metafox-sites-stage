@@ -525,5 +525,9 @@ textarea{
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.no-visiblity {
+  visibility: hidden !important;
 }
