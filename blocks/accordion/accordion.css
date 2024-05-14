@@ -10,6 +10,7 @@
   }
   
   .accordion details summary {
+    font-size: 1.25rem;
     position: relative;
     padding: 0 16px;
     cursor: pointer;
@@ -47,5 +48,6 @@
   }
   
   .accordion details .accordion-item-body {
-    padding: 0 16px;
+    padding-bottom: 3rem;
+    padding-top: .75rem;
   }
