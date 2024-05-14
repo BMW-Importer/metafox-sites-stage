@@ -145,9 +145,12 @@ function set_page_tracking(){
     
     const path = window.location.pathname;
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
-    const formattedPath = pathParts.join(':');
+    const formattedPath = pathParts.map(part => part.replace(/[^\w\s]/g, '')).join(':'); // Remove special characters
     if(formattedPath !== ''){
         page_tracking.page.pageInfo.pageName = "web:" +formattedPath;
+    }
+    else {
+        page_tracking.page.pageInfo.pageName = "web:home";
     }
 
     const metaTag = document.querySelector('meta[name="env"]');
