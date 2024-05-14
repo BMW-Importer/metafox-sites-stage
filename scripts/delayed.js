@@ -52,7 +52,7 @@ const page_tracking = {"page": {
 function analyticsTracking() {
     opt_in_info();
     set_page_tracking();
-    window.setTimeout(() => { set_ecid() }, 1000)
+    //window.setTimeout(() => { set_ecid() }, 1000)
 }
 
 function opt_in_info(){
