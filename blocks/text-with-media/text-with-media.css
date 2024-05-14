@@ -125,6 +125,12 @@
     padding: 0;
   }
 
+  .text-with-video-headline,
+  .text-with-image-headline {
+    margin: 0;
+    padding: 0;
+  }
+
   .text-alignment {
     text-align: left;
     padding: 0 8px;
