@@ -9,5 +9,4 @@ export const STAGE = {
 export const PROD = {
   hostName: 'https://publish-p132653-e1294163.adobeaemcloud.com',
 };
-
 export const disclaimerGQlEndpoint = '/graphql/execute.json/metafox/getDisclaimerCFModel;disclaimerCfPath=';

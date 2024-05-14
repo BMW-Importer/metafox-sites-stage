@@ -1,4 +1,6 @@
-import { DEV, STAGE, PROD, disclaimerGQlEndpoint } from '../../scripts/common/constants.js';
+import {
+  DEV, STAGE, PROD, disclaimerGQlEndpoint,
+} from '../../scripts/common/constants.js';
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   try {
@@ -10,6 +12,7 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
     throw error;
   }
 }
+
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const env = 'dev';
