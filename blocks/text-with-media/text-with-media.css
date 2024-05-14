@@ -106,11 +106,13 @@
   .text-with-video-eyebrow, 
   .text-with-image-eyebrow {
     margin-bottom: 8px;
+    padding: 0 8px; 
   }
   
   .text-with-video-description, 
   .text-with-image-description {
     margin-top: 8px;
+    padding: 0 8px; 
   }
   
   .text-with-video-button, 
@@ -118,9 +120,15 @@
     margin-top: 20px;
   }
 
+  .text-with-video-headline, 
+  .text-with-image-headline {
+  margin: 0;
+  padding: 0 8px;
+}
+
   .text-alignment {
     text-align: left;
-    padding: 0 8px;
+    padding: 0;
     width: fit-content;
   }
 }
