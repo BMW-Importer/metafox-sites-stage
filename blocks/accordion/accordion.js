@@ -6,21 +6,21 @@ export default function decorate(block) {
   [...panels].forEach((row) => {
     // decorate accordion item label
     const label = row.children[0];
-    const summary = document.createElement('div');
+    const summary = document.createElement('summary');
     summary.append(...label.childNodes);
     // decorate accordion item body
     const body = row.children[1];
     const collapse = row.children[2].firstElementChild?.textContent.trim() === 'true';
     // decorate accordion item
-    const details = document.createElement('div');
-    details.className = 'accordion-item';
+    const details = document.createElement('details');
+    // details.className = 'accordion-item';
     // collapse by default if toggle is on
     if (collapse) {
       details.setAttribute('open', '');
     }
     details.append(summary, body);
-    row.textContent = '';
-    row.append(details);
+    // row.textContent = '';
+    // row.append(details);
     // row.replaceWith(details);
     // block.append(details);
   });
