@@ -1,7 +1,10 @@
 export function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
+  const iframeSrc = iFrameUrl.textContent;
+  console.log("iframe URL : "+iframeSrc);
   const anchor =  alloy('appendIdentityToUrl',iFrameUrl.textContent);
+  console.log("anchor : "+anchor);
 
   // Build DOM
   const iFrameDOM = document.createRange().createContextualFragment(`
