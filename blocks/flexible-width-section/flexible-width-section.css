@@ -89,7 +89,6 @@
 @media (width >=360px) and (width < 768px) {
   .section[data-sectionwidth^='grid'] {
     display: grid;
-    grid-template-rows: 1fr;
     grid-gap: 0;
     grid-template-areas: "leftEmpty content rightEmpty";
     grid-template-columns: 1fr;
