@@ -11,7 +11,7 @@ export function generateIFrameDOM(props) {
   const [iFrameUrl] = props;
   const iframeSrc = iFrameUrl.textContent;
   console.log("iframe URL : "+iframeSrc);
-  let anchor = "";
+  let anchor = iframeSrc;
   alloy("appendIdentityToUrl", {url: iframeSrc}).then(result=> {anchor = result.url;});
   console.log("anchor : "+anchor);
 
