@@ -24,7 +24,7 @@ function iframeLoader() {
 export default function decorate(block) {
   // get the first and only cell from each row
   const props = [...block.children].map((row) => row.firstElementChild);
-  const iFrameDOM = generateIFrameDOM(props);
+  const iFrameDOM = window.setTimeout(() => { generateIFrameDOM(props) }, 2000);
   block.textContent = '';
   block.append(iFrameDOM);
   iframeLoader();
