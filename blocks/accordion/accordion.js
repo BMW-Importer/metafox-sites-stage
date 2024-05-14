@@ -19,8 +19,8 @@ export default function decorate(block) {
       details.setAttribute('open', '');
     }
     details.append(summary, body);
-    // row.textContent = '';
-    // row.append(details);
+    row.textContent = '';
+    row.append(details);
     // row.replaceWith(details);
     // block.append(details);
   });
