@@ -77,6 +77,22 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "text-with-image",
     "components": [],
     "rte": {
@@ -135,7 +151,8 @@
       "accordion",
       "eyebrow",
       "headline",
-      "background-media"
+      "background-media",
+      "disclaimer"
     ]
   },
   {

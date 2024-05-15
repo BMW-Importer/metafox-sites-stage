@@ -389,7 +389,7 @@ export default function decorate(block) {
       // converting string to boolen
       const isLoopVideo = videoContentPtags[videoContentPtags.length - 2].textContent.trim() === 'true';
       const isAutoPlayVideo = videoContentPtags[videoContentPtags.length - 1].textContent.trim() === 'true';
-      const isEnableControls = false;
+      const enableHideControls = true;
       const isMuted = true;
       const onHoverPlay = false;
       // generating video
@@ -401,7 +401,7 @@ export default function decorate(block) {
         videoLinkObj,
         isAutoPlayVideo,
         isLoopVideo,
-        isEnableControls,
+        enableHideControls,
         isMuted,
         posterObj,
         onHoverPlay,
