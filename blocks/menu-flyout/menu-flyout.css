@@ -140,10 +140,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     display: flex;
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li:last-child {
-    margin-bottom: 0;
-}
-
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li:not(:first-child) a::after {
     overflow-wrap: normal;
     -webkit-font-smoothing: antialiased;
