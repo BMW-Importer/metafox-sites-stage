@@ -1135,9 +1135,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   .showfly .flyout-wrapper::before {
     opacity: 1;
   }
-  .showfly .flyout-wrapper.pronađite-online .flyout-main-container {
-    justify-content: center;
-  }
+
   .showfly .flyout-main-container {
     display: flex;
     justify-content: flex-start;
