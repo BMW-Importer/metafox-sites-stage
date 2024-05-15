@@ -290,15 +290,15 @@
                   "name": "Text with Video",
                   "model": "text-with-video",
                   "filter": "text-with-video",
+                  "general_eyebrow": "",
+                  "general_headline": "",
+                  "general_copytext": "",
+                  "button_buttonStyling": "linkButton",
                   "classes":"left",
-                  "textwithvideoeyebrow": "",
-                  "textwithvideoheadline": "",
-                  "textwithvideocopytext": "",
-                  "textwithvideobuttonStyling": "linkButton",
-                  "textwithloopVideo":true,
-                  "textwithvideoautoplay":true,
-                  "textwithvideoControls":false,
-                  "textwithvideomuteVideo":true
+                  "media_loopVideo":true,
+                  "media_autoplay":true,
+                  "media_videoControls":false,
+                  "media_muteVideo":true
                 }
               }
             }

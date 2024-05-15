@@ -687,7 +687,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideoeyebrow",
+        "name": "general_eyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -695,7 +695,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "textwithvideostyle",
+        "name": "style",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
@@ -717,7 +717,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideoheadline",
+        "name": "general_headline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -725,7 +725,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "textwithvideoheadlineType",
+        "name": "general_headlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -739,7 +739,7 @@
       },
       {
         "component": "richtext",
-        "name": "textwithvideocopytext",
+        "name": "general_copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -753,7 +753,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideoTitle",
+        "name": "media_videoTitle",
         "value": "",
         "label": "Video Title",
         "description": "Defines the title of the video.",
@@ -762,7 +762,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideoDescription",
+        "name": "media_videoDescription",
         "value": "",
         "label": "Video Description",
         "description": "Defines the description of the video.",
@@ -771,7 +771,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "textwithdesktopFileReference",
+        "name": "media_desktopFileReference",
         "label": "Desktop Video Path",
         "value": "",
         "description": "Defines video that will play on desktop.",
@@ -781,7 +781,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "textwithmobileFileReference",
+        "name": "media_mobileFileReference",
         "label": "Mobile Video Path",
         "value": "",
         "description": "Defines video that will play on mobile.",
@@ -790,7 +790,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "textwithdesktopPosterFileReference",
+        "name": "media_desktopPosterFileReference",
         "label": "Desktop Poster Image",
         "value": "",
         "description": "Defines the the poster image of the video that will play on desktop. It will be displayed while loading the page.",
@@ -800,7 +800,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "textwithmobilePosterFileReference",
+        "name": "media_mobilePosterFileReference",
         "label": "Mobile Poster Image",
         "value": "",
         "description": "Defines the the poster image of the video that will play on mobile. It will be displayed while loading the page.",
@@ -809,7 +809,7 @@
       {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "textwithloopVideo",
+        "name": "media_loopVideo",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will play on loop. If toggled on, the video will loop."
@@ -817,7 +817,7 @@
       {
         "component": "boolean",
         "label": "Autoplay",
-        "name": "textwithvideoautoplay",
+        "name": "media_autoplay",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
@@ -825,7 +825,7 @@
       {
         "component": "boolean",
         "label": "Video Controls",
-        "name": "textwithvideoControls",
+        "name": "media_videoControls",
         "valueType": "boolean",
         "value": false,
         "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
@@ -833,7 +833,7 @@
       {
         "component": "boolean",
         "label": "Mute Video",
-        "name": "textwithvideomuteVideo",
+        "name": "media_muteVideo",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
@@ -846,7 +846,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideolinklabel",
+        "name": "button_linklabel",
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
@@ -854,7 +854,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textwithvideobtnlink",
+        "name": "buttton_link",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
@@ -862,7 +862,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "textwithvideobuttonStyling",
+        "name": "button_buttonStyling",
         "value": "linkbutton",
         "label": "Button Styling",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
