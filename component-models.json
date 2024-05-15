@@ -1877,7 +1877,7 @@
         "options": [
           {
             "name": "Money Button",
-            "value": "secondary"
+            "value": "primary"
           },
           {
             "name": "Money Button Flex",
@@ -1913,7 +1913,7 @@
           },
           {
             "name": "Ghost on Image Flex",
-            "value": "primary"
+            "value": "secondary"
           }
         ]
       }
@@ -2040,7 +2040,7 @@
       },
       {
         "component": "tab",
-        "label": "Image",
+        "label": "Video",
         "name": "bgVidVideo_tab"
       },
       {
