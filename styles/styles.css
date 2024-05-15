@@ -103,12 +103,12 @@ h4, h5, h6 {
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: 35px; line-height: 50px; }
-h2 { font-size: 29px; line-height: 42px; }
-h3 { font-size: 35px; line-height: 50px; }
-h4 { font-size: 14px; line-height: 20px; }
-h5 { font-size: 12px; line-height: 16px; }
-h6 { font-size: 14px; line-height: 12px; }
+h1 { font-size: 2.188rem; line-height: 3.125rem; }
+h2 { font-size: 1.813rem; line-height: 2.625rem; }
+h3 { font-size: 2.188rem; line-height: 3.125rem; }
+h4 { font-size: 0.875rem; line-height: 1.25rem; }
+h5 { font-size: 0.75rem; line-height: 1rem; }
+h6 { font-size: 0.875rem; line-height: 0.75rem; }
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
@@ -530,7 +530,7 @@ textarea{
 }
 
 @media (width >= 360px) and (width < 768px) {
-    h1 { font-size: 33px; line-height: 46px; }
-    h2 { font-size: 28px; line-height: 40px; }
-    h3 { font-size: 33px; line-height: 46px; }
+    h1 { font-size: 2.063rem; line-height: 2.875rem; }
+    h2 { font-size: 1.75rem; line-height: 2.5rem; }
+    h3 { font-size: 2.063rem; line-height: 2.875rem; }
 }
