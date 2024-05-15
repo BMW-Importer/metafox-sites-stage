@@ -2222,8 +2222,9 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "download",
-        "label": "Download"  
+        "name": "downloadreference",
+        "label": "Download",
+        "description": "Defines the downloadable element."
       }
     ]
   }
