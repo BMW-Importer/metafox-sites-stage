@@ -100,18 +100,15 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--fixed-font-family);
   font-weight: 300;
-  line-height: 1.25;
-  margin-top: 1em;
-  margin-bottom: .5em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
-h4 { font-size: var(--heading-font-size-m) }
-h5 { font-size: var(--heading-font-size-s) }
-h6 { font-size: var(--heading-font-size-xs) }
+h1 { font-size: 35px; line-height: 50px; }
+h2 { font-size: 29px; line-height: 42px; }
+h3 { font-size: 35px; line-height: 50px; }
+h4 { font-size: 14px; line-height: 20px; }
+h5 { font-size: 12px; line-height: 16px; }
+h6 { font-size: 14px; line-height: 12px; }
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
@@ -532,86 +529,8 @@ textarea{
   visibility: hidden !important;
 }
 
-h1#headline {
-    font-size: 35px;
-    line-height: 50px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-
-h2#headline{
-    font-size: 29px;
-    line-height: 42px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h3#headline{
-    font-size: 35px;
-    line-height: 50px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h4#headline{
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h5#headline{
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h6#headline{
-    font-size: 126px;
-    line-height: 112px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-
-h1#eyebrow{
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h2#eyebrow{
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-h3#eyebrow{
-    font-size: 14px;
-    line-height: 12px;
-    font-weight: 300;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-}
-
 @media (width >= 360px) and (width < 768px) {
-    h1#headline{
-        font-size: 33px;
-        line-height: 46px;
-    }
-    h2#headline{
-        font-size: 28px;
-        line-height: 40px;
-    }
-    h3#headline{
-        font-size: 33px;
-        line-height: 46px;
-    }
-    h4#headline{
-        font-size: 33px;
-        line-height: 46px;
-    }
-    h5#headline{
-        font-size: 33px;
-        line-height: 46px;
-    }
-    h6#headline{
-        font-size: 119px;
-        line-height: 108px;
-    }
+    h1 { font-size: 33px; line-height: 46px; }
+    h2 { font-size: 28px; line-height: 40px; }
+    h3 { font-size: 33px; line-height: 46px; }
 }

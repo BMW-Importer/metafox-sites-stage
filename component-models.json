@@ -31,18 +31,6 @@
           {
             "name": "Headline 3",
             "value": "h3"
-          },
-          {
-            "name": "Subsection 1",
-            "value": "h4"
-          },
-          {
-            "name": "Subsection 2",
-            "value": "h5"
-          },
-          {
-            "name": "Stage Model",
-            "value": "h6"
           }
         ]
       }
@@ -71,15 +59,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       }
