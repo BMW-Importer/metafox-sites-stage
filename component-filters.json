@@ -151,6 +151,7 @@
       "accordion",
       "eyebrow",
       "headline",
+      "background-media",
       "disclaimer"
     ]
   },
@@ -233,5 +234,12 @@
   {
     "id": "image-slide",
     "components": []
+  },
+  {
+    "id": "background-media",
+    "components":[
+      "background-image",
+      "background-video"
+    ]
   }
 ]
