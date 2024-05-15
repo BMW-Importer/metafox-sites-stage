@@ -312,7 +312,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper .flyout-main-container {
-   padding: 1rem 2.5rem;
+   padding: 2rem 3.5rem 1.5rem;
   }
   
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly {
@@ -321,6 +321,10 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     border-top: 1px solid var(--light-bbb);
     padding: 0;
     display: block;
+   }
+
+   header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list .link-list-title {
+    margin-bottom: 0 !important;
    }
 
    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly::after {
@@ -336,6 +340,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     cursor: pointer;
     letter-spacing: 0;
     margin-bottom: 1.5rem;
+    line-height: 1.25rem;
+    position: relative;
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover {
@@ -364,11 +370,12 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     white-space: nowrap;
     width: auto;
     position: absolute;
-    right: 2.5rem;
+    right: 0;
+    top: 0.625rem;
    }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list {
-    padding: 1.5rem 0 0;
+    padding: 0;
     width: 100%;
     margin: 0 auto;
     font-size: .875rem;
@@ -379,7 +386,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     max-height: 0;
     overflow: hidden;
     transition: max-height .25s ease;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-link-list .link-list .link-list-title.expand::after{
