@@ -80,6 +80,9 @@ function toggleAllNavSections(sections, expanded = false) {
 function resetFlyoutNavSection() {
   const navBrandSelector = document.querySelector('.nav-brand');
   navBrandSelector?.classList.remove('mobile-flyout');
+  if (document.body.classList.contains('content-page')) {
+    document.body.classList.remove('content-page');
+  }
 }
 
 function toggleMenu(nav, navSections, forceExpanded = null) {
@@ -189,13 +192,14 @@ export default async function decorate(block) {
     header[0].classList.add('transparent');
   }
   const flyoutMainContainer = document.querySelector('.flyout-main-container');
-  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout-link');
+  const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout.block>p');
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
       event.stopPropagation();
       event.preventDefault();
-      const parentMenu = event.target.parentNode.parentElement.parentElement;
-      const mainParentMenu = event.target.parentNode.parentElement.parentElement.parentElement;
+      const parentMenu = event.target.closest('.menu-flyout-wrapper');
+      const mainParentMenu = event.target.closest('.menu-flyout-container');
+
       const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
 
