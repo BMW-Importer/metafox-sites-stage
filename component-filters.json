@@ -20,7 +20,8 @@
       "title",
       "copy_text",
       "image",
-      "button"
+      "button",
+      "headline"
     ]
   },
   {
@@ -149,10 +150,10 @@
       "model-card",
       "content-navigation",
       "accordion",
+      "disclaimer",
       "eyebrow",
       "headline",
-      "background-media",
-      "disclaimer"
+      "background-media"
     ]
   },
   {
@@ -164,6 +165,7 @@
       "image",
       "video",
       "accordion",
+      "disclaimer",
       "eyebrow",
       "headline"
     ]

@@ -2203,8 +2203,9 @@
       {
         "component": "aem-content-fragment",
         "name": "disclaimerCF",
-        "label": "Content Fragment Picker",
-        "valueType": "string"
+        "label": "Disclaimer",
+        "valueType": "string",
+        "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
       }
     ]
   }
