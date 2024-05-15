@@ -531,3 +531,87 @@ textarea{
 .no-visiblity {
   visibility: hidden !important;
 }
+
+h1#headline {
+    font-size: 35px;
+    line-height: 50px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+
+h2#headline{
+    font-size: 29px;
+    line-height: 42px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h3#headline{
+    font-size: 35px;
+    line-height: 50px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h4#headline{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h5#headline{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h6#headline{
+    font-size: 126px;
+    line-height: 112px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+
+h1#eyebrow{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h2#eyebrow{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+h3#eyebrow{
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 300;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+}
+
+@media (width >= 360px) and (width < 768px) {
+    h1#headline{
+        font-size: 33px;
+        line-height: 46px;
+    }
+    h2#headline{
+        font-size: 28px;
+        line-height: 40px;
+    }
+    h3#headline{
+        font-size: 33px;
+        line-height: 46px;
+    }
+    h4#headline{
+        font-size: 33px;
+        line-height: 46px;
+    }
+    h5#headline{
+        font-size: 33px;
+        line-height: 46px;
+    }
+    h6#headline{
+        font-size: 119px;
+        line-height: 108px;
+    }
+}
