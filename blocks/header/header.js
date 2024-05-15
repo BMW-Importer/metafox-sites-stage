@@ -80,6 +80,9 @@ function toggleAllNavSections(sections, expanded = false) {
 function resetFlyoutNavSection() {
   const navBrandSelector = document.querySelector('.nav-brand');
   navBrandSelector?.classList.remove('mobile-flyout');
+  if (document.body.classList.contains('content-page')) {
+    document.body.classList.remove('content-page');
+  }
 }
 
 function toggleMenu(nav, navSections, forceExpanded = null) {
