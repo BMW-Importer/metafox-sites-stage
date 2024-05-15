@@ -2207,5 +2207,24 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "download",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "download",
+        "value": "",
+        "label": "Download Label",
+        "description": "Defines the name of the downloadable element."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "download",
+        "label": "Download"  
+      }
+    ]
   }
 ]

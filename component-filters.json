@@ -152,7 +152,8 @@
       "eyebrow",
       "headline",
       "background-media",
-      "disclaimer"
+      "disclaimer",
+      "download"
     ]
   },
   {
@@ -165,7 +166,8 @@
       "video",
       "accordion",
       "eyebrow",
-      "headline"
+      "headline",
+      "download"
     ]
   },
   {
