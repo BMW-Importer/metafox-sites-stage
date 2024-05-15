@@ -188,7 +188,7 @@ export default async function decorate(block) {
   } else {
     header[0].classList.add('transparent');
   }
-
+  const flyoutMainContainer = document.querySelector('.flyout-main-container');
   const menuFlyout = document.querySelectorAll('.menu-flyout-wrapper .menu-flyout-link');
   menuFlyout.forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
@@ -198,6 +198,13 @@ export default async function decorate(block) {
       const mainParentMenu = event.target.parentNode.parentElement.parentElement.parentElement;
       const bodyContent = document.querySelector('.appear');
       const isOpen = parentMenu.classList.contains('showfly');
+
+      if (flyoutMainContainer) {
+        const childCount = flyoutMainContainer.children.length;
+        if (childCount < 4) {
+          flyoutMainContainer.style.justifyContent = 'center';
+        }
+      }
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
         if (item !== parentMenu && item.classList.contains('showfly')) {
           item.classList.remove('showfly');
@@ -238,7 +245,6 @@ export default async function decorate(block) {
   });
 
   const flyoutContainers = document.querySelectorAll('.flyout-main-container');
-
   function debounce(func, delay) {
     let timeoutId;
     return function debouncedFunction(...args) {
