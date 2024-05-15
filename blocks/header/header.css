@@ -375,7 +375,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
    }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list {
-    padding: 0 0;
+    padding: 0;
     width: 100%;
     margin: 0 auto;
     font-size: .875rem;
