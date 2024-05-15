@@ -569,7 +569,23 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Accordion Item",
-                  "model": "accordion-item"
+                  "model": "accordion-item",
+                  "filter": "accordion-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Disclaimer",
+          "id": "disclaimer",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "disclaimer",
+                  "model": "disclaimer"
                 }
               }
             }

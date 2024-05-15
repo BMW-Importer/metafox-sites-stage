@@ -1247,13 +1247,6 @@
         "name": "muteVideo",
         "valueType": "boolean",
         "value": true
-      },
-      {
-        "component": "boolean",
-        "label": "Play On Hover",
-        "name": "playonHover",
-        "valueType": "boolean",
-        "value": true
       }
     ]
   },
@@ -1695,19 +1688,29 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "CopyText",
+        "name": "accordionItemCopyText",
         "value": "",
         "label": "Copy Text",
         "required": true
-
-      },
+      },   
       {
         "component": "boolean",
         "label": "Collapse Accordion Icon",
-        "name": "collapseAccordionIcon",
+        "name": "accordionItemIcon",
         "valueType": "boolean",
         "value": false,
         "description": "If enabled, the Accordion Item will be collapsed by default"
+      }
+    ]
+  },
+  {
+    "id": "disclaimer",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "disclaimerCF",
+        "label": "Content Fragment Picker",
+        "valueType": "string"
       }
     ]
   }
