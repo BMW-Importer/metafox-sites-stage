@@ -13,9 +13,22 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   }
 }
 
+// const data = {
+//   data: {
+//     disclaimercfmodelByPath: {
+//       item: {
+//         _path: '/content/dam/metafox/disclaimer-content-fragment/rs/f1-disclaimer-model',
+//         disclaimer: {
+//           html: "<p>Disclaimer description text</p>\n<p><a href=\"https://www.bmw.rs\">https://www.bmw.rs</a></p>\n<ul>\n<li>Disclaimer Property 1</li>\n<li>Disclaimer Property 2</li>\n<li>Disclaimer Property 3</li>\n<li>Disclaimer Property 4</li>\n</ul>\n<ol>\n<li>Disclaimer</li>\n<li>Disclaimer</li>\n<li>Disclaimer'</li>\n<li>Disclaimer</li>\n</ol>\n",
+//         },
+//       },
+//     },
+//   },
+// };
+
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  const env = 'dev';
+  const env = document.querySelector('meta[name="env"]');
   let publishDomain = '';
   const [disclaimerCF] = props;
   if (env === 'dev') {
@@ -30,7 +43,12 @@ export default function decorate(block) {
     const cfData = response.data;
     if (cfData) {
       block.textContent = '';
-      block.append(cfData.disclaimercfmodelByPath.item.disclaimer.html);
+      block.textContent = '';
+      const disclaimerHtml = cfData.data.disclaimercfmodelByPath.item.disclaimer.html;
+      const div = document.createElement('div');
+      div.className = 'disclaimer-content';
+      div.innerHTML = disclaimerHtml;
+      block.appendChild(div);
     }
   });
 }
