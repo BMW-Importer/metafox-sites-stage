@@ -134,7 +134,8 @@
       "content-navigation",
       "accordion",
       "eyebrow",
-      "headline"
+      "headline",
+      "background-media"
     ]
   },
   {
@@ -216,5 +217,12 @@
   {
     "id": "image-slide",
     "components": []
+  },
+  {
+    "id": "background-media",
+    "components":[
+      "background-image",
+      "background-video"
+    ]
   }
 ]
