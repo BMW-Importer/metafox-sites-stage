@@ -22,8 +22,8 @@
   }
 
   .accordion details summary div p {
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .accordion details summary:hover {
