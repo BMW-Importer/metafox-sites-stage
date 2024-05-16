@@ -2201,20 +2201,20 @@
     "id": "download",
     "fields": [
       {
-        "component": "text",
+        "component": "reference",
         "valueType": "string",
         "name": "download",
+        "label": "Download",
+        "description": "Defines the downloadable element."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "downloadText",
         "value": "",
         "label": "Download Label",
         "description": "Defines the name of the downloadable element."
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "downloadreference",
-        "label": "Download",
-        "description": "Defines the downloadable element."
-      }
+      }      
     ]
   }
 ]
