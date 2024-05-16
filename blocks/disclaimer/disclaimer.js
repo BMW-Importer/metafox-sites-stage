@@ -15,7 +15,7 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  const env = 'dev';
+  const env = document.querySelector('meta[name="env"]').content;
   let publishDomain = '';
   const [disclaimerCF] = props;
   if (env === 'dev') {
@@ -30,7 +30,11 @@ export default function decorate(block) {
     const cfData = response.data;
     if (cfData) {
       block.textContent = '';
-      block.append(cfData.disclaimercfmodelByPath.item.disclaimer.html);
+      const disclaimerHtml = cfData.disclaimercfmodelByPath.item.disclaimer.html;
+      const div = document.createElement('div');
+      div.className = 'disclaimer-content';
+      div.innerHTML = disclaimerHtml;
+      block.appendChild(div);
     }
   });
 }

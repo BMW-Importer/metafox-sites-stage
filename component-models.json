@@ -13,7 +13,7 @@
       },
       {
         "component": "select",
-        "name": "headlineType",
+        "name": "type",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",
@@ -22,27 +22,15 @@
         "options": [
           {
             "name": "Headline 1",
-            "value": "headline1"
+            "value": "h1"
           },
           {
             "name": "Headline 2",
-            "value": "headline2"
+            "value": "h2"
           },
           {
             "name": "Headline 3",
-            "value": "headline3"
-          },
-          {
-            "name": "Subsection 1",
-            "value": "subsection1"
-          },
-          {
-            "name": "Subsection 2",
-            "value": "subsection2"
-          },
-          {
-            "name": "Stage Model",
-            "value": "stagemodel"
+            "value": "h3"
           }
         ]
       }
@@ -62,7 +50,7 @@
       },
       {
         "component": "select",
-        "name": "eyebrowType",
+        "name": "type",
         "value": "",
         "label": "Eyebrow Type",
         "valueType": "string",
@@ -71,15 +59,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       }
@@ -2203,8 +2191,9 @@
       {
         "component": "aem-content-fragment",
         "name": "disclaimerCF",
-        "label": "Content Fragment Picker",
-        "valueType": "string"
+        "label": "Disclaimer",
+        "valueType": "string",
+        "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
       }
     ]
   },
