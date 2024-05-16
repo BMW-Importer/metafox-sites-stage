@@ -112,6 +112,13 @@ async function loadEager(doc) {
   }
 }
 
+function launchVariables() {
+  const headElement = document.querySelector('head');
+  const scriptElement = document.createElement('script');
+  scriptElement.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
+  headElement.appendChild(scriptElement);
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -129,7 +136,6 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-  
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
@@ -145,14 +151,6 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 1000);
   // load anything that can be postponed to the latest here
 }
-
-function launchVariables() {
-  const headElement = document.querySelector('head');
-  const scriptElement = document.createElement('script');
-  scriptElement.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
-  headElement.appendChild(scriptElement);
-}
-
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
