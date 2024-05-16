@@ -12,7 +12,7 @@ export function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
   const iframeSrc = iFrameUrl.textContent;
-  await opt_in_info();
+  opt_in_info();
   console.log("iframe URL : "+iframeSrc);
   let anchor = iframeSrc;
   alloy("appendIdentityToUrl", {url: iframeSrc}).then(result=> {anchor = result.url;});
