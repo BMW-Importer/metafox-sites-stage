@@ -2196,5 +2196,25 @@
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
       }
     ]
+  },
+  {
+    "id": "download",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "download",
+        "label": "Download",
+        "description": "Defines the downloadable element."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "downloadText",
+        "value": "",
+        "label": "Download Label",
+        "description": "Defines the name of the downloadable element."
+      }      
+    ]
   }
 ]
