@@ -129,10 +129,11 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-
+  
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
+  launchVariables();
 }
 
 /**
@@ -147,15 +148,14 @@ function loadDelayed() {
 
 function launchVariables() {
   const headElement = document.querySelector('head');
-  const scriptElement1 = document.createElement('script');
-  scriptElement1.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
-  headElement.appendChild(scriptElement1);
+  const scriptElement = document.createElement('script');
+  scriptElement.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
+  headElement.appendChild(scriptElement);
 }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  await launchVariables();
   loadDelayed();
 }
 
