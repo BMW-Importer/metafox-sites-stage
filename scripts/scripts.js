@@ -138,7 +138,7 @@ const timezoneSign = timezoneOffset >= 0 ? '+' : '-';
 
 // Construct the timestamp string
 const timestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
-
+  console.log("Time of optin : "+timestamp);
   const adobeDtm = window.adobeDataLayer;
   console.log(adobeDtm.version);
   const d = new Date();
