@@ -84,11 +84,11 @@
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": [],
-      "list": [],
+      "sr_script": ["superscript", "subscript"],
+      "list": ["bullist", "numlist"],
       "insert": ["link"],
       "blocks": [],
-      "advanced": [""],
+      "advanced": [],
       "extensions": [],
       "editor": ["removeformat"]
     }
