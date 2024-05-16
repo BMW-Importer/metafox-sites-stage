@@ -4,7 +4,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 60px;
+    height: 3.75rem;
     display: flex;
     align-items: flex-end;
     justify-content: center;

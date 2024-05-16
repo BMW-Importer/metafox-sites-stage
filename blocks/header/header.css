@@ -1294,7 +1294,7 @@ header nav[aria-expanded="true"] .section {
   
   header nav .menu-link-wrapper .menu-link a,
   header nav .menu-flyout-wrapper .menu-flyout-link {
-    padding: 27px 12px;
+    padding: 1.688rem 0.75rem;
     text-decoration: none;
     flex: 0 1 auto;
     position: relative;
