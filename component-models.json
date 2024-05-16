@@ -1799,7 +1799,7 @@
       },      
       {
         "component": "multiselect",
-        "name": "bgImgGeneral_gradient",
+        "name": "bgImgGeneral_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",       
@@ -2007,7 +2007,7 @@
       },      
       {
         "component": "multiselect",
-        "name": "style",
+        "name": "bgVidGeneral_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
