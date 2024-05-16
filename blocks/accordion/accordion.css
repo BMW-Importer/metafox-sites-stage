@@ -12,14 +12,17 @@
   .accordion details summary {
     font-size: 1.25rem;
     position: relative;
-    padding: 0 16px;
     cursor: pointer;
     list-style: none;
     overflow: auto;
     font-weight: 700;
     line-height: 2rem;
-    padding-left: .5rem;
-    padding-right: .5rem
+    padding: .5rem;
+  }
+
+  .accordion details summary div p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .accordion details summary:hover {
@@ -48,6 +51,9 @@
   }
   
   .accordion details .accordion-item-body {
-    padding-bottom: 3rem;
-    padding-top: .75rem;
+    padding: .75rem .5rem 3rem;
+  }
+
+  .accordion details .accordion-item-body p {
+    margin: 0;
   }
