@@ -569,6 +569,7 @@ textarea{
       font-size: 2.063rem; 
       line-height: 2.875rem; 
     }
+<<<<<<< HEAD
 }
 
 @media (width >= 768px) and (width < 1280px) {
@@ -582,4 +583,6 @@ textarea{
     h3 {
       padding: 1.25rem 3rem;
     }
+=======
+>>>>>>> 622dfc0b6b24abda6e6377d0375cb796026d66af
 }

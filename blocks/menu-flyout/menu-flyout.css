@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /* menu-flyout css */
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
@@ -9,7 +11,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     align-items: flex-end;
     justify-content: center;
     width: 100%;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    background-image: linear-gradient(rgba(255 255 255 / 0%), rgba(255 255 255 / 100%));
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-scroll-indicator-arrow::before{
