@@ -77,7 +77,6 @@
     grid-template-columns: 1fr;
     grid-gap: 0;
     grid-template-areas: "leftEmpty content rightEmpty";
-    grid-template-rows: 1fr;
   }
 
    [data-sectiontopmargin='true'] {
