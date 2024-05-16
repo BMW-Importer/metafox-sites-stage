@@ -12,6 +12,7 @@ export function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
   const iframeSrc = iFrameUrl.textContent;
+  await opt_in_info();
   console.log("iframe URL : "+iframeSrc);
   let anchor = iframeSrc;
   alloy("appendIdentityToUrl", {url: iframeSrc}).then(result=> {anchor = result.url;});
@@ -27,6 +28,27 @@ export function generateIFrameDOM(props) {
     `);
   return iFrameDOM;
 }
+
+function opt_in_info(){
+  const adobeDtm = window.adobeDataLayer;
+  console.log(adobeDtm.version);
+  const d = new Date();
+  alloy('setConsent', {
+    consent: [{
+      standard: 'Adobe',
+      version: '2.0',
+      value: {
+        collect: {
+          val: 'y'
+        },
+        metadata: {
+          time: '2024-04-30T07:00:05-7:00'
+        }
+      }
+    }]
+  });
+}
+
 export default function decorate(block) {
   // get the first and only cell from each row
   const props = [...block.children].map((row) => row.firstElementChild);
