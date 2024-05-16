@@ -100,7 +100,7 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--fixed-font-family);
   font-weight: 300;
-  padding: 20px 96px;
+  padding: 1.25rem 6rem;
   margin: 0;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
@@ -580,6 +580,6 @@ textarea{
     h1,
     h2,
     h3 {
-      padding: 20px 48px;
+      padding: 1.25rem 3rem;
     }
 }
