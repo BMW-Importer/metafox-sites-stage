@@ -119,6 +119,45 @@ function launchVariables() {
   headElement.appendChild(scriptElement);
 }
 
+
+function opt_in_info(){
+  const dateTime = new Date();
+
+// Format the date components
+const year = dateTime.getFullYear();
+const month = (dateTime.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+const day = dateTime.getDate().toString().padStart(2, '0');
+const hours = dateTime.getHours().toString().padStart(2, '0');
+const minutes = dateTime.getMinutes().toString().padStart(2, '0');
+const seconds = dateTime.getSeconds().toString().padStart(2, '0');
+const milliseconds = dateTime.getMilliseconds().toString().padStart(3, '0');
+const timezoneOffset = -dateTime.getTimezoneOffset();
+const timezoneOffsetHours = Math.floor(Math.abs(timezoneOffset) / 60).toString().padStart(2, '0');
+const timezoneOffsetMinutes = (Math.abs(timezoneOffset) % 60).toString().padStart(2, '0');
+const timezoneSign = timezoneOffset >= 0 ? '+' : '-';
+
+// Construct the timestamp string
+const timestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
+
+  const adobeDtm = window.adobeDataLayer;
+  console.log(adobeDtm.version);
+  const d = new Date();
+  alloy('setConsent', {
+    consent: [{
+      standard: 'Adobe',
+      version: '2.0',
+      value: {
+        collect: {
+          val: 'y'
+        },
+        metadata: {
+          time: timestamp
+        }
+      }
+    }]
+  });
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -140,6 +179,7 @@ async function loadLazy(doc) {
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
   launchVariables();
+  opt_in_info();
 }
 
 /**
