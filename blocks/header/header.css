@@ -524,6 +524,12 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     font-size: 16px;
   }
 
+  header nav[aria-expanded="true"] .menu-link-wrapper a:hover,
+  header nav[aria-expanded="true"] .menu-flyout-link:hover {
+    color: var(--light-text-color);
+    text-decoration: none;
+  }
+
   header nav[aria-expanded="false"] .nav-tools .default-content-wrapper .icon-search {
     position: absolute;
     width: 20px;
@@ -673,8 +679,8 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper::after {
     color: var(--light-border-color);
     font-weight: 400;
     position: absolute;
-    right: 50px;
-    top: 12px;
+    right: 7rem;
+    top: 0.75rem;
 }
 
 /* flyout css ipad code */ 
