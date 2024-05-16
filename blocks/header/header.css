@@ -344,11 +344,14 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     position: relative;
   }
 
-  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover {
-    color: var(--link-hover-color);
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover,
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list .link-list-title:hover::after,
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:active {
+    color: var(--light-link-hover-color);
   }
 
-  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover::after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
@@ -399,7 +402,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.4rem 1.5rem;
     font-weight: 400;
     font-size: 1rem;
     color: #262626;
@@ -416,7 +419,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     height: 1em;
     line-height: 1;
     position: absolute;
-    left: 1rem;
+    left: 1.5rem;
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .menu-teaser-image p {
@@ -743,8 +746,9 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
   text-transform: uppercase;
  }
 
-header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover {
-  color: var(--link-hover-color);
+header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover,
+header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:active {
+  color: var(--light-link-hover-color);
 }
 
 header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
@@ -1291,9 +1295,8 @@ header nav[aria-expanded="true"] .section {
   
   header nav .menu-link-wrapper .menu-link a,
   header nav .menu-flyout-wrapper .menu-flyout-link {
-    padding: 27px 0;
+    padding: 1.688rem 0.75rem;
     text-decoration: none;
-    margin: 0 12px;
     flex: 0 1 auto;
     position: relative;
     font-weight: 700;
