@@ -100,12 +100,14 @@ h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--fixed-font-family);
   font-weight: 300;
+  padding: 1.25rem 6rem;
+  margin: 0;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h1 { 
   font-size: 2.188rem; 
-  line-height: 3.125rem; 
+  line-height: 3.125rem;
 }
 
 h2 { 
@@ -114,8 +116,8 @@ h2 {
 }
 
 h3 { 
-  font-size: 2.188rem; 
-  line-height: 3.125rem; 
+  font-size: 1.75rem; 
+  line-height: 2.5rem; 
 }
 
 h4 { 
@@ -566,5 +568,18 @@ textarea{
     h3 { 
       font-size: 2.063rem; 
       line-height: 2.875rem; 
+    }
+}
+
+@media (width >= 768px) and (width < 1280px) {
+  h3 {
+      font-size: 1.563rem;
+      line-height: 2.25rem;
+    }
+  
+    h1,
+    h2,
+    h3 {
+      padding: 1.25rem 3rem;
     }
 }
