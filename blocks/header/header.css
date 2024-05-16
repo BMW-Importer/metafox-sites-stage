@@ -345,12 +345,13 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
   }
 
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover,
-  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list .link-list-title:hover:after,
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list .link-list-title:hover::after,
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:active {
     color: var(--light-link-hover-color);
   }
 
-  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover::after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
