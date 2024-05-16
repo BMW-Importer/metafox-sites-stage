@@ -1151,9 +1151,6 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     max-width: 109.5rem !important;
   }
 
-  header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
-      left: -72px;
-  }
 }
 
 header nav .nav-hamburger button {
