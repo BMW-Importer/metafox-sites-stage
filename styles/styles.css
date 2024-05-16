@@ -105,12 +105,35 @@ h4, h5, h6 {
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: 2.188rem; line-height: 3.125rem; }
-h2 { font-size: 1.813rem; line-height: 2.625rem; }
-h3 { font-size: 1.75rem; line-height: 2.5rem; }
-h4 { font-size: 0.875rem; line-height: 1.25rem; }
-h5 { font-size: 0.75rem; line-height: 1rem; }
-h6 { font-size: 0.875rem; line-height: 0.75rem; }
+h1 { 
+  font-size: 2.188rem; 
+  line-height: 3.125rem;
+}
+
+h2 { 
+  font-size: 1.813rem; 
+  line-height: 2.625rem; 
+}
+
+h3 { 
+  font-size: 1.75rem; 
+  line-height: 2.5rem; 
+}
+
+h4 { 
+  font-size: 0.875rem; 
+  line-height: 1.25rem; 
+}
+
+h5 { 
+  font-size: 0.75rem; 
+  line-height: 1rem; 
+}
+
+h6 { 
+  font-size: 0.875rem; 
+  line-height: 0.75rem; 
+}
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
@@ -532,9 +555,20 @@ textarea{
 }
 
 @media (width >= 360px) and (width < 768px) {
-  h1 { font-size: 2.063rem; line-height: 2.875rem; }
-  h2 { font-size: 1.75rem; line-height: 2.5rem; }
-  h3 { font-size: 1.438rem; line-height: 2rem; }
+  h1 { 
+    font-size: 2.063rem; 
+    line-height: 2.875rem; 
+  }
+
+  h2 { 
+    font-size: 1.75rem; 
+    line-height: 2.5rem; 
+  }
+
+  h3 { 
+    font-size: 1.438rem; 
+    line-height: 2rem; 
+  }
 
   h1,h2,h3{
     padding: 20px 24px;
@@ -542,7 +576,10 @@ textarea{
 }
 
 @media (width >= 768px) and (width < 1280px) {
-  h3 { font-size: 1.563rem; line-height: 2.25rem; }
+  h3 { 
+    font-size: 1.563rem; 
+    line-height: 2.25rem; 
+  }
 
   h1,h2,h3{
     padding: 20px 48px;
