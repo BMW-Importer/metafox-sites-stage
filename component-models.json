@@ -2007,7 +2007,7 @@
       },      
       {
         "component": "multiselect",
-        "name": "bgVidGeneral_gradient",
+        "name": "style",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
