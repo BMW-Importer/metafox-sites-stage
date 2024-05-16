@@ -677,7 +677,7 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper::after {
     color: var(--light-border-color);
     font-weight: 400;
     position: absolute;
-    right: 50px;
+    right: 112px;
     top: 12px;
 }
 
