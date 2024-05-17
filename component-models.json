@@ -2208,7 +2208,7 @@
         "description": "Defines the downloadable element."
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "downloadText",
         "value": "",
