@@ -9,7 +9,7 @@
   "bodyTypeCode": "LI",
   "marketingBodyTypeCode": "LI",
   "bodyTypeDescription": "LIM",
-  "effectDate": "2024-05-10",
+  "effectDate": "2024-05-15",
   "hybridCode": "NOHY",
   "fromPrice": 118691,
   "seats": 5,
@@ -51,7 +51,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "6.8 - 6.1",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "178 - 160",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",

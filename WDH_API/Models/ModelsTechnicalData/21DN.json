@@ -9,7 +9,7 @@
   "marketingVehicleType": "M",
   "bodyTypeCode": "GF",
   "marketingBodyTypeCode": "SUV",
-  "effectDate": "2024-05-10",
+  "effectDate": "2024-05-15",
   "hybridCode": "NOHY",
   "fromPrice": 82100,
   "seats": 5,
@@ -51,7 +51,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "7.8 - 7",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "205 - 184",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",

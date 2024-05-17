@@ -118,7 +118,7 @@ h2 {
 
 h3 { 
   font-size: 1.75rem; 
-  line-height: 2.5rem; 
+  line-height: 2.5rem;
 }
 
 h4 { 
@@ -453,6 +453,10 @@ main .section {
 
 /* mobile */
 @media (width >= 360px) and (width < 768px) {
+  header {
+    height: var(--nav-height);
+  }
+
   a.button.ghost-dark
   {
     margin-top: 0.5rem;
