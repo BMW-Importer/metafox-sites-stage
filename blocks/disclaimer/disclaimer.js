@@ -3,14 +3,9 @@ import {
 } from '../../scripts/common/constants.js';
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
-  try {
-    const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
-    const response = await fetch(endpointUrl);
-    return await response.json();
-  } catch (error) {
-    console.log('Error fetching data for content fragment', error);
-    throw error;
-  }
+  const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
+  const response = await fetch(endpointUrl);
+  return response.json();
 }
 
 export default function decorate(block) {
@@ -25,16 +20,16 @@ export default function decorate(block) {
   } else {
     publishDomain = PROD.hostName;
   }
+  block.textContent = '';
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
-    const cfData = response.data;
+    const cfData = response?.data;
     if (cfData) {
-      block.textContent = '';
-      const disclaimerHtml = cfData.disclaimercfmodelByPath.item.disclaimer.html;
-      const div = document.createElement('div');
-      div.className = 'disclaimer-content';
-      div.innerHTML = disclaimerHtml;
-      block.appendChild(div);
+      const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
+      const disclaimerContent = document.createElement('div');
+      disclaimerContent.className = 'disclaimer-content';
+      disclaimerContent.innerHTML = disclaimerHtml;
+      block.appendChild(disclaimerContent);
     }
   });
 }
