@@ -70,6 +70,11 @@
   padding: 0 12px;
 }
 
+.text-with-image-button > span,
+.text-with-video-button > span {
+  margin-top: 1rem;
+}
+
 @media (width >= 1280px) {
   .text-alignment {
     text-align: left;

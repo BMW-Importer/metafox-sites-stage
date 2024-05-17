@@ -1,8 +1,11 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import { addIcon } from '../../scripts/bmw-util.js';
 
 let isScriptAdded = false;
 const videoComponentwrapper = 'video';
 const imageComponentWrapper = 'image';
+const blankElementsIndex = [0, 6, 8];
 
 export function changeAllVidSrcOnResize() {
   window.addEventListener('resize', () => {
@@ -227,7 +230,6 @@ export function generateTextDOM(
   if (eyebrow) eyebrow.classList.add(`${componentName}-eyebrow`);
   if (headline) headline.classList.add(`${componentName}-headline`);
   if (description) description.classList.add(`${componentName}-description`);
-  if (buttonElement) buttonElement.classList.add(`${componentName}-button`);
   if (eyebrowStyle === 'eyebrowbold1' && eyebrow) {
     eyebrow.classList.add(eyebrowStyle.textContent);
   } else if (eyebrowStyle === 'eyebrowbold2' && eyebrow) {
@@ -236,7 +238,10 @@ export function generateTextDOM(
     eyebrow.classList.add(eyebrowStyle.textContent);
   }
   headline.innerHTML = headlineElement?.innerHTML;
-  if (buttonElement) addIcon(buttonElement, 'arrow_chevron_right');
+  if (buttonElement?.textContent) {
+    buttonElement.classList.add(`${componentName}-button`);
+    addIcon(buttonElement, 'arrow_chevron_right');
+  }
   div.append(eyebrow, headline, description, buttonElement);
   addWrapperDiv(block, div, componentWrapper, alignment?.trim());
 }
@@ -269,34 +274,38 @@ export default function decorate(block) {
       image = row;
     }
   });
-
   const [
     componentNameV,
-    videoPropsGrp1,
-    eyebrowStyleV,
-    videoPropsGrp2,
-  ] = video ? [...video.children].filter((row) => row.children.length) : [];
-
-  const [
     videoEyebrow,
+    eyebrowStyleV,
     headline,
     description,
+    videoPropsGrp,
     videoButtonName,
     videoButtonElement,
-  ] = videoPropsGrp1?.children || [];
-
+  ] = video
+    ? [...video.children || []].filter((row, idx) => {
+      if (!blankElementsIndex.includes(idx)) {
+        return row;
+      }
+    }) : [];
+  const pictures = videoPropsGrp.querySelectorAll('picture');
+  const videos = videoPropsGrp.getElementsByClassName('button-container');
+  const [desktopVidPath, mobileVidPath] = videos;
+  const [desktopPosterPath, mobilePosterPath] = pictures;
   const [
     videoTitle,
     videoDescp,
-    desktopVidPath,
-    mobileVidPath,
-    desktopPosterPath,
-    mobilePosterPath,
     videoLoop,
     videoAutoPlay,
     videoControl,
     videoMute,
-  ] = videoPropsGrp2?.children || [];
+  ] = [...videoPropsGrp?.children || []].filter((element) => {
+    if (!element.classList.length
+      && ![...element.children].includes((item) => item.tagName === 'PICTURE')) {
+      return element;
+    }
+  });
 
   const posters = {
     desktop: desktopPosterPath?.querySelector('img')?.getAttribute('src'),
@@ -312,7 +321,7 @@ export default function decorate(block) {
   const loop = videoLoop?.textContent.trim() === 'true';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
   const mute = videoMute?.textContent.trim() === 'true';
-  if (videoButtonElement) videoButtonElement.ariaLabel = videoButtonName?.textContent;
+  if (videoButtonElement?.textContent) videoButtonElement.ariaLabel = videoButtonName?.textContent;
   const videoButtonAnchor = videoButtonElement?.querySelector('a');
   if (videoButtonAnchor) {
     videoButtonAnchor.textContent = videoButtonName?.textContent;
@@ -344,17 +353,20 @@ export default function decorate(block) {
 
   const [
     componentNameI,
-    imageDetails,
-    imageEyebrowStyle,
-    imageLink,
-  ] = image ? [...image.children || []].filter((row) => row.children.length) : [];
-  const [
     imageEyebrow,
+    imageEyebrowStyle,
     imageHeadline,
     imageDescp,
+    imageLink,
     imageButtonName,
     imageButtonElement,
-  ] = imageDetails?.children || [];
+  ] = image
+    ? [...image.children || []].filter((row, idx) => {
+      if (!blankElementsIndex.includes(idx)) {
+        return row;
+      }
+    }) : [];
+
   if (imageButtonElement) imageButtonElement.ariaLabel = imageButtonName?.textContent;
   const imageButtonAnchor = imageButtonElement?.querySelector('a');
   if (imageButtonAnchor) {
