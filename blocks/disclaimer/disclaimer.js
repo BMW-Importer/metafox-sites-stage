@@ -25,11 +25,11 @@ export default function decorate(block) {
   } else {
     publishDomain = PROD.hostName;
   }
+  block.textContent = '';
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
     const cfData = response.data;
     if (cfData) {
-      block.textContent = '';
       const disclaimerHtml = cfData.disclaimercfmodelByPath.item.disclaimer.html;
       const div = document.createElement('div');
       div.className = 'disclaimer-content';
