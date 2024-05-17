@@ -1,0 +1,19 @@
+.quote div {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.quote div p {
+    margin: 0;
+}
+
+.quote .quote {
+    margin-bottom: 32px;
+}
+
+/* tablet & mobile */
+@media (width >= 360px) and (width < 1280px) {
+  .quote .quote {
+    margin-bottom: 24px;
+}
+}
