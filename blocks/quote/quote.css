@@ -1,5 +1,4 @@
 .quote div {
-    font-size: 1rem;
     text-align: left;
 }
 
@@ -9,6 +8,11 @@
 
 .quote .quote {
     margin-bottom: 32px;
+    font-size: 1.563rem;
+}
+
+.quote .source {
+    font-size: 1rem;
 }
 
 /* tablet & mobile */
