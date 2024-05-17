@@ -26,10 +26,10 @@ export default function decorate(block) {
     const cfData = response?.data;
     if (cfData) {
       const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
-      const div = document.createElement('div');
-      div.className = 'disclaimer-content';
-      div.innerHTML = disclaimerHtml;
-      block.appendChild(div);
+      const disclaimerContent = document.createElement('div');
+      disclaimerContent.className = 'disclaimer-content';
+      disclaimerContent.innerHTML = disclaimerHtml;
+      block.appendChild(disclaimerContent);
     }
   });
 }
