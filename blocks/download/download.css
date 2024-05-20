@@ -1,0 +1,15 @@
+.download-wrapper .download.block p a {
+    text-decoration: none;
+}
+
+.download-wrapper .download.block p a::before {
+    content: url("../../icons/download.svg");
+    display: inline;
+    margin-right: 12px;
+    position: relative;
+    top: 2px;
+}
+
+.download-wrapper .download.block p a:hover::before {
+    content: url("../../icons/download-blue.svg");
+}
