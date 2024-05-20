@@ -224,12 +224,32 @@
         "name": "fixedwidthsectiontab1"
       },
       {
-        "component": "text-input",
-        "description": "Defines the styling applied to the content within this section.If an alignment is needed on a copy text or a button , please specify the alignment of your choice - alignment-right, alignment-left or alignment-center.",
+        "component": "select",
         "name": "style",
+        "description": "Defines the alignment of the Default Content added within the Section.",
         "value": "",
-        "label": "Style",
-        "valueType": "string"
+        "label": "Alignment",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Centre",
+            "value": "alignment-center"
+          },
+          {
+            "name": "Left",
+            "value": "alignment-left"
+          },
+          {
+            "name": "Right",
+            "value": "alignment-right"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "label": "Display Top Margin",
+        "name": "fixedsectiontopmargin",
+        "valueType": "boolean"
       },
       {
         "component": "tab",
