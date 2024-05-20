@@ -12,10 +12,10 @@ export default function decorate(block) {
         childrenBlock.textContent = '';
         childrenBlock.classList.add('background-media-item');
 
-        generalProps.classList.add("background-media-item-text");
-        vidOrImgPros.classList.add("background-media-item-vidImg");
-        cta1.classList.add("background-media-item-cta-money");
-        cta2.classList.add("background-media-item-cta-ghost");
+        generalProps?.classList.add("background-media-item-text");
+        vidOrImgPros?.classList.add("background-media-item-vidImg");
+        cta1?.classList.add("background-media-item-cta-money");
+        cta2?.classList.add("background-media-item-cta-ghost");
 
         // checking whether current childBlock is background-image or background-video
         if (vidOrImgPros?.children?.length === 1) {
@@ -23,7 +23,7 @@ export default function decorate(block) {
             vidOrImgPros.append(generatebgImgDom(vidOrImgPros));
             childrenBlock.append(vidOrImgPros);
         }
-        else {
+        else if(vidOrImgPros?.children?.length > 1){
             vidOrImgPros.classList.add('video');
             generatebgVideoDom(vidOrImgPros);
             childrenBlock.append(vidOrImgPros);
@@ -32,7 +32,7 @@ export default function decorate(block) {
         // fetching eyebrow, headline, class list details
         const [eyebrowText, headlineText, subBrancdIcon, copytext, classes] = generalProps.children;
         generalProps.textContent = '';
-        const listOfClasses = classes.textContent.split(',');
+        const listOfClasses = classes ? classes.textContent.split(',') : '';
 
         // adding class names to eyebrow and headline
         if(eyebrowText) eyebrowText.classList.add('background-media-item-text-eyebrow');
