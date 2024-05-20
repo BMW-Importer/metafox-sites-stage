@@ -1869,11 +1869,11 @@
         "options": [
           {
             "name": "Money Button",
-            "value": "primary"
+            "value": "money-btn"
           },
           {
             "name": "Money Button Flex",
-            "value": "secondary"
+            "value": "money-btn money-btn-flex"
           }
         ]
       },
@@ -1901,11 +1901,11 @@
         "options": [
           {
             "name": "Ghost on Image",
-            "value": "primary"
+            "value": "ghost-img-btn"
           },
           {
             "name": "Ghost on Image Flex",
-            "value": "secondary"
+            "value": "ghost-img-btn ghost-img-flex-btn"
           }
         ]
       }
@@ -2122,11 +2122,11 @@
         "options": [
           {
             "name": "Money Button",
-            "value": "secondary"
+            "value": "money-btn"
           },
           {
             "name": "Money Button Flex",
-            "value": "secondary"
+            "value": "money-btn money-btn-flex"
           }
         ]
       },
@@ -2154,11 +2154,11 @@
         "options": [
           {
             "name": "Ghost on Image",
-            "value": "primary"
+            "value": "ghost-img-btn"
           },
           {
             "name": "Ghost on Image Flex",
-            "value": "primary"
+            "value": "ghost-img-btn ghost-img-flex-btn"
           }
         ]
       }

@@ -4,14 +4,13 @@ import { generatebgVideoDom } from "../background-video/background-video.js";
 export default function decorate(block) {
     // get children blocks
     const bgMediaChildrens = [...block.children];
-    const bgMediaContainer = document.createElement('div');
-    bgMediaContainer.classList.add('background-media-container');
+    block.textContent = '';
 
     // loop through each children block to extract props of it
     bgMediaChildrens.forEach((childrenBlock) => {
         const [generalProps, vidOrImgPros, cta1, cta2] = childrenBlock.children;
-        const childrenBlockDom = document.createElement('div');
-        childrenBlockDom.classList.add('background-media-item');
+        childrenBlock.textContent = '';
+        childrenBlock.classList.add('background-media-item');
 
         generalProps.classList.add("background-media-item-text");
         vidOrImgPros.classList.add("background-media-item-vidImg");
@@ -22,20 +21,30 @@ export default function decorate(block) {
         if (vidOrImgPros?.children?.length === 1) {
             vidOrImgPros.classList.add('image');
             vidOrImgPros.append(generatebgImgDom(vidOrImgPros));
-            childrenBlockDom.append(vidOrImgPros);
+            childrenBlock.append(vidOrImgPros);
         }
         else {
             vidOrImgPros.classList.add('video');
-            vidOrImgPros.append(generatebgVideoDom(vidOrImgPros));
-            childrenBlockDom.append(vidOrImgPros);
+            generatebgVideoDom(vidOrImgPros);
+            childrenBlock.append(vidOrImgPros);
         }
 
         // fetching eyebrow, headline, class list details
         const [eyebrowText, headlineText, subBrancdIcon, copytext, classes] = generalProps.children;
         generalProps.textContent = '';
+        const listOfClasses = classes.textContent.split(',');
+
+        // adding class names to eyebrow and headline
+        if(eyebrowText) eyebrowText.classList.add('background-media-item-text-eyebrow');
+        if(headlineText) headlineText.classList.add('background-media-item-text-headline');
+        if(copytext) copytext.classList.add('background-media-item-text-copytext');
 
         // if gradient is authored, then add it as classnames to image or video div
-        if (classes) vidOrImgPros.classList.add(classes.replace(/,/g, ' '));
+        if (listOfClasses) {
+            listOfClasses.forEach((className) => {
+                vidOrImgPros.classList.add(className);
+            });
+        }
 
         generalProps.append(eyebrowText || '');
         generalProps.append(headlineText || '');
@@ -44,27 +53,19 @@ export default function decorate(block) {
         detailAndBrandDiv.classList.add('background-media-item-details');
 
         // if subrand icon is selected then add it as class
-        if (subBrancdIcon) detailAndBrandDiv.classList.add(subBrancdIcon);
+        if (subBrancdIcon) detailAndBrandDiv.classList.add(subBrancdIcon.textContent);
+        detailAndBrandDiv.append(copytext || '');
 
         // append copyText detail
-        generalProps.append(copytext || '');
+        generalProps.append(detailAndBrandDiv);
 
-        childrenBlockDom.append(generalProps);
-        
         // appending buttons
-        childrenBlockDom.append(cta1);
-        childrenBlockDom.append(cta2);
+        generalProps.append(cta1);
+        generalProps.append(cta2);
 
-        // emptying child block content
-        childrenBlock.textContent = "";
-
-        // appending the generated dom back to child element
-        childrenBlock.append(childrenBlockDom);
+        childrenBlock.append(generalProps);
 
         // appending back child block back to main container
-        bgMediaContainer.append(childrenBlock);
+        block.append(childrenBlock);
     });
-    
-    block.textContent = '';
-    block.append(bgMediaContainer);
   }
