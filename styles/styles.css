@@ -99,7 +99,7 @@ main {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--fixed-font-family);
-  font-weight: 300;
+  color: var(--background-color);
   
   /* padding: 1.25rem 6rem; */
   margin: 0;
@@ -109,31 +109,37 @@ h4, h5, h6 {
 h1 { 
   font-size: 2.188rem; 
   line-height: 3.125rem;
+  font-weight: 300;
 }
 
 h2 { 
   font-size: 1.813rem; 
   line-height: 2.625rem; 
+  font-weight: 300;
 }
 
 h3 { 
   font-size: 1.75rem; 
   line-height: 2.5rem;
+  font-weight: 300;
 }
 
 h4 { 
   font-size: 0.875rem; 
-  line-height: 1.25rem; 
+  line-height: 1.25rem;
+  font-weight: 700;
 }
 
 h5 { 
   font-size: 0.75rem; 
-  line-height: 1rem; 
+  line-height: 1rem;
+  font-weight: 700;
 }
 
 h6 { 
   font-size: 0.875rem; 
-  line-height: 0.75rem; 
+  line-height: 0.75rem;
+  font-weight: 700;
 }
 
 p, dl, ol, ul, pre, blockquote {
@@ -453,6 +459,10 @@ main .section {
 
 /* mobile */
 @media (width >= 360px) and (width < 768px) {
+  header {
+    height: var(--nav-height);
+  }
+
   a.button.ghost-dark
   {
     margin-top: 0.5rem;

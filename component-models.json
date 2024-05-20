@@ -558,7 +558,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_eyebrow",
+        "name": "imageeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -588,7 +588,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_headline",
+        "name": "imageheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -596,7 +596,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "general_headlineType",
+        "name": "imageheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -610,7 +610,7 @@
       },
       {
         "component": "richtext",
-        "name": "general_copytext",
+        "name": "imagecopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -648,7 +648,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_linkLabel",
+        "name": "imagebuttonlinkLabel",
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
@@ -656,7 +656,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_link",
+        "name": "imagebuttonlink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
@@ -664,7 +664,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "general_buttonStyling",
+        "name": "imagebuttonstyling",
         "value": "linkbutton",
         "label": "Button Styling",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
@@ -672,7 +672,7 @@
         "options": [
           {
             "name": "Link Button",
-            "value": "linkbutton"
+            "value": "secondary"
           }
         ]
       }
@@ -708,7 +708,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_eyebrow",
+        "name": "videoeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -722,11 +722,11 @@
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
-            "name": "Eyebrow Bold 1",
+            "name": "Eyebrow 1 Bold",
             "value": "eyebrowbold1"
           },
           {
-            "name": "Eyebrow Bold 2",
+            "name": "Eyebrow 2 Bold",
             "value": "eyebrowbold2"
           },
           {
@@ -738,7 +738,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_headline",
+        "name": "videoheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -746,7 +746,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "general_headlineType",
+        "name": "videoheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -760,7 +760,7 @@
       },
       {
         "component": "richtext",
-        "name": "general_copytext",
+        "name": "videocopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -867,7 +867,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_linklabel",
+        "name": "videolinklabel",
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
@@ -875,7 +875,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "general_link",
+        "name": "videobuttonlink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
@@ -883,7 +883,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "general_buttonStyling",
+        "name": "videobuttonstyling",
         "value": "linkbutton",
         "label": "Button Styling",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
@@ -891,7 +891,7 @@
         "options": [
           {
             "name": "Link Button",
-            "value": "linkbutton"
+            "value": "secondary"
           }
         ]
       }
@@ -2196,6 +2196,28 @@
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
       }
     ]
+  },
+   {
+    "id": "quote",
+    "fields": [
+       {
+         "component": "richtext",
+         "name": "quote",
+         "value": "",
+         "label": "Quote",
+         "description": "Defines the quote that will appear in the page. Please also author the quotation marks.",
+         "valueType": "string",
+         "required": true
+       },
+       {
+         "component": "text",
+         "valueType": "string",
+         "name": "citationSource",
+         "label": "Citation Source",
+         "value": "",
+         "description": "Defines the citation source that will appear beneath the quote."
+       }
+     ]
   },
   {
     "id": "download",
