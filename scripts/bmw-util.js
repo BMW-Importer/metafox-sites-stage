@@ -22,7 +22,7 @@ function setAlignmentStyle(style, element) {
   }
 }
 
-function addIcon(element, iconType, className = '') {
+export function addIcon(element, iconType, className = '') {
   if (iconType === 'arrow_chevron_right') {
     const iconSpan = document.createElement('span');
     iconSpan.innerHTML = '<i class="icon-gt" aria-hidden="true" data-icon="arrow_chevron_right"></i>';
