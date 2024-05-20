@@ -31,18 +31,6 @@ export function addIcon(element, iconType, className = '') {
   }
 }
 
-function addClass(callElement, bindElemet, eventName, className) {
-  callElement.addEventListener(eventName, () => {
-    bindElemet.classList.add(className);
-  });
-}
-
-function removeClass(callElement, bindElemet, eventName, className) {
-  callElement.addEventListener(eventName, () => {
-    bindElemet.classList.remove(className);
-  });
-}
-
 export function decorateBMWButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
@@ -78,8 +66,6 @@ export function decorateBMWButtons(element) {
           const alignment = getAlignmentStyle(element, 'div.section');
           setAlignmentStyle(alignment, twoup);
           addIcon(up, 'arrow_chevron_right', 'align-center');
-          addClass(a, twoup, 'mouseover', 'align-icon-hover');
-          removeClass(a, twoup, 'mouseout', 'align-icon-hover');
         }
       }
     }
