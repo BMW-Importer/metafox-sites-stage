@@ -1883,10 +1883,9 @@
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgImgCta1_LinkType",
+        "name": "bgImgCta1_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "secondary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Money Button",
@@ -1915,10 +1914,9 @@
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgImgCta2_LinkType",
+        "name": "bgImgCta2_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "primary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Ghost on Image",
@@ -2136,10 +2134,9 @@
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgVidCta1_LinkType",
+        "name": "bgVidCta1_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "secondary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Money Button",
@@ -2168,10 +2165,9 @@
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgVidCta2_LinkType",
+        "name": "bgVidCta2_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "primary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Ghost on Image",
