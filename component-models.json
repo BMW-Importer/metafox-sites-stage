@@ -1885,8 +1885,7 @@
         "label": "Button Styling",
         "name": "bgImgCta1_LinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "secondary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Money Button",
@@ -1917,8 +1916,7 @@
         "label": "Button Styling",
         "name": "bgImgCta2_LinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "primary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Ghost on Image",
@@ -2138,8 +2136,7 @@
         "label": "Button Styling",
         "name": "bgVidCta1_LinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "secondary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Money Button",
@@ -2170,8 +2167,7 @@
         "label": "Button Styling",
         "name": "bgVidCta2_LinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",
-        "value": "primary",
+        "valueType": "string",        
         "options": [
           {
             "name": "Ghost on Image",
