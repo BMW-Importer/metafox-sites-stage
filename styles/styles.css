@@ -286,7 +286,7 @@ a.button.hyperlink {
 }
 
 a.button.hyperlink:hover,
-.align-icon-hover{
+.align-icon:hover{
   color: var(--link-hover-color);
   font-weight: bold;
   cursor: pointer;
