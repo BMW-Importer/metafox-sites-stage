@@ -5,9 +5,9 @@
 .download-wrapper .download.block p a::before {
     content: url("../../icons/download.svg");
     display: inline;
-    margin-right: 12px;
+    margin-right: 0.75rem;
     position: relative;
-    top: 2px;
+    top: 0.125rem;
 }
 
 .download-wrapper .download.block p a:hover::before {
