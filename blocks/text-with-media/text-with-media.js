@@ -289,8 +289,8 @@ export default function decorate(block) {
         return row;
       }
     }) : [];
-  const pictures = videoPropsGrp.querySelectorAll('picture');
-  const videos = videoPropsGrp.getElementsByClassName('button-container');
+  const pictures = videoPropsGrp?.querySelectorAll('picture');
+  const videos = videoPropsGrp?.getElementsByClassName('button-container');
   const [desktopVidPath, mobileVidPath] = videos;
   const [desktopPosterPath, mobilePosterPath] = pictures;
   const [
