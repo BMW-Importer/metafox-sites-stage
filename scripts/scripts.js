@@ -178,8 +178,8 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
-  launchVariables();
-  opt_in_info();
+  //launchVariables();
+  // opt_in_info();
 }
 
 /**
@@ -192,9 +192,11 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 async function loadPage() {
+  await launchVariables();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+  window.setTimeout(() => opt_in_info(), 3000);
 }
 
 loadPage();

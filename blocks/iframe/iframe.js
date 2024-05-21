@@ -49,8 +49,18 @@ function iframeLoader() {
 export default function decorate(block) {
   // get the first and only cell from each row
   const props = [...block.children].map((row) => row.firstElementChild);
-  const iFrameDOM = window.setTimeout(() => { generateIFrameDOM(props) }, 2000);
-  block.textContent = '';
-  block.append(iFrameDOM);
-  iframeLoader();
+  if (typeof alloy != 'function') {
+    setTimeout(()=>{
+    const iFrameDOM = generateIFrameDOM(props);
+    block.textContent = '';
+    block.append(iFrameDOM);
+    iframeLoader();
+    },3000)
+  }
+  else {
+    const iFrameDOM = generateIFrameDOM(props);
+    block.textContent = '';
+    block.append(iFrameDOM);
+    iframeLoader();
+  }
 }
