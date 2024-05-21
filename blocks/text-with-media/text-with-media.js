@@ -316,7 +316,7 @@ export default function decorate(block) {
     desktop: desktopVidPath?.textContent,
     mobile: mobileVidPath?.textContent,
   };
-  block.textContent = '';
+  // block.textContent = '';
   const enablecontrols = videoControl?.textContent.trim() === 'true';
   const loop = videoLoop?.textContent.trim() === 'true';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
@@ -329,7 +329,7 @@ export default function decorate(block) {
   }
   if (video) {
     loadVideo(
-      block,
+      video,
       videoTitle,
       videoDescp,
       videoLinkObject,
@@ -340,7 +340,7 @@ export default function decorate(block) {
       posters,
     );
     generateTextDOM(
-      block,
+      video,
       eyebrowStyleV,
       videoEyebrow,
       headline,
