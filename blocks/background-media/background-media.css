@@ -25,6 +25,10 @@
     z-index: 2;
 }
 
+.background-media.block .background-media-item-text > *{
+    width: calc(100% - 32px);
+}
+
 .background-media.block .background-media-item-text::before {
     background: linear-gradient(180deg,transparent,#000 128px)!important;
     position: absolute;
@@ -61,6 +65,36 @@
     position: relative;
 }
 
+.background-media.block .background-media-item-details.subbrandi{
+    position: relative;
+}
+
+.background-media.block .background-media-item-details.subbrandi::before {
+    position: relative;
+    content: '';
+    background-image: url("../../icons/BMW_subrand_i.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 16px;
+    width: 29px;
+    margin-right: 8px;
+}
+
+.background-media.block .background-media-item-details.subbrandm::before {
+    position: relative;
+    content: '';
+    background-image: url("../../icons/BMW_subrand_m.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    height: 20px;
+    width: 56px;
+    margin-right: 8px;
+}
+
 .background-media.block .background-media-item-text-copytext {
     color: #fff;
     font-size: 1rem;
@@ -70,6 +104,7 @@
     text-align: center;
     position: relative;
     z-index: 2;
+    display: inline-block;
 }
 
 .background-media.block .background-media-item-cta-money {
@@ -78,6 +113,9 @@
     margin: 24px 0;
     position: relative;
     z-index: 2;
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .background-media.block .background-media-item-cta-ghost {
@@ -86,6 +124,14 @@
     margin: 24px 0;
     position: relative;
     z-index: 2;
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.background-media.block .background-media-item-cta-money *,
+.background-media.block .background-media-item-cta-ghost * {
+    box-sizing: border-box;
 }
 
 
@@ -100,8 +146,18 @@
     text-align: center;
     border-radius: 3px;
     cursor: pointer;
-    padding: .25rem;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 12px;
+}
+
+.background-media.block .background-media-item-cta-money .money-btn-flex {
+    min-height: 2.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn:hover {
@@ -110,16 +166,17 @@
     color: #fff;
 }
 
-.background-media.block .background-media-item-cta-money .money-btn-flex {
+.background-media.block .background-media-item-cta-ghost .ghost-img-btn {
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.25rem;
+    border: 1px solid #f2f2f2;
+    outline: 1px solid transparent;
     border-color: #f2f2f2;
     background-color: transparent;
     color: #f2f2f2;
     word-break: break-word;
     align-items: center;
-    border: 0;
     border-radius: 3px;
     cursor: pointer;
     display: inline-flex;
@@ -128,12 +185,18 @@
     padding: .25rem;
     text-align: center;
     text-decoration: none;
+    width: 100%;
 }
 
-.background-media.block .background-media-item-cta-money .money-btn-flex:hover {
-    border-color: #fff;
-    border-width: 2px;
-    color: #fff;    
+.background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {
+    min-height: 2.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.background-media.block .background-media-item-cta-ghost .ghost-img-btn:hover {
+    border: 2px solid #f2f2f2;
+    outline: unser;   
 }
 
 .background-media.block .background-media-item-vidImg {
@@ -207,8 +270,20 @@
         padding-top: 80px;
     }
 
+    .background-media.block .background-media-item-text > *{
+        width: auto;
+    }
+
     .background-media.block .background-media-item-vidImg {
         aspect-ratio: 4 / 3;
+    }
+
+    .background-media.block .background-media-item-cta-money {       
+        width: 30%;
+    }
+    
+    .background-media.block .background-media-item-cta-ghost {
+        width: 30%;
     }
 }
 
@@ -222,12 +297,16 @@
     .background-media.block .background-media-item-text {
         position: absolute;
         left: 96px;
-        width: 41.66666667%;
+        width: 36.4%;
         top: 50%;
         transform: translateX(0) translateY(-50%);
         padding: 0;
         margin-top: unset;
         min-height: unset;
+    }
+
+    .background-media.block .background-media-item-text > *{
+        width: auto;
     }
 
     .background-media.block .background-media-item-text::before {
@@ -258,20 +337,30 @@
         text-align: start;
         display: inline-block;
         margin: 32px 0;
+        width: 50%;
     }
     
     .background-media.block .background-media-item-cta-ghost {
         text-align: start;
         display: inline-block;
         margin: 32px 0;
+        width: 50%;
     }
 
     .background-media.block .background-media-item-cta-money *{
-        display: inline-block;        
+        display: inline-block;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding-right: 24px;
     }
 
     .background-media.block .background-media-item-cta-ghost *{
         display: inline-block;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        padding-right: 24px;
     }
     
     .background-media.block .background-media-item-vidImg.dark.left::before {
@@ -314,13 +403,23 @@
     .background-media.block {
         aspect-ratio: 16 / 7;       
         margin-left: -96px;
+        width: calc(100% + 96px + 96px);
+        max-width: 1920px;
     }
     
     .background-media.block .background-media-item-text {
+        position: absolute;
         left: 96px;
-        width: 41.66666667%;        
+        width: 37.5%;
         top: 50%;
         transform: translateX(0) translateY(-50%);
+        padding: 0;
+        margin-top: unset;
+        min-height: unset;
+    }
+
+    .background-media.block .background-media-item-text > *{
+        width: auto;
     }
 
     .background-media.block .background-media-item-text::before {
@@ -347,23 +446,32 @@
     }
 
     .background-media.block .background-media-item-cta-money {
-        display: inline-block;
         text-align: start;
+        display: inline-block;
         margin: 32px 0;
+        width: 50%;
     }
 
     .background-media.block .background-media-item-cta-money *{
         display: inline-block;
         text-align: start;
-        margin: 32px 0;
+        margin:0;
+        width: 100%;
+        padding-right: 24px;
+        box-sizing: border-box;
     }
 
     .background-media.block .background-media-item-cta-ghost {
+        width: 50%;
         display: inline-block;
     }
 
     .background-media.block .background-media-item-cta-ghost *{
         display: inline-block;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        padding-right: 24px;
     }
 
     .background-media.block .background-media-item-vidImg.dark.left::before {

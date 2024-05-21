@@ -1770,15 +1770,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -1800,7 +1800,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",
@@ -1976,15 +1976,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -2006,7 +2006,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",

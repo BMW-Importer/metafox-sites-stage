@@ -59,10 +59,31 @@ export default function decorate(block) {
         // append copyText detail
         generalProps.append(detailAndBrandDiv);
 
-        // appending buttons
-        generalProps.append(cta1);
-        generalProps.append(cta2);
+        // extracting classnames for cta and binding it to anchor link
+        if (cta1?.children.length > 1) {
+            const [ctaButton1, ctaBtn1Class] = cta1.children;
+            cta1.textContent = '';
+            if (ctaButton1) {
+                const bt1ClassName = ctaBtn1Class?.textContent.split(' ');
+                if (ctaBtn1Class?.textContent) ctaButton1.querySelector('a')?.classList.add(...bt1ClassName);
+            }
+            cta1.append(ctaButton1);
 
+            // appending buttons
+            generalProps.append(cta1);
+        }
+
+        if (cta2?.children.length > 1) {
+            const [ctaButton2, ctaBtn2Class] = cta2.children;
+            cta2.textContent = '';
+            if (ctaButton2) {
+                const btn2ClassName = ctaBtn2Class?.textContent.split(' ');
+                if (ctaBtn2Class?.textContent) ctaButton2.querySelector('a')?.classList.add(...btn2ClassName);
+            }
+            cta2.append(ctaButton2);
+            generalProps.append(cta2);
+        }
+        
         childrenBlock.append(generalProps);
 
         // appending back child block back to main container
