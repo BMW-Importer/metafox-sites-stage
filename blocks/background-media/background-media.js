@@ -8,7 +8,7 @@ export default function decorate(block) {
 
   // loop through each children block to extract props of it
   bgMediaChildrens.forEach((childrenBlock) => {
-    const [generalProps, vidOrImgPros, cta1, cta2] = childrenBlock.children;
+    const [generalProps, generalPropIcon, copyTextContainer, gradientEffectClasName, vidOrImgPros, cta1, cta2] = childrenBlock.children;
     childrenBlock.textContent = '';
     childrenBlock.classList.add('background-media-item');
 
@@ -28,8 +28,25 @@ export default function decorate(block) {
       childrenBlock.append(vidOrImgPros);
     }
 
+    // extracting eyebrow and headline
+    let eyebrowText = generalProps.querySelectorAll('h4, h5, h6');
+    let headlineText = generalProps.querySelectorAll('h1, h2, h3');
+    
+    eyebrowText = eyebrowText.length > 0 ? eyebrowText[0] : '';
+    headlineText = headlineText.length > 0 ? headlineText[0] : '';
+
+
+    // extracting subrand icon 
+    const [subBrancdIcon] = generalPropIcon ? generalPropIcon.children : '';
+
+    // extracting copy text
+    const [copytext] = copyTextContainer ? copyTextContainer.children : '';
+
+    //extracting gradient classes
+    const [classes] = gradientEffectClasName ? gradientEffectClasName.children : '';
+
     // fetching eyebrow, headline, class list details
-    const [eyebrowText, headlineText, subBrancdIcon, copytext, classes] = generalProps.children;
+    // const [eyebrowText, headlineText, subBrancdIcon, copytext, classes] = generalProps.children;
     generalProps.textContent = '';
     const listOfClasses = classes ? classes.textContent.split(',') : '';
 
@@ -65,6 +82,9 @@ export default function decorate(block) {
       if (ctaButton1) {
         const bt1ClassName = ctaBtn1Class?.textContent.split(' ');
         if (ctaBtn1Class?.textContent) ctaButton1.querySelector('a')?.classList.add(...bt1ClassName);
+        
+        // if bt1ClassName length is 2 then flex button style is selected so add class to parent
+        if(bt1ClassName.length > 1) cta1.classList.add('flex');
       }
       cta1.append(ctaButton1);
 
@@ -78,6 +98,9 @@ export default function decorate(block) {
       if (ctaButton2) {
         const btn2ClassName = ctaBtn2Class?.textContent.split(' ');
         if (ctaBtn2Class?.textContent) ctaButton2.querySelector('a')?.classList.add(...btn2ClassName);
+
+        // if btn2ClassName length is 2 then flex button style is selected so add class to parent
+        if(btn2ClassName.length > 1) cta2.classList.add('flex');
       }
       cta2.append(ctaButton2);
       generalProps.append(cta2);
