@@ -1872,14 +1872,16 @@
         "label": "Image",
         "name": "bgImgImage_image",
         "description":"Defines the image to be displayed.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "label": "Alt Text",
         "name": "bgImgImage_imageAlt",
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },     
       {
         "component": "tab",
@@ -1891,14 +1893,16 @@
         "name": "bgImgCta1_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgImgCta1_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
@@ -1923,14 +1927,16 @@
         "name": "bgImgCta2_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgImgCta2_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
@@ -2081,21 +2087,24 @@
         "name": "bgVidVideo_title",
         "description": "Defines the title of the video.",
         "label": "Video Title",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidVideo_descp",
         "description": "Defines the description of the video.",
         "label": "Video Description",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
         "label": "Desktop Video Path",
         "name": "bgVidVideo_video",
         "description":"Defines the path to a video on the desktop.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
@@ -2109,7 +2118,8 @@
         "label": "Desktop Poster Image Path",
         "name": "bgVidVideo_img",
         "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
