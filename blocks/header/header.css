@@ -359,7 +359,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     line-height: 1;
     transform: translate(25%, -50%);
     transition: transform .5s ease-in-out;
-    outline: 1px solid transparent;
+    outline: 0.063rem solid transparent;
     text-align: left;
     text-rendering: optimizelegibility;
     text-transform: none;
@@ -368,7 +368,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     right: 0;
     top: 0.625rem;
   }
-  
+
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:hover,
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list .link-list-title:hover::after,
   header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title:active {
