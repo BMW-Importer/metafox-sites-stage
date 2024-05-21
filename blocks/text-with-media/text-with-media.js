@@ -251,6 +251,7 @@ function generateTextWithImageDOM(
   imageLink,
   imageComponentName,
 ) {
+  block.textContent = '';
   const alignment = imageComponentName.textContent.split(',')[1];
   const picture = imageLink.querySelector('picture');
   const image = picture.querySelector('img');
@@ -373,7 +374,6 @@ export default function decorate(block) {
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
   if (image) {
-    // block.textContent = '';
     generateTextWithImageDOM(
       image,
       imageLink,
