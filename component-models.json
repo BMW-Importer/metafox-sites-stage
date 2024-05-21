@@ -1755,14 +1755,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "bgImgGeneral_title_eyebrow",
+        "name": "bgImgGeneral_eyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the smallest text that will be displayed on the component"
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_title_eyebrowType",
+        "name": "bgImgGeneral_eyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "valueType": "string",        
@@ -1785,14 +1785,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "bgImgGeneral_title_headline",
+        "name": "bgImgGeneral_headline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline of the text that will appear in the page."
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_title_headlineType",
+        "name": "bgImgGeneral_headlineType",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -1814,7 +1814,7 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_icon_subbrandicon",
+        "name": "bgImgIcon_subbrandicon",
         "value": "",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
@@ -1833,14 +1833,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgGeneral_descp_copyText",
+        "name": "bgImgDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgImgGeneral_style_gradStyle",
+        "name": "bgImgStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",       
@@ -1905,7 +1905,8 @@
         "label": "Button Styling",
         "name": "bgImgCta1_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "money-btn money-btn-flex",      
         "options": [
           {
             "name": "Money Button",
@@ -1936,7 +1937,8 @@
         "label": "Button Styling",
         "name": "bgImgCta2_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "ghost-img-btn ghost-img-flex-btn",      
         "options": [
           {
             "name": "Ghost on Image",
@@ -2020,7 +2022,7 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_subbrandicon",
+        "name": "bgVidIcon_subbrandicon",
         "value": "",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
@@ -2039,14 +2041,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidGeneral_copyText",
+        "name": "bgVidDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgVidGeneral_gradStyle",
+        "name": "bgVidStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
@@ -2156,7 +2158,8 @@
         "label": "Button Styling",
         "name": "bgVidCta1_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "money-btn money-btn-flex",
         "options": [
           {
             "name": "Money Button",
@@ -2187,7 +2190,8 @@
         "label": "Button Styling",
         "name": "bgVidCta2_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "ghost-img-btn ghost-img-flex-btn",     
         "options": [
           {
             "name": "Ghost on Image",
