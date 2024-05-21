@@ -120,17 +120,14 @@ export function generateTextDOM(
 function generateTextWithImageDOM(
   block,
   imageLink,
-  imageComponentName,
 ) {
   block.textContent = '';
-  const alignment = imageComponentName.textContent.split(',')[1];
   const picture = imageLink.querySelector('picture');
   const image = picture.querySelector('img');
   image.setAttribute('fetchpriority', 'high');
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('image');
   block.classList.add('image-block');
-  imageContainer.style.float = alignment?.trim()?.toLowerCase();
   if (picture) {
     imageContainer.append(picture);
   }
@@ -249,7 +246,6 @@ export default function decorate(block) {
     generateTextWithImageDOM(
       image,
       imageLink,
-      componentNameI,
     );
     generateTextDOM(
       image,
