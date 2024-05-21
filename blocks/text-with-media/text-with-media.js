@@ -159,19 +159,6 @@ function getVideoElement(
   return video;
 }
 
-function addWrapperDiv(block, element, componentWrapper, alignment = 'left') {
-  if (block.getElementsByClassName(`${componentWrapper}-wrapper-div`)?.length) {
-    const wrapperDiv = block.getElementsByClassName(`${componentWrapper}-wrapper-div`);
-    wrapperDiv[0].appendChild(element);
-  } else {
-    const div = document.createElement('div');
-    div.classList.add(`${componentWrapper}-wrapper-div`);
-    div.classList.add(alignment);
-    div.append(element);
-    block.append(div);
-  }
-}
-
 export function loadVideo(
   block,
   videoTitle,
@@ -200,16 +187,17 @@ export function loadVideo(
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters), videoComponentwrapper);
+    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters);
+    block.append(videoElement);
   } else if (isM3U8) {
     block.textContent = '';
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-
-    addWrapperDiv(block, getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableControls, muted, posters), videoComponentwrapper);
+    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters);
+    block.append(videoElement);
   }
-
+  block.classList.add('video-block');
   block.dataset.embedIsLoaded = true;
 }
 
@@ -221,7 +209,6 @@ export function generateTextDOM(
   description,
   buttonElement,
   componentNameAndAlignment,
-  componentWrapper,
 ) {
   const div = document.createElement('div');
   const headline = document.createElement('h2');
@@ -243,7 +230,8 @@ export function generateTextDOM(
     addIcon(buttonElement, 'arrow_chevron_right');
   }
   div.append(eyebrow, headline, description, buttonElement);
-  addWrapperDiv(block, div, componentWrapper, alignment?.trim());
+  block.appendChild(div);
+  block.classList.add(alignment?.trim());
 }
 
 function generateTextWithImageDOM(
@@ -258,11 +246,12 @@ function generateTextWithImageDOM(
   image.setAttribute('fetchpriority', 'high');
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('image');
+  block.classList.add('image-block');
   imageContainer.style.float = alignment?.trim()?.toLowerCase();
   if (picture) {
     imageContainer.append(picture);
   }
-  addWrapperDiv(block, imageContainer, imageComponentWrapper);
+  block.append(imageContainer);
 }
 
 export default function decorate(block) {
@@ -380,7 +369,7 @@ export default function decorate(block) {
       componentNameI,
     );
     generateTextDOM(
-      block,
+      image,
       imageEyebrowStyle,
       imageEyebrow,
       imageHeadline,
