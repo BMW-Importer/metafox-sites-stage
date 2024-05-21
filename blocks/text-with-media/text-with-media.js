@@ -316,7 +316,6 @@ export default function decorate(block) {
     desktop: desktopVidPath?.textContent,
     mobile: mobileVidPath?.textContent,
   };
-  // block.textContent = '';
   const enablecontrols = videoControl?.textContent.trim() === 'true';
   const loop = videoLoop?.textContent.trim() === 'true';
   const autoplay = videoAutoPlay?.textContent.trim() === 'true';
@@ -374,6 +373,7 @@ export default function decorate(block) {
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
   if (image) {
+    block.textContent = '';
     generateTextWithImageDOM(
       block,
       imageLink,
