@@ -49,6 +49,7 @@ p {
         padding: 0 0.75rem;
     }
 }
+
 @media (width >= 1280px) {
     .disclaimer-wrapper .disclaimer-content {
         padding: 0 0.75rem;
