@@ -1755,14 +1755,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "bgImgGeneral_eyebrow",
+        "name": "bgImgGeneral_title_eyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the smallest text that will be displayed on the component"
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_eyebrowType",
+        "name": "bgImgGeneral_title_eyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "valueType": "string",        
@@ -1785,14 +1785,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "bgImgGeneral_headline",
+        "name": "bgImgGeneral_title_headline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline of the text that will appear in the page."
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_headlineType",
+        "name": "bgImgGeneral_title_headlineType",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -1814,7 +1814,7 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_subbrandicon",
+        "name": "bgImgGeneral_icon_subbrandicon",
         "value": "",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
@@ -1833,14 +1833,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgGeneral_copyText",
+        "name": "bgImgGeneral_descp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgImgGeneral_gradStyle",
+        "name": "bgImgGeneral_style_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",       
