@@ -1679,7 +1679,8 @@
       {
         "component": "boolean",
         "name": "cn_general_isDisplayCN",
-        "label": "Display Content Navigation"
+        "label": "Display Content Navigation",
+        "value": true
       },
       {
         "component": "tab",
