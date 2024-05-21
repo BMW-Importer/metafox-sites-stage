@@ -2154,14 +2154,16 @@
         "name": "bgVidCta1_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidCta1_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
@@ -2186,14 +2188,16 @@
         "name": "bgVidCta2_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidCta2_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
