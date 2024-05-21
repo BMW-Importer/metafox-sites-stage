@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import { addIcon } from '../../scripts/bmw-util.js';
+import { getVideoElement } from '../video/video.js';
 
 let isScriptAdded = false;
 const videoComponentwrapper = 'video';
@@ -39,125 +40,125 @@ export function changeAllVidSrcOnResize() {
   });
 }
 
-function getVideoElement(
-  videoTitle,
-  videoDescp,
-  source,
-  videoFormat,
-  autoplay,
-  enableLoop,
-  enableControls,
-  muted,
-  posters,
-) {
-  const video = document.createElement('video');
-  video.dataset.loading = 'true';
-  video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
-  if (enableControls) {
-    video.setAttribute('controls', '');
-  }
+// function getVideoElement(
+//   videoTitle,
+//   videoDescp,
+//   source,
+//   videoFormat,
+//   autoplay,
+//   enableLoop,
+//   enableControls,
+//   muted,
+//   posters,
+// ) {
+//   const video = document.createElement('video');
+//   video.dataset.loading = 'true';
+//   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
+//   if (enableControls) {
+//     video.setAttribute('controls', '');
+//   }
 
-  if (autoplay) {
-    video.setAttribute('autoplay', '');
-  }
+//   if (autoplay) {
+//     video.setAttribute('autoplay', '');
+//   }
 
-  if (enableLoop) {
-    video.setAttribute('loop', '');
-  }
+//   if (enableLoop) {
+//     video.setAttribute('loop', '');
+//   }
 
-  if (muted) {
-    video.setAttribute('muted', '');
-  }
+//   if (muted) {
+//     video.setAttribute('muted', '');
+//   }
 
-  video.setAttribute('preload', 'auto');
-  video.setAttribute('class', 'video-js');
+//   video.setAttribute('preload', 'auto');
+//   video.setAttribute('class', 'video-js');
 
-  video.setAttribute('data-setup', '{}');
-  video.setAttribute('width', '600');
-  video.setAttribute('height', '400');
-  video.setAttribute('title', videoTitle?.textContent);
-  video.setAttribute('data-description', videoDescp?.textContent);
-  video.classList.add('text-with-video');
-  const sourceEl = document.createElement('source');
+//   video.setAttribute('data-setup', '{}');
+//   video.setAttribute('width', '600');
+//   video.setAttribute('height', '400');
+//   video.setAttribute('title', videoTitle?.textContent);
+//   video.setAttribute('data-description', videoDescp?.textContent);
+//   video.classList.add('text-with-video');
+//   const sourceEl = document.createElement('source');
 
-  const mobileWidth = window.innerWidth < 768;
-  if (source.desktop && !mobileWidth) {
-    sourceEl.setAttribute('src', source?.desktop);
-    video.setAttribute('poster', posters?.desktop);
-  } else if (source.mobile) {
-    sourceEl.setAttribute('src', source?.mobile);
-    video.setAttribute('poster', posters?.mobile || '');
-  } else {
-    sourceEl.setAttribute('src', source?.desktop);
-    video.setAttribute('poster', posters?.desktop);
-  }
+//   const mobileWidth = window.innerWidth < 768;
+//   if (source.desktop && !mobileWidth) {
+//     sourceEl.setAttribute('src', source?.desktop);
+//     video.setAttribute('poster', posters?.desktop);
+//   } else if (source.mobile) {
+//     sourceEl.setAttribute('src', source?.mobile);
+//     video.setAttribute('poster', posters?.mobile || '');
+//   } else {
+//     sourceEl.setAttribute('src', source?.desktop);
+//     video.setAttribute('poster', posters?.desktop);
+//   }
 
-  video.setAttribute('data-desktop-poster', posters?.desktop);
-  video.setAttribute('data-mobile-poster', posters?.mobile || '');
+//   video.setAttribute('data-desktop-poster', posters?.desktop);
+//   video.setAttribute('data-mobile-poster', posters?.mobile || '');
 
-  sourceEl.setAttribute('data-desktop-vid', source?.desktop);
-  sourceEl.setAttribute('data-mobile-vid', source?.mobile);
+//   sourceEl.setAttribute('data-desktop-vid', source?.desktop);
+//   sourceEl.setAttribute('data-mobile-vid', source?.mobile);
 
-  if (source.desktop && !mobileWidth) {
-    if (videoFormat === '.mp4') {
-      sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
-    } else if (videoFormat === '.m3u8') {
-      sourceEl.setAttribute('type', 'application/x-mpegURL');
-    }
-    video.append(sourceEl);
-  } else {
-    if (videoFormat === '.mp4') {
-      sourceEl.setAttribute('type', `video/${source.mobile.split('.').pop()}`);
-    } else if (videoFormat === '.m3u8') {
-      sourceEl.setAttribute('type', 'application/x-mpegURL');
-    }
-    video.append(sourceEl);
-  }
+//   if (source.desktop && !mobileWidth) {
+//     if (videoFormat === '.mp4') {
+//       sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
+//     } else if (videoFormat === '.m3u8') {
+//       sourceEl.setAttribute('type', 'application/x-mpegURL');
+//     }
+//     video.append(sourceEl);
+//   } else {
+//     if (videoFormat === '.mp4') {
+//       sourceEl.setAttribute('type', `video/${source.mobile.split('.').pop()}`);
+//     } else if (videoFormat === '.m3u8') {
+//       sourceEl.setAttribute('type', 'application/x-mpegURL');
+//     }
+//     video.append(sourceEl);
+//   }
 
-  video.addEventListener('click', (event) => {
-    event.stopImmediatePropagation();
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
+//   video.addEventListener('click', (event) => {
+//     event.stopImmediatePropagation();
+//     if (video.paused) {
+//       video.play();
+//     } else {
+//       video.pause();
+//     }
+//   });
 
-  let userUnmuted = false;
+//   let userUnmuted = false;
 
-  video.addEventListener('volumechange', () => {
-    if (!video.muted && video.volume > 0 && !userUnmuted) {
-      userUnmuted = true;
-    }
-  });
+//   video.addEventListener('volumechange', () => {
+//     if (!video.muted && video.volume > 0 && !userUnmuted) {
+//       userUnmuted = true;
+//     }
+//   });
 
-  video.addEventListener('touchstart', (event) => {
-    event.preventDefault();
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
+//   video.addEventListener('touchstart', (event) => {
+//     event.preventDefault();
+//     if (video.paused) {
+//       video.play();
+//     } else {
+//       video.pause();
+//     }
+//   });
 
-  video.dataset.autoplay = autoplay ? 'true' : 'false';
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (video) {
-        if (entry.isIntersecting) {
-          if (video.paused) {
-            video.play();
-          }
-        } else if (!video.paused) {
-          video.pause();
-        }
-      }
-    });
-  }, { threshold: 0.1 });
+//   video.dataset.autoplay = autoplay ? 'true' : 'false';
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
+//       if (video) {
+//         if (entry.isIntersecting) {
+//           if (video.paused) {
+//             video.play();
+//           }
+//         } else if (!video.paused) {
+//           video.pause();
+//         }
+//       }
+//     });
+//   }, { threshold: 0.1 });
 
-  observer.observe(video);
-  return video;
-}
+//   observer.observe(video);
+//   return video;
+// }
 
 export function loadVideo(
   block,
@@ -187,14 +188,16 @@ export function loadVideo(
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters);
+    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, false);
+    videoElement.classList.add('text-with-video');
     block.append(videoElement);
   } else if (isM3U8) {
     block.textContent = '';
 
     if (!isScriptAdded) headElement.append(videoScriptDOM);
     isScriptAdded = true;
-    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters);
+    const videoElement = getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableControls, muted, posters, false);
+    videoElement.classList.add('text-with-video');
     block.append(videoElement);
   }
   block.classList.add('video-block');
