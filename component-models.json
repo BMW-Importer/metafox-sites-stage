@@ -1651,16 +1651,16 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "General"
+        "name": "cn_general"
       },
       {
         "component": "text",
-        "name": "Content Navigation Description",
+        "name": "cn_general_descp",
         "label": "Content Navigation Description"
       },
       {
         "component": "select",
-        "name": "type",
+        "name": "cn_general_bgColor",
         "description": "change background color white or transparent",
         "value": "",
         "label": "Background Color",
@@ -1678,110 +1678,34 @@
       },
       {
         "component": "boolean",
-        "name": "Display Content Navigation",
+        "name": "cn_general_isDisplayCN",
         "label": "Display Content Navigation"
       },
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "Button/Link"
+        "name": "cn_button_tab"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "button_linkLabel",
-        "value": "",
-        "label": "Link Label"        
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "buttton_link",
+        "name": "cn_button_link",
         "value": "",
         "label": "Link"
       },
       {
-        "component": "select",
-        "name": "type",
-        "value": "",
-        "label": "Button styling",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Money Button",
-            "value": "Money Button"
-          }
-        ]
-      }
-    ]
-  },  
-  {
-    "id": "content-navigation",
-    "fields": [
-      {
-        "component": "tab",
-        "label": "General",
-        "name": "General"
-      },
-      {
-        "component": "text",
-        "name": "Content Navigation Description",
-        "label": "Content Navigation Description"
-      },
-      {
-        "component": "select",
-        "name": "type",
-        "description": "change background color white or transparent",
-        "value": "",
-        "label": "Background Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "White",
-            "value": "White"
-          },
-          {
-            "name": "Transparent",
-            "value": "Transparent"
-          }
-        ]
-      },
-      {
-        "component": "boolean",
-        "name": "Display Content Navigation",
-        "label": "Display Content Navigation"
-      },
-      {
-        "component": "tab",
-        "label": "Button/Link",
-        "name": "Button/Link"
-      },
-      {
         "component": "text",
         "valueType": "string",
-        "name": "button_linkLabel",
+        "name": "cn_button_linkText",
         "value": "",
         "label": "Link Label"        
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "buttton_link",
-        "value": "",
-        "label": "Link"
-      },
+      },      
       {
         "component": "select",
-        "name": "type",
-        "value": "",
+        "name": "cn_button_linkType",
+        "value": "secondary",
         "label": "Button styling",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Money Button",
-            "value": "Money Button"
-          }
-        ]
+        "valueType": "string"        
       }
     ]
   },
