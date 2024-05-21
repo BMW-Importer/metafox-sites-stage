@@ -19,7 +19,11 @@
     ],
     "hybridCode": "NOHY",
     "fromPrice": 58294,
-    "acceleration": "-",
+    "acceleration": "7.8",
+    "trunkCapacity": 470,
+    "seats": 5,
+    "horsePower": 190,
+    "topSpeed": "233",
     "bodyTypeCode": "CO",
     "marketingBodyTypeCode": "CP",
     "bodyTypeDescription": "COU",
@@ -32,9 +36,9 @@
     },
     "powerTrain": {
       "fuelType": "D",
-      "systemPower": "-",
-      "systemMaxTorque": "-",
-      "gearBox": "-",
+      "systemPower": "140 (190)",
+      "systemMaxTorque": "400",
+      "gearBox": "8 - automatisch",
       "driveType": "AR"
     }
   }

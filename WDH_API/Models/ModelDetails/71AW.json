@@ -19,7 +19,10 @@
     ],
     "hybridCode": "BEVE",
     "fromPrice": 72218,
-    "acceleration": "-",
+    "acceleration": "5.6",
+    "trunkCapacity": 470,
+    "seats": 5,
+    "topSpeed": "190",
     "bodyTypeCode": "CO",
     "marketingBodyTypeCode": "CP",
     "bodyTypeDescription": "COU",
@@ -33,9 +36,9 @@
     },
     "powerTrain": {
       "fuelType": "E",
-      "systemPower": "-",
-      "systemMaxTorque": "-",
-      "gearBox": "-",
+      "systemPower": "250 (340)",
+      "systemMaxTorque": "430",
+      "gearBox": "1 - automatisch",
       "driveType": "HR"
     }
   }

@@ -19,7 +19,11 @@
     ],
     "hybridCode": "PHEV",
     "fromPrice": 64202,
-    "acceleration": "-",
+    "acceleration": "5.8",
+    "trunkCapacity": 375,
+    "seats": 5,
+    "horsePower": 292,
+    "topSpeed": "230",
     "bodyTypeCode": "LI",
     "marketingBodyTypeCode": "LI",
     "bodyTypeDescription": "LIM",
@@ -32,9 +36,9 @@
     },
     "powerTrain": {
       "fuelType": "X",
-      "systemPower": "-",
-      "systemMaxTorque": "-",
-      "gearBox": "-",
+      "systemPower": "215 (292)",
+      "systemMaxTorque": "420",
+      "gearBox": "8 - automatisch",
       "driveType": "HR"
     }
   }

@@ -20,7 +20,8 @@
       "title",
       "copy_text",
       "image",
-      "button"
+      "button",
+      "headline"
     ]
   },
   {
@@ -77,6 +78,22 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": ["superscript", "subscript"],
+      "list": ["bullist", "numlist"],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "text-with-image",
     "components": [],
     "rte": {
@@ -109,6 +126,22 @@
     }
   },
   {
+    "id": "quote",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [""],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "section",
     "components": [
       "copy_text",
@@ -133,8 +166,13 @@
       "model-card",
       "content-navigation",
       "accordion",
+      "disclaimer",
       "eyebrow",
-      "headline"
+      "headline",
+      "background-media",
+      "disclaimer",
+      "download",
+      "quote"
     ]
   },
   {
@@ -146,8 +184,11 @@
       "image",
       "video",
       "accordion",
+      "disclaimer",
       "eyebrow",
-      "headline"
+      "headline",
+      "download",
+      "quote"
     ]
   },
   {
@@ -216,5 +257,12 @@
   {
     "id": "image-slide",
     "components": []
+  },
+  {
+    "id": "background-media",
+    "components":[
+      "background-image",
+      "background-video"
+    ]
   }
 ]

@@ -3,7 +3,8 @@ import { buildGetPlaceholder, getModelPlaceholderObject } from '../../scripts/co
 async function modelPlaceholder(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode[0]}.json`;
-    const response = await fetch(endpointUrl);
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
     const responseJson = await response.json();
     buildGetPlaceholder(responseJson);
     return getModelPlaceholderObject();
