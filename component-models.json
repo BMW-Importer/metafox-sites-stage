@@ -1714,6 +1714,76 @@
         ]
       }
     ]
+  },  
+  {
+    "id": "content-navigation",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "General"
+      },
+      {
+        "component": "text",
+        "name": "Content Navigation Description",
+        "label": "Content Navigation Description"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "description": "change background color white or transparent",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "White",
+            "value": "White"
+          },
+          {
+            "name": "Transparent",
+            "value": "Transparent"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "Display Content Navigation",
+        "label": "Display Content Navigation"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "Button/Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button_linkLabel",
+        "value": "",
+        "label": "Link Label"        
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttton_link",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Button styling",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Money Button",
+            "value": "Money Button"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "accordion-item",
