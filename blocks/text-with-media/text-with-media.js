@@ -373,9 +373,9 @@ export default function decorate(block) {
     imageButtonAnchor.title = imageButtonName?.textContent;
   }
   if (image) {
-    block.textContent = '';
+    // block.textContent = '';
     generateTextWithImageDOM(
-      block,
+      image,
       imageLink,
       componentNameI,
     );
