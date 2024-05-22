@@ -1676,12 +1676,7 @@
           }
         ]
       },
-      {
-        "component": "boolean",
-        "label": "Display Content Navigation",
-        "name": "cn_general_visible",
-        "valueType": "boolean"
-      },   
+       
       {
         "component": "tab",
         "label": "Button/Link",
