@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.download-wrapper .download.block p {
+    display: inline-block;
+}
+
 .download-wrapper .download.block p a::before {
     content: url("../../icons/download.svg");
     display: inline-block;
