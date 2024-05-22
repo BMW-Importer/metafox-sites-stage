@@ -1659,6 +1659,24 @@
         "label": "Content Navigation Description"
       },
       {
+        "component": "select",
+        "name": "cn_general_bgColor",
+        "description": "change background color white or transparent",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "White",
+            "value": "White"
+          },
+          {
+            "name": "Transparent",
+            "value": "Transparent"
+          }
+        ]
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
         "name": "cn_button_tab"
