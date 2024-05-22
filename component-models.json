@@ -1650,6 +1650,16 @@
     "fields": [
       {
         "component": "tab",
+        "label": "General",
+        "name": "cn_general"
+      },
+      {
+        "component": "text",
+        "name": "cn_general_descp",
+        "label": "Content Navigation Description"
+      },
+      {
+        "component": "tab",
         "label": "Button/Link",
         "name": "cn_button_tab"
       },
