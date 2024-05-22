@@ -1661,8 +1661,7 @@
       {
         "component": "boolean",
         "label": "Display Content Navigation",
-        "name": "cn_general_visible",
-        "valueType": "boolean"
+        "name": "cn_general_visible"
       },
       {
         "component": "select",
