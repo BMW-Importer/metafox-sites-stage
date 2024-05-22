@@ -1675,14 +1675,7 @@
             "value": "Transparent"
           }
         ]
-      },
-      {
-        "component": "boolean",
-        "name": "cn_general_isDisplayCN",
-        "label": "Display Content Navigation",
-        "value": true,
-        "valueType": "boolean"
-      },
+      },     
       {
         "component": "tab",
         "label": "Button/Link",
