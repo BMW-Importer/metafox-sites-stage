@@ -1677,6 +1677,13 @@
         ]
       },
       {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "cn_general_visible",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
         "name": "cn_button_tab"
