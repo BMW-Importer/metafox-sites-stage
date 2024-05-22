@@ -1700,6 +1700,13 @@
         "name": "cn_button_linkText",
         "value": "",
         "label": "Link Label"        
+      },
+      {
+        "component": "select",
+        "name": "cn_button_linkType",
+        "value": "secondary",
+        "label": "Button styling",
+        "valueType": "string"        
       }
     ]
   },
