@@ -1685,25 +1685,25 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "cn_button_tab"
+        "name": "cnButton_tab"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "cn_button_link",
+        "name": "cnButton_link",
         "value": "",
         "label": "Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "cn_button_linkText",
+        "name": "cnButton_linkText",
         "value": "",
         "label": "Link Label"        
       },
       {
         "component": "select",
-        "name": "cn_button_linkType",
+        "name": "cnButton_linkType",
         "value": "secondary",
         "label": "Button styling",
         "valueType": "string"        
