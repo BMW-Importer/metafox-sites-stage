@@ -224,12 +224,32 @@
         "name": "fixedwidthsectiontab1"
       },
       {
-        "component": "text-input",
-        "description": "Defines the styling applied to the content within this section.If an alignment is needed on a copy text or a button , please specify the alignment of your choice - alignment-right, alignment-left or alignment-center.",
+        "component": "select",
         "name": "style",
+        "description": "Defines the alignment of the Default Content added within the Section.",
         "value": "",
-        "label": "Style",
-        "valueType": "string"
+        "label": "Alignment",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Centre",
+            "value": "alignment-center"
+          },
+          {
+            "name": "Left",
+            "value": "alignment-left"
+          },
+          {
+            "name": "Right",
+            "value": "alignment-right"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "label": "Display Top Margin",
+        "name": "fixedsectiontopmargin",
+        "valueType": "boolean"
       },
       {
         "component": "tab",
@@ -1631,16 +1651,16 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "General"
+        "name": "cn_general"
       },
       {
         "component": "text",
-        "name": "Content Navigation Description",
+        "name": "cn_general_descp",
         "label": "Content Navigation Description"
       },
       {
         "component": "select",
-        "name": "type",
+        "name": "cn_general_bgColor",
         "description": "change background color white or transparent",
         "value": "",
         "label": "Background Color",
@@ -1658,40 +1678,34 @@
       },
       {
         "component": "boolean",
-        "name": "Display Content Navigation",
+        "name": "cn_general_isDisplayCN",
         "label": "Display Content Navigation"
       },
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "Button/Link"
+        "name": "cn_button_tab"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "button_linkLabel",
-        "value": "",
-        "label": "Link Label"        
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "buttton_link",
+        "name": "cn_button_link",
         "value": "",
         "label": "Link"
       },
       {
-        "component": "select",
-        "name": "type",
-        "value": "",
-        "label": "Button styling",
+        "component": "text",
         "valueType": "string",
-        "options": [
-          {
-            "name": "Money Button",
-            "value": "Money Button"
-          }
-        ]
+        "name": "cn_button_linkText",
+        "value": "",
+        "label": "Link Label"        
+      },      
+      {
+        "component": "select",
+        "name": "cn_button_linkType",
+        "value": "secondary",
+        "label": "Button styling",
+        "valueType": "string"        
       }
     ]
   },
@@ -1750,15 +1764,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -1780,7 +1794,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",
@@ -1794,7 +1808,7 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_subbrandicon",
+        "name": "bgImgIcon_subbrandicon",
         "value": "",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
@@ -1813,14 +1827,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgGeneral_copyText",
+        "name": "bgImgDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgImgGeneral_gradient",
+        "name": "bgImgStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",       
@@ -1852,14 +1866,16 @@
         "label": "Image",
         "name": "bgImgImage_image",
         "description":"Defines the image to be displayed.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "label": "Alt Text",
         "name": "bgImgImage_imageAlt",
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },     
       {
         "component": "tab",
@@ -1871,30 +1887,32 @@
         "name": "bgImgCta1_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgImgCta1_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgImgCta1_LinkType",
+        "name": "bgImgCta1_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "secondary",
+        "value": "money-btn money-btn-flex",      
         "options": [
           {
             "name": "Money Button",
-            "value": "primary"
+            "value": "money-btn"
           },
           {
             "name": "Money Button Flex",
-            "value": "secondary"
+            "value": "money-btn money-btn-flex"
           }
         ]
       },
@@ -1903,30 +1921,32 @@
         "name": "bgImgCta2_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgImgCta2_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgImgCta2_LinkType",
+        "name": "bgImgCta2_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "primary",
+        "value": "ghost-img-btn ghost-img-flex-btn",      
         "options": [
           {
             "name": "Ghost on Image",
-            "value": "primary"
+            "value": "ghost-img-btn"
           },
           {
             "name": "Ghost on Image Flex",
-            "value": "secondary"
+            "value": "ghost-img-btn ghost-img-flex-btn"
           }
         ]
       }
@@ -1958,15 +1978,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -1988,7 +2008,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",
@@ -2002,7 +2022,7 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_subbrandicon",
+        "name": "bgVidIcon_subbrandicon",
         "value": "",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
@@ -2021,14 +2041,14 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidGeneral_copyText",
+        "name": "bgVidDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgVidGeneral_gradient",
+        "name": "bgVidStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
@@ -2061,21 +2081,24 @@
         "name": "bgVidVideo_title",
         "description": "Defines the title of the video.",
         "label": "Video Title",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidVideo_descp",
         "description": "Defines the description of the video.",
         "label": "Video Description",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
         "label": "Desktop Video Path",
         "name": "bgVidVideo_video",
         "description":"Defines the path to a video on the desktop.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
@@ -2089,7 +2112,8 @@
         "label": "Desktop Poster Image Path",
         "name": "bgVidVideo_img",
         "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
@@ -2124,30 +2148,32 @@
         "name": "bgVidCta1_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidCta1_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgVidCta1_LinkType",
+        "name": "bgVidCta1_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "secondary",
+        "value": "money-btn money-btn-flex",
         "options": [
           {
             "name": "Money Button",
-            "value": "secondary"
+            "value": "money-btn"
           },
           {
             "name": "Money Button Flex",
-            "value": "secondary"
+            "value": "money-btn money-btn-flex"
           }
         ]
       },
@@ -2156,30 +2182,32 @@
         "name": "bgVidCta2_Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
         "label": "Link",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidCta2_LinkText",
         "description": "Defines the text to be displayed in the button or as the link.",
         "label": "Link Label",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "select",
         "label": "Button Styling",
-        "name": "bgVidCta2_LinkType",
+        "name": "bgVidCta2_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "primary",
+        "value": "ghost-img-btn ghost-img-flex-btn",     
         "options": [
           {
             "name": "Ghost on Image",
-            "value": "primary"
+            "value": "ghost-img-btn"
           },
           {
             "name": "Ghost on Image Flex",
-            "value": "primary"
+            "value": "ghost-img-btn ghost-img-flex-btn"
           }
         ]
       }
@@ -2230,7 +2258,7 @@
         "description": "Defines the downloadable element."
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "downloadText",
         "value": "",
