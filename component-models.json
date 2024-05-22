@@ -1659,6 +1659,12 @@
         "label": "Content Navigation Description"
       },
       {
+        "component": "boolean",
+        "label": "Display Content Navigation",
+        "name": "cn_general_visible",
+        "valueType": "boolean"
+      },
+      {
         "component": "select",
         "name": "cn_general_bgColor",
         "description": "change background color white or transparent",
@@ -1675,14 +1681,7 @@
             "value": "Transparent"
           }
         ]
-      },
-      {
-        "component": "boolean",
-        "label": "Display Content Navigation",
-        "name": "cn_general_visible",
-        "valueType": "boolean",
-        "value": true
-      },
+      },      
       {
         "component": "tab",
         "label": "Button/Link",
