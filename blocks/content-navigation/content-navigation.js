@@ -9,6 +9,7 @@ function activeAnchor() {
     const sectionHeight = section.offsetHeight;
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
       document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.add('active');
+      document.getElementById('navdropdownMenuButton').textContent = document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.textContent;
     } else {
       document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.remove('active');
     }
@@ -144,7 +145,6 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
   ul.classList.add('cmp-contentnavigation-list');
   ul.setAttribute('aria-label', contentnavigationLabel);
-
   sections?.forEach((section, index) => {
     if (index === 0) {
       const firstAnchor = section.getAttribute('data-anchorlabel');
@@ -181,12 +181,10 @@ export default function decorate(block) {
       const anchorDiv = document.createElement('div');
       anchorDiv.classList.add('cmp-contentnavigation-anchor-container');
       anchorDiv.classList.add(containerClass);
-
       const anchor = document.createElement('a');
       anchor.classList.add('cmp-contentnavigation-anchor');
       anchor.textContent = label;
       anchor.href = link;
-
       anchorDiv.appendChild(anchor);
       return anchorDiv;
     };
@@ -198,7 +196,6 @@ export default function decorate(block) {
   block.textContent = '';
   block.appendChild(wrapper);
   if (isEnabled) {
-    debugger
     const showInDom = isEnabled === 'true' ? 'visible' : 'hide';
     if (showInDom === 'hide') {
       const closestContainer = wrapper.closest('.content-navigation-container');
