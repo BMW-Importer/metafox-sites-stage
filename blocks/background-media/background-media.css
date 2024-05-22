@@ -210,13 +210,15 @@
     aspect-ratio: 3/4;
 }
 
-.background-media.block .background-media-item-vidimg * {
+.background-media.block .background-media-item-vidimg > * {
     height: 100%;
     width: 100%;
 }
 
 .background-media.block .background-media-item-vidimg img {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .background-media.block .background-media-item-vidimg.dark.left::before,
