@@ -1678,7 +1678,7 @@
       },
       {
         "component": "boolean",
-        "label": "Loop Video",
+        "label": "Display Content Navigation",
         "name": "cn_general_visible",
         "valueType": "boolean",
         "value": true
