@@ -1655,7 +1655,7 @@
       },
       {
         "component": "text",
-        "name": "cn_general_descp",
+        "name": " ",
         "label": "Content Navigation Description"
       },
       {
@@ -1675,6 +1675,39 @@
             "value": "Transparent"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "name": "cn_general_isDisplayCN",
+        "label": "Display Content Navigation",
+        "value": true,
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "cn_button"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cn_button_link",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cn_button_linkText",
+        "value": "",
+        "label": "Link Label"        
+      },      
+      {
+        "component": "select",
+        "name": "cn_button_linkType",
+        "value": "secondary",
+        "label": "Button styling",
+        "valueType": "string"        
       }
     ]
   },
