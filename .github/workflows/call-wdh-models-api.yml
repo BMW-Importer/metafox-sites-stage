@@ -58,6 +58,6 @@ jobs:
       - name: Commit and push if there are changes
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-         git add WDH_API/Models/ModelDetails/
+         git add WDH_API/Models/
          git commit -m "Update API responses"
          git push
