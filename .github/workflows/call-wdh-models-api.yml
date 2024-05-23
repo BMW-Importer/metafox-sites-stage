@@ -44,7 +44,7 @@ jobs:
          COSY_API_TOKEN: ${{ secrets.COSY_API_TOKEN }}
         run: |
          printenv
-         node scripts/api_utility/model-details-api.js
+         node scripts/api_utility/model-details.js
          
       - name: Check for changes
         id: check_changes
