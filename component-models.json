@@ -2153,7 +2153,7 @@
         "valueType": "string",
         "value": "h3",
         "hidden": true
-      }
+      },
       {
         "component": "tab",
         "label": "Video",
