@@ -370,6 +370,79 @@
     ]
   },
   {
+    "id": "tabs-section",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "tabssectiontab1"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label of the Tab that will appear on the page.",
+        "name": "tablabel",
+        "value": "",
+        "label": "Tab Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the description of the Tab, which will be read by screen-readers.",
+        "name": "tabdesc",
+        "value": "",
+        "label": "Tab description"
+      },
+      {
+        "component": "select",
+        "name": "tabstyle",
+        "value": "",
+        "label": "Tab style",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling in which the tab will be displayed.",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Buttons",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "tabshsectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
+        "name": "tabs_anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
+        "name": "tabs_anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
+        "name": "tabscontentnavigation",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {

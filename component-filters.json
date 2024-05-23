@@ -192,6 +192,10 @@
     ]
   },
   {
+    "id": "tabs-section",
+    "components":[]
+  },
+  {
     "id": "copy_text",
     "rte": {
       "format": ["bold"],
