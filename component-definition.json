@@ -634,7 +634,7 @@
                 "template": {
                   "name": "Background Video",
                   "model": "background-video",
-                  "bgVidIcon_subbrandicon": "none",
+                  "bgVidIcon_subbrandicon": "noicon",
                   "bgVidStyle_elementAlign": "central-left",
                   "bgVidStyle_elementAlignType": "h3",
                   "bgVidVideo_loopVideo": true,
