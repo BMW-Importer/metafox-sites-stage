@@ -638,6 +638,8 @@
                   "bgVidStyle_elementAlign": "central-left",
                   "bgVidStyle_elementAlignType": "h3",
                   "bgVidVideo_loopVideo": true,
+                  "bgVidVideo_loopVideoType":"h1",
+                  "bgVidVideo_autoPlayVideoType": "h2",
                   "bgVidVideo_autoPlayVideo": true,
                   "bgVidCta1_CtaBtnStyle": "money-btn money-btn-flex",
                   "bgVidCta2_CtaBtnStyle": "ghost-img-btn ghost-img-flex-btn"

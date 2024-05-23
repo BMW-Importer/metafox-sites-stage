@@ -118,7 +118,7 @@
 .background-media.block .background-media-item-cta-money {
     display: block;
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -129,7 +129,7 @@
 .background-media.block .background-media-item-cta-ghost {
     display: block;
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -137,9 +137,26 @@
     margin-right: auto;
 }
 
+.background-media.block .bg-media-btns p{
+    margin: 0;
+}
+
 .background-media.block .background-media-item-cta-money *,
 .background-media.block .background-media-item-cta-ghost * {
     box-sizing: border-box;
+}
+
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) {
+    margin-bottom: 0.5rem;
+}
+
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1){
+    margin-top: 0;
+}
+
+
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1):nth-last-child(2) {
+    margin: 1.5rem 0;
 }
 
 
@@ -159,7 +176,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 0.75rem;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn-flex {    
@@ -285,26 +302,19 @@
     }
 
     .background-media.block .background-media-item-cta-money {       
-        width: 30%;
+        width: 50%;
+        margin-bottom: 1.5rem;
     }
     
     .background-media.block .background-media-item-cta-ghost {
-        width: 30%;
+        width: 50%;
+        margin-bottom: 1.5rem;
     }
 
     .background-media.block .background-media-item-cta-money.flex,
-    .background-media.block .background-media-item-cta-ghost.flex {
-        width: auto;
+    .background-media.block .background-media-item-cta-ghost.flex {        
+        width: 30%;
     }
-
-    .background-media.block .background-media-item-cta-money .money-btn-flex {       
-        width: auto;
-    }
-
-    .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {        
-        width: auto;
-    }
-    
 }
 
 /* desktop */
@@ -324,6 +334,19 @@
         padding: 0;
         margin-top: unset;
         min-height: unset;
+    }
+
+    .background-media.block .background-media-item-text.top-left {
+        top: 0;
+        transform: unset;
+        margin-top: 8rem;
+    }
+
+    .background-media.block .background-media-item-text.bottom-left {
+        top: unset;
+        transform: unset;
+        bottom: 0;
+        margin-bottom: 8rem;
     }
 
     .background-media.block .background-media-item-details {
@@ -362,14 +385,14 @@
         text-align: start;
         display: inline-block;
         margin: 2rem 0;
-        width: 50%;
+        width: 90%;
     }
     
     .background-media.block .background-media-item-cta-ghost {
         text-align: start;
         display: inline-block;
         margin: 2rem 0;
-        width: 50%;
+        width: 90%;
     }
 
     .background-media.block .background-media-item-cta-money *{
@@ -390,15 +413,7 @@
 
     .background-media.block .background-media-item-cta-money.flex,
     .background-media.block .background-media-item-cta-ghost.flex {
-        width: auto;
-    }
-
-    .background-media.block .background-media-item-cta-money .money-btn-flex {       
-        width: auto;
-    }
-
-    .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {        
-        width: auto;
+        width: 50%;
     }
     
     .background-media.block .background-media-item-vidimg.dark.left::before {

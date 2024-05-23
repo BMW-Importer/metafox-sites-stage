@@ -2214,12 +2214,30 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Loop Video Type",
+        "name": "bgVidVideo_loopVideoType",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
+        "valueType": "string",
+        "value": "h1",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "bgVidVideo_autoPlayVideo",
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay.",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "bgVidVideo_autoPlayVideoType",
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay.",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
       },     
       {
         "component": "tab",

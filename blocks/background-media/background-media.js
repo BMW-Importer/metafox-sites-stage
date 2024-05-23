@@ -29,9 +29,15 @@ function generateTextProps(generalProps, generalPropIcon, copyTextContainer, gra
   const [copytext] = copyTextContainer ? copyTextContainer.children : '';
 
   // extracting gradient classes
-  const [classes] = gradientEffectClas ? gradientEffectClas.children : '';
+  let gradClas = '';
+  let alignClass = '';
+  
+  if (gradientEffectClas?.children) {
+    gradClas = gradientEffectClas.querySelector('p');
+    alignClass = gradientEffectClas.querySelector('h3');
+  }
 
-  return [eyebrowText, headlineText, subBrancdIcon, copytext, classes];
+  return [eyebrowText, headlineText, subBrancdIcon, copytext, gradClas, alignClass];
 }
 
 export default function decorate(block) {
@@ -48,8 +54,8 @@ export default function decorate(block) {
 
     generalProps?.classList.add('background-media-item-text');
     vidOrImgPros?.classList.add('background-media-item-vidimg');
-    cta1?.classList.add('background-media-item-cta-money');
-    cta2?.classList.add('background-media-item-cta-ghost');
+    cta1?.classList.add('background-media-item-cta-money','bg-media-btns');
+    cta2?.classList.add('background-media-item-cta-ghost','bg-media-btns');
 
     // checking whether current childBlock is background-image or background-video
     if (vidOrImgPros?.children?.length === 1) {
@@ -62,7 +68,7 @@ export default function decorate(block) {
       childrenBlock.append(vidOrImgPros);
     }
 
-    const [eyebrow, headline, brandIcon, copytext, classes] = generateTextProps(
+    const [eyebrow, headline, brandIcon, copytext, gradClas, alignClass] = generateTextProps(
       generalProps,
       generalPropIcon,
       copyTextContainer,
@@ -71,7 +77,8 @@ export default function decorate(block) {
 
     // fetching eyebrow, headline, class list details
     generalProps.textContent = '';
-    const listOfClasses = classes ? classes.textContent.split(',') : '';
+    generalProps.classList.add(alignClass?.textContent || '');
+    const listOfClasses = gradClas ? gradClas.textContent.split(',') : '';
 
     // adding class names to eyebrow and headline
     if (eyebrow) eyebrow.classList.add('background-media-item-text-eyebrow');
