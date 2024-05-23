@@ -41,6 +41,7 @@ jobs:
         env:
          API_TOKEN: ${{ secrets.API_TOKEN }}
          MODEL_NAME: ${{ github.event.inputs.modelName }}
+         COSY_API_TOKEN: ${{ secrets.COSY_API_TOKEN }}
         run: |
          printenv
          node scripts/api_utility/model-details-api.js

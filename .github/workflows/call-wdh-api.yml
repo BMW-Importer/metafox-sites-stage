@@ -38,6 +38,7 @@ jobs:
         id: api_call
         env:
          API_TOKEN: ${{ secrets.API_TOKEN }}
+         COSY_API_TOKEN: ${{ secrets.COSY_API_TOKEN }}
         run: node scripts/api_utility/callwdhapi.js
          
       - name: Check for changes
