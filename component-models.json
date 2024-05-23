@@ -384,7 +384,6 @@
         "name": "tablabel",
         "value": "",
         "label": "Tab Label"
-        
       },
       {
         "component": "text-input",
