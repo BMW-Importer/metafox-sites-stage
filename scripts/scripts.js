@@ -12,7 +12,6 @@ import {
 } from './aem.js';
 
 import { decorateBMWButtons } from './bmw-util.js';
-import { validateFileType } from '../blocks/download/download.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -74,7 +73,6 @@ function buildAutoBlocks() {
     console.error('Auto Blocking failed', error);
   }
 }
-window.validateFileType = validateFileType;
 /**
  * Decorates the main element.
  * @param {Element} main The main element

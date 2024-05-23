@@ -2334,12 +2334,7 @@
         "valueType": "string",
         "name": "download",
         "label": "Download",
-        "description": "Defines the downloadable element.",
-        "validation": {
-          "custom": "validateFileType",
-          "customErrorMsg": "invalid file type"
-        }
-        
+        "description": "Defines the downloadable element."
       },
       {
         "component": "text-input",
