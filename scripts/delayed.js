@@ -109,7 +109,6 @@ function set_page_tracking(){
     var geoReg = document.querySelector('meta[name="georegion"]');
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
-    page_tracking.page.pageInfo.pageID = window.location.pathname;
     page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
     page_tracking.page.pageInfo.pageTitle = document.title;
@@ -148,7 +147,6 @@ function set_page_tracking(){
         page_tracking.page.pageInfo.sysEnv = "mobile";
     }
 
-    
     const path = window.location.pathname;
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
     const formattedPath = pathParts.map(part => part.replace(/[^\w\s]/g, '')).join(':'); // Remove special characters
@@ -157,7 +155,9 @@ function set_page_tracking(){
     .then(response => {
       if (!response.ok) {
         page_tracking.page.pageInfo.pageName = "web:errorpage";
+        page_tracking.page.pageInfo.pageID = "errorpage";
       } else {
+        page_tracking.page.pageInfo.pageID = window.location.pathname;
         if (formattedPath !== '') {
           page_tracking.page.pageInfo.pageName = "web:home:" + formattedPath;
         } else {
