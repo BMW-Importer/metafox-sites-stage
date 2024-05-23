@@ -31,7 +31,7 @@ function generateTextProps(generalProps, generalPropIcon, copyTextContainer, gra
   // extracting gradient classes
   let gradClas = '';
   let alignClass = '';
-  
+
   if (gradientEffectClas?.children) {
     gradClas = gradientEffectClas.querySelector('p');
     alignClass = gradientEffectClas.querySelector('h3');
@@ -54,8 +54,8 @@ export default function decorate(block) {
 
     generalProps?.classList.add('background-media-item-text');
     vidOrImgPros?.classList.add('background-media-item-vidimg');
-    cta1?.classList.add('background-media-item-cta-money','bg-media-btns');
-    cta2?.classList.add('background-media-item-cta-ghost','bg-media-btns');
+    cta1?.classList.add('background-media-item-cta-money', 'bg-media-btns');
+    cta2?.classList.add('background-media-item-cta-ghost', 'bg-media-btns');
 
     // checking whether current childBlock is background-image or background-video
     if (vidOrImgPros?.children?.length === 1) {

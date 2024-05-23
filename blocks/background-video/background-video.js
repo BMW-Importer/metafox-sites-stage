@@ -3,7 +3,6 @@ import { loadVideoEmbed } from '../video/video.js';
 /* this function also gets called by backgroud media */
 export function generatebgVideoDom(block) {
   if (block?.querySelector('a')) {
-
     // video tab details
     const videoContentPtags = block.querySelectorAll('p');
     const vidTitle = videoContentPtags[0];
