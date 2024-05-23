@@ -1,4 +1,5 @@
 const { callApi, writeToFile } = require('./api_handler.js');
+const getCosyUrl = require('./cosyimage.js');
 
 async function getModelsData(modelName) {
   const API_FOLDER = 'WDH_API/Models/ModelDetails/';
@@ -11,8 +12,10 @@ async function getModelsData(modelName) {
   const modelFileName = `${modelName}.json`;
   if (data) {
     await writeToFile(modelFileName, JSON.stringify(data, null, 2), API_FOLDER);
+    getCosyUrl(data);
   }
-  return data;
+
+  return JSON.stringify(data);
 }
 
 getModelsData(process.env.MODEL_NAME);
