@@ -70,9 +70,8 @@ function handleContenNavDesktop() {
       if (!checkScrollPosition) {
         setTimeout(() => {
           contentNavWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 500);
+        }, 100);
       } else {
-        e.preventDefault();
         body.style.overflowY = 'auto';
         document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
         e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
@@ -97,11 +96,10 @@ function handleContenNavDesktop() {
 }
 
 let scrollAmount = 0;
-const step = 200;
 
 function updateButtons(leftBtn, rightBtn, list) {
   leftBtn.style.display = scrollAmount > 0 ? 'block' : 'none';
-  rightBtn.style.display = scrollAmount < list.scrollWidth - list.clientWidth ? 'block' : 'none';
+  rightBtn.style.display = -scrollAmount < list.scrollWidth - list.clientWidth ? 'none' : 'block';
 }
 
 function scrollLeft() {
@@ -110,9 +108,9 @@ function scrollLeft() {
   const rightArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-right');
 
   leftArrowSelector.addEventListener('click', () => {
-    scrollAmount = Math.max(scrollAmount - step, 0);
-    list.style.transition = 'transform 0.60s ease-in';
-    list.style.transform = `translateX(${-scrollAmount}px)`;
+    scrollAmount = list.scrollWidth - list.clientWidth;
+    list.style.transition = 'margin-left 0.60s ease-in';
+    list.style.marginLeft = scrollAmount;
     updateButtons(leftArrowSelector, rightArrowSelector, list);
   });
 }
@@ -121,13 +119,22 @@ function scrollRight() {
   const rightArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-right');
   const leftArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-left');
   const list = document.querySelector('.cmp-contentnavigation-list');
-
   rightArrowSelector.addEventListener('click', () => {
-    scrollAmount = Math.min(scrollAmount + step, list.scrollWidth - list.clientWidth);
-    list.style.transition = 'transform 0.60s ease-in';
-    list.style.transform = `translateX(${-scrollAmount - 100}px)`;
+    scrollAmount = list.scrollWidth - list.clientWidth;
+    list.style.transition = 'margin-left 0.60s ease-in';
+    list.style.marginLeft = `-${scrollAmount}px`;
     updateButtons(leftArrowSelector, rightArrowSelector, list);
   });
+}
+
+function checkAnchorLinkOverflow(ul, wrapper) {
+  if (ul?.offsetWidth > window.innerWidth) {
+    ul.classList.add('list-overflow');
+    wrapper.classList.add('wrapper-overflow');
+  } else {
+    ul.classList.remove('list-overflow');
+    wrapper.classList.remove('wrapper-overflow');
+  }
 }
 
 export default function decorate(block) {
@@ -183,7 +190,6 @@ export default function decorate(block) {
     }
     handleTabletView();
   });
-
   wrapper.appendChild(leftBtn);
   wrapper.appendChild(rightBtn);
   wrapper.appendChild(ul);
@@ -221,9 +227,13 @@ export default function decorate(block) {
     wrapper.classList.add(backgroundDom);
   }
   window.addEventListener('scroll', handleContentNavFixedHeader);
-  window.addEventListener('resize', this.handleTabletView);
   handleContenNavMobile();
   handleContenNavDesktop();
   scrollLeft();
   scrollRight();
+  setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
+  // window.addEventListener('resize', () => {
+  //   console.log('hello');
+  //   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
+  // });
 }

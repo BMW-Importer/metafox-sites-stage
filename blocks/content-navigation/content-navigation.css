@@ -1,6 +1,5 @@
 main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     display: flex;
-    justify-content: center;
     align-self: center;
   }
   
@@ -334,14 +333,13 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     /* ipad css */
   
     @media (width >= 767px) and (width < 1280px) {
-      .cmp-contentnavigation-wrapper {
-        display: flex;
-      }
-  
       main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         padding: 0;
         display: flex;
         align-items: center;
+        background-color: aquamarine;
+        overflow-x: auto;
+        white-space: nowrap;  
       }
   
       .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
@@ -350,11 +348,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       }
   
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
-        padding: 0 0.5rem;
+        padding: 1rem 0.5rem;
       }
   
       .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-arrow-right {
-        position: relative;
+        /* position: relative; */
         display: block;
         height: auto;
         left: 94%;
@@ -413,11 +411,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         
       }
   
-      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav .cmp-contentnavigation-arrow-right {
+      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-right {
         cursor: pointer;
         font-size: 1.25rem;
         position: absolute;
-        right: 2rem;
+        right: 0;
         padding: 0;
         margin: 0;
         top: 0;
@@ -427,11 +425,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         background-color: var(--background-color)
       }
   
-      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav .cmp-contentnavigation-arrow-left {    
+      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-left {    
         cursor: pointer;
         font-size: 1.25rem;
         position: absolute;
-        left: 2rem;
+        left: 0;
         padding: 0;
         margin: 0;
         top: 0;
@@ -513,24 +511,16 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-contentnavigation-list {
         color: var(--medium-text-color);
         padding: 1rem;
-        width: 100%;
-        position: relative;
         left: 0;
         display: flex;
         padding-left: 0;
         margin: 0;
        }
-  
-       .content-navigation-container .fixed-nav .cmp-contentnavigation-list {
-        padding:0 0 0 5rem;
-       
-  
-       }
     
        .cmp-contentnavigation-wrapper.variation-btn .cmp-contentnavigation-list {
         color: var(--medium-text-color);
         padding: 1rem;
-        width: 60%;
+        /* width: 60%; */
         position: relative;
         left: 0;
         display: flex;
@@ -559,11 +549,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         display: block !important;
        }
      
-       .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-list {
+       /* .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-list {
         width: 90%;
         overflow-x: scroll;
         scrollbar-width: none;
-       }
+       } */
   
        main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
         padding-left: 0;
@@ -599,7 +589,35 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         min-height: 2.50rem;
         display: inline-flex;
       }
-  
+
+    /* css for anchor link greater than viewport ipad start */ 
+
+    .content-navigation-container .fixed-nav.wrapper-overflow .cmp-contentnavigation-list.list-overflow {
+      padding-left: 3rem;
+      overflow-x: hidden;
+      width: auto;
+      scrollbar-width: none;
+     }
+
+     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow.variation-btn {
+      padding-right: 3rem;
+      padding-left: 0;
+
+     }
+
+     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper.variation-btn.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-right {
+      position: absolute;
+      right: 45%;
+      top: 0;
+      display: block;
+     }
+
+     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow {
+      left: 5%;
+      right: 5%;
+      overflow: hidden;
+     }
+
     }
   
     @media (width >= 1280px) { 
