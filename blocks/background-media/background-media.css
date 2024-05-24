@@ -94,6 +94,9 @@
 
 .background-media.block .background-media-item-details {
     text-align: center;
+    margin-top: 4px;
+    display: block;
+    box-sizing: border-box;
 }
 
 .background-media.block .background-media-item-details.subbrandi{
@@ -103,15 +106,16 @@
 .background-media.block .background-media-item-details.subbrandi::before {
     position: relative;
     content: '';
-    background-image: url("../../icons/BMW_subrand_i.png");
+    background-image: url(../../icons/BMW_subrand_i.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    height: 1rem;
-    width: 1.8125rem;
-    margin-right: 0.5rem;
-    z-index: 2;
+    height: 1.25rem;
+    width: 2.25rem;    
+    z-index: 2;  
+    box-sizing: border-box;
+    margin-inline-end: .5rem;
 }
 
 .background-media.block .background-media-item-details.subbrandm::before {
@@ -121,31 +125,31 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    display: inline-block;
-    height: 1.25rem;
-    width: 3.5rem;
-    margin-right: 0.5rem;
+    width: 2.8125rem;
     z-index: 2;
+    display: inline-block;
+    height: 1rem;
+    left: 0;
+    margin-inline-end: .5rem;   
 }
 
 .background-media.block .background-media-item-text-copytext {
     color: var(--background-color);
-    font-size: 2.0625rem;
-    font-weight: 300;
-    line-height: 2.875rem;
-    margin: 4px 0 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
     text-align: center;
     position: relative;
     z-index: 2;
-    display: inline-block;
+    display: inline;
+    margin: 0;
+    vertical-align: bottom;
 }
 
 .background-media.block .background-media-item-text-copytext * {
     color: var(--background-color);
-    font-size: 2.0625rem;
-    font-weight: 300;
-    line-height: 2.875rem;
-    margin: 4px 0 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -187,7 +191,7 @@
     margin-bottom: 0.5rem;
 }
 
-.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1){
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
     margin-top: 0;
 }
 
@@ -345,16 +349,6 @@
         font-weight: 700;
     }
 
-    .background-media.block .background-media-item-text-copytext {        
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;
-    }
-
-    .background-media.block .background-media-item-text-copytext * {        
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;
-    }
-
     .background-media.block .background-media-item-text > *{
         width: auto;
     }
@@ -413,6 +407,7 @@
 
     .background-media.block .background-media-item-details {
         text-align: start;
+        justify-content: flex-start;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -440,25 +435,42 @@
         text-align: start;
     }
 
+    .background-media.block h1.background-media-item-text-headline {
+        text-align: start;
+    }
+
     .background-media.block h2.background-media-item-text-headline {       
         font-size: 1.8125rem;
+        text-align: start;
     }
 
     .background-media.block h3.background-media-item-text-headline {
         font-size: 7.875rem;
         line-height: 7rem;
         font-weight: 700;
+        text-align: start;
     }
     
     .background-media.block .background-media-item-text-copytext {
         text-align: start;
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;       
+        font-size: 1.25rem;
+        line-height: 1.75rem;
     }
 
     .background-media.block .background-media-item-text-copytext * {        
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        text-align: start;
+    }
+
+    .background-media.block .background-media-item-details.subbrandi::before {
+        height: 1.5rem;
+        width: 2.75px;
+    }
+
+    .background-media.block .background-media-item-details.subbrandm::before {
+        height: 1.25rem;
+        width: 3.5rem;
     }
     
     .background-media.block .background-media-item-cta-money {
@@ -570,6 +582,7 @@
 
     .background-media.block .background-media-item-details {
         text-align: start;
+        justify-content: flex-start;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -593,29 +606,42 @@
         font-size: .9375rem;
     }
 
-    .background-media.block .background-media-item-text-headline {        
+    .background-media.block h1.background-media-item-text-headline {        
         text-align: start;
     }
 
     .background-media.block h2.background-media-item-text-headline {       
         font-size: 1.8125rem;
+        text-align: start;
     }
 
     .background-media.block h3.background-media-item-text-headline {
         font-size: 7.875rem;
         line-height: 7rem;
         font-weight: 700;
+        text-align: start;
     }
 
     .background-media.block .background-media-item-text-copytext {        
         text-align: start;
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
     }
 
     .background-media.block .background-media-item-text-copytext * {        
-        font-size: 2.1875rem;        
-        line-height: 3.125rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        text-align: start;
+    }
+
+    .background-media.block .background-media-item-details.subbrandi::before {
+        height: 1.5rem;
+        width: 2.75rem;
+    }
+
+    .background-media.block .background-media-item-details.subbrandm::before {
+        height: 1.25rem;
+        width: 3.5rem;
     }
 
     .background-media.block .background-media-item-cta-money {
