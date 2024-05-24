@@ -106,7 +106,7 @@
 .background-media.block .background-media-item-details.subbrandi::before {
     position: relative;
     content: '';
-    background-image: url(../../icons/BMW_subrand_i.png);
+    background-image: url("../../icons/BMW_subrand_i.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -191,15 +191,13 @@
     margin-bottom: 0.5rem;
 }
 
-.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
-    margin-top: 0;
-}
-
-
 .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1):nth-last-child(2) {
     margin: 1.5rem 0;
 }
 
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+    margin-top: 0;
+}
 
 .background-media.block .background-media-item-cta-money .money-btn {
     font-size: 1rem;
@@ -465,7 +463,7 @@
 
     .background-media.block .background-media-item-details.subbrandi::before {
         height: 1.5rem;
-        width: 2.75px;
+        width: 2.75rem;
     }
 
     .background-media.block .background-media-item-details.subbrandm::before {
