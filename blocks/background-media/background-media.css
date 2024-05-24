@@ -84,7 +84,7 @@
 .background-media.block h3.background-media-item-text-headline {
     color: var(--background-color);
     font-size: 7.4375rem;
-    font-weight: 700;
+    font-weight: 300;
     line-height: 6.75rem;  
     text-align: center;
     z-index: 2;
@@ -344,7 +344,7 @@
     .background-media.block h3.background-media-item-text-headline {
         font-size: 7.875rem;
         line-height: 7rem;
-        font-weight: 700;
+        font-weight: 300;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -445,7 +445,7 @@
     .background-media.block h3.background-media-item-text-headline {
         font-size: 7.875rem;
         line-height: 7rem;
-        font-weight: 700;
+        font-weight: 300;
         text-align: start;
     }
     
@@ -616,7 +616,7 @@
     .background-media.block h3.background-media-item-text-headline {
         font-size: 7.875rem;
         line-height: 7rem;
-        font-weight: 700;
+        font-weight: 300;
         text-align: start;
     }
 
