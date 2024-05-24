@@ -50,17 +50,42 @@
     z-index: 2;
     position: relative;
     word-break: break-word;
+    line-height: 1.25rem;
+    letter-spacing: 2.8px;
+}
+
+.background-media.block h5.background-media-item-text-eyebrow {
+    line-height: 1rem;
+    letter-spacing: 2px;
+}
+
+.background-media.block h6.background-media-item-text-eyebrow {
+    font-size: 0.875rem;
+    line-height: 0.75rem;
+    letter-spacing: 0.525rem;
 }
 
 .background-media.block .background-media-item-text-headline {
     color: var(--background-color);
+    z-index: 2;
+    text-align: center;
+    position: relative;
+}
+
+.background-media.block h1.background-media-item-text-headline {
+    font-weight: 700;
+}
+
+.background-media.block h2.background-media-item-text-headline {
+    font-weight: 700;
+    font-size: 1.75rem;
 }
 
 .background-media.block h3.background-media-item-text-headline {
     color: var(--background-color);
-    font-size: 6rem;
-    font-weight: 300;
-    line-height: 7.5rem;   
+    font-size: 7.4375rem;
+    font-weight: 700;
+    line-height: 6.75rem;  
     text-align: center;
     z-index: 2;
     position: relative;
@@ -105,9 +130,21 @@
 
 .background-media.block .background-media-item-text-copytext {
     color: var(--background-color);
-    font-size: 1rem;
+    font-size: 2.0625rem;
     font-weight: 300;
-    line-height: 1.5rem;
+    line-height: 2.875rem;
+    margin: 4px 0 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+.background-media.block .background-media-item-text-copytext * {
+    color: var(--background-color);
+    font-size: 2.0625rem;
+    font-weight: 300;
+    line-height: 2.875rem;
     margin: 4px 0 0;
     text-align: center;
     position: relative;
@@ -208,7 +245,7 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
-    padding: .25rem 12px;
+    padding: .25rem .75rem;
 }
 
 .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {   
@@ -291,6 +328,31 @@
         margin-top: -14.75rem;
         min-height: 14.5rem;
         padding-top: 5rem;
+    }    
+
+    .background-media.block h6.background-media-item-text-eyebrow {
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
+    }
+
+    .background-media.block h3.background-media-item-text-headline {
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 700;
+    }
+
+    .background-media.block .background-media-item-text-copytext {        
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;
+    }
+
+    .background-media.block .background-media-item-text-copytext * {        
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -366,19 +428,37 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
+        text-align: start;        
+    }
+
+    .background-media.block h6.background-media-item-text-eyebrow {        
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block .background-media-item-text-headline {
         text-align: start;
     }
 
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
+    }
+
     .background-media.block h3.background-media-item-text-headline {
-        text-align: start;
-        font-size: 8rem;
-        line-height: 7.75rem;
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 700;
     }
     
     .background-media.block .background-media-item-text-copytext {
         text-align: start;
-        font-size: 1.25rem;
-        line-height: 1.75rem;
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;       
+    }
+
+    .background-media.block .background-media-item-text-copytext * {        
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;
     }
     
     .background-media.block .background-media-item-cta-money {
@@ -505,19 +585,37 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
+        text-align: start;        
+    }
+
+    .background-media.block h6.background-media-item-text-eyebrow {        
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block .background-media-item-text-headline {        
         text-align: start;
+    }
+
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
     }
 
     .background-media.block h3.background-media-item-text-headline {
-        font-size: 8rem;
-        line-height: 7.75rem;
-        text-align: start;
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 700;
     }
 
-    .background-media.block .background-media-item-text-copytext {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
+    .background-media.block .background-media-item-text-copytext {        
         text-align: start;
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;
+    }
+
+    .background-media.block .background-media-item-text-copytext * {        
+        font-size: 2.1875rem;        
+        line-height: 3.125rem;
     }
 
     .background-media.block .background-media-item-cta-money {
