@@ -2,21 +2,50 @@ const { body } = document;
 const sections = document.querySelectorAll('div[data-contentnavigation="true"]');
 
 function activeAnchor() {
+  const scrollPosition = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+
+  let activeSectionId = null;
+
   sections.forEach((section) => {
-    const scrollPosition = window.scrollY;
     const sectionId = section.getAttribute('data-anchorid');
     const sectionOffset = section.offsetTop;
     const sectionHeight = section.offsetHeight;
+    const sectionElement = document.querySelector(`[data-anchor="#${sectionId}"]`);
+    const parentElement = sectionElement?.parentNode;
+
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.add('active');
-      document.getElementById('navdropdownMenuButton').textContent = document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.textContent;
+      parentElement.classList.add('active');
+      activeSectionId = sectionId;
     } else {
-      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.remove('active');
+      parentElement.classList.remove('active');
     }
   });
+
+  if (activeSectionId) {
+    if (window.location.hash !== `#${activeSectionId}`) {
+      window.history.replaceState(null, null, `#${activeSectionId}`);
+    }
+  } else if (scrollPosition <= 0 || scrollPosition + windowHeight >= documentHeight) {
+    window.history.replaceState(null, null, ' ');
+  }
 }
 
-function handleContentNavFixedHeader() {
+function scrollToHash() {
+  const { hash } = window.location;
+  if (hash) {
+    const targetSection = document.querySelector(`[data-anchorid="${hash.substring(1)}"]`);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  }
+}
+
+function handleOnScrollContentNavHeader() {
   const navigation = document.getElementById('navigation');
   const contentNavWrapper = document.querySelector('.cmp-contentnavigation-wrapper');
   const contentNavContainer = document.querySelector('.content-navigation-container');
@@ -226,14 +255,14 @@ export default function decorate(block) {
     const backgroundDom = background === 'Transparent' ? 'transparent' : 'white';
     wrapper.classList.add(backgroundDom);
   }
-  window.addEventListener('scroll', handleContentNavFixedHeader);
+  window.addEventListener('scroll', handleOnScrollContentNavHeader);
   handleContenNavMobile();
   handleContenNavDesktop();
   scrollLeft();
   scrollRight();
   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
   // window.addEventListener('resize', () => {
-  //   console.log('hello');
   //   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
   // });
+  window.addEventListener('hashchange', scrollToHash);
 }

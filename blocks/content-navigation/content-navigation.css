@@ -90,7 +90,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       padding: 0 1.625rem;
       text-decoration: none;
       white-space: nowrap;
-      background: var(--link-color);
+      background: var(--light-link-hover-color);
       color: var(--background-color);
     }
   
@@ -337,16 +337,19 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         padding: 0;
         display: flex;
         align-items: center;
-        background-color: aquamarine;
         overflow-x: auto;
         white-space: nowrap;  
       }
   
-      .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
-        padding-left: 3rem;
-        padding-right: 3rem;
+      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
+        padding-right: 0 !important;
+        height: 3.3rem !important;
       }
-  
+
+      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.variation-btn {
+        padding-left: 1rem !important;
+      }
+
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
         padding: 1rem 0.5rem;
       }
@@ -482,7 +485,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         outline: transparent solid 1px;
         white-space: nowrap;
         color: var(--text-color);
-        box-shadow: 13px -9px 21px 19px var(--background-color),54px -8px 21px 1.25rem var(--background-color);
+        box-shadow: 0 -9px 21px 19px var(--background-color),54px -8px 21px 1.25rem var(--background-color);
        
       }
   
@@ -520,6 +523,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
        .cmp-contentnavigation-wrapper.variation-btn .cmp-contentnavigation-list {
         color: var(--medium-text-color);
         padding: 1rem;
+
         /* width: 60%; */
         position: relative;
         left: 0;
@@ -555,11 +559,6 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         scrollbar-width: none;
        } */
   
-       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
-        padding-left: 0;
-        height: 3.3rem !important;
-       }
-  
        .cmp-contentnavigation-wrapper.variation-btn.fixed-nav .cmp-contentnavigation-list {
         margin: 0;
         padding:0 0 0 48px;
@@ -593,7 +592,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     /* css for anchor link greater than viewport ipad start */ 
 
     .content-navigation-container .fixed-nav.wrapper-overflow .cmp-contentnavigation-list.list-overflow {
-      padding-left: 3rem;
+      padding-left: 1rem;
       overflow-x: hidden;
       width: auto;
       scrollbar-width: none;
@@ -616,6 +615,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       left: 5%;
       right: 5%;
       overflow: hidden;
+      padding-left: 0;
      }
 
     }
