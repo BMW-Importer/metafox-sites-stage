@@ -5,16 +5,13 @@ function activeAnchor() {
   const scrollPosition = window.scrollY;
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
-
   let activeSectionId = null;
-
   sections.forEach((section) => {
     const sectionId = section.getAttribute('data-anchorid');
     const sectionOffset = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     const sectionElement = document.querySelector(`[data-anchor="#${sectionId}"]`);
     const parentElement = sectionElement?.parentNode;
-
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
       parentElement.classList.add('active');
       activeSectionId = sectionId;
@@ -51,7 +48,6 @@ function handleOnScrollContentNavHeader() {
   const contentNavContainer = document.querySelector('.content-navigation-container');
   const ulList = document.querySelector('.cmp-contentnavigation-list');
   const offset = contentNavContainer?.offsetTop;
-  activeAnchor();
   if (window.pageYOffset >= offset) {
     navigation.classList.add('fixed-nav');
     contentNavContainer.classList.remove('hide');
@@ -66,9 +62,10 @@ function handleOnScrollContentNavHeader() {
   if (contentNavWrapper.classList.contains('fixed-nav')) {
     ulList.style = '';
   }
+  activeAnchor();
 }
 
-function handleContenNavMobile() {
+function handleDropDownContenNavMobile() {
   const buttonSelector = document.getElementById('navdropdownMenuButton');
   buttonSelector.addEventListener('click', (e) => {
     const contentNavWrapper = e.target.closest('.cmp-contentnavigation-wrapper');
@@ -93,32 +90,14 @@ function handleContenNavDesktop() {
   const links = document.querySelectorAll('.cmp-contentnavigation-list-link');
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const contentNavWrapper = e.target.closest('.cmp-contentnavigation-wrapper');
-      const checkScrollPosition = contentNavWrapper.classList.contains('fixed-nav');
-      if (!checkScrollPosition) {
-        setTimeout(() => {
-          contentNavWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      } else {
-        body.style.overflowY = 'auto';
-        document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
-        e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
-        document.getElementById('navdropdownMenuButton').classList.remove('visible-mobile-btn');
-        activeAnchor();
-        const targetId = e.target.getAttribute('data-anchor').replace('#', '');
-        const targetSection = document.querySelector(`[data-anchorid=${targetId}]`);
-        if (targetSection) {
-          window.scrollBy(0, 100);
-          setTimeout(() => {
-            window.scrollBy(0, 0);
-          }, 400);
-          setTimeout(() => {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-            setTimeout(() => {
-            }, 500);
-          }, 400);
-        }
+      body.style.overflowY = 'auto';
+      document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
+      e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
+      document.getElementById('navdropdownMenuButton').classList.remove('visible-mobile-btn');
+      const targetId = e.target.getAttribute('data-anchor').replace('#', '');
+      const targetSection = document.querySelector(`[data-anchorid=${targetId}]`);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
@@ -256,7 +235,7 @@ export default function decorate(block) {
     wrapper.classList.add(backgroundDom);
   }
   window.addEventListener('scroll', handleOnScrollContentNavHeader);
-  handleContenNavMobile();
+  handleDropDownContenNavMobile();
   handleContenNavDesktop();
   scrollLeft();
   scrollRight();
