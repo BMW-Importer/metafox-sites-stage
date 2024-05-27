@@ -2404,18 +2404,18 @@
         "description": "Tab that includes properties of the video"
       },
       {
-        "component": "text-input",
+        "component": "text",
         "valueType": "string",
-        "name": "media_videoCarouselTitle",
+        "name": "videoCarouselTitle",
         "value": "",
         "description": "Defines the title of the video. ",
         "label": "Video Title",
         "required": true
       },
       {
-        "component": "text-input",
+        "component": "text",
         "valueType": "string",
-        "name": "media_videoCarouselText",
+        "name": "videoCarouselText",
         "description": "Defines the description of the video.",
         "value": "",
         "label": "Video Description",
@@ -2424,24 +2424,26 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media_videoCarousel",
+        "name": "videoCarouselDesktopPath",
         "description": "Defines the path to a video on the desktop.",
         "label": "Desktop Video Path",
         "multi": false,
+        "value": "",
         "required": true
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media_videoCarouselMobile",
+        "name": "videoCarouselMobilePath",
         "description": "Defines the path to a video on the mobile.",
         "label": "Mobile Video Path",
+        "value": "",
         "multi": false
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media_videoCarouselPoster",
+        "name": "videoCarouselPosterDesktop",
         "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
         "label": "Desktop Poster Image Path",
         "multi": false,
@@ -2450,7 +2452,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media_videoCarouselPosterMobile",
+        "name": "videoCarouselPosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
@@ -2458,7 +2460,7 @@
       {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "media_videoCarouselLoopVideo",
+        "name": "videoCarouselLoopVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2466,7 +2468,7 @@
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_videoCarouselMouseHoverVideo",
+        "name": "videoCarouselMouseHoverVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2474,7 +2476,7 @@
       {
         "component": "boolean",
         "label": "Hide Video Controls",
-        "name": "media_videoCarouselHideControlsVideo",
+        "name": "videoCarouselHideControlsVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2486,22 +2488,22 @@
         "description": "Tab that includes button/link properties field."
       },
       {
-        "component": "text-input",
-        "name": "cta_videoCarouselCtaLink",
+        "component": "text",
+        "name": "videoCarouselCtaLink",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to.",
         "valueType": "string"
       },
       {
-        "component": "text-input",
-        "name": "cta_videoCarouselCtaLinkText",
+        "component": "text",
+        "name": "videoCarouselCtaLinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "valueType": "string"
       },
       {
         "component": "select",
-        "name": "cta_imageCarouselLinkType",
+        "name": "videoCarouselLinkType",
         "label": "Button Styling",
         "value": "primary",
         "valueType": "string",
@@ -2534,9 +2536,9 @@
         "description": "Tab that includes general property fields."
       },
       {
-        "component": "text-input",
+        "component": "text",
         "valueType": "string",
-        "name": "content_imageCarouselHeadline",
+        "name": "imageCarouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
@@ -2544,7 +2546,7 @@
       {
         "component": "select",
         "label": "Headline Type",
-        "name": "content_imageCarouselHeadlineType",
+        "name": "imageCarouselHeadlineType",
         "description": "Defines multiple styling options for the Headline",
         "valueType": "string",
         "value": "h2",
@@ -2555,7 +2557,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "content_imageCarouselCopyText",
+        "name": "imageCarouselCopyText",
         "description": "Defines the text that will appear in the page.",
         "value": "",
         "label": "Copy Text"
@@ -2569,15 +2571,15 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "media_imageCarouselImg",
+        "name": "imageCarouselImg",
         "description": "Defines media object that can be displayed on the right side.",
         "label": "Image",
         "multi": false
       },
       {
-        "component": "text-input",
+        "component": "text",
         "valueType": "string",
-        "name": "media_imageCarouselImgAlt",
+        "name": "imageCarouselImgAlt",
         "description": "Defines textual description of images for users with visual limitation.",
         "value": "",
         "label": "Alt Text"
@@ -2589,22 +2591,22 @@
         "description": "Tab that includes button/link properties field."
       },
       {
-        "component": "text-input",
-        "name": "cta_imageCarouselLink",
+        "component": "text",
+        "name": "imageCarouselLink",
         "description": "Defines the page to which the user will be directed to.",
         "label": "Link",
         "valueType": "string"
       },
       {
-        "component": "text-input",
-        "name": "cta_imageCarouselLinkText",
+        "component": "text",
+        "name": "imageCarouselLinkText",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "label": "Link Label",
         "valueType": "string"
       },
       {
         "component": "select",
-        "name": "cta_imageCarouselLinkType",
+        "name": "imageCarouselLinkType",
         "label": "Button Styling",
         "value": "",
         "valueType": "string",
