@@ -127,9 +127,6 @@
                 "template": {
                   "name": "Tabs Section",
                   "model": "tabs-section",
-                  "sectiontopmargin": true,
-                  "sectionalignment": "center",
-                  "sectionwidth":"grid-10",
                   "filter": "tabs-section"
                 }
               }
