@@ -10,7 +10,6 @@ changeAllVidSrcOnResize();
 
 const page_tracking = {"page": {
         "pageInfo": {
-            "pageID": "/content/bmw/marketB4R1/bmw_rs/sr_RS/index",
             "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
             "destinationURL": "https://www.bmw.rs/sr/index.html",
             "variant": "real page",
@@ -111,6 +110,7 @@ function set_page_tracking(){
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
     page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
+    page_tracking.page.pageInfo.pageID = window.location.pathname;
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
     const randomNum = 1000000000 + Math.random() * 9000000000;
@@ -151,20 +151,18 @@ function set_page_tracking(){
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
     const formattedPath = pathParts.map(part => part.replace(/[^\w\s]/g, '')).join(':'); // Remove special characters
 
-    fetch(window.location.href)
-    .then(response => {
-      if (!response.ok) {
-        page_tracking.page.pageInfo.pageName = "web:errorpage";
-        page_tracking.page.pageInfo.pageID = "errorpage";
+    if(document.title ==='Page not found' && document.body.innerHTML.includes('404') && document.body.innerHTML.includes('Page Not Found'))
+    {     
+      page_tracking.page.pageInfo.pageName = "web:errorpage";
+      page_tracking.page.pageInfo.pageID = "errorpage";
+    } else {
+      page_tracking.page.pageInfo.pageID = window.location.pathname;
+      if (formattedPath !== '') {
+        page_tracking.page.pageInfo.pageName = "web:home:" + formattedPath;
       } else {
-        page_tracking.page.pageInfo.pageID = window.location.pathname;
-        if (formattedPath !== '') {
-          page_tracking.page.pageInfo.pageName = "web:home:" + formattedPath;
-        } else {
-            page_tracking.page.pageInfo.pageName = "web:home";
-        }
+          page_tracking.page.pageInfo.pageName = "web:home";
       }
-    })
+    }
 
     const metaTag = document.querySelector('meta[name="env"]');
     if (metaTag && metaTag.content) {
