@@ -215,7 +215,7 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": [],
+      "advanced": ["p"],
       "extensions": [],
       "editor": []
     }
