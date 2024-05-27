@@ -75,19 +75,7 @@
     "id": "accordion",
     "components": [
       "accordion-item"
-    ],
-    "rte": {
-      "format": ["bold"],
-      "alignment": [],
-      "indentation": [],
-      "sr_script": ["superscript", "subscript"],
-      "list": ["bullist", "numlist"],
-      "insert": ["link"],
-      "blocks": [],
-      "advanced": [],
-      "extensions": [],
-      "editor": ["removeformat"]
-    }
+    ]
   },
   {
     "id": "accordion-item",
@@ -96,7 +84,7 @@
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": ["superscript", "subscript"],
+      "sr_script": ["superscript"],
       "list": ["bullist", "numlist"],
       "insert": ["link"],
       "blocks": [],
