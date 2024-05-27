@@ -8,7 +8,7 @@
   "cosyBrand": "WBBM",
   "bodyTypeCode": "GF",
   "marketingBodyTypeCode": "SUV",
-  "effectDate": "2024-05-21",
+  "effectDate": "2024-05-15",
   "hybridCode": "PHEV",
   "fromPrice": 57692,
   "seats": 5,
@@ -54,8 +54,6 @@
           "emissionsWltpCombined": "24 - 16",
           "electricConsumption": "19.3 - 16.7",
           "electricRangeWltpCombined": "71 - 86",
-          "noiseDriving": "-",
-          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -175,8 +173,6 @@
           "emissionsWltpCombined": "24 - 16",
           "electricConsumption": "19.3 - 16.7",
           "electricRangeWltpCombined": "71 - 86",
-          "noiseDriving": "-",
-          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

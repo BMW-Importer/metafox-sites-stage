@@ -10,10 +10,9 @@
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
-  "effectDate": "2024-05-21",
+  "effectDate": "2024-05-10",
   "hybridCode": "NOHY",
   "fromPrice": 61598,
-  "seats": 4,
   "fuelType": "O",
   "posiSpec": {
     "cosyBrand": "WBBM",
@@ -26,38 +25,30 @@
     {
       "transmissionCode": "S02TB",
       "hybridCode": "NOHY",
-      "iD_LEIST_KONST": "00",
       "volt48": false,
       "technicalData": {
         "powerTrain": {
           "fuelType": "O",
-          "systemPower": "275 (374)",
-          "systemMaxTorque": "500",
-          "gearBox": "8 - automatisch",
+          "systemPower": "-",
+          "systemMaxTorque": "-",
+          "gearBox": "-",
           "driveType": "HR"
         },
         "engine": {
-          "cylinders": "6",
-          "technicalCapacity": "2998",
-          "nominalPower": "275 (374) / 5500 - 6500",
-          "nominalTorque": "500 / 1900 - 5000"
+          "cylinders": "-",
+          "technicalCapacity": "-",
+          "nominalPower": "-",
+          "nominalTorque": "-"
         },
         "electric": {
           "systemPower": "-",
           "systemMaxTorque": "-"
-        },
-        "performance": {
-          "acceleration": "4.7",
-          "topSpeed": "250",
-          "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
           "consumptionWltpCombined": "8.5 - 7.8",
           "emissionsWltpCombined": "192 - 177",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
-          "noiseDriving": "-",
-          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -70,17 +61,8 @@
           "chargingMaxAC": "-"
         },
         "weightMeasurements": {
-          "length": "4548.0",
-          "width": "1838.0",
-          "height": "1397.0",
-          "widthMirrors": "2068 (1040 / 1028)",
-          "wheelTurn": "2741.0",
-          "weightNotLoaded": "1710",
-          "weightMax": "2110",
-          "permittedLoad": "475",
-          "trailerLoad": "1600 / 75",
-          "trunkCapacity": "390",
-          "tankCapacity": "52.0"
+          "trunkCapacity": "-",
+          "tankCapacity": "-"
         }
       },
       "footnotes": {
@@ -93,18 +75,9 @@
         "emissionsConsumptionWltp": [
           "f1",
           "f4"
-        ],
-        "weightMeasurements_weightNotLoaded_label": [
-          "f8"
-        ],
-        "weightMeasurements_trailerLoad_label": [
-          "f13"
         ]
       },
-      "footnotesData": {
-        "overboostMax": "-",
-        "overboostKW": "-"
-      }
+      "footnotesData": {}
     }
   ]
 }

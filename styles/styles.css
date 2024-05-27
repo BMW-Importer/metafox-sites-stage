@@ -403,6 +403,10 @@ main .section {
   padding: 0 var(--section-mobile-padding);
 }
 
+main .section:first-child {
+  margin-top: 0;
+}
+
 /* tablet */
 @media (width >= 768px){
   main .section {
@@ -594,7 +598,7 @@ textarea{
     }
 
     h2 { 
-      font-size: 1.75rem; 
+      font-size: 1.8125rem; 
       line-height: 2.5rem; 
     }
 
