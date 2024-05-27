@@ -1,7 +1,7 @@
 import { generatebgImgDom } from '../background-image/background-image.js';
 import { generatebgVideoDom } from '../background-video/background-video.js';
 
-function generateCtaButtons(cta) {
+function generateCtaButtons(cta, btnContainer) {
   const [ctaButton, ctaBtnClass] = cta.children;
   cta.textContent = '';
   if (ctaButton) {
@@ -9,7 +9,12 @@ function generateCtaButtons(cta) {
     if (ctaBtnClass?.textContent) ctaButton.querySelector('a')?.classList.add(...btClassName);
 
     // if btClassName length is 2 then flex button style is selected so add class to parent
-    if (btClassName.length > 1) cta.classList.add('flex');
+    if (btClassName.length > 1) {
+      cta.classList.add('flex');
+      btnContainer.classList.add('flex');
+    } else {
+      btnContainer.classList.add('no-flex');
+    }
   }
   cta.append(ctaButton);
 }
@@ -105,16 +110,25 @@ export default function decorate(block) {
     // append copyText detail
     generalProps.append(detailAndBrandDiv);
 
+    // button container
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('bg-media-btn-container');
+    let isButtonPresent = false;
+
     // extracting classnames for cta and binding it to anchor link
     if (cta1?.children.length > 1) {
-      generateCtaButtons(cta1);
-      generalProps.append(cta1);
+      generateCtaButtons(cta1, btnContainer);
+      btnContainer.append(cta1);
+      isButtonPresent = true;
     }
 
     if (cta2?.children.length > 1) {
-      generateCtaButtons(cta2);
-      generalProps.append(cta2);
+      generateCtaButtons(cta2, btnContainer);
+      btnContainer.append(cta2);
+      isButtonPresent = true;
     }
+
+    if (isButtonPresent) generalProps.append(btnContainer);
 
     childrenBlock.append(generalProps);
 
