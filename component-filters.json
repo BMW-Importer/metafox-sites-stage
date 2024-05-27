@@ -217,7 +217,7 @@
       "insert": [],
       "advanced": ["p"],
       "extensions": [],
-      "editor": []
+      "editor": ["removeformat"]
     }
   },
   {
