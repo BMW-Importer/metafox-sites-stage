@@ -156,10 +156,15 @@
     display: inline-block;
 }
 
+.background-media.block .bg-media-btn-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    vertical-align: top;
+}
+
 .background-media.block .background-media-item-cta-money {
     display: block;
     text-align: center;
-    margin: 1rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -170,7 +175,6 @@
 .background-media.block .background-media-item-cta-ghost {
     display: block;
     text-align: center;
-    margin: 1rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -187,16 +191,12 @@
     box-sizing: border-box;
 }
 
-.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) {
-    margin-bottom: 0.5rem;
-}
-
 .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1):nth-last-child(2) {
     margin: 1.5rem 0;
 }
 
 .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
-    margin-top: 0;
+    margin-top: 0.5rem;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn {
@@ -355,14 +355,12 @@
         aspect-ratio: 4 / 3;
     }
 
-    .background-media.block .background-media-item-cta-money {       
+    .background-media.block .background-media-item-cta-money {
         width: 50%;
-        margin-bottom: 1.5rem;
     }
     
     .background-media.block .background-media-item-cta-ghost {
         width: 50%;
-        margin-bottom: 1.5rem;
     }
 
     .background-media.block .background-media-item-cta-money.flex,
@@ -388,6 +386,7 @@
         padding: 0;
         margin-top: unset;
         min-height: unset;
+        padding-left: 0.75rem;
     }
 
     .background-media.block .background-media-item-text.top-left {
@@ -474,15 +473,13 @@
     .background-media.block .background-media-item-cta-money {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 90%;
+        width: 100%;
     }
     
     .background-media.block .background-media-item-cta-ghost {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 90%;
+        width: 100%;
     }
 
     .background-media.block .background-media-item-cta-money *{
@@ -503,7 +500,27 @@
 
     .background-media.block .background-media-item-cta-money.flex,
     .background-media.block .background-media-item-cta-ghost.flex {
-        width: 50%;
+        width: 41.2%;
+    }
+
+    .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+        margin-top: 0;
+    }
+    
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns > .button-container,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns > .button-container {
+        padding-right: 0.75rem;
+    }
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:last-child{
+        margin-top: 8px;
+    }
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:first-child:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:first-child:last-child{
+        margin-top: 0;
     }
     
     .background-media.block .background-media-item-vidimg.dark.left::before {
@@ -563,6 +580,7 @@
         padding: 0;
         margin-top: unset;
         min-height: unset;
+        padding-left: 0.75rem;
     }
 
     .background-media.block .background-media-item-text.top-left {
@@ -645,15 +663,13 @@
     .background-media.block .background-media-item-cta-money {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 90%;
+        width: 100%;
     }
 
     .background-media.block .background-media-item-cta-ghost {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 90%;
+        width: 100%;
     }
 
     .background-media.block .background-media-item-cta-money *{
@@ -675,7 +691,11 @@
 
     .background-media.block .background-media-item-cta-money.flex,
     .background-media.block .background-media-item-cta-ghost.flex {
-        width: 50%;
+        width: 41.2%;
+    }
+
+    .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+        margin-top: 0;
     }
 
     .background-media.block .background-media-item-vidimg.dark.left::before {
