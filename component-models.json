@@ -2503,15 +2503,10 @@
         "component": "select",
         "name": "cta_imageCarouselLinkType",
         "label": "Button Styling",
-        "value": "",
+        "value": "primary",
         "valueType": "string",
         "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
-        "hidden": true,
         "options": [
-          {
-            "name": "default",
-            "value": ""
-          },
           {
             "name": "Primary",
             "value": "primary"
