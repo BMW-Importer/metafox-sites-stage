@@ -147,7 +147,6 @@ function set_page_tracking(){
     } else {
         page_tracking.page.pageInfo.sysEnv = "mobile";
     }
-  
 
     const path = window.location.pathname;
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
