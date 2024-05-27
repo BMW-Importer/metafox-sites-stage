@@ -138,6 +138,22 @@
     }
   },
   {
+    "id": "quote",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [""],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "section",
     "components": [
       "copy_text",
@@ -165,7 +181,11 @@
       "disclaimer",
       "eyebrow",
       "headline",
-      "background-media"
+      "background-media",
+      "disclaimer",
+      "download",
+      "quote",
+      "media-carousel"
     ]
   },
   {
@@ -179,7 +199,9 @@
       "accordion",
       "disclaimer",
       "eyebrow",
-      "headline"
+      "headline",
+      "download",
+      "quote"
     ]
   },
   {
@@ -247,6 +269,21 @@
   },
   {
     "id": "image-slide",
+    "components": []
+  },
+  {
+    "id": "media-carousel",
+    "components": [
+      "video-carousel",
+      "image-carousel"
+    ]
+  },
+  {
+    "id": "video-carousel",
+    "components": []
+  },
+  {
+    "id": "image-carousel",
     "components": []
   },
   {

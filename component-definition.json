@@ -90,7 +90,10 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/section/v1/section",
-                "template": {}
+                "template": {
+                  "style":"alignment-center",
+                  "fixedsectiontopmargin": true
+                }
               }
             }
           }
@@ -271,10 +274,12 @@
                   "model": "text-with-image",
                   "filter": "text-with-image",
                   "media_fileReference": "/content/dam/metafox/placeholder_image.png",
-                  "general_eyebrow": "",
-                  "general_headline": "",
-                  "general_copytext": "",
-                  "general_buttonStyling": "linkButton"
+                  "classes":"left",
+                  "style":"",
+                  "imageeyebrow": "",
+                  "imageheadline": "",
+                  "imagecopytext": "",
+                  "imagebuttonstyling": "secondary"
                 }
               }
             }
@@ -291,10 +296,16 @@
                   "name": "Text with Video",
                   "model": "text-with-video",
                   "filter": "text-with-video",
-                  "general_eyebrow": "",
-                  "general_headline": "",
-                  "general_copytext": "",
-                  "general_buttonStyling": "linkButton"
+                  "videoeyebrow": "",
+                  "videoheadline": "",
+                  "videocopytext": "",
+                  "videobuttonstyling": "secondary",
+                  "classes":"left",
+                  "style":"",
+                  "media_loopVideo":true,
+                  "media_autoplay":true,
+                  "media_videoControls":false,
+                  "media_muteVideo":true
                 }
               }
             }
@@ -421,7 +432,7 @@
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "video",
+                  "name": "Video",
                   "model": "video"
                 }
               }
@@ -602,7 +613,12 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Background Image",
-                  "model": "background-image"
+                  "model": "background-image",
+                  "bgImgIcon_subbrandicon": "noicon",
+                  "bgImgStyle_elementAlignType": "h3",
+                  "bgImgStyle_elementAlign": "central-left",
+                  "bgImgCta1_CtaClassName": "money-btn money-btn-flex",
+                  "bgImgCta2_CtaClassName": "ghost-img-btn ghost-img-flex-btn"
                 }
               }
             }
@@ -617,7 +633,16 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Background Video",
-                  "model": "background-video"
+                  "model": "background-video",
+                  "bgVidIcon_subbrandicon": "noicon",
+                  "bgVidStyle_elementAlign": "central-left",
+                  "bgVidStyle_elementAlignType": "h3",
+                  "bgVidVideo_loopVideo": true,
+                  "bgVidVideo_loopVideoType":"h1",
+                  "bgVidVideo_autoPlayVideoType": "h2",
+                  "bgVidVideo_autoPlayVideo": true,
+                  "bgVidCta1_CtaBtnStyle": "money-btn money-btn-flex",
+                  "bgVidCta2_CtaBtnStyle": "ghost-img-btn ghost-img-flex-btn"
                 }
               }
             }
@@ -637,9 +662,112 @@
               }
             }
           }
+        },
+        {
+          "title": "Quote",
+          "id": "quote",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Quote",
+                  "model": "quote",
+                  "filter": "quote"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Download",
+          "id": "download",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Download",
+                  "model": "download"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Content Navigation",
+          "id": "content-navigation",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Content Navigation",
+                  "model": "content-navigation",
+                  "filter": "content-navigation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Media Carousel",
+          "id": "media-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Media Carousel",
+                  "model": "media-carousel",
+                  "filter": "media-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Video Carousel",
+          "id": "video-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Video Carousel",
+                  "model": "video-carousel",
+                  "filter": "video-carousel",
+                  "content_videoCarouselHeadlineType": "h2",
+                  "media_videoCarouselLoopVideo": true,
+                  "media_videoCarouselMouseHoverVideo" : true,
+                  "media_videoCarouselHideControlsVideo" : true,
+                  "media_videoCarouselMuteSoundVideo": true
+
+
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Carousel",
+          "id": "image-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image Carousel",
+                  "model": "image-carousel",
+                  "filter": "image-carousel",
+                  "content_imageCarouselHeadlineType": "h2"
+                }
+              }
+            }
+          }
         }
       ]
-    },
+    },    
     {
       "title": "BMW Footer",
       "id": "bmw_footer_blocks",
@@ -677,28 +805,6 @@
                   "name": "Header Section",
                   "model": "header-section",
                   "filter": "header-section"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "title": "Content Navigation",
-      "id": "content-navigation",
-      "components": [
-        {
-          "title": "Content Navigation",
-          "id": "content-navigation",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Content Navigation",
-                  "model": "content-navigation",
-                  "filter": "content-navigation"
                 }
               }
             }

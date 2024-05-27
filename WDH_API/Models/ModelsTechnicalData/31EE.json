@@ -8,7 +8,7 @@
   "cosyBrand": "WBBM",
   "bodyTypeCode": "GF",
   "marketingBodyTypeCode": "SUV",
-  "effectDate": "2024-05-10",
+  "effectDate": "2024-05-15",
   "hybridCode": "NOHY",
   "fromPrice": 47762,
   "seats": 5,
@@ -50,7 +50,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "6.4 - 5.6",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "144 - 127",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
@@ -140,7 +140,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "6.4 - 5.6",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "145 - 127",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
