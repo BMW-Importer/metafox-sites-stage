@@ -2370,7 +2370,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "videoCarouselTab1"
+        "name": "content_videoCarouselTab1"
       },
       {
         "component": "text",
@@ -2400,7 +2400,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "videoCarouselTab2",
+        "name": "media_videoCarouselTab2",
         "description": "Tab that includes properties of the video"
       },
       {
@@ -2482,7 +2482,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "videoCarouselTab3",
+        "name": "content_videoCarouselTab3",
         "description": "Tab that includes button/link properties field."
       },
       {
@@ -2530,7 +2530,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "imageCarouselTab1",
+        "name": "content_imageCarouselTab1",
         "description": "Tab that includes general property fields."
       },
       {
@@ -2563,7 +2563,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "imageCarouselTab2",
+        "name": "media_imageCarouselTab2",
         "description": "Tab that includes properties of the image."
       },
       {
@@ -2585,7 +2585,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "imageCarouselTab3",
+        "name": "content_imageCarouselTab3",
         "description": "Tab that includes button/link properties field."
       },
       {
