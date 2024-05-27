@@ -7,8 +7,12 @@ function getModelDetailsByModelCode(modelsArray) {
   modelsArray.forEach((modelObject) => {
     const modelName = modelObject.modelCode;
     if (modelName) {
-      getModelsData(modelName);
-      getModelsTechnicalData(modelName);
+      try {
+        getModelsData(modelName);
+        getModelsTechnicalData(modelName);
+      } catch (error) {
+        console.log(error);
+      }
     }
   });
 }
