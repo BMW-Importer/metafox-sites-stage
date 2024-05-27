@@ -9,7 +9,7 @@
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
-  "effectDate": "2024-05-16",
+  "effectDate": "2024-05-15",
   "hybridCode": "NOHY",
   "fromPrice": 54572,
   "seats": 4,
@@ -50,7 +50,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "5.3 - 4.9",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "140 - 128",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
@@ -139,7 +139,7 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "5.3 - 4.9",
+          "consumptionWltpCombined": "",
           "emissionsWltpCombined": "140 - 128",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
