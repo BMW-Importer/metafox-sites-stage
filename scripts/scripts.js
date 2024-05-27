@@ -73,6 +73,7 @@ function buildAutoBlocks() {
     console.error('Auto Blocking failed', error);
   }
 }
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
