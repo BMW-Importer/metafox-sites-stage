@@ -1,7 +1,7 @@
 import { generatebgImgDom } from '../background-image/background-image.js';
 import { generatebgVideoDom } from '../background-video/background-video.js';
 
-function generateCtaButtons(cta) {
+function generateCtaButtons(cta, btnContainer) {
   const [ctaButton, ctaBtnClass] = cta.children;
   cta.textContent = '';
   if (ctaButton) {
@@ -9,7 +9,12 @@ function generateCtaButtons(cta) {
     if (ctaBtnClass?.textContent) ctaButton.querySelector('a')?.classList.add(...btClassName);
 
     // if btClassName length is 2 then flex button style is selected so add class to parent
-    if (btClassName.length > 1) cta.classList.add('flex');
+    if (btClassName.length > 1) {
+      cta.classList.add('flex');
+      btnContainer.classList.add('flex');
+    } else {
+      btnContainer.classList.add('no-flex');
+    }
   }
   cta.append(ctaButton);
 }
@@ -29,9 +34,15 @@ function generateTextProps(generalProps, generalPropIcon, copyTextContainer, gra
   const [copytext] = copyTextContainer ? copyTextContainer.children : '';
 
   // extracting gradient classes
-  const [classes] = gradientEffectClas ? gradientEffectClas.children : '';
+  let gradClas = '';
+  let alignClass = '';
 
-  return [eyebrowText, headlineText, subBrancdIcon, copytext, classes];
+  if (gradientEffectClas?.children) {
+    gradClas = gradientEffectClas.querySelector('p');
+    alignClass = gradientEffectClas.querySelector('h3');
+  }
+
+  return [eyebrowText, headlineText, subBrancdIcon, copytext, gradClas, alignClass];
 }
 
 export default function decorate(block) {
@@ -48,8 +59,8 @@ export default function decorate(block) {
 
     generalProps?.classList.add('background-media-item-text');
     vidOrImgPros?.classList.add('background-media-item-vidimg');
-    cta1?.classList.add('background-media-item-cta-money');
-    cta2?.classList.add('background-media-item-cta-ghost');
+    cta1?.classList.add('background-media-item-cta-money', 'bg-media-btns');
+    cta2?.classList.add('background-media-item-cta-ghost', 'bg-media-btns');
 
     // checking whether current childBlock is background-image or background-video
     if (vidOrImgPros?.children?.length === 1) {
@@ -62,7 +73,7 @@ export default function decorate(block) {
       childrenBlock.append(vidOrImgPros);
     }
 
-    const [eyebrow, headline, brandIcon, copytext, classes] = generateTextProps(
+    const [eyebrow, headline, brandIcon, copytext, gradClas, alignClass] = generateTextProps(
       generalProps,
       generalPropIcon,
       copyTextContainer,
@@ -71,7 +82,8 @@ export default function decorate(block) {
 
     // fetching eyebrow, headline, class list details
     generalProps.textContent = '';
-    const listOfClasses = classes ? classes.textContent.split(',') : '';
+    generalProps.classList.add(alignClass?.textContent || '');
+    const listOfClasses = gradClas ? gradClas.textContent.split(',') : '';
 
     // adding class names to eyebrow and headline
     if (eyebrow) eyebrow.classList.add('background-media-item-text-eyebrow');
@@ -98,16 +110,25 @@ export default function decorate(block) {
     // append copyText detail
     generalProps.append(detailAndBrandDiv);
 
+    // button container
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('bg-media-btn-container');
+    let isButtonPresent = false;
+
     // extracting classnames for cta and binding it to anchor link
     if (cta1?.children.length > 1) {
-      generateCtaButtons(cta1);
-      generalProps.append(cta1);
+      generateCtaButtons(cta1, btnContainer);
+      btnContainer.append(cta1);
+      isButtonPresent = true;
     }
 
     if (cta2?.children.length > 1) {
-      generateCtaButtons(cta2);
-      generalProps.append(cta2);
+      generateCtaButtons(cta2, btnContainer);
+      btnContainer.append(cta2);
+      isButtonPresent = true;
     }
+
+    if (isButtonPresent) generalProps.append(btnContainer);
 
     childrenBlock.append(generalProps);
 

@@ -10,7 +10,6 @@ changeAllVidSrcOnResize();
 
 const page_tracking = {"page": {
         "pageInfo": {
-            "pageID": "/content/bmw/marketB4R1/bmw_rs/sr_RS/index",
             "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
             "destinationURL": "https://www.bmw.rs/sr/index.html",
             "variant": "real page",
@@ -109,7 +108,6 @@ function set_page_tracking(){
     var geoReg = document.querySelector('meta[name="georegion"]');
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
-    page_tracking.page.pageInfo.pageID = window.location.pathname;
     page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
     page_tracking.page.pageInfo.destinationURL = window.location.href;
     page_tracking.page.pageInfo.pageTitle = document.title;
@@ -142,29 +140,30 @@ function set_page_tracking(){
       }
     }
 
-    if (window.matchMedia("(min-width: 1024px)").matches) {
+    if (window.matchMedia("(min-width: 1280px)").matches) {
         page_tracking.page.pageInfo.sysEnv = "desktop";
+    } else if (window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches) {
+        page_tracking.page.pageInfo.sysEnv = "responsive";
     } else {
         page_tracking.page.pageInfo.sysEnv = "mobile";
     }
 
-    
     const path = window.location.pathname;
     const pathParts = path.split('/').filter(part => part !== ''); // Filter out empty parts
     const formattedPath = pathParts.map(part => part.replace(/[^\w\s]/g, '')).join(':'); // Remove special characters
 
-    fetch(window.location.href)
-    .then(response => {
-      if (!response.ok) {
-        page_tracking.page.pageInfo.pageName = "web:errorpage";
+    if(document.title ==='Page not found' && document.body.innerHTML.includes('404') && document.body.innerHTML.includes('Page Not Found'))
+    {     
+      page_tracking.page.pageInfo.pageName = "web:errorpage";
+      page_tracking.page.pageInfo.pageID = "errorpage";
+    } else {
+      page_tracking.page.pageInfo.pageID = window.location.pathname;
+      if (formattedPath !== '') {
+        page_tracking.page.pageInfo.pageName = "web:home:" + formattedPath;
       } else {
-        if (formattedPath !== '') {
-          page_tracking.page.pageInfo.pageName = "web:home:" + formattedPath;
-        } else {
-            page_tracking.page.pageInfo.pageName = "web:home";
-        }
+          page_tracking.page.pageInfo.pageName = "web:home";
       }
-    })
+    }
 
     const metaTag = document.querySelector('meta[name="env"]');
     if (metaTag && metaTag.content) {

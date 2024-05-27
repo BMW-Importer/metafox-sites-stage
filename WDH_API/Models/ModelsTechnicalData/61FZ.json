@@ -10,7 +10,7 @@
   "bodyTypeCode": "TO",
   "marketingBodyTypeCode": "TO",
   "bodyTypeDescription": "TOU",
-  "effectDate": "2024-05-21",
+  "effectDate": "2024-05-16",
   "hybridCode": "NOHY",
   "fromPrice": 76425,
   "seats": 5,
@@ -56,8 +56,6 @@
           "emissionsWltpCombined": "173 - 157",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
-          "noiseDriving": "-",
-          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
