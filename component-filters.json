@@ -215,9 +215,9 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": ["p"],
+      "advanced": ["h3"],
       "extensions": [],
-      "editor": ["removeformat"]
+       "editor": []
     }
   },
   {
