@@ -2482,7 +2482,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "content_videoCarouselTab3",
+        "name": "cta_videoCarouselTab3",
         "description": "Tab that includes button/link properties field."
       },
       {
@@ -2585,7 +2585,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "content_imageCarouselTab3",
+        "name": "cta_imageCarouselTab3",
         "description": "Tab that includes button/link properties field."
       },
       {
