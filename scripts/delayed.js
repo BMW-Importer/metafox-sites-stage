@@ -140,8 +140,10 @@ function set_page_tracking(){
       }
     }
 
-    if (window.matchMedia("(min-width: 1024px)").matches) {
+    if (window.matchMedia("(min-width: 1280px)").matches) {
         page_tracking.page.pageInfo.sysEnv = "desktop";
+    } else if (window.matchMedia("(min-width: 768px) and (max-width: 1279px)").matches) {
+        page_tracking.page.pageInfo.sysEnv = "responsive";
     } else {
         page_tracking.page.pageInfo.sysEnv = "mobile";
     }
