@@ -2424,21 +2424,19 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoCarouselDesktopPath",
-        "description": "Defines the path to a video on the desktop.",
+        "name": "desktopVideoCarouselPath",
         "label": "Desktop Video Path",
         "multi": false,
-        "value": "",
-        "required": true
+        "required": true,
+        "description" : "Defines the path to a video on the desktop."
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "videoCarouselMobilePath",
-        "description": "Defines the path to a video on the mobile.",
+        "name": "mobileVideoCarouselPath",
         "label": "Mobile Video Path",
-        "value": "",
-        "multi": false
+        "multi": false,
+        "description" : "Defines the path to a video on the mobile."
       },
       {
         "component": "reference",
