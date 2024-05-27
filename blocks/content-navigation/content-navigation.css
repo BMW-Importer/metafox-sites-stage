@@ -338,7 +338,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         display: flex;
         align-items: center;
         overflow-x: auto;
-        white-space: nowrap;  
+        white-space: nowrap;
+        scrollbar-width: none; 
       }
   
       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
@@ -416,7 +417,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
   
       .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-right {
         cursor: pointer;
-        font-size: 1.25rem;
+        font-size: 1rem;
         position: absolute;
         right: 0;
         padding: 0;
@@ -430,7 +431,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
   
       .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-left {    
         cursor: pointer;
-        font-size: 1.25rem;
+        font-size: 1rem;
         position: absolute;
         left: 0;
         padding: 0;
@@ -626,8 +627,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         padding: 0;
         margin: 0;
         display: flex;
-        overflow: hidden;
+        overflow-x: auto;
         width: 70%;
+        scrollbar-width: none;
       }
   
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-contentnavigation-list {
@@ -649,7 +651,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
         display: inline-flex;
     }
-  
+    
     }
   
   /* ipad Pro */

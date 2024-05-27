@@ -1,6 +1,5 @@
 const { body } = document;
 const sections = document.querySelectorAll('div[data-contentnavigation="true"]');
-
 function activeAnchor() {
   const scrollPosition = window.scrollY;
   const windowHeight = window.innerHeight;
@@ -46,7 +45,6 @@ function handleOnScrollContentNavHeader() {
   const navigation = document.getElementById('navigation');
   const contentNavWrapper = document.querySelector('.cmp-contentnavigation-wrapper');
   const contentNavContainer = document.querySelector('.content-navigation-container');
-  const ulList = document.querySelector('.cmp-contentnavigation-list');
   const offset = contentNavContainer?.offsetTop;
   if (window.pageYOffset >= offset) {
     navigation.classList.add('fixed-nav');
@@ -58,9 +56,6 @@ function handleOnScrollContentNavHeader() {
     } else {
       contentNavContainer.classList.add('hide');
     }
-  }
-  if (contentNavWrapper.classList.contains('fixed-nav')) {
-    ulList.style = '';
   }
   activeAnchor();
 }
@@ -90,6 +85,7 @@ function handleContenNavDesktop() {
   const links = document.querySelectorAll('.cmp-contentnavigation-list-link');
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
+      e.preventDefault();
       body.style.overflowY = 'auto';
       document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
       e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
@@ -110,16 +106,27 @@ function updateButtons(leftBtn, rightBtn, list) {
   rightBtn.style.display = -scrollAmount < list.scrollWidth - list.clientWidth ? 'none' : 'block';
 }
 
+function updateButtonsWithVariation(leftBtn, rightBtn) {
+  leftBtn.style.display = scrollAmount > 0 ? 'block' : 'none';
+  rightBtn.style.display = -scrollAmount < 0 ? 'none' : 'block';
+}
+
 function scrollLeft() {
   const list = document.querySelector('.cmp-contentnavigation-list');
   const leftArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-left');
   const rightArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-right');
-
-  leftArrowSelector.addEventListener('click', () => {
-    scrollAmount = list.scrollWidth - list.clientWidth;
-    list.style.transition = 'margin-left 0.60s ease-in';
-    list.style.marginLeft = scrollAmount;
-    updateButtons(leftArrowSelector, rightArrowSelector, list);
+  leftArrowSelector.addEventListener('click', (e) => {
+    if (e.target.parentElement.classList.contains('variation-btn')) {
+      scrollAmount = -10;
+      list.style.transition = 'margin-left 0.60s ease-in';
+      list.style.marginLeft = '0px';
+      updateButtonsWithVariation(leftArrowSelector, rightArrowSelector);
+    } else {
+      scrollAmount = list.scrollWidth - list.clientWidth;
+      list.style.transition = 'margin-left 0.60s ease-in';
+      list.style.marginLeft = scrollAmount;
+      updateButtons(leftArrowSelector, rightArrowSelector, list);
+    }
   });
 }
 
@@ -127,16 +134,22 @@ function scrollRight() {
   const rightArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-right');
   const leftArrowSelector = document.querySelector('.cmp-contentnavigation-arrow-left');
   const list = document.querySelector('.cmp-contentnavigation-list');
-  rightArrowSelector.addEventListener('click', () => {
+  rightArrowSelector.addEventListener('click', (e) => {
     scrollAmount = list.scrollWidth - list.clientWidth;
-    list.style.transition = 'margin-left 0.60s ease-in';
-    list.style.marginLeft = `-${scrollAmount}px`;
-    updateButtons(leftArrowSelector, rightArrowSelector, list);
+    if (e.target.parentElement.classList.contains('variation-btn')) {
+      list.style.transition = 'margin-left 0.60s ease-in';
+      list.style.marginLeft = `-${scrollAmount + 60}px`;
+      updateButtons(leftArrowSelector, rightArrowSelector, list, e.target.parentElement.classList.contains('variation-btn'));
+    } else {
+      list.style.transition = 'margin-left 0.60s ease-in';
+      list.style.marginLeft = `-${scrollAmount}px`;
+      updateButtons(leftArrowSelector, rightArrowSelector, list);
+    }
   });
 }
 
 function checkAnchorLinkOverflow(ul, wrapper) {
-  if (ul?.offsetWidth > window.innerWidth) {
+  if (wrapper?.scrollWidth > window.innerWidth) {
     ul.classList.add('list-overflow');
     wrapper.classList.add('wrapper-overflow');
   } else {
@@ -240,8 +253,5 @@ export default function decorate(block) {
   scrollLeft();
   scrollRight();
   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
-  // window.addEventListener('resize', () => {
-  //   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
-  // });
   window.addEventListener('hashchange', scrollToHash);
 }
