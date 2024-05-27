@@ -375,7 +375,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "tabssectiontab1"
+        "name": "content_tabssectiontab1"
       },
       {
         "component": "text-input",
@@ -413,9 +413,16 @@
         ]
       },
       {
+        "component": "boolean",
+        "label": "Display Top Margin",
+        "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
+        "name": "displaytopmargin",
+        "valueType": "boolean"
+      },
+      {
         "component": "tab",
         "label": "Anchor",
-        "name": "tabshsectiontab2"
+        "name": "anchor_tabssectiontab2"
       },
       {
         "component": "text-input",
@@ -439,6 +446,19 @@
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
         "name": "tabscontentnavigation",
         "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "analytics_tabssectiontab3"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "tabs_sectionlabel",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
