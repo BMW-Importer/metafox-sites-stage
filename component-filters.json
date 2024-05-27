@@ -172,7 +172,8 @@
       "background-media",
       "disclaimer",
       "download",
-      "quote"
+      "quote",
+      "media-carousel"
     ]
   },
   {
@@ -256,6 +257,21 @@
   },
   {
     "id": "image-slide",
+    "components": []
+  },
+  {
+    "id": "media-carousel",
+    "components": [
+      "video-carousel",
+      "image-carousel"
+    ]
+  },
+  {
+    "id": "video-carousel",
+    "components": []
+  },
+  {
+    "id": "image-carousel",
     "components": []
   },
   {
