@@ -2381,7 +2381,7 @@
         "label": "Headline"
       },
       {
-        "component": "text",
+        "component": "select",
         "label": "Headline Type",
         "name": "content_videoCarouselHeadlineType",
         "valueType": "string",
@@ -2480,6 +2480,14 @@
         "value": true
       },
       {
+        "component": "boolean",
+        "label": "Muted Video Sound",
+        "name": "media_videoCarouselMuteSoundVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
         "name": "cta_videoCarouselTab3",
@@ -2549,8 +2557,7 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true,
-        "options" :[{ "name": "H2", "value": "h2" },
-        { "name": "H3", "value": "h3" }]
+        "options" :[{ "name": "H2", "value": "h2" }]
       },
       {
         "component": "richtext",

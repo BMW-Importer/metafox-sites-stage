@@ -736,7 +736,14 @@
                 "template": {
                   "name": "Video Carousel",
                   "model": "video-carousel",
-                  "filter": "video-carousel"
+                  "filter": "video-carousel",
+                  "content_videoCarouselHeadlineType": "h2",
+                  "media_videoCarouselLoopVideo": true,
+                  "media_videoCarouselMouseHoverVideo" : true,
+                  "media_videoCarouselHideControlsVideo" : true,
+                  "media_videoCarouselMuteSoundVideo": true
+
+
                 }
               }
             }
@@ -752,7 +759,8 @@
                 "template": {
                   "name": "Image Carousel",
                   "model": "image-carousel",
-                  "filter": "image-carousel"
+                  "filter": "image-carousel",
+                  "content_imageCarouselHeadlineType": "h2"
                 }
               }
             }
