@@ -370,6 +370,115 @@
     ]
   },
   {
+    "id": "tabs-section",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_tabssectiontab1"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label of the Tab that will appear on the page.",
+        "name": "content_tablabel",
+        "value": "",
+        "label": "Tab Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_tablabelType",
+        "value": "h2",
+        "label": "Tab Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the description of the Tab, which will be read by screen-readers.",
+        "name": "content_tabdesc",
+        "value": "",
+        "label": "Tab description"
+      },
+      {
+        "component": "select",
+        "name": "content_tabstyle",
+        "value": "",
+        "label": "Tab style",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling in which the tab will be displayed.",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Buttons",
+            "value": ""
+          }
+        ]
+      },    
+      {
+        "component": "boolean", 
+        "label": "Display Top Margin",
+        "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
+        "name": "content_displaytopmargin",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "anchor_tabssectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
+        "name": "anchor_anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "anchor_anchorlabelType",
+        "value": "h2",
+        "label": "Anchor Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
+        "name": "anchor_anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
+        "name": "anchor_tabscontentnavigation",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "analytics_tabssectiontab3"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics_sectionlabel",
+        "value": "",
+        "label": "Section Label"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -2362,6 +2471,276 @@
         "label": "Download Label",
         "description": "Defines the name of the downloadable element."
       }      
+    ]
+  },
+  {
+    "id": "video-carousel",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_videoCarouselTab1"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_videoCarouselHeadline",
+        "description": "Defines the headline of the text that will appear in the page.",
+        "value": "",
+        "label": "Headline"
+      },
+      {
+        "component": "select",
+        "label": "Headline Type",
+        "name": "content_videoCarouselHeadlineType",
+        "valueType": "string",
+        "description": "Defines multiple styling options for the Headline",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_videoCarouselCopyText",
+        "description": "Defines the text that will appear in the page.",
+        "value": "",
+        "label": "Copy Text"
+      },
+      {
+        "component": "tab",
+        "label": "Video",
+        "name": "media_videoCarouselTab2",
+        "description": "Tab that includes properties of the video"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoCarouselTitle",
+        "value": "",
+        "description": "Defines the title of the video. ",
+        "label": "Video Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoCarouselText",
+        "description": "Defines the description of the video.",
+        "value": "",
+        "label": "Video Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktopVideoCarouselPath",
+        "label": "Desktop Video Path",
+        "multi": false,
+        "required": true,
+        "description" : "Defines the path to a video on the desktop."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobileVideoCarouselPath",
+        "label": "Mobile Video Path",
+        "multi": false,
+        "description" : "Defines the path to a video on the mobile."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_videoCarouselPosterDesktop",
+        "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
+        "label": "Desktop Poster Image Path",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_videoCarouselPosterMobile",
+        "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
+        "label": "Mobile Poster Image Path",
+        "multi": false
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "media_videoCarouselLoopVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Play on mouseover",
+        "name": "media_videoCarouselMouseHoverVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Video Controls",
+        "name": "media_videoCarouselHideControlsVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Muted Video Sound",
+        "name": "media_videoCarouselMuteSoundVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "cta_videoCarouselTab3",
+        "description": "Tab that includes button/link properties field."
+      },
+      {
+        "component": "text",
+        "name": "cta_videoCarouselCtaLink",
+        "label": "Link",
+        "description": "Defines the page to which the user will be directed to.",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta_videoCarouselCtaLinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "cta_videoCarouselLinkType",
+        "label": "Button Styling",
+        "value": "primary",
+        "valueType": "string",
+        "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
+        "hidden": true,
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "image-carousel",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_imageCarouselTab1",
+        "description": "Tab that includes general property fields."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_imageCarouselHeadline",
+        "description": "Defines the headline of the text that will appear in the page.",
+        "value": "",
+        "label": "Headline"
+      },
+      {
+        "component": "select",
+        "label": "Headline Type",
+        "name": "content_imageCarouselHeadlineType",
+        "description": "Defines multiple styling options for the Headline",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true,
+        "options" :[{ "name": "H2", "value": "h2" }]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_imageCarouselCopyText",
+        "description": "Defines the text that will appear in the page.",
+        "value": "",
+        "label": "Copy Text"
+      },
+      {
+        "component": "tab",
+        "label": "Image",
+        "name": "media_imageCarouselTab2",
+        "description": "Tab that includes properties of the image."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_imageCarouselImg",
+        "description": "Defines media object that can be displayed on the right side.",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageCarouselImgAlt",
+        "description": "Defines textual description of images for users with visual limitation.",
+        "value": "",
+        "label": "Alt Text"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "cta_imageCarouselTab3",
+        "description": "Tab that includes button/link properties field."
+      },
+      {
+        "component": "text",
+        "name": "cta_imageCarouselLink",
+        "description": "Defines the page to which the user will be directed to.",
+        "label": "Link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta_imageCarouselLinkText",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "label": "Link Label",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "cta_imageCarouselLinkType",
+        "label": "Button Styling",
+        "value": "",
+        "valueType": "string",
+        "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
+        "hidden": true,
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
     ]
   }
 ]

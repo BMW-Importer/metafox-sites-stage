@@ -19,11 +19,7 @@
     ],
     "hybridCode": "NOHY",
     "fromPrice": 33596,
-    "acceleration": "10.6",
-    "trunkCapacity": 380,
-    "seats": 5,
-    "horsePower": 109,
-    "topSpeed": "199",
+    "acceleration": "-",
     "bodyTypeCode": "CP",
     "marketingBodyTypeCode": "CP",
     "posiSpec": {
@@ -35,9 +31,9 @@
     },
     "powerTrain": {
       "fuelType": "O",
-      "systemPower": "80 (109)",
-      "systemMaxTorque": "190",
-      "gearBox": "6 - handgeschaltet",
+      "systemPower": "-",
+      "systemMaxTorque": "-",
+      "gearBox": "-",
       "driveType": "VR"
     }
   }

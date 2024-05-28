@@ -10,8 +10,13 @@
     align-items: center;
 }
 
+.download-wrapper {
+    margin-bottom: 0.75rem;
+}
+
 .download-wrapper .download.block p {
     display: inline-block;
+    margin-top: 0;
 }
 
 .download-wrapper .download.block p a::before {

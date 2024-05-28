@@ -116,6 +116,22 @@
               }
             }
           }
+        },
+        {
+          "title": "Tabs Section",
+          "id": "tabs-section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "name": "Tabs Section",
+                  "model": "tabs-section",
+                  "filter": "tabs-section"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -705,6 +721,62 @@
                   "name": "Content Navigation",
                   "model": "content-navigation",
                   "filter": "content-navigation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Media Carousel",
+          "id": "media-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Media Carousel",
+                  "model": "media-carousel",
+                  "filter": "media-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Video Carousel",
+          "id": "video-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Video Carousel",
+                  "model": "video-carousel",
+                  "filter": "video-carousel",
+                  "content_videoCarouselHeadlineType": "h2",
+                  "media_videoCarouselLoopVideo": true,
+                  "media_videoCarouselMouseHoverVideo" : true,
+                  "media_videoCarouselHideControlsVideo" : true,
+                  "media_videoCarouselMuteSoundVideo": true
+
+
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image Carousel",
+          "id": "image-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Image Carousel",
+                  "model": "image-carousel",
+                  "filter": "image-carousel",
+                  "content_imageCarouselHeadlineType": "h2"
                 }
               }
             }
