@@ -7,7 +7,8 @@
       "footer-section",
       "header-section",
       "bmw-video",
-      "flexible-width-section"
+      "flexible-width-section",
+      "tabs-section"
     ]
   },
   {
@@ -191,6 +192,10 @@
       "download",
       "quote"
     ]
+  },
+  {
+    "id": "tabs-section",
+    "components":[]
   },
   {
     "id": "copy_text",
