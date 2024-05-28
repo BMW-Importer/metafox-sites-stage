@@ -381,21 +381,29 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label of the Tab that will appear on the page.",
-        "name": "tablabel",
+        "name": "content_tablabel",
         "value": "",
         "label": "Tab Label"
       },
       {
         "component": "text-input",
         "valueType": "string",
+        "name": "content_tablabelType",
+        "value": "h2",
+        "label": "Tab Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
         "description": "Defines the description of the Tab, which will be read by screen-readers.",
-        "name": "tabdesc",
+        "name": "content_tabdesc",
         "value": "",
         "label": "Tab description"
       },
       {
         "component": "select",
-        "name": "tabstyle",
+        "name": "content_tabstyle",
         "value": "",
         "label": "Tab style",
         "valueType": "string",
@@ -411,12 +419,12 @@
             "value": ""
           }
         ]
-      },
+      },    
       {
-        "component": "boolean",
+        "component": "boolean", 
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
-        "name": "displaytopmargin",
+        "name": "content_displaytopmargin",
         "valueType": "boolean"
       },
       {
@@ -428,15 +436,23 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "tabs_anchorlabel",
+        "name": "anchor_anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
       {
         "component": "text-input",
         "valueType": "string",
+        "name": "anchor_anchorlabelType",
+        "value": "h2",
+        "label": "Anchor Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "tabs_anchorid",
+        "name": "anchor_anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -444,7 +460,7 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "tabscontentnavigation",
+        "name": "anchor_tabscontentnavigation",
         "valueType": "boolean"
       },
       {
@@ -456,7 +472,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "tabs_sectionlabel",
+        "name": "analytics_sectionlabel",
         "value": "",
         "label": "Section Label"
       }
