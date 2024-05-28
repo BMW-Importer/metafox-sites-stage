@@ -37,11 +37,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     color: var(--light-text-color)    
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
-header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {    
-    width: 25%;
-}
-
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
     padding: 0 0.75rem;
 }
@@ -51,10 +46,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     display: block;
     width: 100%;
     padding: 0 0.75rem;
-}
-
-header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
-    width: 21.5%;    
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
