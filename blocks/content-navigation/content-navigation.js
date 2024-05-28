@@ -1,6 +1,7 @@
 const { body } = document;
 const sections = document.querySelectorAll('div[data-contentnavigation="true"]');
-function activeAnchor() {
+
+function handleOnScrollActiveLink() {
   const scrollPosition = window.scrollY;
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
@@ -57,7 +58,7 @@ function handleOnScrollContentNavHeader() {
       contentNavContainer.classList.add('hide');
     }
   }
-  activeAnchor();
+  handleOnScrollActiveLink();
 }
 
 function handleDropDownContenNavMobile() {
@@ -81,11 +82,10 @@ function handleDropDownContenNavMobile() {
   });
 }
 
-function handleContenNavDesktop() {
+function handleOnclickscrollToTop() {
   const links = document.querySelectorAll('.cmp-contentnavigation-list-link');
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
       body.style.overflowY = 'auto';
       document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
       e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
@@ -249,7 +249,7 @@ export default function decorate(block) {
   }
   window.addEventListener('scroll', handleOnScrollContentNavHeader);
   handleDropDownContenNavMobile();
-  handleContenNavDesktop();
+  handleOnclickscrollToTop();
   scrollLeft();
   scrollRight();
   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);

@@ -93,6 +93,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       background: var(--light-link-hover-color);
       color: var(--background-color);
     }
+
+    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor:hover {
+      background: var(--bg-media-btn-hover);
+    }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item.active{
       border-bottom: .25rem solid var(--medium-text-color);
