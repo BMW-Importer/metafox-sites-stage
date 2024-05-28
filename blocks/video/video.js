@@ -1,33 +1,34 @@
+/* global videojs */
+const videoJsStyle = 'https://vjs.zencdn.net/8.10.0/video-js.css';
+const videoJsLibrary = 'https://vjs.zencdn.net/8.10.0/video.min.js';
 let isScriptAdded = false;
-export function changeAllVidSrcOnResize() {
-  window.addEventListener('resize', () => {
-    const listOfVideos = document.querySelectorAll('video');
-    listOfVideos.forEach((video) => {
-      const sourceEl = video.querySelector('source');
-      const posterDiv = video.parentElement.querySelector('.vjs-poster picture img');
+let videojsFunction;
 
-      const desktopVidPath = sourceEl.getAttribute('data-desktop-vid');
-      const mobileVidPath = sourceEl.getAttribute('data-mobile-vid');
+function loadScript(url, callback) {
+  const styleSheet = document.createElement('link');
+  styleSheet.rel = 'stylesheet';
+  styleSheet.href = videoJsStyle;
+  document.head.append(styleSheet);
 
-      const desktopPosterPath = video.getAttribute('data-desktop-poster');
-      const mobilePosterPath = video.getAttribute('data-mobile-poster');
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = url;
+  script.async = true;
+  document.head.append(script);
 
-      if (window.innerWidth > 768) {
-        if (video.src !== desktopVidPath) {
-          video.src = desktopVidPath;
-          sourceEl.src = desktopVidPath;
-          video.poster = desktopPosterPath;
-          posterDiv.src = desktopPosterPath;
-        }
-      } else if (mobileVidPath) {
-        if (video.src !== mobileVidPath) {
-          video.src = mobileVidPath;
-          sourceEl.src = mobileVidPath;
-          video.poster = mobilePosterPath;
-          posterDiv.src = mobilePosterPath;
-        }
-      }
-    });
+  // Call the callback function once the script is loaded
+  script.onload = () => {
+    callback();
+  };
+}
+
+function triggerLoadingVideoJsLib() {
+  loadScript(videoJsLibrary, () => {
+    // once after videojs library is loaded then save videojs funtion in a variable so that
+    // it can be called wen resize screen hapepns to load video again after changing src
+    if (typeof videojs === 'function') {
+      videojsFunction = videojs;
+    }
   });
 }
 
@@ -56,22 +57,8 @@ function embedVimeo(url, autoplay) {
     </div>`;
 }
 
-export function getVideoElement(
-  videoTitle,
-  videoDescp,
-  source,
-  videoFormat,
-  autoplay,
-  enableLoop,
-  enableHideControls,
-  muted,
-  posters,
-  onHoverPlay,
-) {
-  const video = document.createElement('video');
-  video.dataset.loading = 'true';
-  video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
-
+function enableVideoFeature(props) {
+  const [video, enableHideControls, autoplay, enableLoop, muted, onHoverPlay] = props;
   if (!enableHideControls) {
     video.setAttribute('controls', '');
   }
@@ -94,44 +81,52 @@ export function getVideoElement(
   video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
-  video.setAttribute('title', videoTitle?.textContent ?? '');
-  video.setAttribute('data-description', videoDescp?.textContent ?? '');
+
+  if (window.innerWidth < 768) {
+    video.setAttribute('data-isDesktop', false);
+  } else {
+    video.setAttribute('data-isDesktop', true);
+  }
+}
+
+export function getVideoElement(props) {
+  const [videoTitle, videoDescp, source, videoFormat, autoplay,
+    enableLoop, enableHideControls, muted, posters, onHoverPlay] = props;
+
+  const video = document.createElement('video');
+  video.dataset.loading = 'true';
+  video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
+
+  // generate video controls
+  enableVideoFeature([video, enableHideControls, autoplay, enableLoop, muted, onHoverPlay]);
+
+  video.setAttribute('title', videoTitle ?? '');
+  video.setAttribute('data-description', videoDescp ?? '');
 
   const sourceEl = document.createElement('source');
 
-  const mobileWidth = window.innerWidth < 768;
-  if (source.desktop && !mobileWidth) {
-    sourceEl.setAttribute('src', source?.desktop);
-    video.setAttribute('poster', posters?.desktop);
-  } else if (source.mobile) {
+  if (window.innerWidth < 768 && source?.mobile) {
     sourceEl.setAttribute('src', source?.mobile);
-    video.setAttribute('poster', posters?.mobile || '');
-  } else {
-    sourceEl.setAttribute('src', source?.desktop);
-    video.setAttribute('poster', posters?.desktop);
-  }
+    video.setAttribute('poster', posters?.mobile || posters?.desktop);
 
-  video.setAttribute('data-desktop-poster', posters?.desktop);
-  video.setAttribute('data-mobile-poster', posters?.mobile || '');
-
-  sourceEl.setAttribute('data-desktop-vid', source?.desktop);
-  sourceEl.setAttribute('data-mobile-vid', source?.mobile);
-
-  if (source.desktop && !mobileWidth) {
-    if (videoFormat === '.mp4') {
-      sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
-    } else if (videoFormat === '.m3u8') {
-      sourceEl.setAttribute('type', 'application/x-mpegURL');
-    }
-    video.append(sourceEl);
-  } else {
     if (videoFormat === '.mp4') {
       sourceEl.setAttribute('type', `video/${source.mobile.split('.').pop()}`);
     } else if (videoFormat === '.m3u8') {
       sourceEl.setAttribute('type', 'application/x-mpegURL');
     }
     video.append(sourceEl);
+  } else {
+    sourceEl.setAttribute('src', source?.desktop);
+    video.setAttribute('poster', posters?.desktop);
+
+    if (videoFormat === '.mp4') {
+      sourceEl.setAttribute('type', `video/${source.desktop.split('.').pop()}`);
+    } else if (videoFormat === '.m3u8') {
+      sourceEl.setAttribute('type', 'application/x-mpegURL');
+    }
+    video.append(sourceEl);
   }
+
   video.addEventListener('click', (event) => {
     event.stopImmediatePropagation();
     if (video.paused) {
@@ -156,13 +151,13 @@ export function getVideoElement(
         if (!userUnmuted) {
           video.muted = true;
         }
-        video.play().then(() => {}).catch(() => {});
+        video.play().then(() => { }).catch(() => { });
       }
     });
 
     video.addEventListener('mouseleave', () => {
       if (!video.paused) {
-        if (posters.desktop && !mobileWidth) {
+        if (posters.desktop && window.innerWidth > 768) {
           video.setAttribute('poster', posters.desktop);
         } else {
           video.setAttribute('poster', posters.mobile);
@@ -171,8 +166,8 @@ export function getVideoElement(
       }
     });
   } else {
-    video.removeEventListener('mouseenter', () => {});
-    video.removeEventListener('mouseleave', () => {});
+    video.removeEventListener('mouseenter', () => { });
+    video.removeEventListener('mouseleave', () => { });
   }
 
   video.addEventListener('touchstart', () => {
@@ -222,74 +217,115 @@ function isAbsoluteUrl(url) {
   return /^(https?:)?\/\//i.test(url);
 }
 
-export function loadVideoEmbed(
-  block,
-  videoTitle,
-  videoDescp,
-  linkObject,
-  autoplay,
-  loop,
-  enableHideControls,
-  muted,
-  posters,
-  onHoverPlay = false,
-) {
-  if (block.dataset.embedIsLoaded) {
-    return;
-  }
-
-  const baseUrl = window.location.origin;
-  let desktopUrl;
-  let mobileUrl;
-  if (isAbsoluteUrl(linkObject.desktop)) {
-    desktopUrl = new URL(linkObject.desktop);
+// below function generates url
+function generateUrlObject(linkObject) {
+  const videoUrl = window.innerWidth > 768 ? linkObject.desktop
+    : (linkObject.mobile || linkObject.desktop);
+  let videoObject;
+  if (!isAbsoluteUrl(videoUrl)) {
+    videoObject = new URL(videoUrl, window.location.origin);
   } else {
-    desktopUrl = new URL(linkObject.desktop, baseUrl);
+    videoObject = new URL(videoUrl);
   }
-  if (isAbsoluteUrl(linkObject.mobile)) {
-    mobileUrl = new URL(linkObject.mobile);
-  } else {
-    mobileUrl = new URL(linkObject.mobile, baseUrl);
-  }
+  return videoObject;
+}
 
-  const isYoutube = linkObject.desktop ? linkObject.desktop.includes('youtube') || linkObject.desktop.includes('youtu.be')
-    : linkObject.mobile.includes('youtube') || linkObject.mobile.includes('youtu.be');
-  const isVimeo = linkObject.desktop ? linkObject.desktop.includes('vimeo')
-    : linkObject.mobile.includes('vimeo');
-  const isMp4 = linkObject.desktop ? linkObject.desktop.includes('.mp4')
-    : linkObject.mobile.includes('.mp4');
-  const isM3U8 = linkObject.desktop ? linkObject.desktop.includes('.m3u8')
-    : linkObject.mobile.includes('.m3u8');
+// this function sets input properties values as data attr to parents block element
+function setDataAttributeToBlock(props) {
+  const [block, videoTitle, videoDescp, linkObject, autoplay,
+    loop, enableHideControls, muted, posters, onHoverPlay = false] = props;
+  block.setAttribute('data-video-title', videoTitle);
+  block.setAttribute('data-video-desp', videoDescp);
+  block.setAttribute('data-video-desktop', linkObject?.desktop);
+  block.setAttribute('data-video-mobile', linkObject?.mobile);
+  block.setAttribute('data-video-autoplay', autoplay);
+  block.setAttribute('data-video-loop', loop);
+  block.setAttribute('data-video-controls', enableHideControls);
+  block.setAttribute('data-video-muted', muted);
+  block.setAttribute('data-poster-desktop', posters?.desktop);
+  block.setAttribute('data-poster-mobile', posters.mobile);
+  block.setAttribute('data-video-hover', onHoverPlay);
+}
 
-  const isMobile = window.innerWidth < 768;
+export function loadVideoEmbed(props) {
+  const [block, videoTitle, videoDescp, linkObject,
+    autoplay, loop, enableHideControls, muted, posters, onHoverPlay = false] = props;
 
-  const videoScriptDOM = document.createRange().createContextualFragment('<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" /><script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>');
-  const headElement = document.querySelector('head');
+  if (block?.dataset?.embedIsLoaded === true) return;
+
+  setDataAttributeToBlock(props);
+
+  const videoUrl = generateUrlObject(linkObject);
+
+  const isYoutube = videoUrl?.href?.includes('youtube') || videoUrl?.href?.includes('youtu.be');
+  const isVimeo = videoUrl?.href?.includes('vimeo');
+  const isMp4 = videoUrl?.href?.includes('.mp4');
+  const isM3U8 = videoUrl?.href?.includes('.m3u8');
+
+  block.classList.add('video-parent-block');
+  block.textContent = '';
 
   if (isYoutube) {
-    const desktopEmbed = embedYoutube(desktopUrl, autoplay);
-    const mobileEmbed = embedYoutube(mobileUrl, autoplay);
-    block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
+    block.innerHTML = embedYoutube(videoUrl, autoplay);
   } else if (isVimeo) {
-    const desktopEmbed = embedVimeo(desktopUrl, autoplay);
-    const mobileEmbed = embedVimeo(mobileUrl, autoplay);
-    block.innerHTML = isMobile ? mobileEmbed : desktopEmbed;
+    block.innerHTML = embedVimeo(videoUrl, autoplay);
   } else if (isMp4) {
-    block.textContent = '';
-
-    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableHideControls, muted, posters, onHoverPlay));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableHideControls, muted, posters, onHoverPlay]));
   } else if (isM3U8) {
-    block.textContent = '';
-
-    if (!isScriptAdded) headElement.append(videoScriptDOM);
+    if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-
-    block.append(getVideoElement(videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableHideControls, muted, posters, onHoverPlay));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableHideControls, muted, posters, onHoverPlay]));
   }
 
   block.dataset.embedIsLoaded = true;
+}
+
+export function changeAllVidSrcOnResize() {
+  window.addEventListener('resize', () => {
+    const listOfVideos = document.querySelectorAll('video');
+    listOfVideos.forEach((video) => {
+      const isDesktopVideo = video.getAttribute('data-isDesktop');
+      const parentElementBlock = video.closest('.video-parent-block');
+      const videoTitle = parentElementBlock.getAttribute('data-video-title');
+      const videoDescp = parentElementBlock.getAttribute('data-video-desp');
+      const desktopPath = parentElementBlock.getAttribute('data-video-desktop');
+      const mobPath = parentElementBlock.getAttribute('data-video-mobile');
+      const autoplay = parentElementBlock.getAttribute('data-video-autoplay');
+      const loop = parentElementBlock.getAttribute('data-video-loop');
+      const enableHideControls = parentElementBlock.getAttribute('data-video-controls');
+      const muted = parentElementBlock.getAttribute('data-video-muted');
+      const desktopPoster = parentElementBlock.getAttribute('data-poster-desktop');
+      const mobilePoster = parentElementBlock.getAttribute('data-poster-mobile');
+      const onHoverPlay = parentElementBlock.getAttribute('data-video-hover');
+      const linkObject = { desktop: desktopPath, mobile: mobPath };
+      const posterImgObj = { desktop: desktopPoster, mobile: mobilePoster || '' };
+
+      // if its tab and desktop resokution and attr s false it means
+      // we need to change vudei source to desktop vid
+      if ((window.innerWidth > 768 && isDesktopVideo === 'false') || (window.innerWidth <= 768 && isDesktopVideo === 'true')) {
+        parentElementBlock.dataset.embedIsLoaded = false;
+        loadVideoEmbed([
+          parentElementBlock,
+          videoTitle,
+          videoDescp,
+          linkObject,
+          autoplay,
+          loop,
+          enableHideControls,
+          muted,
+          posterImgObj,
+          onHoverPlay,
+        ]);
+        const newlyGeneratedVideo = parentElementBlock.querySelector('video');
+
+        if (typeof videojsFunction === 'function') {
+          videojsFunction(newlyGeneratedVideo);
+        }
+      }
+    });
+  });
 }
 
 export default async function decorate(block) {
@@ -327,10 +363,10 @@ export default async function decorate(block) {
   const onHoverPlay = false;
 
   if (placeholder) {
-    loadVideoEmbed(
+    loadVideoEmbed([
       block,
-      videoTitle,
-      videoDescp,
+      videoTitle.textContent,
+      videoDescp.textContent,
       linkObject,
       autoplay,
       loop,
@@ -338,13 +374,13 @@ export default async function decorate(block) {
       muted,
       posters,
       onHoverPlay,
-    );
+    ]);
   } else {
     block.classList.add('lazy-loading');
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
-        loadVideoEmbed(
+        loadVideoEmbed([
           block,
           videoTitle,
           videoDescp,
@@ -355,7 +391,7 @@ export default async function decorate(block) {
           muted,
           posters,
           onHoverPlay,
-        );
+        ]);
         block.classList.remove('lazy-loading');
       }
     });
