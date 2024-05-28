@@ -10,13 +10,14 @@ function handleOnScrollActiveLink() {
     const sectionId = section.getAttribute('data-anchorid');
     const sectionOffset = section.offsetTop;
     const sectionHeight = section.offsetHeight;
-    const sectionElement = document.querySelector(`[data-anchor="#${sectionId}"]`);
-    const parentElement = sectionElement?.parentNode;
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-      parentElement.classList.add('active');
+      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.add('active');
       activeSectionId = sectionId;
+      if (window.innerWidth < 768) {
+        document.getElementById('navdropdownMenuButton').textContent = document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.textContent;
+      }
     } else {
-      parentElement.classList.remove('active');
+      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.remove('active');
     }
   });
 
