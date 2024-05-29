@@ -1,6 +1,5 @@
 main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     display: flex;
-    justify-content: center;
     align-self: center;
   }
   
@@ -31,7 +30,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       right: 0;
       height: 5.25rem;
     }
-  
+
+   
     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {
       backdrop-filter: blur(10px);
       background-color: var(--background-color);
@@ -44,6 +44,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item {
       margin-right: 0.5rem;    
       list-style-type: none;
+      cursor: pointer;
     }
     
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
@@ -54,6 +55,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       background: transparent;
       cursor: pointer;
       font-size: 1rem;
+    }
+
+    .content-navigation-container .content-navigation-wrapper .active .cmp-contentnavigation-list-link {
+      color: var(--light-text-color);
     }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link:hover {
@@ -91,8 +96,12 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       padding: 0 1.625rem;
       text-decoration: none;
       white-space: nowrap;
-      background: var(--link-color);
+      background: var(--light-link-hover-color);
       color: var(--background-color);
+    }
+
+    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor:hover {
+      background: var(--bg-media-btn-hover);
     }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item.active{
@@ -152,7 +161,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       }
   
      .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-filter-toggle {
-      color: var(--medium-text-color);
+      color: var(--light-border-color);
       padding: 1rem;
       width: 100%;
       position: relative;
@@ -161,6 +170,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       padding-left: 0;
       height: 3.25rem;
       align-self: center;
+      font-size: 14px;
      }
      
      .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-filter-toggle {
@@ -334,27 +344,30 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     /* ipad css */
   
     @media (width >= 767px) and (width < 1280px) {
-      .cmp-contentnavigation-wrapper {
-        display: flex;
-      }
-  
       main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         padding: 0;
         display: flex;
         align-items: center;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none; 
       }
-  
-      .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
-        padding-left: 3rem;
-        padding-right: 3rem;
+
+      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
+        padding-right: 0 !important;
+        height: 3.3rem !important;
       }
-  
+
+      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.variation-btn {
+        padding-left: 0;
+      }
+
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
-        padding: 0 0.5rem;
+        padding: 1rem 0.5rem;
       }
   
       .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-arrow-right {
-        position: relative;
+        /* position: relative; */
         display: block;
         height: auto;
         left: 94%;
@@ -413,9 +426,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         
       }
   
-      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav .cmp-contentnavigation-arrow-right {
+      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-right {
         cursor: pointer;
-        font-size: 1.25rem;
+        font-size: 1rem;
         position: absolute;
         right: 2rem;
         padding: 0;
@@ -427,9 +440,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         background-color: var(--background-color)
       }
   
-      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav .cmp-contentnavigation-arrow-left {    
+      .content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-left {    
         cursor: pointer;
-        font-size: 1.25rem;
+        font-size: 1rem;
         position: absolute;
         left: 2rem;
         padding: 0;
@@ -484,7 +497,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         outline: transparent solid 1px;
         white-space: nowrap;
         color: var(--text-color);
-        box-shadow: 13px -9px 21px 19px var(--background-color),54px -8px 21px 1.25rem var(--background-color);
+        box-shadow: 0 -9px 21px 19px var(--background-color),54px -8px 21px 1.25rem var(--background-color);
        
       }
   
@@ -513,24 +526,17 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-contentnavigation-list {
         color: var(--medium-text-color);
         padding: 1rem;
-        width: 100%;
-        position: relative;
         left: 0;
         display: flex;
         padding-left: 0;
         margin: 0;
        }
-  
-       .content-navigation-container .fixed-nav .cmp-contentnavigation-list {
-        padding:0 0 0 5rem;
-       
-  
-       }
     
        .cmp-contentnavigation-wrapper.variation-btn .cmp-contentnavigation-list {
         color: var(--medium-text-color);
         padding: 1rem;
-        width: 60%;
+
+        /* width: 60%; */
         position: relative;
         left: 0;
         display: flex;
@@ -548,6 +554,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         justify-content: right;
         align-items: center;
         z-index: 999;
+        padding-right: 3rem;
       }
   
       .section.content-navigation-container .cmp-contentnavigation-wrapper .cmp-contentnavigation-list.tablet-only .cmp-contentnavigation-anchor-container.desktop-only {
@@ -559,16 +566,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         display: block !important;
        }
      
-       .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-list {
+       /* .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-list {
         width: 90%;
         overflow-x: scroll;
         scrollbar-width: none;
-       }
-  
-       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
-        padding-left: 0;
-        height: 3.3rem !important;
-       }
+       } */
   
        .cmp-contentnavigation-wrapper.variation-btn.fixed-nav .cmp-contentnavigation-list {
         margin: 0;
@@ -599,7 +601,38 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         min-height: 2.50rem;
         display: inline-flex;
       }
-  
+
+    /* css for anchor link greater than viewport ipad start */ 
+
+    .content-navigation-container .fixed-nav.wrapper-overflow .cmp-contentnavigation-list.list-overflow {
+      padding-left: 1rem;
+      overflow-x: hidden;
+      width: auto;
+      scrollbar-width: none;
+     }
+
+     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow.variation-btn {
+      padding-right: 0 !important;
+      padding-left: 0;
+
+     }
+
+     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper.variation-btn.fixed-nav.wrapper-overflow .cmp-contentnavigation-arrow-right {
+      position: absolute;
+      right: 45%;
+      top: 0;
+      display: block;
+     }
+
+    
+     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow {
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      padding-left: 1rem;
+      padding-right: 4rem !important;
+     }
+
     }
   
     @media (width >= 1280px) { 
@@ -608,8 +641,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         padding: 0;
         margin: 0;
         display: flex;
-        overflow: hidden;
+        overflow-x: auto;
         width: 70%;
+        scrollbar-width: none;
       }
   
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-contentnavigation-list {
@@ -619,6 +653,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         display: flex;
         overflow: hidden;
         width: 100%;
+        z-index: 999;
     }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container{
@@ -631,7 +666,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
         display: inline-flex;
     }
-  
+    
     }
   
   /* ipad Pro */

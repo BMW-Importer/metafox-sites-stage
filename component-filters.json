@@ -221,9 +221,9 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": [],
+      "advanced": ["h3"],
       "extensions": [],
-      "editor": []
+       "editor": []
     }
   },
   {
