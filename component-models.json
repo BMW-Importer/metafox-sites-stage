@@ -260,7 +260,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorlabel",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -268,7 +268,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorid",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -276,7 +276,7 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "",
-        "name": "sectioncontentnavigation",
+        "name": "contentnavigation",
         "valueType": "boolean"
       }
     ]

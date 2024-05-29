@@ -6,18 +6,42 @@ function handleOnScrollActiveLink() {
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
   let activeSectionId = null;
+
   sections.forEach((section) => {
     const sectionId = section.getAttribute('data-anchorid');
     const sectionOffset = section.offsetTop;
     const sectionHeight = section.offsetHeight;
+    const anchorElement = document.querySelector(`[data-anchor="#${sectionId}"]`);
+    const parentElement = anchorElement?.parentNode;
+
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.add('active');
+      parentElement?.classList.add('active');
       activeSectionId = sectionId;
+
+      const list = document.querySelector('.cmp-contentnavigation-list');
+      if (list && list.classList.contains('list-overflow')) {
+        const activeItem = parentElement;
+        const itemRect = activeItem.getBoundingClientRect();
+        const listRect = list.getBoundingClientRect();
+
+        if (itemRect.right > listRect.right || itemRect.left < listRect.left) {
+          const scrollAmount = Math.min(
+            itemRect.left - listRect.left,
+            list.scrollWidth - list.clientWidth,
+          );
+          list.style.transition = 'margin-left 0.60s ease-in';
+          list.style.marginLeft = `${-scrollAmount}px`;
+        } else {
+          list.style.transition = 'margin-left 0.60s ease-in';
+          list.style.marginLeft = '0px';
+        }
+      }
+
       if (window.innerWidth < 768) {
-        document.getElementById('navdropdownMenuButton').textContent = document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.textContent;
+        document.getElementById('navdropdownMenuButton').textContent = parentElement?.textContent.trim();
       }
     } else {
-      document.querySelector(`[data-anchor="#${sectionId}"]`)?.parentNode.classList.remove('active');
+      parentElement?.classList.remove('active');
     }
   });
 

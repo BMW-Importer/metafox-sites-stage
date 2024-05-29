@@ -352,7 +352,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       }
 
       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.variation-btn {
-        padding-left: 1rem !important;
+        padding-left: 0;
       }
 
       .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
@@ -547,6 +547,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         justify-content: right;
         align-items: center;
         z-index: 999;
+        padding-right: 3rem;
       }
   
       .section.content-navigation-container .cmp-contentnavigation-wrapper .cmp-contentnavigation-list.tablet-only .cmp-contentnavigation-anchor-container.desktop-only {
