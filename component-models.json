@@ -663,12 +663,12 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithImageTab1"
+        "name": "content_textWithImageTab"
       },
       {
         "component": "select",
         "valueType": "string",
-        "name": "classes",
+        "name": "content_classes",
         "value": "left",
         "label": "Image Alignment",
         "description": "Defines on which side the image will appear.",
@@ -687,7 +687,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageeyebrow",
+        "name": "content_imageeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -695,29 +695,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_imageeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow Bold 1",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow Bold 2",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageheadline",
+        "name": "content_imageheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -725,7 +725,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "imageheadlineType",
+        "name": "content_imageheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -739,7 +739,7 @@
       },
       {
         "component": "richtext",
-        "name": "imagecopytext",
+        "name": "content_imagecopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -748,7 +748,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "textWithImageTab2"
+        "name": "media_textWithImageTab2"
       },
       {
         "component": "reference",
@@ -772,28 +772,28 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithImageTab3"
-      },
+        "name": "cta_textWithImageTab3"
+      },      
       {
         "component": "text",
         "valueType": "string",
-        "name": "imagebuttonlinkLabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imagebuttonlink",
+        "name": "cta_imagebuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_imagebuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
+      },
+      {
         "component": "select",
         "valueType": "string",
-        "name": "imagebuttonstyling",
+        "name": "cta_classes",
         "value": "linkbutton",
         "label": "Button Styling",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
