@@ -668,7 +668,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "content_classes",
+        "name": "classes",
         "value": "left",
         "label": "Image Alignment",
         "description": "Defines on which side the image will appear.",
@@ -789,21 +789,6 @@
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "cta_classes",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "Link Button",
-            "value": "secondary"
-          }
-        ]
       }
     ]
   },
