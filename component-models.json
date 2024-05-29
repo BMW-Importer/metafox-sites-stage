@@ -260,7 +260,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorlabel",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -268,7 +268,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorid",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -276,7 +276,7 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "",
-        "name": "sectioncontentnavigation",
+        "name": "contentnavigation",
         "valueType": "boolean"
       }
     ]
@@ -366,6 +366,115 @@
         "description": "",
         "name": "contentnavigation",
         "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "tabs-section",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_tabssectiontab1"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label of the Tab that will appear on the page.",
+        "name": "content_tablabel",
+        "value": "",
+        "label": "Tab Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_tablabelType",
+        "value": "h2",
+        "label": "Tab Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the description of the Tab, which will be read by screen-readers.",
+        "name": "content_tabdesc",
+        "value": "",
+        "label": "Tab description"
+      },
+      {
+        "component": "select",
+        "name": "content_tabstyle",
+        "value": "",
+        "label": "Tab style",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling in which the tab will be displayed.",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Buttons",
+            "value": ""
+          }
+        ]
+      },    
+      {
+        "component": "boolean", 
+        "label": "Display Top Margin",
+        "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
+        "name": "content_displaytopmargin",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Anchor",
+        "name": "anchor_tabssectiontab2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
+        "name": "anchor_anchorlabel",
+        "value": "",
+        "label": "Anchor Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "anchor_anchorlabelType",
+        "value": "h2",
+        "label": "Anchor Label",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
+        "name": "anchor_anchorid",
+        "value": "",
+        "label": "Anchor ID"
+      },
+      {
+        "component": "boolean",
+        "label": "Display in Content Navigation",
+        "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
+        "name": "anchor_tabscontentnavigation",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "analytics_tabssectiontab3"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics_sectionlabel",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -1221,7 +1330,8 @@
         "name": "videoTitle",
         "value": "",
         "label": "Video Title",
-        "required": true
+        "required": true,
+        "description" : "Defines the title of the video"
       },
       {
         "component": "text",
@@ -1229,7 +1339,8 @@
         "name": "videoDescription",
         "value": "",
         "label": "Video Description",
-        "required": true
+        "required": true,
+        "description" : "Defines the description of the video."
       },
       {
         "component": "reference",
@@ -1237,14 +1348,16 @@
         "name": "desktopVideoPath",
         "label": "Desktop Video Path",
         "multi": false,
-        "required": true
+        "required": true,
+        "description" : "Defines the path to a video on the desktop."
       },
       {
         "component": "reference",
         "valueType": "string",
         "name": "mobileVideoPath",
         "label": "Mobile Video Path",
-        "multi": false
+        "multi": false,
+        "description" : "Defines the path to a video on the mobile."
       },
       {
         "component": "reference",
@@ -1252,42 +1365,48 @@
         "name": "desktopPosterRef",
         "label": "Desktop Poster Image Path",
         "multi": false,
-        "required": true
+        "required": true,
+        "description" : "Defines the path that will be displaying poster image on desktop while loading the page."
       },
       {
         "component": "reference",
         "valueType": "string",
         "name": "mobilePosterRef",
         "label": "Mobile Poster Image Path",
-        "multi": false
+        "multi": false,
+        "description" : "Defines the path that will be displaying poster image on mobile while loading the page."
       },
       {
         "component": "boolean",
         "label": "Loop Video",
         "name": "loopVideo",
         "valueType": "boolean",
-        "value": true
+        "value": true,
+        "description" : "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
         "component": "boolean",
         "label": "Autoplay",
         "name": "videoAutoplay",
         "valueType": "boolean",
-        "value": true
+        "value": true,
+        "description" : "Defines if the video will autoplay. If toggled on, the video will autoplay and will be always on mute even if mute video sound boolean is set to off."
       },
       {
         "component": "boolean",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "hideVideoControl",
         "valueType": "boolean",
-        "value": true
+        "value": true,
+        "description" : "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
         "component": "boolean",
         "label": "Mute Video Sound",
         "name": "muteVideo",
         "valueType": "boolean",
-        "value": true
+        "value": true,
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
       }
     ]
   },
@@ -1651,16 +1770,16 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "General"
+        "name": "cn_general"
       },
       {
         "component": "text",
-        "name": "Content Navigation Description",
+        "name": "cn_general_descp",
         "label": "Content Navigation Description"
-      },
+      },      
       {
         "component": "select",
-        "name": "type",
+        "name": "cn_general_bgColor",
         "description": "change background color white or transparent",
         "value": "",
         "label": "Background Color",
@@ -1678,32 +1797,33 @@
       },
       {
         "component": "boolean",
-        "name": "Display Content Navigation",
-        "label": "Display Content Navigation"
-      },
+        "label": "Display Content Navigation",
+        "name": "cn_general_visible",
+        "valueType": "boolean"
+      },   
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "Button/Link"
+        "name": "cnButton_tab"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "button_linkLabel",
-        "value": "",
-        "label": "Link Label"        
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "buttton_link",
+        "name": "cnButton_link",
         "value": "",
         "label": "Link"
       },
       {
-        "component": "select",
-        "name": "type",
+        "component": "text",
+        "valueType": "string",
+        "name": "cnButton_linkText",
         "value": "",
+        "label": "Link Label"        
+      },
+      {
+        "component": "select",
+        "name": "cnButton_linkType",
+        "value": "secondary",
         "label": "Button styling",
         "valueType": "string",
         "options": [
@@ -1711,7 +1831,7 @@
             "name": "Money Button",
             "value": "Money Button"
           }
-        ]
+        ]    
       }
     ]
   },
@@ -1770,15 +1890,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -1800,7 +1920,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",
@@ -1814,8 +1934,8 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_subbrandicon",
-        "value": "",
+        "name": "bgImgIcon_subbrandicon",
+        "value": "noicon",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
         "description": "Defines the subbrand icons that are being displayed.",
@@ -1827,20 +1947,24 @@
           {
             "name": "Subbrand M",
             "value": "subbrandm"
+          },
+          {
+            "name": "No Subbrand Icon",
+            "value": "noicon"
           }
         ]
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgGeneral_copyText",
+        "name": "bgImgDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgImgGeneral_gradStyle",
+        "name": "bgImgStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",       
@@ -1863,6 +1987,37 @@
         ]
       },
       {
+        "component": "select",
+        "name": "bgImgStyle_elementAlign",
+        "label": "Element Alignment",
+        "valueType": "string",
+        "value": "central-left",
+        "description": "Defines alignment of the elements on image",       
+        "options": [
+          {
+            "name": "Top Left",
+            "value": "top-left"
+          },
+          {
+            "name": "Central Left",
+            "value": "central-left"
+          }
+          ,
+          {
+            "name": "Bottom Left",
+            "value": "bottom-left"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "bgImgStyle_elementAlignType",
+        "label": "Element Alignment Type",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Image",
         "name": "bgImgImage_tab"
@@ -1872,14 +2027,16 @@
         "label": "Image",
         "name": "bgImgImage_image",
         "description":"Defines the image to be displayed.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "label": "Alt Text",
         "name": "bgImgImage_imageAlt",
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },     
       {
         "component": "tab",
@@ -1905,7 +2062,8 @@
         "label": "Button Styling",
         "name": "bgImgCta1_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "money-btn money-btn-flex",      
         "options": [
           {
             "name": "Money Button",
@@ -1936,7 +2094,8 @@
         "label": "Button Styling",
         "name": "bgImgCta2_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "ghost-img-btn ghost-img-flex-btn",      
         "options": [
           {
             "name": "Ghost on Image",
@@ -1976,15 +2135,15 @@
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "h1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "h2"
+            "value": "h5"
           },
           {
             "name": "Stage Iconization",
-            "value": "h3"
+            "value": "h6"
           }
         ]
       },
@@ -2006,7 +2165,7 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h6"
+            "value": "h3"
           },
           {
             "name": "Medium (H1)",
@@ -2020,12 +2179,12 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_subbrandicon",
-        "value": "",
+        "name": "bgVidIcon_subbrandicon",
+        "value": "noicon",
         "label": "Subbrand Icon Type",
         "valueType": "string",        
         "description": "Defines the subbrand icons that are being displayed.",
-        "options": [
+        "options": [         
           {
             "name": "Subbrand i",
             "value": "subbrandi"
@@ -2033,20 +2192,24 @@
           {
             "name": "Subbrand M",
             "value": "subbrandm"
+          },
+          {
+            "name": "No Subbrand Icon",
+            "value": "noicon"
           }
         ]
       },
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidGeneral_copyText",
+        "name": "bgVidDesp_copyText",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
       },      
       {
         "component": "multiselect",
-        "name": "bgVidGeneral_gradStyle",
+        "name": "bgVidStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
@@ -2068,6 +2231,37 @@
             ]
           }
         ]
+      },      
+      {
+        "component": "select",
+        "name": "bgVidStyle_elementAlign",
+        "label": "Element Alignment",
+        "valueType": "string",
+        "value": "central-left",
+        "description": "Defines alignment of the elements on image",       
+        "options": [
+          {
+            "name": "Top Left",
+            "value": "top-left"
+          },
+          {
+            "name": "Central Left",
+            "value": "central-left"
+          }
+          ,
+          {
+            "name": "Bottom Left",
+            "value": "bottom-left"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "bgVidStyle_elementAlignType",
+        "label": "Element Alignment Type",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "tab",
@@ -2079,21 +2273,24 @@
         "name": "bgVidVideo_title",
         "description": "Defines the title of the video.",
         "label": "Video Title",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "text-input",
         "name": "bgVidVideo_descp",
         "description": "Defines the description of the video.",
         "label": "Video Description",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
         "label": "Desktop Video Path",
         "name": "bgVidVideo_video",
         "description":"Defines the path to a video on the desktop.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
@@ -2107,7 +2304,8 @@
         "label": "Desktop Poster Image Path",
         "name": "bgVidVideo_img",
         "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
       },
       {
         "component": "reference",
@@ -2125,12 +2323,30 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Loop Video Type",
+        "name": "bgVidVideo_loopVideoType",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
+        "valueType": "string",
+        "value": "h1",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "bgVidVideo_autoPlayVideo",
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay.",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "bgVidVideo_autoPlayVideoType",
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay.",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
       },     
       {
         "component": "tab",
@@ -2156,7 +2372,8 @@
         "label": "Button Styling",
         "name": "bgVidCta1_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "money-btn money-btn-flex",
         "options": [
           {
             "name": "Money Button",
@@ -2187,7 +2404,8 @@
         "label": "Button Styling",
         "name": "bgVidCta2_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "valueType": "string",        
+        "valueType": "string",
+        "value": "ghost-img-btn ghost-img-flex-btn",     
         "options": [
           {
             "name": "Ghost on Image",
@@ -2253,6 +2471,276 @@
         "label": "Download Label",
         "description": "Defines the name of the downloadable element."
       }      
+    ]
+  },
+  {
+    "id": "video-carousel",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_videoCarouselTab1"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_videoCarouselHeadline",
+        "description": "Defines the headline of the text that will appear in the page.",
+        "value": "",
+        "label": "Headline"
+      },
+      {
+        "component": "select",
+        "label": "Headline Type",
+        "name": "content_videoCarouselHeadlineType",
+        "valueType": "string",
+        "description": "Defines multiple styling options for the Headline",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_videoCarouselCopyText",
+        "description": "Defines the text that will appear in the page.",
+        "value": "",
+        "label": "Copy Text"
+      },
+      {
+        "component": "tab",
+        "label": "Video",
+        "name": "media_videoCarouselTab2",
+        "description": "Tab that includes properties of the video"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoCarouselTitle",
+        "value": "",
+        "description": "Defines the title of the video. ",
+        "label": "Video Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_videoCarouselText",
+        "description": "Defines the description of the video.",
+        "value": "",
+        "label": "Video Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_desktopVideoCarouselPath",
+        "label": "Desktop Video Path",
+        "multi": false,
+        "required": true,
+        "description" : "Defines the path to a video on the desktop."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_mobileVideoCarouselPath",
+        "label": "Mobile Video Path",
+        "multi": false,
+        "description" : "Defines the path to a video on the mobile."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_videoCarouselPosterDesktop",
+        "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
+        "label": "Desktop Poster Image Path",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_videoCarouselPosterMobile",
+        "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
+        "label": "Mobile Poster Image Path",
+        "multi": false
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "media_videoCarouselLoopVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Play on mouseover",
+        "name": "media_videoCarouselMouseHoverVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Video Controls",
+        "name": "media_videoCarouselHideControlsVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "label": "Muted Video Sound",
+        "name": "media_videoCarouselMuteSoundVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "cta_videoCarouselTab3",
+        "description": "Tab that includes button/link properties field."
+      },
+      {
+        "component": "text",
+        "name": "cta_videoCarouselCtaLink",
+        "label": "Link",
+        "description": "Defines the page to which the user will be directed to.",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta_videoCarouselCtaLinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "cta_videoCarouselLinkType",
+        "label": "Button Styling",
+        "value": "primary",
+        "valueType": "string",
+        "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
+        "hidden": true,
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "image-carousel",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content_imageCarouselTab1",
+        "description": "Tab that includes general property fields."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_imageCarouselHeadline",
+        "description": "Defines the headline of the text that will appear in the page.",
+        "value": "",
+        "label": "Headline"
+      },
+      {
+        "component": "select",
+        "label": "Headline Type",
+        "name": "content_imageCarouselHeadlineType",
+        "description": "Defines multiple styling options for the Headline",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true,
+        "options" :[{ "name": "H2", "value": "h2" }]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_imageCarouselCopyText",
+        "description": "Defines the text that will appear in the page.",
+        "value": "",
+        "label": "Copy Text"
+      },
+      {
+        "component": "tab",
+        "label": "Image",
+        "name": "media_imageCarouselTab2",
+        "description": "Tab that includes properties of the image."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_imageCarouselImg",
+        "description": "Defines media object that can be displayed on the right side.",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageCarouselImgAlt",
+        "description": "Defines textual description of images for users with visual limitation.",
+        "value": "",
+        "label": "Alt Text"
+      },
+      {
+        "component": "tab",
+        "label": "Button/Link",
+        "name": "cta_imageCarouselTab3",
+        "description": "Tab that includes button/link properties field."
+      },
+      {
+        "component": "text",
+        "name": "cta_imageCarouselLink",
+        "description": "Defines the page to which the user will be directed to.",
+        "label": "Link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta_imageCarouselLinkText",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "label": "Link Label",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "cta_imageCarouselLinkType",
+        "label": "Button Styling",
+        "value": "",
+        "valueType": "string",
+        "description": "Defines the styling applied to the button or if the button will displayed as a link. Ghost Dark has a fixed width and Ghost Dark Flex's size varies based on the length of the link label.",
+        "hidden": true,
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
     ]
   }
 ]
