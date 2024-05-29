@@ -383,15 +383,8 @@
         "description": "Defines the label of the Tab that will appear on the page.",
         "name": "content_tablabel",
         "value": "",
-        "label": "Tab Label"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_tablabelType",
-        "value": "h2",
         "label": "Tab Label",
-        "hidden": true
+        "required": true
       },
       {
         "component": "text-input",
@@ -399,7 +392,8 @@
         "description": "Defines the description of the Tab, which will be read by screen-readers.",
         "name": "content_tabdesc",
         "value": "",
-        "label": "Tab description"
+        "label": "Tab description",
+        "required": true
       },
       {
         "component": "select",
