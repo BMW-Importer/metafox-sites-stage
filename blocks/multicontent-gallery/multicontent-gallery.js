@@ -394,8 +394,7 @@ export default function decorate(block) {
       const onHoverPlay = false;
       // generating video
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
-      loadVideoEmbed(
-        videoDOMContainer,
+      loadVideoEmbed([videoDOMContainer,
         videoSlideTitle.textContent,
         videoSlideDescription.textContent,
         videoLinkObj,
@@ -405,7 +404,7 @@ export default function decorate(block) {
         isMuted,
         posterObj,
         onHoverPlay,
-      );
+      ]);
 
       // call function for generating video slide UI
       videoImageContainer.append(videoDOMContainer);
