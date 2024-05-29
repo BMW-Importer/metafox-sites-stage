@@ -22,11 +22,12 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeRe
 export async function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
-  let iframeSrc = iFrameUrl.textContent;
-  console.log("iframe URL : "+iframeSrc);
+  const iframeSrc = iFrameUrl.textContent;
   let anchor = iframeSrc;
-  
-  await alloy("appendIdentityToUrl", {url: iframeSrc}).then(result=> {anchor = result.url;
+
+  // eslint-disable-next-line no-undef
+  await alloy('appendIdentityToUrl', { url: iframeSrc }).then((result) => {
+    anchor = result.url;
   });
 
   // Build DOM
@@ -41,7 +42,7 @@ export async function generateIFrameDOM(props) {
 }
 function iframeLoader() {
   const iframeCont = document.getElementById('bmwIframe');
-  if(iframeCont){
+  if (iframeCont) {
     const loading = document.querySelector('.loader');
     iframeCont.addEventListener('load', () => {
       loading.style.display = 'none';
@@ -49,18 +50,17 @@ function iframeLoader() {
     });
   }
 }
-export default  async function decorate(block) {
+export default async function decorate(block) {
   // get the first and only cell from each row
   const props = [...block.children].map((row) => row.firstElementChild);
-  if (typeof alloy != 'function') {
-     setTimeout(async ()=>{
-    const iFrameDOM = await generateIFrameDOM(props);
-    block.textContent = '';
-    block.append(iFrameDOM);
-    iframeLoader();
-    },3000)
-  }
-  else {
+  if (typeof alloy !== 'function') {
+    setTimeout(async () => {
+      const iFrameDOM = await generateIFrameDOM(props);
+      block.textContent = '';
+      block.append(iFrameDOM);
+      iframeLoader();
+    }, 3000);
+  } else {
     const iFrameDOM = await generateIFrameDOM(props);
     block.textContent = '';
     block.append(iFrameDOM);
