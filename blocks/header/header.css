@@ -1391,6 +1391,7 @@ header nav[aria-expanded="true"] .section {
   header nav[aria-expanded="true"] .section {
     left: calc(100vw - (var(--max-component-width) - (45px + 96px)));
   }
+
   .showfly .flyout-main-container {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -1401,8 +1402,8 @@ header nav[aria-expanded="true"] .section {
   }
 }
 
-header .nav-wrapper:before {
-  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, .4));
+header.white-background .nav-wrapper::before {
+  background: linear-gradient(0deg, transparent, var(--text-color));
   content: ' ';
   pointer-events: none;
   width: 100%;
@@ -1412,4 +1413,5 @@ header .nav-wrapper:before {
   right: 0;
   top: 0;
   height: 11.25rem;
+  opacity: 0.4;
 }
