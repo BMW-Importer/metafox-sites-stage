@@ -798,7 +798,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithVideoTab1"
+        "name": "content_textWithVideoTab1"
       },
       {
         "component": "select",
@@ -822,7 +822,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoeyebrow",
+        "name": "content_videoeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -830,29 +830,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_videoeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoheadline",
+        "name": "content_videoheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -860,21 +860,15 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "videoheadlineType",
+        "name": "content_videoheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "H2",
-            "value": "h2"
-          }
-        ]
+        "hidden": true        
       },
       {
         "component": "richtext",
-        "name": "videocopytext",
+        "name": "content_videocopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -883,7 +877,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "textWithVideoTab2"
+        "name": "media_textWithVideoTab2"
       },
       {
         "component": "text",
@@ -976,38 +970,23 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithVideoTab3"
+        "name": "cta_textWithVideoTab3"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videolinklabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "videobuttonlink",
+        "name": "videobuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "videobuttonstyling",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "Link Button",
-            "value": "secondary"
-          }
-        ]
+        "name": "videobuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
       }
     ]
   },
