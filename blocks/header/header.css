@@ -1403,7 +1403,6 @@ header nav[aria-expanded="true"] .section {
 }
 
 header.white-background .nav-wrapper::before {
-  background: linear-gradient(0deg, transparent, var(--text-color));
   content: ' ';
   pointer-events: none;
   width: 100%;
@@ -1412,6 +1411,8 @@ header.white-background .nav-wrapper::before {
   left: 0;
   right: 0;
   top: 0;
-  height: 11.25rem;
-  opacity: 0.4;
+  height: 8rem;
+
+  /* stylelint-disable-next-line color-function-notation */
+  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 40%));
 }

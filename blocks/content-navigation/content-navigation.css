@@ -32,13 +32,11 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     }
 
    
-    main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {
+    main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {      
       backdrop-filter: blur(10px);
-      background-color: var(--background-color);
-      opacity: 0.97;
-  
-      /* backdrop-filter: blur(10px);
-      background: hsla(var(--content-nav-blur-color), 75%); */
+
+      /* stylelint-disable-next-line color-function-notation */
+      background: rgba(255, 255, 255, 75%);
     }
     
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item {
