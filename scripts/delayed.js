@@ -49,9 +49,7 @@ const page_tracking = {"page": {
 
 // add more delayed functionality here
 function analyticsTracking() {
-    //opt_in_info();
     set_page_tracking();
-    //window.setTimeout(() => { set_ecid() }, 1000)
 }
 
 var dateTime = new Date();
@@ -160,15 +158,5 @@ function set_page_tracking(){
     window.adobeDataLayer.push(page_tracking);
 
 }
-
-// function set_ecid(){
-//   const iframeBlock = document.getElementById('bmwIframe');
-//   if(iframeBlock){
-//     const anchor = iframeBlock.src;
-//     alloy('appendIdentityToUrl', { url: anchor }).then(result => {
-//         iframeBlock.src = result.url;});
-//   }
-// }
-
 
 analyticsTracking();
