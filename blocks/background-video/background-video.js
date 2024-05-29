@@ -35,7 +35,7 @@ export function generatebgVideoDom(block) {
     const onHoverPlay = false;
     // generating video
     // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
-    loadVideoEmbed(
+    loadVideoEmbed([
       block,
       vidTitle.textContent,
       vidDescp.textContent,
@@ -46,7 +46,7 @@ export function generatebgVideoDom(block) {
       isMuted,
       posterObj,
       onHoverPlay,
-    );
+    ]);
     return block;
   }
 
