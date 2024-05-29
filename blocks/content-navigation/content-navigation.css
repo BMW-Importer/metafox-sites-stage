@@ -30,7 +30,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       right: 0;
       height: 5.25rem;
     }
-  
+
+   
     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {
       backdrop-filter: blur(10px);
       background-color: var(--background-color);
@@ -43,6 +44,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item {
       margin-right: 0.5rem;    
       list-style-type: none;
+      cursor: pointer;
     }
     
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
@@ -53,6 +55,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       background: transparent;
       cursor: pointer;
       font-size: 1rem;
+    }
+
+    .content-navigation-container .content-navigation-wrapper .active .cmp-contentnavigation-list-link {
+      color: var(--light-text-color);
     }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link:hover {
@@ -155,7 +161,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       }
   
      .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-filter-toggle {
-      color: var(--medium-text-color);
+      color: var(--light-border-color);
       padding: 1rem;
       width: 100%;
       position: relative;
@@ -164,6 +170,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       padding-left: 0;
       height: 3.25rem;
       align-self: center;
+      font-size: 14px;
      }
      
      .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-filter-toggle {
@@ -345,7 +352,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         white-space: nowrap;
         scrollbar-width: none; 
       }
-  
+
       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav {
         padding-right: 0 !important;
         height: 3.3rem !important;
@@ -423,7 +430,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         cursor: pointer;
         font-size: 1rem;
         position: absolute;
-        right: 0;
+        right: 2rem;
         padding: 0;
         margin: 0;
         top: 0;
@@ -437,7 +444,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         cursor: pointer;
         font-size: 1rem;
         position: absolute;
-        left: 0;
+        left: 2rem;
         padding: 0;
         margin: 0;
         top: 0;
@@ -605,7 +612,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
      }
 
      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow.variation-btn {
-      padding-right: 3rem;
+      padding-right: 0 !important;
       padding-left: 0;
 
      }
@@ -617,11 +624,13 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       display: block;
      }
 
+    
      main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow {
-      left: 5%;
-      right: 5%;
+      left: 0;
+      right: 0;
       overflow: hidden;
-      padding-left: 0;
+      padding-left: 1rem;
+      padding-right: 4rem !important;
      }
 
     }
@@ -644,6 +653,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
         display: flex;
         overflow: hidden;
         width: 100%;
+        z-index: 999;
     }
   
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container{
