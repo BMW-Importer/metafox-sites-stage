@@ -111,7 +111,6 @@ async function loadEager(doc) {
     // do nothing
   }
 }
-
 function launchVariables() {
   const headElement = document.querySelector('head');
   const scriptElement = document.createElement('script');
@@ -178,8 +177,6 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
-  //launchVariables();
-  // opt_in_info();
 }
 
 /**
@@ -188,7 +185,6 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  // window.setTimeout(() => import('./delayed.js'), 1000);
   // load anything that can be postponed to the latest here
   import('./delayed.js');
 }
@@ -197,7 +193,6 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  // window.setTimeout(() => opt_in_info(), 3000);
   opt_in_info();
 }
 
