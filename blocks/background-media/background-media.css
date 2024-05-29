@@ -44,23 +44,48 @@
 
 .background-media.block .background-media-item-text-eyebrow {
     color: var(--background-color);
-    font-size: .75rem;
-    font-weight: 700;
-    letter-spacing: .125rem;
-    line-height: 1rem;
     text-transform: uppercase;    
     margin-bottom: 0.5rem;
     text-align: center;
     z-index: 2;
     position: relative;
-    word-break: break-word; 
+    word-break: break-word;
+    line-height: 1.25rem;
+    letter-spacing: 2.8px;
+}
+
+.background-media.block h5.background-media-item-text-eyebrow {
+    line-height: 1rem;
+    letter-spacing: 2px;
+}
+
+.background-media.block h6.background-media-item-text-eyebrow {
+    font-size: 0.875rem;
+    line-height: 0.75rem;
+    letter-spacing: 0.525rem;
 }
 
 .background-media.block .background-media-item-text-headline {
     color: var(--background-color);
-    font-size: 6rem;
+    z-index: 2;
+    text-align: center;
+    position: relative;
+}
+
+.background-media.block h1.background-media-item-text-headline {
+    font-weight: 700;
+}
+
+.background-media.block h2.background-media-item-text-headline {
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+.background-media.block h3.background-media-item-text-headline {
+    color: var(--background-color);
+    font-size: 7.4375rem;
     font-weight: 300;
-    line-height: 7.5rem;   
+    line-height: 6.75rem;  
     text-align: center;
     z-index: 2;
     position: relative;
@@ -69,6 +94,9 @@
 
 .background-media.block .background-media-item-details {
     text-align: center;
+    margin-top: 4px;
+    display: block;
+    box-sizing: border-box;
 }
 
 .background-media.block .background-media-item-details.subbrandi{
@@ -83,10 +111,11 @@
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    height: 1rem;
-    width: 1.8125rem;
-    margin-right: 0.5rem;
-    z-index: 2;
+    height: 1.25rem;
+    width: 2.25rem;    
+    z-index: 2;  
+    box-sizing: border-box;
+    margin-inline-end: .5rem;
 }
 
 .background-media.block .background-media-item-details.subbrandm::before {
@@ -96,29 +125,46 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    display: inline-block;
-    height: 1.25rem;
-    width: 3.5rem;
-    margin-right: 0.5rem;
+    width: 2.8125rem;
     z-index: 2;
+    display: inline-block;
+    height: 1rem;
+    left: 0;
+    margin-inline-end: .5rem;   
 }
 
 .background-media.block .background-media-item-text-copytext {
     color: var(--background-color);
     font-size: 1rem;
-    font-weight: 300;
     line-height: 1.5rem;
-    margin: 4px 0 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: inline;
+    margin: 0;
+    vertical-align: bottom;
+}
+
+.background-media.block .background-media-item-text-copytext * {
+    color: var(--background-color);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0;
     text-align: center;
     position: relative;
     z-index: 2;
     display: inline-block;
 }
 
+.background-media.block .bg-media-btn-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    vertical-align: top;
+}
+
 .background-media.block .background-media-item-cta-money {
     display: block;
     text-align: center;
-    margin: 1.5rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -129,7 +175,6 @@
 .background-media.block .background-media-item-cta-ghost {
     display: block;
     text-align: center;
-    margin: 1.5rem 0;
     position: relative;
     z-index: 2;
     width: calc(100% - 4rem);
@@ -137,11 +182,22 @@
     margin-right: auto;
 }
 
+.background-media.block .bg-media-btns p{
+    margin: 0;
+}
+
 .background-media.block .background-media-item-cta-money *,
 .background-media.block .background-media-item-cta-ghost * {
     box-sizing: border-box;
 }
 
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(1):nth-last-child(2) {
+    margin: 1.5rem 0;
+}
+
+.background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+    margin-top: 0.5rem;
+}
 
 .background-media.block .background-media-item-cta-money .money-btn {
     font-size: 1rem;
@@ -159,7 +215,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 0.75rem;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn-flex {    
@@ -191,7 +247,7 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
-    padding: .25rem 12px;
+    padding: .25rem .75rem;
 }
 
 .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {   
@@ -274,6 +330,21 @@
         margin-top: -14.75rem;
         min-height: 14.5rem;
         padding-top: 5rem;
+    }    
+
+    .background-media.block h6.background-media-item-text-eyebrow {
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
+    }
+
+    .background-media.block h3.background-media-item-text-headline {
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 300;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -284,27 +355,18 @@
         aspect-ratio: 4 / 3;
     }
 
-    .background-media.block .background-media-item-cta-money {       
-        width: 30%;
+    .background-media.block .background-media-item-cta-money {
+        width: 50%;
     }
     
     .background-media.block .background-media-item-cta-ghost {
-        width: 30%;
+        width: 50%;
     }
 
     .background-media.block .background-media-item-cta-money.flex,
-    .background-media.block .background-media-item-cta-ghost.flex {
-        width: auto;
+    .background-media.block .background-media-item-cta-ghost.flex {        
+        width: 30%;
     }
-
-    .background-media.block .background-media-item-cta-money .money-btn-flex {       
-        width: auto;
-    }
-
-    .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {        
-        width: auto;
-    }
-    
 }
 
 /* desktop */
@@ -324,10 +386,25 @@
         padding: 0;
         margin-top: unset;
         min-height: unset;
+        padding-left: 0.75rem;
+    }
+
+    .background-media.block .background-media-item-text.top-left {
+        top: 0;
+        transform: unset;
+        margin-top: 8rem;
+    }
+
+    .background-media.block .background-media-item-text.bottom-left {
+        top: unset;
+        transform: unset;
+        bottom: 0;
+        margin-bottom: 6.75rem;
     }
 
     .background-media.block .background-media-item-details {
         text-align: start;
+        justify-content: flex-start;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -343,13 +420,32 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
+        text-align: start;        
+    }
+
+    .background-media.block h6.background-media-item-text-eyebrow {        
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block .background-media-item-text-headline {
         text-align: start;
     }
 
-    .background-media.block .background-media-item-text-headline {        
+    .background-media.block h1.background-media-item-text-headline {
         text-align: start;
-        font-size: 8rem;
-        line-height: 7.75rem;
+    }
+
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
+        text-align: start;
+    }
+
+    .background-media.block h3.background-media-item-text-headline {
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 300;
+        text-align: start;
     }
     
     .background-media.block .background-media-item-text-copytext {
@@ -357,19 +453,35 @@
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
+
+    .background-media.block .background-media-item-text-copytext * {        
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        text-align: start;
+    }
+
+    .background-media.block .background-media-item-details.subbrandi::before {
+        height: 1.5rem;
+        width: 2.75rem;
+    }
+
+    .background-media.block .background-media-item-details.subbrandm::before {
+        height: 1.25rem;
+        width: 3.5rem;
+    }
     
     .background-media.block .background-media-item-cta-money {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 50%;
+        width: 100%;
+        vertical-align: top;
     }
     
     .background-media.block .background-media-item-cta-ghost {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 50%;
+        width: 100%;
+        vertical-align: top;
     }
 
     .background-media.block .background-media-item-cta-money *{
@@ -390,16 +502,31 @@
 
     .background-media.block .background-media-item-cta-money.flex,
     .background-media.block .background-media-item-cta-ghost.flex {
-        width: auto;
+        width: 41.2%;
     }
 
-    .background-media.block .background-media-item-cta-money .money-btn-flex {       
-        width: auto;
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns > .button-container,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns > .button-container {
+        padding-right: 0.75rem;
     }
 
-    .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {        
-        width: auto;
+    .background-media.block .bg-media-btn-container.flex > .bg-media-btns:last-child{
+        margin-top: 0;
     }
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:last-child{
+        margin-top: 8px;
+    }
+
+    .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+        margin-top:0;
+    }
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:first-child:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:first-child:last-child{
+        margin-top: 0;
+    }  
     
     .background-media.block .background-media-item-vidimg.dark.left::before {
         background: linear-gradient(90deg, #000 10%, rgba(0 0 0 / 80%) 20%, rgba(0 0 0 / 60%) 30%, rgba(0 0 0 / 40%) 40%, rgba(0 0 0 / 20%) 50%, transparent 60%, transparent);
@@ -443,8 +570,9 @@
 @media (width >= 1920px) { 
     .background-media.block {
         aspect-ratio: 16 / 7;       
-        margin-left: -6rem;
-        width: calc(100% + 6rem + 6rem);
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
         max-width: var(--max-component-width);
     }
     
@@ -457,10 +585,25 @@
         padding: 0;
         margin-top: unset;
         min-height: unset;
+        padding-left: 0.75rem;
+    }
+
+    .background-media.block .background-media-item-text.top-left {
+        top: 0;
+        transform: unset;
+        margin-top: 8rem;
+    }
+
+    .background-media.block .background-media-item-text.bottom-left {
+        top: unset;
+        transform: unset;
+        bottom: 0;
+        margin-bottom: 6.75rem;
     }
 
     .background-media.block .background-media-item-details {
         text-align: start;
+        justify-content: flex-start;
     }
 
     .background-media.block .background-media-item-text > *{
@@ -476,26 +619,64 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
+        text-align: start;        
+    }
+
+    .background-media.block h6.background-media-item-text-eyebrow {        
+        letter-spacing: .5625rem;
+        font-size: .9375rem;
+    }
+
+    .background-media.block h1.background-media-item-text-headline {        
         text-align: start;
     }
 
-    .background-media.block .background-media-item-text-headline {
-        font-size: 8rem;
-        line-height: 7.75rem;
+    .background-media.block h2.background-media-item-text-headline {       
+        font-size: 1.8125rem;
         text-align: start;
     }
 
-    .background-media.block .background-media-item-text-copytext {
+    .background-media.block h3.background-media-item-text-headline {
+        font-size: 7.875rem;
+        line-height: 7rem;
+        font-weight: 300;
+        text-align: start;
+    }
+
+    .background-media.block .background-media-item-text-copytext {        
+        text-align: start;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .background-media.block .background-media-item-text-copytext * {        
         font-size: 1.25rem;
         line-height: 1.75rem;
         text-align: start;
     }
 
+    .background-media.block .background-media-item-details.subbrandi::before {
+        height: 1.5rem;
+        width: 2.75rem;
+    }
+
+    .background-media.block .background-media-item-details.subbrandm::before {
+        height: 1.25rem;
+        width: 3.5rem;
+    }
+
     .background-media.block .background-media-item-cta-money {
         text-align: start;
         display: inline-block;
-        margin: 2rem 0;
-        width: 50%;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    .background-media.block .background-media-item-cta-ghost {
+        text-align: start;
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
     }
 
     .background-media.block .background-media-item-cta-money *{
@@ -505,11 +686,6 @@
         width: 100%;
         padding-right: 1.5rem;
         box-sizing: border-box;
-    }
-
-    .background-media.block .background-media-item-cta-ghost {
-        width: 50%;
-        display: inline-block;
     }
 
     .background-media.block .background-media-item-cta-ghost *{
@@ -522,15 +698,26 @@
 
     .background-media.block .background-media-item-cta-money.flex,
     .background-media.block .background-media-item-cta-ghost.flex {
-        width: auto;
+        width: 41.2%;
     }
 
-    .background-media.block .background-media-item-cta-money .money-btn-flex {       
-        width: auto;
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns > .button-container,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns > .button-container {
+        padding-right: 0.75rem;
     }
 
-    .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {        
-        width: auto;
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:last-child{
+        margin-top: 8px;
+    }
+
+    .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
+        margin-top:0;
+    }
+
+    .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:first-child:last-child,
+    .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:first-child:last-child{
+        margin-top: 0;
     }
 
     .background-media.block .background-media-item-vidimg.dark.left::before {

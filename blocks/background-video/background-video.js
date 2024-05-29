@@ -2,16 +2,20 @@ import { loadVideoEmbed } from '../video/video.js';
 
 /* this function also gets called by backgroud media */
 export function generatebgVideoDom(block) {
-  // eslint-disable-next-line max-len
-  const [vidTitle, vidDescp, desktopVid, mobVid, desktopPosterImg, mobPosterImg, loopVid, autoPlay] = block.children;
-  if (desktopVid) {
-    // video tab media
-    const DesktopVideoRef = desktopVid?.querySelector('a');
-    const mobileVideoRef = mobVid?.querySelector('a');
+  if (block?.querySelector('a')) {
+    // video tab details
+    const videoContentPtags = block.querySelectorAll('p');
+    const vidTitle = videoContentPtags[0];
+    const vidDescp = videoContentPtags[1];
 
-    // extracting img src
-    const videoSlideDesktopPosterImgRef = desktopPosterImg?.querySelector('img')?.getAttribute('src');
-    const videoSlideMobPosterImgRef = mobPosterImg?.querySelector('img')?.getAttribute('src');
+    // video tab media
+    const videoContentAtags = block.querySelectorAll('a');
+    const DesktopVideoRef = videoContentAtags[0];
+    const mobileVideoRef = videoContentAtags[1];
+
+    const videoContentPictureTags = block.querySelectorAll('picture');
+    const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
+    const videoSlideMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
 
     // extracting video link
     const videoLinkObj = {};
@@ -24,14 +28,14 @@ export function generatebgVideoDom(block) {
     if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
     // converting string to boolen
-    const isLoopVideo = loopVid?.textContent.trim() === 'true';
-    const isAutoPlayVideo = autoPlay?.textContent.trim() === 'true';
+    const isLoopVideo = block.querySelector('h1')?.textContent.trim() === 'true';
+    const isAutoPlayVideo = block.querySelector('h2')?.textContent.trim() === 'true';
     const enableHideControls = true;
     const isMuted = true;
     const onHoverPlay = false;
     // generating video
     // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
-    loadVideoEmbed(
+    loadVideoEmbed([
       block,
       vidTitle.textContent,
       vidDescp.textContent,
@@ -42,7 +46,7 @@ export function generatebgVideoDom(block) {
       isMuted,
       posterObj,
       onHoverPlay,
-    );
+    ]);
     return block;
   }
 

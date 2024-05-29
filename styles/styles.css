@@ -403,6 +403,10 @@ main .section {
   padding: 0 var(--section-mobile-padding);
 }
 
+main .section:first-child {
+  margin-top: 0;
+}
+
 /* tablet */
 @media (width >= 768px){
   main .section {
@@ -452,13 +456,19 @@ main .section {
 }
 
 /* desktop */
+@media (width = 1920px) {
+  body.appear.white-background main .section {
+      padding: 0;
+  }
+}
+
 @media (width >= 1280px){
   main .section {
     padding: 0 var(--section-desktop-padding);
   }
 
   .appear.white-background main .section {
-    padding: 0;
+    padding: 0 var(--section-desktop-padding);
   }
   
   .appear.white-background main .section.columns-container .default-content-wrapper p {
@@ -594,7 +604,7 @@ textarea{
     }
 
     h2 { 
-      font-size: 1.75rem; 
+      font-size: 1.8125rem; 
       line-height: 2.5rem; 
     }
 
