@@ -208,6 +208,10 @@ export default async function decorate(block) {
         if (childCount < 4) {
           flyoutMainContainer.style.justifyContent = 'center';
         }
+        // Selecting the first child and adding the style 'grid-column-start: 2'
+        if (flyoutMainContainer.children[0]) {
+          flyoutMainContainer.children[0].style.gridColumnStart = '2';
+        }
       }
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
         if (item !== parentMenu && item.classList.contains('showfly')) {

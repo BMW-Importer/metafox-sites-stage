@@ -86,7 +86,7 @@
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": ["superscript", "subscript"],
+      "sr_script": ["superscript"],
       "list": ["bullist", "numlist"],
       "insert": ["link"],
       "blocks": [],
@@ -222,9 +222,9 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": [],
+      "advanced": ["h3"],
       "extensions": [],
-      "editor": []
+       "editor": []
     }
   },
   {
