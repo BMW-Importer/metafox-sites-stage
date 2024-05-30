@@ -89,7 +89,7 @@
       "sr_script": ["superscript"],
       "list": ["bullist", "numlist"],
       "insert": ["link"],
-      "blocks": [],
+      "blocks": ["h1", "h2", "h3"],
       "advanced": [],
       "extensions": [],
       "editor": ["removeformat"]
