@@ -126,6 +126,26 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
+
+// function generateTabsView() {
+//   const $sections = document.querySelectorAll('[data-tab-content-navigation="true"]');
+//   const ul = document.createElement('ul');
+//   ul.classList.add('cmp-contentnavigation-list');
+//   [...$sections].forEach(($tabContent) => {
+//     const name = $tabContent.dataset.anchorId;
+//     const li = document.createElement('li');
+//     li.classList.add('cmp-contentnavigation-list-item');
+//     const button = document.createElement('button');
+//     button.textContent = name;
+//     li.appendChild(button);
+//     ul.appendChild(li);
+//   });
+//   if ($sections) {
+//     document.getElementsByTagName('main')[0].appendChild(ul);
+//   }
+//   return ul;
+// }
+
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
@@ -279,4 +299,6 @@ export default async function decorate(block) {
   flyoutContainers.forEach((container) => {
     container.addEventListener('scroll', handleScroll);
   });
+
+  generateTabsView();
 }

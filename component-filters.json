@@ -196,7 +196,14 @@
   },
   {
     "id": "tabs-section",
-    "components":[]
+    "components": [
+      "copy_text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards"
+    ]
   },
   {
     "id": "copy_text",
