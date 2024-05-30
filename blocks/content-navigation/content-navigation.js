@@ -5,14 +5,17 @@ function handleOnScrollActiveLink() {
   const scrollPosition = window.scrollY;
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
+  const navigation = document.getElementById('navigation');
+  const navigationHeight = navigation ? navigation.offsetHeight : 0;
   let activeSectionId = null;
 
   sections.forEach((section) => {
     const sectionId = section.getAttribute('data-anchorid');
-    const sectionOffset = section.offsetTop;
+    const sectionOffset = section.offsetTop - navigationHeight;
     const sectionHeight = section.offsetHeight;
     const anchorElement = document.querySelector(`[data-anchor="#${sectionId}"]`);
     const parentElement = anchorElement?.parentNode;
+
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
       parentElement?.classList.add('active');
       activeSectionId = sectionId;
@@ -36,10 +39,12 @@ function handleOnScrollActiveLink() {
 function scrollToHash() {
   const { hash } = window.location;
   if (hash) {
+    const navigation = document.getElementById('navigation');
+    const navigationHeight = navigation ? navigation.offsetHeight : 0;
     const targetSection = document.querySelector(`[data-anchorid="${hash.substring(1)}"]`);
     if (targetSection) {
       window.scrollTo({
-        top: targetSection.offsetTop,
+        top: targetSection.offsetTop - navigationHeight,
         behavior: 'smooth',
       });
     }
@@ -51,6 +56,7 @@ function handleOnScrollContentNavHeader() {
   const contentNavWrapper = document.querySelector('.cmp-contentnavigation-wrapper');
   const contentNavContainer = document.querySelector('.content-navigation-container');
   const offset = contentNavContainer?.offsetTop;
+
   if (window.pageYOffset >= offset) {
     navigation.classList.add('fixed-nav');
     contentNavContainer.classList.remove('hide');
@@ -62,6 +68,7 @@ function handleOnScrollContentNavHeader() {
       contentNavContainer.classList.add('hide');
     }
   }
+
   handleOnScrollActiveLink();
 }
 
@@ -90,14 +97,21 @@ function handleOnclickscrollToTop() {
   const links = document.querySelectorAll('.cmp-contentnavigation-list-link');
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
+      e.preventDefault();
       body.style.overflowY = 'auto';
       document.getElementById('navdropdownMenuButton').textContent = e.target.textContent;
       e.target.closest('.cmp-contentnavigation-list').classList.remove('visible-mobile');
       document.getElementById('navdropdownMenuButton').classList.remove('visible-mobile-btn');
+
       const targetId = e.target.getAttribute('data-anchor').replace('#', '');
       const targetSection = document.querySelector(`[data-anchorid=${targetId}]`);
       if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+        const navigation = document.getElementById('navigation');
+        const navigationHeight = navigation ? navigation.offsetHeight : 0;
+        window.scrollTo({
+          top: targetSection.offsetTop - navigationHeight,
+          behavior: 'smooth',
+        });
       }
     });
   });

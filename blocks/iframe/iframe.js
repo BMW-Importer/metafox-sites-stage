@@ -1,3 +1,5 @@
+// import { isLaunchScriptLoaded } from '../../scripts/scripts';
+
 function loadScript(url, callback) {
   const script = document.createElement('script');
   script.type = 'text/javascript';
@@ -17,14 +19,21 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeRe
     iFrameResize({ log: true }, '#bmwIframe');
   }
 });
-export function generateIFrameDOM(props) {
+export async function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
+  const iframeSrc = iFrameUrl.textContent;
+  let anchor = iframeSrc;
+
+  // eslint-disable-next-line no-undef
+  await alloy('appendIdentityToUrl', { url: iframeSrc }).then((result) => {
+    anchor = result.url;
+  });
 
   // Build DOM
   const iFrameDOM = document.createRange().createContextualFragment(`
       <div class="iframe-container">
-      <iframe src="${iFrameUrl.textContent}" id="bmwIframe" style="border: 0; width: 100%; height: 100%; min-height: 900px;">
+      <iframe src="${anchor}" id="bmwIframe" style="border: 0; width: 100%; height: 100%; min-height: 900px;">
       </iframe>
       <div class="loader"></div>
        </div>
@@ -33,17 +42,28 @@ export function generateIFrameDOM(props) {
 }
 function iframeLoader() {
   const iframeCont = document.getElementById('bmwIframe');
-  const loading = document.querySelector('.loader');
-  iframeCont.addEventListener('load', () => {
-    loading.style.display = 'none';
-    iframeCont.style.opacity = 1;
-  });
+  if (iframeCont) {
+    const loading = document.querySelector('.loader');
+    iframeCont.addEventListener('load', () => {
+      loading.style.display = 'none';
+      iframeCont.style.opacity = 1;
+    });
+  }
 }
-export default function decorate(block) {
+export default async function decorate(block) {
   // get the first and only cell from each row
   const props = [...block.children].map((row) => row.firstElementChild);
-  const iFrameDOM = generateIFrameDOM(props);
-  block.textContent = '';
-  block.append(iFrameDOM);
-  iframeLoader();
+  if (typeof alloy !== 'function') {
+    setTimeout(async () => {
+      const iFrameDOM = await generateIFrameDOM(props);
+      block.textContent = '';
+      block.append(iFrameDOM);
+      iframeLoader();
+    }, 3000);
+  } else {
+    const iFrameDOM = await generateIFrameDOM(props);
+    block.textContent = '';
+    block.append(iFrameDOM);
+    iframeLoader();
+  }
 }
