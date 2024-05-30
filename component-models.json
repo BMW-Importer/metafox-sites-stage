@@ -381,7 +381,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label of the Tab that will appear on the page.",
-        "name": "content_tablabel",
+        "name": "tab-label",
         "value": "",
         "label": "Tab Label",
         "required": true
@@ -390,7 +390,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the description of the Tab, which will be read by screen-readers.",
-        "name": "content_tabdesc",
+        "name": "tab-desc",
         "value": "",
         "label": "Tab description",
         "required": true
@@ -399,7 +399,7 @@
         "component": "boolean", 
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
-        "name": "content_displaytopmargin",
+        "name": "tab-topmargin",
         "valueType": "boolean"
       },
       {
@@ -411,23 +411,15 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "anchor_anchorlabel",
+        "name": "anchor-label",
         "value": "",
         "label": "Anchor Label"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "anchor_anchorlabelType",
-        "value": "h2",
-        "label": "Anchor Label",
-        "hidden": true
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "anchor_anchorid",
+        "name": "anchor-id",
         "value": "",
         "label": "Anchor ID"
       },
@@ -435,19 +427,19 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "anchor_tabscontentnavigation",
+        "name": "tab-content-navigation",
         "valueType": "boolean"
       },
       {
         "component": "tab",
         "label": "Analytics",
-        "name": "analytics_tabssectiontab3"
+        "name": "tab-analytics"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytics_sectionlabel",
+        "name": "analytis-label",
         "value": "",
         "label": "Section Label"
       }
