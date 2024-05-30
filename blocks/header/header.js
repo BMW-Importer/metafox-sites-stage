@@ -299,6 +299,4 @@ export default async function decorate(block) {
   flyoutContainers.forEach((container) => {
     container.addEventListener('scroll', handleScroll);
   });
-
-  generateTabsView();
 }
