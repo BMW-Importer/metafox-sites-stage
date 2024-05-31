@@ -150,7 +150,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
   
       main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.visible{
         padding-left: 1.5rem;
-        width: 100% !important;
+        width: 90% !important;
         height: 3.3rem !important;
       }
   
@@ -169,6 +169,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       height: 3.25rem;
       align-self: center;
       font-size: 14px;
+     }
+
+     .cmp-contentnavigation-wrapper .cmp-filter-toggle.visible-mobile-btn {
+      color: var(--light-text-color);
      }
      
      .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-filter-toggle {
@@ -263,25 +267,57 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       margin-top: 3.3rem;  
     }
   
-     .content-navigation-container .content-navigation-wrapper .fixed-nav .cmp-contentnavigation-list{
+     .content-navigation-container .content-navigation-wrapper .transparent.fixed-nav .cmp-contentnavigation-list{
+      height: auto;
+     }
+
+     .content-navigation-container .content-navigation-wrapper .white.fixed-nav .cmp-contentnavigation-list{
       height: 100vh;
      }
   
      .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile{
        display: block;
      }
+
+     .content-navigation-container .content-navigation-wrapper .transparent .cmp-contentnavigation-list.visible-mobile::after{
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100vh;
+        transition: opacity .25s ease-in;
+        width: 100vw;
+        z-index: -10;
+
+        /* stylelint-disable-next-line color-function-notation */
+        background-color: rgba(0, 0, 0, 80%);
+        opacity: 1;
+    }
   
      .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1) {
        padding-top: 1rem;
      }
+
+     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1)::before {
+      border-top: 1px solid var(--light-grey-1);
+      position: absolute;
+      width: 100%;
+      content: '';
+      top:0;
+      left : 0;
+    }
   
      .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:last-child {
        padding-bottom: 1.25rem;
       }
   
      .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
-      padding: 0.75rem 1.25rem;
-      margin: 0;
+        padding: 0.75rem 1.25rem;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        height: 52px;
+        border-left: 4px solid transparent;
+        font-weight: 700;
      }
   
   
@@ -296,9 +332,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       align-items: center;
      }
   
-     .content-navigation-container .content-navigation-wrapper .fixed-nav .cmp-contentnavigation-anchor-container.mobile-only {
+     /* .content-navigation-container .content-navigation-wrapper .fixed-nav .cmp-contentnavigation-anchor-container.mobile-only {
       margin-right: 2.5rem;
-     }
+     } */
   
      .content-navigation-container .content-navigation-wrapper.fixed-nav .cmp-contentnavigation-anchor-container.mobile-only {
       width: 50%;
@@ -323,19 +359,16 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       overflow: hidden;
       text-overflow: ellipsis; 
      }
-  
-     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {
-      opacity: unset;
-     }
-  
+
      .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item.active {
       border-bottom: none !important;
       border-left: .25rem solid var(--medium-text-color);
      }
-  
-     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper.fixed-nav .cmp-contentnavigation-list-item {
-      padding-left: 0.5rem;
-     }
+
+     main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.transparent {   
+      background: var(--background-color);
+      opacity: unset;
+    }
   
     }
   
