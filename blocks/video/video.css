@@ -15,6 +15,12 @@
   width: 100%;
 }
 
+.video-container .video-parent-block {
+  width: 100vw;
+  margin-left: calc(-1 * (var(--section-mobile-padding)));
+  aspect-ratio: 16/9;
+}
+
 .bmw-video > div {
   width: 100vw !important;
 }
@@ -28,7 +34,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 1rem;
+  height: 100%;
+  margin-bottom: 0;
   position: relative;
 }
 
@@ -223,6 +230,22 @@
   text-transform: none;
   white-space: nowrap;
   width: auto;
+}
+
+.video-container .video-parent-block .video-js {
+  width: 100vw;
+}
+
+/* desktop */
+@media (width >=768px) {
+  .video-container .video-parent-block {
+    width: 100%;
+    margin-left: unset;
+  }
+
+  .video-container .video-parent-block .video-js {
+    width: 100%;
+  }
 }
 
 /* desktop */
