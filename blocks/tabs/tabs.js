@@ -1,14 +1,3 @@
-/**
- * @typedef TabInfo
- * @property {string} name
- * @property {HTMLElement} $tab
- * @property {HTMLElement} $content
- */
-
-/**
- * @param {HTMLElement} $block
- * @return {TabInfo[]}
- */
 export function createTabs($block) {
   const $ul = $block.querySelector('ul');
   if (!$ul) {
@@ -33,18 +22,18 @@ export function createTabs($block) {
   // move the tab's sections before the tab riders.
   [...$sections].forEach(($tabContent) => {
     const name = $tabContent.dataset.anchorId;
+    const tabsVariation = $tabContent.dataset.tabStyle;
+    const tabsVariationName = tabsVariation === 'secondary' ? 'default-tab' : 'buttons-tab';
     const tab = tabs.find((t) => t.name === name);
     if (tab) {
       $tabContent.classList.add('tab-item', 'hidden');
       tab.$content = $tabContent;
+      $ul.classList.add(tabsVariationName);
     }
   });
   return tabs;
 }
 
-/**
-   * @param {HTMLElement} $block
-   */
 export default function decorate($block) {
   const tabs = createTabs($block);
 

@@ -272,6 +272,4 @@ export default function decorate(block) {
   scrollRight();
   setTimeout(() => { checkAnchorLinkOverflow(ul, wrapper); }, 400);
   window.addEventListener('hashchange', scrollToHash);
-
-  console.log('hello');
 }
