@@ -413,11 +413,11 @@
         "options": [
           {
             "name": "Default",
-            "value": ""
+            "value": "primary"
           },
           {
             "name": "Buttons",
-            "value": ""
+            "value": "secondary"
           }
         ]
       },
