@@ -12,13 +12,15 @@ function loadScript(url, callback) {
   };
 }
 // Load the iFrameResize library dynamically
-loadScript('https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js', () => {
+function loadScriptFunction() {
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js', () => {
   // Initialize the iFrameResize function once the library is loaded
-  if (typeof iFrameResize === 'function') {
+    if (typeof iFrameResize === 'function') {
     // eslint-disable-next-line no-undef
-    iFrameResize({ log: true }, '#bmwIframe');
-  }
-});
+      iFrameResize({ log: true }, '#bmwIframe');
+    }
+  });
+}
 export async function generateIFrameDOM(props) {
   // Extract properties, always same order as in model, empty string if not set
   const [iFrameUrl] = props;
@@ -59,11 +61,13 @@ export default async function decorate(block) {
       block.textContent = '';
       block.append(iFrameDOM);
       iframeLoader();
+      loadScriptFunction();
     }, 3000);
   } else {
     const iFrameDOM = await generateIFrameDOM(props);
     block.textContent = '';
     block.append(iFrameDOM);
     iframeLoader();
+    loadScriptFunction();
   }
 }
