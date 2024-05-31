@@ -15,7 +15,7 @@ header {
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 }
 
 header nav {
@@ -196,6 +196,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     margin: 0;
     width: 100%;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
   }
 
   .header nav .section .default-content-wrapper {
