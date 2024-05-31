@@ -394,7 +394,26 @@
         "value": "",
         "label": "Tab description",
         "required": true
-      },   
+      },
+      {
+        "component": "select",
+        "name": "tab-style",
+        "value": "",
+        "label": "Tab Style",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling in which the tab will be displayed.",
+        "options": [
+          {
+            "name": "Default",
+            "value": "secondary"
+          },
+          {
+            "name": "Buttons",
+            "value": "primary"
+          }
+        ]
+      },
       {
         "component": "boolean", 
         "label": "Display Top Margin",
