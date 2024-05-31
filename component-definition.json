@@ -288,14 +288,9 @@
                 "template": {
                   "name": "Text with Image",
                   "model": "text-with-image",
-                  "filter": "text-with-image",
-                  "media_fileReference": "/content/dam/metafox/placeholder_image.png",
-                  "classes":"left",
-                  "style":"",
-                  "imageeyebrow": "",
-                  "imageheadline": "",
-                  "imagecopytext": "",
-                  "imagebuttonstyling": "secondary"
+                  "filter": "text-with-image",                  
+                  "classes":"left",                  
+                  "content_imageheadlineType": "h2"                 
                 }
               }
             }
@@ -312,12 +307,8 @@
                   "name": "Text with Video",
                   "model": "text-with-video",
                   "filter": "text-with-video",
-                  "videoeyebrow": "",
-                  "videoheadline": "",
-                  "videocopytext": "",
-                  "videobuttonstyling": "secondary",
-                  "classes":"left",
-                  "style":"",
+                  "classes": "left",
+                  "content_videoheadlineType": "h2",
                   "media_loopVideo":true,
                   "media_autoplay":true,
                   "media_videoControls":false,
