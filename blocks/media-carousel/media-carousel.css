@@ -1,1 +1,146 @@
-/* css */
+.video-img-carousel-card .video-js {
+    height: auto !important;
+}
+
+.video-img-carousel-card video {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    height: auto !important;
+    vertical-align: middle;
+    position: relative !important;
+}
+
+.video-img-carousel-card picture img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.media-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 32px 0;
+}
+
+.media-carousel-wrapper .video-image-carousel-content {
+    display: flex;
+    transition: transform 0.5s ease;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    transition-property: transform;
+}
+
+.media-carousel-wrapper .video-image-carousel-content .video-img-carousel-card {
+    flex-shrink: 0;
+    height: auto;
+    touch-action: pan-y;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    position: relative;
+    transition-property: transform;
+    width: 100%;
+}
+
+.media-carousel-wrapper .dots-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.media-carousel-wrapper .dot {
+    background-color: #8e8e8e;
+    cursor: pointer;
+    border: 0;
+    height: .5rem;
+    margin: 0 .75rem;
+    padding: 0;
+    width: .5rem;
+    position: relative;
+    flex: 0 1 auto;
+    border-radius: 50%;
+    font-size: 0;
+    text-indent: -3000px;
+}
+
+.media-carousel-wrapper .dot.active {
+    background-color: #262626;
+    transform: scale(1.5);
+    margin: .125rem .75rem;
+    cursor: pointer;
+}
+
+.media-carousel-wrapper .carousel-control {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: var(--light-text-color);
+    border: none;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.media-carousel-wrapper .carousel-control.prev {
+    left: 0;
+    transition: transform 330ms ease-in-out;
+}
+
+.media-carousel-wrapper .carousel-control.next {
+    right: 0;
+}
+
+@media (width >=768px) and (width < 1280px) {
+    .media-carousel-wrapper .video-image-carousel-content {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+
+    .section.media-carousel-container {
+        padding: 0;
+    }
+
+    .video-img-carousel-card .video-js {
+        height: auto !important;
+    }
+
+    .video-img-carousel-card video {
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        height: auto !important;
+        vertical-align: middle;
+    }
+
+    .video-img-carousel-card picture img {
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+}
+
+@media (width >=360px) and (width < 768px) {
+    .section.media-carousel-container {
+        padding: 0;
+    }
+
+    .media-carousel-wrapper .video-image-carousel-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .video-img-carousel-card video {
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+
+    .video-img-carousel-card picture img {
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+}
