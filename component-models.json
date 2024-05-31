@@ -403,6 +403,25 @@
         "valueType": "boolean"
       },
       {
+        "component": "select",
+        "name": "tab-style",
+        "value": "",
+        "label": "Tab Style",
+        "valueType": "string",
+        "description": "Defines the styling in which the tab will be displayed.",
+        "required": true,
+        "options": [
+          {
+            "name": "Default",
+            "value": "primary"
+          },
+          {
+            "name": "Buttons",
+            "value": "secondary"
+          } 
+        ]
+      },
+      {
         "component": "tab",
         "label": "Anchor",
         "name": "anchor_tabssectiontab2"
