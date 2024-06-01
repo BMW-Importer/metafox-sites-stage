@@ -25,20 +25,6 @@
       "shortRangeName": "G20"
     },
     {
-      "modelCode": "61FU",
-      "description": "M340d xDrive",
-      "modelRangeCode": "G20",
-      "shortName": "M340d xDrive",
-      "shortRangeName": "G20"
-    },
-    {
-      "modelCode": "51CD",
-      "description": "330d",
-      "modelRangeCode": "G20",
-      "shortName": "330d",
-      "shortRangeName": "G20"
-    },
-    {
       "modelCode": "71FF",
       "description": "320i xDrive",
       "modelRangeCode": "G20",
@@ -71,13 +57,6 @@
       "description": "320e",
       "modelRangeCode": "G20",
       "shortName": "320e",
-      "shortRangeName": "G20"
-    },
-    {
-      "modelCode": "51FU",
-      "description": "330d xDrive",
-      "modelRangeCode": "G20",
-      "shortName": "330d xDrive",
       "shortRangeName": "G20"
     },
     {

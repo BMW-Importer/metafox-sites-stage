@@ -10,7 +10,7 @@
   "bodyTypeCode": "SC",
   "marketingBodyTypeCode": "SUV",
   "bodyTypeDescription": "SAC",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 93640,
   "seats": 5,
@@ -52,10 +52,12 @@
           "electricTopSpeed": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "",
+          "consumptionWltpCombined": "9.5 - 8.7",
           "emissionsWltpCombined": "216 - 198",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -94,6 +96,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

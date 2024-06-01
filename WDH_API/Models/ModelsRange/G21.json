@@ -32,6 +32,13 @@
       "shortRangeName": "G21"
     },
     {
+      "modelCode": "71FY",
+      "description": "330i xDrive",
+      "modelRangeCode": "G21",
+      "shortName": "330i xDrive",
+      "shortRangeName": "G21"
+    },
+    {
       "modelCode": "21FY",
       "description": "320i",
       "modelRangeCode": "G21",
@@ -46,52 +53,10 @@
       "shortRangeName": "G21"
     },
     {
-      "modelCode": "41FY",
-      "description": "320e",
-      "modelRangeCode": "G21",
-      "shortName": "320e",
-      "shortRangeName": "G21"
-    },
-    {
-      "modelCode": "51FZ",
-      "description": "330d xDrive",
-      "modelRangeCode": "G21",
-      "shortName": "330d xDrive",
-      "shortRangeName": "G21"
-    },
-    {
-      "modelCode": "41FZ",
-      "description": "330d",
-      "modelRangeCode": "G21",
-      "shortName": "330d",
-      "shortRangeName": "G21"
-    },
-    {
-      "modelCode": "71CY",
-      "description": "330e xDrive",
-      "modelRangeCode": "G21",
-      "shortName": "330e xDrive",
-      "shortRangeName": "G21"
-    },
-    {
-      "modelCode": "71FY",
-      "description": "330i xDrive",
-      "modelRangeCode": "G21",
-      "shortName": "330i xDrive",
-      "shortRangeName": "G21"
-    },
-    {
       "modelCode": "81CY",
       "description": "330e",
       "modelRangeCode": "G21",
       "shortName": "330e",
-      "shortRangeName": "G21"
-    },
-    {
-      "modelCode": "61FZ",
-      "description": "M340d xDrive",
-      "modelRangeCode": "G21",
-      "shortName": "M340d xDrive",
       "shortRangeName": "G21"
     },
     {
@@ -113,6 +78,20 @@
       "description": "330i",
       "modelRangeCode": "G21",
       "shortName": "330i",
+      "shortRangeName": "G21"
+    },
+    {
+      "modelCode": "41FY",
+      "description": "320e",
+      "modelRangeCode": "G21",
+      "shortName": "320e",
+      "shortRangeName": "G21"
+    },
+    {
+      "modelCode": "71CY",
+      "description": "330e xDrive",
+      "modelRangeCode": "G21",
+      "shortName": "330e xDrive",
       "shortRangeName": "G21"
     }
   ],

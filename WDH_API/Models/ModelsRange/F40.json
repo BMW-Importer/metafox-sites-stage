@@ -44,34 +44,6 @@
       "modelRangeCode": "F40",
       "shortName": "128ti",
       "shortRangeName": "F40"
-    },
-    {
-      "modelCode": "7M71",
-      "description": "116d",
-      "modelRangeCode": "F40",
-      "shortName": "116d",
-      "shortRangeName": "F40"
-    },
-    {
-      "modelCode": "7M91",
-      "description": "118d",
-      "modelRangeCode": "F40",
-      "shortName": "118d",
-      "shortRangeName": "F40"
-    },
-    {
-      "modelCode": "7N31",
-      "description": "120d",
-      "modelRangeCode": "F40",
-      "shortName": "120d",
-      "shortRangeName": "F40"
-    },
-    {
-      "modelCode": "7N51",
-      "description": "120d xDrive",
-      "modelRangeCode": "F40",
-      "shortName": "120d xDrive",
-      "shortRangeName": "F40"
     }
   ],
   "posiSpec": {

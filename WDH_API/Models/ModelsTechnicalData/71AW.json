@@ -9,7 +9,7 @@
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "BEVE",
   "fromPrice": 72218,
   "seats": 5,
@@ -55,6 +55,8 @@
           "emissionsWltpCombined": "0",
           "electricConsumption": "19.1 - 16.1",
           "electricRangeWltpCombined": "491 - 590",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -92,6 +94,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

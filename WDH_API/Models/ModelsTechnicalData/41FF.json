@@ -10,7 +10,7 @@
   "bodyTypeCode": "LI",
   "marketingBodyTypeCode": "LI",
   "bodyTypeDescription": "LIM",
-  "effectDate": "2024-05-21",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 66485,
   "seats": 5,
@@ -97,6 +97,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

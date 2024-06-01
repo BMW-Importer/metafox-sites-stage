@@ -9,7 +9,7 @@
   "bodyTypeCode": "ST",
   "marketingBodyTypeCode": "TO",
   "bodyTypeDescription": "SAT",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "PHEV",
   "fromPrice": 50312,
   "fuelType": "X",
@@ -48,6 +48,8 @@
           "emissionsWltpCombined": "21 - 19",
           "electricConsumption": "17.9 - 16.1",
           "electricRangeWltpCombined": "78 - 89",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -137,6 +139,8 @@
           "emissionsWltpCombined": "21 - 19",
           "electricConsumption": "17.9 - 16.1",
           "electricRangeWltpCombined": "78 - 89",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

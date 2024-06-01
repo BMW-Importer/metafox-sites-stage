@@ -9,7 +9,7 @@
   "bodyTypeCode": "ST",
   "marketingBodyTypeCode": "TO",
   "bodyTypeDescription": "SAT",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 49562,
   "fuelType": "O",
@@ -43,10 +43,12 @@
           "systemPower": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "",
+          "consumptionWltpCombined": "6.9 - 6.4",
           "emissionsWltpCombined": "156 - 144",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -102,10 +104,12 @@
           "systemPower": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "",
+          "consumptionWltpCombined": "6.9 - 6.4",
           "emissionsWltpCombined": "156 - 144",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -161,10 +165,12 @@
           "systemPower": "-"
         },
         "emissionsConsumptionWltp": {
-          "consumptionWltpCombined": "",
+          "consumptionWltpCombined": "6.9 - 6.4",
           "emissionsWltpCombined": "156 - 145",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

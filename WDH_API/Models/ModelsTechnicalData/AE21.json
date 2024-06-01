@@ -9,7 +9,7 @@
   "bodyTypeCode": "CO",
   "marketingBodyTypeCode": "CP",
   "bodyTypeDescription": "COU",
-  "effectDate": "2024-05-16",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 117660,
   "seats": 4,
@@ -55,6 +55,8 @@
           "emissionsWltpCombined": "0",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

@@ -9,7 +9,7 @@
   "bodyTypeCode": "RO",
   "marketingBodyTypeCode": "CARO",
   "bodyTypeDescription": "ROA",
-  "effectDate": "2024-05-10",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 67752,
   "seats": 2,
@@ -55,6 +55,8 @@
           "emissionsWltpCombined": "167 - 163",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

@@ -10,7 +10,7 @@
   "bodyTypeCode": "CA",
   "marketingBodyTypeCode": "CARO",
   "bodyTypeDescription": "CAB",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 155750,
   "seats": 4,
@@ -56,6 +56,8 @@
           "emissionsWltpCombined": "0",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },

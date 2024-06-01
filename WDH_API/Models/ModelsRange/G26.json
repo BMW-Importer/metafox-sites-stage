@@ -39,20 +39,6 @@
       "shortRangeName": "G26"
     },
     {
-      "modelCode": "21AX",
-      "description": "420d",
-      "modelRangeCode": "G26",
-      "shortName": "420d",
-      "shortRangeName": "G26"
-    },
-    {
-      "modelCode": "31AX",
-      "description": "420d xDrive",
-      "modelRangeCode": "G26",
-      "shortName": "420d xDrive",
-      "shortRangeName": "G26"
-    },
-    {
       "modelCode": "61AV",
       "description": "430i",
       "modelRangeCode": "G26",
@@ -78,13 +64,6 @@
       "description": "i4 eDrive35",
       "modelRangeCode": "G26",
       "shortName": "i4 eDrive35",
-      "shortRangeName": "G26"
-    },
-    {
-      "modelCode": "51AX",
-      "description": "430d xDrive",
-      "modelRangeCode": "G26",
-      "shortName": "430d xDrive",
       "shortRangeName": "G26"
     }
   ]

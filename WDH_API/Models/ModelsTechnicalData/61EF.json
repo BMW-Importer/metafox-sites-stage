@@ -8,7 +8,7 @@
   "cosyBrand": "WBBM",
   "bodyTypeCode": "GF",
   "marketingBodyTypeCode": "SUV",
-  "effectDate": "2024-05-16",
+  "effectDate": "2024-05-31",
   "hybridCode": "BEVE",
   "fromPrice": 63928,
   "seats": 5,
@@ -54,6 +54,8 @@
           "emissionsWltpCombined": "0",
           "electricConsumption": "18.1 - 16.9",
           "electricRangeWltpCombined": "417 - 440",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -94,6 +96,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

@@ -25,13 +25,6 @@
       "shortRangeName": "F44"
     },
     {
-      "modelCode": "11AM",
-      "description": "216d",
-      "modelRangeCode": "F44",
-      "shortName": "216d",
-      "shortRangeName": "F44"
-    },
-    {
       "modelCode": "31AK",
       "description": "220i",
       "modelRangeCode": "F44",
@@ -39,31 +32,10 @@
       "shortRangeName": "F44"
     },
     {
-      "modelCode": "31AM",
-      "description": "218d",
-      "modelRangeCode": "F44",
-      "shortName": "218d",
-      "shortRangeName": "F44"
-    },
-    {
       "modelCode": "51AL",
       "description": "220i xDrive",
       "modelRangeCode": "F44",
       "shortName": "220i xDrive",
-      "shortRangeName": "F44"
-    },
-    {
-      "modelCode": "51AM",
-      "description": "220d",
-      "modelRangeCode": "F44",
-      "shortName": "220d",
-      "shortRangeName": "F44"
-    },
-    {
-      "modelCode": "71AM",
-      "description": "220d xDrive",
-      "modelRangeCode": "F44",
-      "shortName": "220d xDrive",
       "shortRangeName": "F44"
     }
   ],

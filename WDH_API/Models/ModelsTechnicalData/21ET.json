@@ -10,7 +10,7 @@
   "bodyTypeCode": "SC",
   "marketingBodyTypeCode": "SUV",
   "bodyTypeDescription": "SAC",
-  "effectDate": "2024-05-15",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 184910,
   "seats": 5,
@@ -57,6 +57,8 @@
           "emissionsWltpCombined": "0",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
