@@ -9,7 +9,7 @@
   "bodyTypeCode": "TO",
   "marketingBodyTypeCode": "TO",
   "bodyTypeDescription": "TOU",
-  "effectDate": "2024-05-10",
+  "effectDate": "2024-05-31",
   "hybridCode": "PHEV",
   "fromPrice": 65502,
   "seats": 5,
@@ -55,6 +55,8 @@
           "emissionsWltpCombined": "45 - 33",
           "electricConsumption": "20.6 - 18.8",
           "electricRangeWltpCombined": "48 - 56",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -128,6 +130,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"
@@ -174,6 +182,8 @@
           "emissionsWltpCombined": "45 - 33",
           "electricConsumption": "20.6 - 18.8",
           "electricRangeWltpCombined": "48 - 56",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -247,6 +257,12 @@
         ],
         "charging": [
           "f7"
+        ],
+        "charging_chargeAC_value": [
+          "f15"
+        ],
+        "charging_charge_AC_0_100_value": [
+          "f15"
         ],
         "weightMeasurements_weightNotLoaded_label": [
           "f8"

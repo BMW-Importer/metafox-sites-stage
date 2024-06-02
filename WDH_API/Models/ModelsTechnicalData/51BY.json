@@ -9,7 +9,7 @@
   "bodyTypeCode": "ST",
   "marketingBodyTypeCode": "TO",
   "bodyTypeDescription": "SAT",
-  "effectDate": "2024-05-16",
+  "effectDate": "2024-05-31",
   "hybridCode": "NOHY",
   "fromPrice": 45742,
   "fuelType": "D",
@@ -47,6 +47,8 @@
           "emissionsWltpCombined": "132 - 120",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -106,6 +108,8 @@
           "emissionsWltpCombined": "132 - 120",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
@@ -165,6 +169,8 @@
           "emissionsWltpCombined": "132 - 121",
           "electricConsumption": "-",
           "electricRangeWltpCombined": "-",
+          "noiseDriving": "-",
+          "noiseStationary": "-",
           "co2EquivalentOverallBest": "-",
           "co2EquivalentOverall": "-"
         },
