@@ -37,6 +37,70 @@
       "systemMaxTorque": "-",
       "gearBox": "-",
       "driveType": "HR"
-    }
+    },
+    "effectDate": "2024-05-31",
+    "vehicles": [
+      {
+        "transmissionCode": "S02TB",
+        "hybridCode": "NOHY",
+        "volt48": true,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "-",
+            "systemMaxTorque": "-",
+            "gearBox": "-",
+            "driveType": "HR"
+          },
+          "engine": {
+            "cylinders": "-",
+            "technicalCapacity": "-",
+            "nominalPower": "-",
+            "nominalTorque": "-"
+          },
+          "electric": {
+            "systemPower": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "8.2 - 7.6",
+            "emissionsWltpCombined": "185 - 172",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-",
+            "co2EquivalentOverallBest": "-",
+            "co2EquivalentOverall": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "chargeACDC": "-",
+            "charge_AC_0_100": "-",
+            "charge_DC_10_80": "-",
+            "additionalRangeDC": "-",
+            "chargingMaxAC": "-"
+          },
+          "weightMeasurements": {
+            "trunkCapacity": "-",
+            "tankCapacity": "-"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "charging": [
+            "f7"
+          ]
+        },
+        "footnotesData": {}
+      }
+    ]
   }
 }
