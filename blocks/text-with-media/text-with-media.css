@@ -51,6 +51,7 @@
   aspect-ratio: 3/2;
   object-fit: cover;
   position: relative;
+  width: 100%;
 }
 
 .text-with-media-item .video-parent-block > div {

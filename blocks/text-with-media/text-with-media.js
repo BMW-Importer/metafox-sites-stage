@@ -8,9 +8,19 @@ function generateMediaDom(mediaType, media) {
     const [pictureElement] = media.children;
     media.textContent = '';
     if (pictureElement) {
-      const generatedPictureElem = pictureElement.querySelector('picture');
+      const generatedPictureElem = pictureElement.querySelector('picture');      
+
       if (generatedPictureElem) {
+        const generatedImgElem = generatedPictureElem?.querySelector('img');
+        generatedPictureElem.textContent = '';
+
+        const imageTag = document.createElement('img');
+        imageTag.src = generatedImgElem?.src;
+        imageTag.alt = generatedImgElem?.alt;
+        imageTag.loading = generatedImgElem?.loading;
+
         generatedPictureElem?.classList?.add('media-image');
+        generatedPictureElem.append(imageTag);
 
         containerDiv.append(generatedPictureElem);
 
