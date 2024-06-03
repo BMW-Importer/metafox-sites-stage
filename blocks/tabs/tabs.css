@@ -66,6 +66,7 @@
     border-top: 0.25rem solid #0000;
 
 }
+
 @media (width >=1280px){
     .default-tab li button:not(.active):hover {
             color: var(--light-link-hover-color);
