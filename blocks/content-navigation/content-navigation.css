@@ -497,7 +497,6 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       font-feature-settings: "liga";
       content: "arrow_chevron_left";
       direction: ltr;
-      display: block;
       font-family: var(--icon-font-family);
       font-style: normal;
       height: 1.25em;
@@ -510,9 +509,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       white-space: nowrap;
       color: var(--text-color);
       box-shadow: -27px -22px 21px 19px var(--background-color),-14px -7px 18px 28px var(--background-color);
-     display: flex;
-     justify-content: center;
-     align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   
     /** without btn below **/
