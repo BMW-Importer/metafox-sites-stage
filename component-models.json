@@ -2572,7 +2572,7 @@
       },
       {
         "component": "boolean",
-        "label": "Muted Video Sound",
+        "label": "Mute Video Sound",
         "name": "media_videoCarouselMuteSoundVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
