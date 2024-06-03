@@ -69,7 +69,7 @@ function buildTabs(main) {
       const sectionMeta = section.querySelector('div.section-metadata');
       if (sectionMeta) {
         const meta = readBlockConfig(sectionMeta);
-        return [section, meta['anchor-id']];
+        return [section, meta['tab-label']];
       }
       return null;
     })

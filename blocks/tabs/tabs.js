@@ -21,7 +21,7 @@ export function createTabs($block) {
 
   // move the tab's sections before the tab riders.
   [...$sections].forEach(($tabContent) => {
-    const name = $tabContent.dataset.anchorId;
+    const name = $tabContent.dataset.tabLabel;
     const tabsVariation = $tabContent.dataset.tabStyle;
     const tabsVariationName = tabsVariation === 'secondary' ? 'default-tab' : 'buttons-tab';
     const tab = tabs.find((t) => t.name === name);
