@@ -217,12 +217,20 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     }
 }
 
-/* ipad pro */
-@media (width >= 830px) and (width < 1280px) {
+@media (width >= 830px) and (width < 1023px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+        width: 50%;
+    }
+}
+
+@media (width >= 1024px) and (width < 1280px) {
     header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
         width: 25%;
     }
+}
 
+/* ipad pro */
+@media (width >= 830px) and (width < 1280px) {
     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
         overflow: unset;
         margin-left: 0;

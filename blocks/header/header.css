@@ -15,7 +15,7 @@ header {
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 3;
+  z-index: 1111;
   position: relative;
 }
 
