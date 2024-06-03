@@ -8,7 +8,7 @@ function generateMediaDom(mediaType, media) {
     const [pictureElement] = media.children;
     media.textContent = '';
     if (pictureElement) {
-      const generatedPictureElem = pictureElement.querySelector('picture');      
+      const generatedPictureElem = pictureElement.querySelector('picture');
 
       if (generatedPictureElem) {
         const generatedImgElem = generatedPictureElem?.querySelector('img');
