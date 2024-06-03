@@ -1,5 +1,6 @@
 const { body } = document;
 const sections = document.querySelectorAll('div[data-contentnavigation="true"]');
+const viewPortWidth = window.innerWidth;
 
 function handleOnScrollActiveLink() {
   const scrollPosition = window.scrollY;
@@ -19,7 +20,7 @@ function handleOnScrollActiveLink() {
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
       parentElement?.classList.add('active');
       activeSectionId = sectionId;
-      if (window.innerWidth < 768) {
+      if (viewPortWidth < 768) {
         document.getElementById('navdropdownMenuButton').textContent = parentElement?.textContent.trim();
       }
     } else {
@@ -167,7 +168,7 @@ function scrollRight() {
 }
 
 function checkAnchorLinkOverflow(ul, wrapper) {
-  if (wrapper?.scrollWidth > window.innerWidth) {
+  if (wrapper?.scrollWidth > viewPortWidth) {
     ul.classList.add('list-overflow');
     wrapper.classList.add('wrapper-overflow');
   } else {
@@ -223,7 +224,7 @@ export default function decorate(block) {
     li.appendChild(button);
     ul.appendChild(li);
     function handleTabletView() {
-      const isTabletView = window.innerWidth >= 768 && window.innerWidth <= 1024;
+      const isTabletView = viewPortWidth >= 768 && viewPortWidth <= 1024;
       ul.classList.toggle('tablet-only', isTabletView && index >= 5);
       wrapper.classList.toggle('tablet-only', isTabletView && index >= 5);
     }
