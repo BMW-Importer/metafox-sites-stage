@@ -81,7 +81,7 @@
     cursor: grab;
 }
 
-.tabs ul:after {
+.tabs ul::after {
     content: '';
     display: inline-block;
     box-shadow: -2rem -4px 20px 4rem #fcfcfc91;
