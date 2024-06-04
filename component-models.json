@@ -277,7 +277,8 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
@@ -365,7 +366,8 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
