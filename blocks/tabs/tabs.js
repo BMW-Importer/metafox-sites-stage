@@ -6,7 +6,7 @@ export function createTabs($block) {
   /** @type TabInfo[] */
   const tabs = [...$ul.querySelectorAll('li')].map(($li) => {
     const title = $li.textContent;
-    const name = title.toLowerCase().trim();
+    const name = title.trim();
     return {
       title,
       name,
