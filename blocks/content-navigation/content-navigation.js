@@ -177,6 +177,29 @@ function checkAnchorLinkOverflow(ul, wrapper) {
   }
 }
 
+/*
+
+function checkAnchorLinkOverflow(ul, wrapper) {
+  const isBtnVariation = wrapper.classList.contains('variation-btn');
+  if (!isBtnVariation) {
+    if (ul?.scrollWidth > viewPortWidth) {
+      ul.classList.add('list-overflow');
+      wrapper.classList.add('wrapper-overflow');
+    } else {
+      ul.classList.remove('list-overflow');
+      wrapper.classList.remove('wrapper-overflow');
+    }
+  } else if (wrapper?.scrollWidth > viewPortWidth) {
+    ul.classList.add('list-overflow');
+    wrapper.classList.add('wrapper-overflow');
+  } else {
+    ul.classList.remove('list-overflow');
+    wrapper.classList.remove('wrapper-overflow');
+  }
+}
+
+*/
+
 export default function decorate(block) {
   const getTextContent = (selector) => Array.from(selector).map((p) => p.textContent);
 
