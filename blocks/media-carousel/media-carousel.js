@@ -260,11 +260,10 @@ export default function decorate(block) {
   const videoImageCarouselContent = document.createElement('div');
   videoImageCarouselContent.classList.add('video-image-carousel-content');
 
-  block.textContent = '';
-
   // loop through all children blocks
-  [...panels].forEach((panel, index) => {
+  [...panels].forEach((panel) => {
     const [content, media, cta] = panel.children;
+    panel.textContent = '';
     if (media.children.length > 1) {
     // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
@@ -365,12 +364,12 @@ export default function decorate(block) {
       imgDesWrapper.classList.add('video-img-description');
       const vidImgCtaWrap = document.createElement('div');
       vidImgCtaWrap.classList.add('video-img-cta');
-      let vidImgAnchorElm = cta.querySelector('a');
+      let vidImgAnchorElm = cta?.querySelector('a');
       vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
       vidImgCtaWrap.append(vidImgAnchorElm);
 
       // headline and copy text under general tab
-      const contentElem = content.children;
+      const contentElem = content?.children;
       let imgCarouselHeadline = contentElem[0];
       imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent.trim()) ? imgCarouselHeadline : '';
       let imgCarouselCopyText = contentElem[1];
@@ -378,24 +377,22 @@ export default function decorate(block) {
       imgTitleWrapper.append(imgCarouselHeadline);
       imgDesWrapper.append(imgCarouselCopyText);
 
-      const imageCarouselImgRef = media.querySelector('picture');
+      // const imageCarouselImgRef = media.querySelector('picture');
       const imageCarouselCard = document.createElement('div');
       imageCarouselCard.classList.add('video-img-carousel-card');
 
-      const imgDOMContainer = document.createElement('div');
-
-      if (index === 0) {
-        imgDOMContainer.classList.add('visible');
-      }
-
-      const propImgElem = imageCarouselImgRef.querySelector('img');
-      const imageSlideAltText = propImgElem.getAttribute('alt');
-
       const pictureElement = document.createElement('picture');
       const imgElem = document.createElement('img');
-      imgElem.src = propImgElem.src;
-      imgElem.setAttribute('alt', imageSlideAltText);
-      pictureElement.append(imgElem);
+      const imageCarouselImgRef = media?.querySelector('picture');
+      if (imageCarouselImgRef) {
+        const propImgElem = imageCarouselImgRef?.querySelector('img');
+        if (propImgElem) {
+          const imageSlideAltText = propImgElem?.getAttribute('alt');
+          imgElem.src = propImgElem?.src;
+          imgElem.setAttribute('alt', imageSlideAltText || '');
+          pictureElement.append(imgElem);
+        }
+      }
       imageCarouselCard.append(pictureElement, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
       videoImageCarouselContent.append(imageCarouselCard);
     }
