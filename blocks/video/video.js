@@ -170,18 +170,6 @@ export function getVideoElement(props) {
     video.removeEventListener('mouseleave', () => { });
   }
 
-  video.addEventListener('touchstart', () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  }, { passive: false });
-
-  document.body.addEventListener('touchmove', (event) => {
-    event.preventDefault();
-  }, { passive: false });
-
   video.dataset.autoplay = autoplay ? 'true' : 'false';
   if (window.IntersectionObserver) {
     const observer = new IntersectionObserver((entries) => {
