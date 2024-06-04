@@ -400,7 +400,7 @@
       {
         "component": "select",
         "name": "tab-style",
-        "value": "",
+        "value": "secondary",
         "label": "Tab Style",
         "valueType": "string",
         "required": true,
