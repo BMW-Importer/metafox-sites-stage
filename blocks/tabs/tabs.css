@@ -1,18 +1,17 @@
 .tabs.block {
     display: flex;
-
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .tabs ul {
     display: flex;
-    flex-wrap: wrap;
     padding-left: 0;
     list-style: none;
     box-shadow: #00000014 0 0.125rem 0.5rem 0, #00000047 0 0 0.0625rem 0;
     margin: .5rem 0;
     min-height: 3.25rem;
     border-radius: 0.188rem;
+    overflow-x: auto;
 }
 
 .tabs li {
@@ -80,6 +79,14 @@
     border-bottom: 0.6667px solid var(--light-grey-1);
     gap: .5rem;
     cursor: grab;
+}
+
+.tabs ul:after {
+    content: '';
+    display: inline-block;
+    box-shadow: -2rem -4px 20px 4rem #fcfcfc91;
+    position: absolute;
+    right: 0;
 }
 
 body.activity main {
