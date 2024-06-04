@@ -25,7 +25,6 @@
     "topSpeed": "200",
     "bodyTypeCode": "GF",
     "marketingBodyTypeCode": "SUV",
-    "pureElectricRange": 436,
     "posiSpec": {
       "cosyBrand": "WBBI",
       "agCode": "21CF",
@@ -40,7 +39,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-05-31",
+    "effectDate": "2024-06-03",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -73,8 +72,8 @@
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
             "emissionsWltpCombined": "0",
-            "electricConsumption": "21.4 - 19.4",
-            "electricRangeWltpCombined": "403 - 436",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -105,12 +104,6 @@
         "footnotes": {
           "emissionsConsumptionWltp": [
             "f4"
-          ],
-          "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
-            "f6"
-          ],
-          "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
-            "f6"
           ],
           "charging": [
             "f7"
