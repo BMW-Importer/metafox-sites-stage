@@ -974,7 +974,7 @@
       },
       {
         "component": "boolean",
-        "label": "Video Controls",
+        "label": "Hide Video Controls",
         "name": "media_videoControls",
         "valueType": "boolean",
         "value": false,
@@ -982,7 +982,7 @@
       },
       {
         "component": "text",
-        "label": "Loop Video",
+        "label": "Hide Video Controls",
         "name": "media_videoControlsType",
         "valueType": "string",
         "value": "h4",
