@@ -10,7 +10,7 @@ function generateMediaDom(mediaType, media) {
     if (pictureElement) {
       const generatedPictureElem = pictureElement.querySelector('picture');
 
-      if (generatedPictureElem) {        
+      if (generatedPictureElem) {
         generatedPictureElem?.classList?.add('media-image');
 
         containerDiv.append(generatedPictureElem);
