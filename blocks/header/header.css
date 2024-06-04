@@ -15,7 +15,8 @@ header {
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
 }
 
 header nav {
@@ -196,6 +197,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     margin: 0;
     width: 100%;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
   }
 
   .header nav .section .default-content-wrapper {
@@ -682,6 +685,8 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper .flyout-wrapper {
 
 header nav[aria-expanded="true"] .menu-flyout-wrapper .menu-flyout.block p{
   margin: 0;
+  position: relative;
+  z-index: 2;
 }
 
 header nav[aria-expanded="true"] .menu-flyout-wrapper::after {       
@@ -707,6 +712,7 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper::after {
     position: absolute;
     right: 7rem;
     top: 0.75rem;
+    z-index: 1;
 }
 
 /* flyout css ipad code */ 
@@ -1030,12 +1036,6 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     color:transparent;
   }
 
-  header.header-wrapper.white-background nav .icon-link-list-container .icon-link-list-container .icon .icon-container:hover{
-    border-bottom: .25rem solid var(--light-link-hover-color);
-    border-top: .25rem solid transparent;
-    color:transparent;
-  }
-
   header nav .icon-link-list-container .icon-container .location::before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1139,13 +1139,11 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   /* css for flyout */
 
   .flyout-main-container {
-    justify-content: center;
-    align-items: center;
     background-color: var(--background-color);
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
-    padding: 2.5rem 5.25rem;
+    padding: 2.5rem 0;
     height: auto;
     width: 100%;
     opacity: 0;
@@ -1156,6 +1154,11 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     overflow: hidden;
   }
 
+  .menu-flyout .flyout-wrapper {
+    position: absolute;
+    z-index: 999;
+  }
+
   .showfly .flyout-wrapper {
     overflow: visible;
     top: 84px;
@@ -1164,7 +1167,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     left: 0;
     right: 0;
     transition: left .15s cubic-bezier(0, .5, .5, 1);
-    background-color: var(--opacity-color);
+    background-color: var(--background-color);
+    height: auto;
   }
 
   .showfly .flyout-wrapper::before {
@@ -1172,15 +1176,17 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   }
 
   .showfly .flyout-main-container {
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    columns: 4;
+    grid-row-gap: 1.875rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     opacity: 1;
     transform: scaleY(1);
     transition-delay: 0s, 0s;
     align-items: revert;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 109.5rem !important;
+    padding-left: 5.25rem;
+    padding-right: 5.25rem;
+    box-sizing: border-box;
   }
 
 }
@@ -1256,7 +1262,6 @@ header nav[aria-expanded="true"] .section {
   visibility: visible;
   align-self: start;
 }
-
 
 @media (width >= 1280px) {
   header nav .nav-brand picture {
@@ -1391,4 +1396,28 @@ header nav[aria-expanded="true"] .section {
   header nav[aria-expanded="true"] .section {
     left: calc(100vw - (var(--max-component-width) - (45px + 96px)));
   }
+
+  .showfly .flyout-main-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100%;
+    width: 109.5rem !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+header.white-background .nav-wrapper::before {
+  content: ' ';
+  pointer-events: none;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8rem;
+
+  /* stylelint-disable-next-line color-function-notation */
+  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 40%));
 }

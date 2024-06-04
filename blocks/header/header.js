@@ -126,6 +126,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
+
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
@@ -207,6 +208,10 @@ export default async function decorate(block) {
         const childCount = flyoutMainContainer.children.length;
         if (childCount < 4) {
           flyoutMainContainer.style.justifyContent = 'center';
+        }
+        // Selecting the first child and adding the style 'grid-column-start: 2'
+        if (flyoutMainContainer.children[0]) {
+          flyoutMainContainer.children[0].style.gridColumnStart = '2';
         }
       }
       document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {

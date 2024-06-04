@@ -456,15 +456,18 @@ main .section:first-child {
 }
 
 /* desktop */
+@media (width = 1920px) {
+  body.appear.white-background main .section {
+      padding: 0;
+  }
+}
+
 @media (width >= 1280px){
   main .section {
     padding: 0 var(--section-desktop-padding);
   }
 
-  .appear.white-background main .section {
-    padding: 0 var(--section-desktop-padding);
-  }
-  
+ 
   .appear.white-background main .section.columns-container .default-content-wrapper p {
     margin: 0
   }
@@ -474,8 +477,8 @@ main .section:first-child {
 @media (width >= 1920px){
   main .section {   
     max-width: 100vw;
-    padding-left: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
-    padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
+    padding-left: calc((100vw - (var(--max-component-width)))/2);
+    padding-right: calc((100vw - (var(--max-component-width)))/2);
   }
 }
 

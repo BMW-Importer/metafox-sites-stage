@@ -22,7 +22,8 @@
       "copy_text",
       "image",
       "button",
-      "headline"
+      "headline",
+      "eyebrow"
     ]
   },
   {
@@ -85,7 +86,7 @@
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": ["superscript", "subscript"],
+      "sr_script": ["superscript"],
       "list": ["bullist", "numlist"],
       "insert": ["link"],
       "blocks": [],
@@ -195,7 +196,14 @@
   },
   {
     "id": "tabs-section",
-    "components":[]
+    "components": [
+      "copy_text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards"
+    ]
   },
   {
     "id": "copy_text",
@@ -221,9 +229,9 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": [],
+      "advanced": ["h3"],
       "extensions": [],
-      "editor": []
+       "editor": []
     }
   },
   {

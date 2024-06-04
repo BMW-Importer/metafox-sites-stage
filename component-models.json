@@ -260,7 +260,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorlabel",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -268,7 +268,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorid",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -276,7 +276,7 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "",
-        "name": "sectioncontentnavigation",
+        "name": "contentnavigation",
         "valueType": "boolean"
       }
     ]
@@ -381,51 +381,64 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label of the Tab that will appear on the page.",
-        "name": "content_tablabel",
+        "name": "tab-label",
         "value": "",
-        "label": "Tab Label"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_tablabelType",
-        "value": "h2",
         "label": "Tab Label",
-        "hidden": true
+        "required": true
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the description of the Tab, which will be read by screen-readers.",
-        "name": "content_tabdesc",
+        "name": "tab-desc",
         "value": "",
-        "label": "Tab description"
+        "label": "Tab description",
+        "required": true
       },
       {
         "component": "select",
-        "name": "content_tabstyle",
+        "name": "tab-style",
         "value": "",
-        "label": "Tab style",
+        "label": "Tab Style",
         "valueType": "string",
         "required": true,
         "description": "Defines the styling in which the tab will be displayed.",
         "options": [
           {
             "name": "Default",
-            "value": ""
+            "value": "secondary"
           },
           {
             "name": "Buttons",
-            "value": ""
+            "value": "primary"
           }
         ]
-      },    
+      },
       {
         "component": "boolean", 
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
-        "name": "content_displaytopmargin",
+        "name": "tab-topmargin",
         "valueType": "boolean"
+      },
+      {
+        "component": "select",
+        "name": "tab-style",
+        "value": "",
+        "label": "Tab Style",
+        "valueType": "string",
+        "description": "Defines the styling in which the tab will be displayed.",
+        "required": true,
+        "options": [
+          {
+            "name": "Default",
+            "value": "primary"
+          },
+          {
+            "name": "Buttons",
+            "value": "secondary"
+          } 
+        ]
       },
       {
         "component": "tab",
@@ -436,23 +449,15 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "anchor_anchorlabel",
+        "name": "anchor-label",
         "value": "",
         "label": "Anchor Label"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "anchor_anchorlabelType",
-        "value": "h2",
-        "label": "Anchor Label",
-        "hidden": true
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "anchor_anchorid",
+        "name": "anchor-id",
         "value": "",
         "label": "Anchor ID"
       },
@@ -460,19 +465,19 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "anchor_tabscontentnavigation",
+        "name": "tab-content-navigation",
         "valueType": "boolean"
       },
       {
         "component": "tab",
         "label": "Analytics",
-        "name": "analytics_tabssectiontab3"
+        "name": "tab-analytics"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytics_sectionlabel",
+        "name": "analytis-label",
         "value": "",
         "label": "Section Label"
       }
@@ -663,7 +668,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithImageTab1"
+        "name": "content_textWithImageTab"
       },
       {
         "component": "select",
@@ -687,7 +692,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageeyebrow",
+        "name": "content_imageeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -695,29 +700,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_imageeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow Bold 1",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow Bold 2",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageheadline",
+        "name": "content_imageheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -725,7 +730,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "imageheadlineType",
+        "name": "content_imageheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -739,7 +744,7 @@
       },
       {
         "component": "richtext",
-        "name": "imagecopytext",
+        "name": "content_imagecopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -748,7 +753,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "textWithImageTab2"
+        "name": "media_textWithImageTab2"
       },
       {
         "component": "reference",
@@ -772,38 +777,23 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithImageTab3"
-      },
+        "name": "cta_textWithImageTab3"
+      },      
       {
         "component": "text",
         "valueType": "string",
-        "name": "imagebuttonlinkLabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imagebuttonlink",
+        "name": "cta_imagebuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "imagebuttonstyling",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "Link Button",
-            "value": "secondary"
-          }
-        ]
+        "name": "cta_imagebuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
       }
     ]
   },
@@ -813,7 +803,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithVideoTab1"
+        "name": "content_textWithVideoTab1"
       },
       {
         "component": "select",
@@ -837,7 +827,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoeyebrow",
+        "name": "content_videoeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -845,29 +835,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_videoeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoheadline",
+        "name": "content_videoheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -875,21 +865,15 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "videoheadlineType",
+        "name": "content_videoheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "H2",
-            "value": "h2"
-          }
-        ]
+        "hidden": true        
       },
       {
         "component": "richtext",
-        "name": "videocopytext",
+        "name": "content_videocopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -898,7 +882,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "textWithVideoTab2"
+        "name": "media_textWithVideoTab2"
       },
       {
         "component": "text",
@@ -965,12 +949,28 @@
         "description": "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_loopVideoType",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_autoplay",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_autoplayType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "boolean",
@@ -981,6 +981,14 @@
         "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_videoControlsType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Mute Video",
         "name": "media_muteVideo",
@@ -989,40 +997,33 @@
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_muteVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithVideoTab3"
+        "name": "cta_textWithVideoTab3"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videolinklabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "videobuttonlink",
+        "name": "videobuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "videobuttonstyling",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "Link Button",
-            "value": "secondary"
-          }
-        ]
+        "name": "videobuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
       }
     ]
   },
@@ -1394,7 +1395,7 @@
       },
       {
         "component": "boolean",
-        "label": "Video Controls",
+        "label": "Hide Video Controls",
         "name": "hideVideoControl",
         "valueType": "boolean",
         "value": true,
@@ -2590,7 +2591,7 @@
       },
       {
         "component": "boolean",
-        "label": "Muted Video Sound",
+        "label": "Mute Video Sound",
         "name": "media_videoCarouselMuteSoundVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
