@@ -64,6 +64,63 @@ function updateButtonVisibility(prevButton, nextButton, currentIndex, totalItems
   }
 }
 
+function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex) {
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+  let startTime = 0;
+  let index = currentIndex;
+
+  let endTime = 0;
+  let moved = false;
+  const maxClickDuration = 200;
+  const cardGap = viewportWidth < 768 ? 16 : 24;
+  const minSlideDistance = 100;
+
+  content.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].pageX;
+    startTime = new Date().getTime();
+    isDragging = true;
+    moved = false;
+  });
+
+  content.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].pageX;
+    const dx = currentX - startX;
+    if (Math.abs(dx) >= minSlideDistance) {
+      moved = true;
+      const itemWidth = content.children[index].offsetWidth;
+      const offset = -(index * (itemWidth + cardGap)) + dx;
+      content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
+    }
+  });
+
+  content.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    endTime = new Date().getTime();
+    const dx = currentX - startX;
+    const duration = endTime - startTime;
+    if (!moved || (Math.abs(dx) < minSlideDistance && duration < maxClickDuration)) {
+      return; // avoide small movements and quick touches (clicks)
+    }
+    const itemWidth = content.children[index].offsetWidth;
+    const threshold = itemWidth * 0.6; // threshold to move to next/previous item
+
+    if (Math.abs(dx) > threshold) {
+      if (dx > 0 && index > 0) {
+        index -= 1;
+      } else if (dx < 0 && index < totalItems - itemsToShow) {
+        index += 1;
+      }
+    }
+    content.style.transitionDuration = '300ms';
+    updateCarousel(content, index);
+    updateDots(block.querySelector('.dots-navigation'), index);
+  });
+}
+
 function addDotsNavigation(block, content, totalItems, itemsToShow) {
   const dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
@@ -102,6 +159,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow) {
           itemsToShow,
         );
       }
+      addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex);
     };
   }
 
@@ -194,62 +252,6 @@ function addIconCarouselControls(
       itemsToShow,
     );
   }
-}
-
-function addTouchSlideFunctionality(block, content, totalItems, itemsToShow) {
-  let startX = 0;
-  let currentX = 0;
-  let isDragging = false;
-  let startTime = 0;
-  let endTime = 0;
-  let moved = false;
-  const maxClickDuration = 200;
-  let currentIndex = 0;
-  const cardGap = viewportWidth < 768 ? 16 : 24;
-  const minSlideDistance = 100;
-
-  content.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].pageX;
-    startTime = new Date().getTime();
-    isDragging = true;
-    moved = false;
-  });
-
-  content.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    currentX = e.touches[0].pageX;
-    const dx = currentX - startX;
-    if (Math.abs(dx) >= minSlideDistance) {
-      moved = true;
-      const itemWidth = content.children[currentIndex].offsetWidth;
-      const offset = -(currentIndex * (itemWidth + cardGap)) + dx;
-      content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
-    }
-  });
-
-  content.addEventListener('touchend', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    endTime = new Date().getTime();
-    const dx = currentX - startX;
-    const duration = endTime - startTime;
-    if (!moved || (Math.abs(dx) < minSlideDistance && duration < maxClickDuration)) {
-      return; // avoide small movements and quick touches (clicks)
-    }
-    const itemWidth = content.children[currentIndex].offsetWidth;
-    const threshold = itemWidth * 0.6; // threshold to move to next/previous item
-
-    if (Math.abs(dx) > threshold) {
-      if (dx > 0 && currentIndex > 0) {
-        currentIndex -= 1;
-      } else if (dx < 0 && currentIndex < totalItems - itemsToShow) {
-        currentIndex += 1;
-      }
-    }
-    content.style.transitionDuration = '300ms';
-    updateCarousel(content, currentIndex);
-    updateDots(block.querySelector('.dots-navigation'), currentIndex);
-  });
 }
 
 export default function decorate(block) {
@@ -452,7 +454,7 @@ export default function decorate(block) {
   });
 
   if (viewportWidth <= 1024) {
-    addTouchSlideFunctionality(block, videoImageCarouselContent, totalItems, cardsToShow);
+    addTouchSlideFunctionality(block, videoImageCarouselContent, totalItems, cardsToShow, 0);
   }
   if (viewportWidth >= 1280 && totalItems > 4) {
     addIconCarouselControls(
