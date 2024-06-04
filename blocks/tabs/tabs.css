@@ -89,6 +89,16 @@
     right: 0;
 }
 
+[data-tab-topmargin='true'] {
+    margin-top: 3rem;
+}
+
+@media (width >=360px) and (width < 1280px) {
+    [data-tab-topmargin='true'] {
+            margin-top: 2.5rem;
+        }
+}
+
 body.activity main {
     grid-auto-flow: column;
     grid-template-rows: auto auto min-content minmax(auto, 100%);

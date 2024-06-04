@@ -1153,7 +1153,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
   .menu-flyout .flyout-wrapper {
     position: absolute;
     z-index: 999;
-    visibility: hidden;
+    visibility: hidden; 
   }
 
   .showfly .flyout-wrapper {
