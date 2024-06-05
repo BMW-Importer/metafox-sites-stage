@@ -20,9 +20,7 @@ function handleOnScrollActiveLink() {
     if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
       parentElement?.classList.add('active');
       activeSectionId = sectionId;
-      if (viewPortWidth < 768) {
-        document.getElementById('navdropdownMenuButton').textContent = parentElement?.textContent.trim();
-      }
+      document.getElementById('navdropdownMenuButton').textContent = parentElement?.textContent.trim();
     } else {
       parentElement?.classList.remove('active');
     }
