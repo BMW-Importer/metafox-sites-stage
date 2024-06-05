@@ -111,6 +111,8 @@
   .text-with-media-item {
     display: flex;
     flex-direction: row;
+    width: calc(100% + 24px);
+    margin-left: -12px;
   }
 
   .text-with-media-item .media-detail-container {
@@ -135,12 +137,14 @@
     padding-right: 1.75rem;
   }
 
-  .text-with-media-item.left .media-container > *{    
+  .text-with-media-item.left .media-container > *{
     padding-right: 0.75rem;
+    padding-left: 0.75rem;
   }
 
-  .text-with-media-item.right .media-container > *{    
+  .text-with-media-item.right .media-container > *{
     padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
@@ -179,6 +183,7 @@
   .text-with-media-item {
     margin-left: 5.25rem;
     margin-right: 5.25rem;
+    width: auto;
   }
 
   .text-with-media-item .text-with-media-cta {

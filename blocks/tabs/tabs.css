@@ -12,6 +12,7 @@
     min-height: 3.25rem;
     border-radius: 0.188rem;
     overflow-x: auto;
+    scrollbar-width: none;
 }
 
 .tabs li {
@@ -69,7 +70,7 @@
 @media (width >=1280px){
     .default-tab li button:not(.active):hover {
             color: var(--light-link-hover-color);
-            border-bottom-color: var(--light-link-hover-color);
+            border-bottom-color: var(--light-link-hover-color) !important;
         }
 }
 
@@ -87,6 +88,16 @@
     box-shadow: -2rem -4px 20px 4rem #fcfcfc91;
     position: absolute;
     right: 0;
+}
+
+[data-tab-topmargin='true'] {
+    margin-top: 3rem;
+}
+
+@media (width >=360px) and (width < 1280px) {
+    [data-tab-topmargin='true'] {
+            margin-top: 2.5rem;
+        }
 }
 
 body.activity main {
