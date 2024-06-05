@@ -2604,7 +2604,7 @@
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_carouselMouseHoverVideoType",
+        "name": "media_carouselMouseHoverVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2620,7 +2620,7 @@
       {
         "component": "boolean",
         "label": "Hide Video Controls",
-        "name": "media_carouselHideControlsVideoType",
+        "name": "media_carouselHideControlsVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2637,7 +2637,7 @@
       {
         "component": "boolean",
         "label": "Mute Video Sound",
-        "name": "media_carouselMuteSoundVideoType",
+        "name": "media_carouselMuteSoundVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
