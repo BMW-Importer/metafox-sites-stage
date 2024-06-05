@@ -69,7 +69,7 @@
 @media (width >=1280px){
     .default-tab li button:not(.active):hover {
             color: var(--light-link-hover-color);
-            border-bottom-color: var(--light-link-hover-color);
+            border-bottom-color: var(--light-link-hover-color) !important;
         }
 }
 
