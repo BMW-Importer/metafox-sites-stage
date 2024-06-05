@@ -1013,6 +1013,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
   header.white-background .subnavigation-text-wrapper strong{
     font-weight: 700;
+    padding-right: 5px;
     
   }
 
@@ -1150,13 +1151,10 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     transform: scaleY(0);
   }
   
-  .flyout-wrapper {
-    overflow: hidden;
-  }
-
   .menu-flyout .flyout-wrapper {
     position: absolute;
     z-index: 999;
+    visibility: hidden;
   }
 
   .showfly .flyout-wrapper {
@@ -1169,6 +1167,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     transition: left .15s cubic-bezier(0, .5, .5, 1);
     background-color: var(--background-color);
     height: auto;
+    visibility: visible;
   }
 
   .showfly .flyout-wrapper::before {
