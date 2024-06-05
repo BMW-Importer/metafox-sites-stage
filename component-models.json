@@ -277,7 +277,8 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
@@ -365,7 +366,8 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
@@ -398,7 +400,7 @@
       {
         "component": "select",
         "name": "tab-style",
-        "value": "",
+        "value": "secondary",
         "label": "Tab Style",
         "valueType": "string",
         "required": true,
