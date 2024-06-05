@@ -2505,7 +2505,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "content_videoCarouselHeadline",
+        "name": "content_carouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
@@ -2513,10 +2513,11 @@
       {
         "component": "select",
         "label": "Headline Type",
-        "name": "content_videoCarouselHeadlineType",
+        "name": "content_carouselHeadlineType",
         "valueType": "string",
         "description": "Defines multiple styling options for the Headline",
-        "value": "h2"
+        "value": "h2",
+        "hidden": true
       },
       {
         "component": "richtext",
@@ -2587,35 +2588,67 @@
       {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "media_videoCarouselLoopVideoType",
+        "name": "media_carouselLoopVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h3"
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_carouselLoopVideoType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_videoCarouselMouseHoverVideoType",
+        "name": "media_carouselMouseHoverVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h4"
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Play on mouseover",
+        "name": "media_carouselMouseHoverVideoType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
       },
       {
         "component": "boolean",
         "label": "Hide Video Controls",
-        "name": "media_videoCarouselHideControlsVideoType",
+        "name": "media_carouselHideControlsVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h5"
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Hide Video Controls",
+        "name": "media_carouselHideControlsVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
 
       },
       {
         "component": "boolean",
         "label": "Mute Video Sound",
-        "name": "media_videoCarouselMuteSoundVideoType",
+        "name": "media_carouselMuteSoundVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h6"
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideoType",
+        "valueType": "string",
+        "value": "h6",
+        "hidden": true
 
       },
       {
