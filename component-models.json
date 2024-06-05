@@ -2588,7 +2588,7 @@
       {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "media_videoCarouselLoopVideo",
+        "name": "media_videoCarouselLoopVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": "h3"
@@ -2596,7 +2596,7 @@
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_videoCarouselMouseHoverVideo",
+        "name": "media_videoCarouselMouseHoverVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": "h4"
@@ -2604,7 +2604,7 @@
       {
         "component": "boolean",
         "label": "Hide Video Controls",
-        "name": "media_videoCarouselHideControlsVideo",
+        "name": "media_videoCarouselHideControlsVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": "h5"
@@ -2612,7 +2612,7 @@
       {
         "component": "boolean",
         "label": "Mute Video Sound",
-        "name": "media_videoCarouselMuteSoundVideo",
+        "name": "media_videoCarouselMuteSoundVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": "h6"
