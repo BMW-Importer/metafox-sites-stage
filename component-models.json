@@ -920,7 +920,7 @@
         "name": "media_mobileFileReference",
         "label": "Mobile Video Path",
         "value": "",
-        "description": "Defines video that will play on mobile.",
+        "description": "Defines the video that will play on mobile.",
         "multi": false
       },
       {
@@ -976,7 +976,7 @@
       },
       {
         "component": "boolean",
-        "label": "Video Controls",
+        "label": "Hide Video Controls",
         "name": "media_videoControls",
         "valueType": "boolean",
         "value": false,
@@ -984,7 +984,7 @@
       },
       {
         "component": "text",
-        "label": "Loop Video",
+        "label": "Hide Video Controls",
         "name": "media_videoControlsType",
         "valueType": "string",
         "value": "h4",
@@ -1553,7 +1553,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "videoSlideTab1"
+        "name": "content_videoSlideTab1"
       },
       {
         "component": "text-input",
@@ -1583,7 +1583,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "videoSlideTab2"
+        "name": "media_videoSlideTab2"
       },
       {
         "component": "text-input",
@@ -1646,6 +1646,15 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_videoSlideLoopVideoType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_videoSlideAutoplay",
@@ -1654,9 +1663,18 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_videoSlideAutoplayType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
-        "name": "videoSlideTab3"
+        "name": "cta_videoSlideTab3"
       },
       {
         "component": "text-input",
@@ -1689,7 +1707,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "imageSlideTab1"
+        "name": "content_imageSlideTab1"
       },
       {
         "component": "text-input",
@@ -1711,7 +1729,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "content_imageSlideCopyText",
+        "name": "content_imageSlideCopytext",
         "description": "Defines the text that will appear in the page. ",
         "value": "",
         "label": "Copy Text"
@@ -1719,7 +1737,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "imageSlideTab2"
+        "name": "media_imageSlideTab2"
       },
       {
         "component": "reference",
@@ -1740,7 +1758,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "imageSlideTab3"
+        "name": "cta_imageSlideTab3"
       },
       {
         "component": "text-input",
@@ -1960,7 +1978,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgDesp_copyText",
+        "name": "bgImgDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
@@ -2205,7 +2223,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidDesp_copyText",
+        "name": "bgVidDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."

@@ -136,7 +136,7 @@ export function getVideoElement(props) {
     }
   });
 
-  let userUnmuted = false;
+  let userUnmuted = !muted;
 
   video.addEventListener('volumechange', () => {
     if (!video.muted && video.volume > 0 && !userUnmuted) {
@@ -200,11 +200,7 @@ export function getVideoElement(props) {
     observer.observe(video);
     video.oncanplay = () => {
       if (autoplay) {
-        video.muted = true;
-        video.play();
-      }
-      if (userUnmuted) {
-        video.muted = false;
+        video.muted = !userUnmuted;
         video.play();
       }
     };
