@@ -17,7 +17,7 @@ export function createTabs($block) {
   $block.replaceChildren($ul);
 
   // search referenced sections and move them inside the tab-container
-  const $sections = document.querySelectorAll('[data-tab-content-navigation="true"]');
+  const $sections = document.querySelectorAll('[data-contentnavigation="true"]');
 
   // move the tab's sections before the tab riders.
   [...$sections].forEach(($tabContent) => {

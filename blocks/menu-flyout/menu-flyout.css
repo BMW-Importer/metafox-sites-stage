@@ -46,6 +46,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     display: block;
     width: 100%;
     padding: 0 0.75rem;
+    box-sizing: border-box;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
@@ -194,7 +195,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         flex-wrap: wrap;
         gap: 0;
         row-gap:0;
-        padding: 1rem 2.25rem;
+        padding: 0 2.25rem;
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
@@ -213,16 +214,48 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
-        margin: 0 0 1.5rem;
+        margin: 0 0 .75rem;
+    }
+}
+
+@media (width >= 768px) and (width < 830px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-menu-teaser{
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-menu-teaser {
+        padding: 0;
+        position: relative;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
+        padding: 0 2.25rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-main-container.single-submenu .link-list-wrapper.vertical li {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (width >= 830px) and (width < 1023px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+        width: 50%;
+    }
+}
+
+@media (width >= 1024px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+        width: 25%;
     }
 }
 
 /* ipad pro */
 @media (width >= 830px) and (width < 1280px) {
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
-        width: 25%;
-    }
-
     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
         overflow: unset;
         margin-left: 0;
@@ -233,7 +266,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         flex-wrap: wrap;
         gap: 0;
         row-gap:0;
-        padding: 1rem 2.5rem;
+        padding: 0 2.5rem;
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
@@ -263,7 +296,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
      }
 
      header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
-        padding: 1.5rem 2.25rem;
+        padding: 0 2.25rem;
      }
 
      header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title {
@@ -300,7 +333,10 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
-        width: 100%;  
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.5rem;
+        box-sizing: border-box
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
