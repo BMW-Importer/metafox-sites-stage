@@ -2516,8 +2516,7 @@
         "name": "content_videoCarouselHeadlineType",
         "valueType": "string",
         "description": "Defines multiple styling options for the Headline",
-        "value": "h2",
-        "hidden": true
+        "value": "h2"
       },
       {
         "component": "richtext",
@@ -2591,8 +2590,7 @@
         "name": "media_videoCarouselLoopVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h3",
-        "hidden": true
+        "value": "h3"
       },
       {
         "component": "boolean",
@@ -2600,8 +2598,7 @@
         "name": "media_videoCarouselMouseHoverVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h4",
-        "hidden": true
+        "value": "h4"
       },
       {
         "component": "boolean",
@@ -2609,8 +2606,7 @@
         "name": "media_videoCarouselHideControlsVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h5",
-        "hidden": true
+        "value": "h5"
 
       },
       {
@@ -2619,8 +2615,7 @@
         "name": "media_videoCarouselMuteSoundVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h6",
-        "hidden": true
+        "value": "h6"
 
       },
       {
