@@ -12,6 +12,7 @@
     min-height: 3.25rem;
     border-radius: 0.188rem;
     overflow-x: auto;
+    scrollbar-width: none;
 }
 
 .tabs li {
