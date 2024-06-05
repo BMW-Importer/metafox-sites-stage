@@ -2591,7 +2591,8 @@
         "name": "media_videoCarouselLoopVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h3"
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "boolean",
@@ -2599,7 +2600,8 @@
         "name": "media_videoCarouselMouseHoverVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h4"
+        "value": "h4",
+        "hidden": true
       },
       {
         "component": "boolean",
@@ -2607,7 +2609,9 @@
         "name": "media_videoCarouselHideControlsVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h5"
+        "value": "h5",
+        "hidden": true
+
       },
       {
         "component": "boolean",
@@ -2615,7 +2619,9 @@
         "name": "media_videoCarouselMuteSoundVideoType",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
-        "value": "h6"
+        "value": "h6",
+        "hidden": true
+
       },
       {
         "component": "tab",
