@@ -752,11 +752,13 @@
                   "filter": "video-carousel",
                   "content_videoCarouselHeadlineType": "h2",
                   "media_videoCarouselLoopVideo": true,
+                  "media_videoCarouselLoopVideoType": "h3",
                   "media_videoCarouselMouseHoverVideo" : true,
+                  "media_videoCarouselMouseHoverVideoType": "h4",
                   "media_videoCarouselHideControlsVideo" : true,
-                  "media_videoCarouselMuteSoundVideo": true
-
-
+                  "media_videoCarouselHideControlsVideoType": "h5",
+                  "media_videoCarouselMuteSoundVideo": true,
+                  "media_videoCarouselMuteSoundVideoType": "h6"
                 }
               }
             }
