@@ -445,13 +445,13 @@
       {
         "component": "tab",
         "label": "Anchor",
-        "name": "anchor_tabssectiontab2"
+        "name": "tabssectiontab2"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "anchor-label",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -459,7 +459,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "anchor-id",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -467,7 +467,7 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "tab-content-navigation",
+        "name": "contentnavigation",
         "valueType": "boolean"
       },
       {
