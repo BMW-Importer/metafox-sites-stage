@@ -72,6 +72,7 @@ function generateMediaDom(mediaType, media) {
 
 export default function decorate(block) {
   const textWithMediaChildrens = [...block.children];
+  
   textWithMediaChildrens.forEach((childrenBlockProps) => {
     childrenBlockProps.classList.add('text-with-media-item');
     const [classes, content, media, cta] = childrenBlockProps.children;
