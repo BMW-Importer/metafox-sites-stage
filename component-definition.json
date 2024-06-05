@@ -527,7 +527,9 @@
                   "filter": "video-slide",
                   "content_videoSlideHeadlineType": "h4",
                   "media_videoSlideLoopVideo": true,
+                  "media_videoSlideLoopVideoType": "h2",
                   "media_videoSlideAutoplay": true,
+                  "media_videoSlideAutoplayType": "h3",
                   "cta_videoSlideCtaLinkType": "primary"
                 }
               }
