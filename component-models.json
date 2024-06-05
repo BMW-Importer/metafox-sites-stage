@@ -980,7 +980,7 @@
         "name": "media_videoControls",
         "valueType": "boolean",
         "value": false,
-        "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
+        "description": "Defines if the video controls will be displayed. If toggled on, they will not appear."
       },
       {
         "component": "text",
