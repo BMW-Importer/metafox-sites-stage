@@ -17,9 +17,9 @@ export function generateImgSlideDetailMarkUp(props) {
     button, index, showless, block] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
-  
+
   // fetch all attribute of block and append to 'vid-img-slide' div
-  Array.from(block.attributes).forEach(attr => {
+  Array.from(block.attributes).forEach((attr) => {
     videoImgDetailDOMContainer.setAttribute(attr.name, attr.value);
   });
 

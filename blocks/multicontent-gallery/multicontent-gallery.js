@@ -439,7 +439,6 @@ export default function decorate(block) {
         button, index, showless, panel]));
     }
   });
-  
   block.textContent = '';
   block.append(videoImageContainer);
   block.append(videoImageDetailsContainer);
