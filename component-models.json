@@ -279,6 +279,19 @@
         "name": "contentnavigation",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytis-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -368,6 +381,19 @@
         "name": "contentnavigation",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytis-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
