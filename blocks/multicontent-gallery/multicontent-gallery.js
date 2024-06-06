@@ -409,7 +409,7 @@ export default function decorate(block) {
 
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
+        videoSlideHeadline, videoSlideCopyText,
         button, index, showless, panel]));
     } else {
       // content details
@@ -435,7 +435,7 @@ export default function decorate(block) {
 
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
-        imageSlideHeadline.textContent.trim(), imageSlideCopyText,
+        imageSlideHeadline, imageSlideCopyText,
         button, index, showless, panel]));
     }
   });
