@@ -1,6 +1,7 @@
 main .section.content-navigation-container .cmp-contentnavigation-wrapper {
   display: flex;
   align-self: center;
+  height: 5.25rem;
 }
 
 .section.content-navigation-container {
@@ -149,8 +150,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
   @media (width < 768px) {
    .cmp-contentnavigation-wrapper {
     display: flex;
+    height: 3.3rem !important;
     }
-
+    
     main .section .content-navigation-container {
       padding: 0;
       margin: 0;
@@ -171,6 +173,19 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     }
 
    .cmp-contentnavigation-wrapper:not(.variation-btn) .cmp-filter-toggle {
+    color: var(--light-border-color);
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    left: 0;
+    display: flex;
+    padding-left: 0;
+    height: 3.25rem;
+    align-self: center;
+    font-size: 14px;
+   }
+
+   .cmp-contentnavigation-wrapper.variation-btn .cmp-filter-toggle {
     color: var(--light-border-color);
     padding: 1rem;
     width: 100%;
