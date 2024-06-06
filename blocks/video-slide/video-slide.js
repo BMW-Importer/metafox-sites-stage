@@ -1,14 +1,20 @@
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText,
-    button, index, showless] = props;
+    button, index, showless, block] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
+
+   // fetch all attribute of block and append to 'vid-img-slide' div
+   Array.from(block.attributes).forEach(attr => {
+    videoImgDetailDOMContainer.setAttribute(attr.name, attr.value);
+  });
+  
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
   videoImgDetailDOMContainer.classList.add(`vid-img-slide-${index}`);
   if (index === 0) {
     videoImgDetailDOMContainer.classList.add('visible');
   }
-  videoImgDetailDOMContainer.classList.add('detail');
+  videoImgDetailDOMContainer.classList.add('detail'); 
 
   // desktop view collapsed state detail cover
   const vidImgDetailCover = document.createElement('div');

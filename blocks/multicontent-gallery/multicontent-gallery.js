@@ -345,25 +345,22 @@ export default function decorate(block) {
   [...panels].forEach((panel, index) => {
     const [content, vidOrImg, button] = panel.children;
 
-    // hidding origin div so that in author page its not visible
-    panel.classList.add('hidden');
-
     // checking which is current block children
     if (vidOrImg.children.length > 1) {
       // headline and copy text under general tab
       const contentElem = content.children;
       const videoSlideHeadline = content.querySelector('h4');
-      const videoSlideCopyText = contentElem[1];
+      const videoSlideCopyText = contentElem[1] || '';
 
       // video tab details
       const videoContentPtags = vidOrImg.querySelectorAll('p');
-      const videoSlideTitle = videoContentPtags[0];
-      const videoSlideDescription = videoContentPtags[1];
+      const videoSlideTitle = videoContentPtags[0] || '';
+      const videoSlideDescription = videoContentPtags[1] || '';
 
       // video tab media
       const videoContentAtags = vidOrImg.querySelectorAll('a');
-      const videoSlideDesktopVideoRef = videoContentAtags[0];
-      const videoSlideMobVideoRef = videoContentAtags[1];
+      const videoSlideDesktopVideoRef = videoContentAtags[0] || '';
+      const videoSlideMobVideoRef = videoContentAtags[1] || '';
 
       const videoContentPictureTags = vidOrImg.querySelectorAll('picture');
       const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
@@ -387,11 +384,12 @@ export default function decorate(block) {
       if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
       // converting string to boolen
-      const isLoopVideo = videoContentPtags[videoContentPtags.length - 2].textContent.trim() === 'true';
-      const isAutoPlayVideo = videoContentPtags[videoContentPtags.length - 1].textContent.trim() === 'true';
+      const isLoopVideo = vidOrImg?.querySelector('h2')?.textContent === 'true';
+      const isAutoPlayVideo = vidOrImg?.querySelector('h3')?.textContent === 'true';
       const enableHideControls = true;
       const isMuted = true;
       const onHoverPlay = false;
+
       // generating video
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
       loadVideoEmbed([videoDOMContainer,
@@ -412,7 +410,7 @@ export default function decorate(block) {
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
         videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
-        button, index, showless]));
+        button, index, showless, panel]));
     } else {
       // content details
       const contentElem = content.children;
@@ -438,10 +436,11 @@ export default function decorate(block) {
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline.textContent.trim(), imageSlideCopyText,
-        button, index, showless]));
+        button, index, showless, panel]));
     }
   });
-
+  
+  block.textContent = '';
   block.append(videoImageContainer);
   block.append(videoImageDetailsContainer);
   block.classList.add('no-visiblity');

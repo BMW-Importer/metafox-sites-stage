@@ -14,9 +14,15 @@ export function generateImgSlidePicture(props) {
 
 export function generateImgSlideDetailMarkUp(props) {
   const [imageSlideHeadline, imageSlideCopyText,
-    button, index, showless] = props;
+    button, index, showless, block] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
+  
+  // fetch all attribute of block and append to 'vid-img-slide' div
+  Array.from(block.attributes).forEach(attr => {
+    videoImgDetailDOMContainer.setAttribute(attr.name, attr.value);
+  });
+
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
   videoImgDetailDOMContainer.classList.add(`vid-img-slide-${index}`);
   videoImgDetailDOMContainer.classList.add('detail');
