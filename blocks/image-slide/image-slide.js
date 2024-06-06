@@ -30,13 +30,11 @@ export function generateImgSlideDetailMarkUp(props) {
   // desktop view collapsed state detail cover
   const vidImgDetailCover = document.createElement('div');
   vidImgDetailCover.classList.add('vid-img-slide-cover');
-  
   // if headline is authored
   if (imageSlideHeadline) {
     imageSlideHeadline.classList.add('vid-img-slide-cover-title');
     vidImgDetailCover.append(imageSlideHeadline);
   }
-  
 
   // desktop, tab and mobile open state detail cover
   const vidImgDetailExpandedCover = document.createElement('div');
@@ -46,7 +44,7 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailExpandTitle?.classList?.add('vid-img-slide-expand-title');
 
   const vidImgDetailExpandDesp = imageSlideCopyText;
-  vidImgDetailExpandDesp?.classList?.add('vid-img-slide-expand-descp');  
+  vidImgDetailExpandDesp?.classList?.add('vid-img-slide-expand-descp');
 
   const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn?.classList?.add('vid-img-slide-link-btn');

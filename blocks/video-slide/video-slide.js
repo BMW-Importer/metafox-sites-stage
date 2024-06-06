@@ -43,10 +43,10 @@ export default function generateVideoDetailMarkUp(props) {
   if (vidImgDetailAnchorElm) {
     if (vidImgDetailLinkBtn.querySelector('strong')) {
       vidImgDetailLinkBtn.querySelector('strong').textContent = '';
-      vidImgDetailLinkBtn.querySelector('strong').append(anchorElem);
+      vidImgDetailLinkBtn.querySelector('strong').append(vidImgDetailAnchorElm);
     } else if (vidImgDetailLinkBtn.querySelector('em')) {
       vidImgDetailLinkBtn.querySelector('em').textContent = '';
-      vidImgDetailLinkBtn.querySelector('em').append(anchorElem);
+      vidImgDetailLinkBtn.querySelector('em').append(vidImgDetailAnchorElm);
     }
   }
 
