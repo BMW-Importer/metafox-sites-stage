@@ -263,7 +263,6 @@ export default function decorate(block) {
   // loop through all children blocks
   [...panels].forEach((panel) => {
     const [content, media, cta] = panel.children;
-    // panel.textContent = '';
     if (media.children.length > 1) {
     // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
@@ -291,21 +290,6 @@ export default function decorate(block) {
 
       // video tab details
       const videoCarouselContentPtags = media.querySelectorAll('p');
-
-      const booleanVariableNames = ['loopVidep',
-        'playOnHover',
-        'hideVideoControls',
-        'MutedVideo',
-      ];
-      const booleanValues = {};
-      let booleanIndex = 0;
-      videoCarouselContentPtags.forEach((p) => {
-        const text = p.textContent.trim() === 'true';
-        if (text === 'true' || text === 'false') {
-          booleanValues[booleanVariableNames[booleanIndex]] = (text === 'true');
-          booleanIndex += 1;
-        }
-      });
       const videoCarouselTitle = videoCarouselContentPtags[0];
       const videoCarouselDescription = videoCarouselContentPtags[1];
 
@@ -329,10 +313,11 @@ export default function decorate(block) {
       if (videoCarouselDesktopPosterImgRef) posterObj.desktop = videoCarouselDesktopPosterImgRef;
       if (videoCarouselMobPosterImgRef) posterObj.mobile = videoCarouselMobPosterImgRef;
 
-      const isLoopVideo = booleanValues.loopVidep;
-      const enableHideControls = booleanValues.hideVideoControls;
-      const isMuted = booleanValues.MutedVideo;
-      const onHoverPlay = booleanValues.playOnHover;
+      // converting string to boolen
+      const isLoopVideo = media.querySelector('h3')?.textContent.trim() === 'true';
+      const onHoverPlay = media.querySelector('h4')?.textContent.trim() === 'true';
+      const enableHideControls = media.querySelector('h5')?.textContent.trim() === 'true';
+      const isMuted = media.querySelector('h6')?.textContent.trim() === 'true';
       const isAutoPlayVideo = false;
 
       loadVideoEmbed(
@@ -347,6 +332,8 @@ export default function decorate(block) {
           posterObj,
           onHoverPlay],
       );
+      cta.textContent = '';
+      media.textContent = '';
       // Append elements to the video card
       videoCarouselCard.append(
         videoDOMContainer,
@@ -358,16 +345,18 @@ export default function decorate(block) {
     } else {
       // image
       // Title and description wrappers, cta
+      const imageDOMContainer = document.createElement('div');
+
       const imgTitleWrapper = document.createElement('div');
       imgTitleWrapper.classList.add('video-img-title');
       const imgDesWrapper = document.createElement('div');
       imgDesWrapper.classList.add('video-img-description');
       const vidImgCtaWrap = document.createElement('div');
       vidImgCtaWrap.classList.add('video-img-cta');
+
       let vidImgAnchorElm = cta?.querySelector('a');
       vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
       vidImgCtaWrap.append(vidImgAnchorElm);
-
       // headline and copy text under general tab
       const contentElem = content?.children;
       let imgCarouselHeadline = contentElem[0];
@@ -393,6 +382,10 @@ export default function decorate(block) {
           pictureElement.append(imgElem);
         }
       }
+      cta.textContent = '';
+      content.textContent = '';
+      media.textContent = '';
+      media.append(imageDOMContainer);
       imageCarouselCard.append(pictureElement, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
       videoImageCarouselContent.append(imageCarouselCard);
     }
