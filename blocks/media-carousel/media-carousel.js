@@ -279,13 +279,12 @@ export default function decorate(block) {
       vidImgDesWrapper.classList.add('video-img-description');
 
       // headline and copy text under general tab
-      // const contentElem = content.children;
+      const contentElem = content.children;
       const videoCarouselHeadline = content.querySelector('h2')?.textContent;
 
       const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline) ? videoCarouselHeadline : '';
-
-      let videoCarouselCopyText = content.querySelector('h3').textContent;
-      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText) ? videoCarouselCopyText : '';
+      let videoCarouselCopyText = contentElem[1];
+      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent.trim()) ? videoCarouselCopyText : '';
       let vidImgAnchorElm = cta.querySelector('a');
       vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
       vidImgCtaWrap.append(vidImgAnchorElm);

@@ -2554,13 +2554,6 @@
         "label": "Copy Text"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "content_videoCarouselCopyTextType",
-        "value": "h3",
-        "hidden": true
-      },
-      {
         "component": "tab",
         "label": "Video",
         "name": "media_videoCarouselTab2",
