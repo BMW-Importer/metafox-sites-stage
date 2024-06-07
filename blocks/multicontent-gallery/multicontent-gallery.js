@@ -330,6 +330,19 @@ export function multiContentGalFunAfterPageLoad() {
   });
 }
 
+// keyboard focus events
+function initMGalleryFocusEvent(btn) {
+  btn.addEventListener('focus', (e) => {
+    const parentElem = e.target.closest('.vid-img-slide-expand-cover');
+    const buttonParentElm = parentElem.querySelector('.vid-img-slide-showmore-btn');
+
+    if (buttonParentElm && !buttonParentElm.classList.contains('showless')) {
+      const showMoreBtn = buttonParentElm.querySelector('.vid-img-slide-showmore-btn-link');
+      showMoreBtn.click();
+    }
+  });
+}
+
 export default function decorate(block) {
   const videoImageContainer = document.createElement('div');
   videoImageContainer.classList.add('video-image-slide-conatiner');
@@ -343,27 +356,30 @@ export default function decorate(block) {
 
   // loop through all children blocks
   [...panels].forEach((panel, index) => {
-    const [, content, , vidOrImg, , button] = panel.children;
+    const [content, vidOrImg, button] = panel.children;
 
-    // hidding origin div so that in author page its not visible
-    panel.classList.add('hidden');
+    // get anchor element of button to add focus event fot it
+    const anchorElem = button.querySelector('a');
+    if (anchorElem) {
+      initMGalleryFocusEvent(anchorElem);
+    }
 
     // checking which is current block children
     if (vidOrImg.children.length > 1) {
       // headline and copy text under general tab
       const contentElem = content.children;
       const videoSlideHeadline = content.querySelector('h4');
-      const videoSlideCopyText = contentElem[1];
+      const videoSlideCopyText = contentElem[1] || '';
 
       // video tab details
       const videoContentPtags = vidOrImg.querySelectorAll('p');
-      const videoSlideTitle = videoContentPtags[0];
-      const videoSlideDescription = videoContentPtags[1];
+      const videoSlideTitle = videoContentPtags[0] || '';
+      const videoSlideDescription = videoContentPtags[1] || '';
 
       // video tab media
       const videoContentAtags = vidOrImg.querySelectorAll('a');
-      const videoSlideDesktopVideoRef = videoContentAtags[0];
-      const videoSlideMobVideoRef = videoContentAtags[1];
+      const videoSlideDesktopVideoRef = videoContentAtags[0] || '';
+      const videoSlideMobVideoRef = videoContentAtags[1] || '';
 
       const videoContentPictureTags = vidOrImg.querySelectorAll('picture');
       const videoSlideDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
@@ -387,11 +403,12 @@ export default function decorate(block) {
       if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
       // converting string to boolen
-      const isLoopVideo = videoContentPtags[videoContentPtags.length - 2].textContent.trim() === 'true';
-      const isAutoPlayVideo = videoContentPtags[videoContentPtags.length - 1].textContent.trim() === 'true';
+      const isLoopVideo = vidOrImg?.querySelector('h2')?.textContent === 'true';
+      const isAutoPlayVideo = vidOrImg?.querySelector('h3')?.textContent === 'true';
       const enableHideControls = true;
       const isMuted = true;
       const onHoverPlay = false;
+
       // generating video
       // delete replace link with 'videoSlideDesktopVideoRef.textContent.trim()
       loadVideoEmbed([videoDOMContainer,
@@ -411,8 +428,8 @@ export default function decorate(block) {
 
       // call function to generate video detail div
       videoImageDetailsContainer.append(generateVideoDetailMarkUp([
-        videoSlideHeadline?.textContent.trim(), videoSlideCopyText,
-        button, index, showless]));
+        videoSlideHeadline, videoSlideCopyText,
+        button, index, showless, panel]));
     } else {
       // content details
       const contentElem = content.children;
@@ -435,13 +452,17 @@ export default function decorate(block) {
       // call function for generating image slide UI
       videoImageContainer.append(imgDOMContainer);
 
+      // appending EDS generated picture inside detail container
+      // so that it appears in content tree under image-slide
+      imageSlideImgRef.classList.add('hidden');
+
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
-        imageSlideHeadline.textContent.trim(), imageSlideCopyText,
-        button, index, showless]));
+        imageSlideHeadline, imageSlideCopyText,
+        button, index, showless, panel, imageSlideImgRef]));
     }
   });
-
+  block.textContent = '';
   block.append(videoImageContainer);
   block.append(videoImageDetailsContainer);
   block.classList.add('no-visiblity');
