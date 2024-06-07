@@ -329,6 +329,12 @@
 }
 
 @media (width >= 1920px) {
+    .media-carousel-wrapper {
+        --grid-full : 6rem;
+        margin-left: calc(var(--grid-full)* -1);
+        margin-right: calc(var(--grid-full)* -1);
+        width: calc(100% + var(--grid-full)* 2);
+    }
     .section.media-carousel-container .media-carousel-wrapper .block {
         padding-left: 6rem !important;
         padding-right: 6rem !important;

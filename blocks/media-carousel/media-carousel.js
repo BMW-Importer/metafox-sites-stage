@@ -395,7 +395,7 @@ export default function decorate(block) {
 
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
-
+  block.textContent = '';
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
 
@@ -415,13 +415,9 @@ export default function decorate(block) {
   const computedStyleDesktop = getComputedStyle(desktopContentPadding);
   const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
   const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
+  const ultraScreenWidth = viewportWidth - (paddingLeftDesktop + paddingRightDesktop);
 
-  const largerScreenWidth = viewportWidth - (paddingLeft + paddingRight);
-  const ultraScreenWidth = viewportWidth - (paddingLeftDesktop + paddingRightDesktop + 96 + 96);
-
-  const totalAvlWidDesktop = viewportWidth >= 1280 ? largerScreenWidth : desktopScreenWidth;
-
-  const availableWidth = viewportWidth >= 1920 ? ultraScreenWidth : totalAvlWidDesktop;
+  const availableWidth = viewportWidth >= 1920 ? ultraScreenWidth : desktopScreenWidth;
 
   let cardsToShow;
   if (viewportWidth >= 1280) {
