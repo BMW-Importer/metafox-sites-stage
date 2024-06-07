@@ -28,6 +28,9 @@ export function generateImgSlideDetailMarkUp(props) {
 
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
   videoImgDetailDOMContainer.classList.add(`vid-img-slide-${index}`);
+  if (index === 0) {
+    videoImgDetailDOMContainer.classList.add('visible');
+  }
   videoImgDetailDOMContainer.classList.add('detail');
 
   // desktop view collapsed state detail cover
