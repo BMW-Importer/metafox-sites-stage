@@ -1894,7 +1894,7 @@
 
       },
       {
-        "component":"multiselect",
+        "component":"select",
         "name":"analytics-button",
         "label":"Button/Link type", 
         "valueType": "string",
