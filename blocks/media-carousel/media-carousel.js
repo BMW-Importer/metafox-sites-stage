@@ -264,8 +264,6 @@ export default function decorate(block) {
   [...panels].forEach((panel) => {
     const [content, media, cta] = panel.children;
     if (media.children.length > 1) {
-      panel.textContent = '';
-
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
       videoCarouselCard.classList.add('video-img-carousel-card');
@@ -292,12 +290,12 @@ export default function decorate(block) {
       vidImgDesWrapper.append(videoCarouselCopyText);
 
       // video tab details
-      const videoCarouselContentPtags = media.querySelectorAll('p');
+      const videoCarouselContentPtags = media?.querySelectorAll('p');
       const videoCarouselTitle = videoCarouselContentPtags[0];
       const videoCarouselDescription = videoCarouselContentPtags[1];
 
       // video tab media
-      const videoCarouselContentAtags = media.querySelectorAll('a');
+      const videoCarouselContentAtags = media?.querySelectorAll('a');
       const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0];
       const videoCarouselMobVideoRef = videoCarouselContentAtags[1];
 
@@ -345,8 +343,6 @@ export default function decorate(block) {
       videoImageCarouselContent.append(videoCarouselCard);
     } else {
       // image
-      // Title and description wrappers, cta
-      panel.textContent = '';
       const imgTitleWrapper = document.createElement('div');
       imgTitleWrapper.classList.add('video-img-title');
       const imgDesWrapper = document.createElement('div');
@@ -454,4 +450,7 @@ export default function decorate(block) {
     );
   }
   addDotsNavigation(block, videoImageCarouselContent, totalItems, cardsToShow);
+
+  block.innerHTML = '';
+  block.append(carouselLeftWrapper, carouselRightWrapper, videoImageCarouselContent);
 }
