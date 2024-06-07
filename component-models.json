@@ -1929,8 +1929,8 @@
       },
       {
         "component": "text-input",
-        "label": "Technical-data",
-        "name": "hidden-text",
+        "label": "Technical Data",
+        "name": "Technical data",
         "valueType": "string",
         "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
       }
