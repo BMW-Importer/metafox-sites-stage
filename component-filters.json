@@ -136,7 +136,7 @@
       "indentation": [],
       "sr_script": [],
       "list": [],
-      "insert": [],
+      "insert": ["link"],
       "blocks": [],
       "advanced": [""],
       "extensions": [],
@@ -152,7 +152,7 @@
       "indentation": [],
       "sr_script": [],
       "list": [],
-      "insert": [],
+      "insert": ["link"],
       "blocks": [],
       "advanced": [""],
       "extensions": [],
@@ -311,14 +311,6 @@
       "video-carousel",
       "image-carousel"
     ]
-  },
-  {
-    "id": "video-carousel",
-    "components": []
-  },
-  {
-    "id": "image-carousel",
-    "components": []
   },
   {
     "id": "background-media",
