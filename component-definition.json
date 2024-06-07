@@ -750,13 +750,15 @@
                   "name": "Video Carousel",
                   "model": "video-carousel",
                   "filter": "video-carousel",
-                  "content_videoCarouselHeadlineType": "h2",
-                  "media_videoCarouselLoopVideo": true,
-                  "media_videoCarouselMouseHoverVideo" : true,
-                  "media_videoCarouselHideControlsVideo" : true,
-                  "media_videoCarouselMuteSoundVideo": true
-
-
+                  "content_carouselHeadlineType": "h2",
+                  "media_carouselLoopVideo": true,
+                  "media_carouselLoopVideoType": "h3",
+                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselMouseHoverVideoType": "h4",
+                  "media_carouselHideControlsVideo" : true,
+                  "media_carouselHideControlsVideoType": "h5",
+                  "media_carouselMuteSoundVideo": true,
+                  "media_carouselMuteSoundVideoType": "h6"
                 }
               }
             }

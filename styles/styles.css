@@ -250,6 +250,7 @@ button:disabled, button:disabled:hover {
 a.button.ghost-dark {
   background-color: transparent;
   border: 1px solid var(--light-text-color);
+  outline: 1px solid transparent;
   color: var(--light-text-color);
   font-size: 1rem;
   line-height: 1.25rem;
@@ -276,7 +277,8 @@ a.button.ghost-dark-flex.button-flex-width {
 
 a.button.ghost-dark:hover,
 a.button.ghost-dark-flex:hover {
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
+  outline: 1px solid var(--text-color);
   font-weight: bold;
 }
 
