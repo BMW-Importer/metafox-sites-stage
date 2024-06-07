@@ -2690,14 +2690,6 @@
         "multi": false
       },
       {
-        "component": "boolean",
-        "label": "Loop Video",
-        "name": "media_carouselLoopVideo",
-        "description": "Defines how video will be played.",
-        "valueType": "boolean",
-        "value": true
-      },
-      {
         "component": "text",
         "label": "Loop Video",
         "name": "media_carouselLoopVideoType",
@@ -2707,8 +2699,8 @@
       },
       {
         "component": "boolean",
-        "label": "Play on mouseover",
-        "name": "media_carouselMouseHoverVideo",
+        "label": "Loop Video",
+        "name": "media_carouselLoopVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2723,8 +2715,8 @@
       },
       {
         "component": "boolean",
-        "label": "Video Controls",
-        "name": "media_carouselHideControlsVideo",
+        "label": "Play on mouseover",
+        "name": "media_carouselMouseHoverVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2736,12 +2728,11 @@
         "valueType": "string",
         "value": "h5",
         "hidden": true
-
       },
       {
         "component": "boolean",
-        "label": "Mute Video Sound",
-        "name": "media_carouselMuteSoundVideo",
+        "label": "Video Controls",
+        "name": "media_carouselHideControlsVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
@@ -2753,7 +2744,14 @@
         "valueType": "string",
         "value": "h6",
         "hidden": true
-
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
