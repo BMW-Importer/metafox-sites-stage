@@ -25,7 +25,7 @@ export default function generateVideoDetailMarkUp(props) {
     const headlineTitle = document.createElement('h4');
     headlineTitle.textContent = videoSlideHeadline?.textContent || '';
     headlineTitle.classList.add('vid-img-slide-cover-title');
-    vidImgDetailCover.append(videoSlideHeadline);
+    vidImgDetailCover.append(headlineTitle);
   }
 
   // desktop, tab and mobile open state detail cover
