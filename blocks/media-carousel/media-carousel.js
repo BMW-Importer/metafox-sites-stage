@@ -265,8 +265,6 @@ export default function decorate(block) {
     const [content, media, cta] = panel.children;
     panel.textContent = '';
     if (media.children.length > 1) {
-      // hidding origin div so that in author page its not visible
-      panel.classList.add('hidden');
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
       videoCarouselCard.classList.add('video-img-carousel-card');
