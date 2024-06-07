@@ -1879,7 +1879,102 @@
             "value": "Money Button"
           }
         ]    
+      },
+      {
+        "component":"tab",
+        "name":"analytics-tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics-label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics-button",
+        "label":"Button/Link type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "learnMore",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
       }
+      
     ]
   },
   {
