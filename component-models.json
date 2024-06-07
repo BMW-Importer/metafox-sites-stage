@@ -1915,7 +1915,7 @@
       },
       {
         "component": "select",
-        "label": "Learn More",
+        "label": "Only if other is selected the following opotions should appear:",
         "name": "learnMore",
         "valueType": "string",
         "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
@@ -1925,13 +1925,53 @@
             "value": "learnMore"
           },
           {
-            "name": "Downloa",
-            "value": "Download"
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
           },
           {
             "name": "Other",
             "value": "Other"
-          }          
+          }    
         ]
       }
       
