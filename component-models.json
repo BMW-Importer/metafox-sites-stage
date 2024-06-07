@@ -447,26 +447,8 @@
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
         "name": "tab-topmargin",
-        "valueType": "boolean"
-      },
-      {
-        "component": "select",
-        "name": "tab-style",
-        "value": "",
-        "label": "Tab Style",
-        "valueType": "string",
-        "description": "Defines the styling in which the tab will be displayed.",
-        "required": true,
-        "options": [
-          {
-            "name": "Default",
-            "value": "primary"
-          },
-          {
-            "name": "Buttons",
-            "value": "secondary"
-          } 
-        ]
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
@@ -494,7 +476,8 @@
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
