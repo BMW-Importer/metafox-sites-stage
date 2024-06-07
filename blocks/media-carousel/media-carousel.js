@@ -292,13 +292,13 @@ export default function decorate(block) {
 
       // video tab details
       const videoCarouselContentPtags = media?.querySelectorAll('p');
-      const videoCarouselTitle = videoCarouselContentPtags[0];
-      const videoCarouselDescription = videoCarouselContentPtags[1];
+      const videoCarouselTitle = videoCarouselContentPtags[0] || '';
+      const videoCarouselDescription = videoCarouselContentPtags[1] || '';
 
       // video tab media
       const videoCarouselContentAtags = media?.querySelectorAll('a');
-      const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0];
-      const videoCarouselMobVideoRef = videoCarouselContentAtags[1];
+      const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0] || '';
+      const videoCarouselMobVideoRef = videoCarouselContentAtags[1] || '';
 
       const videoContentPictureTags = media.querySelectorAll('picture');
       const videoCarouselDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
