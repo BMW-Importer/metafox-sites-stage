@@ -289,7 +289,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytis-label",
+        "name": "analytics-label",
         "value": "",
         "label": "Section Label"
       }
@@ -391,7 +391,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytis-label",
+        "name": "analytics-label",
         "value": "",
         "label": "Section Label"
       }
@@ -505,7 +505,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytis-label",
+        "name": "analytics-label",
         "value": "",
         "label": "Section Label"
       }
