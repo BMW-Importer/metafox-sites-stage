@@ -1879,6 +1879,39 @@
             "value": "Money Button"
           }
         ]    
+      },
+      {
+        "component":"tab",
+        "name":"analytics-tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics-label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics-button",
+        "label":"Button/Link type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
       }
     ]
   },
