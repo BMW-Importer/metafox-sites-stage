@@ -2,7 +2,9 @@ import {
   buildGetPlaceholder, buildSetPlaceholder, fetchSetPlaceholderObject, getModelPlaceholderObject,
 } from '../../scripts/common/wdh-placeholders.js';
 
-const modelDataMap = new Map();
+if (!window.modelDataMap) {
+  window.modelDataMap = new Map();
+}
 
 async function getApiResponse(modelCode) {
   try {
@@ -11,9 +13,9 @@ async function getApiResponse(modelCode) {
     const response = await fetch(`${origin}${endpointUrl}`);
     const responseJson = await response.json();
     if (responseJson) {
-      modelDataMap.set(modelCode, responseJson);
+      window.modelDataMap.set(modelCode, responseJson);
     }
-    return responseJson;
+    return { modelCode, responseJson };
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;
@@ -21,23 +23,33 @@ async function getApiResponse(modelCode) {
 }
 
 async function fetchAllModels(modelCodes) {
-  const promises = modelCodes.map(getApiResponse);
+  const modelCodesArray = modelCodes.filter((modelCode) => !window.modelDataMap.has(modelCode));
+  const promises = modelCodesArray.map(getApiResponse);
   const results = await Promise.allSettled(promises);
-  const response = results.map((result) => {
+  results.forEach((result) => {
     if (result.status === 'fulfilled') {
-      return result.value;
+      window.modelDataMap.set(result.value.modelCode, result.value.responseJson);
+    } else {
+      console.error('API call failed while fetching WDH data');
     }
-    console.error('API call failed while fetching WDH data');
-    return { error: result.error };
+  });
+  const response = modelCodes.map((modelCode) => {
+    if (window.modelDataMap.has(modelCode)) {
+      return window.modelDataMap.get(modelCode);
+    }
+    return { modelCode, error: 'Model Code data not found' };
   });
   return response;
 }
 
-async function buildContext(modelCodesArray) {
+export async function buildContext(modelCodesArray) {
   try {
     await fetchAllModels(modelCodesArray).then((response) => {
       buildSetPlaceholder(response);
       buildGetPlaceholder(response[0]);
+      const modelPlaceholder = getModelPlaceholderObject();
+      const setPlaceholder = fetchSetPlaceholderObject();
+      return { modelPlaceholder, setPlaceholder };
     });
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
