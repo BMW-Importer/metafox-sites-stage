@@ -264,7 +264,9 @@ export default function decorate(block) {
   [...panels].forEach((panel) => {
     const [content, media, cta] = panel.children;
     if (media.children.length > 1) {
-    // Create a wrapper for video card elements
+      panel.textContent = '';
+
+      // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
       videoCarouselCard.classList.add('video-img-carousel-card');
 
@@ -277,11 +279,13 @@ export default function decorate(block) {
       vidImgDesWrapper.classList.add('video-img-description');
 
       // headline and copy text under general tab
-      const contentElem = content.children;
-      const videoCarouselHeadline = contentElem[0];
-      const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline.textContent.trim()) ? videoCarouselHeadline : '';
-      let videoCarouselCopyText = contentElem[1];
-      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent.trim()) ? videoCarouselCopyText : '';
+      // const contentElem = content.children;
+      const videoCarouselHeadline = content.querySelector('h2')?.textContent;
+
+      const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline) ? videoCarouselHeadline : '';
+
+      let videoCarouselCopyText = content.querySelector('h3').textContent;
+      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText) ? videoCarouselCopyText : '';
       let vidImgAnchorElm = cta.querySelector('a');
       vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
       vidImgCtaWrap.append(vidImgAnchorElm);
@@ -332,8 +336,6 @@ export default function decorate(block) {
           posterObj,
           onHoverPlay],
       );
-      cta.textContent = '';
-      media.textContent = '';
       // Append elements to the video card
       videoCarouselCard.append(
         videoDOMContainer,
@@ -345,8 +347,7 @@ export default function decorate(block) {
     } else {
       // image
       // Title and description wrappers, cta
-      const imageDOMContainer = document.createElement('div');
-
+      panel.textContent = '';
       const imgTitleWrapper = document.createElement('div');
       imgTitleWrapper.classList.add('video-img-title');
       const imgDesWrapper = document.createElement('div');
@@ -382,10 +383,6 @@ export default function decorate(block) {
           pictureElement.append(imgElem);
         }
       }
-      cta.textContent = '';
-      content.textContent = '';
-      media.textContent = '';
-      media.append(imageDOMContainer);
       imageCarouselCard.append(pictureElement, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
       videoImageCarouselContent.append(imageCarouselCard);
     }
@@ -395,6 +392,7 @@ export default function decorate(block) {
 
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
+
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
 
