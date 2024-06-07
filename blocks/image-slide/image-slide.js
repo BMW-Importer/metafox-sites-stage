@@ -38,16 +38,17 @@ export function generateImgSlideDetailMarkUp(props) {
   vidImgDetailCover.classList.add('vid-img-slide-cover');
   // if headline is authored
   if (imageSlideHeadline) {
-    imageSlideHeadline.classList.add('vid-img-slide-cover-title');
-    vidImgDetailCover.append(imageSlideHeadline);
+    const headlineElem = document.createElement('h4');
+    headlineElem.classList.add('vid-img-slide-cover-title');
+    headlineElem.textContent = imageSlideHeadline?.textContent || '';
+    vidImgDetailCover.append(headlineElem);
   }
 
   // desktop, tab and mobile open state detail cover
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
 
-  const vidImgDetailExpandTitle = document.createElement('h4');
-  vidImgDetailExpandTitle.textContent = imageSlideHeadline?.textContent || '';
+  const vidImgDetailExpandTitle = imageSlideHeadline;
   vidImgDetailExpandTitle?.classList?.add('vid-img-slide-expand-title');
 
   const vidImgDetailExpandDesp = imageSlideCopyText;

@@ -22,7 +22,9 @@ export default function generateVideoDetailMarkUp(props) {
 
   // if headline is authored
   if (videoSlideHeadline) {
-    videoSlideHeadline.classList.add('vid-img-slide-cover-title');
+    const headlineTitle = document.createElement('h4');
+    headlineTitle.textContent = videoSlideHeadline?.textContent || '';
+    headlineTitle.classList.add('vid-img-slide-cover-title');
     vidImgDetailCover.append(videoSlideHeadline);
   }
 
@@ -30,8 +32,7 @@ export default function generateVideoDetailMarkUp(props) {
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
 
-  const vidImgDetailExpandTitle = document.createElement('h4');
-  vidImgDetailExpandTitle.textContent = videoSlideHeadline?.textContent || '';
+  const vidImgDetailExpandTitle = videoSlideHeadline;
   vidImgDetailExpandTitle?.classList?.add('vid-img-slide-expand-title');
 
   const vidImgDetailExpandDesp = videoSlideCopyText;
