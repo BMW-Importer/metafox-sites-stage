@@ -131,7 +131,23 @@
     "id": "video-carousel",
     "components": [],
     "rte": {
-      "format": [],
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "image-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
       "alignment": [],
       "indentation": [],
       "sr_script": [],
