@@ -477,8 +477,8 @@ main .section:first-child {
 @media (width >= 1920px){
   main .section {   
     max-width: 100vw;
-    padding-left: calc((100vw - (var(--max-component-width)))/2);
-    padding-right: calc((100vw - (var(--max-component-width)))/2);
+    padding-left: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
+    padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
   }
 }
 
