@@ -128,6 +128,38 @@
     }
   },
   {
+    "id": "video-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "image-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "quote",
     "components": [],
     "rte": {
@@ -279,14 +311,6 @@
       "video-carousel",
       "image-carousel"
     ]
-  },
-  {
-    "id": "video-carousel",
-    "components": []
-  },
-  {
-    "id": "image-carousel",
-    "components": []
   },
   {
     "id": "background-media",
