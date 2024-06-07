@@ -263,6 +263,7 @@ export default function decorate(block) {
   // loop through all children blocks
   [...panels].forEach((panel, index) => {
     const [content, media, cta] = panel.children;
+    panel.textContent = '';
     if (media.children.length > 1) {
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
@@ -395,7 +396,6 @@ export default function decorate(block) {
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
 
-  block.textContent = '';
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
 
