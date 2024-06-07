@@ -330,6 +330,19 @@ export function multiContentGalFunAfterPageLoad() {
   });
 }
 
+// keyboard focus events
+function initMGalleryFocusEvent(btn) {
+  btn.addEventListener('focus', (e) => {
+      const parentElem = e.target.closest('.vid-img-slide-expand-cover');
+      const buttonParentElm = parentElem.querySelector('.vid-img-slide-showmore-btn');
+
+      if(buttonParentElm && !buttonParentElm.classList.contains('showless')) {
+        const showMoreBtn = buttonParentElm.querySelector('.vid-img-slide-showmore-btn-link');
+        showMoreBtn.click();
+      }
+  });
+}
+
 export default function decorate(block) {
   const videoImageContainer = document.createElement('div');
   videoImageContainer.classList.add('video-image-slide-conatiner');
@@ -344,6 +357,12 @@ export default function decorate(block) {
   // loop through all children blocks
   [...panels].forEach((panel, index) => {
     const [content, vidOrImg, button] = panel.children;
+
+    // get anchor element of button to add focus event fot it
+    const anchorElem = button.querySelector('a');
+    if(anchorElem) {
+      initMGalleryFocusEvent(anchorElem);
+    }
 
     // checking which is current block children
     if (vidOrImg.children.length > 1) {
@@ -433,10 +452,14 @@ export default function decorate(block) {
       // call function for generating image slide UI
       videoImageContainer.append(imgDOMContainer);
 
+      // appending EDS generated picture inside detail container
+      // so that it appears in content tree under image-slide
+      imageSlideImgRef.classList.add('hidden');
+
       // call function for generating image slide details
       videoImageDetailsContainer.append(generateImgSlideDetailMarkUp([
         imageSlideHeadline, imageSlideCopyText,
-        button, index, showless, panel]));
+        button, index, showless, panel, imageSlideImgRef]));
     }
   });
   block.textContent = '';

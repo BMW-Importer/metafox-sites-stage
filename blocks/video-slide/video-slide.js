@@ -30,7 +30,8 @@ export default function generateVideoDetailMarkUp(props) {
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
 
-  const vidImgDetailExpandTitle = videoSlideHeadline?.cloneNode(true);
+  const vidImgDetailExpandTitle = document.createElement('h4');
+  vidImgDetailExpandTitle.textContent = videoSlideHeadline?.textContent || '';
   vidImgDetailExpandTitle?.classList?.add('vid-img-slide-expand-title');
 
   const vidImgDetailExpandDesp = videoSlideCopyText;

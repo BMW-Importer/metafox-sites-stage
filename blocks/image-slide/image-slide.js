@@ -14,9 +14,12 @@ export function generateImgSlidePicture(props) {
 
 export function generateImgSlideDetailMarkUp(props) {
   const [imageSlideHeadline, imageSlideCopyText,
-    button, index, showless, block] = props;
+    button, index, showless, block, edsGeneratedImgElem] = props;
 
   const videoImgDetailDOMContainer = document.createElement('div');
+
+  // appending imge elemnt here so that it appears in content tree under image slide block
+  videoImgDetailDOMContainer.append(edsGeneratedImgElem);
 
   // fetch all attribute of block and append to 'vid-img-slide' div
   Array.from(block.attributes).forEach((attr) => {
@@ -40,7 +43,8 @@ export function generateImgSlideDetailMarkUp(props) {
   const vidImgDetailExpandedCover = document.createElement('div');
   vidImgDetailExpandedCover.classList.add('vid-img-slide-expand-cover');
 
-  const vidImgDetailExpandTitle = imageSlideHeadline?.cloneNode(true);
+  const vidImgDetailExpandTitle = document.createElement('h4');
+  vidImgDetailExpandTitle.textContent = imageSlideHeadline?.textContent || '';
   vidImgDetailExpandTitle?.classList?.add('vid-img-slide-expand-title');
 
   const vidImgDetailExpandDesp = imageSlideCopyText;
