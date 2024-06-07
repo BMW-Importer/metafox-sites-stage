@@ -1002,7 +1002,7 @@
       },
       {
         "component": "boolean",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "media_videoControls",
         "valueType": "boolean",
         "value": false,
@@ -1010,7 +1010,7 @@
       },
       {
         "component": "text",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "media_videoControlsType",
         "valueType": "string",
         "value": "h4",
@@ -1423,7 +1423,7 @@
       },
       {
         "component": "boolean",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "hideVideoControl",
         "valueType": "boolean",
         "value": true,
@@ -2645,7 +2645,7 @@
       },
       {
         "component": "boolean",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "media_carouselHideControlsVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",

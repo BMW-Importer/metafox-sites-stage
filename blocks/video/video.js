@@ -232,14 +232,14 @@ function setDataAttributeToBlock(props) {
     loop, enableHideControls, muted, posters, onHoverPlay = false] = props;
   block.setAttribute('data-video-title', videoTitle);
   block.setAttribute('data-video-desp', videoDescp);
-  block.setAttribute('data-video-desktop', linkObject?.desktop);
-  block.setAttribute('data-video-mobile', linkObject?.mobile);
+  block.setAttribute('data-video-desktop', linkObject?.desktop || '');
+  block.setAttribute('data-video-mobile', linkObject?.mobile || '');
   block.setAttribute('data-video-autoplay', autoplay);
   block.setAttribute('data-video-loop', loop);
   block.setAttribute('data-video-controls', enableHideControls);
   block.setAttribute('data-video-muted', muted);
-  block.setAttribute('data-poster-desktop', posters?.desktop);
-  block.setAttribute('data-poster-mobile', posters.mobile);
+  block.setAttribute('data-poster-desktop', posters?.desktop || '');
+  block.setAttribute('data-poster-mobile', posters?.mobile || '');
   block.setAttribute('data-video-hover', onHoverPlay);
 }
 
@@ -286,14 +286,14 @@ export function changeAllVidSrcOnResize() {
       const parentElementBlock = video.closest('.video-parent-block');
       const videoTitle = parentElementBlock.getAttribute('data-video-title');
       const videoDescp = parentElementBlock.getAttribute('data-video-desp');
-      const desktopPath = parentElementBlock.getAttribute('data-video-desktop');
-      const mobPath = parentElementBlock.getAttribute('data-video-mobile');
+      const desktopPath = parentElementBlock.getAttribute('data-video-desktop') || '';
+      const mobPath = parentElementBlock.getAttribute('data-video-mobile') || '';
       const autoplay = parentElementBlock.getAttribute('data-video-autoplay');
       const loop = parentElementBlock.getAttribute('data-video-loop');
       const enableHideControls = parentElementBlock.getAttribute('data-video-controls');
       const muted = parentElementBlock.getAttribute('data-video-muted');
-      const desktopPoster = parentElementBlock.getAttribute('data-poster-desktop');
-      const mobilePoster = parentElementBlock.getAttribute('data-poster-mobile');
+      const desktopPoster = parentElementBlock.getAttribute('data-poster-desktop') || '';
+      const mobilePoster = parentElementBlock.getAttribute('data-poster-mobile') || '';
       const onHoverPlay = parentElementBlock.getAttribute('data-video-hover');
       const linkObject = { desktop: desktopPath, mobile: mobPath };
       const posterImgObj = { desktop: desktopPoster, mobile: mobilePoster || '' };
