@@ -1882,20 +1882,20 @@
       },
       {
         "component":"tab",
-        "name":"analytics-tab",
+        "name":"analytics_tab",
         "label":"Analytics"
 
       },
       {
         "component":"text-input",
-        "name":"analytics-label",
+        "name":"analytics_label",
         "label":"Analytics Label",
         "valueType": " "
 
       },
       {
         "component":"select",
-        "name":"analytics-button",
+        "name":"analytics_button",
         "label":"Button/Link type", 
         "valueType": "string",
         "options": [
@@ -1916,7 +1916,7 @@
       {
         "component": "select",
         "label": "Only if other is selected the following opotions should appear:",
-        "name": "learnMore",
+        "name": "analytics_others",
         "valueType": "string",
         "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
         "options": [
