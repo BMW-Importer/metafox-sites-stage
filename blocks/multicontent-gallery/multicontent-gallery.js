@@ -333,13 +333,13 @@ export function multiContentGalFunAfterPageLoad() {
 // keyboard focus events
 function initMGalleryFocusEvent(btn) {
   btn.addEventListener('focus', (e) => {
-      const parentElem = e.target.closest('.vid-img-slide-expand-cover');
-      const buttonParentElm = parentElem.querySelector('.vid-img-slide-showmore-btn');
+    const parentElem = e.target.closest('.vid-img-slide-expand-cover');
+    const buttonParentElm = parentElem.querySelector('.vid-img-slide-showmore-btn');
 
-      if(buttonParentElm && !buttonParentElm.classList.contains('showless')) {
-        const showMoreBtn = buttonParentElm.querySelector('.vid-img-slide-showmore-btn-link');
-        showMoreBtn.click();
-      }
+    if (buttonParentElm && !buttonParentElm.classList.contains('showless')) {
+      const showMoreBtn = buttonParentElm.querySelector('.vid-img-slide-showmore-btn-link');
+      showMoreBtn.click();
+    }
   });
 }
 
@@ -360,7 +360,7 @@ export default function decorate(block) {
 
     // get anchor element of button to add focus event fot it
     const anchorElem = button.querySelector('a');
-    if(anchorElem) {
+    if (anchorElem) {
       initMGalleryFocusEvent(anchorElem);
     }
 
