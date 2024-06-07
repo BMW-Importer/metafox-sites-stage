@@ -1914,26 +1914,27 @@
         ]    
       },
       {
-        "component": "text-input",
+        "component": "select",
         "label": "Learn More",
         "name": "learnMore",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
-      },
-      {
-        "component": "text-input",
-        "label": "Configure",
-        "name": "configure",
-        "valueType": "string",
-        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
-      },
-      {
-        "component": "text-input",
-        "label": "Technical Data",
-        "name": "Technical data",
-        "valueType": "string",
-        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Downloa",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]
       }
+      
     ]
   },
   {
