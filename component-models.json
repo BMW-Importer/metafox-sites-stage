@@ -1894,7 +1894,7 @@
 
       },
       {
-        "component":"select",
+        "component":"multiselect",
         "name":"analytics-button",
         "label":"Button/Link type", 
         "valueType": "string",
@@ -1912,6 +1912,27 @@
             "value": "Other"
           }          
         ]    
+      },
+      {
+        "component": "text-input",
+        "label": "Learn More",
+        "name": "learnMore",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
+      },
+      {
+        "component": "text-input",
+        "label": "Configure",
+        "name": "configure",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
+      },
+      {
+        "component": "text-input",
+        "label": "Technical-data",
+        "name": "hidden-text",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] }
       }
     ]
   },
