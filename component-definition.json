@@ -627,6 +627,7 @@
                 "template": {
                   "name": "Background Image",
                   "model": "background-image",
+                  "bgImgGeneral_headlineclassType": "h2",
                   "bgImgIcon_subbrandicon": "noicon",
                   "bgImgStyle_elementAlignType": "h3",
                   "bgImgStyle_elementAlign": "central-left",
@@ -647,6 +648,7 @@
                 "template": {
                   "name": "Background Video",
                   "model": "background-video",
+                  "bgVidGeneral_headlineclassType": "h2",
                   "bgVidIcon_subbrandicon": "noicon",
                   "bgVidStyle_elementAlign": "central-left",
                   "bgVidStyle_elementAlignType": "h3",

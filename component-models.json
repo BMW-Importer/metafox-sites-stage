@@ -1959,7 +1959,7 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_headlineType",
+        "name": "bgImgGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -1978,6 +1978,15 @@
             "value": "small"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "bgImgGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Headline Type",
+        "valueType": "string",        
+        "description": "Defines the headline of the text that will appear in the page.",
+        "hidden": true
       },
       {
         "component": "select",
@@ -2204,7 +2213,7 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_headlineType",
+        "name": "bgVidGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -2212,17 +2221,25 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
+      },      
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "bgVidGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Eyebrow",
+        "hidden": true
       },
       {
         "component": "select",
