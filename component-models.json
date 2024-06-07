@@ -1967,15 +1967,15 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
       },
