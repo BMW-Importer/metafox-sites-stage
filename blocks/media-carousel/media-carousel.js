@@ -261,9 +261,12 @@ export default function decorate(block) {
   videoImageCarouselContent.classList.add('video-image-carousel-content');
 
   // loop through all children blocks
-  [...panels].forEach((panel) => {
+  [...panels].forEach((panel, index) => {
     const [content, media, cta] = panel.children;
+    panel.textContent = '';
     if (media.children.length > 1) {
+      // hidding origin div so that in author page its not visible
+      panel.classList.add('hidden');
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
       videoCarouselCard.classList.add('video-img-carousel-card');
@@ -304,6 +307,13 @@ export default function decorate(block) {
       const videoCarouselMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
 
       const videoDOMContainer = document.createElement('div');
+
+      const imgDOMContainer = document.createElement('div');
+
+      if (index === 0) {
+        imgDOMContainer.classList.add('visible');
+      }
+
       // extracting video link
       const videoLinkObj = {};
       const posterObj = {};
@@ -388,6 +398,7 @@ export default function decorate(block) {
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
 
+  block.textContent = '';
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
 
@@ -450,7 +461,4 @@ export default function decorate(block) {
     );
   }
   addDotsNavigation(block, videoImageCarouselContent, totalItems, cardsToShow);
-
-  block.innerHTML = '';
-  block.append(carouselLeftWrapper, carouselRightWrapper, videoImageCarouselContent);
 }
