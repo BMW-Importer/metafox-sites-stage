@@ -208,6 +208,7 @@ export default async function decorate(block) {
         const childCount = flyoutMainContainer.children.length;
         if (childCount < 4) {
           flyoutMainContainer.style.justifyContent = 'center';
+          flyoutMainContainer.classList.add('single-submenu');
         }
         // Selecting the first child and adding the style 'grid-column-start: 2'
         if (flyoutMainContainer.children[0]) {
