@@ -1015,6 +1015,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
   header.white-background .subnavigation-text-wrapper strong{
     font-weight: 700;
+    padding-right: 5px;
     
   }
 
