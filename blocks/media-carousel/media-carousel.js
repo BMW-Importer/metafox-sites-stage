@@ -333,6 +333,8 @@ export default function decorate(block) {
           posterObj,
           onHoverPlay],
       );
+      media.textContent = '';
+      media.append(videoDOMContainer);
       // Append elements to the video card
       videoCarouselCard.append(
         videoDOMContainer,
