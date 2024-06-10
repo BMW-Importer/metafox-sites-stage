@@ -24,7 +24,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     content: "arrow_chevron_down";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -105,7 +106,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -146,7 +148,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     content: " ";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;

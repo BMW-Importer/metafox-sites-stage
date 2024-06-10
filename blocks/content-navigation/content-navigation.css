@@ -216,7 +216,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper {
       content: "arrow_chevron_down";
       direction: ltr;
       display: block;
-      font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+      font-family: var(--icon-font-family);
+      opacity: var(--iconfont400-opacity);
       font-size: 1.5rem;
       font-style: normal;
       font-weight: 400;

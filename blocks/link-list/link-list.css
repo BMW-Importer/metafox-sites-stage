@@ -50,7 +50,8 @@ footer .link-list-wrapper.vertical .link-list-title::after
     top: 50%;
     content: "arrow_chevron_down";
     direction: ltr;    
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     transform: translate(25%, -50%);
     transition: transform .5s ease-in-out;
     font-size: 1.5rem;
@@ -173,7 +174,8 @@ footer .link-list-wrapper.vertical .link-list-detail ul li a:hover{
         content: " arrow_chevron_right";
         direction: ltr;
         display: block;
-        font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
         font-style: normal;
         height: 1em;
         line-height: 1;

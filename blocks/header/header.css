@@ -254,7 +254,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -276,7 +277,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -351,7 +353,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "arrow_chevron_down";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
@@ -383,7 +386,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "arrow_chevron_down";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
@@ -437,7 +441,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "arrow_chevron_left";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -635,7 +640,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -657,7 +663,8 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -691,7 +698,8 @@ header nav[aria-expanded="true"] .menu-flyout-wrapper::after {
     content: " arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -783,7 +791,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
   content: "arrow_chevron_down";
   direction: ltr;
   display: block;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+  font-family: var(--icon-font-family);
+  opacity: var(--iconfont400-opacity);
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -808,7 +817,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
   content: " ";
   direction: ltr;
   display: block;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+  font-family: var(--icon-font-family);
+  opacity: var(--iconfont400-opacity);
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
@@ -874,7 +884,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.s
   content: "arrow_chevron_left";
   direction: ltr;
   display: block;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+  font-family: var(--icon-font-family);
+  opacity: var(--iconfont400-opacity);
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
@@ -1037,7 +1048,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     content: "location_pin";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -1059,7 +1071,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -1081,7 +1094,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     content: "location_pin";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -1100,7 +1114,8 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     content: "search";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
