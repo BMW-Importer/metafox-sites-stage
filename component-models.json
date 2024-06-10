@@ -1222,6 +1222,7 @@
         "component": "text-input",
         "name": "jcr:title",
         "label": "Title",
+        "required": true,
         "description": "Defines the the page meta title for SEO, as well as a title displayable in the page content (unless and overriding 'Page Title' below is defined)."
       },
       {
@@ -1234,7 +1235,6 @@
         "component": "text-input",
         "name": "jcr:description",
         "label": "Description",
-        "required": true,
         "description": "Defines the the page meta title for SEO, as well as a title displayable in the page content (unless and overriding 'Page Title' below is defined)."
       },
       {
@@ -1311,8 +1311,8 @@
         "name": "cq:robotTags",
         "required": true,
         "description": "Defines the robots tags to control search engine crawler behaviour.",
-        "label": "Multi Select",
-        "valueType": "string",
+        "label": "Robot Tags",
+        "valueType": "strings",
         "options": [
           {
             "name": "index",
