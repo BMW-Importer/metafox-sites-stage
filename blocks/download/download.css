@@ -41,3 +41,9 @@
 .download-wrapper .download.block p a:active {
     color: var(--bg-media-btn-hover);
 } 
+
+@media (width >=360px) and (width < 1280px) {
+    .download-wrapper {
+        margin-bottom: .5rem;
+    }
+}

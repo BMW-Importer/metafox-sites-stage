@@ -627,6 +627,7 @@
                 "template": {
                   "name": "Background Image",
                   "model": "background-image",
+                  "bgImgGeneral_headlineclassType": "h2",
                   "bgImgIcon_subbrandicon": "noicon",
                   "bgImgStyle_elementAlignType": "h3",
                   "bgImgStyle_elementAlign": "central-left",
@@ -647,6 +648,7 @@
                 "template": {
                   "name": "Background Video",
                   "model": "background-video",
+                  "bgVidGeneral_headlineclassType": "h2",
                   "bgVidIcon_subbrandicon": "noicon",
                   "bgVidStyle_elementAlign": "central-left",
                   "bgVidStyle_elementAlignType": "h3",
@@ -751,14 +753,14 @@
                   "model": "video-carousel",
                   "filter": "video-carousel",
                   "content_carouselHeadlineType": "h2",
-                  "media_carouselLoopVideo": true,
                   "media_carouselLoopVideoType": "h3",
-                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselLoopVideo" : true,
                   "media_carouselMouseHoverVideoType": "h4",
+                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselHideControlsVideoType" : "h5",
                   "media_carouselHideControlsVideo" : true,
-                  "media_carouselHideControlsVideoType": "h5",
-                  "media_carouselMuteSoundVideo": true,
-                  "media_carouselMuteSoundVideoType": "h6"
+                  "media_carouselMuteSoundVideoType": "h6",
+                  "media_carouselMuteSoundVideo" : true
                 }
               }
             }

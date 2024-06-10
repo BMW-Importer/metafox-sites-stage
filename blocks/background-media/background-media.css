@@ -70,31 +70,39 @@
     z-index: 2;
     text-align: center;
     position: relative;
+    margin: 0;
 }
 
-.background-media.block h1.background-media-item-text-headline {
-    font-weight: 700;
-}
-
-.background-media.block h2.background-media-item-text-headline {
-    font-weight: 700;
-    font-size: 1.75rem;
-}
-
-.background-media.block h3.background-media-item-text-headline {
-    color: var(--background-color);
-    font-size: 7.4375rem;
+.background-media.block .medium.background-media-item-text-headline {
     font-weight: 300;
-    line-height: 6.75rem;  
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color: var(--background-color);
+    margin-bottom: 0;
+}
+
+.background-media.block .small.background-media-item-text-headline {
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--background-color);
+    margin-bottom: 0;
+}
+
+.background-media.block .big.background-media-item-text-headline {
+    color: var(--background-color);
+    font-size: 8rem;
+    font-weight: 300;
+    line-height: 7.75rem;  
     text-align: center;
     z-index: 2;
     position: relative;
     word-break: break-word;
+    margin-bottom: 8px;
 }
 
 .background-media.block .background-media-item-details {
     text-align: center;
-    margin-top: 4px;
     display: block;
     box-sizing: border-box;
 }
@@ -143,6 +151,17 @@
     display: inline;
     margin: 0;
     vertical-align: bottom;
+}
+
+.background-media.block .background-media-item-details .background-media-item-text-copytext {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.background-media.block .background-media-item-details.subbrandi .background-media-item-text-copytext,
+.background-media.block .background-media-item-details.subbrandm .background-media-item-text-copytext {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .background-media.block .background-media-item-text-copytext * {
@@ -337,16 +356,6 @@
         font-size: .9375rem;
     }
 
-    .background-media.block h2.background-media-item-text-headline {       
-        font-size: 1.8125rem;
-    }
-
-    .background-media.block h3.background-media-item-text-headline {
-        font-size: 7.875rem;
-        line-height: 7rem;
-        font-weight: 300;
-    }
-
     .background-media.block .background-media-item-text > *{
         width: auto;
     }
@@ -432,18 +441,21 @@
         text-align: start;
     }
 
-    .background-media.block h1.background-media-item-text-headline {
+    .background-media.block .medium.background-media-item-text-headline {
+        text-align: start;
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .background-media.block .small.background-media-item-text-headline {       
+        font-size: 2rem;
+        line-height: 2.5rem;
         text-align: start;
     }
 
-    .background-media.block h2.background-media-item-text-headline {       
-        font-size: 1.8125rem;
-        text-align: start;
-    }
-
-    .background-media.block h3.background-media-item-text-headline {
-        font-size: 7.875rem;
-        line-height: 7rem;
+    .background-media.block .big.background-media-item-text-headline {
+        font-size: 12rem;
+        line-height: 11rem;
         font-weight: 300;
         text-align: start;
     }
@@ -516,7 +528,7 @@
 
     .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:last-child,
     .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:last-child{
-        margin-top: 8px;
+        margin-top: .5rem;
     }
 
     .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
@@ -606,6 +618,10 @@
         justify-content: flex-start;
     }
 
+    .background-media.block .background-media-item-text-headline {
+        text-align: start;
+    }
+
     .background-media.block .background-media-item-text > *{
         width: auto;
     }
@@ -627,18 +643,21 @@
         font-size: .9375rem;
     }
 
-    .background-media.block h1.background-media-item-text-headline {        
+    .background-media.block .medium.background-media-item-text-headline {        
+        text-align: start;
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .background-media.block .small.background-media-item-text-headline {       
+        font-size: 2rem;
+        line-height: 2.5rem;
         text-align: start;
     }
 
-    .background-media.block h2.background-media-item-text-headline {       
-        font-size: 1.8125rem;
-        text-align: start;
-    }
-
-    .background-media.block h3.background-media-item-text-headline {
-        font-size: 7.875rem;
-        line-height: 7rem;
+    .background-media.block .big.background-media-item-text-headline {
+        font-size: 12rem;
+        line-height: 11rem;
         font-weight: 300;
         text-align: start;
     }
@@ -708,7 +727,7 @@
 
     .background-media.block .bg-media-btn-container.no-flex > .bg-media-btns:last-child,
     .background-media.block .bg-media-btn-container.no-flex.flex > .bg-media-btns:last-child{
-        margin-top: 8px;
+        margin-top: .5rem;
     }
 
     .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
