@@ -261,8 +261,9 @@ export default function decorate(block) {
   videoImageCarouselContent.classList.add('video-image-carousel-content');
 
   // loop through all children blocks
-  [...panels].forEach((panel) => {
+  [...panels].forEach((panel, index) => {
     const [content, media, cta] = panel.children;
+    panel.textContent = '';
     if (media.children.length > 1) {
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
@@ -291,19 +292,26 @@ export default function decorate(block) {
 
       // video tab details
       const videoCarouselContentPtags = media?.querySelectorAll('p');
-      const videoCarouselTitle = videoCarouselContentPtags[0];
-      const videoCarouselDescription = videoCarouselContentPtags[1];
+      const videoCarouselTitle = videoCarouselContentPtags[0] || '';
+      const videoCarouselDescription = videoCarouselContentPtags[1] || '';
 
       // video tab media
       const videoCarouselContentAtags = media?.querySelectorAll('a');
-      const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0];
-      const videoCarouselMobVideoRef = videoCarouselContentAtags[1];
+      const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0] || '';
+      const videoCarouselMobVideoRef = videoCarouselContentAtags[1] || '';
 
       const videoContentPictureTags = media.querySelectorAll('picture');
       const videoCarouselDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
       const videoCarouselMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
 
       const videoDOMContainer = document.createElement('div');
+
+      const imgDOMContainer = document.createElement('div');
+
+      if (index === 0) {
+        imgDOMContainer.classList.add('visible');
+      }
+
       // extracting video link
       const videoLinkObj = {};
       const posterObj = {};
@@ -387,7 +395,7 @@ export default function decorate(block) {
 
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
-
+  block.textContent = '';
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
 
@@ -407,13 +415,9 @@ export default function decorate(block) {
   const computedStyleDesktop = getComputedStyle(desktopContentPadding);
   const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
   const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
+  const ultraScreenWidth = viewportWidth - (paddingLeftDesktop + paddingRightDesktop);
 
-  const largerScreenWidth = viewportWidth - (paddingLeft + paddingRight);
-  const ultraScreenWidth = viewportWidth - (paddingLeftDesktop + paddingRightDesktop + 96 + 96);
-
-  const totalAvlWidDesktop = viewportWidth >= 1280 ? largerScreenWidth : desktopScreenWidth;
-
-  const availableWidth = viewportWidth >= 1920 ? ultraScreenWidth : totalAvlWidDesktop;
+  const availableWidth = viewportWidth >= 1920 ? ultraScreenWidth : desktopScreenWidth;
 
   let cardsToShow;
   if (viewportWidth >= 1280) {
@@ -450,7 +454,4 @@ export default function decorate(block) {
     );
   }
   addDotsNavigation(block, videoImageCarouselContent, totalItems, cardsToShow);
-
-  block.innerHTML = '';
-  block.append(carouselLeftWrapper, carouselRightWrapper, videoImageCarouselContent);
 }

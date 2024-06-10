@@ -753,14 +753,14 @@
                   "model": "video-carousel",
                   "filter": "video-carousel",
                   "content_carouselHeadlineType": "h2",
-                  "media_carouselLoopVideo": true,
                   "media_carouselLoopVideoType": "h3",
-                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselLoopVideo" : true,
                   "media_carouselMouseHoverVideoType": "h4",
+                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselHideControlsVideoType" : "h5",
                   "media_carouselHideControlsVideo" : true,
-                  "media_carouselHideControlsVideoType": "h5",
-                  "media_carouselMuteSoundVideo": true,
-                  "media_carouselMuteSoundVideoType": "h6"
+                  "media_carouselMuteSoundVideoType": "h6",
+                  "media_carouselMuteSoundVideo" : true
                 }
               }
             }

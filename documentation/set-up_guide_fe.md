@@ -3,7 +3,7 @@
 **Installation steps**
 ***
 
-1. Clone the repository `https://github.com/Harish-deva/x-walk` on your local system
+1. Clone the repository `https://github.com/BMW-Importer/metafox-sites` on your local system
 1. Verify the main changes on the repo such as `fstab.yaml` & `paths.json`
 1. Install the [AEM CLI](https://github.com/adobe/aem-cli): `npm install -g @adobe/aem-cli`
 1. Open the `{repo}` directory in your favorite IDE and start coding :)
