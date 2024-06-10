@@ -75,14 +75,13 @@ export default function decorate(block) {
 
   textWithMediaChildrens.forEach((childrenBlockProps) => {
     childrenBlockProps.classList.add('text-with-media-item');
-    const [classes, content, media, cta] = childrenBlockProps.children;
 
+    const [classes, content, media, cta, analytics] = childrenBlockProps.children;
     // removing classes div
+    const [analyticsLabel, analyticsBtnValue, analyticsOther] = analytics.children;
     childrenBlockProps.removeChild(classes);
-
     const imageAlignment = classes?.textContent?.split(',')?.[1] || 'left';
     childrenBlockProps.classList.add(imageAlignment?.trim());
-
     let mediaType;
     if (classes.textContent.includes('text-with-video')) {
       mediaType = 'video';
@@ -108,6 +107,11 @@ export default function decorate(block) {
     //  and bind it inside content
     if (ctaElem) {
       ctaElem?.classList?.add('text-with-media-cta');
+      if (analytics.children) {
+        ctaElem.dataset.analyticsLabel = analyticsLabel.textContent;
+        ctaElem.dataset.buttonLink = analyticsBtnValue.textContent || analyticsOther.textContent;
+        ctaElem.dataset.analyticsCustomeClick = 'true';
+      }
       content.append(ctaElem);
     }
 
