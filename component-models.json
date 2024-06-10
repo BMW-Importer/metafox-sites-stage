@@ -861,7 +861,7 @@
         "label": "Only if other is selected the following opotions should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
         "options": [
           {
             "name": "Learn More",
@@ -1186,7 +1186,7 @@
         "label": "Only if other is selected the following opotions should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
         "options": [
           {
             "name": "Learn More",
