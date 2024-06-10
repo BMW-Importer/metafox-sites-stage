@@ -51,6 +51,10 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
 
+  /* icon font opacity */
+  --iconfont400-opacity: 0;
+  --iconfont300-opacity: 0;
+
   /* nav height */
   --nav-height: 64px;
 
@@ -92,6 +96,14 @@ body.appear {
 body {
   display: none;
   background-color: var(--background-color);
+}
+
+body.iconfont400-loaded {
+  --iconfont400-opacity: 1;
+}
+
+body.iconfont300-loaded {
+  --iconfont400-opacity: 1;
 }
 
 main {

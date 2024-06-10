@@ -166,7 +166,8 @@
 .video-js .vjs-icon-play::before,
 .video-js .vjs-play-control .vjs-icon-placeholder::before {
   content: "play" !important;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif !important;
+  font-family: var(--icon-font-family) !important;
+  opacity: var(--iconfont400-opacity);
 }
 
 .video-js .vjs-big-play-button .vjs-icon-placeholder::before {
@@ -179,7 +180,8 @@
   font-size: 4rem;
   direction: ltr;
   display: block;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif !important;
+  font-family: var(--icon-font-family) !important;
+  opacity: var(--iconfont400-opacity);
   font-style: normal;
   font-weight: 400;
   height: 1em;
@@ -220,7 +222,8 @@
   font-feature-settings: "liga";
   direction: ltr;
   display: block;
-  font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif !important;
+  font-family: var(--icon-font-family) !important;
+  opacity: var(--iconfont400-opacity);
   font-style: normal;
   height: 1em;
   line-height: 1;

@@ -518,6 +518,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       content: "arrow_chevron_left";
       direction: ltr;
       font-family: var(--icon-font-family);
+      opacity: var(--iconfont400-opacity);
+      font-weight: 400;
       font-style: normal;
       height: 1.25em;
       width: 1.25em;
