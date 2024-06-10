@@ -11,6 +11,21 @@ margin-bottom: 48px;
   width: 100%;
 }
 
+.columns h1 {
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.columns h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.columns h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .columns > div > div {
   order: 1;
 }
@@ -86,6 +101,23 @@ margin-bottom: 48px;
 
 .columns .button {
     margin-top: 32px;
+}
+
+@media (width >=360px) and (width < 1024px) {
+  .columns h1 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  
+    .columns h2 {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+  
+    .columns h3 {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
 }
 
 @media (width >= 900px) {
