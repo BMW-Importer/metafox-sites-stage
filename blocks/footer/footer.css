@@ -74,6 +74,24 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     padding-bottom: 1.25rem;
   }
   
+  footer .footer .section:first-child .link-list-wrapper.horizontal>.link-list.block {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      padding-bottom: 0.75rem;
+  }
+
+  footer .footer .section:first-child .link-list-detail .button-container {
+    margin-top: 0;
+    font-size: 0.875rem;
+    line-height: 1.188rem;
+  }
+
+  footer .footer .section:first-child .link-list-title {
+    margin-bottom: 0;
+  }
+
   footer .footer .section:nth-child(2) {   
     padding-bottom: 2rem;
   }
@@ -98,6 +116,10 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     justify-content: space-between;
     flex-flow: row wrap;
     padding: 0 2.25rem;
+  }
+
+  footer .footer .section:nth-child(3) .default-content-wrapper {
+    font-size: 0.75rem;
   }
 
   footer .footer .section:nth-child(3) .link-list-wrapper.horizontal {   

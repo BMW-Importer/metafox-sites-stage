@@ -310,9 +310,13 @@
                   "classes": "left",
                   "content_videoheadlineType": "h2",
                   "media_loopVideo":true,
+                  "media_loopVideoType":"h2",
                   "media_autoplay":true,
+                  "media_autoplayType": "h3",
                   "media_videoControls":false,
-                  "media_muteVideo":true
+                  "media_videoControlsType": "h4",
+                  "media_muteVideo":true,
+                  "media_muteVideoType": "h5"
                 }
               }
             }
@@ -523,7 +527,9 @@
                   "filter": "video-slide",
                   "content_videoSlideHeadlineType": "h4",
                   "media_videoSlideLoopVideo": true,
+                  "media_videoSlideLoopVideoType": "h2",
                   "media_videoSlideAutoplay": true,
+                  "media_videoSlideAutoplayType": "h3",
                   "cta_videoSlideCtaLinkType": "primary"
                 }
               }
@@ -621,6 +627,7 @@
                 "template": {
                   "name": "Background Image",
                   "model": "background-image",
+                  "bgImgGeneral_headlineclassType": "h2",
                   "bgImgIcon_subbrandicon": "noicon",
                   "bgImgStyle_elementAlignType": "h3",
                   "bgImgStyle_elementAlign": "central-left",
@@ -641,6 +648,7 @@
                 "template": {
                   "name": "Background Video",
                   "model": "background-video",
+                  "bgVidGeneral_headlineclassType": "h2",
                   "bgVidIcon_subbrandicon": "noicon",
                   "bgVidStyle_elementAlign": "central-left",
                   "bgVidStyle_elementAlignType": "h3",
@@ -744,13 +752,15 @@
                   "name": "Video Carousel",
                   "model": "video-carousel",
                   "filter": "video-carousel",
-                  "content_videoCarouselHeadlineType": "h2",
-                  "media_videoCarouselLoopVideo": true,
-                  "media_videoCarouselMouseHoverVideo" : true,
-                  "media_videoCarouselHideControlsVideo" : true,
-                  "media_videoCarouselMuteSoundVideo": true
-
-
+                  "content_carouselHeadlineType": "h2",
+                  "media_carouselLoopVideoType": "h3",
+                  "media_carouselLoopVideo" : true,
+                  "media_carouselMouseHoverVideoType": "h4",
+                  "media_carouselMouseHoverVideo" : true,
+                  "media_carouselHideControlsVideoType" : "h5",
+                  "media_carouselHideControlsVideo" : true,
+                  "media_carouselMuteSoundVideoType": "h6",
+                  "media_carouselMuteSoundVideo" : true
                 }
               }
             }

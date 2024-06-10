@@ -277,7 +277,21 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -365,7 +379,21 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -394,24 +422,44 @@
         "value": "",
         "label": "Tab description",
         "required": true
-      },   
+      },
+      {
+        "component": "select",
+        "name": "tab-style",
+        "value": "secondary",
+        "label": "Tab Style",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the styling in which the tab will be displayed.",
+        "options": [
+          {
+            "name": "Default",
+            "value": "secondary"
+          },
+          {
+            "name": "Buttons",
+            "value": "primary"
+          }
+        ]
+      },
       {
         "component": "boolean", 
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
         "name": "tab-topmargin",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
         "label": "Anchor",
-        "name": "anchor_tabssectiontab2"
+        "name": "tabssectiontab2"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "anchor-label",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -419,7 +467,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "anchor-id",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -427,8 +475,9 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "tab-content-navigation",
-        "valueType": "boolean"
+        "name": "contentnavigation",
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
@@ -439,7 +488,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytis-label",
+        "name": "analytics-label",
         "value": "",
         "label": "Section Label"
       }
@@ -756,7 +805,102 @@
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
       }
+     
     ]
   },
   {
@@ -880,7 +1024,7 @@
         "name": "media_mobileFileReference",
         "label": "Mobile Video Path",
         "value": "",
-        "description": "Defines video that will play on mobile.",
+        "description": "Defines the video that will play on mobile.",
         "multi": false
       },
       {
@@ -911,12 +1055,28 @@
         "description": "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_loopVideoType",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_autoplay",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_autoplayType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "boolean",
@@ -927,12 +1087,28 @@
         "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
+        "component": "text",
+        "label": "Video Controls",
+        "name": "media_videoControlsType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Mute Video",
         "name": "media_muteVideo",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
+      },
+      {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_muteVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
       },
       {
         "component": "tab",
@@ -954,6 +1130,100 @@
         "value": "",
         "label": "Link Label",
         "description": "Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
       }
     ]
   },
@@ -1325,7 +1595,7 @@
       },
       {
         "component": "boolean",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "hideVideoControl",
         "valueType": "boolean",
         "value": true,
@@ -1481,7 +1751,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "videoSlideTab1"
+        "name": "content_videoSlideTab1"
       },
       {
         "component": "text-input",
@@ -1511,7 +1781,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "videoSlideTab2"
+        "name": "media_videoSlideTab2"
       },
       {
         "component": "text-input",
@@ -1574,6 +1844,15 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_videoSlideLoopVideoType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_videoSlideAutoplay",
@@ -1582,9 +1861,18 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_videoSlideAutoplayType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
-        "name": "videoSlideTab3"
+        "name": "cta_videoSlideTab3"
       },
       {
         "component": "text-input",
@@ -1617,7 +1905,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "imageSlideTab1"
+        "name": "content_imageSlideTab1"
       },
       {
         "component": "text-input",
@@ -1639,7 +1927,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "content_imageSlideCopyText",
+        "name": "content_imageSlideCopytext",
         "description": "Defines the text that will appear in the page. ",
         "value": "",
         "label": "Copy Text"
@@ -1647,7 +1935,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "imageSlideTab2"
+        "name": "media_imageSlideTab2"
       },
       {
         "component": "reference",
@@ -1668,7 +1956,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "imageSlideTab3"
+        "name": "cta_imageSlideTab3"
       },
       {
         "component": "text-input",
@@ -1763,7 +2051,102 @@
             "value": "Money Button"
           }
         ]    
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics-button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
       }
+      
     ]
   },
   {
@@ -1843,7 +2226,7 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_headlineType",
+        "name": "bgImgGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -1851,17 +2234,26 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "bgImgGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Headline Type",
+        "valueType": "string",        
+        "description": "Defines the headline of the text that will appear in the page.",
+        "hidden": true
       },
       {
         "component": "select",
@@ -1888,7 +2280,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgDesp_copyText",
+        "name": "bgImgDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
@@ -2088,7 +2480,7 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_headlineType",
+        "name": "bgVidGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
         "valueType": "string",        
@@ -2096,17 +2488,25 @@
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
+      },      
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "bgVidGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Eyebrow",
+        "hidden": true
       },
       {
         "component": "select",
@@ -2133,7 +2533,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidDesp_copyText",
+        "name": "bgVidDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
@@ -2415,7 +2815,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "content_videoCarouselHeadline",
+        "name": "content_carouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
@@ -2423,7 +2823,7 @@
       {
         "component": "select",
         "label": "Headline Type",
-        "name": "content_videoCarouselHeadlineType",
+        "name": "content_carouselHeadlineType",
         "valueType": "string",
         "description": "Defines multiple styling options for the Headline",
         "value": "h2",
@@ -2496,33 +2896,65 @@
         "multi": false
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_carouselLoopVideoType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "media_videoCarouselLoopVideo",
+        "name": "media_carouselLoopVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "text",
+        "label": "Play on mouseover",
+        "name": "media_carouselMouseHoverVideoType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
       },
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_videoCarouselMouseHoverVideo",
+        "name": "media_carouselMouseHoverVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
       },
       {
-        "component": "boolean",
+        "component": "text",
         "label": "Hide Video Controls",
-        "name": "media_videoCarouselHideControlsVideo",
+        "name": "media_carouselHideControlsVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "media_carouselHideControlsVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
       },
       {
+        "component": "text",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideoType",
+        "valueType": "string",
+        "value": "h6",
+        "hidden": true
+      },
+      {
         "component": "boolean",
-        "label": "Muted Video Sound",
-        "name": "media_videoCarouselMuteSoundVideo",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
