@@ -28,7 +28,7 @@ function generateTextProps(generalProps, generalPropIcon, copyTextContainer, gra
   eyebrowText = eyebrowText.length > 0 ? eyebrowText[0] : '';
 
   // appending heading class
-  if (headLineClass) headLineClass?.classList?.add(headLineClass?.textContent || '');
+  if (headLineClass) headlineText?.classList?.add(headLineClass?.textContent || '');
 
   // extracting subrand icon
   const [subBrancdIcon] = generalPropIcon ? generalPropIcon.children : '';
