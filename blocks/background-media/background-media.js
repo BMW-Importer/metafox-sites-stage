@@ -22,13 +22,13 @@ function generateCtaButtons(cta, btnContainer) {
 function generateTextProps(generalProps, generalPropIcon, copyTextContainer, gradientEffectClas) {
   // extracting eyebrow and headline
   let eyebrowText = generalProps.querySelectorAll('h4, h5, h6');
-  let headlineText = generalProps.querySelector('p');
+  const headlineText = generalProps.querySelector('p');
   const headLineClass = generalProps.querySelector('h2');
 
   eyebrowText = eyebrowText.length > 0 ? eyebrowText[0] : '';
 
   // appending heading class
-  if (headLineClass)  headLineClass?.classList?.add(headLineClass?.textContent || '');
+  if (headLineClass) headLineClass?.classList?.add(headLineClass?.textContent || '');
 
   // extracting subrand icon
   const [subBrancdIcon] = generalPropIcon ? generalPropIcon.children : '';

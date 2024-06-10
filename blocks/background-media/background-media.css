@@ -141,17 +141,6 @@
     margin-inline-end: .5rem;   
 }
 
-.background-media.block .background-media-item-details .background-media-item-text-copytext {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.background-media.block .background-media-item-details.subbrandi .background-media-item-text-copytext,
-.background-media.block .background-media-item-details.subbrandm .background-media-item-text-copytext {
-    margin-top: 0px;
-    margin-bottom: 16px;
-}
-
 .background-media.block .background-media-item-text-copytext {
     color: var(--background-color);
     font-size: 1rem;
@@ -162,6 +151,17 @@
     display: inline;
     margin: 0;
     vertical-align: bottom;
+}
+
+.background-media.block .background-media-item-details .background-media-item-text-copytext {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.background-media.block .background-media-item-details.subbrandi .background-media-item-text-copytext,
+.background-media.block .background-media-item-details.subbrandm .background-media-item-text-copytext {
+    margin-top: 0;
+    margin-bottom: 16px;
 }
 
 .background-media.block .background-media-item-text-copytext * {
