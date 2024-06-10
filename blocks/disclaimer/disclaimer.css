@@ -26,7 +26,8 @@
     content: "arrow_up_right";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif ;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;

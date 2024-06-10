@@ -41,7 +41,8 @@
     right: 0;   
     content: "arrow_chevron_down";    
     direction: ltr;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif; 
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1rem;
     line-height: 1;
@@ -129,7 +130,8 @@
     position: relative;
     content: "arrow_chevron_down";
     direction: ltr;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     font-weight: 400;
     height: 1.25rem;
