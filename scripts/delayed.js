@@ -2,54 +2,68 @@
 import { sampleRUM } from './aem.js';
 import { multiContentGalFunAfterPageLoad } from '../blocks/multicontent-gallery/multicontent-gallery.js';
 import { changeAllVidSrcOnResize } from '../blocks/video/video.js';
+import { pushCustomLinkAnalyticData } from './analytics-util.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
 multiContentGalFunAfterPageLoad();
 changeAllVidSrcOnResize();
+addAnalyticsCustomClickEvent();
 
 const page_tracking = {"page": {
-        "pageInfo": {
-            "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
-            "destinationURL": "https://www.bmw.rs/sr/index.html",
-            "variant": "real page",
-            "pageTitle": "BMW Srbija",
-            "windowInfo": {
-                "screenWidth": 3840,
-                "screenHeight": 2160,
-                "screenOrientation": "landscape",
-                "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-                "server": "www.bmw.rs",
-                "url": "https://www.bmw.rs/sr/index.html",
-                "urlClean": "https://www.bmw.rs/sr/index.html",
-            },
-            "timeInfo": {
-                "localTime": "20:43:11",
-                "utcTime": "18:43:11"
-            }
-        },
-        "attributes": {
-            "parentDomain": ".bmw.rs",
-            "brand": "bmw",
-        }
-    },
-    "eventInfo": {
-        "id": "2121221",
-        "eventName": "pageview",
-        "timeStamp": 1712774591731
-    },
-    "event": "pageview",
-    "user": {
-        "consent": {
-            "analytics": true,
-            "marketing": true,
-            "personalization": false
-        }
-    }}
+  "pageInfo": {
+      "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
+      "destinationURL": "https://www.bmw.rs/sr/index.html",
+      "variant": "real page",
+      "pageTitle": "BMW Srbija",
+      "windowInfo": {
+          "screenWidth": 3840,
+          "screenHeight": 2160,
+          "screenOrientation": "landscape",
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+          "server": "www.bmw.rs",
+          "url": "https://www.bmw.rs/sr/index.html",
+          "urlClean": "https://www.bmw.rs/sr/index.html",
+      },
+      "timeInfo": {
+          "localTime": "20:43:11",
+          "utcTime": "18:43:11"
+      }
+  },
+  "attributes": {
+      "parentDomain": ".bmw.rs",
+      "brand": "bmw",
+  }},
+  "eventInfo": {
+      "id": "2121221",
+      "eventName": "pageview",
+      "timeStamp": 1712774591731
+  },
+  "event": "pageview",
+  "user": {
+    "consent": {
+        "analytics": true,
+        "marketing": true,
+        "personalization": false
+    }
+}}
 
 // add more delayed functionality here
 function analyticsTracking() {
     set_page_tracking();
+}
+
+function addAnalyticsCustomClickEvent() {
+  const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custome-click=true]');
+  listOfCustomClickBtns.forEach((btn)=> {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default action of the link
+      const analyticsLabel = e.target.getAttribute('data-analytics-label');
+      const buttonLink = e.target.getAttribute('data-button-link');
+
+      pushCustomLinkAnalyticData([analyticsLabel, buttonLink]);      
+    });
+  });
 }
 
 var dateTime = new Date();

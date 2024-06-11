@@ -109,8 +109,9 @@ export default function decorate(block) {
       ctaElem?.classList?.add('text-with-media-cta');
       if (analytics.children) {
         ctaElem.dataset.analyticsLabel = analyticsLabel.textContent;
-        ctaElem.dataset.buttonLink = analyticsBtnValue.textContent || analyticsOther.textContent;
+        ctaElem.dataset.buttonLink = analyticsBtnValue.textContent !== 'Other' ? analyticsBtnValue.textContent : analyticsOther.textContent;
         ctaElem.dataset.analyticsCustomeClick = 'true';
+        ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
       }
       content.append(ctaElem);
     }
