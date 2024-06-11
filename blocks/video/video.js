@@ -183,28 +183,18 @@ export function getVideoElement(props) {
   }, { passive: false });
 
   video.dataset.autoplay = autoplay ? 'true' : 'false';
-  if (window.IntersectionObserver) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (video) {
-          if (entry.isIntersecting) {
-            if (video.paused) {
-              video.play().catch();
-            }
-          } else if (!video.paused) {
-            video.pause();
-          }
-        }
-      });
-    }, { threshold: 0.5 });
-    observer.observe(video);
-    video.oncanplay = () => {
-      if (autoplay) {
-        video.muted = !userUnmuted;
-        video.play();
-      }
-    };
-  } else document.querySelector('#warning').style.display = 'block';
+
+  video.oncanplay = () => {
+    if (autoplay) {
+      video.muted = !userUnmuted;
+      video.play();
+    }
+  };
+
+  // after video js loads the video then add attribute
+  video.addEventListener('loadeddata', () => {
+    this.setAttribute('data-islibrary-loaded', 'true');
+  });
   return video;
 }
 
@@ -276,6 +266,30 @@ export function loadVideoEmbed(props) {
   }
 
   block.dataset.embedIsLoaded = true;
+}
+
+export function enableObserverForVideos() {
+  const listOfVideos = document.querySelectorAll('video');
+  listOfVideos.forEach((video) => {
+    if (window.IntersectionObserver) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (video && video.getAttribute('data-islibrary-loaded')) {
+            if (entry.isIntersecting) {
+              if (video.paused) {
+                video.play().catch();
+              }
+            } else if (!video.paused) {
+              video.pause();
+            }
+          } else {
+            videojsFunction(video);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(video);
+    } else document.querySelector('#warning').style.display = 'block';
+  });
 }
 
 export function changeAllVidSrcOnResize() {
