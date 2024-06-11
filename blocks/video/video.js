@@ -190,11 +190,6 @@ export function getVideoElement(props) {
       video.play();
     }
   };
-
-  // after video js loads the video then add attribute
-  video.addEventListener('loadeddata', () => {
-    this.setAttribute('data-islibrary-loaded', 'true');
-  });
   return video;
 }
 
@@ -274,7 +269,7 @@ export function enableObserverForVideos() {
     if (window.IntersectionObserver) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (video && video.getAttribute('data-islibrary-loaded')) {
+          if (video && video.parentElement.classList.contains('video-js')) {
             if (entry.isIntersecting) {
               if (video.paused) {
                 video.play().catch();
@@ -283,7 +278,16 @@ export function enableObserverForVideos() {
               video.pause();
             }
           } else {
-            videojsFunction(video);
+            const player = videojsFunction(video);
+            player.ready(() => {
+              if (entry.isIntersecting) {
+                if (video.paused) {
+                  video.play().catch();
+                }
+              } else if (!video.paused) {
+                video.pause();
+              }
+            });
           }
         });
       }, { threshold: 0.5 });
