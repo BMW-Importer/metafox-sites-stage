@@ -24,6 +24,7 @@
     aspect-ratio: 3 / 2;
     object-fit: cover;
     vertical-align: middle;
+    height: auto !important;
 }
 
 .media-carousel-wrapper {
@@ -150,8 +151,7 @@
     content: "arrow_chevron_left";
     direction: ltr;
     display: block;
-    font-family: var(--icon-font-family) !important;
-    opacity: var(--iconfont400-opacity);
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     color: var(--text-color);
     font-style: normal;
     height: 1em;
@@ -188,8 +188,7 @@
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: var(--icon-font-family) !important;
-    opacity: var(--iconfont400-opacity);
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     color: var(--text-color);
     font-style: normal;
     height: 1em;
@@ -235,8 +234,7 @@
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: var(--icon-font-family) !important;
-    opacity: var(--iconfont400-opacity);
+    font-family: var(--icon-font-family);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -412,7 +410,8 @@
         content: "arrow_chevron_left";
         direction: ltr;
         display: block;
-        font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+        font-family: var(--icon-font-family) !important;
+        opacity: var(--iconfont400-opacity);
         color: var(--text-color);
         font-style: normal;
         height: 1em;
@@ -449,7 +448,8 @@
         content: "arrow_chevron_right";
         direction: ltr;
         display: block;
-        font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+        font-family: var(--icon-font-family) !important;
+        opacity: var(--iconfont400-opacity);
         color: var(--text-color);
         font-style: normal;
         height: 1em;

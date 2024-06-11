@@ -280,12 +280,12 @@ function resizeBlock() {
     const cards = carouselContent.querySelectorAll('.video-img-carousel-card');
     const carouselLeftWrapper = block.querySelector('.carousel-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.carousel-wrapper-rth-area');
-    const vidImageCardMargin = carouselContent.querySelector('.video-img-carousel-card');
-
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
-    const computedMargin = getComputedStyle(vidImageCardMargin);
-    cardMarginRight = parseFloat(computedMargin.marginRight);
-
+    const vidImageCardMargin = carouselContent.querySelector('.video-img-carousel-card');
+    if (vidImageCardMargin) {
+      const computedMargin = getComputedStyle(vidImageCardMargin);
+      cardMarginRight = parseFloat(computedMargin.marginRight);
+    }
     const cardWidth = ((availableWidth - ((cardsToShow - 1) * cardMarginRight)) / cardsToShow);
     cards.forEach((card) => {
       card.style.width = `${cardWidth}px`;
