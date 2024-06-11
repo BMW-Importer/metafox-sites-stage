@@ -79,7 +79,7 @@
 
 .background-media.block .big.background-media-item-text-headline {
     color: var(--background-color);
-    font-size: 7.437rem;
+    font-size: 7.44rem;
     font-weight: 300;
     line-height: 6.75rem;  
     text-align: center;
@@ -144,6 +144,21 @@
     display: inline;
     margin: 0;
     vertical-align: bottom;
+}
+
+.background-media.block h1.background-media-item-text-copytext {
+    font-size: 1.438rem;
+    line-height: 2rem;
+}
+
+.background-media.block h2.background-media-item-text-copytext {
+    font-size: 1.188rem;
+    line-height: 1.75rem;
+}
+
+.background-media.block p.background-media-item-text-copytext {
+    font-size: 1rem;
+    line-height: 1.625rem;
 }
 
 .background-media.block .background-media-item-details .background-media-item-text-copytext {
@@ -389,6 +404,21 @@
     .background-media.block .background-media-item-cta-ghost.flex {        
         width: 30%;
     }
+
+    .background-media.block h1.background-media-item-text-copytext {
+        font-size: 1.563rem;
+        line-height: 2.25rem;
+    }
+    
+    .background-media.block h2.background-media-item-text-copytext {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+    
+    .background-media.block p.background-media-item-text-copytext {
+        font-size: 1.063rem;
+        line-height: 1.75rem;
+    }
 }
 
 /* desktop */
@@ -451,8 +481,8 @@
 
     .background-media.block .medium.background-media-item-text-headline {
         text-align: start;
-        font-size: 2.812rem;
-        line-height: 3.875rem;
+        font-size: 2.188rem;
+        line-height: 3.125rem;
     }
 
     .background-media.block .small.background-media-item-text-headline {       
@@ -462,8 +492,8 @@
     }
 
     .background-media.block .big.background-media-item-text-headline {
-        font-size: 15.75rem;
-        line-height: 14rem;
+        font-size: 13.125rem;
+        line-height: 11.625rem;
         font-weight: 300;
         text-align: start;
     }
@@ -602,6 +632,21 @@
 
     .background-media.block .background-media-item-vidimg.light::before {
         background: none !important;
+    }
+
+    .background-media.block h1.background-media-item-text-copytext {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+    }
+    
+    .background-media.block h2.background-media-item-text-copytext {
+        font-size: 1.438rem;
+        line-height: 2.25rem;
+    }
+    
+    .background-media.block p.background-media-item-text-copytext {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
     }
 }
 
@@ -815,5 +860,20 @@
 
     .background-media.block .background-media-item-vidimg.light::before {
         background: none !important;
+    }
+
+    .background-media.block h1.background-media-item-text-copytext {
+        font-size: 2.125rem;
+        line-height: 3rem;
+    }
+    
+    .background-media.block h2.background-media-item-text-copytext {
+        font-size: 1.563rem;
+        line-height: 2.375rem;
+    }
+    
+    .background-media.block p.background-media-item-text-copytext {
+        font-size: 1.188rem;
+        line-height: 1.875rem;
     }
 }
