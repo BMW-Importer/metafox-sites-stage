@@ -132,14 +132,16 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     position: relative;
     top: 100px;
     padding: .75rem 3.5rem;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
+    line-height: 1.375rem;
   }
 
   header nav[aria-expanded="true"] .menu-link-wrapper a,  
   header nav[aria-expanded="true"] .menu-flyout-wrapper{
    color: var(--light-border-color);
    text-decoration: none;
+   font-size: 14px;
   }
 
   header nav[aria-expanded="true"] .logo-wrapper {
@@ -477,6 +479,13 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
    margin-bottom: 1rem;
   }
 
+  header nav .menu-link-wrapper .menu-link a,
+  header nav .menu-flyout-wrapper .menu-flyout-link {
+   font-size: 0.875rem;
+   cursor: pointer;
+   line-height: 22px;
+  }
+
 
 }
 
@@ -548,16 +557,20 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
     position: relative;
     top: 120px;
     padding: .55rem 7rem;
-    font-weight: 700;
     color: var(--light-border-color);
     cursor: pointer;
     text-decoration: none;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
   }
 
   header nav[aria-expanded="true"] .menu-link-wrapper a {
     color: var(--light-border-color);
     padding: 12px 0;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 22px;    
+    font-weight: 500;
   }
 
   header nav[aria-expanded="true"] .menu-link-wrapper a:hover,
@@ -1345,10 +1358,11 @@ header nav[aria-expanded="true"] .section {
     text-decoration: none;
     flex: 0 1 auto;
     position: relative;
-    font-weight: 700;
+    font-weight: 500;
     color:  var(--light-border-color);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     cursor: pointer;
+    line-height: 1.5rem;
   }
 
   header nav .menu-link-wrapper .menu-link  a:hover,
@@ -1420,6 +1434,12 @@ header nav[aria-expanded="true"] .section {
     width: 109.5rem !important;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  header nav .menu-link-wrapper .menu-link a,
+  header nav .menu-flyout-wrapper .menu-flyout-link {
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
