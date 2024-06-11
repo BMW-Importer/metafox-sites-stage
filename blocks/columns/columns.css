@@ -137,6 +137,23 @@ margin-bottom: 48px;
     }
 }
 
+@media (width >=1920px) {
+  .columns h1 {
+      font-size: 2.813rem;
+      line-height: 3.875rem;
+    }
+  
+    .columns h2 {
+      font-size: 2.125rem;
+      line-height: 3rem;
+    }
+  
+    .columns h3 {
+      font-size: 1.563rem;
+      line-height: 2.375rem;
+    }
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
