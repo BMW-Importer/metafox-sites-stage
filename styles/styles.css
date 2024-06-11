@@ -138,10 +138,11 @@ h3 {
 }
 
 h4 { 
-  font-size: 0.875rem; 
-  line-height: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.175rem;
+  font-size: 0.75rem; 
+  line-height: 1rem;
+  font-weight: 300;
+
+  /* letter-spacing: 0.175rem; */
   text-transform: uppercase;
   color: var(--light-border-color);
 }
@@ -149,17 +150,18 @@ h4 {
 h5 { 
   font-size: 0.75rem; 
   line-height: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.125rem;
+  font-weight: 300;
+  
+  /* letter-spacing: 0.125rem; */
   text-transform: uppercase;
   color: var(--light-border-color);
 }
 
 h6 { 
-  font-size: 0.75rem; 
-  line-height: 1rem;
+  font-size: 1rem;
+  line-height: 0.875rem;
+  letter-spacing: .6em;
   font-weight: 300;
-  letter-spacing: 0.45rem;
   text-transform: uppercase;
   color: var(--light-text-color);
 }
@@ -622,6 +624,12 @@ textarea{
     h3 { 
       font-size: 1.438rem; 
       line-height: 2rem; 
+    }
+
+    h6 {
+      font-size: .875rem;
+      line-height: .75rem;
+      letter-spacing: .6em;
     }
 }
 
