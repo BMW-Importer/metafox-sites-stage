@@ -12,18 +12,18 @@ margin-bottom: 48px;
 }
 
 .columns h1 {
-  font-size: 3rem;
-  line-height: 4rem;
+  font-size: 2.813rem;
+  line-height: 3.875rem;
 }
 
 .columns h2 {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 2.125rem;
+  line-height: 3rem;
 }
 
 .columns h3 {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: 1.563rem;
+  line-height: 2.375rem;
 }
 
 .columns > div > div {
@@ -103,20 +103,37 @@ margin-bottom: 48px;
     margin-top: 32px;
 }
 
-@media (width >=360px) and (width < 1024px) {
+@media (width >=360px) and (width < 768px) {
   .columns h1 {
-      font-size: 2rem;
+      font-size: 1.75rem;
+      line-height: 2.625rem;
+    }
+  
+    .columns h2 {
+      font-size: 1.438rem;
+      line-height: 2rem;
+    }
+  
+    .columns h3 {
+      font-size: 1.188rem;
+      line-height: 1.75rem;
+    }
+}
+
+@media (width >=768px) and (width < 1280px) {
+  .columns h1 {
+      font-size: 1.813rem;
       line-height: 2.5rem;
     }
   
     .columns h2 {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
+      font-size: 1.563rem;
+      line-height: 2.25rem;
     }
   
     .columns h3 {
-      font-size: 1rem;
-      line-height: 1.5rem;
+      font-size: 1.25rem;
+      line-height: 1.875rem;
     }
 }
 
