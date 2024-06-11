@@ -1,12 +1,11 @@
 import { loadVideoEmbed } from '../video/video.js';
 
 const viewportWidth = window.innerWidth;
+let iconClicked = false;
+let cardMarginRight = 0;
 
-function updateCarousel(content, currentIndex) {
+function updateCarousel(content, currentIndex, gap) {
   const itemWidth = (content.children[currentIndex].offsetWidth);
-  const cardDesktopGap = 24;
-  const cardMobileGap = 16;
-  const gap = viewportWidth < 768 ? cardMobileGap : cardDesktopGap;
   const offset = -(currentIndex * (itemWidth + gap));
   content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
   content.style.transitionDuration = '50ms';
@@ -23,12 +22,8 @@ function updateDots(dotsWrapper, currentIndex) {
     }
   });
 }
-let iconClicked = false;
-function onHoverCarousel(content, currentIndex, direction) {
+function onHoverCarousel(content, currentIndex, direction, gap) {
   const itemWidth = (content.children[currentIndex].offsetWidth);
-  const cardDesktopGap = 24;
-  const cardMobileGap = 16;
-  const gap = viewportWidth < 768 ? cardMobileGap : cardDesktopGap;
   const offsetPercentage = 0.2; // 20%
   const currentOffset = -(currentIndex * (itemWidth + gap));
   const offset = direction === 'right' ? -((offsetPercentage * itemWidth) + gap) : ((offsetPercentage * itemWidth) + gap);
@@ -37,34 +32,34 @@ function onHoverCarousel(content, currentIndex, direction) {
   content.style.transitionDelay = '100ms';
 }
 
-function onHoverCarouselLeave(content, currentIndex) {
+function onHoverCarouselLeave(content, currentIndex, gap) {
   content.style.transform = 'translate3d(0px, 0px, 0px)';
   content.style.transitionDuration = '500ms';
   content.style.transitionDelay = '100ms';
   if (iconClicked) {
-    updateCarousel(content, currentIndex);
+    updateCarousel(content, currentIndex, gap);
   }
 }
 
 function updateButtonVisibility(prevButton, nextButton, currentIndex, totalItems, itemsToShow) {
   if (currentIndex === 0) {
-    prevButton.style.display = 'none'; // Hide prevButton when at the beginning
-    prevButton.parentElement.style.display = 'none';
+    prevButton.classList.add('hide-icon'); // Add 'hidden' class to hide
+    prevButton.parentElement.classList.add('hide-icon');
   } else {
-    prevButton.style.display = 'block';
-    prevButton.parentElement.style.display = 'flex';
+    prevButton.classList.remove('hide-icon'); // Remove 'hide-icon' class to show
+    prevButton.parentElement.classList.remove('hide-icon');
   }
 
   if (currentIndex >= totalItems - itemsToShow) {
-    nextButton.style.display = 'none'; // Hide nextButton when at the end
-    nextButton.parentElement.style.display = 'none';
+    nextButton.classList.add('hide-icon'); // Add 'hide-icon' class to hide
+    nextButton.parentElement.classList.add('hide-icon');
   } else {
-    nextButton.style.display = 'block';
-    nextButton.parentElement.style.display = 'flex';
+    nextButton.classList.remove('hide-icon'); // Remove 'hide-icon' class to show
+    nextButton.parentElement.classList.remove('hide-icon');
   }
 }
 
-function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex) {
+function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex, gap) {
   let startX = 0;
   let currentX = 0;
   let isDragging = false;
@@ -74,7 +69,6 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
   let endTime = 0;
   let moved = false;
   const maxClickDuration = 200;
-  const cardGap = viewportWidth < 768 ? 16 : 24;
   const minSlideDistance = 100;
 
   content.addEventListener('touchstart', (e) => {
@@ -91,7 +85,7 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
     if (Math.abs(dx) >= minSlideDistance) {
       moved = true;
       const itemWidth = content.children[index].offsetWidth;
-      const offset = -(index * (itemWidth + cardGap)) + dx;
+      const offset = -(index * (itemWidth + gap)) + dx;
       content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
     }
   });
@@ -116,12 +110,12 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
       }
     }
     content.style.transitionDuration = '300ms';
-    updateCarousel(content, index);
+    updateCarousel(content, index, gap);
     updateDots(block.querySelector('.dots-navigation'), index);
   });
 }
 
-function addDotsNavigation(block, content, totalItems, itemsToShow) {
+function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   const dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
   const preButton = block.querySelector('.carousel-btn-prev');
@@ -130,7 +124,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow) {
   let totalDots;
   let currentIndex = 0;
   function updateDotCarousel() {
-    updateCarousel(content, currentIndex);
+    updateCarousel(content, currentIndex, gap);
   }
 
   if (viewportWidth >= 1280) {
@@ -150,16 +144,14 @@ function addDotsNavigation(block, content, totalItems, itemsToShow) {
       currentIndex = index;
       updateDotCarousel();
       updateDots(dotsWrapper, currentIndex);
-      if (viewportWidth > 768) {
-        updateButtonVisibility(
-          preButton,
-          nexButton,
-          currentIndex,
-          totalItems,
-          itemsToShow,
-        );
-      }
-      addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex);
+      updateButtonVisibility(
+        preButton,
+        nexButton,
+        currentIndex,
+        totalItems,
+        itemsToShow,
+      );
+      addTouchSlideFunctionality(block, content, totalItems, itemsToShow, currentIndex, gap);
     };
   }
 
@@ -181,6 +173,7 @@ function addIconCarouselControls(
   itemsToShow,
   carouselLeftWrapper,
   carouselRightWrapper,
+  gap,
 ) {
   const prevButton = document.createElement('button');
   prevButton.classList.add('carousel-btn-prev');
@@ -192,21 +185,21 @@ function addIconCarouselControls(
   carouselRightWrapper.append(nextButton);
   let currentIndex = 0;
   function updateIconCarousel() {
-    updateCarousel(content, currentIndex);
+    updateCarousel(content, currentIndex, gap);
   }
 
   nextButton.addEventListener('mouseover', () => {
-    onHoverCarousel(content, currentIndex, 'right');
+    onHoverCarousel(content, currentIndex, 'right', gap);
   });
   nextButton.addEventListener('mouseleave', () => {
-    onHoverCarouselLeave(content, currentIndex);
+    onHoverCarouselLeave(content, currentIndex, gap);
   });
 
   prevButton.addEventListener('mouseover', () => {
-    onHoverCarousel(content, currentIndex, 'left');
+    onHoverCarousel(content, currentIndex, 'left', gap);
   });
   prevButton.addEventListener('mouseleave', () => {
-    onHoverCarouselLeave(content, currentIndex);
+    onHoverCarouselLeave(content, currentIndex, gap);
   });
 
   prevButton.addEventListener('click', () => {
@@ -215,15 +208,13 @@ function addIconCarouselControls(
       iconClicked = true;
       updateDots(block.querySelector('.dots-navigation'), currentIndex);
       updateIconCarousel();
-      if (viewportWidth > 768) {
-        updateButtonVisibility(
-          prevButton,
-          nextButton,
-          currentIndex,
-          totalItems,
-          itemsToShow,
-        );
-      }
+      updateButtonVisibility(
+        prevButton,
+        nextButton,
+        currentIndex,
+        totalItems,
+        itemsToShow,
+      );
     }
   });
   nextButton.addEventListener('click', () => {
@@ -232,26 +223,100 @@ function addIconCarouselControls(
       iconClicked = true;
       updateDots(block.querySelector('.dots-navigation'), currentIndex);
       updateIconCarousel();
-      if (viewportWidth > 768) {
-        updateButtonVisibility(
-          prevButton,
-          nextButton,
-          currentIndex,
-          totalItems,
-          itemsToShow,
-        );
-      }
+      updateButtonVisibility(
+        prevButton,
+        nextButton,
+        currentIndex,
+        totalItems,
+        itemsToShow,
+      );
     }
   });
-  if (viewportWidth > 768) {
-    updateButtonVisibility(
-      prevButton,
-      nextButton,
-      currentIndex,
-      totalItems,
-      itemsToShow,
-    );
+  updateButtonVisibility(
+    prevButton,
+    nextButton,
+    currentIndex,
+    totalItems,
+    itemsToShow,
+  );
+}
+
+function updateItemsToShow(carouselContent) {
+  const viewport = window.innerWidth;
+  const totalItems = carouselContent.childElementCount;
+  const computedStyle = getComputedStyle(carouselContent);
+  const paddingLeft = parseFloat(computedStyle.paddingLeft);
+  const paddingRight = parseFloat(computedStyle.paddingRight);
+  const desktopScreenWidth = viewport - (paddingLeft + paddingRight);
+
+  // padding only for more than 1280 viewport
+  const desktopContentPadding = document.querySelector('.section.media-carousel-container');
+  const computedStyleDesktop = getComputedStyle(desktopContentPadding);
+  const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
+  const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
+  const ultraScreenWidth = viewport - (paddingLeftDesktop + paddingRightDesktop);
+  const availableWidth = viewport >= 1920 ? ultraScreenWidth : desktopScreenWidth;
+  let cardsToShow;
+  if (viewport >= 1280) {
+    cardsToShow = Math.min(totalItems, 4);
+  } else if (viewport >= 1024) {
+    cardsToShow = Math.min(totalItems, 3);
+  } else if (viewport >= 768) {
+    cardsToShow = Math.min(totalItems, 2);
+  } else {
+    cardsToShow = 1;
   }
+  return { cardsToShow, availableWidth, totalItems };
+}
+let carouselControlsAdded = false;
+let carouselControlsIcon = false;
+
+function resizeBlock() {
+  const viewport = window.innerWidth;
+  const carousels = document.querySelectorAll('.video-image-carousel-content');
+
+  carousels.forEach((carouselContent) => {
+    const block = carouselContent.closest('.media-carousel.block');
+    const cards = carouselContent.querySelectorAll('.video-img-carousel-card');
+    const carouselLeftWrapper = block.querySelector('.carousel-wrapper-lft-area');
+    const carouselRightWrapper = block.querySelector('.carousel-wrapper-rth-area');
+    const vidImageCardMargin = carouselContent.querySelector('.video-img-carousel-card');
+
+    const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
+    const computedMargin = getComputedStyle(vidImageCardMargin);
+    cardMarginRight = parseFloat(computedMargin.marginRight);
+
+    const cardWidth = ((availableWidth - ((cardsToShow - 1) * cardMarginRight)) / cardsToShow);
+    cards.forEach((card) => {
+      card.style.width = `${cardWidth}px`;
+    });
+
+    addTouchSlideFunctionality(
+      block,
+      carouselContent,
+      totalItems,
+      cardsToShow,
+      0,
+      cardMarginRight,
+    );
+
+    if (viewport >= 1280 && totalItems > 4 && !carouselControlsIcon) {
+      addIconCarouselControls(
+        block,
+        carouselContent,
+        totalItems,
+        cardsToShow,
+        carouselLeftWrapper,
+        carouselRightWrapper,
+        cardMarginRight,
+      );
+      carouselControlsIcon = true;
+    }
+    if (!carouselControlsAdded) {
+      addDotsNavigation(block, carouselContent, totalItems, cardsToShow, cardMarginRight);
+      carouselControlsAdded = true;
+    }
+  });
 }
 
 export default function decorate(block) {
@@ -263,8 +328,7 @@ export default function decorate(block) {
   // loop through all children blocks
   [...panels].forEach((panel, index) => {
     const [content, media, cta] = panel.children;
-    panel.textContent = '';
-    if (media.children.length > 1) {
+    if (media?.children?.length > 1) {
       // Create a wrapper for video card elements
       const videoCarouselCard = document.createElement('div');
       videoCarouselCard.classList.add('video-img-carousel-card');
@@ -278,12 +342,11 @@ export default function decorate(block) {
       vidImgDesWrapper.classList.add('video-img-description');
 
       // headline and copy text under general tab
-      const contentElem = content.children;
-      const videoCarouselHeadline = content.querySelector('h2')?.textContent;
-
+      const contentElem = content?.children;
+      const videoCarouselHeadline = content.querySelector('h2')?.textContent || '';
       const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline) ? videoCarouselHeadline : '';
-      let videoCarouselCopyText = contentElem[1];
-      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent.trim()) ? videoCarouselCopyText : '';
+      let videoCarouselCopyText = contentElem[1] || '';
+      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent) ? videoCarouselCopyText : '';
       let vidImgAnchorElm = cta.querySelector('a');
       vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
       vidImgCtaWrap.append(vidImgAnchorElm);
@@ -331,8 +394,8 @@ export default function decorate(block) {
 
       loadVideoEmbed(
         [videoDOMContainer,
-          videoCarouselTitle.textContent,
-          videoCarouselDescription.textContent,
+          videoCarouselTitle?.textContent,
+          videoCarouselDescription?.textContent,
           videoLinkObj,
           isAutoPlayVideo,
           isLoopVideo,
@@ -363,14 +426,13 @@ export default function decorate(block) {
       vidImgCtaWrap.append(vidImgAnchorElm);
       // headline and copy text under general tab
       const contentElem = content?.children;
-      let imgCarouselHeadline = contentElem[0];
-      imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent.trim()) ? imgCarouselHeadline : '';
-      let imgCarouselCopyText = contentElem[1];
-      imgCarouselCopyText = (imgCarouselCopyText !== null && imgCarouselCopyText !== undefined && imgCarouselCopyText.textContent.trim()) ? imgCarouselCopyText : '';
+      let imgCarouselHeadline = contentElem[0] || '';
+      imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent) ? imgCarouselHeadline : '';
+      let imgCarouselCopyText = contentElem[1] || '';
+      imgCarouselCopyText = (imgCarouselCopyText !== null && imgCarouselCopyText !== undefined && imgCarouselCopyText.textContent) ? imgCarouselCopyText : '';
       imgTitleWrapper.append(imgCarouselHeadline);
       imgDesWrapper.append(imgCarouselCopyText);
 
-      // const imageCarouselImgRef = media.querySelector('picture');
       const imageCarouselCard = document.createElement('div');
       imageCarouselCard.classList.add('video-img-carousel-card');
 
@@ -395,63 +457,15 @@ export default function decorate(block) {
 
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
+
   block.textContent = '';
   block.append(carouselLeftWrapper, carouselRightWrapper);
   block.append(videoImageCarouselContent);
+  resizeBlock();
+}
 
-  // calculated dynamic width
-  const totalItems = panels.length;
-  const cards = block.querySelectorAll('.video-img-carousel-card');
-
-  // padding only for less than 1280 viewport
-  const carouselContent = document.querySelector('.video-image-carousel-content');
-  const computedStyle = getComputedStyle(carouselContent);
-  const paddingLeft = parseFloat(computedStyle.paddingLeft);
-  const paddingRight = parseFloat(computedStyle.paddingRight);
-  const desktopScreenWidth = viewportWidth - (paddingLeft + paddingRight);
-
-  // padding only for more than 1280 viewport
-  const desktopContentPadding = document.querySelector('.section.media-carousel-container');
-  const computedStyleDesktop = getComputedStyle(desktopContentPadding);
-  const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
-  const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
-  const ultraScreenWidth = viewportWidth - (paddingLeftDesktop + paddingRightDesktop);
-
-  const availableWidth = viewportWidth >= 1920 ? ultraScreenWidth : desktopScreenWidth;
-
-  let cardsToShow;
-  if (viewportWidth >= 1280) {
-    cardsToShow = Math.min(totalItems, 4);
-  } else if (viewportWidth >= 1024) {
-    cardsToShow = Math.min(totalItems, 3);
-  } else if (viewportWidth >= 768) {
-    cardsToShow = Math.min(totalItems, 2);
-  } else {
-    cardsToShow = 1;
-  }
-
-  const cardDesktopMargin = 24;
-  const cardMobileMargin = 16;
-  const cardMargin = viewportWidth < 768 ? cardMobileMargin : cardDesktopMargin;
-  const cardWidth = ((availableWidth - ((cardsToShow - 1) * cardMargin)) / cardsToShow);
-
-  cards.forEach((card) => {
-    card.style.width = `${cardWidth}px`;
-    card.style.marginRight = `${cardMargin}px`;
+export function mediaCarouselResizer() {
+  window.addEventListener('resize', () => {
+    resizeBlock();
   });
-
-  if (viewportWidth <= 1024) {
-    addTouchSlideFunctionality(block, videoImageCarouselContent, totalItems, cardsToShow, 0);
-  }
-  if (viewportWidth >= 1280 && totalItems > 4) {
-    addIconCarouselControls(
-      block,
-      videoImageCarouselContent,
-      totalItems,
-      cardsToShow,
-      carouselLeftWrapper,
-      carouselRightWrapper,
-    );
-  }
-  addDotsNavigation(block, videoImageCarouselContent, totalItems, cardsToShow);
 }
