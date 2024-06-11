@@ -147,18 +147,18 @@
 }
 
 .background-media.block h1.background-media-item-text-copytext {
-    font-size: 23px;
-    line-height: 32px;
+    font-size: 1.438rem;
+    line-height: 2rem;
 }
 
 .background-media.block h2.background-media-item-text-copytext {
-    font-size: 19px;
-    line-height: 28px;
+    font-size: 1.188rem;
+    line-height: 1.75rem;
 }
 
 .background-media.block p.background-media-item-text-copytext {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
 }
 
 .background-media.block .background-media-item-details .background-media-item-text-copytext {
@@ -406,18 +406,18 @@
     }
 
     .background-media.block h1.background-media-item-text-copytext {
-        font-size: 25px;
-        line-height: 36px;
+        font-size: 1.563rem;
+        line-height: 2.25rem;
     }
     
     .background-media.block h2.background-media-item-text-copytext {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 1.25rem;
+        line-height: 1.875rem;
     }
     
     .background-media.block p.background-media-item-text-copytext {
-        font-size: 17px;
-        line-height: 28px;
+        font-size: 1.063rem;
+        line-height: 1.75rem;
     }
 }
 
@@ -635,18 +635,18 @@
     }
 
     .background-media.block h1.background-media-item-text-copytext {
-        font-size: 28px;
-        line-height: 40px;
+        font-size: 1.75rem;
+        line-height: 2.5rem;
     }
     
     .background-media.block h2.background-media-item-text-copytext {
-        font-size: 23px;
-        line-height: 36px;
+        font-size: 1.438rem;
+        line-height: 2.25rem;
     }
     
     .background-media.block p.background-media-item-text-copytext {
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
     }
 }
 
@@ -863,17 +863,17 @@
     }
 
     .background-media.block h1.background-media-item-text-copytext {
-        font-size: 34px;
-        line-height: 48px;
+        font-size: 2.125rem;
+        line-height: 3rem;
     }
     
     .background-media.block h2.background-media-item-text-copytext {
-        font-size: 25px;
-        line-height: 38px;
+        font-size: 1.563rem;
+        line-height: 2.375rem;
     }
     
     .background-media.block p.background-media-item-text-copytext {
-        font-size: 19px;
-        line-height: 30px;
+        font-size: 1.188rem;
+        line-height: 1.875rem;
     }
 }
