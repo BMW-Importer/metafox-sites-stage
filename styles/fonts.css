@@ -250,8 +250,8 @@
   font-weight: 700;
   src: url("../fonts/BMWTypeNextProHebrew-Bold.woff2") format("woff2"),url("../fonts/BMWTypeNextProHebrew-Bold.woff") format("woff");
   unicode-range: "u+0590-u+05ff,u+fb1d-u+fb4f"
-}  */
-/* 
+} 
+ 
 @font-face {
   font-family: roboto;
   font-style: normal;
@@ -286,9 +286,7 @@ body,html {
   -moz-osx-font-smoothing: grayscale;
   color: #262626;
   font-family: var(--fixed-font-family);
-  font-size: 1pc;
   font-weight: 300;
-  line-height: 1.5rem;
   text-rendering: optimizespeed;
 }
 
