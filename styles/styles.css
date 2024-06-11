@@ -171,6 +171,11 @@ p, dl, ol, ul, pre, blockquote {
   margin-bottom: 1em;
 }
 
+p:has(picture:first-child), p:not(picture:first-child)  {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 code, pre {
   font-size: var(--body-font-size-s);
 }
