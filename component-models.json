@@ -2425,6 +2425,7 @@
         "label": "Gradient",
         "valueType": "string",
         "description": "Defines colours and position of the gradient.",
+        "maxSize": 2,      
         "options": [
           {
             "name": "Colour",
