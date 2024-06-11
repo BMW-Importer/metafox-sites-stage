@@ -1358,14 +1358,12 @@
         "valueType": "string",
         "name": "imageReference",
         "label": "Image",
-        "required": true,
         "description": "Defines the image to be displayed when sharing the link to the page."
       },
       {
         "component": "text-input",
         "name": "altText",
         "label": "Alt Text",
-        "required": true,
         "description": "Defines the alternative text that will be read by screen-readers for the image."
       }
     ]
