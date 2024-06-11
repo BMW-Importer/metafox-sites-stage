@@ -2431,7 +2431,7 @@
             "name": "Colour",
             "children": [
               {
-                "name": "Light",
+                "name": "No Gradient",
                 "value": "light"
               },
               {
@@ -2699,7 +2699,7 @@
             "name": "Colour",
             "children": [
               {
-                "name": "Light",
+                "name": "No Gradient",
                 "value": "light"
               },
               {
