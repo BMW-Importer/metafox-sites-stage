@@ -1026,7 +1026,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
 
   header.white-background .subnavigation-text-wrapper {
     position: absolute;
-    top: 6.25rem;
+    top: 5.5rem;
     color: var( --background-color);
     font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
     font-size: 0.9375rem;
