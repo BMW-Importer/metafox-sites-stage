@@ -55,14 +55,19 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   margin:0 0.375rem 0.75rem;
 }
 
+footer .footer .section:first-child .link-list-detail .button-container a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
 footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li a{
   font-size: 0.75rem;
-  line-height: 1rem;
 }
 
 footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li:last-child {
   margin-right: 0;
 }
+
 
 /* tablet */
 @media (width >= 768px){
@@ -86,6 +91,11 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     margin-top: 0;
     font-size: 0.875rem;
     line-height: 1.188rem;
+  }
+
+  footer .footer .section:first-child .link-list-detail .button-container a {
+    text-decoration: none;
+    font-weight: 500;
   }
 
   footer .footer .section:first-child .link-list-title {
@@ -119,7 +129,13 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
-    font-size: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.75rem;
+  }
+
+  footer .footer .section:nth-child(3) .default-content-wrapper p{
+  margin: 0;
   }
 
   footer .footer .section:nth-child(3) .link-list-wrapper.horizontal {   
@@ -176,6 +192,12 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     margin-right: 2rem;
     margin-left: -5px;
   }
+
+  footer .footer .section:first-child .link-list-detail .button-container {
+    font-size: 0.9375rem;
+    font-weight: 500; 
+    line-height: 1.5rem, 
+  }
 }
 
 /* large desktop */
@@ -204,5 +226,11 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     margin:0;    
     margin-right: 2rem;
     margin-left: -5px
+  }
+
+  footer .footer .section:first-child .link-list-detail .button-container {
+    font-size: 1rem;
+    font-weight: 500; 
+    line-height: 1.625rem,
   }
 }
