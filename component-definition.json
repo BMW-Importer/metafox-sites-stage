@@ -809,7 +809,15 @@
                 "template": {
                   "name": "Video Slide",
                   "model": "video-gallery-slide",
-                  "filter": "video-gallery-slide"
+                  "filter": "video-gallery-slide",
+                  "videoSlide_loopVideoType": "h3",
+                  "videoSlide_loopVideo" : true,
+                  "videoSlide_mouseHoverVideoType": "h4",
+                  "videoSlide_mouseHoverVideo" : true,
+                  "videoSlide_hideControlsVideoType" : "h5",
+                  "videoSlide_hideControlsVideo" : true,
+                  "videoSlide_muteSoundVideoType": "h6",
+                  "videoSlide_muteSoundVideo" : true
                 }
               }
             }
