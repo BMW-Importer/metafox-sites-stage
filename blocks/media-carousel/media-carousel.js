@@ -279,7 +279,7 @@ function resizeBlock() {
     const cards = carouselContent.querySelectorAll('.video-img-carousel-card');
     const carouselLeftWrapper = block.querySelector('.carousel-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.carousel-wrapper-rth-area');
-    const gap = viewport > 768 ? 24 : 16;
+    const gap = viewport >= 768 ? 24 : 16;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
     const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow);
     cards.forEach((card) => {
@@ -438,11 +438,11 @@ export default function decorate(block) {
         vidImgCtaWrap.append(vidImgAnchorElm);
         // headline and copy text under general tab
         const contentElem = content?.children;
-        let imgCarouselHeadline = contentElem[0] || '';
-        imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent) ? imgCarouselHeadline : '';
+        const imgCarouselHeadline = content.querySelector('h2')?.textContent || '';
+        const imgHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline) ? imgCarouselHeadline : '';
         let imgCarouselCopyText = contentElem[1] || '';
         imgCarouselCopyText = (imgCarouselCopyText !== null && imgCarouselCopyText !== undefined && imgCarouselCopyText.textContent) ? imgCarouselCopyText : '';
-        imgTitleWrapper.append(imgCarouselHeadline);
+        imgTitleWrapper.append(imgHeadline);
         imgDesWrapper.append(imgCarouselCopyText);
 
         const imageCarouselCard = document.createElement('div');
