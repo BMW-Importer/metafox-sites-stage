@@ -3271,5 +3271,152 @@
         ]
       }
     ]
+  },
+  {
+    "id": "video-gallery-slide",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "videoSlide_text",
+        "description": "Defines the text below the Video Slide.",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "videoSlide_textType",
+        "value": "",
+        "label": "Text Type",
+        "valueType": "string",
+        "description": "Defines styles for the text.",
+        "options": [
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "H4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "videoSlide_videoTitle",
+        "description": "Defines the title of the video.",
+        "value": "",
+        "label": "Video Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoSlide__videoText",
+        "description": "Defines the description of the video.",
+        "value": "",
+        "label": "Video Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_desktopVideoPath",
+        "label": "Desktop Video Path",
+        "multi": false,
+        "required": true,
+        "description": "Defines the path to a video on the desktop."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_mobileVideoPath",
+        "label": "Mobile Video Path",
+        "multi": false,
+        "description": "Defines the path to a video on the mobile."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_videoPosterDesktop",
+        "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
+        "label": "Desktop Poster Image Path",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_videoPosterMobile",
+        "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
+        "label": "Mobile Poster Image Path",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "videoSlide_loopVideoType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "videoSlide_loopVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Play on mouseover",
+        "name": "videoSlide_mouseHoverVideoType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Play on mouseover",
+        "name": "videoSlide_mouseHoverVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Hide Video Controls",
+        "name": "videoSlide_hideControlsVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "videoSlide_hideControlsVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Mute Video Sound",
+        "name": "videoSlide_muteSoundVideoType",
+        "valueType": "string",
+        "value": "h6",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video Sound",
+        "name": "videoSlide_muteSoundVideo",
+        "description": "Defines how video will be played.",
+        "valueType": "boolean",
+        "value": true
+      }
+    ]
   }
 ]
