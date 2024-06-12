@@ -3294,11 +3294,11 @@
         "description": "Defines styles for the text.",
         "options": [
           {
-            "name": "Headline 3",
+            "name": "H3",
             "value": "h3"
           },
           {
-            "name": "Headline 4",
+            "name": "H4",
             "value": "h4"
           }
         ]
