@@ -207,7 +207,8 @@
       "disclaimer",
       "download",
       "quote",
-      "media-carousel"
+      "media-carousel",
+      "video-gallery"
     ]
   },
   {
@@ -317,6 +318,12 @@
     "components":[
       "background-image",
       "background-video"
+    ]
+  },
+  {
+    "id": "video-gallery",
+    "components": [
+      "video-gallery-slide"
     ]
   }
 ]
