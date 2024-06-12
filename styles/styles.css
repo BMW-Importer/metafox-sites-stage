@@ -143,7 +143,7 @@ h4 {
 
   /* letter-spacing: 0.175rem; */
   text-transform: uppercase;
-  color: var(--light-border-color);
+  color: var(--light-text-color);
 }
 
 h5 { 
@@ -153,21 +153,26 @@ h5 {
   
   /* letter-spacing: 0.125rem; */
   text-transform: uppercase;
-  color: var(--light-border-color);
+  color: var(--light-text-color);
 }
 
 h6 { 
-  font-size: 1rem;
-  line-height: 0.875rem;
-  letter-spacing: .6em;
+  font-size: 0.938rem;
+  line-height: 0.75rem;
+  letter-spacing: 0.563rem;
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--light-text-color);
+  color: var(--background-color);
 }
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+p:has(picture:first-child) {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 code, pre {
@@ -628,19 +633,30 @@ textarea{
     h6 {
       font-size: .875rem;
       line-height: .75rem;
-      letter-spacing: .6em;
+      letter-spacing: 0.525rem;
     }
 }
 
-@media (width >= 768px) and (width < 1280px) {
+@media (width>=1920px) {
+  h1 {
+    font-size: 3.75rem;
+    line-height: 5.25rem;
+  }
+
+  h2 {
+    font-size: 2.813rem;
+    line-height: 3.875rem;
+  }
+
   h3 {
-      font-size: 1.563rem;
-      line-height: 2.25rem;
-    }
-  
-    /* h1,
-    h2,
-    h3 {
-      padding: 1.25rem 3rem;
-    } */
+    font-size: 2.125rem;
+    line-height: 3rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+    line-height: 0.875rem;
+    letter-spacing: .6rem;
+  }
+
 }
