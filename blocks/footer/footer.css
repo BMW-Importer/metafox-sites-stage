@@ -264,7 +264,7 @@ footer .link-list-wrapper.vertical .link-list-title {
   footer .footer .section:first-child .link-list-detail .button-container {
     font-size: 1rem;
     font-weight: 500; 
-    line-height: 1.625rem,
+    line-height: 1.625rem;
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
