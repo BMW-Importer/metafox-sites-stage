@@ -1308,7 +1308,7 @@
       },
       {
         "component": "multiselect",
-        "name": "cq:robotTags",
+        "name": "cq:robotsTags",
         "required": true,
         "description": "Defines the robots tags to control search engine crawler behaviour.",
         "label": "Robot Tags",
