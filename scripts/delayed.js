@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM } from './aem.js';
 import { multiContentGalFunAfterPageLoad } from '../blocks/multicontent-gallery/multicontent-gallery.js';
-import { changeAllVidSrcOnResize } from '../blocks/video/video.js';
+import { changeAllVidSrcOnResize, enableObserverForVideos } from '../blocks/video/video.js';
+import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js';
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
 
 // Core Web Vitals RUM collection
@@ -9,6 +10,8 @@ sampleRUM('cwv');
 multiContentGalFunAfterPageLoad();
 changeAllVidSrcOnResize();
 addAnalyticsCustomClickEvent();
+enableObserverForVideos();
+mediaCarouselResizer();
 
 const page_tracking = {"page": {
   "pageInfo": {
