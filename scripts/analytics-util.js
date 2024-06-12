@@ -15,8 +15,8 @@ const event_tracking = {"event": {
         },
         "block": {
             "blockInfo": {
-                "blockName": "TextWithImage","TextWithVideo",
-                "blockDetails": "TextWithImage","TextWithVideo",
+                "blockName": "TextWithImage",
+                "blockDetails": "TextWithImage",
             },
         }
     }
@@ -28,7 +28,7 @@ export function pushCustomLinkAnalyticData(prop) {
     event_tracking.event.eventInfo.category.primaryCategory = buttonLink;
     event_tracking.event.eventInfo.category.subCategory = buttonLink;
 
-    analyticsBlockName
+    // analyticsBlockName
 
     window.adobeDataLayer.push(event_tracking);
 }
