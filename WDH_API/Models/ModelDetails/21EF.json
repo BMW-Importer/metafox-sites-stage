@@ -40,7 +40,7 @@
       "gearBox": "7 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-11",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
@@ -71,10 +71,10 @@
             "electricTopSpeed": "140"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "1.1 - 0.7",
-            "emissionsWltpCombined": "24 - 16",
-            "electricConsumption": "19.3 - 16.7",
-            "electricRangeWltpCombined": "71 - 86",
+            "consumptionWltpCombined": "1.1–0.7",
+            "emissionsWltpCombined": "24–16",
+            "electricConsumption": "19.3–16.7",
+            "electricRangeWltpCombined": "71–86",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -98,7 +98,7 @@
             "weightMax": "2430",
             "permittedLoad": "575",
             "trailerLoad": "1700 / 80",
-            "trunkCapacity": "490 - 1495",
+            "trunkCapacity": "490–1495",
             "tankCapacity": "47.0"
           }
         },
@@ -198,10 +198,10 @@
             "electricTopSpeed": "140"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "1.1 - 0.7",
-            "emissionsWltpCombined": "24 - 16",
-            "electricConsumption": "19.3 - 16.7",
-            "electricRangeWltpCombined": "71 - 86",
+            "consumptionWltpCombined": "1.1–0.7",
+            "emissionsWltpCombined": "24–16",
+            "electricConsumption": "19.3–16.7",
+            "electricRangeWltpCombined": "71–86",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -225,7 +225,7 @@
             "weightMax": "2430",
             "permittedLoad": "575",
             "trailerLoad": "1700 / 80",
-            "trunkCapacity": "490 - 1495",
+            "trunkCapacity": "490–1495",
             "tankCapacity": "47.0"
           }
         },
