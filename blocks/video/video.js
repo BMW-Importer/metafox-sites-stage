@@ -185,7 +185,7 @@ export function getVideoElement(props) {
   video.dataset.autoplay = autoplay ? 'true' : 'false';
 
   video.oncanplay = () => {
-    if (autoplay) {
+    if (autoplay && video.dataset.isInViewPort === 'true') {
       video.muted = !userUnmuted;
       video.play();
     }
@@ -269,23 +269,31 @@ export function enableObserverForVideos() {
     if (window.IntersectionObserver) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (video && video.parentElement.classList.contains('video-js')) {
+          if (video?.parentElement?.classList?.contains('video-js')) {
             if (entry.isIntersecting) {
+              video.dataset.isInViewPort = 'true';
               if (video.paused) {
                 video.play().catch();
               }
             } else if (!video.paused) {
+              video.dataset.isInViewPort = 'false';
               video.pause();
+            } else {
+              video.dataset.isInViewPort = 'false';
             }
           } else {
             const player = videojsFunction(video);
             player.ready(() => {
               if (entry.isIntersecting) {
+                video.dataset.isInViewPort = 'true';
                 if (video.paused) {
                   video.play().catch();
                 }
               } else if (!video.paused) {
+                video.dataset.isInViewPort = 'false';
                 video.pause();
+              } else {
+                video.dataset.isInViewPort = 'false';
               }
             });
           }

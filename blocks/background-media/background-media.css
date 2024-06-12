@@ -81,20 +81,20 @@
     color: var(--background-color);
     font-size: 7.44rem;
     font-weight: 300;
-    line-height: 6.75rem;  
+    line-height: 6.75rem;
     text-align: center;
     z-index: 2;
     position: relative;
     word-break: break-word;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .background-media.block .background-media-item-details {
     text-align: center;
     display: block;
     box-sizing: border-box;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .background-media.block .background-media-item-details.subbrandi,
@@ -190,7 +190,7 @@
 }
 
 .background-media.block .bg-media-btn-container.flex {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .background-media.block .background-media-item-cta-money {
@@ -227,7 +227,7 @@
 }
 
 .background-media.block .background-media-item-text .bg-media-btns:nth-last-child(2) ~ .bg-media-btns:nth-last-child(1){
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn {
@@ -472,7 +472,8 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
-        text-align: start;        
+        text-align: start;
+        margin-bottom: .75rem;
     }
 
     .background-media.block .background-media-item-text-headline {
@@ -707,7 +708,8 @@
     }
 
     .background-media.block .background-media-item-text-eyebrow {
-        text-align: start;        
+        text-align: start;
+        margin-bottom: 1rem;
     }
 
     .background-media.block .medium.background-media-item-text-headline {        
@@ -727,6 +729,7 @@
         line-height: 14rem;
         font-weight: 300;
         text-align: start;
+        margin-bottom: .5rem;
     }
 
     .background-media.block .background-media-item-text-copytext {        
@@ -753,6 +756,10 @@
 
     .background-media.block .bg-media-btn-container {
         padding-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .background-media.block .bg-media-btn-container.flex {
         margin-bottom: 2.5rem;
     }
 
