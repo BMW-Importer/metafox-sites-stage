@@ -2,7 +2,6 @@ import { loadVideoEmbed } from '../video/video.js';
 
 const viewportWidth = window.innerWidth;
 let iconClicked = false;
-let cardMarginRight = 0;
 
 function updateCarousel(content, currentIndex, gap) {
   const itemWidth = (content.children[currentIndex].offsetWidth);
@@ -280,15 +279,12 @@ function resizeBlock() {
     const cards = carouselContent.querySelectorAll('.video-img-carousel-card');
     const carouselLeftWrapper = block.querySelector('.carousel-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.carousel-wrapper-rth-area');
+    const gap = viewport > 768 ? 24 : 16;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
-    const vidImageCardMargin = carouselContent.querySelector('.video-img-carousel-card');
-    if (vidImageCardMargin) {
-      const computedMargin = getComputedStyle(vidImageCardMargin);
-      cardMarginRight = parseFloat(computedMargin.marginRight);
-    }
-    const cardWidth = ((availableWidth - ((cardsToShow - 1) * cardMarginRight)) / cardsToShow);
+    const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow);
     cards.forEach((card) => {
       card.style.width = `${cardWidth}px`;
+      card.style.marginRight = `${gap}px`;
     });
 
     addTouchSlideFunctionality(
@@ -297,7 +293,7 @@ function resizeBlock() {
       totalItems,
       cardsToShow,
       0,
-      cardMarginRight,
+      gap,
     );
 
     if (viewport >= 1280 && totalItems > 4 && !carouselControlsIcon) {
@@ -308,14 +304,23 @@ function resizeBlock() {
         cardsToShow,
         carouselLeftWrapper,
         carouselRightWrapper,
-        cardMarginRight,
+        gap,
       );
       carouselControlsIcon = true;
     }
     if (!carouselControlsAdded) {
-      addDotsNavigation(block, carouselContent, totalItems, cardsToShow, cardMarginRight);
+      addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
       carouselControlsAdded = true;
     }
+  });
+}
+
+export function mediaCarouselResizer() {
+  resizeBlock();
+
+  // windo resize event
+  window.addEventListener('resize', () => {
+    resizeBlock();
   });
 }
 
@@ -325,147 +330,142 @@ export default function decorate(block) {
   const videoImageCarouselContent = document.createElement('div');
   videoImageCarouselContent.classList.add('video-image-carousel-content');
 
-  // loop through all children blocks
-  [...panels].forEach((panel, index) => {
-    const [content, media, cta] = panel.children;
-    if (media?.children?.length > 1) {
-      // Create a wrapper for video card elements
-      const videoCarouselCard = document.createElement('div');
-      videoCarouselCard.classList.add('video-img-carousel-card');
-
-      // Title , cta and description wrappers
-      const vidImgTitleWrapper = document.createElement('div');
-      vidImgTitleWrapper.classList.add('video-img-title');
-      const vidImgCtaWrap = document.createElement('div');
-      vidImgCtaWrap.classList.add('video-img-cta');
-      const vidImgDesWrapper = document.createElement('div');
-      vidImgDesWrapper.classList.add('video-img-description');
-
-      // headline and copy text under general tab
-      const contentElem = content?.children;
-      const videoCarouselHeadline = content.querySelector('h2')?.textContent || '';
-      const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline) ? videoCarouselHeadline : '';
-      let videoCarouselCopyText = contentElem[1] || '';
-      videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent) ? videoCarouselCopyText : '';
-      let vidImgAnchorElm = cta.querySelector('a');
-      vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
-      vidImgCtaWrap.append(vidImgAnchorElm);
-      vidImgTitleWrapper.append(videoHeadline);
-      vidImgDesWrapper.append(videoCarouselCopyText);
-
-      // video tab details
-      const videoCarouselContentPtags = media?.querySelectorAll('p');
-      const videoCarouselTitle = videoCarouselContentPtags[0] || '';
-      const videoCarouselDescription = videoCarouselContentPtags[1] || '';
-
-      // video tab media
-      const videoCarouselContentAtags = media?.querySelectorAll('a');
-      const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0] || '';
-      const videoCarouselMobVideoRef = videoCarouselContentAtags[1] || '';
-
-      const videoContentPictureTags = media.querySelectorAll('picture');
-      const videoCarouselDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
-      const videoCarouselMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
-
-      const videoDOMContainer = document.createElement('div');
-
-      const imgDOMContainer = document.createElement('div');
-
-      if (index === 0) {
-        imgDOMContainer.classList.add('visible');
-      }
-
-      // extracting video link
-      const videoLinkObj = {};
-      const posterObj = {};
-
-      if (videoCarouselDesktopVideoRef) videoLinkObj.desktop = videoCarouselDesktopVideoRef.href;
-      if (videoCarouselMobVideoRef) videoLinkObj.mobile = videoCarouselMobVideoRef.href;
-
-      if (videoCarouselDesktopPosterImgRef) posterObj.desktop = videoCarouselDesktopPosterImgRef;
-      if (videoCarouselMobPosterImgRef) posterObj.mobile = videoCarouselMobPosterImgRef;
-
-      // converting string to boolen
-      const isLoopVideo = media.querySelector('h3')?.textContent.trim() === 'true';
-      const onHoverPlay = media.querySelector('h4')?.textContent.trim() === 'true';
-      const enableHideControls = media.querySelector('h5')?.textContent.trim() === 'true';
-      const isMuted = media.querySelector('h6')?.textContent.trim() === 'true';
-      const isAutoPlayVideo = false;
-
-      loadVideoEmbed(
-        [videoDOMContainer,
-          videoCarouselTitle?.textContent,
-          videoCarouselDescription?.textContent,
-          videoLinkObj,
-          isAutoPlayVideo,
-          isLoopVideo,
-          enableHideControls,
-          isMuted,
-          posterObj,
-          onHoverPlay],
-      );
-      // Append elements to the video card
-      videoCarouselCard.append(
-        videoDOMContainer,
-        vidImgTitleWrapper,
-        vidImgDesWrapper,
-        vidImgCtaWrap,
-      );
-      videoImageCarouselContent.append(videoCarouselCard);
-    } else {
-      // image
-      const imgTitleWrapper = document.createElement('div');
-      imgTitleWrapper.classList.add('video-img-title');
-      const imgDesWrapper = document.createElement('div');
-      imgDesWrapper.classList.add('video-img-description');
-      const vidImgCtaWrap = document.createElement('div');
-      vidImgCtaWrap.classList.add('video-img-cta');
-
-      let vidImgAnchorElm = cta?.querySelector('a');
-      vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
-      vidImgCtaWrap.append(vidImgAnchorElm);
-      // headline and copy text under general tab
-      const contentElem = content?.children;
-      let imgCarouselHeadline = contentElem[0] || '';
-      imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent) ? imgCarouselHeadline : '';
-      let imgCarouselCopyText = contentElem[1] || '';
-      imgCarouselCopyText = (imgCarouselCopyText !== null && imgCarouselCopyText !== undefined && imgCarouselCopyText.textContent) ? imgCarouselCopyText : '';
-      imgTitleWrapper.append(imgCarouselHeadline);
-      imgDesWrapper.append(imgCarouselCopyText);
-
-      const imageCarouselCard = document.createElement('div');
-      imageCarouselCard.classList.add('video-img-carousel-card');
-
-      const pictureElement = document.createElement('picture');
-      const imgElem = document.createElement('img');
-      const imageCarouselImgRef = media?.querySelector('picture');
-      if (imageCarouselImgRef) {
-        const propImgElem = imageCarouselImgRef?.querySelector('img');
-        if (propImgElem) {
-          const imageSlideAltText = propImgElem?.getAttribute('alt');
-          imgElem.src = propImgElem?.src;
-          imgElem.setAttribute('alt', imageSlideAltText || '');
-          pictureElement.append(imgElem);
-        }
-      }
-      imageCarouselCard.append(pictureElement, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
-      videoImageCarouselContent.append(imageCarouselCard);
-    }
-  });
   const carouselLeftWrapper = document.createElement('div');
   carouselLeftWrapper.classList.add('carousel-wrapper-lft-area');
 
   const carouselRightWrapper = document.createElement('div');
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
+  if (block.children.length > 0) {
+  // loop through all children blocks
+    [...panels].forEach((panel, index) => {
+      const [content, media, cta] = panel.children;
+      panel.textContent = '';
+      if (media?.children?.length > 1) {
+        // Create a wrapper for video card elements
+        const videoCarouselCard = document.createElement('div');
+        videoCarouselCard.classList.add('video-img-carousel-card');
 
-  block.textContent = '';
-  block.append(carouselLeftWrapper, carouselRightWrapper);
-  block.append(videoImageCarouselContent);
-  resizeBlock();
-}
+        // Title , cta and description wrappers
+        const vidImgTitleWrapper = document.createElement('div');
+        vidImgTitleWrapper.classList.add('video-img-title');
+        const vidImgCtaWrap = document.createElement('div');
+        vidImgCtaWrap.classList.add('video-img-cta');
+        const vidImgDesWrapper = document.createElement('div');
+        vidImgDesWrapper.classList.add('video-img-description');
 
-export function mediaCarouselResizer() {
-  window.addEventListener('resize', () => {
+        // headline and copy text under general tab
+        const contentElem = content?.children;
+        const videoCarouselHeadline = content.querySelector('h2')?.textContent || '';
+        const videoHeadline = (videoCarouselHeadline !== null && videoCarouselHeadline !== undefined && videoCarouselHeadline) ? videoCarouselHeadline : '';
+        let videoCarouselCopyText = contentElem[1] || '';
+        videoCarouselCopyText = (videoCarouselCopyText !== null && videoCarouselCopyText !== undefined && videoCarouselCopyText.textContent) ? videoCarouselCopyText : '';
+        let vidImgAnchorElm = cta.querySelector('a');
+        vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
+        vidImgCtaWrap.append(vidImgAnchorElm);
+        vidImgTitleWrapper.append(videoHeadline);
+        vidImgDesWrapper.append(videoCarouselCopyText);
+
+        // video tab details
+        const videoCarouselContentPtags = media?.querySelectorAll('p');
+        const videoCarouselTitle = videoCarouselContentPtags[0] || '';
+        const videoCarouselDescription = videoCarouselContentPtags[1] || '';
+
+        // video tab media
+        const videoCarouselContentAtags = media?.querySelectorAll('a');
+        const videoCarouselDesktopVideoRef = videoCarouselContentAtags[0] || '';
+        const videoCarouselMobVideoRef = videoCarouselContentAtags[1] || '';
+
+        const videoContentPictureTags = media.querySelectorAll('picture');
+        const videoCarouselDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
+        const videoCarouselMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
+
+        const videoDOMContainer = document.createElement('div');
+
+        const imgDOMContainer = document.createElement('div');
+
+        if (index === 0) {
+          imgDOMContainer.classList.add('visible');
+        }
+
+        // extracting video link
+        const videoLinkObj = {};
+        const posterObj = {};
+
+        if (videoCarouselDesktopVideoRef) videoLinkObj.desktop = videoCarouselDesktopVideoRef.href;
+        if (videoCarouselMobVideoRef) videoLinkObj.mobile = videoCarouselMobVideoRef.href;
+
+        if (videoCarouselDesktopPosterImgRef) posterObj.desktop = videoCarouselDesktopPosterImgRef;
+        if (videoCarouselMobPosterImgRef) posterObj.mobile = videoCarouselMobPosterImgRef;
+
+        // converting string to boolen
+        const isLoopVideo = media.querySelector('h3')?.textContent.trim() === 'true';
+        const onHoverPlay = media.querySelector('h4')?.textContent.trim() === 'true';
+        const enableHideControls = media.querySelector('h5')?.textContent.trim() === 'true';
+        const isMuted = media.querySelector('h6')?.textContent.trim() === 'true';
+        const isAutoPlayVideo = false;
+
+        loadVideoEmbed(
+          [videoDOMContainer,
+            videoCarouselTitle?.textContent,
+            videoCarouselDescription?.textContent,
+            videoLinkObj,
+            isAutoPlayVideo,
+            isLoopVideo,
+            enableHideControls,
+            isMuted,
+            posterObj,
+            onHoverPlay],
+        );
+        // Append elements to the video card
+        videoCarouselCard.append(
+          videoDOMContainer,
+          vidImgTitleWrapper,
+          vidImgDesWrapper,
+          vidImgCtaWrap,
+        );
+        videoImageCarouselContent.append(videoCarouselCard);
+      } else {
+      // image
+        const imgTitleWrapper = document.createElement('div');
+        imgTitleWrapper.classList.add('video-img-title');
+        const imgDesWrapper = document.createElement('div');
+        imgDesWrapper.classList.add('video-img-description');
+        const vidImgCtaWrap = document.createElement('div');
+        vidImgCtaWrap.classList.add('video-img-cta');
+
+        let vidImgAnchorElm = cta?.querySelector('a');
+        vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
+        vidImgCtaWrap.append(vidImgAnchorElm);
+        // headline and copy text under general tab
+        const contentElem = content?.children;
+        let imgCarouselHeadline = contentElem[0] || '';
+        imgCarouselHeadline = (imgCarouselHeadline !== null && imgCarouselHeadline !== undefined && imgCarouselHeadline.textContent) ? imgCarouselHeadline : '';
+        let imgCarouselCopyText = contentElem[1] || '';
+        imgCarouselCopyText = (imgCarouselCopyText !== null && imgCarouselCopyText !== undefined && imgCarouselCopyText.textContent) ? imgCarouselCopyText : '';
+        imgTitleWrapper.append(imgCarouselHeadline);
+        imgDesWrapper.append(imgCarouselCopyText);
+
+        const imageCarouselCard = document.createElement('div');
+        imageCarouselCard.classList.add('video-img-carousel-card');
+
+        const pictureElement = document.createElement('picture');
+        const imgElem = document.createElement('img');
+        const imageCarouselImgRef = media?.querySelector('picture');
+        if (imageCarouselImgRef) {
+          const propImgElem = imageCarouselImgRef?.querySelector('img');
+          if (propImgElem) {
+            const imageSlideAltText = propImgElem?.getAttribute('alt');
+            imgElem.src = propImgElem?.src;
+            imgElem.setAttribute('alt', imageSlideAltText || '');
+            pictureElement.append(imgElem);
+          }
+        }
+        imageCarouselCard.append(pictureElement, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
+        videoImageCarouselContent.append(imageCarouselCard);
+      }
+    });
+    block.append(carouselLeftWrapper, carouselRightWrapper);
+    block.append(videoImageCarouselContent);
     resizeBlock();
-  });
+  }
 }
