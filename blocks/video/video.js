@@ -185,7 +185,7 @@ export function getVideoElement(props) {
   video.dataset.autoplay = autoplay ? 'true' : 'false';
 
   video.oncanplay = () => {
-    if (autoplay && video.dataset.isInViewPort === 'true') {
+    if (autoplay) {
       video.muted = !userUnmuted;
       video.play();
     }
