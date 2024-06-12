@@ -246,7 +246,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0 0.75rem;
+    padding: 4px;
 }
 
 .background-media.block .background-media-item-cta-money .money-btn-flex {    
@@ -278,7 +278,7 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
-    padding: .25rem .75rem;
+    padding: 4px;
 }
 
 .background-media.block .background-media-item-cta-ghost .ghost-img-flex-btn {   
