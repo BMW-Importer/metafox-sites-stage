@@ -12,6 +12,7 @@
     border-radius: 0.188rem;
     overflow-x: auto;
     scrollbar-width: none;
+    mask: linear-gradient(to left, #fff0 0, #fff calc(var(--grid-full)* 3));
 }
 
 .buttons-tab {
@@ -23,6 +24,8 @@
 @media (width >=360px) and (width < 768px) {
     .buttons-tab {
         --tabs-multiplier: 16;
+    }
+    .buttons-tab, .default-tab {
         --grid-full: 1.5rem
     }
 }
@@ -30,6 +33,8 @@
 @media (width >=768px) {
     .buttons-tab {
         --tabs-multiplier: 10;
+    }
+    .buttons-tab, .default-tab {
         --grid-full: 3rem
     }
 }
@@ -110,14 +115,6 @@
     .default-tab {
         padding: .5rem 1.5rem .5rem .5rem !important;
     }
-}
-
-.tabs ul::after {
-    content: '';
-    display: inline-block;
-    box-shadow: -2rem -4px 20px 4rem #fcfcfc91;
-    position: absolute;
-    right: 0;
 }
 
 [data-tab-topmargin='true'] {
