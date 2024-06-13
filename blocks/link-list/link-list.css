@@ -205,6 +205,7 @@ footer .link-list-wrapper.vertical .link-list-detail ul li a:hover{
         color: #4d4d4d;
         font-weight: 500;
         font-size: 0.875rem;
+        line-height: 22px;
     }
 
     footer .footer .section:nth-child(3) .default-content-wrapper {
