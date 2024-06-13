@@ -68,9 +68,8 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   margin-right: 0;
 }
 
-
 /* tablet */
-@media (width >= 768px){
+@media (width >= 768px) {
   footer .footer .section {
     padding: 2rem 3rem 1.25rem;
   }
@@ -89,13 +88,19 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
 
   footer .footer .section:first-child .link-list-detail .button-container {
     margin-top: 0;
-    font-size: 0.875rem;
-    line-height: 1.188rem;
   }
+
+  footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 0.875rem !important;
+    line-height: 1.375rem !important;
+    font-weight: 500 !important;   
+}
 
   footer .footer .section:first-child .link-list-detail .button-container a {
     text-decoration: none;
+    font-size: 0.875rem !important;
     font-weight: 500;
+    line-height: 1.375rem !important;
   }
 
   footer .footer .section:first-child .link-list-title {
@@ -129,13 +134,13 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     font-weight: 300;
     line-height: 1.75rem;
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper p{
-  margin: 0;
+    margin: 0;
   }
 
   footer .footer .section:nth-child(3) .link-list-wrapper.horizontal {   
@@ -160,6 +165,7 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li:not(:first-child){
     margin-left: -5px;
   }
+
 }
 
 /* desktop */
@@ -196,8 +202,33 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   footer .footer .section:first-child .link-list-detail .button-container {
     font-size: 0.9375rem;
     font-weight: 500; 
-    line-height: 1.5rem, 
+    line-height: 1.5rem;
   }
+
+  footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 0.9375 !important;
+    line-height: 1.5rem !important;
+    font-weight: 500 !important;   
+}
+
+  footer .footer .section:first-child .link-list-detail .button-container a  {
+    font-size: 0.9375 !important;
+    font-weight: 500;
+    line-height: 1.5rem !important;
+ }
+
+footer .link-list-wrapper.vertical .link-list-title {       
+  font-size: 0.75rem !important;
+  font-weight: 300;
+  line-height: 1rem !important;
+}
+
+footer .footer .section:nth-child(3) .default-content-wrapper {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  font-weight: 300 !important;
+}
+
 }
 
 /* large desktop */
@@ -231,6 +262,31 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   footer .footer .section:first-child .link-list-detail .button-container {
     font-size: 1rem;
     font-weight: 500; 
-    line-height: 1.625rem,
+    line-height: 1.625rem;
   }
+
+  footer .footer .section:nth-child(3) .default-content-wrapper {
+    font-size: 1.1875rem !important;
+    font-weight: 300;
+    line-height: 1.875 !important;
+  }  
+
+  footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 1rem !important;
+    line-height: 1.625rem !important;
+    font-weight: 500 !important;   
+}
+
+  footer .footer .section:first-child .link-list-detail .button-container a  {
+    font-size: 1rem !important;
+    font-weight: 500;
+    line-height: 1.625rem !important;
+ }
+
+ footer .link-list-wrapper.vertical .link-list-title {       
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.375rem;
+}
+
 }
