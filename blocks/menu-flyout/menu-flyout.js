@@ -3,10 +3,8 @@ import { generateHeaderLinkList } from '../link-list/link-list.js';
 
 function generateMenuFlyoutLink(props) {
   const [menuflyoutText] = props;
-
   // fetch menuflyout line text property value
   const menuFlyourTitle = menuflyoutText.textContent;
-
   // select p tag present in the props
   const menuFlyoutDom = menuflyoutText.querySelector('p');
 
@@ -14,10 +12,17 @@ function generateMenuFlyoutLink(props) {
   spanTag.id = menuFlyourTitle;
   spanTag.classList.add('menu-flyout-link');
   spanTag.textContent = menuFlyourTitle;
-
+  spanTag.setAttribute('role', 'button');
+  spanTag.setAttribute('tabindex', '0');
+  spanTag.setAttribute('aria-label', menuFlyourTitle);
   menuFlyoutDom.textContent = '';
   menuFlyoutDom.append(spanTag);
-
+  spanTag.addEventListener('click', () => {});
+  spanTag.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape') {
+      spanTag.click();
+    }
+  });
   return menuFlyoutDom;
 }
 
