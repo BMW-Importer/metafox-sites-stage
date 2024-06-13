@@ -103,13 +103,6 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     line-height: 1.375rem !important;
   }
 
-  footer .link-list-wrapper.vertical .link-list-title {       
-    font-size: 0.875rem !important;
-    font-weight: 300 !important;
-    line-height: 22px !important;
-  }
-
-
   footer .footer .section:first-child .link-list-title {
     margin-bottom: 0;
   }
