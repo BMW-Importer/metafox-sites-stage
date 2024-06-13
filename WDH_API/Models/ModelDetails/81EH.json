@@ -43,7 +43,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -76,8 +76,8 @@
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
             "emissionsWltpCombined": "0",
-            "electricConsumption": "23.8 - 20.8",
-            "electricRangeWltpCombined": "488 - 560",
+            "electricConsumption": "23.8–20.8",
+            "electricRangeWltpCombined": "488–560",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",

@@ -42,7 +42,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -100,7 +100,7 @@
             "weightMax": "3085",
             "permittedLoad": "770",
             "trailerLoad": "2700 / 140",
-            "trunkCapacity": "580 - 1530",
+            "trunkCapacity": "580–1530",
             "tankCapacity": "83.0"
           }
         },

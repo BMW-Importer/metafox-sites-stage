@@ -41,7 +41,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02TE",
@@ -71,8 +71,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "5.6 - 4.9",
-            "emissionsWltpCombined": "148 - 129",
+            "consumptionWltpCombined": "5.7–5",
+            "emissionsWltpCombined": "149–130",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",

@@ -37,7 +37,7 @@
       "gearBox": "-",
       "driveType": "VR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
@@ -61,8 +61,8 @@
             "systemPower": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.5 - 5.9",
-            "emissionsWltpCombined": "146 - 134",
+            "consumptionWltpCombined": "6.5–5.9",
+            "emissionsWltpCombined": "146–134",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -122,8 +122,8 @@
             "systemPower": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.5 - 5.9",
-            "emissionsWltpCombined": "146 - 134",
+            "consumptionWltpCombined": "6.5–5.9",
+            "emissionsWltpCombined": "146–134",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -183,8 +183,8 @@
             "systemPower": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.5 - 6",
-            "emissionsWltpCombined": "146 - 135",
+            "consumptionWltpCombined": "6.5–6",
+            "emissionsWltpCombined": "146–135",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",

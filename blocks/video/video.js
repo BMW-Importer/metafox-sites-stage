@@ -183,28 +183,13 @@ export function getVideoElement(props) {
   }, { passive: false });
 
   video.dataset.autoplay = autoplay ? 'true' : 'false';
-  if (window.IntersectionObserver) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (video) {
-          if (entry.isIntersecting) {
-            if (video.paused) {
-              video.play().catch();
-            }
-          } else if (!video.paused) {
-            video.pause();
-          }
-        }
-      });
-    }, { threshold: 0.5 });
-    observer.observe(video);
-    video.oncanplay = () => {
-      if (autoplay) {
-        video.muted = !userUnmuted;
-        video.play();
-      }
-    };
-  } else document.querySelector('#warning').style.display = 'block';
+
+  video.oncanplay = () => {
+    if (autoplay) {
+      video.muted = !userUnmuted;
+      video.play();
+    }
+  };
   return video;
 }
 
@@ -276,6 +261,47 @@ export function loadVideoEmbed(props) {
   }
 
   block.dataset.embedIsLoaded = true;
+}
+
+export function enableObserverForVideos() {
+  const listOfVideos = document.querySelectorAll('video');
+  listOfVideos.forEach((video) => {
+    if (window.IntersectionObserver) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (video?.parentElement?.classList?.contains('video-js')) {
+            if (entry.isIntersecting) {
+              video.dataset.isInViewPort = 'true';
+              if (video.paused) {
+                video.play().catch();
+              }
+            } else if (!video.paused) {
+              video.dataset.isInViewPort = 'false';
+              video.pause();
+            } else {
+              video.dataset.isInViewPort = 'false';
+            }
+          } else {
+            const player = videojsFunction(video);
+            player.ready(() => {
+              if (entry.isIntersecting) {
+                video.dataset.isInViewPort = 'true';
+                if (video.paused) {
+                  video.play().catch();
+                }
+              } else if (!video.paused) {
+                video.dataset.isInViewPort = 'false';
+                video.pause();
+              } else {
+                video.dataset.isInViewPort = 'false';
+              }
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(video);
+    } else document.querySelector('#warning').style.display = 'block';
+  });
 }
 
 export function changeAllVidSrcOnResize() {

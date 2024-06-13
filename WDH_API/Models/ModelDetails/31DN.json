@@ -40,7 +40,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S0205",
@@ -98,7 +98,7 @@
             "weightMax": "2330",
             "permittedLoad": "620",
             "trailerLoad": "2000 / 100",
-            "trunkCapacity": "550 - 1600",
+            "trunkCapacity": "550–1600",
             "tankCapacity": "61.0"
           }
         },
@@ -181,7 +181,7 @@
             "weightMax": "2330",
             "permittedLoad": "620",
             "trailerLoad": "2000 / 100",
-            "trunkCapacity": "550 - 1600",
+            "trunkCapacity": "550–1600",
             "tankCapacity": "61.0"
           }
         },

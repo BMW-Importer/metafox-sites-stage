@@ -41,7 +41,7 @@
       "gearBox": "6 - handgeschaltet",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "Default",
@@ -72,8 +72,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "7.4 - 7.3",
-            "emissionsWltpCombined": "167 - 164",
+            "consumptionWltpCombined": "7.4–7.3",
+            "emissionsWltpCombined": "167–164",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -152,8 +152,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "7.3 - 7.1",
-            "emissionsWltpCombined": "164 - 161",
+            "consumptionWltpCombined": "7.3–7.1",
+            "emissionsWltpCombined": "164–161",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",

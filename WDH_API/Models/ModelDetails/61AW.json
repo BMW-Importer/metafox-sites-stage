@@ -38,7 +38,7 @@
       "gearBox": "-",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -62,8 +62,8 @@
             "systemPower": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "8.2 - 7.6",
-            "emissionsWltpCombined": "185 - 172",
+            "consumptionWltpCombined": "8.2–7.6",
+            "emissionsWltpCombined": "185–172",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",

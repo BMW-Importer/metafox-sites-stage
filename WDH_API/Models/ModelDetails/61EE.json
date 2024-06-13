@@ -40,7 +40,7 @@
       "gearBox": "7 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
@@ -71,8 +71,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "7.1 - 6.3",
-            "emissionsWltpCombined": "159 - 142",
+            "consumptionWltpCombined": "7.1–6.3",
+            "emissionsWltpCombined": "159–142",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -98,7 +98,7 @@
             "weightMax": "2220",
             "permittedLoad": "565",
             "trailerLoad": "2000 / 80",
-            "trunkCapacity": "500 - 1545",
+            "trunkCapacity": "500–1545",
             "tankCapacity": "45.0"
           }
         },
@@ -169,8 +169,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "7.1 - 6.3",
-            "emissionsWltpCombined": "159 - 142",
+            "consumptionWltpCombined": "7.1–6.3",
+            "emissionsWltpCombined": "159–142",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -196,7 +196,7 @@
             "weightMax": "2220",
             "permittedLoad": "565",
             "trailerLoad": "2000 / 80",
-            "trunkCapacity": "500 - 1545",
+            "trunkCapacity": "500–1545",
             "tankCapacity": "45.0"
           }
         },

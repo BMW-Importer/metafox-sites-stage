@@ -42,7 +42,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -73,10 +73,10 @@
             "electricTopSpeed": "140"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "1.4 - 1.1",
-            "emissionsWltpCombined": "31 - 25",
-            "electricConsumption": "25.9 - 23.4",
-            "electricRangeWltpCombined": "71 - 78",
+            "consumptionWltpCombined": "1.4–1.1",
+            "emissionsWltpCombined": "31–25",
+            "electricConsumption": "25.9–23.4",
+            "electricRangeWltpCombined": "71–78",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",

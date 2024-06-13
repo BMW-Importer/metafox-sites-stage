@@ -40,7 +40,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -73,8 +73,8 @@
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
             "emissionsWltpCombined": "0",
-            "electricConsumption": "21.4 - 19.5",
-            "electricRangeWltpCombined": "586 - 633",
+            "electricConsumption": "21.4–19.5",
+            "electricRangeWltpCombined": "586–633",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -98,7 +98,7 @@
             "weightMax": "3145",
             "permittedLoad": "635",
             "trailerLoad": "2500 / 100",
-            "trunkCapacity": "500 - 1750",
+            "trunkCapacity": "500–1750",
             "tankCapacity": "-"
           }
         },

@@ -42,7 +42,7 @@
       "gearBox": "6 - handgeschaltet",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-12",
     "vehicles": [
       {
         "transmissionCode": "S02MA",
@@ -73,8 +73,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "10.2 - 10",
-            "emissionsWltpCombined": "230 - 226",
+            "consumptionWltpCombined": "10.2–10",
+            "emissionsWltpCombined": "230–226",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -153,8 +153,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "9.8 - 9.7",
-            "emissionsWltpCombined": "222 - 218",
+            "consumptionWltpCombined": "9.8–9.7",
+            "emissionsWltpCombined": "222–218",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
