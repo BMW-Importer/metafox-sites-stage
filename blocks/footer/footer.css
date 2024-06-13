@@ -69,7 +69,7 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
 }
 
 /* tablet */
-@media (width >= 768px){
+@media (width >= 768px) {
   footer .footer .section {
     padding: 2rem 3rem 1.25rem;
   }
@@ -141,7 +141,7 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
-    font-size: 1.125rem;
+    font-size: 17px;
     font-weight: 300;
     line-height: 1.75rem;
   }
@@ -172,6 +172,12 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li:not(:first-child){
     margin-left: -5px;
   }
+
+  footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;   
+}
 
 }
 
@@ -229,6 +235,18 @@ footer .link-list-wrapper.vertical .link-list-title {
   font-weight: 300;
   line-height: 1rem !important;
 }
+
+footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 15px !important;
+    line-height: 24px !important;
+    font-weight: 500 !important;   
+}
+footer .footer .section:nth-child(3) .default-content-wrapper {
+  font-size: 18px !important;
+  line-height: 28px !important;
+  font-weight: 300 !important;
+
+}
 }
 
 /* large desktop */
@@ -266,9 +284,9 @@ footer .link-list-wrapper.vertical .link-list-title {
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
-    font-size: 1.1875rem;
+    font-size: 19px !important;
     font-weight: 300;
-    line-height: 1.875rem;
+    line-height: 30px !important;
   }  
 
   footer .footer .section:first-child .link-list-detail .button-container a  {
@@ -281,6 +299,13 @@ footer .link-list-wrapper.vertical .link-list-title {
   font-size: 0.75rem;
   font-weight: 300;
   line-height: 1.375rem;
+}
+
+footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 1rem !important;
+    line-height: 26px !important;
+    font-weight: 500 !important;
+   
 }
 
 }

@@ -122,17 +122,6 @@ footer .link-list-wrapper.vertical .link-list-detail ul {
     padding: 0.5rem 0 0.5rem 1rem;
 }
 
-footer .link-list-wrapper.vertical .link-list-detail ul li,
-footer .link-list-wrapper.vertical .link-list-detail ul li a {
-    font-family: var(--fixed-font-family);
-    font-size: 0.9375rem;
-    color: var(--medium-text-color);
-    line-height: 1.5rem;
-    font-weight: 500;
-    word-break: break-all;
-    text-decoration: none; 
-}
-
 footer .link-list-wrapper.vertical .link-list-detail ul li{
     margin-bottom: 1.5rem;
 }
