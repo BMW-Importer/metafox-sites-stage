@@ -51,7 +51,7 @@ const setPlaceholderObject = {
   trunkCapacityTo: '',
 };
 
-export function buildGetPlaceholder(responseJson) {
+export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.description = responseJson.model.description;
   modelPlaceholderObject.bodyTypeCode = responseJson.model.bodyTypeCode;
   modelPlaceholderObject.hybridCode = responseJson.model.hybridCode;
@@ -83,7 +83,7 @@ export function buildSetPlaceholder(responseJsonArray) {
   setPlaceholderObject.trunkCapacityTo = Math.max(...trunkCapacityArray);
 }
 
-export function getModelPlaceholderObject() {
+export function fetchModelPlaceholderObject() {
   return modelPlaceholderObject;
 }
 
