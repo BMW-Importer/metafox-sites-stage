@@ -199,18 +199,6 @@
 }
 }
 
-.media-carousel-wrapper .video-img-carousel-card .video-img-title {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.5rem;
-}
-
-.media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.5rem;
-}
-
 .media-carousel-wrapper .video-img-carousel-card .video-img-cta a {
     display: inline-flex;
     cursor: pointer;
@@ -262,6 +250,16 @@
     .media-carousel-wrapper .carousel-wrapper-rth-area {
         display: none;
     }
+
+    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+        font-size: 1.1875rem;  
+        line-height: 1.75rem;
+    }
+    
+    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
 }
 
 @media (width >= 1280px) {
@@ -303,6 +301,16 @@
         aspect-ratio: 3 / 2;
         object-fit: cover;
         vertical-align: middle;
+    }
+
+    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+    
+    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+        font-size: 1.0625rem;
+        line-height: 1.75rem;
     }
 }
 
@@ -460,9 +468,15 @@
         margin-bottom: 1.5rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title> * {
-        font-size: 1.5rem;
-        line-height: 2rem;
+    .media-carousel-wrapper .video-img-carousel-card .video-img-title{
+        font-size: 1.5625rem;
+        line-height: 2.375rem;
+    }
+
+    .media-carousel-wrapper .video-img-carousel-card .video-img-description > *{
+        font-size: 1.1875rem;
+        line-height: 1.875rem;
+
     }
 
     .media-carousel-wrapper .video-img-carousel-card .video-img-title,
@@ -489,5 +503,17 @@
     .media-carousel-wrapper .video-img-carousel-card .video-img-title,
     .media-carousel-wrapper .video-img-carousel-card .video-img-description {
         margin-bottom: 0.75rem;
+    }
+
+    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+        font-size: 1.4375rem;
+        font-weight: 300;
+        line-height: 2.25rem;
+    }
+    
+    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+        font-size: 1.125rem;
+        font-weight: 300;
+        line-height: 1.75rem;
     }
 }
