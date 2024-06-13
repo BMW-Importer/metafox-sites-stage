@@ -91,10 +91,10 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .link-list-wrapper.vertical .link-list-detail ul li a {
-    font-size: 0.875rem !important;
-    font-weight: 500 !important;
-    line-height: 1.375rem !important;
-  }
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;   
+}
 
   footer .footer .section:first-child .link-list-detail .button-container a {
     text-decoration: none;
@@ -173,12 +173,6 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     margin-left: -5px;
   }
 
-  footer .link-list-wrapper.vertical .link-list-detail ul li a {
-    font-size: 14px !important;
-    line-height: 22px !important;
-    font-weight: 500 !important;   
-}
-
 }
 
 /* desktop */
@@ -219,10 +213,10 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .link-list-wrapper.vertical .link-list-detail ul li a {
-   font-size: 15px;
-   font-weight: 500;
-   line-height: 1.5rem;
-  }
+    font-size: 15px !important;
+    line-height: 24px !important;
+    font-weight: 500 !important;   
+}
 
   footer .footer .section:first-child .link-list-detail .button-container a  {
     font-size: 15px !important;
@@ -236,11 +230,6 @@ footer .link-list-wrapper.vertical .link-list-title {
   line-height: 1rem !important;
 }
 
-footer .link-list-wrapper.vertical .link-list-detail ul li a {
-    font-size: 15px !important;
-    line-height: 24px !important;
-    font-weight: 500 !important;   
-}
 footer .footer .section:nth-child(3) .default-content-wrapper {
   font-size: 18px !important;
   line-height: 28px !important;
@@ -289,6 +278,13 @@ footer .footer .section:nth-child(3) .default-content-wrapper {
     line-height: 30px !important;
   }  
 
+  footer .link-list-wrapper.vertical .link-list-detail ul li a {
+    font-size: 1rem !important;
+    line-height: 26px !important;
+    font-weight: 500 !important;
+   
+}
+
   footer .footer .section:first-child .link-list-detail .button-container a  {
     font-size: 1rem !important;
     font-weight: 500;
@@ -301,11 +297,6 @@ footer .footer .section:nth-child(3) .default-content-wrapper {
   line-height: 1.375rem;
 }
 
-footer .link-list-wrapper.vertical .link-list-detail ul li a {
-    font-size: 1rem !important;
-    line-height: 26px !important;
-    font-weight: 500 !important;
-   
-}
+
 
 }
