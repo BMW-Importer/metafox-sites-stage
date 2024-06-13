@@ -266,14 +266,14 @@ footer .footer .section:nth-child(3) .default-content-wrapper {
   }
 
   footer .footer .section:nth-child(3) .default-content-wrapper {
-    font-size: 19px !important;
+    font-size: 1.1875rem !important;
     font-weight: 300;
-    line-height: 30px !important;
+    line-height: 1.875 !important;
   }  
 
   footer .link-list-wrapper.vertical .link-list-detail ul li a {
     font-size: 1rem !important;
-    line-height: 26px !important;
+    line-height: 1.625rem !important;
     font-weight: 500 !important;   
 }
 
