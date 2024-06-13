@@ -14,10 +14,17 @@ function generateMenuFlyoutLink(props) {
   spanTag.id = menuFlyourTitle;
   spanTag.classList.add('menu-flyout-link');
   spanTag.textContent = menuFlyourTitle;
-
+  spanTag.setAttribute('role', 'button');
+  spanTag.setAttribute('tabindex', '0');
+  spanTag.setAttribute('aria-label', menuFlyourTitle);
   menuFlyoutDom.textContent = '';
   menuFlyoutDom.append(spanTag);
-
+  spanTag.addEventListener('click', () => {});
+  spanTag.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      spanTag.click();
+    }
+  });
   return menuFlyoutDom;
 }
 
