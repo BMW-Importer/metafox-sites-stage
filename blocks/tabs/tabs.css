@@ -25,6 +25,7 @@
     .buttons-tab {
         --tabs-multiplier: 16;
     }
+
     .buttons-tab, .default-tab {
         --grid-full: 1.5rem
     }
@@ -34,6 +35,7 @@
     .buttons-tab {
         --tabs-multiplier: 10;
     }
+    
     .buttons-tab, .default-tab {
         --grid-full: 3rem
     }
