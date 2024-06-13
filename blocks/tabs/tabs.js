@@ -48,12 +48,20 @@ export default function decorate($block) {
 
     $button.addEventListener('click', () => {
       const $activeButton = $block.querySelector('button.active');
-      const blockPosition = $block.getBoundingClientRect().top;
-      const offsetPosition = blockPosition + window.scrollY - 80;
 
       if ($activeButton !== $tab) {
         $activeButton.classList.remove('active');
         $button.classList.add('active');
+        const blockPosition = $block.getBoundingClientRect().top;
+        const offsetPosition = blockPosition + window.scrollY - 80;
+        const buttonWidth = $button.clientWidth;
+        const leftPosition = ($button.offsetLeft + 3 * buttonWidth) - window.innerWidth;
+        if (leftPosition >= 0) {
+          $block.querySelector('ul').scrollTo({
+            left: buttonWidth + leftPosition,
+            behavior: 'smooth',
+          });
+        }
 
         tabs.forEach((t) => {
           if (name === t.name) {
