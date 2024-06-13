@@ -275,9 +275,9 @@
       {
         "component": "boolean",
         "label": "Display in Content Navigation",
-        "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
@@ -376,9 +376,9 @@
       {
         "component": "boolean",
         "label": "Display in Content Navigation",
-        "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
