@@ -98,6 +98,15 @@ export default function decorate(block) {
 
     // generate media
     generateMediaDom(mediaType, media);
+    const headlineMedia = content.querySelector('h2');
+
+    const mediaTitleWrapper = document.createElement('p');
+    mediaTitleWrapper.classList.add('text-media-title');
+    mediaTitleWrapper.textContent = content.querySelector('h2')?.textContent || '';
+    Array.from(headlineMedia?.attributes).forEach((attr) => {
+      mediaTitleWrapper.setAttribute(attr.name, attr.value);
+    });
+    content.replaceChild(mediaTitleWrapper, headlineMedia);
 
     // add class to content div
     content.classList.add('media-detail-container');
