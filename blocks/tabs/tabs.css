@@ -1,6 +1,7 @@
 .tabs.block {
     display: flex;
     justify-content: center;
+    visibility: visible;
 }
 
 .tabs ul {
@@ -12,13 +13,30 @@
     border-radius: 0.188rem;
     overflow-x: auto;
     scrollbar-width: none;
-    mask: linear-gradient(to left, #fff0 0, #fff calc(var(--grid-full)* 3));
+}
+
+.tabs.mask-right {
+    mask: linear-gradient(to left,#fff0 0,#fff 4.5rem);
+}
+
+.tabs.mask-left {
+    mask: linear-gradient(to right, #fff0 0, #fff 4.5rem);
+}
+
+.tabs.mask-left.mask-right {
+    mask: linear-gradient(to left, #fff0 0, #fff 4.5rem) right, linear-gradient(to right, #fff0 0, #fff 4.5rem) left;
+    mask-repeat: no-repeat;
+    mask-size: 51% 100%;
 }
 
 .buttons-tab {
     padding: 0;
     margin: .5rem 0;
     max-width: calc(var(--grid-full)* var(--tabs-multiplier));
+}
+
+.buttons-tab button {
+    white-space: normal;
 }
 
 @media (width >=360px) and (width < 768px) {
