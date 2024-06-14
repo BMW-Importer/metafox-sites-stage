@@ -1,3 +1,5 @@
+const numOfFocusElem = 3;
+
 export function generateImgSlidePicture(props) {
   const [imgDOMContainer, imageSlideImgRef] = props;
   const propImgElem = imageSlideImgRef.querySelector('img');
@@ -16,6 +18,8 @@ export function generateImgSlideDetailMarkUp(props) {
   const [imageSlideHeadline, imageSlideCopyText,
     button, index, showless, block, edsGeneratedImgElem] = props;
 
+  const tabIndex = index * numOfFocusElem;
+
   const videoImgDetailDOMContainer = document.createElement('div');
 
   // appending imge elemnt here so that it appears in content tree under image slide block
@@ -28,6 +32,7 @@ export function generateImgSlideDetailMarkUp(props) {
 
   videoImgDetailDOMContainer.classList.add('vid-img-slide');
   videoImgDetailDOMContainer.classList.add(`vid-img-slide-${index}`);
+
   if (index === 0) {
     videoImgDetailDOMContainer.classList.add('visible');
   }
@@ -59,6 +64,7 @@ export function generateImgSlideDetailMarkUp(props) {
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn?.querySelector('a');
 
   if (vidImgDetailAnchorElm) {
+    vidImgDetailAnchorElm.setAttribute('tabindex', tabIndex);
     if (vidImgDetailLinkBtn.querySelector('strong')) {
       vidImgDetailLinkBtn.querySelector('strong').textContent = '';
       vidImgDetailLinkBtn.querySelector('strong').append(vidImgDetailAnchorElm);
