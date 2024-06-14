@@ -6,23 +6,23 @@ sampleRUM('cwv');
 const event_tracking = {"event": {
     "event": "custom.link",
     "eventInfo": {
-        "id": "XXXX",
+        "id": "",
         "category": {
-            "primaryCategory": "other",
-            "subCategory": "CTA",
-            "linkName": "LinkName",
-            "linkURL": "URL",
+            "primaryCategory": "",
+            "subCategory": "",
+            "linkName": "",
+            "linkURL": "",
         },
         "block": {
             "blockInfo": {
-                "blockName": "TextWithImage",
-                "blockDetails": "TextWithImage",
+                "blockName": "",
+                "blockDetails": "",
             },
         },
         "section": {
             "sectionInfo": {
-                "sectionName" : "Header",
-                "sectionID" : "bmw/RS_sr/home/header",
+                "sectionName" : "",
+                "sectionID" : "",
             },
         },
     }

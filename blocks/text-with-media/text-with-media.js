@@ -109,9 +109,9 @@ export default function decorate(block) {
     if (ctaElem) {
       ctaElem?.classList?.add('text-with-media-cta');
       if (analytics.children) {
-        ctaElem.dataset.analyticsLabel = analyticsLabel.textContent;
-        ctaElem.dataset.analyticsCategory = analyticsCategory.textContent;
-        ctaElem.dataset.analyticsSubCategory = analyticsSubCategory.textContent;
+        ctaElem.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsCategory = analyticsCategory?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsSubCategory = analyticsSubCategory?.textContent?.trim() || '';
         ctaElem.dataset.analyticsCustomClick = 'true';
         ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
         ctaElem.dataset.analyticsSectionName = ctaElem.closest('.section').dataset.sectionName;
