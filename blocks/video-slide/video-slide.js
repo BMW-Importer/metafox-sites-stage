@@ -1,6 +1,10 @@
+const numOfFocusElem = 3;
+
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText,
     button, index, showless, block] = props;
+
+  const tabIndex = index * numOfFocusElem;
 
   const videoImgDetailDOMContainer = document.createElement('div');
 
@@ -41,8 +45,8 @@ export default function generateVideoDetailMarkUp(props) {
   const vidImgDetailLinkBtn = button;
   vidImgDetailLinkBtn?.classList?.add('vid-img-slide-link-btn');
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn?.querySelector('a');
-
   if (vidImgDetailAnchorElm) {
+    vidImgDetailAnchorElm.setAttribute('tabindex', tabIndex);
     if (vidImgDetailLinkBtn.querySelector('strong')) {
       vidImgDetailLinkBtn.querySelector('strong').textContent = '';
       vidImgDetailLinkBtn.querySelector('strong').append(vidImgDetailAnchorElm);
