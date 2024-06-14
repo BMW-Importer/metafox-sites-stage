@@ -178,10 +178,6 @@ export function getVideoElement(props) {
     }
   }, { passive: false });
 
-  document.body.addEventListener('touchmove', (event) => {
-    event.preventDefault();
-  }, { passive: false });
-
   video.dataset.autoplay = autoplay ? 'true' : 'false';
 
   video.oncanplay = () => {
@@ -269,31 +265,28 @@ export function enableObserverForVideos() {
     if (window.IntersectionObserver) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+          const autoplay = video?.dataset?.autoplay;
           if (video?.parentElement?.classList?.contains('video-js')) {
             if (entry.isIntersecting) {
-              video.dataset.isInViewPort = 'true';
-              if (video.paused) {
+              if (video.paused && autoplay === 'true') {
                 video.play().catch();
+              } else {
+                video.pause();
               }
             } else if (!video.paused) {
-              video.dataset.isInViewPort = 'false';
               video.pause();
-            } else {
-              video.dataset.isInViewPort = 'false';
             }
           } else {
             const player = videojsFunction(video);
             player.ready(() => {
               if (entry.isIntersecting) {
-                video.dataset.isInViewPort = 'true';
-                if (video.paused) {
+                if (video.paused && autoplay === 'true') {
                   video.play().catch();
+                } else {
+                  video.pause();
                 }
               } else if (!video.paused) {
-                video.dataset.isInViewPort = 'false';
                 video.pause();
-              } else {
-                video.dataset.isInViewPort = 'false';
               }
             });
           }

@@ -40,7 +40,7 @@
       "gearBox": "6 - handgeschaltet",
       "driveType": "VR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-13",
     "vehicles": [
       {
         "transmissionCode": "Default",
@@ -71,8 +71,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.6 - 5.6",
-            "emissionsWltpCombined": "150 - 128",
+            "consumptionWltpCombined": "6.6–5.6",
+            "emissionsWltpCombined": "150–128",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -98,7 +98,7 @@
             "weightMax": "1845",
             "permittedLoad": "555",
             "trailerLoad": "1300 / 75",
-            "trunkCapacity": "380 - 1200",
+            "trunkCapacity": "380–1200",
             "tankCapacity": "42.0"
           }
         },
@@ -154,8 +154,8 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.6 - 5.6",
-            "emissionsWltpCombined": "151 - 128",
+            "consumptionWltpCombined": "6.6–5.6",
+            "emissionsWltpCombined": "151–128",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "noiseDriving": "-",
@@ -181,7 +181,7 @@
             "weightMax": "1870",
             "permittedLoad": "550",
             "trailerLoad": "1300 / 75",
-            "trunkCapacity": "380 - 1200",
+            "trunkCapacity": "380–1200",
             "tankCapacity": "42.0"
           }
         },

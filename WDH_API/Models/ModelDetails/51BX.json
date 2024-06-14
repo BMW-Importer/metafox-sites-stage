@@ -37,7 +37,7 @@
       "gearBox": "-",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-13",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
@@ -62,10 +62,10 @@
             "systemMaxTorque": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "0.9 - 0.8",
-            "emissionsWltpCombined": "21 - 19",
-            "electricConsumption": "17.9 - 16.1",
-            "electricRangeWltpCombined": "78 - 89",
+            "consumptionWltpCombined": "0.9–0.8",
+            "emissionsWltpCombined": "21–19",
+            "electricConsumption": "17.9–16.1",
+            "electricRangeWltpCombined": "78–89",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -153,10 +153,10 @@
             "systemMaxTorque": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "0.9 - 0.8",
-            "emissionsWltpCombined": "21 - 19",
-            "electricConsumption": "17.9 - 16.1",
-            "electricRangeWltpCombined": "78 - 89",
+            "consumptionWltpCombined": "0.9–0.8",
+            "emissionsWltpCombined": "21–19",
+            "electricConsumption": "17.9–16.1",
+            "electricRangeWltpCombined": "78–89",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",

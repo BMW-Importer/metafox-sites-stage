@@ -12,11 +12,33 @@
     border-radius: 0.188rem;
     overflow-x: auto;
     scrollbar-width: none;
+    mask: linear-gradient(to left, #fff0 0, #fff calc(var(--grid-full)* 3));
 }
 
 .buttons-tab {
     padding: 0;
     margin: .5rem 0;
+    max-width: calc(var(--grid-full)* var(--tabs-multiplier));
+}
+
+@media (width >=360px) and (width < 768px) {
+    .buttons-tab {
+        --tabs-multiplier: 16;
+    }
+
+    .buttons-tab, .default-tab {
+        --grid-full: 1.5rem
+    }
+}
+
+@media (width >=768px) {
+    .buttons-tab {
+        --tabs-multiplier: 10;
+    }
+    
+    .buttons-tab, .default-tab {
+        --grid-full: 3rem
+    }
 }
 
 .tabs li {
@@ -63,10 +85,10 @@
     padding-left: .5rem;
 }
 
-@media (width >=1280px){
+@media (width >=1280px) {
     .tabs li button:not(.active):hover {
-            color: var(--light-link-hover-color);
-        }
+        color: var(--light-link-hover-color);
+    }
 }
 
 .default-tab li button.active {
@@ -76,11 +98,11 @@
 
 }
 
-@media (width >=1280px){
+@media (width >=1280px) {
     .default-tab li button:not(.active):hover {
-            color: var(--light-link-hover-color);
-            border-bottom-color: var(--light-link-hover-color) !important;
-        }
+        color: var(--light-link-hover-color);
+        border-bottom-color: var(--light-link-hover-color) !important;
+    }
 }
 
 .default-tab {
@@ -97,22 +119,14 @@
     }
 }
 
-.tabs ul::after {
-    content: '';
-    display: inline-block;
-    box-shadow: -2rem -4px 20px 4rem #fcfcfc91;
-    position: absolute;
-    right: 0;
-}
-
 [data-tab-topmargin='true'] {
     margin-top: 3rem;
 }
 
 @media (width >=360px) and (width < 1280px) {
     [data-tab-topmargin='true'] {
-            margin-top: 2.5rem;
-        }
+        margin-top: 2.5rem;
+    }
 }
 
 body.activity main {
