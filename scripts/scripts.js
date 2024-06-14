@@ -92,7 +92,6 @@ function buildTabs(main) {
 
     const tabsBlock = buildBlock('tabs', [[ul]]);
     section.append(tabsBlock);
-    console.log(tabsBlock);
     tabs[0][0].insertAdjacentElement('beforebegin', section);
   }
 }
