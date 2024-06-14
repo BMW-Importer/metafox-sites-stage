@@ -40,7 +40,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-10",
+    "effectDate": "2024-06-13",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -71,10 +71,10 @@
             "electricTopSpeed": "135"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "2.9 - 2.1",
-            "emissionsWltpCombined": "65 - 47",
-            "electricConsumption": "23.5 - 21.5",
-            "electricRangeWltpCombined": "39 - 44",
+            "consumptionWltpCombined": "2.9–2.1",
+            "emissionsWltpCombined": "65–47",
+            "electricConsumption": "23.5–21.5",
+            "electricRangeWltpCombined": "39–44",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -98,7 +98,7 @@
             "weightMax": "2600",
             "permittedLoad": "610",
             "trailerLoad": "2000 / 100",
-            "trunkCapacity": "450 - 1500",
+            "trunkCapacity": "450–1500",
             "tankCapacity": "50.0"
           }
         },
@@ -198,10 +198,10 @@
             "electricTopSpeed": "135"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "2.8 - 2.1",
-            "emissionsWltpCombined": "65 - 47",
-            "electricConsumption": "23.4 - 21.5",
-            "electricRangeWltpCombined": "39 - 44",
+            "consumptionWltpCombined": "2.8–2.1",
+            "emissionsWltpCombined": "65–47",
+            "electricConsumption": "23.4–21.5",
+            "electricRangeWltpCombined": "39–44",
             "noiseDriving": "-",
             "noiseStationary": "-",
             "co2EquivalentOverallBest": "-",
@@ -225,7 +225,7 @@
             "weightMax": "2600",
             "permittedLoad": "610",
             "trailerLoad": "2000 / 100",
-            "trunkCapacity": "450 - 1500",
+            "trunkCapacity": "450–1500",
             "tankCapacity": "50.0"
           }
         },
