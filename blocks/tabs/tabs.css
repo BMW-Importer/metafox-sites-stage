@@ -4,6 +4,10 @@
     visibility: visible;
 }
 
+main .section.tabs-container {
+    padding: 0;
+}
+
 .tabs ul {
     display: flex;
     padding-left: 0;
@@ -133,7 +137,7 @@
 
 @media (width >=360px) and (width < 768px) {
     .default-tab {
-        padding: .5rem 1.5rem .5rem .5rem !important;
+        padding: .5rem 3rem .5rem 2rem !important;
     }
 }
 
