@@ -122,4 +122,4 @@ export default function decorate($block) {
   scrollableElem.addEventListener('scroll', (ev) => {
     maskTabElems(ev, $block);
   });
-} 
+}
