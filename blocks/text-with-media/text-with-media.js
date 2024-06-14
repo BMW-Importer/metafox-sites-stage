@@ -80,6 +80,7 @@ export default function decorate(block) {
     // removing classes div
     const [analyticsLabel, analyticsCategory, analyticsSubCategory] = analytics.children;
     childrenBlockProps.removeChild(classes);
+    childrenBlockProps.removeChild(analytics);
     const imageAlignment = classes?.textContent?.split(',')?.[1] || 'left';
     childrenBlockProps.classList.add(imageAlignment?.trim());
     let mediaType;
