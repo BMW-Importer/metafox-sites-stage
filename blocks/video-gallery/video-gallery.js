@@ -6,8 +6,8 @@ function updateCarousel(content, currentIndex, gap) {
   const itemWidth = (content.children[currentIndex].offsetWidth);
   const offset = -(currentIndex * (itemWidth + gap));
   content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
-  content.style.transitionDuration = '50ms';
-  content.style.transitionDelay = '0ms';
+  content.style.transitionDuration = '750ms';
+  content.style.transitionDelay = '100ms';
 }
 
 function updateDots(dotsWrapper, currentIndex) {
@@ -22,17 +22,17 @@ function updateDots(dotsWrapper, currentIndex) {
 }
 function onHoverCarousel(content, currentIndex, direction, gap) {
   const itemWidth = (content.children[currentIndex].offsetWidth);
-  const offsetPercentage = 0.2; // 20%
+  const offsetPercentage = 0.07;
   const currentOffset = -(currentIndex * (itemWidth + gap));
   const offset = direction === 'right' ? -((offsetPercentage * itemWidth) + gap) : ((offsetPercentage * itemWidth) + gap);
   content.style.transform = `translate3d(${offset + currentOffset}px, 0px, 0px)`;
-  content.style.transitionDuration = '500ms';
+  content.style.transitionDuration = '750ms';
   content.style.transitionDelay = '100ms';
 }
 
 function onHoverCarouselLeave(content, currentIndex, gap) {
   content.style.transform = 'translate3d(0px, 0px, 0px)';
-  content.style.transitionDuration = '500ms';
+  content.style.transitionDuration = '750ms';
   content.style.transitionDelay = '100ms';
   if (iconClicked) {
     updateCarousel(content, currentIndex, gap);
@@ -41,18 +41,18 @@ function onHoverCarouselLeave(content, currentIndex, gap) {
 
 function updateButtonVisibility(prevButton, nextButton, currentIndex, totalItems, itemsToShow) {
   if (currentIndex === 0) {
-    prevButton.classList.add('hide-icon'); // Add 'hidden' class to hide
+    prevButton.classList.add('hide-icon');
     prevButton.parentElement.classList.add('hide-icon');
   } else {
-    prevButton.classList.remove('hide-icon'); // Remove 'hide-icon' class to show
+    prevButton.classList.remove('hide-icon');
     prevButton.parentElement.classList.remove('hide-icon');
   }
 
   if (currentIndex >= totalItems - itemsToShow) {
-    nextButton.classList.add('hide-icon'); // Add 'hide-icon' class to hide
+    nextButton.classList.add('hide-icon');
     nextButton.parentElement.classList.add('hide-icon');
   } else {
-    nextButton.classList.remove('hide-icon'); // Remove 'hide-icon' class to show
+    nextButton.classList.remove('hide-icon');
     nextButton.parentElement.classList.remove('hide-icon');
   }
 }
@@ -115,7 +115,7 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
 function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   const dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
-  const preButton = block.querySelector('.carousel-btn-prev');
+  const preButton = block && block.querySelector('.carousel-btn-prev');
   const nexButton = block.querySelector('.carousel-btn-next');
   let currentIndex = 0;
   function updateDotCarousel() {
@@ -302,7 +302,7 @@ function generateMediaGallery(videoGallery, block, callback) {
   const videoSlideTextDiv = document.createElement('div');
   if (videoGallery?.querySelector('a')) {
     videoSlideTextDiv.classList.add('video-gallery-title');
-    const videoSlideText = videoGallery.querySelector('h3');
+    const videoSlideText = videoGallery.querySelector('h3')?.textContent || '';
     videoSlideTextDiv.append(videoSlideText);
     const videoContentPtags = videoGallery.querySelectorAll('p');
     const vidTitle = videoContentPtags[0] || '';
