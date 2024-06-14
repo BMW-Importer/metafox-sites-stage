@@ -57,14 +57,18 @@ function analyticsTracking() {
 }
 
 function addAnalyticsCustomClickEvent() {
-  const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custome-click=true]');
+  const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custom-click=true]');
   listOfCustomClickBtns.forEach((btn)=> {
     btn.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent the default action of the link
+      e.preventDefault();
       const analyticsLabel = e.target.getAttribute('data-analytics-label');
-      const buttonLink = e.target.getAttribute('data-button-link');
+      const primaryCategory = e.target.getAttribute('data-analytics-category');
+      const subCategory = e.target.getAttribute('data-analytics-sub-category');
+      const blockName = e.target.getAttribute('data-analytics-block-name');
+      const sectionName = e.target.getAttribute('data-analytics-section-name');
+      const linkURL = e.target.getAttribute('href');
 
-      pushCustomLinkAnalyticData([analyticsLabel, buttonLink]);      
+      pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionName, linkURL]);      
     });
   });
 }

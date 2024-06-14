@@ -18,17 +18,24 @@ const event_tracking = {"event": {
                 "blockName": "TextWithImage",
                 "blockDetails": "TextWithImage",
             },
-        }
+        },
+        "section": {
+            "sectionInfo": {
+                "sectionName" : "Header",
+                "sectionID" : "bmw/RS_sr/home/header",
+            },
+        },
     }
 }}
 
 export function pushCustomLinkAnalyticData(prop) {  
-    const [analyticsLabel, buttonLink] = prop;
-    event_tracking.event.eventInfo.category.EventLabel = analyticsLabel;
-    event_tracking.event.eventInfo.category.primaryCategory = buttonLink;
-    event_tracking.event.eventInfo.category.subCategory = buttonLink;
-
-    // analyticsBlockName
+    const [analyticsLabel, primaryCategory, subCategory, blockName, sectionName, linkURL] = prop;
+    event_tracking.event.eventInfo.category.primaryCategory = primaryCategory;
+    event_tracking.event.eventInfo.category.subCategory = subCategory;
+    event_tracking.event.eventInfo.category.linkName = analyticsLabel;
+    event_tracking.event.eventInfo.category.linkURL = linkURL;
+    event_tracking.event.eventInfo.block.blockInfo.blockName = blockName;
+    event_tracking.event.eventInfo.section.sectionInfo.sectionName = sectionName;
 
     window.adobeDataLayer.push(event_tracking);
 }
