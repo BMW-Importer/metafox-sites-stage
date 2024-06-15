@@ -241,7 +241,7 @@ function addIconCarouselControls(
 }
 
 function updateItemsToShow(carouselContent) {
-  const viewport = window.innerWidth;
+  const viewport = document.documentElement.clientWidth;
   const totalItems = carouselContent.childElementCount;
   const computedStyle = getComputedStyle(carouselContent);
   const paddingLeft = parseFloat(computedStyle.paddingLeft);

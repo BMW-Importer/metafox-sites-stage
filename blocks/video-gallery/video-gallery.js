@@ -121,7 +121,12 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   function updateDotCarousel() {
     updateCarousel(content, currentIndex, gap);
   }
-  const totalDots = totalItems;
+  let totalDots;
+  if (totalItems > 1) {
+    totalDots = totalItems;
+  } else {
+    totalDots = 0;
+  }
   function createClickHandler(index) {
     return function handleClick() {
       currentIndex = index;
@@ -170,21 +175,21 @@ function addIconCarouselControls(
     updateCarousel(content, currentIndex, gap);
   }
 
-  nextButton.addEventListener('mouseover', () => {
+  carouselRightWrapper.addEventListener('mouseover', () => {
     onHoverCarousel(content, currentIndex, 'right', gap);
   });
-  nextButton.addEventListener('mouseleave', () => {
+  carouselRightWrapper.addEventListener('mouseleave', () => {
     onHoverCarouselLeave(content, currentIndex, gap);
   });
 
-  prevButton.addEventListener('mouseover', () => {
+  carouselLeftWrapper.addEventListener('mouseover', () => {
     onHoverCarousel(content, currentIndex, 'left', gap);
   });
-  prevButton.addEventListener('mouseleave', () => {
+  carouselLeftWrapper.addEventListener('mouseleave', () => {
     onHoverCarouselLeave(content, currentIndex, gap);
   });
 
-  prevButton.addEventListener('click', () => {
+  carouselLeftWrapper.addEventListener('click', () => {
     if (currentIndex > 0) {
       currentIndex -= 1;
       iconClicked = true;
@@ -199,7 +204,7 @@ function addIconCarouselControls(
       );
     }
   });
-  nextButton.addEventListener('click', () => {
+  carouselRightWrapper.addEventListener('click', () => {
     if (currentIndex < totalItems - itemsToShow) {
       currentIndex += 1;
       iconClicked = true;
@@ -224,11 +229,11 @@ function addIconCarouselControls(
 }
 
 function updateItemsToShow(videoGalleryContent) {
-  const viewport = window.innerWidth;
+  const viewport = document.documentElement.clientWidth;
+
   const totalItems = videoGalleryContent.childElementCount;
   videoGalleryContent.style.maxHeight = '100%';
   videoGalleryContent.style.height = '100%';
-
   const computedStyle = getComputedStyle(videoGalleryContent);
   const paddingLeft = parseFloat(computedStyle.paddingLeft);
   const paddingRight = parseFloat(computedStyle.paddingRight);
