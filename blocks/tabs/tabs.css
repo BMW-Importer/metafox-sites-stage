@@ -1,7 +1,6 @@
 .tabs.block {
     display: flex;
     justify-content: center;
-    visibility: visible;
 }
 
 .tabs ul {
@@ -16,11 +15,11 @@
     visibility: visible;
 }
 
-.tabs.mask-right {
+.tabs.mask-right ul{
     mask: linear-gradient(to left,#fff0 0,#fff 4.5rem);
 }
 
-.tabs.mask-left {
+.tabs.mask-left ul{
     mask: linear-gradient(to right, #fff0 0, #fff 4.5rem);
 }
 
