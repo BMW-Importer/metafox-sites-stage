@@ -334,10 +334,10 @@ function generateMediaGallery(videoGallery, block, callback) {
 
     // converting string to boolen
     const isLoopVideo = videoGallery.querySelector('h3')?.textContent.trim() === 'true';
-    const onHoverPlay = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
+    const isAutoPlayVideo = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
     const enableHideControls = videoGallery.querySelector('h5')?.textContent.trim() === 'true';
     const isMuted = videoGallery.querySelector('h6')?.textContent.trim() === 'true';
-    const isAutoPlayVideo = false;
+    const onHoverPlay = false;
 
     loadVideoEmbed([
       containerDiv,

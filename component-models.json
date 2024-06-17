@@ -3371,23 +3371,23 @@
       },
       {
         "component": "text",
-        "label": "Play on mouseover",
-        "name": "videoSlide_mouseHoverVideoType",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideoType",
         "valueType": "string",
         "value": "h4",
         "hidden": true
       },
       {
         "component": "boolean",
-        "label": "Play on mouseover",
-        "name": "videoSlide_mouseHoverVideo",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideo",
         "description": "Defines how video will be played.",
         "valueType": "boolean",
         "value": true
       },
       {
         "component": "text",
-        "label": "Hide Video Controls",
+        "label": "Video Controls",
         "name": "videoSlide_hideControlsVideoType",
         "valueType": "string",
         "value": "h5",
