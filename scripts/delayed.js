@@ -4,6 +4,7 @@ import { multiContentGalFunAfterPageLoad } from '../blocks/multicontent-gallery/
 import { changeAllVidSrcOnResize, enableObserverForVideos } from '../blocks/video/video.js';
 import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js';
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
+import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -12,6 +13,7 @@ changeAllVidSrcOnResize();
 addAnalyticsCustomClickEvent();
 enableObserverForVideos();
 mediaCarouselResizer();
+videoGalleryResizer();
 
 const page_tracking = {"page": {
   "pageInfo": {
