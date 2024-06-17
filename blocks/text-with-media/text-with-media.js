@@ -47,7 +47,7 @@ function generateMediaDom(mediaType, media) {
     // converting string to boolen
     const isLoopVideo = media.querySelector('h2')?.textContent.trim() === 'true';
     const isAutoPlayVideo = media.querySelector('h3')?.textContent.trim() === 'true';
-    const enableHideControls = media.querySelector('h4')?.textContent.trim() === 'true';
+    const enableVideoControls = media.querySelector('h4')?.textContent.trim() === 'true';
     const isMuted = media.querySelector('h5')?.textContent.trim() === 'true';
     const onHoverPlay = false;
 
@@ -58,7 +58,7 @@ function generateMediaDom(mediaType, media) {
       videoLinkObj,
       isAutoPlayVideo,
       isLoopVideo,
-      enableHideControls,
+      enableVideoControls,
       isMuted,
       posterObj,
       onHoverPlay,
