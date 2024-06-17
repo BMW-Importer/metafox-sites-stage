@@ -67,10 +67,10 @@ function addAnalyticsCustomClickEvent() {
       const primaryCategory = e.target.getAttribute('data-analytics-category');
       const subCategory = e.target.getAttribute('data-analytics-sub-category');
       const blockName = e.target.getAttribute('data-analytics-block-name');
-      const sectionName = e.target.getAttribute('data-analytics-section-name');
+      const sectionId = e.target.getAttribute('data-analytics-section-id');
       const linkURL = e.target.getAttribute('href');
 
-      pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionName, linkURL]);      
+      pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL]);      
     });
   });
 }

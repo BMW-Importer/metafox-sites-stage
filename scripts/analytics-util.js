@@ -26,7 +26,7 @@ const event_tracking = {"event": {
 }}
 
 export function pushCustomLinkAnalyticData(prop) {  
-    const [analyticsLabel, primaryCategory, subCategory, blockName, sectionName, linkURL] = prop;
+    const [analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL] = prop;
     
     const randomNum = 100000 + Math.random() * 900000;
     event_tracking.event.eventInfo.id = Math.floor(randomNum).toString();
@@ -37,8 +37,9 @@ export function pushCustomLinkAnalyticData(prop) {
     event_tracking.event.eventInfo.category.linkURL = linkURL;
 
     event_tracking.event.eventInfo.block.blockInfo.blockName = blockName;
+    event_tracking.event.eventInfo.block.blockInfo.blockDetails = analyticsLabel;
 
-    event_tracking.event.eventInfo.section.sectionInfo.sectionName = sectionName;
+    event_tracking.event.eventInfo.section.sectionInfo.sectionID = sectionId;
 
     window.adobeDataLayer.push(event_tracking);
 }

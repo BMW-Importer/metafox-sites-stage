@@ -114,7 +114,7 @@ export default function decorate(block) {
         ctaElem.dataset.analyticsSubCategory = analyticsSubCategory?.textContent?.trim() || '';
         ctaElem.dataset.analyticsCustomClick = 'true';
         ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
-        ctaElem.dataset.analyticsSectionName = ctaElem.closest('.section').dataset.sectionName;
+        ctaElem.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
       }
       content.append(ctaElem);
     }
