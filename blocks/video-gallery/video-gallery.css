@@ -207,13 +207,6 @@
         padding-right: 48px;
     }
 
-    .video-gallery-wrapper .slide-wrapper-lft-area,
-    .video-gallery-wrapper .slide-wrapper-rth-area {
-        display: flex;
-        visibility: visible;
-        width: 3rem;
-    }
-
     .video-gallery-title {
         font-size: 1.25rem;
         line-height: 1.875rem;

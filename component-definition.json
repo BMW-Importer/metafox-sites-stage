@@ -757,8 +757,8 @@
                   "media_carouselLoopVideo" : true,
                   "media_carouselMouseHoverVideoType": "h4",
                   "media_carouselMouseHoverVideo" : true,
-                  "media_carouselHideControlsVideoType" : "h5",
-                  "media_carouselHideControlsVideo" : true,
+                  "media_videoControlsVideoType" : "h5",
+                  "media_videoControlsVideo" : true,
                   "media_carouselMuteSoundVideoType": "h6",
                   "media_carouselMuteSoundVideo" : true
                 }
@@ -814,8 +814,8 @@
                   "videoSlide_loopVideo" : true,
                   "videoSlide_autoPlayVideoType": "h4",
                   "videoSlide_autoPlayVideo" : true,
-                  "videoSlide_hideControlsVideoType" : "h5",
-                  "videoSlide_hideControlsVideo" : true,
+                  "videoSlide_videoControlsVideoType" : "h5",
+                  "videoSlide_videoControlsVideo" : true,
                   "videoSlide_muteSoundVideoType": "h6",
                   "videoSlide_muteSoundVideo" : true
                 }
