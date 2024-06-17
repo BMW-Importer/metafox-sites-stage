@@ -149,7 +149,8 @@
     font-feature-settings: "liga";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     color: var(--text-color);
     font-style: normal;
     height: 1em;
@@ -206,13 +207,6 @@
         padding-right: 48px;
     }
 
-    .video-gallery-wrapper .slide-wrapper-lft-area,
-    .video-gallery-wrapper .slide-wrapper-rth-area {
-        display: flex;
-        visibility: visible;
-        width: 3rem;
-    }
-
     .video-gallery-title {
         font-size: 1.25rem;
         line-height: 1.875rem;
@@ -237,6 +231,7 @@
     .video-gallery-title {
         font-size: 1.4375rem;
         line-height: 2.25rem;
+        margin-bottom: .75rem;
     }
 }
 

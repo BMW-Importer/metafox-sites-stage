@@ -148,7 +148,8 @@
     content: "arrow_chevron_left";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     color: var(--text-color);
     font-style: normal;
     height: 1em;
@@ -185,7 +186,8 @@
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     color: var(--text-color);
     font-style: normal;
     height: 1em;
@@ -220,6 +222,7 @@
     direction: ltr;
     display: block;
     font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;

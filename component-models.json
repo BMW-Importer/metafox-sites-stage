@@ -3068,7 +3068,7 @@
         "component": "boolean",
         "label": "Loop Video",
         "name": "media_carouselLoopVideo",
-        "description": "Defines how video will be played.",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
         "valueType": "boolean",
         "value": true
       },
@@ -3084,14 +3084,14 @@
         "component": "boolean",
         "label": "Play on mouseover",
         "name": "media_carouselMouseHoverVideo",
-        "description": "Defines how video will be played.",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
         "valueType": "boolean",
         "value": true
       },
       {
         "component": "text",
         "label": "Hide Video Controls",
-        "name": "media_carouselHideControlsVideoType",
+        "name": "media_videoControlsVideoType",
         "valueType": "string",
         "value": "h5",
         "hidden": true
@@ -3099,8 +3099,8 @@
       {
         "component": "boolean",
         "label": "Video Controls",
-        "name": "media_carouselHideControlsVideo",
-        "description": "Defines how video will be played.",
+        "name": "media_videoControlsVideo",
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear.",
         "valueType": "boolean",
         "value": true
       },
@@ -3116,7 +3116,7 @@
         "component": "boolean",
         "label": "Mute Video Sound",
         "name": "media_carouselMuteSoundVideo",
-        "description": "Defines how video will be played.",
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
         "valueType": "boolean",
         "value": true
       },
@@ -3365,30 +3365,30 @@
         "component": "boolean",
         "label": "Loop Video",
         "name": "videoSlide_loopVideo",
-        "description": "Defines how video will be played.",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
         "valueType": "boolean",
         "value": true
       },
       {
         "component": "text",
-        "label": "Play on mouseover",
-        "name": "videoSlide_mouseHoverVideoType",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideoType",
         "valueType": "string",
         "value": "h4",
         "hidden": true
       },
       {
         "component": "boolean",
-        "label": "Play on mouseover",
-        "name": "videoSlide_mouseHoverVideo",
-        "description": "Defines how video will be played.",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideo",
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay and will be always on mute even if mute video sound boolean is set to off.",
         "valueType": "boolean",
         "value": true
       },
       {
         "component": "text",
-        "label": "Hide Video Controls",
-        "name": "videoSlide_hideControlsVideoType",
+        "label": "Video Controls",
+        "name": "videoSlide_videoControlsVideoType",
         "valueType": "string",
         "value": "h5",
         "hidden": true
@@ -3396,8 +3396,8 @@
       {
         "component": "boolean",
         "label": "Video Controls",
-        "name": "videoSlide_hideControlsVideo",
-        "description": "Defines how video will be played.",
+        "name": "videoSlide_videoControlsVideo",
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear.",
         "valueType": "boolean",
         "value": true
       },
@@ -3413,7 +3413,7 @@
         "component": "boolean",
         "label": "Mute Video Sound",
         "name": "videoSlide_muteSoundVideo",
-        "description": "Defines how video will be played.",
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
         "valueType": "boolean",
         "value": true
       }

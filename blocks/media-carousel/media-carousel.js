@@ -281,8 +281,12 @@ function resizeBlock() {
     const gap = viewport >= 768 ? 24 : 16;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
     const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow);
+    let scrollbarWidth = 0;
+    if (viewport < 1024) {
+      scrollbarWidth = `${viewport - document.body.clientWidth}`;
+    }
     cards.forEach((card) => {
-      card.style.width = `${cardWidth}px`;
+      card.style.width = `${cardWidth - scrollbarWidth}px`;
       card.style.marginRight = `${gap}px`;
     });
 

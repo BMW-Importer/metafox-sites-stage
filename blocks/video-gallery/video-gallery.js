@@ -113,7 +113,11 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
 }
 
 function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
-  const dotsWrapper = document.createElement('div');
+  let dotsWrapper = block.querySelector('.dots-navigation');
+  if (dotsWrapper) {
+    dotsWrapper.remove();
+  }
+  dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
   const preButton = block && block.querySelector('.carousel-btn-prev');
   const nexButton = block.querySelector('.carousel-btn-next');
@@ -152,6 +156,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   }
 
   block.append(dotsWrapper);
+  block.dataset.dotsAdded = 'true';
 }
 
 function addIconCarouselControls(
@@ -163,10 +168,20 @@ function addIconCarouselControls(
   carouselRightWrapper,
   gap,
 ) {
-  const prevButton = document.createElement('button');
+  let prevButton = block.querySelector('.carousel-btn-prev');
+  let nextButton = block.querySelector('.carousel-btn-next');
+
+  if (prevButton) {
+    prevButton.remove();
+  }
+
+  if (nextButton) {
+    nextButton.remove();
+  }
+  prevButton = document.createElement('button');
   prevButton.classList.add('carousel-btn-prev');
 
-  const nextButton = document.createElement('button');
+  nextButton = document.createElement('button');
   nextButton.classList.add('carousel-btn-next');
   carouselLeftWrapper.append(prevButton);
   carouselRightWrapper.append(nextButton);
@@ -250,11 +265,8 @@ function updateItemsToShow(videoGalleryContent) {
   return { cardsToShow, availableWidth, totalItems };
 }
 
-let carouselControlsAdded = false;
-let carouselControlsIcon = false;
-
 export function resizeVideoBlock() {
-  const viewport = window.innerWidth;
+  const viewport = document.documentElement.clientWidth;
   const carousels = document.querySelectorAll('.video-gallery-content');
   carousels.forEach((carouselContent) => {
     const block = carouselContent.closest('.video-gallery.block');
@@ -263,7 +275,11 @@ export function resizeVideoBlock() {
     const carouselRightWrapper = block.querySelector('.slide-wrapper-rth-area');
     const gap = viewport >= 768 ? 24 : 16;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
-    const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow);
+    let scrollbarWidth;
+    if (viewport < 1024) {
+      scrollbarWidth = `${viewport - document.body.clientWidth}px`;
+    }
+    const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow) - scrollbarWidth;
     cards.forEach((card) => {
       card.style.width = `${cardWidth}px`;
       card.style.marginRight = `${gap}px`;
@@ -277,7 +293,7 @@ export function resizeVideoBlock() {
       0,
       gap,
     );
-    if (viewport > 768 && totalItems > 1 && !carouselControlsIcon) {
+    if (viewport >= 1024 && totalItems > 1) {
       addIconCarouselControls(
         block,
         carouselContent,
@@ -287,13 +303,9 @@ export function resizeVideoBlock() {
         carouselRightWrapper,
         gap,
       );
-      carouselControlsIcon = true;
     }
-
-    if (!carouselControlsAdded) {
-      addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
-      carouselControlsAdded = true;
-    }
+    addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
+    updateCarousel(carouselContent, 0, gap);
   });
 }
 
@@ -334,10 +346,10 @@ function generateMediaGallery(videoGallery, block, callback) {
 
     // converting string to boolen
     const isLoopVideo = videoGallery.querySelector('h3')?.textContent.trim() === 'true';
-    const onHoverPlay = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
+    const isAutoPlayVideo = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
     const enableHideControls = videoGallery.querySelector('h5')?.textContent.trim() === 'true';
     const isMuted = videoGallery.querySelector('h6')?.textContent.trim() === 'true';
-    const isAutoPlayVideo = false;
+    const onHoverPlay = false;
 
     loadVideoEmbed([
       containerDiv,
