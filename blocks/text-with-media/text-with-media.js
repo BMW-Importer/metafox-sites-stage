@@ -75,14 +75,14 @@ export default function decorate(block) {
 
   textWithMediaChildrens.forEach((childrenBlockProps) => {
     childrenBlockProps.classList.add('text-with-media-item');
-    const [classes, content, media, cta] = childrenBlockProps.children;
 
+    const [classes, content, media, cta, analytics] = childrenBlockProps.children;
     // removing classes div
+    const [analyticsLabel, analyticsCategory, analyticsSubCategory] = analytics.children;
     childrenBlockProps.removeChild(classes);
-
+    childrenBlockProps.removeChild(analytics);
     const imageAlignment = classes?.textContent?.split(',')?.[1] || 'left';
     childrenBlockProps.classList.add(imageAlignment?.trim());
-
     let mediaType;
     if (classes.textContent.includes('text-with-video')) {
       mediaType = 'video';
@@ -117,6 +117,14 @@ export default function decorate(block) {
     //  and bind it inside content
     if (ctaElem) {
       ctaElem?.classList?.add('text-with-media-cta');
+      if (analytics.children) {
+        ctaElem.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsCategory = analyticsCategory?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsSubCategory = analyticsSubCategory?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsCustomClick = 'true';
+        ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
+        ctaElem.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+      }
       content.append(ctaElem);
     }
 
