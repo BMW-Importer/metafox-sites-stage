@@ -37,34 +37,39 @@ export function createTabs($block) {
 
 export function setSmoothScroll($button, $block) {
   const buttonWidth = $button.clientWidth;
-  const leftPosition = ($button.offsetLeft + 2 * buttonWidth) - window.innerWidth;
-  const scrollPos = $block.querySelector('ul').scrollLeft;
-  if (leftPosition >= 0) {
+  const scrollableList = $block.querySelector('ul');
+  const buttonLeftPos = $button.offsetLeft - scrollableList.offsetLeft;
+  const leftPosition = (buttonLeftPos + 2 * buttonWidth) - scrollableList.clientWidth;
+  const scrollPos = scrollableList.scrollLeft;
+  if (buttonLeftPos < scrollableList.clientWidth
+    && scrollPos > 0) {
     $block.querySelector('ul').scrollTo({
-      left: scrollPos + 2 * buttonWidth,
+      left: buttonLeftPos - 2 * buttonWidth,
       behavior: 'smooth',
     });
-  } else if ($button.offsetLeft < window.innerWidth
-    && scrollPos > 0
-  ) {
+  } else if (leftPosition >= 0) {
     $block.querySelector('ul').scrollTo({
-      left: $button.offsetLeft - 2 * buttonWidth,
+      left: scrollPos + 2 * buttonWidth,
       behavior: 'smooth',
     });
   }
 }
 
 export function maskTabElems(ev, $block) {
-  const self = ev.target;
+  const self = $block.querySelector('ul');
   const curPos = self.scrollLeft;
   if (curPos === 0) {
     $block.classList.add('mask-right');
     $block.classList.remove('mask-left');
   } else {
-    const max = self.scrollWidth - $block.clientWidth;
-    if (curPos === max) {
-      $block.classList.add('mask-left');
-      $block.classList.remove('mask-right');
+    const max = self.scrollWidth - self.clientWidth;
+    if (curPos + 1 >= max) {
+      if (max >= 0) {
+        $block.classList.add('mask-left');
+        $block.classList.remove('mask-right');
+      } else {
+        $block.classList.add('mask-left', 'mask-right');
+      }
     } else {
       $block.classList.add('mask-left', 'mask-right');
     }
@@ -114,7 +119,7 @@ export default function decorate($block) {
     }
   });
   setTimeout(() => {
-    if (scrollableElem.scrollWidth > window.innerWidth) {
+    if (scrollableElem.scrollWidth > scrollableElem.clientWidth) {
       $block.classList.add('mask-right');
     }
   }, 1000);
