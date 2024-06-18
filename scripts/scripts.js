@@ -15,6 +15,10 @@ import {
 
 import { decorateBMWButtons } from './bmw-util.js';
 
+if (!window.modelDataMap) {
+  window.modelDataMap = new Map();
+}
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
