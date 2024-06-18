@@ -39,7 +39,6 @@
     text-transform: none;
     white-space: nowrap;
     width: auto;
-    position: relative;
 }
 
 .download-wrapper .download.block p a:hover::before {
