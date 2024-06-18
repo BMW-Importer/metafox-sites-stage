@@ -2,6 +2,7 @@
 const videoJsStyle = 'https://vjs.zencdn.net/8.10.0/video-js.css';
 const videoJsLibrary = 'https://vjs.zencdn.net/8.10.0/video.min.js';
 let isScriptAdded = false;
+let isObserverAndVidJsInitialized;
 let videojsFunction;
 
 function loadScript(url, callback) {
@@ -22,12 +23,62 @@ function loadScript(url, callback) {
   };
 }
 
+function playOrPauseVideo(props) {
+  const [video, isIntersecting, autoplay] = props;
+
+  if (isIntersecting) {
+    video.dataset.isVideoInViewPort = 'true';
+    if (video.paused && autoplay === 'true') {
+      video.play().catch();
+    }
+  } else if (!video.paused) {
+    video.dataset.isVideoInViewPort = 'false';
+    video.pause();
+  } else {
+    video.dataset.isVideoInViewPort = 'false';
+  }
+}
+
+function initializePlayerRead(player, video, isIntersecting, autoplay) {
+  player.ready(() => {
+    playOrPauseVideo([video, isIntersecting, autoplay]);
+  });
+}
+
+// function to loop through all videos and initiate videjs and also add observer
+function initObserverAndVidJs() {
+  const listOfVideos = document.querySelectorAll('video');
+  listOfVideos.forEach((video) => {
+    // initialiting player
+    videojsFunction(video);
+
+    // enabling observer for each video
+    if (window.IntersectionObserver) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const autoplay = video?.dataset?.autoplay;
+          if (video?.parentElement?.classList?.contains('video-js')) {
+            playOrPauseVideo([video, entry.isIntersecting, autoplay]);
+          } else {
+            const player = videojsFunction(video);
+            initializePlayerRead(player, video, entry.isIntersecting, autoplay);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(video);
+    } else document.querySelector('#warning').style.display = 'block';
+  });
+}
+
 function triggerLoadingVideoJsLib() {
   loadScript(videoJsLibrary, () => {
     // once after videojs library is loaded then save videojs funtion in a variable so that
     // it can be called wen resize screen hapepns to load video again after changing src
     if (typeof videojs === 'function') {
       videojsFunction = videojs;
+
+      // if observer is not initialised then do it
+      if (isObserverAndVidJsInitialized === false) initObserverAndVidJs();
     }
   });
 }
@@ -76,7 +127,6 @@ function enableVideoFeature(props) {
   video.setAttribute('preload', 'auto');
   video.setAttribute('class', 'video-js');
 
-  video.setAttribute('data-setup', '{}');
   video.setAttribute('width', '641');
   video.setAttribute('height', '264');
 
@@ -179,9 +229,11 @@ export function getVideoElement(props) {
   video.dataset.autoplay = autoplay ? 'true' : 'false';
 
   video.oncanplay = () => {
-    if (autoplay) {
+    if (autoplay && video.dataset.isVideoInViewPort === 'true') {
       video.muted = !userUnmuted;
       video.play();
+    } else {
+      video.pause();
     }
   };
   return video;
@@ -257,52 +309,13 @@ export function loadVideoEmbed(props) {
   block.dataset.embedIsLoaded = true;
 }
 
-function playOrPauseVideo(props) {
-  const [video, isIntersecting, autoplay] = props;
-
-  if (isIntersecting) {
-    if (video.paused && autoplay === 'true') {
-      video.play().catch();
-    }
-  } else if (!video.paused) {
-    video.pause();
-  }
-}
-
-function initializePlayerRead(player, video, isIntersecting, autoplay) {
-  player.ready(() => {
-    player.pause();
-    playOrPauseVideo([video, isIntersecting, autoplay]);
-  });
-}
-
 export function enableObserverForVideos() {
-  const listOfVideos = document.querySelectorAll('video');
-  listOfVideos.forEach((video) => {
-    // enabling player and pausing it by default
-    if (typeof videojsFunction === 'function') {
-      const player = videojsFunction(video);
-      player.ready(() => {
-        player.pause();
-      });
-    }
-
-    // enabling observer for each video
-    if (window.IntersectionObserver) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const autoplay = video?.dataset?.autoplay;
-          if (video?.parentElement?.classList?.contains('video-js')) {
-            playOrPauseVideo([video, entry.isIntersecting, autoplay]);
-          } else if (typeof videojsFunction === 'function') {
-            const player = videojsFunction(video);
-            initializePlayerRead(player, video, entry.isIntersecting, autoplay);
-          }
-        });
-      }, { threshold: 0.5 });
-      observer.observe(video);
-    } else document.querySelector('#warning').style.display = 'block';
-  });
+  if (typeof videojsFunction === 'function') {
+    isObserverAndVidJsInitialized = true;
+    initObserverAndVidJs();
+  } else {
+    isObserverAndVidJsInitialized = false;
+  }
 }
 
 export function changeAllVidSrcOnResize() {
