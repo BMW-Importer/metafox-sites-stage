@@ -90,6 +90,7 @@ function enableVideoFeature(props) {
 }
 
 function triggerMediaPlayAnalytics(video) {
+  window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
   const mediaUrl = video.getAttribute('src');
@@ -274,13 +275,15 @@ export function getVideoElement(props) {
 
   let checkVideoEnd = '';
   let isVideoPlayed = false;
+  let isVideoStarted  = false;
 
   video.addEventListener('play', () => {
+    if(!isVideoStarted) {
+      isVideoStarted = true;
+      triggerMediaPlayAnalytics(video);
+    }
     if (!isVideoPlayed) {
       checkVideoEnd = setInterval(() => {
-        if (Math.ceil(video.currentTime) === 1) {
-          triggerMediaPlayAnalytics(video);
-        }
         if (Math.ceil(video.currentTime) === Math.ceil(video.duration)) {
           triggerMediaCompleteAnalytics(video);
           clearInterval(checkVideoEnd);
