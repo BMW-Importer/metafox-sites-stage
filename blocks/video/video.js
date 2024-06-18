@@ -314,11 +314,11 @@ export function getVideoElement(props) {
   video.dataset.autoplay = autoplay ? 'true' : 'false';
 
   video.oncanplay = () => {
-    video.play();
     if (autoplay && video.dataset.isVideoInViewPort === 'true') {
       video.muted = !userUnmuted;
       video.play();
     } else {
+      video.play();
       video.pause();
     }
   };
