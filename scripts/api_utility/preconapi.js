@@ -47,15 +47,15 @@ function groupByModelRangeCode(preConResults) {
 
 async function fetchCosyImage(preConId, COSY_API, cosyApiHeaders) {
   // const brand = preConId.cosyBrand;
-  // const options = preConId.options;
-  // const paint = preConId.paint;
-  // const fabric = preConId.fabric;
-  // const quality = '82';
+  const cosyOptions = preConId.options;
+  const paintCode = preConId.paint;
+  const cosyFabric = preConId.fabric;
+  const quality = '82';
   const agModelCode = preConId.modelCode;
   const prodDate = (preConId.productionDate !== '') ? preConId.productionDate.replace(/-/g, '') : preConId.effectDate.replace(/-/g, '');
   const cosyHub = config.cosyApiHub;
 
-  const apiUrl = `${COSY_API}${agModelCode}?hub=${cosyHub}&imagetype=webp&effectdate=${prodDate}&background=transparent&lightson=true`;
+  const apiUrl = `${COSY_API}${agModelCode}?hub=${cosyHub}&imagetype=webp&effectdate=${prodDate}&background=transparent&lightson=true&options=${cosyFabric},${paintCode},${cosyOptions}&quality=${quality}`;
   const response = await callApi(apiUrl, cosyApiHeaders);
   return { agModelCode, data: response };
 }
