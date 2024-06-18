@@ -107,16 +107,19 @@ margin-bottom: 48px;
   .columns h1 {
       font-size: 1.75rem;
       line-height: 2.625rem;
+      margin-top: 0.75rem;
     }
   
     .columns h2 {
       font-size: 1.438rem;
       line-height: 2rem;
+      margin-top: .5rem;
     }
   
     .columns h3 {
       font-size: 1.188rem;
       line-height: 1.75rem;
+      margin-top: 0.25rem;
     }
 }
 
@@ -124,16 +127,19 @@ margin-bottom: 48px;
   .columns h1 {
       font-size: 1.813rem;
       line-height: 2.5rem;
+      margin-top: 0.75rem;
     }
   
     .columns h2 {
       font-size: 1.563rem;
       line-height: 2.25rem;
+      margin-top: .5rem;
     }
   
     .columns h3 {
       font-size: 1.25rem;
       line-height: 1.875rem;
+      margin-top: 0.25rem;
     }
 }
 
@@ -141,16 +147,19 @@ margin-bottom: 48px;
   .columns h1 {
       font-size: 2.813rem;
       line-height: 3.875rem;
+      margin-top: 1rem;
     }
   
     .columns h2 {
       font-size: 2.125rem;
       line-height: 3rem;
+      margin-top: .5rem;
     }
   
     .columns h3 {
       font-size: 1.563rem;
       line-height: 2.375rem;
+      margin-top: .5rem;
     }
 }
 
