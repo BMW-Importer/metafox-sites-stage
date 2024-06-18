@@ -165,7 +165,7 @@ h6 {
   letter-spacing: 0.563rem;
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--background-color);
+  color: var(--light-text-color);
 }
 
 p, dl, ol, ul, pre, blockquote {
