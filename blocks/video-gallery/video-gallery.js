@@ -319,7 +319,7 @@ function generateMediaGallery(videoGallery, block, callback) {
   const videoSlideTextDiv = document.createElement('div');
   if (videoGallery?.querySelector('a')) {
     videoSlideTextDiv.classList.add('video-gallery-title');
-    const videoSlideText = videoGallery.querySelector('h3')?.textContent || '';
+    const videoSlideText = videoGallery.querySelector('h3', 'h4')?.textContent || '';
     videoSlideTextDiv.append(videoSlideText);
     const videoContentPtags = videoGallery.querySelectorAll('p');
     const vidTitle = videoContentPtags[0] || '';
