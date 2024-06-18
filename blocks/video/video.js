@@ -90,6 +90,91 @@ function enableVideoFeature(props) {
   }
 }
 
+function triggerMediaPlayAnalytics(video) {
+  const { blockName } = video.closest('.block').dataset;
+  const { analyticsLabel: sectionId } = video.closest('.section').dataset;
+  const mediaUrl = video.getAttribute('src');
+
+  video.dataset.analyticsBlockName = blockName || '';
+  video.dataset.analyticsSectionId = sectionId || '';
+  video.dataset.analyticsMediaUrl = mediaUrl || '';
+
+  const mediaPlayObject = {
+    event: 'media.play',
+    eventInfo: {
+      id: '2121221',
+      attributes: {
+        mediaInfo: {
+          mediaName: '',
+          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaType: 'video',
+        },
+      },
+      section: {
+        sectionInfo: {
+          sectionName: 'Section',
+          sectionID: '',
+        },
+      },
+      block: {
+        blockInfo: {
+          blockName: '',
+          blockDetails: '',
+        },
+      },
+    },
+  };
+
+  const randomNum = 100000 + Math.random() * 900000;
+  mediaPlayObject.eventInfo.id = Math.floor(randomNum).toString();
+  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
+  mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
+  mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
+  window.adobeDataLayer.push(mediaPlayObject);
+}
+
+function triggerMediaCompleteAnalytics(video) {
+  const { blockName } = video.closest('.block').dataset;
+  const { analyticsLabel: sectionId } = video.closest('.section').dataset;
+  const mediaUrl = video.getAttribute('src');
+  video.dataset.analyticsBlockName = blockName || '';
+  video.dataset.analyticsSectionId = sectionId || '';
+  video.dataset.analyticsMediaUrl = mediaUrl || '';
+
+  const mediaCompleteObject = {
+    event: 'video.complete',
+    eventInfo: {
+      id: '2121221',
+      attributes: {
+        mediaInfo: {
+          mediaName: '',
+          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaType: 'video',
+        },
+      },
+      section: {
+        sectionInfo: {
+          sectionName: 'Section',
+          sectionID: '',
+        },
+      },
+      block: {
+        blockInfo: {
+          blockName: '',
+          blockDetails: '',
+        },
+      },
+    },
+  };
+
+  const randomNum = 100000 + Math.random() * 900000;
+  mediaCompleteObject.eventInfo.id = Math.floor(randomNum).toString();
+  mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
+  mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName || '';
+  mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
+  window.adobeDataLayer.push(mediaCompleteObject);
+}
+
 export function getVideoElement(props) {
   const [videoTitle, videoDescp, source, videoFormat, autoplay,
     enableLoop, enableVideoControls, muted, posters, onHoverPlay] = props;
@@ -187,6 +272,29 @@ export function getVideoElement(props) {
       video.play();
     }
   };
+
+  let checkVideoEnd = '';
+  let isVideoPlayed = false;
+
+  video.addEventListener('play', () => {
+    if (!isVideoPlayed) {
+      checkVideoEnd = setInterval(() => {
+        if (Math.ceil(video.currentTime) === 1) {
+          triggerMediaPlayAnalytics(video);
+        }
+        if (Math.ceil(video.currentTime) === Math.ceil(video.duration)) {
+          triggerMediaCompleteAnalytics(video);
+          clearInterval(checkVideoEnd);
+          isVideoPlayed = true;
+        }
+      }, 1000);
+    }
+  });
+
+  video.addEventListener('pause', () => {
+    clearInterval(checkVideoEnd);
+  });
+
   return video;
 }
 
