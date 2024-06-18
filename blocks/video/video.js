@@ -276,7 +276,6 @@ export function getVideoElement(props) {
   let isVideoPlayed = false;
 
   video.addEventListener('play', () => {
-    console.log(video.title + isVideoPlayed);
     if (!isVideoPlayed) {
       checkVideoEnd = setInterval(() => {
         if (Math.ceil(video.currentTime) === 1) {
