@@ -822,7 +822,7 @@
       {
         "component":"select",
         "name":"analytics_button",
-        "label":"Button/Link type", 
+        "label":"Button/Link Type", 
         "valueType": "string",
         "options": [
           {
@@ -841,7 +841,7 @@
       },
       {
         "component": "select",
-        "label": "Only if other is selected the following opotions should appear:",
+        "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
         "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
@@ -1147,7 +1147,7 @@
       {
         "component":"select",
         "name":"analytics_button",
-        "label":"Button/Link type", 
+        "label":"Button/Link Type", 
         "valueType": "string",
         "options": [
           {
@@ -1166,7 +1166,7 @@
       },
       {
         "component": "select",
-        "label": "Only if other is selected the following opotions should appear:",
+        "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
         "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
