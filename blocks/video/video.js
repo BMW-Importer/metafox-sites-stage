@@ -154,7 +154,7 @@ function triggerMediaCompleteAnalytics(video) {
       },
       section: {
         sectionInfo: {
-          sectionName: 'Section',
+          sectionName: '',
           sectionID: '',
         },
       },
@@ -275,10 +275,10 @@ export function getVideoElement(props) {
 
   let checkVideoEnd = '';
   let isVideoPlayed = false;
-  let isVideoStarted  = false;
+  let isVideoStarted = false;
 
   video.addEventListener('play', () => {
-    if(!isVideoStarted) {
+    if (!isVideoStarted) {
       isVideoStarted = true;
       triggerMediaPlayAnalytics(video);
     }
