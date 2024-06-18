@@ -88,6 +88,7 @@ export default function decorate($block) {
     const $button = document.createElement('button');
     const { $tab, title, name } = tab;
     $button.textContent = title;
+    $block.querySelector('ul').setAttribute('tabindex', 0);
     $button.setAttribute('tabindex', index === 0 ? 0 : -1);
     $button.setAttribute('data-tab-index', index);
     $tab.replaceChildren($button);
@@ -135,9 +136,11 @@ export default function decorate($block) {
   });
 
   $block.addEventListener('keydown', (ev) => {
-    const btnList = Array.from(ev.target.closest('ul').querySelectorAll('button'));
-    const currentIndex = btnList.indexOf(ev.target);
+    const tabList = ev.target.closest('ul');
+    const btnList = Array.from(tabList.querySelectorAll('button'));
+    const currentIndex = btnList.indexOf(tabList.querySelector('button.active'));
     let nextBtn = btnList[currentIndex];
+    tabList.focus();
     if ((ev.key === 'ArrowDown' || ev.key === 'ArrowRight')
       && currentIndex !== btnList.length - 1) {
       nextBtn = btnList[currentIndex + 1];
@@ -147,6 +150,6 @@ export default function decorate($block) {
     }
     ev.target.tabIndex = -1;
     nextBtn.tabIndex = 0;
-    nextBtn.focus();
+    nextBtn.click();
   });
 }
