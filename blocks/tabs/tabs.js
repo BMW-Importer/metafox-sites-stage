@@ -29,13 +29,56 @@ export function createTabs($block) {
       $tabContent.classList.add('tab-item', 'hidden');
       tab.$content = $tabContent;
       $ul.classList.add(tabsVariationName);
+      $ul.setAttribute('aria-label', 'Tab description');
     }
   });
   return tabs;
 }
 
+export function setSmoothScroll($button, $block) {
+  const buttonWidth = $button.clientWidth;
+  const scrollableList = $block.querySelector('ul');
+  const buttonLeftPos = $button.offsetLeft - scrollableList.offsetLeft;
+  const leftPosition = (buttonLeftPos + 2 * buttonWidth) - scrollableList.clientWidth;
+  const scrollPos = scrollableList.scrollLeft;
+  if (buttonLeftPos < scrollableList.clientWidth
+    && scrollPos > 0) {
+    $block.querySelector('ul').scrollTo({
+      left: buttonLeftPos - 2 * buttonWidth,
+      behavior: 'smooth',
+    });
+  } else if (leftPosition >= 0) {
+    $block.querySelector('ul').scrollTo({
+      left: scrollPos + 2 * buttonWidth,
+      behavior: 'smooth',
+    });
+  }
+}
+
+export function maskTabElems(ev, $block) {
+  const self = $block.querySelector('ul');
+  const curPos = self.scrollLeft;
+  if (curPos === 0) {
+    $block.classList.add('mask-right');
+    $block.classList.remove('mask-left');
+  } else {
+    const max = self.scrollWidth - self.clientWidth;
+    if (curPos + 1 >= max) {
+      if (max >= 0) {
+        $block.classList.add('mask-left');
+        $block.classList.remove('mask-right');
+      } else {
+        $block.classList.add('mask-left', 'mask-right');
+      }
+    } else {
+      $block.classList.add('mask-left', 'mask-right');
+    }
+  }
+}
+
 export default function decorate($block) {
   const tabs = createTabs($block);
+  const scrollableElem = $block.querySelector('ul');
 
   tabs.forEach((tab, index) => {
     const $button = document.createElement('button');
@@ -54,14 +97,7 @@ export default function decorate($block) {
         $button.classList.add('active');
         const blockPosition = $block.getBoundingClientRect().top;
         const offsetPosition = blockPosition + window.scrollY - 80;
-        const buttonWidth = $button.clientWidth;
-        const leftPosition = ($button.offsetLeft + 3 * buttonWidth) - window.innerWidth;
-        if (leftPosition >= 0) {
-          $block.querySelector('ul').scrollTo({
-            left: buttonWidth + leftPosition,
-            behavior: 'smooth',
-          });
-        }
+        setSmoothScroll($button, $block);
 
         tabs.forEach((t) => {
           if (name === t.name) {
@@ -81,5 +117,14 @@ export default function decorate($block) {
       $button.classList.add('active');
       tab.$content.classList.remove('hidden');
     }
+  });
+  setTimeout(() => {
+    if (scrollableElem.scrollWidth > scrollableElem.clientWidth) {
+      $block.classList.add('mask-right');
+    }
+  }, 1000);
+
+  scrollableElem.addEventListener('scroll', (ev) => {
+    maskTabElems(ev, $block);
   });
 }

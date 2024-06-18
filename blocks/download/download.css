@@ -46,4 +46,9 @@
     .download-wrapper {
         margin-bottom: .5rem;
     }
+
+    .download-wrapper .download.block p a {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
 }
