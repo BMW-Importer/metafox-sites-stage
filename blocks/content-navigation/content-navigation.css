@@ -341,7 +341,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       text-align: left;
       height: 52px;
       border-left: 4px solid transparent;
-      font-weight: 700;
+      font-weight: 400;
+      line-height: 22px;
    }
 
 
@@ -367,10 +368,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
     align-items: center;
     cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
     justify-content: center;
-    line-height: 2.5rem;
+    line-height: 22px;
     min-height: 2.25rem;
     text-align: center;
     border-radius: 0.1875rem;
@@ -419,6 +420,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
 
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
       padding: 0.5rem;
+      line-height: 22px;
     }
 
     .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-arrow-right {
