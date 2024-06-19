@@ -69,7 +69,6 @@ function addAnalyticsCustomClickEvent() {
       const blockName = e.target.getAttribute('data-analytics-block-name');
       const sectionId = e.target.getAttribute('data-analytics-section-id');
       const linkURL = e.target.getAttribute('href');
-
       pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL]);      
     });
   });
