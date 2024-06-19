@@ -183,7 +183,7 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
   }
 
   footer .footer .section:nth-child(3) {
-    padding: 2rem 6rem 1.25rem 6rem;
+    padding: 2rem 6rem 1.25rem;
     gap: 2rem;
   }
 
@@ -207,11 +207,6 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     margin-left: -5px;
   }
 
-  footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li a{    
-    position: relative;
-    top: -5px;
-  }
-
   footer .footer .section:first-child .link-list-detail .button-container {
     font-size: 0.9375rem;
     font-weight: 500; 
@@ -230,6 +225,11 @@ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-de
     font-size: 0.9375rem !important;
     font-weight: 500;
     line-height: 1.5rem !important;
+ }
+
+ footer .footer .section:nth-child(3) .link-list-wrapper.horizontal .link-list-detail ul li a{    
+   position: relative;
+   top: -5px;
  }
 
 footer .link-list-wrapper.vertical .link-list-title {       
