@@ -40,7 +40,7 @@
       "gearBox": "7 - automatisch",
       "driveType": "VR"
     },
-    "effectDate": "2024-06-17",
+    "effectDate": "2024-06-18",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
@@ -72,21 +72,23 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "6.4–5.6",
+            "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "144–127",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "0.9",
             "additionalRangeDC": "-",
             "chargeACDC": "-",
+            "chargeAC": "-",
             "charge_AC_0_100": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "-"
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
             "length": "4500",
@@ -164,21 +166,23 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "6.4–5.6",
+            "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "145–127",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "0.9",
             "additionalRangeDC": "-",
             "chargeACDC": "-",
+            "chargeAC": "-",
             "charge_AC_0_100": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "-"
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
             "length": "4500",
