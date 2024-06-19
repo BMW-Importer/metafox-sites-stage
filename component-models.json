@@ -3418,5 +3418,16 @@
         "value": true
       }
     ]
+  },
+  {
+    "id": "custom-assetpicker",
+    "fields": [
+      {
+        "component": "bmw-custom-asset:custom-asset",
+        "valueType": "reference",
+        "name": "Custom Asset",
+        "label": "Custom Asset"
+      }
+    ]
   }
 ]
