@@ -1,5 +1,3 @@
-const numOfFocusElem = 3;
-
 export default function generateVideoDetailMarkUp(props) {
   const [videoSlideHeadline, videoSlideCopyText,
     button, index, showless, block] = props;

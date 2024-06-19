@@ -1,5 +1,3 @@
-const numOfFocusElem = 3;
-
 export function generateImgSlidePicture(props) {
   const [imgDOMContainer, imageSlideImgRef] = props;
   const propImgElem = imageSlideImgRef.querySelector('img');
