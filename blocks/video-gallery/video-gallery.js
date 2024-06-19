@@ -346,8 +346,8 @@ function generateMediaGallery(videoGallery, block, callback) {
     if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
     // converting string to boolen
-    const isLoopVideo = videoGallery.querySelector('h3')?.textContent.trim() === 'true';
-    const isAutoPlayVideo = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
+    const isLoopVideo = videoGallery.querySelector('h1')?.textContent.trim() === 'true';
+    const isAutoPlayVideo = videoGallery.querySelector('h2')?.textContent.trim() === 'true';
     const enableHideControls = videoGallery.querySelector('h5')?.textContent.trim() === 'true';
     const isMuted = videoGallery.querySelector('h6')?.textContent.trim() === 'true';
     const onHoverPlay = false;
