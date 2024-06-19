@@ -350,9 +350,12 @@ export default function decorate(block) {
   carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
 
   if (block.children.length > 0) {
-  // loop through all children blocks
+    console.log(block.children);
+    // loop through all children blocks
     [...panels].forEach((panel, index) => {
-      const [content, media, cta] = panel.children;
+      const [classes, content, media, cta] = panel.children;
+      console.log(classes, panel);
+
       panel.textContent = '';
       if (media?.children?.length > 1) {
         // Create a wrapper for video card elements
