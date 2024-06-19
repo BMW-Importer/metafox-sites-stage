@@ -3185,6 +3185,14 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "classes",
+        "description": "Defines the classes",
+        "value": "",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "content_imageCarouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
