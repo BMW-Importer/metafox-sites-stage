@@ -263,7 +263,7 @@ export function getVideoElement(props) {
   video.addEventListener('click', (event) => {
     event.stopImmediatePropagation();
     if (video.paused) {
-      video.play();
+      video.play().catch();
     } else {
       video.pause();
     }
@@ -305,7 +305,7 @@ export function getVideoElement(props) {
 
   video.addEventListener('touchstart', () => {
     if (video.paused) {
-      video.play();
+      video.play().catch();
     } else {
       video.pause();
     }
@@ -316,9 +316,9 @@ export function getVideoElement(props) {
   video.oncanplay = () => {
     if (autoplay && video.dataset.isVideoInViewPort === 'true') {
       video.muted = !userUnmuted;
-      video.play();
+      video.play().catch();
     } else {
-      video.play();
+      video.play().catch();
       video.pause();
     }
   };
