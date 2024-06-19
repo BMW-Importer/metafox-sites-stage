@@ -826,16 +826,16 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Exit",
-            "value": "Exit"
+            "name": "exit",
+            "value": "exit"
           },
           {
-            "name": "Download",
-            "value": "Download"
+            "name": "download",
+            "value": "download"
           },
           {
-            "name": "Other",
-            "value": "Other"
+            "name": "other",
+            "value": "other"
           }          
         ]    
       },
@@ -844,7 +844,7 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
             "name": "Learn More",
@@ -3432,6 +3432,17 @@
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
         "valueType": "boolean",
         "value": true
+      }
+    ]
+  },
+  {
+    "id": "custom-assetpicker",
+    "fields": [
+      {
+        "component": "bmw-custom-asset:custom-asset",
+        "valueType": "reference",
+        "name": "Custom Asset",
+        "label": "Custom Asset"
       }
     ]
   }

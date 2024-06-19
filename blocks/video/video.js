@@ -138,6 +138,7 @@ function enableVideoFeature(props) {
 }
 
 function triggerMediaPlayAnalytics(video) {
+  window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
   const mediaUrl = video.getAttribute('src');
@@ -201,7 +202,7 @@ function triggerMediaCompleteAnalytics(video) {
       },
       section: {
         sectionInfo: {
-          sectionName: 'Section',
+          sectionName: '',
           sectionID: '',
         },
       },
@@ -263,7 +264,7 @@ export function getVideoElement(props) {
   video.addEventListener('click', (event) => {
     event.stopImmediatePropagation();
     if (video.paused) {
-      video.play();
+      video.play().catch();
     } else {
       video.pause();
     }
@@ -305,7 +306,7 @@ export function getVideoElement(props) {
 
   video.addEventListener('touchstart', () => {
     if (video.paused) {
-      video.play();
+      video.play().catch();
     } else {
       video.pause();
     }
@@ -316,22 +317,24 @@ export function getVideoElement(props) {
   video.oncanplay = () => {
     if (autoplay && video.dataset.isVideoInViewPort === 'true') {
       video.muted = !userUnmuted;
-      video.play();
+      video.play().catch();
     } else {
-      video.play();
+      video.play().catch();
       video.pause();
     }
   };
 
   let checkVideoEnd = '';
   let isVideoPlayed = false;
+  let isVideoStarted = false;
 
   video.addEventListener('play', () => {
+    if (!isVideoStarted) {
+      isVideoStarted = true;
+      triggerMediaPlayAnalytics(video);
+    }
     if (!isVideoPlayed) {
       checkVideoEnd = setInterval(() => {
-        if (Math.ceil(video.currentTime) === 1) {
-          triggerMediaPlayAnalytics(video);
-        }
         if (Math.ceil(video.currentTime) === Math.ceil(video.duration)) {
           triggerMediaCompleteAnalytics(video);
           clearInterval(checkVideoEnd);
