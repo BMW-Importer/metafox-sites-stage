@@ -122,10 +122,40 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+export function debounce(func, delay) {
+  let timeoutId;
+  return function debouncedFunction(...args) {
+    const context = this;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+function handleClickFlyoutClose() {
+  document.body.addEventListener('click', (event) => {
+    const { target } = event;
+    if (!target.closest('.header-wrapper') && !target.closest('.menu-flyout-wrapper.showfly')) {
+      document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
+        item.classList.remove('showfly');
+      });
+      if (document.querySelector('.appear').classList.contains('content-page')) {
+        document.querySelector('.appear').classList.remove('content-page');
+        if (document.querySelector('.appear').classList.contains('white-background')
+            && document.querySelector('.header-wrapper').classList.contains('transparent')) {
+          document.querySelector('.header-wrapper').classList.remove('transparent');
+          document.querySelector('.header-wrapper').classList.add('white-background');
+        }
+      }
+    }
+  });
+}
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
+
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
@@ -207,6 +237,7 @@ export default async function decorate(block) {
         const childCount = flyoutMainContainer.children.length;
         if (childCount < 4) {
           flyoutMainContainer.style.justifyContent = 'center';
+          flyoutMainContainer.classList.add('single-submenu');
         }
         // Selecting the first child and adding the style 'grid-column-start: 2'
         if (flyoutMainContainer.children[0]) {
@@ -235,36 +266,13 @@ export default async function decorate(block) {
     });
   });
 
-  document.body.addEventListener('click', (event) => {
-    const { target } = event;
-    if (!target.closest('.header-wrapper') && !target.closest('.menu-flyout-wrapper.showfly')) {
-      document.querySelectorAll('.menu-flyout-wrapper').forEach((item) => {
-        item.classList.remove('showfly');
-      });
-      if (document.querySelector('.appear').classList.contains('content-page')) {
-        document.querySelector('.appear').classList.remove('content-page');
-      }
-    }
-  });
-
   const linkListSelector = document.querySelectorAll('.menu-flyout-wrapper .link-list-title');
   linkListSelector.forEach((anchor) => {
     anchor.addEventListener('click', (handleHeaderLinkList));
   });
 
   const flyoutContainers = document.querySelectorAll('.flyout-main-container');
-  function debounce(func, delay) {
-    let timeoutId;
-    return function debouncedFunction(...args) {
-      const context = this;
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        func.apply(context, args);
-      }, delay);
-    };
-  }
-
-  const handleScroll = debounce((event) => {
+  const handleScroll = this.debounce((event) => {
     const scrolledHeight = event.target.scrollTop;
     const targetElement = event.target.querySelector('.flyout-scroll-indicator-arrow');
     if (scrolledHeight > 0) {
@@ -279,4 +287,5 @@ export default async function decorate(block) {
   flyoutContainers.forEach((container) => {
     container.addEventListener('scroll', handleScroll);
   });
+  handleClickFlyoutClose();
 }

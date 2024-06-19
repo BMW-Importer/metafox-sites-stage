@@ -36,6 +36,195 @@
       "systemMaxTorque": "-",
       "gearBox": "-",
       "driveType": "AR"
-    }
+    },
+    "effectDate": "2024-06-18",
+    "vehicles": [
+      {
+        "transmissionCode": "S02TF",
+        "hybridCode": "PHEV",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "X",
+            "systemPower": "-",
+            "systemMaxTorque": "-",
+            "gearBox": "-",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "-",
+            "technicalCapacity": "-",
+            "nominalPower": "null (null) / null",
+            "nominalTorque": "-"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "0.9–0.8",
+            "consumptionWltpCombinedChargeSustaining": "6.5–5.7",
+            "emissionsWltpCombined": "21–19",
+            "electricConsumption": "18.1–16.1",
+            "electricRangeWltpCombined": "78–88",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "trunkCapacity": "-",
+            "tankCapacity": "-"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1",
+            "f2"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "electric": [
+            "f2",
+            "f3"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumption_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumptionBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+            "f6"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+            "f6"
+          ],
+          "charging": [
+            "f7"
+          ]
+        },
+        "footnotesData": {}
+      },
+      {
+        "transmissionCode": "S02TE",
+        "hybridCode": "PHEV",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "X",
+            "systemPower": "-",
+            "systemMaxTorque": "-",
+            "gearBox": "-",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "-",
+            "technicalCapacity": "-",
+            "nominalPower": "null (null) / null",
+            "nominalTorque": "-"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "0.9–0.8",
+            "consumptionWltpCombinedChargeSustaining": "6.5–5.7",
+            "emissionsWltpCombined": "21–19",
+            "electricConsumption": "18.1–16.1",
+            "electricRangeWltpCombined": "78–88",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "trunkCapacity": "-",
+            "tankCapacity": "-"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1",
+            "f2"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "electric": [
+            "f2",
+            "f3"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumption_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumptionBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+            "f6"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+            "f6"
+          ],
+          "charging": [
+            "f7"
+          ]
+        },
+        "footnotesData": {}
+      }
+    ]
   }
 }

@@ -40,6 +40,95 @@
       "systemMaxTorque": "400",
       "gearBox": "8 - automatisch",
       "driveType": "AR"
-    }
+    },
+    "effectDate": "2024-06-17",
+    "vehicles": [
+      {
+        "transmissionCode": "S02TE",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "10",
+        "volt48": true,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "D",
+            "systemPower": "145 (197)",
+            "systemMaxTorque": "400",
+            "gearBox": "8 - automatisch",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "4",
+            "technicalCapacity": "1995",
+            "nominalPower": "145 (197) / 4000",
+            "nominalTorque": "400 / 1500 - 2750"
+          },
+          "electric": {
+            "systemPower": "8 (11) / -",
+            "systemMaxTorque": "25"
+          },
+          "performance": {
+            "acceleration": "7.3",
+            "topSpeed": "228",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "6.1–5.5",
+            "emissionsWltpCombined": "159–144",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-",
+            "co2EquivalentOverallBest": "-",
+            "co2EquivalentOverall": "-"
+          },
+          "charging": {
+            "batteryCapacity": "0.9",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "charge_AC_0_100": "-",
+            "charge_DC_10_80": "-",
+            "chargingMaxAC": "-"
+          },
+          "weightMeasurements": {
+            "length": "5060",
+            "width": "1900",
+            "height": "1515",
+            "widthMirrors": "2156 (1081 / 1075)",
+            "wheelTurn": "2995.0",
+            "weightNotLoaded": "1905",
+            "weightMax": "2460",
+            "permittedLoad": "630",
+            "trailerLoad": "2000 / 100",
+            "trunkCapacity": "520",
+            "tankCapacity": "60.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "charging": [
+            "f7"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      }
+    ]
   }
 }

@@ -1,78 +1,79 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM } from './aem.js';
 import { multiContentGalFunAfterPageLoad } from '../blocks/multicontent-gallery/multicontent-gallery.js';
-import { changeAllVidSrcOnResize } from '../blocks/video/video.js';
+import { changeAllVidSrcOnResize, enableObserverForVideos } from '../blocks/video/video.js';
+import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js';
+import { pushCustomLinkAnalyticData } from './analytics-util.js';
+import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
 multiContentGalFunAfterPageLoad();
 changeAllVidSrcOnResize();
+addAnalyticsCustomClickEvent();
+enableObserverForVideos();
+mediaCarouselResizer();
+videoGalleryResizer();
 
 const page_tracking = {"page": {
-        "pageInfo": {
-            "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
-            "destinationURL": "https://www.bmw.rs/sr/index.html",
-            "variant": "real page",
-            "pageTitle": "BMW Srbija",
-            "windowInfo": {
-                "screenWidth": 3840,
-                "screenHeight": 2160,
-                "screenOrientation": "landscape",
-                "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-                "server": "www.bmw.rs",
-                "url": "https://www.bmw.rs/sr/index.html",
-                "urlClean": "https://www.bmw.rs/sr/index.html",
-            },
-            "timeInfo": {
-                "localTime": "20:43:11",
-                "utcTime": "18:43:11"
-            }
-        },
-        "attributes": {
-            "parentDomain": ".bmw.rs",
-            "brand": "bmw",
-        }
-    },
-    "eventInfo": {
-        "id": "2121221",
-        "eventName": "pageview",
-        "timeStamp": 1712774591731
-    },
-    "event": "pageview",
-    "user": {
-        "consent": {
-            "analytics": true,
-            "marketing": true,
-            "personalization": false
-        }
-    }}
+  "pageInfo": {
+      "version": "acdl: 2024-03-27t12: 24: 35.759+01: 00",
+      "destinationURL": "https://www.bmw.rs/sr/index.html",
+      "variant": "real page",
+      "pageTitle": "BMW Srbija",
+      "windowInfo": {
+          "screenWidth": 3840,
+          "screenHeight": 2160,
+          "screenOrientation": "landscape",
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+          "server": "www.bmw.rs",
+          "url": "https://www.bmw.rs/sr/index.html",
+          "urlClean": "https://www.bmw.rs/sr/index.html",
+      },
+      "timeInfo": {
+          "localTime": "20:43:11",
+          "utcTime": "18:43:11"
+      }
+  },
+  "attributes": {
+      "parentDomain": ".bmw.rs",
+      "brand": "bmw",
+  }},
+  "eventInfo": {
+      "id": "2121221",
+      "eventName": "pageview",
+      "timeStamp": 1712774591731
+  },
+  "event": "pageview",
+  "user": {
+    "consent": {
+        "analytics": true,
+        "marketing": true,
+        "personalization": false
+    }
+}}
 
 // add more delayed functionality here
 function analyticsTracking() {
-    opt_in_info();
     set_page_tracking();
-    window.setTimeout(() => { set_ecid() }, 1000)
 }
 
-function opt_in_info(){
-  const adobeDtm = window.adobeDataLayer;
-  console.log(adobeDtm.version);
-  const d = new Date();
-  alloy('setConsent', {
-    consent: [{
-      standard: 'Adobe',
-      version: '2.0',
-      value: {
-        collect: {
-          val: 'y'
-        },
-        metadata: {
-          time: '2024-04-30T07:00:05-7:00'
-        }
-      }
-    }]
+function addAnalyticsCustomClickEvent() {
+  const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custom-click=true]');
+  listOfCustomClickBtns.forEach((btn)=> {
+    btn.addEventListener('click', function(e) {
+      // e.preventDefault();
+      const analyticsLabel = e.target.getAttribute('data-analytics-label');
+      const primaryCategory = e.target.getAttribute('data-analytics-category');
+      const subCategory = e.target.getAttribute('data-analytics-sub-category');
+      const blockName = e.target.getAttribute('data-analytics-block-name');
+      const sectionId = e.target.getAttribute('data-analytics-section-id');
+      const linkURL = e.target.getAttribute('href');
+      pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL]);      
+    });
   });
 }
+
 var dateTime = new Date();
 
 // Format the date components
@@ -179,15 +180,5 @@ function set_page_tracking(){
     window.adobeDataLayer.push(page_tracking);
 
 }
-
-function set_ecid(){
-  const iframeBlock = document.getElementById('bmwIframe');
-  if(iframeBlock){
-    const anchor = iframeBlock.src;
-    alloy('appendIdentityToUrl', { url: anchor }).then(result => {
-        iframeBlock.src = result.url;});
-  }
-}
-
 
 analyticsTracking();

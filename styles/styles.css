@@ -51,6 +51,10 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
 
+  /* icon font opacity */
+  --iconfont400-opacity: 0;
+  --iconfont300-opacity: 0;
+
   /* nav height */
   --nav-height: 64px;
 
@@ -86,12 +90,19 @@ body.appear {
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  font-size: var(--base-font-size);
 }
 
 body {
   display: none;
   background-color: var(--background-color);
+}
+
+body.iconfont400-loaded {
+  --iconfont400-opacity: 1;
+}
+
+body.iconfont300-loaded {
+  --iconfont400-opacity: 1;
 }
 
 main {
@@ -108,46 +119,51 @@ h4, h5, h6 {
 }
 
 h1 { 
-  font-size: 2.188rem; 
-  line-height: 3.125rem;
+  font-size: 2.688rem; 
+  line-height: 3.75rem;
   font-weight: 300;
+  margin-top: 0.75rem;
 }
 
 h2 { 
-  font-size: 1.813rem; 
-  line-height: 2.625rem; 
+  font-size: 2.188rem; 
+  line-height: 3.125rem; 
   font-weight: 300;
+  margin-top: .5rem;
 }
 
 h3 { 
   font-size: 1.75rem; 
   line-height: 2.5rem;
   font-weight: 300;
+  margin-top: 0.25rem;
 }
 
 h4 { 
-  font-size: 0.875rem; 
-  line-height: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.175rem;
+  font-size: 0.75rem; 
+  line-height: 1rem;
+  font-weight: 300;
+
+  /* letter-spacing: 0.175rem; */
   text-transform: uppercase;
-  color: var(--light-border-color);
+  color: var(--light-text-color);
 }
 
 h5 { 
   font-size: 0.75rem; 
   line-height: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.125rem;
+  font-weight: 300;
+  
+  /* letter-spacing: 0.125rem; */
   text-transform: uppercase;
-  color: var(--light-border-color);
+  color: var(--light-text-color);
 }
 
 h6 { 
-  font-size: 0.875rem; 
+  font-size: 0.938rem;
   line-height: 0.75rem;
+  letter-spacing: 0.563rem;
   font-weight: 300;
-  letter-spacing: 0.45rem;
   text-transform: uppercase;
   color: var(--light-text-color);
 }
@@ -155,6 +171,11 @@ h6 {
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+p:has(picture:first-child) {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 code, pre {
@@ -250,6 +271,7 @@ button:disabled, button:disabled:hover {
 a.button.ghost-dark {
   background-color: transparent;
   border: 1px solid var(--light-text-color);
+  outline: 1px solid transparent;
   color: var(--light-text-color);
   font-size: 1rem;
   line-height: 1.25rem;
@@ -261,6 +283,7 @@ a.button.ghost-dark {
   align-content: center;
   text-rendering: optimizespeed;
   margin-bottom: 0;
+  border-radius: 3px;
 }
 
 a.button.ghost-dark.button-fixed-width {
@@ -276,7 +299,8 @@ a.button.ghost-dark-flex.button-flex-width {
 
 a.button.ghost-dark:hover,
 a.button.ghost-dark-flex:hover {
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
+  outline: 1px solid var(--text-color);
   font-weight: bold;
 }
 
@@ -378,8 +402,8 @@ p.button-container
 
 main img {
   max-width: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .icon {
@@ -467,10 +491,7 @@ main .section:first-child {
     padding: 0 var(--section-desktop-padding);
   }
 
-  .appear.white-background main .section {
-    padding: 0 var(--section-desktop-padding);
-  }
-  
+ 
   .appear.white-background main .section.columns-container .default-content-wrapper p {
     margin: 0
   }
@@ -480,8 +501,13 @@ main .section:first-child {
 @media (width >= 1920px){
   main .section {   
     max-width: 100vw;
-    padding-left: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
-    padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
+    padding-left: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
+    padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
+  }
+
+  main .section.no-padding {
+    padding-left: calc((100vw - (var(--max-component-width))) / 2);
+    padding-right: calc((100vw - (var(--max-component-width))) / 2);
   }
 }
 
@@ -597,32 +623,55 @@ textarea{
   visibility: hidden !important;
 }
 
-@media (width >= 360px) and (width < 768px) {
+@media (width >= 360px) and (width < 1280px) {
     h1 { 
       font-size: 2.063rem; 
-      line-height: 2.875rem; 
+      line-height: 2.875rem;
+      margin-top: .5rem; 
     }
 
     h2 { 
-      font-size: 1.8125rem; 
-      line-height: 2.5rem; 
+      font-size: 1.75rem; 
+      line-height: 2.5rem;
+      margin-top: .5rem;
     }
 
     h3 { 
-      font-size: 2.063rem; 
-      line-height: 2.875rem; 
+      font-size: 1.438rem; 
+      line-height: 2rem;
+      margin-top: 0.25rem;
+    }
+
+    h6 {
+      font-size: .875rem;
+      line-height: .75rem;
+      letter-spacing: 0.525rem;
     }
 }
 
-@media (width >= 768px) and (width < 1280px) {
+@media (width>=1920px) {
+  h1 {
+    font-size: 3.75rem;
+    line-height: 5.25rem;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    font-size: 2.813rem;
+    line-height: 3.875rem;
+    margin-top: .5rem;
+  }
+
   h3 {
-      font-size: 1.563rem;
-      line-height: 2.25rem;
-    }
-  
-    /* h1,
-    h2,
-    h3 {
-      padding: 1.25rem 3rem;
-    } */
+    font-size: 2.125rem;
+    line-height: 3rem;
+    margin-top: .5rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+    line-height: 0.875rem;
+    letter-spacing: .6rem;
+  }
+
 }

@@ -22,7 +22,8 @@
       "copy_text",
       "image",
       "button",
-      "headline"
+      "headline",
+      "eyebrow"
     ]
   },
   {
@@ -85,7 +86,7 @@
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": ["superscript", "subscript"],
+      "sr_script": ["superscript"],
       "list": ["bullist", "numlist"],
       "insert": ["link"],
       "blocks": [],
@@ -112,6 +113,38 @@
   },
   {
     "id": "text-with-video",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "video-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "image-carousel",
     "components": [],
     "rte": {
       "format": ["bold"],
@@ -174,7 +207,8 @@
       "disclaimer",
       "download",
       "quote",
-      "media-carousel"
+      "media-carousel",
+      "video-gallery"
     ]
   },
   {
@@ -196,7 +230,15 @@
   },
   {
     "id": "tabs-section",
-    "components":[]
+    "components": [
+      "copy_text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "video"
+    ]
   },
   {
     "id": "copy_text",
@@ -222,9 +264,9 @@
       "sr_script": [],
       "list": [],
       "insert": [],
-      "advanced": [],
+      "advanced": ["h3"],
       "extensions": [],
-      "editor": []
+       "editor": []
     }
   },
   {
@@ -273,18 +315,16 @@
     ]
   },
   {
-    "id": "video-carousel",
-    "components": []
-  },
-  {
-    "id": "image-carousel",
-    "components": []
-  },
-  {
     "id": "background-media",
     "components":[
       "background-image",
       "background-video"
+    ]
+  },
+  {
+    "id": "video-gallery",
+    "components": [
+      "video-gallery-slide"
     ]
   }
 ]

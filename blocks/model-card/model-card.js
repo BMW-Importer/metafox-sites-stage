@@ -1,62 +1,39 @@
-import { buildGetPlaceholder, getModelPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
-
-async function modelPlaceholder(modelCode) {
-  try {
-    const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode[0]}.json`;
-    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
-    const response = await fetch(`${origin}${endpointUrl}`);
-    const responseJson = await response.json();
-    buildGetPlaceholder(responseJson);
-    return getModelPlaceholderObject();
-  } catch (error) {
-    console.log('Error fetching data for building get placeholder', error);
-    throw error;
-  }
-}
-
-function replacePlaceholder(string, data) {
-  return string.replace(/\${model(.*?)}/g, (match, expression) => {
-    const key = expression.split('.');
-    let value = data;
-    if (key[1] in value) {
-      value = value[key[1]];
-    } else {
-      return match;
-    }
-    return value;
-  });
-}
-
-function getCosyImageUrl(response) {
-  const imgUrl = response.walkaround.res_1280x720.images[2].viewImage;
-  return imgUrl;
-}
-
-async function getCosyImage(modelCode) {
-  try {
-    const endpointUrl = `/WDH_API/Models/CosyImages/${modelCode[0]}-cosy.json`;
-    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
-    const response = await fetch(`${origin}${endpointUrl}`);
-    const responseJson = await response.json();
-    return getCosyImageUrl(responseJson);
-  } catch (error) {
-    console.log('Error fetching data for building get placeholder', error);
-    throw error;
-  }
-}
+import { fetchSetPlaceholderObject, fetchModelPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
+import {
+  buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder,
+} from '../../scripts/common/wdh-util.js';
 
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
   const [, placeholder] = props;
-  const modelCode = ['7K11', '61FF'];
+  const modelCodeArray = ['7K11', '61CM', '7K11'];
   block.textContent = '';
-  modelPlaceholder(modelCode).then((wdhPlaceholderObject) => {
-    const updatedPlaceholder = replacePlaceholder(placeholder.innerText, wdhPlaceholderObject);
+  buildContext(modelCodeArray).then(() => {
+    // console.log(wdhSetPlaceholder);
+    const wdhModelPlaceholder = fetchModelPlaceholderObject();
+    const wdhSetPlaceholder = fetchSetPlaceholderObject();
+    const modelRegex = /\${model(.*?)}/g;
+    const textContent = placeholder.innerText;
+    let updatedPlaceholder = replacePlaceholder(textContent, wdhModelPlaceholder, modelRegex);
+    const setRegex = /\${set(.*?)}/g;
+    updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
+    console.log(wdhSetPlaceholder);
     block.append(updatedPlaceholder);
   });
-  getCosyImage(modelCode).then((cosyImageUrl) => {
-    const imgTag = document.createElement('img');
-    imgTag.src = cosyImageUrl;
-    block.append(imgTag);
+  modelCodeArray.forEach((agCode) => {
+    getCosyImage(agCode).then((responseJson) => {
+      const cosyImageUrl = getCosyImageUrl(responseJson, 'res_1280x720', 20);
+      const imgTag = document.createElement('img');
+      imgTag.src = cosyImageUrl;
+      block.append(imgTag);
+    });
+    getCosyImage(agCode).then((responseJson) => {
+      const cosyImageUrlNew = getCosyImageUrl(responseJson, 'res_640x360', 90);
+      const imgTag = document.createElement('img');
+      imgTag.src = cosyImageUrlNew;
+      block.append(imgTag);
+    });
   });
+  const a = fetchSetPlaceholderObject();
+  console.log(a);
 }

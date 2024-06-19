@@ -13,7 +13,7 @@
     justify-content: end;
 }
 
-.block.multicontent-gallery .vid-img-slide-cover-title {    
+.block.multicontent-gallery .vid-img-slide-cover-title {
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
     cursor: pointer;
     font-size: 1rem;
@@ -29,6 +29,9 @@
     -webkit-box-orient: vertical;
     margin: 0;
     padding-right: 3rem;
+    letter-spacing: unset;
+    text-transform: unset;
+    color: #000;
 }
 
 .block.multicontent-gallery .vid-img-slide-cover-title::after {
@@ -38,7 +41,8 @@
     right: 0;   
     content: "arrow_chevron_down";    
     direction: ltr;
-    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif; 
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1rem;
     line-height: 1;
@@ -59,6 +63,8 @@
     color: var(--light-text-color);
     margin: 0;
     margin-bottom: 0.75rem;
+    letter-spacing: unset;
+    text-transform: unset;
 }
 
 .block.multicontent-gallery .vid-img-slide-expand-descp {
@@ -76,11 +82,21 @@
     display: block;
 }
 
+.block.multicontent-gallery .vid-img-slide-link-btn p{
+    text-align: start;
+}
+
 .block.multicontent-gallery .vid-img-slide-link-btn a {
     margin-top: 0;
     font-size: 0.875rem;
     min-height: 2.25rem;
     border-radius: 0.1876rem;
+}
+
+.block.multicontent-gallery .vid-img-slide-link-btn a:focus-visible {
+    outline: none;
+    border: none;
+    box-shadow: inset 0 0 0 .25rem var(--light-link-hover-color), inset 0 0 0 .3125rem var(--background-color);
 }
 
 .block.multicontent-gallery .overlay-effect {
@@ -116,11 +132,18 @@
     position: relative;
 }
 
+.block.multicontent-gallery .vid-img-slide-showmore-btn-link:focus-visible { 
+    outline: none;
+    border: none; 
+    box-shadow: inset 0 0 0 .25rem var(--light-link-hover-color), inset 0 0 0 .3125rem var(--background-color);
+}
+
 .block.multicontent-gallery .vid-img-slide-showmore-btn-link::before {
     position: relative;
     content: "arrow_chevron_down";
     direction: ltr;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     font-weight: 400;
     height: 1.25rem;
@@ -187,6 +210,10 @@
     position: relative;
 }
 
+.block.multicontent-gallery .video-image-detail-container .detail:focus-visible {
+    outline: 3px solid var(--light-link-hover-color);
+}
+
 .block.multicontent-gallery .video-image-detail-container .detail::after {
     position: absolute;
     top: 0;   
@@ -220,6 +247,14 @@
     width: 100%;
     flex-direction: column;
     position: relative;
+    padding: unset;
+    white-space: unset;
+}
+
+.block.multicontent-gallery .video-image-detail-container .detail .vid-img-slide-cover:focus-visible {
+    outline: none;
+    border: none; 
+    box-shadow: inset 0 0 0 .25rem var(--light-link-hover-color), inset 0 0 0 .3125rem var(--background-color);
 }
 
 .block.multicontent-gallery .video-image-detail-container .detail .vid-img-slide-expand-cover {
@@ -284,6 +319,7 @@
     
     .block.multicontent-gallery .video-image-detail-container{
         height: auto;
+        padding: 0 48px;
     }
 
     .block.multicontent-gallery .video-image-detail-container .detail {

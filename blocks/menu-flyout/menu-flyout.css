@@ -24,7 +24,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     content: "arrow_chevron_down";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -46,6 +47,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     display: block;
     width: 100%;
     padding: 0 0.75rem;
+    box-sizing: border-box;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
@@ -54,8 +56,6 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
 header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
-    width: 15.625rem;
-    height: 9.375rem;
     object-fit: cover;
     vertical-align: middle;
 }
@@ -71,10 +71,10 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
     font-family: var(--fixed-font-family);
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--light-text-color);
     line-height: 1.25rem;
-    font-weight: 700;
+    font-weight: 500;
     word-break: break-all;
     text-decoration: none;
     align-items: center;
@@ -105,7 +105,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons",arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -122,12 +123,10 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     padding-right: 0;
     margin: 0 0 1rem;
     color: var(--light-text-color);
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     font-weight: 300;
-    line-height: 0.75rem;
-    letter-spacing: 0.125rem;
+    line-height: 1rem;
     word-break: break-all;
-    text-transform: uppercase;
 }
 
 header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail {
@@ -146,7 +145,8 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
     content: " ";
     direction: ltr;
     display: block;
-    font-family: "bmw_next_icons", arial,helvetica,roboto,sans-serif;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -196,7 +196,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         flex-wrap: wrap;
         gap: 0;
         row-gap:0;
-        padding: 1rem 2.25rem;
+        padding: 0 2.25rem;
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
@@ -215,16 +215,61 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
-        margin: 0 0 1.5rem;
+        margin: 0 0 .75rem;
+    }
+}
+
+@media (width >= 768px) and (width < 830px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-menu-teaser{
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-menu-teaser {
+        padding: 0;
+        position: relative;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
+        padding: 0 2.25rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-main-container.single-submenu .link-list-wrapper.vertical li {
+        margin-bottom: 1.5rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;
+       
+    }
+}
+
+@media (width >= 830px) and (width < 1023px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+        width: 50%;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+    }
+}
+
+@media (width >= 1024px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+        width: 25%;
     }
 }
 
 /* ipad pro */
 @media (width >= 830px) and (width < 1280px) {
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
-        width: 25%;
-    }
-
     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
         overflow: unset;
         margin-left: 0;
@@ -235,12 +280,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         flex-wrap: wrap;
         gap: 0;
         row-gap:0;
-        padding: 1rem 2.5rem;
-    }
-
-    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
-        font-size: 0.875rem;
-        word-break: unset;
+        padding: 0 2.5rem;
     }
 
     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
@@ -265,7 +305,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
      }
 
      header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
-        padding: 1.5rem 2.25rem;
+        padding: 0 2.25rem;
      }
 
      header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title {
@@ -280,6 +320,12 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         text-transform: uppercase;
       }
 
+      header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+        word-break: unset;
+    }
    
 }
 
@@ -302,7 +348,10 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
-        width: 100%;  
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.5rem;
+        box-sizing: border-box
     }
 
     header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
@@ -327,4 +376,46 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         left: 0;
         position: absolute;
     }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+    }
 }
+
+/* Desktop  */
+@media (width >= 1280px) and (width < 1920px) { 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+        width: 15.875rem;
+        height: 8.938rem;
+  }
+}
+
+/* large desktop */
+@media (width >= 1920px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper .flyout-main-container .flyout-scroll-indicator-arrow {
+        display: none;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+      width: 25.875rem;
+      height: 14.5rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-family: var(--fixed-font-family);
+        font-size: 1rem;
+        color: var(--light-text-color);
+        line-height: 1.625rem;
+        font-weight: 500;
+        word-break: break-all;
+        text-decoration: none;
+        align-items: center;
+        display: inline-flex;
+        text-wrap: pretty;
+    }
+
+  }

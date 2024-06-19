@@ -260,7 +260,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorlabel",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
@@ -268,7 +268,7 @@
         "component": "text-input",
         "valueType": "string",
         "description": "",
-        "name": "sectionanchorid",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -276,8 +276,22 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "",
-        "name": "sectioncontentnavigation",
-        "valueType": "boolean"
+        "name": "contentnavigation",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -365,7 +379,21 @@
         "label": "Display in Content Navigation",
         "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean"
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
       }
     ]
   },
@@ -381,78 +409,65 @@
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label of the Tab that will appear on the page.",
-        "name": "content_tablabel",
+        "name": "tab-label",
         "value": "",
-        "label": "Tab Label"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_tablabelType",
-        "value": "h2",
         "label": "Tab Label",
-        "hidden": true
+        "required": true
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the description of the Tab, which will be read by screen-readers.",
-        "name": "content_tabdesc",
+        "name": "tab-desc",
         "value": "",
-        "label": "Tab description"
+        "label": "Tab description",
+        "required": true
       },
       {
         "component": "select",
-        "name": "content_tabstyle",
-        "value": "",
-        "label": "Tab style",
+        "name": "tab-style",
+        "value": "secondary",
+        "label": "Tab Style",
         "valueType": "string",
         "required": true,
         "description": "Defines the styling in which the tab will be displayed.",
         "options": [
           {
             "name": "Default",
-            "value": ""
+            "value": "secondary"
           },
           {
             "name": "Buttons",
-            "value": ""
+            "value": "primary"
           }
         ]
-      },    
+      },
       {
-        "component": "boolean", 
+        "component": "boolean",
         "label": "Display Top Margin",
         "description": "Defines if the top margin is displayed. If toggled off, the top margin will not be displayed.",
-        "name": "content_displaytopmargin",
-        "valueType": "boolean"
+        "name": "tab-topmargin",
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
         "label": "Anchor",
-        "name": "anchor_tabssectiontab2"
+        "name": "tabssectiontab2"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the label that will appear in the Content Navigation, allowing the user to navigate directly to this section in the page.",
-        "name": "anchor_anchorlabel",
+        "name": "anchorlabel",
         "value": "",
         "label": "Anchor Label"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "anchor_anchorlabelType",
-        "value": "h2",
-        "label": "Anchor Label",
-        "hidden": true
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "description": "Defines the anchor ID that will appear in the URL when the user navigates to this section of the page. When authoring, instead of spaces between words, please use a hyphen ( - ).",
-        "name": "anchor_anchorid",
+        "name": "anchorid",
         "value": "",
         "label": "Anchor ID"
       },
@@ -460,19 +475,20 @@
         "component": "boolean",
         "label": "Display in Content Navigation",
         "description": "Defines if the Anchor Label will be displayed in the content navigation as a tab. If toggled on, the Anchor Label will be displayed.",
-        "name": "anchor_tabscontentnavigation",
-        "valueType": "boolean"
+        "name": "contentnavigation",
+        "valueType": "boolean",
+        "value": true
       },
       {
         "component": "tab",
         "label": "Analytics",
-        "name": "analytics_tabssectiontab3"
+        "name": "tab-analytics"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
-        "name": "analytics_sectionlabel",
+        "name": "analytics-label",
         "value": "",
         "label": "Section Label"
       }
@@ -663,7 +679,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithImageTab1"
+        "name": "content_textWithImageTab"
       },
       {
         "component": "select",
@@ -687,7 +703,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageeyebrow",
+        "name": "content_imageeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -695,29 +711,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_imageeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow Bold 1",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow Bold 2",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageheadline",
+        "name": "content_imageheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -725,7 +741,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "imageheadlineType",
+        "name": "content_imageheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
@@ -739,7 +755,7 @@
       },
       {
         "component": "richtext",
-        "name": "imagecopytext",
+        "name": "content_imagecopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -748,7 +764,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "textWithImageTab2"
+        "name": "media_textWithImageTab2"
       },
       {
         "component": "reference",
@@ -772,39 +788,119 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithImageTab3"
+        "name": "cta_textWithImageTab3"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imagebuttonlinkLabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imagebuttonlink",
+        "name": "cta_imagebuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "imagebuttonstyling",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
+        "name": "cta_imagebuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
+        "valueType": "string",
         "options": [
           {
-            "name": "Link Button",
-            "value": "secondary"
-          }
+            "name": "exit",
+            "value": "exit"
+          },
+          {
+            "name": "download",
+            "value": "download"
+          },
+          {
+            "name": "other",
+            "value": "other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following options should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
         ]
       }
+     
     ]
   },
   {
@@ -813,7 +909,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "textWithVideoTab1"
+        "name": "content_textWithVideoTab1"
       },
       {
         "component": "select",
@@ -837,7 +933,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoeyebrow",
+        "name": "content_videoeyebrow",
         "value": "",
         "label": "Eyebrow",
         "description": "Defines the text that will appear above the headline."
@@ -845,29 +941,29 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "style",
+        "name": "content_videoeyebrowType",
         "value": "",
         "label": "Eyebrow Type",
         "description": "Defines the styling of the text that will appear above the headline.",
         "options": [
           {
             "name": "Eyebrow 1 Bold",
-            "value": "eyebrowbold1"
+            "value": "h4"
           },
           {
             "name": "Eyebrow 2 Bold",
-            "value": "eyebrowbold2"
+            "value": "h5"
           },
           {
             "name": "Iconization",
-            "value": "iconization"
+            "value": "h6"
           }
         ]
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videoheadline",
+        "name": "content_videoheadline",
         "value": "",
         "label": "Headline",
         "description": "Defines the headline."
@@ -875,21 +971,15 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "videoheadlineType",
+        "name": "content_videoheadlineType",
         "value": "h2",
         "label": "Headline Type",
         "description": "Defines the styling of the headline.",
-        "hidden": true,
-        "options": [
-          {
-            "name": "H2",
-            "value": "h2"
-          }
-        ]
+        "hidden": true
       },
       {
         "component": "richtext",
-        "name": "videocopytext",
+        "name": "content_videocopytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that will appear in the paragraph styling.",
@@ -898,7 +988,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "textWithVideoTab2"
+        "name": "media_textWithVideoTab2"
       },
       {
         "component": "text",
@@ -934,7 +1024,7 @@
         "name": "media_mobileFileReference",
         "label": "Mobile Video Path",
         "value": "",
-        "description": "Defines video that will play on mobile.",
+        "description": "Defines the video that will play on mobile.",
         "multi": false
       },
       {
@@ -965,12 +1055,28 @@
         "description": "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_loopVideoType",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_autoplay",
         "valueType": "boolean",
         "value": true,
         "description": "Defines if the video will autoplay. If toggled on, the video will autoplay."
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_autoplayType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
       },
       {
         "component": "boolean",
@@ -981,6 +1087,14 @@
         "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
+        "component": "text",
+        "label": "Video Controls",
+        "name": "media_videoControlsType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Mute Video",
         "name": "media_muteVideo",
@@ -989,39 +1103,126 @@
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound."
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_muteVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
-        "name": "textWithVideoTab3"
+        "name": "cta_textWithVideoTab3"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "videolinklabel",
-        "value": "",
-        "label": "Link Label",
-        "description": "Defines the text to be displayed in the button or as the link."
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "videobuttonlink",
+        "name": "videobuttonLink",
         "value": "",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"
       },
       {
-        "component": "select",
+        "component": "text",
         "valueType": "string",
-        "name": "videobuttonstyling",
-        "value": "linkbutton",
-        "label": "Button Styling",
-        "description": "Defines the styling applied to the button or if the button will displayed as a link.",
-        "hidden": true,
+        "name": "videobuttonLinkText",
+        "value": "",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link."
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
+        "valueType": "string",
         "options": [
           {
-            "name": "Link Button",
-            "value": "secondary"
-          }
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following options should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
         ]
       }
     ]
@@ -1202,14 +1403,75 @@
     "id": "page-metadata",
     "fields": [
       {
-        "component": "text",
+        "component": "tab",
+        "label": "General",
+        "name": "general"
+      },
+      {
+        "component": "text-input",
+        "name": "jcr:title",
+        "label": "Title",
+        "required": true,
+        "description": "Defines the the page meta title for SEO, as well as a title displayable in the page content (unless and overriding 'Page Title' below is defined)."
+      },
+      {
+        "component": "text-input",
+        "name": "pageTitle",
+        "label": "Page Title",
+        "description": "Defines a page title that is displayable in the page content, instead of the 'Title'"
+      },
+      {
+        "component": "text-input",
+        "name": "jcr:description",
+        "label": "Description",
+        "description": "Defines the the page meta title for SEO, as well as a title displayable in the page content (unless and overriding 'Page Title' below is defined)."
+      },
+      {
+        "component": "aem-tag",
+        "label": "Tags",
+        "name": "cq:tags",
+        "valueType": "string",
+        "description": "Defines the tags of the page used to classify content, making it searchable and discoverable for content authors."
+      },
+      {
+        "component": "select",
         "name": "pagetype",
-        "label": "Page Type"
+        "label": "Page Type",
+        "required": true,
+        "description": "Defines the type of page, which is part of the page information used for analytics.",
+        "options": [
+          {
+            "name": "Page",
+            "value": "page"
+          },
+          {
+            "name": "Search",
+            "value": "search"
+          },
+          {
+            "name": "Showroom",
+            "value": "showroom"
+          },
+          {
+            "name": "Form",
+            "value": "form"
+          },
+          {
+            "name": "Contact",
+            "value": "contact"
+          },
+          {
+            "name": "Other",
+            "value": "other"
+          }
+        ]
       },
       {
         "component": "select",
         "name": "headertype",
         "label": "Header Variation",
+        "required": true,
+        "description": "Defines the variation of the header to be displayed. White background should be selected when the header should appear on a white background, while transparent should be selected when the header appears on top of a different coloured background.",
         "options": [
           {
             "name": "White Background",
@@ -1222,9 +1484,76 @@
         ]
       },
       {
+        "component": "tab",
+        "label": "Advanced",
+        "name": "advanced"
+      },
+      {
+        "component": "aem-content",
+        "name": "cq:canonicalUrl",
+        "label": "Canonical Url",
+        "valueType": "string",
+        "description": "Overwrites the page's canonical url (set by search engines). If not set, the page's url will be the canonical url."
+      },
+      {
+        "component": "multiselect",
+        "name": "cq:robotsTags",
+        "required": true,
+        "description": "Defines the robots tags to control search engine crawler behaviour.",
+        "label": "Robot Tags",
+        "valueType": "strings",
+        "options": [
+          {
+            "name": "index",
+            "value": "index"
+          },
+          {
+            "name": "noindex",
+            "value": "noindex"
+          },
+          {
+            "name": "noimageindex",
+            "value": "noimageindex"
+          },
+          {
+            "name": "follow",
+            "value": "follow"
+          },
+          {
+            "name": "nofollow",
+            "value": "nofollow"
+          },
+          {
+            "name": "noarchive",
+            "value": "noarchive"
+          },
+          {
+            "name": "nosnippet",
+            "value": "nosnippet"
+          },
+          {
+            "name": "notranslate",
+            "value": "notranslate"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Image",
+        "name": "image"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "imageReference",
+        "label": "Image",
+        "description": "Defines the image to be displayed when sharing the link to the page."
+      },
+      {
         "component": "text-input",
-        "name": "pageTitle",
-        "label": "Page Title"
+        "name": "altText",
+        "label": "Alt Text",
+        "description": "Defines the alternative text that will be read by screen-readers for the image."
       }
     ]
   },
@@ -1331,7 +1660,7 @@
         "value": "",
         "label": "Video Title",
         "required": true,
-        "description" : "Defines the title of the video"
+        "description": "Defines the title of the video"
       },
       {
         "component": "text",
@@ -1340,7 +1669,7 @@
         "value": "",
         "label": "Video Description",
         "required": true,
-        "description" : "Defines the description of the video."
+        "description": "Defines the description of the video."
       },
       {
         "component": "reference",
@@ -1349,7 +1678,7 @@
         "label": "Desktop Video Path",
         "multi": false,
         "required": true,
-        "description" : "Defines the path to a video on the desktop."
+        "description": "Defines the path to a video on the desktop."
       },
       {
         "component": "reference",
@@ -1357,7 +1686,7 @@
         "name": "mobileVideoPath",
         "label": "Mobile Video Path",
         "multi": false,
-        "description" : "Defines the path to a video on the mobile."
+        "description": "Defines the path to a video on the mobile."
       },
       {
         "component": "reference",
@@ -1366,7 +1695,7 @@
         "label": "Desktop Poster Image Path",
         "multi": false,
         "required": true,
-        "description" : "Defines the path that will be displaying poster image on desktop while loading the page."
+        "description": "Defines the path that will be displaying poster image on desktop while loading the page."
       },
       {
         "component": "reference",
@@ -1374,7 +1703,7 @@
         "name": "mobilePosterRef",
         "label": "Mobile Poster Image Path",
         "multi": false,
-        "description" : "Defines the path that will be displaying poster image on mobile while loading the page."
+        "description": "Defines the path that will be displaying poster image on mobile while loading the page."
       },
       {
         "component": "boolean",
@@ -1382,7 +1711,7 @@
         "name": "loopVideo",
         "valueType": "boolean",
         "value": true,
-        "description" : "Defines if the video will play on loop. If toggled on, the video will loop."
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop."
       },
       {
         "component": "boolean",
@@ -1390,7 +1719,7 @@
         "name": "videoAutoplay",
         "valueType": "boolean",
         "value": true,
-        "description" : "Defines if the video will autoplay. If toggled on, the video will autoplay and will be always on mute even if mute video sound boolean is set to off."
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay and will be always on mute even if mute video sound boolean is set to off."
       },
       {
         "component": "boolean",
@@ -1398,7 +1727,7 @@
         "name": "hideVideoControl",
         "valueType": "boolean",
         "value": true,
-        "description" : "Defines if the video controls will be displayed. If toggled on, they will appear."
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear."
       },
       {
         "component": "boolean",
@@ -1550,7 +1879,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "videoSlideTab1"
+        "name": "content_videoSlideTab1"
       },
       {
         "component": "text-input",
@@ -1580,7 +1909,7 @@
       {
         "component": "tab",
         "label": "Video",
-        "name": "videoSlideTab2"
+        "name": "media_videoSlideTab2"
       },
       {
         "component": "text-input",
@@ -1643,6 +1972,15 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_videoSlideLoopVideoType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Autoplay",
         "name": "media_videoSlideAutoplay",
@@ -1651,9 +1989,18 @@
         "value": true
       },
       {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "media_videoSlideAutoplayType",
+        "description": "Defines how video will be played.",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "tab",
         "label": "Button/Link",
-        "name": "videoSlideTab3"
+        "name": "cta_videoSlideTab3"
       },
       {
         "component": "text-input",
@@ -1686,7 +2033,7 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "imageSlideTab1"
+        "name": "content_imageSlideTab1"
       },
       {
         "component": "text-input",
@@ -1708,7 +2055,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "content_imageSlideCopyText",
+        "name": "content_imageSlideCopytext",
         "description": "Defines the text that will appear in the page. ",
         "value": "",
         "label": "Copy Text"
@@ -1716,7 +2063,7 @@
       {
         "component": "tab",
         "label": "Image",
-        "name": "imageSlideTab2"
+        "name": "media_imageSlideTab2"
       },
       {
         "component": "reference",
@@ -1737,7 +2084,7 @@
       {
         "component": "tab",
         "label": "Button/Link",
-        "name": "imageSlideTab3"
+        "name": "cta_imageSlideTab3"
       },
       {
         "component": "text-input",
@@ -1776,7 +2123,7 @@
         "component": "text",
         "name": "cn_general_descp",
         "label": "Content Navigation Description"
-      },      
+      },
       {
         "component": "select",
         "name": "cn_general_bgColor",
@@ -1800,7 +2147,7 @@
         "label": "Display Content Navigation",
         "name": "cn_general_visible",
         "valueType": "boolean"
-      },   
+      },
       {
         "component": "tab",
         "label": "Button/Link",
@@ -1818,7 +2165,7 @@
         "valueType": "string",
         "name": "cnButton_linkText",
         "value": "",
-        "label": "Link Label"        
+        "label": "Link Label"
       },
       {
         "component": "select",
@@ -1831,7 +2178,106 @@
             "name": "Money Button",
             "value": "Money Button"
           }
-        ]    
+        ]
+      },
+      {
+        "component": "tab",
+        "name": "analytics_tab",
+        "label": "Analytics"
+      },
+      {
+        "component": "text-input",
+        "name": "analytics_label",
+        "label": "Analytics Label",
+        "valueType": " "
+      },
+      {
+        "component": "select",
+        "name": "analytics_button",
+        "label": "Button/Link type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "Exit"
+          },
+          {
+            "name": "Download",
+            "value": "Download"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "analytics-button"
+            },
+            "Other"
+          ]
+        },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }
+        ]
       }
     ]
   },
@@ -1853,7 +2299,7 @@
         "value": "",
         "label": "Copy Text",
         "required": true
-      },   
+      },
       {
         "component": "boolean",
         "label": "Collapse Accordion Icon",
@@ -1885,7 +2331,7 @@
         "name": "bgImgGeneral_eyebrowType",
         "value": "",
         "label": "Eyebrow Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines two variants for text that will be displayed on the component",
         "options": [
           {
@@ -1912,32 +2358,41 @@
       },
       {
         "component": "select",
-        "name": "bgImgGeneral_headlineType",
+        "name": "bgImgGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines the headline of the text that will appear in the page.",
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "bgImgGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Headline Type",
+        "valueType": "string",        
+        "description": "Defines the headline of the text that will appear in the page.",
+        "hidden": true
       },
       {
         "component": "select",
         "name": "bgImgIcon_subbrandicon",
         "value": "noicon",
         "label": "Subbrand Icon Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines the subbrand icons that are being displayed.",
         "options": [
           {
@@ -1957,31 +2412,47 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgImgDesp_copyText",
+        "name": "bgImgDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
-      },      
+      },
       {
         "component": "multiselect",
         "name": "bgImgStyle_gradStyle",
         "label": "Gradient",
         "valueType": "string",
-        "description": "Defines colours and position of the gradient.",       
+        "description": "Defines colours and position of the gradient.",
+        "maxSize": 2,      
         "options": [
           {
             "name": "Colour",
             "children": [
-              { "name": "Light", "value": "light" },
-              { "name": "Dark",  "value": "dark" }
+              {
+                "name": "No Gradient",
+                "value": "light"
+              },
+              {
+                "name": "Dark",
+                "value": "dark"
+              }
             ]
           },
           {
             "name": "Position",
             "children": [
-              { "name": "Top", "value": "top" },
-              { "name": "Left", "value": "left" },
-              { "name": "Bottom", "value": "bottom" }
+              {
+                "name": "Top",
+                "value": "top"
+              },
+              {
+                "name": "Left",
+                "value": "left"
+              },
+              {
+                "name": "Bottom",
+                "value": "bottom"
+              }
             ]
           }
         ]
@@ -1992,7 +2463,7 @@
         "label": "Element Alignment",
         "valueType": "string",
         "value": "central-left",
-        "description": "Defines alignment of the elements on image",       
+        "description": "Defines alignment of the elements on image",
         "options": [
           {
             "name": "Top Left",
@@ -2001,8 +2472,7 @@
           {
             "name": "Central Left",
             "value": "central-left"
-          }
-          ,
+          },
           {
             "name": "Bottom Left",
             "value": "bottom-left"
@@ -2026,7 +2496,7 @@
         "component": "reference",
         "label": "Image",
         "name": "bgImgImage_image",
-        "description":"Defines the image to be displayed.",
+        "description": "Defines the image to be displayed.",
         "valueType": "string",
         "required": true
       },
@@ -2037,7 +2507,7 @@
         "description": "Defines the alternative text that will be read by screen-readers for the image.",
         "valueType": "string",
         "required": true
-      },     
+      },
       {
         "component": "tab",
         "label": "Button/Link",
@@ -2063,7 +2533,7 @@
         "name": "bgImgCta1_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "money-btn money-btn-flex",      
+        "value": "money-btn money-btn-flex",
         "options": [
           {
             "name": "Money Button",
@@ -2095,7 +2565,7 @@
         "name": "bgImgCta2_CtaClassName",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "ghost-img-btn ghost-img-flex-btn",      
+        "value": "ghost-img-btn ghost-img-flex-btn",
         "options": [
           {
             "name": "Ghost on Image",
@@ -2130,7 +2600,7 @@
         "name": "bgVidGeneral_eyebrowType",
         "value": "",
         "label": "Eyebrow Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines two variants for text that will be displayed on the component",
         "options": [
           {
@@ -2157,34 +2627,42 @@
       },
       {
         "component": "select",
-        "name": "bgVidGeneral_headlineType",
+        "name": "bgVidGeneral_headlineclass",
         "value": "",
         "label": "Headline Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines the headline of the text that will appear in the page.",
         "options": [
           {
             "name": "Big (Stage Model)",
-            "value": "h3"
+            "value": "big"
           },
           {
             "name": "Medium (H1)",
-            "value": "h1"
+            "value": "medium"
           },
           {
             "name": "Small (H2)",
-            "value": "h2"
+            "value": "small"
           }
         ]
+      },      
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "bgVidGeneral_headlineclassType",
+        "value": "h2",
+        "label": "Eyebrow",
+        "hidden": true
       },
       {
         "component": "select",
         "name": "bgVidIcon_subbrandicon",
         "value": "noicon",
         "label": "Subbrand Icon Type",
-        "valueType": "string",        
+        "valueType": "string",
         "description": "Defines the subbrand icons that are being displayed.",
-        "options": [         
+        "options": [
           {
             "name": "Subbrand i",
             "value": "subbrandi"
@@ -2202,11 +2680,11 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "bgVidDesp_copyText",
+        "name": "bgVidDesp_Copytext",
         "value": "",
         "label": "Copy Text",
         "description": "Defines the text that is being displayed."
-      },      
+      },
       {
         "component": "multiselect",
         "name": "bgVidStyle_gradStyle",
@@ -2218,27 +2696,42 @@
           {
             "name": "Colour",
             "children": [
-              { "name": "Light", "value": "light" },
-              { "name": "Dark",  "value": "dark" }
+              {
+                "name": "No Gradient",
+                "value": "light"
+              },
+              {
+                "name": "Dark",
+                "value": "dark"
+              }
             ]
           },
           {
             "name": "Position",
             "children": [
-              { "name": "Top", "value": "top" },
-              { "name": "Left", "value": "left" },
-              { "name": "Bottom", "value": "bottom" }
+              {
+                "name": "Top",
+                "value": "top"
+              },
+              {
+                "name": "Left",
+                "value": "left"
+              },
+              {
+                "name": "Bottom",
+                "value": "bottom"
+              }
             ]
           }
         ]
-      },      
+      },
       {
         "component": "select",
         "name": "bgVidStyle_elementAlign",
         "label": "Element Alignment",
         "valueType": "string",
         "value": "central-left",
-        "description": "Defines alignment of the elements on image",       
+        "description": "Defines alignment of the elements on image",
         "options": [
           {
             "name": "Top Left",
@@ -2247,8 +2740,7 @@
           {
             "name": "Central Left",
             "value": "central-left"
-          }
-          ,
+          },
           {
             "name": "Bottom Left",
             "value": "bottom-left"
@@ -2288,7 +2780,7 @@
         "component": "reference",
         "label": "Desktop Video Path",
         "name": "bgVidVideo_video",
-        "description":"Defines the path to a video on the desktop.",
+        "description": "Defines the path to a video on the desktop.",
         "valueType": "string",
         "required": true
       },
@@ -2296,7 +2788,7 @@
         "component": "reference",
         "label": "Mobile Video Path",
         "name": "bgVidVideo_videoMobile",
-        "description":"Defines the path to a video on the mobile.",
+        "description": "Defines the path to a video on the mobile.",
         "valueType": "string"
       },
       {
@@ -2347,7 +2839,7 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true
-      },     
+      },
       {
         "component": "tab",
         "label": "Button/Link",
@@ -2405,7 +2897,7 @@
         "name": "bgVidCta2_CtaBtnStyle",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
-        "value": "ghost-img-btn ghost-img-flex-btn",     
+        "value": "ghost-img-btn ghost-img-flex-btn",
         "options": [
           {
             "name": "Ghost on Image",
@@ -2431,27 +2923,27 @@
       }
     ]
   },
-   {
+  {
     "id": "quote",
     "fields": [
-       {
-         "component": "richtext",
-         "name": "quote",
-         "value": "",
-         "label": "Quote",
-         "description": "Defines the quote that will appear in the page. Please also author the quotation marks.",
-         "valueType": "string",
-         "required": true
-       },
-       {
-         "component": "text",
-         "valueType": "string",
-         "name": "citationSource",
-         "label": "Citation Source",
-         "value": "",
-         "description": "Defines the citation source that will appear beneath the quote."
-       }
-     ]
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote",
+        "description": "Defines the quote that will appear in the page. Please also author the quotation marks.",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "citationSource",
+        "label": "Citation Source",
+        "value": "",
+        "description": "Defines the citation source that will appear beneath the quote."
+      }
+    ]
   },
   {
     "id": "download",
@@ -2470,7 +2962,7 @@
         "value": "",
         "label": "Download Label",
         "description": "Defines the name of the downloadable element."
-      }      
+      }
     ]
   },
   {
@@ -2484,7 +2976,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "content_videoCarouselHeadline",
+        "name": "content_carouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
         "label": "Headline"
@@ -2492,7 +2984,7 @@
       {
         "component": "select",
         "label": "Headline Type",
-        "name": "content_videoCarouselHeadlineType",
+        "name": "content_carouselHeadlineType",
         "valueType": "string",
         "description": "Defines multiple styling options for the Headline",
         "value": "h2",
@@ -2537,7 +3029,7 @@
         "label": "Desktop Video Path",
         "multi": false,
         "required": true,
-        "description" : "Defines the path to a video on the desktop."
+        "description": "Defines the path to a video on the desktop."
       },
       {
         "component": "reference",
@@ -2545,7 +3037,7 @@
         "name": "media_mobileVideoCarouselPath",
         "label": "Mobile Video Path",
         "multi": false,
-        "description" : "Defines the path to a video on the mobile."
+        "description": "Defines the path to a video on the mobile."
       },
       {
         "component": "reference",
@@ -2565,34 +3057,66 @@
         "multi": false
       },
       {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "media_carouselLoopVideoType",
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Loop Video",
-        "name": "media_videoCarouselLoopVideo",
-        "description": "Defines how video will be played.",
+        "name": "media_carouselLoopVideo",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "text",
+        "label": "Play on mouseover",
+        "name": "media_carouselMouseHoverVideoType",
+        "valueType": "string",
+        "value": "h4",
+        "hidden": true
       },
       {
         "component": "boolean",
         "label": "Play on mouseover",
-        "name": "media_videoCarouselMouseHoverVideo",
-        "description": "Defines how video will be played.",
+        "name": "media_carouselMouseHoverVideo",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
         "valueType": "boolean",
         "value": true
       },
       {
-        "component": "boolean",
+        "component": "text",
         "label": "Hide Video Controls",
-        "name": "media_videoCarouselHideControlsVideo",
-        "description": "Defines how video will be played.",
+        "name": "media_videoControlsVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "media_videoControlsVideo",
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear.",
         "valueType": "boolean",
         "value": true
       },
       {
+        "component": "text",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideoType",
+        "valueType": "string",
+        "value": "h6",
+        "hidden": true
+      },
+      {
         "component": "boolean",
-        "label": "Muted Video Sound",
-        "name": "media_videoCarouselMuteSoundVideo",
-        "description": "Defines how video will be played.",
+        "label": "Mute Video Sound",
+        "name": "media_carouselMuteSoundVideo",
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
         "valueType": "boolean",
         "value": true
       },
@@ -2666,7 +3190,12 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true,
-        "options" :[{ "name": "H2", "value": "h2" }]
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -2740,6 +3269,153 @@
             "value": "secondary"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "video-gallery-slide",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "videoSlide_text",
+        "description": "Defines the text below the Video Slide.",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "videoSlide_textType",
+        "value": "",
+        "label": "Text Type",
+        "valueType": "string",
+        "description": "Defines styles for the text.",
+        "options": [
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "H4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "videoSlide_videoTitle",
+        "description": "Defines the title of the video.",
+        "value": "",
+        "label": "Video Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoSlide__videoText",
+        "description": "Defines the description of the video.",
+        "value": "",
+        "label": "Video Description",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_desktopVideoPath",
+        "label": "Desktop Video Path",
+        "multi": false,
+        "required": true,
+        "description": "Defines the path to a video on the desktop."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_mobileVideoPath",
+        "label": "Mobile Video Path",
+        "multi": false,
+        "description": "Defines the path to a video on the mobile."
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_videoPosterDesktop",
+        "description": "Defines the path that will be displaying poster image on desktop while loading the page.",
+        "label": "Desktop Poster Image Path",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoSlide_videoPosterMobile",
+        "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
+        "label": "Mobile Poster Image Path",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "label": "Loop Video",
+        "name": "videoSlide_loopVideoType",
+        "valueType": "string",
+        "value": "h1",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Loop Video",
+        "name": "videoSlide_loopVideo",
+        "description": "Defines if the video will play on loop. If toggled on, the video will loop.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideoType",
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Autoplay",
+        "name": "videoSlide_autoPlayVideo",
+        "description": "Defines if the video will autoplay. If toggled on, the video will autoplay and will be always on mute even if mute video sound boolean is set to off.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Video Controls",
+        "name": "videoSlide_videoControlsVideoType",
+        "valueType": "string",
+        "value": "h5",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Video Controls",
+        "name": "videoSlide_videoControlsVideo",
+        "description": "Defines if the video controls will be displayed. If toggled on, they will appear.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",
+        "label": "Mute Video Sound",
+        "name": "videoSlide_muteSoundVideoType",
+        "valueType": "string",
+        "value": "h6",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Mute Video Sound",
+        "name": "videoSlide_muteSoundVideo",
+        "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
+        "valueType": "boolean",
+        "value": true
       }
     ]
   },
