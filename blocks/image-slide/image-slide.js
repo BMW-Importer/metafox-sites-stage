@@ -18,8 +18,6 @@ export function generateImgSlideDetailMarkUp(props) {
   const [imageSlideHeadline, imageSlideCopyText,
     button, index, showless, block, edsGeneratedImgElem] = props;
 
-  const tabIndex = index * numOfFocusElem;
-
   const videoImgDetailDOMContainer = document.createElement('div');
 
   // appending imge elemnt here so that it appears in content tree under image slide block
@@ -39,7 +37,7 @@ export function generateImgSlideDetailMarkUp(props) {
   videoImgDetailDOMContainer.classList.add('detail');
 
   // desktop view collapsed state detail cover
-  const vidImgDetailCover = document.createElement('div');
+  const vidImgDetailCover = document.createElement('button');
   vidImgDetailCover.classList.add('vid-img-slide-cover');
   // if headline is authored
   if (imageSlideHeadline) {
@@ -64,7 +62,6 @@ export function generateImgSlideDetailMarkUp(props) {
   const vidImgDetailAnchorElm = vidImgDetailLinkBtn?.querySelector('a');
 
   if (vidImgDetailAnchorElm) {
-    vidImgDetailAnchorElm.setAttribute('tabindex', tabIndex);
     if (vidImgDetailLinkBtn.querySelector('strong')) {
       vidImgDetailLinkBtn.querySelector('strong').textContent = '';
       vidImgDetailLinkBtn.querySelector('strong').append(vidImgDetailAnchorElm);
