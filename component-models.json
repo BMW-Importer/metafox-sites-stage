@@ -3423,10 +3423,16 @@
     "id": "custom-assetpicker",
     "fields": [
       {
-        "component": "bmw-custom-asset:custom-asset",
-        "valueType": "reference",
-        "name": "Custom Asset",
-        "label": "Custom Asset"
+        "component": "custom-asset-namespace:custom-asset",
+        "name": "image",
+        "label": "Image",
+        "configUrl": "https://raw.githubusercontent.com/BMW-Importer/metafox-sites/main/tools/image-config.json",
+        "valueType": "string"
+      },
+      {
+        "component": "custom-asset-namespace:custom-asset-mimetype",
+        "valueType": "string",
+        "name": "imageMimeType"
       }
     ]
   }
