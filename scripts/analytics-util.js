@@ -5,7 +5,7 @@ const event_tracking = {
     eventInfo: {
       id: "2121221",
       category: {
-        primaryCategory: "Exit",
+        primaryCategory: "exit",
         subCategory: "social",
         linkName: "Instagram",
         linkURL: "https://www.bmw.rs/sr/elektricni-automobili.html",
