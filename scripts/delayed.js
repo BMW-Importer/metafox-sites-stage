@@ -62,7 +62,7 @@ function addAnalyticsCustomClickEvent() {
   const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custom-click=true]');
   listOfCustomClickBtns.forEach((btn)=> {
     btn.addEventListener('click', function(e) {
-      e.preventDefault();
+      // e.preventDefault();
       const analyticsLabel = e.target.getAttribute('data-analytics-label');
       const primaryCategory = e.target.getAttribute('data-analytics-category');
       const subCategory = e.target.getAttribute('data-analytics-sub-category');
