@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { loadVideoEmbed } from '../video/video.js';
 
 let iconClicked = false;
@@ -337,48 +338,65 @@ export function mediaCarouselResizer() {
   });
 }
 
-export default function decorate(block) {
-  const panels = [...block.children];
+function genearteImageDom(content, media, cta, block, videoImageCarouselContent, mediaType, callback) {
+  const vidImgTitleWrapper = document.createElement('div');
+  vidImgTitleWrapper.classList.add('video-img-title');
+  const vidImgCtaWrap = document.createElement('div');
+  vidImgCtaWrap.classList.add('video-img-cta');
+  const vidImgDesWrapper = document.createElement('div');
+  vidImgDesWrapper.classList.add('video-img-description');
 
-  const videoImageCarouselContent = document.createElement('div');
-  videoImageCarouselContent.classList.add('video-image-carousel-content');
+  const vidImgCarouselCard = document.createElement('div');
+  vidImgCarouselCard.classList.add('video-img-carousel-card');
+  const vidImgAnchorElm = cta?.querySelector('a')?.textContent || '';
+  const ctaHref = cta?.querySelector('a')?.getAttribute('href') || '';
+  let newAnchor = '';
+  if (cta?.querySelector('a')) {
+    newAnchor = document.createElement('a');
+    newAnchor.textContent = vidImgAnchorElm;
+    newAnchor.setAttribute('href', ctaHref);
+    newAnchor.textContent = vidImgAnchorElm;
+  }
 
-  const carouselLeftWrapper = document.createElement('div');
-  carouselLeftWrapper.classList.add('carousel-wrapper-lft-area');
+  const contentElem = content?.children;
+  let videoImgCarouselHeadline = content.querySelector('h2')?.textContent || '';
+  videoImgCarouselHeadline = (videoImgCarouselHeadline !== null && videoImgCarouselHeadline !== undefined && videoImgCarouselHeadline) ? videoImgCarouselHeadline : '';
+  let videoImgCarouselCopyText = contentElem[1]?.textContent || '';
+  videoImgCarouselCopyText = (videoImgCarouselCopyText !== null && videoImgCarouselCopyText !== undefined && videoImgCarouselCopyText) ? videoImgCarouselCopyText : '';
 
-  const carouselRightWrapper = document.createElement('div');
-  carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
+  cta.classList.add('hidden');
+  vidImgCtaWrap.append(newAnchor);
 
-  panels.forEach((panel) => {
+  content.classList.add('hidden');
+  vidImgTitleWrapper.append(videoImgCarouselHeadline);
+  vidImgDesWrapper.append(videoImgCarouselCopyText);
+
+  if (mediaType === 'image') {
+    const imgDOMContainer = document.createElement('div');
+
+    const imageCarouselImgRef = media?.querySelector('picture');
+
+    const propImgElem = imageCarouselImgRef?.querySelector('img');
+    const imageCarouselAltText = propImgElem?.getAttribute('alt');
+
+    const pictureElement = document.createElement('picture');
+    const imgElem = document.createElement('img');
+    imgElem.src = propImgElem?.src;
+    imgElem.setAttribute('alt', imageCarouselAltText);
+
+    pictureElement.append(imgElem);
+    imgDOMContainer.append(pictureElement);
+    imageCarouselImgRef?.classList.add('hidden');
+
+    vidImgCarouselCard.append(imgDOMContainer, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap);
+    media.textContent = '';
+    videoImageCarouselContent.append(vidImgCarouselCard);
+  } else if (mediaType === 'video') {
     const videoCarouselCard = document.createElement('div');
+    const videoDOMContainer = document.createElement('div');
     videoCarouselCard.classList.add('video-img-carousel-card');
 
-    const [classes, content, media, cta] = panel.children;
-    panel.removeChild(classes);
-    let mediaType;
-    if (classes.textContent.includes('video-carousel')) {
-      mediaType = 'video';
-    } else {
-      mediaType = 'image';
-    }
     if (mediaType === 'video') {
-      const vidImgTitleWrapper = document.createElement('div');
-      vidImgTitleWrapper.classList.add('video-img-title');
-      const vidImgCtaWrap = document.createElement('div');
-      vidImgCtaWrap.classList.add('video-img-cta');
-      const vidImgDesWrapper = document.createElement('div');
-      vidImgDesWrapper.classList.add('video-img-description');
-
-      // headline and copy text under general tab
-      const contentElem = content?.children;
-      const videoCarouselHeadline = content?.querySelector('h2') || '';
-      const videoCarouselCopyText = contentElem[1] || '';
-      let vidImgAnchorElm = cta.querySelector('a');
-      vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
-      vidImgCtaWrap.append(vidImgAnchorElm);
-      vidImgTitleWrapper.append(videoCarouselHeadline);
-      vidImgDesWrapper.append(videoCarouselCopyText);
-
       // video tab details
       const videoCarouselContentPtags = media?.querySelectorAll('p');
       const videoCarouselTitle = videoCarouselContentPtags[0] || '';
@@ -392,9 +410,6 @@ export default function decorate(block) {
       const videoContentPictureTags = media?.querySelectorAll('picture');
       const videoCarouselDesktopPosterImgRef = videoContentPictureTags[0]?.querySelector('img')?.getAttribute('src');
       const videoCarouselMobPosterImgRef = videoContentPictureTags[1]?.querySelector('img')?.getAttribute('src');
-
-      const videoDOMContainer = document.createElement('div');
-
       // extracting video link
       const videoLinkObj = {};
       const posterObj = {};
@@ -424,7 +439,7 @@ export default function decorate(block) {
           posterObj,
           onHoverPlay],
       );
-      // Append elements to the video card
+      media.textContent = '';
       videoCarouselCard.append(
         videoDOMContainer,
         vidImgTitleWrapper,
@@ -432,49 +447,49 @@ export default function decorate(block) {
         vidImgCtaWrap,
       );
       videoImageCarouselContent.append(videoCarouselCard);
-    } else {
-      // image
-      const imgTitleWrapper = document.createElement('div');
-      imgTitleWrapper.classList.add('video-img-title');
-      const imgDesWrapper = document.createElement('div');
-      imgDesWrapper.classList.add('video-img-description');
-      const vidImgCtaWrap = document.createElement('div');
-      vidImgCtaWrap.classList.add('video-img-cta');
-
-      const imgDOMContainer = document.createElement('div');
-
-      let vidImgAnchorElm = cta?.querySelector('a');
-      vidImgAnchorElm = (vidImgAnchorElm && vidImgAnchorElm.href) ? vidImgAnchorElm : '';
-      vidImgCtaWrap.append(vidImgAnchorElm);
-      // headline and copy text under general tab
-      const contentElem = content?.children;
-      const imgCarouselHeadline = content?.querySelector('h2') || '';
-      const imgCarouselCopyText = contentElem[1] || '';
-      imgTitleWrapper.append(imgCarouselHeadline);
-      imgDesWrapper.append(imgCarouselCopyText);
-
-      const imageCarouselCard = document.createElement('div');
-      imageCarouselCard.classList.add('video-img-carousel-card');
-
-      const imageCarouselImgRef = media?.querySelector('picture');
-
-      const propImgElem = imageCarouselImgRef?.querySelector('img');
-      const imageCarouselAltText = propImgElem?.getAttribute('alt');
-
-      const pictureElement = document.createElement('picture');
-      const imgElem = document.createElement('img');
-      imgElem.src = propImgElem?.src;
-      imgElem.setAttribute('alt', imageCarouselAltText);
-
-      pictureElement.append(imgElem);
-      imgDOMContainer.append(pictureElement);
-      imageCarouselImgRef?.classList.add('hidden');
-      imageCarouselCard.append(imgDOMContainer, imgTitleWrapper, imgDesWrapper, vidImgCtaWrap);
-      videoImageCarouselContent.append(imageCarouselCard);
     }
-  });
-  block.textContent = '';
-  block.append(carouselLeftWrapper, carouselRightWrapper);
-  block.append(videoImageCarouselContent);
+  }
+  media.append(videoImageCarouselContent);
+  block.append(media);
+  if (typeof callback === 'function') {
+    callback(media);
+  }
   resizeBlock();
+}
+
+export default function decorate(block) {
+  const panels = [...block.children];
+
+  const videoImageCarouselContent = document.createElement('div');
+  videoImageCarouselContent.classList.add('video-image-carousel-content');
+
+  const carouselLeftWrapper = document.createElement('div');
+  carouselLeftWrapper.classList.add('carousel-wrapper-lft-area');
+
+  const carouselRightWrapper = document.createElement('div');
+  carouselRightWrapper.classList.add('carousel-wrapper-rth-area');
+
+  panels.forEach((panel) => {
+    const [classes, content, media, cta] = panel.children;
+    panel.removeChild(classes);
+    let mediaType;
+    if (classes.textContent.includes('video-carousel')) {
+      mediaType = 'video';
+    } else {
+      mediaType = 'image';
+    }
+    genearteImageDom(
+      content,
+      media,
+      cta,
+      block,
+      videoImageCarouselContent,
+      mediaType,
+      (generateDom) => {
+        block.append(carouselLeftWrapper, carouselRightWrapper);
+        block.append(generateDom);
+        resizeBlock();
+      },
+    );
+  });
 }
