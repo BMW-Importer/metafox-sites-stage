@@ -45,7 +45,8 @@
                 "template": {
                   "name": "Eyebrow",
                   "model": "eyebrow",
-                  "type": "h2"
+                  "type": "p",
+                  "classes": "eyebrow-1-bold"
                 }
               }
             }

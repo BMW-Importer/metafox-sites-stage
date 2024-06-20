@@ -53,7 +53,15 @@
         "valueType": "string",
         "name": "type",
         "label": "Eyebrow",
-        "value": "h2",
+        "value": "p",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Eyebrow",
+        "value": "eyebrow-1-bold",
         "hidden": true
       }
     ]
