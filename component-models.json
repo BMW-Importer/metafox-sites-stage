@@ -42,7 +42,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "eyebrow",
+        "name": "jcr:title",
         "label": "Eyebrow",
         "value": "",
         "required": true,
@@ -51,7 +51,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "eyebrowType",
+        "name": "type",
         "label": "Eyebrow",
         "value": "p",
         "hidden": true
