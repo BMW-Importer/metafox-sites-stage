@@ -42,7 +42,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "jcr:title",
+        "name": "eyebrow",
         "label": "Eyebrow",
         "value": "",
         "required": true,
@@ -50,13 +50,11 @@
       },
       {
         "component": "text",
-        "name": "classes",
-        "value": "eyebrow-1-bold",
-        "label": "Eyebrow Type",
         "valueType": "string",
-        "required": true,
-        "hidden": true,
-        "description": "Defines the styling of the eyebrow that will be displayed on the page."        
+        "name": "type",
+        "label": "Eyebrow",
+        "value": "p",
+        "hidden": true
       }
     ]
   },
