@@ -2970,6 +2970,14 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "classes",
+        "description": "Defines the classes",
+        "value": "",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "content_carouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
@@ -3167,6 +3175,14 @@
         "label": "General",
         "name": "content_imageCarouselTab1",
         "description": "Tab that includes general property fields."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "description": "Defines the classes",
+        "value": "",
+        "hidden": true
       },
       {
         "component": "text",
