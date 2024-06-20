@@ -65,8 +65,6 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
 
   .content-navigation-container .content-navigation-wrapper .active .cmp-contentnavigation-list-link {
     color: var(--light-text-color);
-    font-weight: 400;
-    font-size: 14px;    
     
   }
 
@@ -322,7 +320,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
   }
 
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1) {
-     padding-top: 1rem;
+     padding-top: 0;
    }
 
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1)::before {
