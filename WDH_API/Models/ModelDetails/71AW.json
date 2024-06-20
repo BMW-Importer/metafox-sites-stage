@@ -41,7 +41,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-17",
+    "effectDate": "2024-06-18",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -73,21 +73,23 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
+            "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "0",
             "electricConsumption": "19.1–16.1",
             "electricRangeWltpCombined": "491–590",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "81.1",
             "additionalRangeDC": "154 - 197",
             "chargeACDC": "11 (-) / 205",
+            "chargeAC": "11",
             "charge_AC_0_100": "8.5",
-            "charge_DC_10_80": "30",
-            "chargingMaxAC": "11"
+            "chargeDC": "205",
+            "charge_DC_10_80": "30"
           },
           "weightMeasurements": {
             "length": "4783",

@@ -822,16 +822,16 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Exit",
-            "value": "Exit"
+            "name": "exit",
+            "value": "exit"
           },
           {
-            "name": "Download",
-            "value": "Download"
+            "name": "download",
+            "value": "download"
           },
           {
-            "name": "Other",
-            "value": "Other"
+            "name": "other",
+            "value": "other"
           }          
         ]    
       },
@@ -840,7 +840,7 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
             "name": "Learn More",
@@ -2175,6 +2175,99 @@
             "value": "Money Button"
           }
         ]
+      },
+      {
+        "component": "tab",
+        "name": "analytics_tab",
+        "label": "Analytics"
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "exit",
+            "value": "exit"
+          },
+          {
+            "name": "download",
+            "value": "download"
+          },
+          {
+            "name": "other",
+            "value": "other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following opotions should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "analytics_button"
+            },
+            "other"
+          ]
+        },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }
+        ]
       }
     ]
   },
@@ -3255,7 +3348,7 @@
         "label": "Loop Video",
         "name": "videoSlide_loopVideoType",
         "valueType": "string",
-        "value": "h3",
+        "value": "h1",
         "hidden": true
       },
       {
@@ -3271,7 +3364,7 @@
         "label": "Autoplay",
         "name": "videoSlide_autoPlayVideoType",
         "valueType": "string",
-        "value": "h4",
+        "value": "h2",
         "hidden": true
       },
       {
@@ -3313,6 +3406,29 @@
         "description": "Defines if the video will be play on mute. If toggled on, there will be no sound.",
         "valueType": "boolean",
         "value": true
+      }
+    ]
+  },
+  {
+    "id": "custom-asset-one",
+    "fields": [
+      {
+        "component": "custom-asset-namespace:custom-asset",
+        "name": "image",
+        "label": "Image",
+        "configUrl": "https://raw.githubusercontent.com/nitinja/xwalk-test-gems/main/tools/assets-selector/image.config.json",
+        "valueType": "string"
+      },
+      {
+        "component": "custom-asset-namespace:custom-asset-mimetype",
+        "valueType": "string",
+        "name": "imageMimeType"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "valueType": "string"
       }
     ]
   }
