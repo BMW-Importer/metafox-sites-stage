@@ -415,9 +415,9 @@ function genearteImageDom(content, media, cta, block, videoImageCarouselContent,
   }
 
   const contentElem = content?.children;
-  let videoImgCarouselHeadline = content.querySelector('h2') || '';
+  let videoImgCarouselHeadline = content.querySelector('h2').textContent || '';
   videoImgCarouselHeadline = (videoImgCarouselHeadline !== null && videoImgCarouselHeadline !== undefined && videoImgCarouselHeadline) ? videoImgCarouselHeadline : '';
-  let videoImgCarouselCopyText = contentElem[1] || '';
+  let videoImgCarouselCopyText = contentElem[1].textContent || '';
   videoImgCarouselCopyText = (videoImgCarouselCopyText !== null && videoImgCarouselCopyText !== undefined && videoImgCarouselCopyText) ? videoImgCarouselCopyText : '';
 
   cta.classList.add('hidden');
