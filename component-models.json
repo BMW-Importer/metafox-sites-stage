@@ -53,7 +53,7 @@
         "valueType": "string",
         "name": "type",
         "label": "Eyebrow",
-        "value": "p",
+        "value": "h2",
         "hidden": true
       }
     ]
