@@ -49,27 +49,14 @@
         "description": "Defines the pre-headline that will appear on the page."
       },
       {
-        "component": "select",
-        "name": "type",
-        "value": "",
+        "component": "text",
+        "name": "classes",
+        "value": "eyebrow-1-bold",
         "label": "Eyebrow Type",
         "valueType": "string",
         "required": true,
-        "description": "Defines the styling of the eyebrow that will be displayed on the page.",
-        "options": [
-          {
-            "name": "Eyebrow 1 Bold",
-            "value": "h4"
-          },
-          {
-            "name": "Eyebrow 2 Bold",
-            "value": "h5"
-          },
-          {
-            "name": "Iconization",
-            "value": "h6"
-          }
-        ]
+        "hidden": true,
+        "description": "Defines the styling of the eyebrow that will be displayed on the page."        
       }
     ]
   },
