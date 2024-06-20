@@ -67,3 +67,10 @@
         line-height: 1.375rem;
     }
 }
+
+@media (width >= 1920px) {
+    .download-wrapper .download.block p a {
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
+}
