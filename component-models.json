@@ -51,7 +51,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "type",
+        "name": "eyebrowType",
         "label": "Eyebrow",
         "value": "p",
         "hidden": true
