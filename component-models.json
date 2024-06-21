@@ -3587,12 +3587,14 @@
         "valueType": "string"
       },
       {
-        "component": "boolean",
+        "component": "select",
         "label": "Transmission Type",
         "name": "wdh_transmission",
         "description": "Defines the transmission type. The values will be populated by WDH based on the previous selections.",
         "required": true,
-        "valueType": "boolean"
+        "valueType": "string",
+        "condition": { "===": [{"var" : "wdh_techdata"}, true] },
+        "options": []
       },
       {
         "component": "text",
@@ -3621,23 +3623,7 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true
-      },
-      {
-        "component": "boolean",
-        "label": "Display Model Description",
-        "name": "content_modedescp",
-        "description": "Defines if the authored model description will appear within the DriveTrain Switch above the Technical Data Facts.",
-        "value": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Display Model Description",
-        "name": "content_modedescpType",        
-        "valueType": "string",
-        "value": "h3",
-        "hidden": true
-      },
+      },     
       {
         "component": "text",
         "label": "Model Description",
@@ -3825,7 +3811,7 @@
       },
       {
         "component": "tab",
-        "label": "Technical Data Facts",
+        "label": "Analytics",
         "name": "analytics"
       },
       {
