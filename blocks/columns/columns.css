@@ -198,4 +198,9 @@ margin-bottom: 48px;
     margin-top: 24px;
   }
 
+  .section.alignment-right.columns-container .columns.right > div {
+    align-items: initial;
+  }
+  
+
 }
