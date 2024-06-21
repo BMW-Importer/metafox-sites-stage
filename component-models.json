@@ -3426,7 +3426,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "image",
         "label": "Image",
-        "configUrl": "https://raw.githubusercontent.com/nitinja/xwalk-test-gems/main/tools/assets-selector/image.config.json",
+        "configUrl": "https://raw.githubusercontent.com/BMW-Importer/metafox-sites/main/tools/image-config.json",
         "valueType": "string"
       },
       {
