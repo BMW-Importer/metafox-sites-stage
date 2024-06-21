@@ -112,8 +112,6 @@ main {
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--fixed-font-family);
-  
-  /* padding: 1.25rem 6rem; */
   margin: 0;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
@@ -143,8 +141,6 @@ h4 {
   font-size: 0.75rem; 
   line-height: 1rem;
   font-weight: 300;
-
-  /* letter-spacing: 0.175rem; */
   text-transform: uppercase;
   color: var(--light-text-color);
 }
@@ -153,8 +149,6 @@ h5 {
   font-size: 0.75rem; 
   line-height: 1rem;
   font-weight: 300;
-  
-  /* letter-spacing: 0.125rem; */
   text-transform: uppercase;
   color: var(--light-text-color);
 }
