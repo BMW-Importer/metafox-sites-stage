@@ -185,14 +185,22 @@ function triggerMediaCompleteAnalytics(video) {
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
   const mediaUrl = video.getAttribute('src');
-  video.dataset.analyticsBlockName = blockName || '';
-  video.dataset.analyticsSectionId = sectionId || '';
-  video.dataset.analyticsMediaUrl = mediaUrl || '';
+
+  // Only assign non-blank values to data attributes
+  if (blockName) {
+    video.dataset.analyticsBlockName = blockName;
+  }
+  if (sectionId) {
+    video.dataset.analyticsSectionId = sectionId;
+  }
+  if (mediaUrl) {
+    video.dataset.analyticsMediaUrl = mediaUrl;
+  }
 
   const mediaCompleteObject = {
-    event: 'video.complete',
+    event: 'media.complete',
     eventInfo: {
-      id: '2121221',
+      id: '',
       attributes: {
         mediaInfo: {
           mediaName: '',
@@ -215,12 +223,25 @@ function triggerMediaCompleteAnalytics(video) {
     },
   };
 
+  // Generate a random ID
   const randomNum = 100000 + Math.random() * 900000;
   mediaCompleteObject.eventInfo.id = Math.floor(randomNum).toString();
-  mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
-  mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName || '';
-  mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
-  window.adobeDataLayer.push(mediaCompleteObject);
+
+  // Only assign non-blank values to the mediaCompleteObject
+  if (mediaUrl) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl;
+  }
+  if (blockName) {
+    mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName;
+  }
+  if (sectionId) {
+    mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId;
+  }
+
+  // Push to data layer only if mediaUrl is not blank (as an example of required field)
+  if (mediaUrl) {
+    window.adobeDataLayer.push(mediaCompleteObject);
+  }
 }
 
 export function getVideoElement(props) {

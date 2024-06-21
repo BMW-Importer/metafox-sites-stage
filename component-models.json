@@ -2186,30 +2186,24 @@
         "label": "Analytics"
       },
       {
-        "component": "text-input",
-        "name": "analytics_label",
-        "label": "Analytics Label",
-        "valueType": " "
-      },
-      {
-        "component": "select",
-        "name": "analytics_button",
-        "label": "Button/Link type",
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
         "valueType": "string",
         "options": [
           {
-            "name": "Exit",
-            "value": "Exit"
+            "name": "exit",
+            "value": "exit"
           },
           {
-            "name": "Download",
-            "value": "Download"
+            "name": "download",
+            "value": "download"
           },
           {
-            "name": "Other",
-            "value": "Other"
-          }
-        ]
+            "name": "other",
+            "value": "other"
+          }          
+        ]    
       },
       {
         "component": "select",
@@ -2219,9 +2213,9 @@
         "condition": {
           "===": [
             {
-              "var": "analytics-button"
+              "var": "analytics_button"
             },
-            "Other"
+            "other"
           ]
         },
         "options": [
@@ -2976,6 +2970,14 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "classes",
+        "description": "Defines the classes",
+        "value": "",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "content_carouselHeadline",
         "description": "Defines the headline of the text that will appear in the page.",
         "value": "",
@@ -3136,7 +3138,7 @@
       {
         "component": "text",
         "name": "cta_videoCarouselCtaLinkText",
-        "label": "Link Label",
+        "label": "Button/Link",
         "description": "Defines the text to be displayed in the button or as the link. ",
         "valueType": "string"
       },
@@ -3173,6 +3175,14 @@
         "label": "General",
         "name": "content_imageCarouselTab1",
         "description": "Tab that includes general property fields."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "description": "Defines the classes",
+        "value": "",
+        "hidden": true
       },
       {
         "component": "text",
@@ -3244,7 +3254,7 @@
         "component": "text",
         "name": "cta_imageCarouselLinkText",
         "description": "Defines the text to be displayed in the button or as the link. ",
-        "label": "Link Label",
+        "label": "Button/Link",
         "valueType": "string"
       },
       {
