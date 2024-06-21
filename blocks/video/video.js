@@ -141,26 +141,29 @@ function triggerMediaPlayAnalytics(video) {
   window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
-  const mediaUrl = video.getAttribute('src');
-
+  const { analyticsLabel: blockDetails } = video.dataset;
+  const mediaUrl = video.querySelector('source').getAttribute('src');
+  const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
   video.dataset.analyticsBlockName = blockName || '';
   video.dataset.analyticsSectionId = sectionId || '';
   video.dataset.analyticsMediaUrl = mediaUrl || '';
+  video.dataset.analyticsBlockDetails = blockDetails || '';
+  video.dataset.analyticsMediaHosting = mediaHostname || '';
 
   const mediaPlayObject = {
     event: 'media.play',
     eventInfo: {
-      id: '2121221',
+      id: '',
       attributes: {
         mediaInfo: {
           mediaName: '',
-          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaHosting: '',
           mediaType: 'video',
         },
       },
       section: {
         sectionInfo: {
-          sectionName: 'Section',
+          sectionName: '',
           sectionID: '',
         },
       },
@@ -176,15 +179,19 @@ function triggerMediaPlayAnalytics(video) {
   const randomNum = 100000 + Math.random() * 900000;
   mediaPlayObject.eventInfo.id = Math.floor(randomNum).toString();
   mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
+  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
   mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
   mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
+  mediaPlayObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
   window.adobeDataLayer.push(mediaPlayObject);
 }
 
 function triggerMediaCompleteAnalytics(video) {
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
-  const mediaUrl = video.getAttribute('src');
+  const mediaUrl = video.querySelector('source').getAttribute('src');
+  const { analyticsLabel: blockDetails } = video.dataset;
+  const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
 
   // Only assign non-blank values to data attributes
   if (blockName) {
@@ -196,6 +203,12 @@ function triggerMediaCompleteAnalytics(video) {
   if (mediaUrl) {
     video.dataset.analyticsMediaUrl = mediaUrl;
   }
+  if (blockDetails) {
+    video.dataset.analyticsBlockDetails = blockDetails;
+  }
+  if (mediaHostname) {
+    video.dataset.analyticsMediaHosting = mediaHostname;
+  }
 
   const mediaCompleteObject = {
     event: 'media.complete',
@@ -204,7 +217,7 @@ function triggerMediaCompleteAnalytics(video) {
       attributes: {
         mediaInfo: {
           mediaName: '',
-          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaHosting: '',
           mediaType: 'video',
         },
       },
@@ -232,14 +245,19 @@ function triggerMediaCompleteAnalytics(video) {
     mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl;
   }
   if (blockName) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
     mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName;
   }
   if (sectionId) {
     mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId;
   }
+  if (mediaHostname) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname;
+  }
 
   // Push to data layer only if mediaUrl is not blank (as an example of required field)
   if (mediaUrl) {
+    mediaCompleteObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
     window.adobeDataLayer.push(mediaCompleteObject);
   }
 }
