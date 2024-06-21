@@ -153,7 +153,7 @@ function triggerMediaPlayAnalytics(video) {
   const mediaPlayObject = {
     event: 'media.play',
     eventInfo: {
-      id: '2121221',
+      id: '',
       attributes: {
         mediaInfo: {
           mediaName: '',
@@ -203,8 +203,12 @@ function triggerMediaCompleteAnalytics(video) {
   if (mediaUrl) {
     video.dataset.analyticsMediaUrl = mediaUrl;
   }
-  video.dataset.analyticsBlockDetails = blockDetails || '';
-  video.dataset.analyticsMediaHosting = mediaHostname || '';
+  if (blockDetails) {
+    video.dataset.analyticsBlockDetails = blockDetails;
+  }
+  if (mediaHostname) {
+    video.dataset.analyticsMediaHosting = mediaHostname;
+  }
 
   const mediaCompleteObject = {
     event: 'media.complete',
@@ -213,7 +217,7 @@ function triggerMediaCompleteAnalytics(video) {
       attributes: {
         mediaInfo: {
           mediaName: '',
-          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaHosting: '',
           mediaType: 'video',
         },
       },
@@ -246,6 +250,9 @@ function triggerMediaCompleteAnalytics(video) {
   }
   if (sectionId) {
     mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId;
+  }
+  if (mediaHostname) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname;
   }
 
   // Push to data layer only if mediaUrl is not blank (as an example of required field)
