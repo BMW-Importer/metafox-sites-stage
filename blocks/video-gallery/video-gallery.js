@@ -40,20 +40,25 @@ function onHoverCarouselLeave(content, currentIndex, gap) {
 }
 
 function updateButtonVisibility(prevButton, nextButton, currentIndex, totalItems, itemsToShow) {
+  if (!prevButton || !nextButton) return;
+  const prevParent = prevButton.parentElement;
+  const nextParent = nextButton.parentElement;
+  if (!prevParent || !nextParent) return;
+
   if (currentIndex === 0) {
     prevButton.classList.add('hide-icon');
-    prevButton.parentElement.classList.add('hide-icon');
+    prevParent.classList.add('hide-icon');
   } else {
     prevButton.classList.remove('hide-icon');
-    prevButton.parentElement.classList.remove('hide-icon');
+    prevParent.classList.remove('hide-icon');
   }
 
   if (currentIndex >= totalItems - itemsToShow) {
     nextButton.classList.add('hide-icon');
-    nextButton.parentElement.classList.add('hide-icon');
+    nextParent.classList.add('hide-icon');
   } else {
     nextButton.classList.remove('hide-icon');
-    nextButton.parentElement.classList.remove('hide-icon');
+    nextParent.classList.remove('hide-icon');
   }
 }
 
@@ -113,8 +118,14 @@ function addTouchSlideFunctionality(block, content, totalItems, itemsToShow, cur
 }
 
 function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
-  const dotsWrapper = document.createElement('div');
+  let dotsWrapper = block.querySelector('.dots-navigation');
+  if (dotsWrapper) {
+    dotsWrapper.remove();
+  }
+
+  dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
+
   const preButton = block && block.querySelector('.carousel-btn-prev');
   const nexButton = block.querySelector('.carousel-btn-next');
   let currentIndex = 0;
@@ -152,6 +163,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   }
 
   block.append(dotsWrapper);
+  block.dataset.dotsAdded = 'true';
 }
 
 function addIconCarouselControls(
@@ -163,11 +175,22 @@ function addIconCarouselControls(
   carouselRightWrapper,
   gap,
 ) {
-  const prevButton = document.createElement('button');
+  let prevButton = block.querySelector('.carousel-btn-prev');
+  let nextButton = block.querySelector('.carousel-btn-next');
+
+  if (prevButton) {
+    prevButton.remove();
+  }
+
+  if (nextButton) {
+    nextButton.remove();
+  }
+  prevButton = document.createElement('button');
   prevButton.classList.add('carousel-btn-prev');
 
-  const nextButton = document.createElement('button');
+  nextButton = document.createElement('button');
   nextButton.classList.add('carousel-btn-next');
+
   carouselLeftWrapper.append(prevButton);
   carouselRightWrapper.append(nextButton);
   let currentIndex = 0;
@@ -250,20 +273,23 @@ function updateItemsToShow(videoGalleryContent) {
   return { cardsToShow, availableWidth, totalItems };
 }
 
-let carouselControlsAdded = false;
-let carouselControlsIcon = false;
-
 export function resizeVideoBlock() {
-  const viewport = window.innerWidth;
+  const viewport = document.documentElement.clientWidth;
   const carousels = document.querySelectorAll('.video-gallery-content');
   carousels.forEach((carouselContent) => {
     const block = carouselContent.closest('.video-gallery.block');
-    const cards = carouselContent.querySelectorAll('.video-gallery-card');
+    const cards = carouselContent.querySelectorAll('.video-slide');
     const carouselLeftWrapper = block.querySelector('.slide-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.slide-wrapper-rth-area');
+
     const gap = viewport >= 768 ? 24 : 16;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
-    const cardWidth = ((availableWidth - ((cardsToShow - 1) * gap)) / cardsToShow);
+    let scrollbarWidth = 0;
+    if (viewport < 1024) {
+      scrollbarWidth = viewport - document.body.clientWidth;
+    }
+
+    const cardWidth = (availableWidth - scrollbarWidth);
     cards.forEach((card) => {
       card.style.width = `${cardWidth}px`;
       card.style.marginRight = `${gap}px`;
@@ -277,7 +303,7 @@ export function resizeVideoBlock() {
       0,
       gap,
     );
-    if (viewport > 768 && totalItems > 1 && !carouselControlsIcon) {
+    if (viewport >= 1024 && totalItems > 1) {
       addIconCarouselControls(
         block,
         carouselContent,
@@ -287,27 +313,33 @@ export function resizeVideoBlock() {
         carouselRightWrapper,
         gap,
       );
-      carouselControlsIcon = true;
     }
-
-    if (!carouselControlsAdded) {
-      addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
-      carouselControlsAdded = true;
-    }
+    addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
+    updateCarousel(carouselContent, 0, gap);
   });
 }
 
-function generateMediaGallery(videoGallery, block, callback) {
-  const containerDiv = document.createElement('div');
+export function videoGalleryResizer() {
+  resizeVideoBlock();
 
-  const videocontainer = document.createElement('div');
-  videocontainer.classList.add('video-content');
+  // windo resize event
+  window.addEventListener('resize', () => {
+    resizeVideoBlock();
+  });
+}
+
+function generateMediaGallery(
+  videoGallery,
+) {
+  const containerDiv = document.createElement('div');
+  videoGallery.classList.add('video-gallery-card');
 
   // video details
   const videoSlideTextDiv = document.createElement('div');
   if (videoGallery?.querySelector('a')) {
     videoSlideTextDiv.classList.add('video-gallery-title');
-    const videoSlideText = videoGallery.querySelector('h3')?.textContent || '';
+    let videoSlideText = videoGallery.querySelectorAll('h3, h4');
+    videoSlideText = videoSlideText.length > 0 ? videoSlideText[0] : '';
     videoSlideTextDiv.append(videoSlideText);
     const videoContentPtags = videoGallery.querySelectorAll('p');
     const vidTitle = videoContentPtags[0] || '';
@@ -333,11 +365,11 @@ function generateMediaGallery(videoGallery, block, callback) {
     if (videoSlideMobPosterImgRef) posterObj.mobile = videoSlideMobPosterImgRef;
 
     // converting string to boolen
-    const isLoopVideo = videoGallery.querySelector('h3')?.textContent.trim() === 'true';
-    const onHoverPlay = videoGallery.querySelector('h4')?.textContent.trim() === 'true';
+    const isLoopVideo = videoGallery.querySelector('h1')?.textContent.trim() === 'true';
+    const isAutoPlayVideo = videoGallery.querySelector('h2')?.textContent.trim() === 'true';
     const enableHideControls = videoGallery.querySelector('h5')?.textContent.trim() === 'true';
     const isMuted = videoGallery.querySelector('h6')?.textContent.trim() === 'true';
-    const isAutoPlayVideo = false;
+    const onHoverPlay = false;
 
     loadVideoEmbed([
       containerDiv,
@@ -351,61 +383,40 @@ function generateMediaGallery(videoGallery, block, callback) {
       posterObj,
       onHoverPlay,
     ]);
-
     videoGallery.textContent = '';
-
-    videocontainer.append(containerDiv);
-    videoGallery.append(
-      videocontainer,
-      videoSlideTextDiv,
-    );
-    if (typeof callback === 'function') {
-      callback(videoGallery);
-    }
-    resizeVideoBlock();
   }
-}
-
-export function videoGalleryResizer() {
+  videoGallery.append(
+    containerDiv,
+    videoSlideTextDiv,
+  );
   resizeVideoBlock();
-
-  // windo resize event
-  window.addEventListener('resize', () => {
-    resizeVideoBlock();
-  });
 }
 
 export default function decorate(block) {
   const mediaGalleryProps = [...block.children];
 
-  const parentContainerDiv = document.createElement('div');
-  parentContainerDiv.classList.add('video-gallery-content');
-
   const videoSlideLeftWrapper = document.createElement('div');
   videoSlideLeftWrapper.classList.add('slide-wrapper-lft-area');
+
+  const parentBlock = document.createElement('div');
+  parentBlock.classList.add('video-gallery-content');
 
   const videoSlideRightWrapper = document.createElement('div');
   videoSlideRightWrapper.classList.add('slide-wrapper-rth-area');
 
-  let completedGalleries = 0;
-  const totalGalleries = mediaGalleryProps.length;
-
   mediaGalleryProps.forEach((childrenBlockProps) => {
+    childrenBlockProps.classList.add('video-slide');
     const [videoGallery] = childrenBlockProps.children;
-    generateMediaGallery(videoGallery, block, (generatedDOM) => {
-      parentContainerDiv.append(generatedDOM);
-      completedGalleries += 1;
-      if (completedGalleries === totalGalleries) {
-        block.append(videoSlideLeftWrapper, videoSlideRightWrapper);
-        block.append(parentContainerDiv);
-        const parentElements = document.querySelectorAll('.video-gallery-content');
-        parentElements.forEach((parentElement) => {
-          Array.from(parentElement.children).forEach((child) => {
-            child.classList.add('video-gallery-card');
-          });
-        });
-        resizeVideoBlock();
-      }
-    });
+    generateMediaGallery(
+      videoGallery,
+      block,
+      videoSlideLeftWrapper,
+      videoSlideRightWrapper,
+    );
+    generateMediaGallery(videoGallery);
+    parentBlock.append(childrenBlockProps);
   });
+  block.append(parentBlock);
+  block.append(videoSlideRightWrapper, videoSlideLeftWrapper);
+  resizeVideoBlock();
 }
