@@ -246,7 +246,7 @@ function triggerMediaCompleteAnalytics(video) {
   }
   if (blockName) {
     mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
-  mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName;
+    mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName;
   }
   if (sectionId) {
     mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId;
@@ -257,7 +257,7 @@ function triggerMediaCompleteAnalytics(video) {
 
   // Push to data layer only if mediaUrl is not blank (as an example of required field)
   if (mediaUrl) {
-  mediaCompleteObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
+    mediaCompleteObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
     window.adobeDataLayer.push(mediaCompleteObject);
   }
 }
