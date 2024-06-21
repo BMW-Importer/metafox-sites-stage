@@ -3525,7 +3525,8 @@
         "name": "wdh_series",
         "description": "Defines the Series and related Model Range context.",
         "required": true,
-        "valueType": "string"
+        "valueType": "string",
+        "options": []
       },
       {
         "component": "text",
@@ -3541,7 +3542,8 @@
         "name": "wdh_range",
         "description": "Defines the Series and related Model Range context.",
         "required": true,
-        "valueType": "string"
+        "valueType": "string",
+        "options": []
       },
       {
         "component": "text",
@@ -3557,7 +3559,8 @@
         "name": "wdh_code",
         "description": "Defines the Model Code context. The values will be populated by WDH based on the previous selections.",
         "required": true,
-        "valueType": "string"
+        "valueType": "string",
+        "options": []
       },
       {
         "component": "text",
