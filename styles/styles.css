@@ -162,6 +162,11 @@ h6 {
   color: var(--light-text-color);
 }
 
+p, dl, ol, ul, pre, blockquote {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .default-content-wrapper > p {
   font-size: 0.75rem; 
   line-height: 1rem;
@@ -169,11 +174,6 @@ h6 {
   text-transform: uppercase;
   color: var(--light-text-color);
   margin: 0 0 .5rem;
-}
-
-p, dl, ol, ul, pre, blockquote {
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 p:has(picture:first-child) {
