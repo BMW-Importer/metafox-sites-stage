@@ -162,6 +162,15 @@ h6 {
   color: var(--light-text-color);
 }
 
+.default-content-wrapper > p {
+  font-size: 0.75rem; 
+  line-height: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--light-text-color);
+  margin: 0 0 .5rem;
+}
+
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -483,8 +492,11 @@ main .section:first-child {
 @media (width >= 1280px){
   main .section {
     padding: 0 var(--section-desktop-padding);
+  } 
+  
+  .default-content-wrapper > p {    
+    margin: 0 0 .75rem;
   }
-
  
   .appear.white-background main .section.columns-container .default-content-wrapper p {
     margin: 0
@@ -502,6 +514,10 @@ main .section:first-child {
   main .section.no-padding {
     padding-left: calc((100vw - (var(--max-component-width))) / 2);
     padding-right: calc((100vw - (var(--max-component-width))) / 2);
+  }
+
+  .default-content-wrapper > p {    
+    margin: 0 0 1rem;
   }
 }
 
