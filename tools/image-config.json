@@ -5,7 +5,8 @@
   ],
   "apiKey": "asset_search_service",
   "repoNames": [
-    "author-p48114-e244559.adobeaemcloud.com"
+    "author-p48114-e244559.adobeaemcloud.com",
+    "author-p130360-e1272151.adobeaemcloud.com"
   ],
   "preferredDimensions":{
       "minWidth": 500,
