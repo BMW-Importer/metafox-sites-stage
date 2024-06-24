@@ -301,11 +301,14 @@ export function getVideoElement(props) {
   }
 
   video.addEventListener('click', (event) => {
-    event.stopImmediatePropagation();
-    if (video.paused) {
-      video.play().catch();
-    } else {
-      video.pause();
+    const flyoutElem = document.querySelectorAll('.menu-flyout-wrapper.showfly');
+    if (flyoutElem.length === 0) {
+      event.stopImmediatePropagation();
+      if (video.paused) {
+        video.play().catch();
+      } else {
+        video.pause();
+      }
     }
   });
 
