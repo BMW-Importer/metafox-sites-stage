@@ -3439,11 +3439,16 @@
   },
   {
     "id": "drivetrain-switch",
-    "fields": [
+    "fields": [      
+      {
+        "component": "tab",
+        "label": "Details",
+        "name": "content"
+      },
       {
         "component": "select",
         "label": "Model Label Source",
-        "name": "labelsource",
+        "name": "content_labelsource",
         "valueType": "string",
         "description": "Defines the source of the Model Labels displayed in the panels with the vehicles on the left-hand side of the DriveTrain Switch.",
         "options": [
@@ -3456,153 +3461,6 @@
             "value": "fuel-type"
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "drivetrain-model-card",
-    "fields": [
-      {
-        "component": "tab",
-        "label": "General",
-        "name": "group"
-      },
-      {
-        "component": "select",
-        "label": "Model Group",
-        "name": "group_model",
-        "description": "Defines the grouping of the vehicles.",
-        "required": true,
-        "valueType": "string",
-        "options": [
-          {
-            "name": "All Models",
-            "value": "all"
-          },
-          {
-            "name": "M Models",
-            "value": "m"
-          },
-          {
-            "name": "i Models",
-            "value": "i"
-          }
-        ]
-      },
-      {
-        "component": "text",
-        "label": "Model Group",
-        "name": "group_modelType",
-        "description": "Defines the grouping of the vehicles.",
-        "hidden": true,
-        "value": "h2",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
-        "label": "Model Group Item Link",
-        "name": "group_modellink",
-        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
-        "required": true,
-        "valueType": "string"
-      },
-      {
-        "component": "boolean",
-        "label": "Selected Model",
-        "description": "Defines if the model item and model card of this vehicle will be selected and displayed on the right hand side upon loading the DriveTrain Switch within a page. Please tick this option for the model card of the vehicle to be highlighted.",
-        "name": "group_selectedmodel",
-        "valueType": "boolean",
-        "value": false
-      },
-      {
-        "component": "tab",
-        "label": "Context",
-        "name": "wdh"
-      },
-      {
-        "component": "select",
-        "label": "Series",
-        "name": "wdh_series",
-        "description": "Defines the Series and related Model Range context.",
-        "required": true,
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "label": "Series",
-        "name": "wdh_seriesType",
-        "hidden": true,
-        "value": "h2",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Model Range",
-        "name": "wdh_range",
-        "description": "Defines the Series and related Model Range context.",
-        "required": true,
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "label": "Model Range",
-        "name": "wdh_rangeType",
-        "hidden": true,
-        "value": "h3",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Model Code (Type Code)",
-        "name": "wdh_code",
-        "description": "Defines the Model Code context. The values will be populated by WDH based on the previous selections.",
-        "required": true,
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "label": "Model Code (Type Code)",
-        "name": "wdh_codeType",
-        "hidden": true,
-        "value": "h4",
-        "valueType": "string"
-      },
-      {
-        "component": "boolean",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdata",
-        "description": "Defines if technical data is enabled.",
-        "required": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdataType",
-        "hidden": true,
-        "value": "h5",
-        "valueType": "string"
-      },
-      {
-        "component": "boolean",
-        "label": "Transmission Type",
-        "name": "wdh_transmission",
-        "description": "Defines the transmission type. The values will be populated by WDH based on the previous selections.",
-        "required": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Transmission Type",
-        "name": "wdh_transmissionType",
-        "hidden": true,
-        "value": "h6",
-        "valueType": "string"
-      },
-      {
-        "component": "tab",
-        "label": "Details",
-        "name": "content"
       },
       {
         "component": "text",
@@ -3618,23 +3476,7 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true
-      },
-      {
-        "component": "boolean",
-        "label": "Display Model Description",
-        "name": "content_modedescp",
-        "description": "Defines if the authored model description will appear within the DriveTrain Switch above the Technical Data Facts.",
-        "value": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Display Model Description",
-        "name": "content_modedescpType",        
-        "valueType": "string",
-        "value": "h3",
-        "hidden": true
-      },
+      },     
       {
         "component": "text",
         "label": "Model Description",
@@ -3699,7 +3541,7 @@
       {
         "component": "reference",
         "label": "Disclaimer",
-        "name": "content_disclaimer",
+        "name": "content_disclaimerLink",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the DriveTrain Switch. Please select the relevant disclaimers per market and language under /content/dam/metafox/",
         "valueType": "string"
       },
@@ -3819,10 +3661,113 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "drivetrain-model-card",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "group"
+      },
+      {
+        "component": "select",
+        "label": "Model Group",
+        "name": "group_model",
+        "description": "Defines the grouping of the vehicles.",
+        "required": true,
+        "valueType": "string",
+        "options": [
+          {
+            "name": "All Models",
+            "value": "all"
+          },
+          {
+            "name": "M Models",
+            "value": "m"
+          },
+          {
+            "name": "i Models",
+            "value": "i"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "label": "Model Group",
+        "name": "group_modelType",
+        "description": "Defines the grouping of the vehicles.",
+        "hidden": true,
+        "value": "h2",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "label": "Model Group Item Link",
+        "name": "group_modelLink",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
+        "required": true,
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Selected Model",
+        "description": "Defines if the model item and model card of this vehicle will be selected and displayed on the right hand side upon loading the DriveTrain Switch within a page. Please tick this option for the model card of the vehicle to be highlighted.",
+        "name": "group_selectedmodel",
+        "valueType": "boolean",
+        "value": false
       },
       {
         "component": "tab",
-        "label": "Technical Data Facts",
+        "label": "Context",
+        "name": "wdh"
+      },
+      {
+        "component": "customtype",
+        "label": "Model Card Context",
+        "name": "wdh_customSeriesModelRangeSelection",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",        
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Enable Technical Data",
+        "name": "wdh_techdata",
+        "description": "Defines if technical data is enabled.",
+        "required": true,
+        "valueType": "boolean"
+      },
+      {
+        "component": "text",
+        "label": "Enable Technical Data",
+        "name": "wdh_techdataType",
+        "hidden": true,
+        "value": "h5",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "label": "Transmission Type",
+        "name": "wdh_transmission",
+        "description": "Defines the transmission type. The values will be populated by WDH based on the previous selections.",
+        "required": true,
+        "valueType": "string",
+        "condition": { "===": [{"var" : "wdh_techdata"}, true] },
+        "options": []
+      },
+      {
+        "component": "text",
+        "label": "Transmission Type",
+        "name": "wdh_transmissionType",
+        "hidden": true,
+        "value": "h6",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
         "name": "analytics"
       },
       {
@@ -3911,7 +3856,7 @@
             "value": "Other"
           }    
         ]
-      }      
+      }
     ]
   }
 ]
