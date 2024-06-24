@@ -3817,54 +3817,10 @@
         "name": "wdh"
       },
       {
-        "component": "select",
-        "label": "Series",
-        "name": "wdh_series",
-        "description": "Defines the Series and related Model Range context.",
-        "required": true,
-        "valueType": "string",
-        "options": []
-      },
-      {
-        "component": "text",
-        "label": "Series",
-        "name": "wdh_seriesType",
-        "hidden": true,
-        "value": "h2",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Model Range",
-        "name": "wdh_range",
-        "description": "Defines the Series and related Model Range context.",
-        "required": true,
-        "valueType": "string",
-        "options": []
-      },
-      {
-        "component": "text",
-        "label": "Model Range",
-        "name": "wdh_rangeType",
-        "hidden": true,
-        "value": "h3",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Model Code (Type Code)",
-        "name": "wdh_code",
-        "description": "Defines the Model Code context. The values will be populated by WDH based on the previous selections.",
-        "required": true,
-        "valueType": "string",
-        "options": []
-      },
-      {
-        "component": "text",
-        "label": "Model Code (Type Code)",
-        "name": "wdh_codeType",
-        "hidden": true,
-        "value": "h4",
+        "component": "customtype",
+        "label": "Model Card Context",
+        "name": "wdh_customSeriesModelRangeSelection",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",        
         "valueType": "string"
       },
       {
