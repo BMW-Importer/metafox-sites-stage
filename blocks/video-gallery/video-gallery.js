@@ -407,12 +407,6 @@ export default function decorate(block) {
   mediaGalleryProps.forEach((childrenBlockProps) => {
     childrenBlockProps.classList.add('video-slide');
     const [videoGallery] = childrenBlockProps.children;
-    generateMediaGallery(
-      videoGallery,
-      block,
-      videoSlideLeftWrapper,
-      videoSlideRightWrapper,
-    );
     generateMediaGallery(videoGallery);
     parentBlock.append(childrenBlockProps);
   });
