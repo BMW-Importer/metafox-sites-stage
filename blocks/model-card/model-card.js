@@ -1,13 +1,27 @@
 import { fetchSetPlaceholderObject, fetchModelPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
 import {
-  buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder,
+  buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder, getResolutionKey
 } from '../../scripts/common/wdh-util.js';
 
 export default function decorate(block) {
+  const imgTag = document.createElement('img');
   const props = [...block.children].map((row) => row.firstElementChild);
   const [, placeholder] = props;
-  const modelCodeArray = ['7K11', '61CM', '7K11'];
+  const modelCodeArray = ['7K11'];
+ //  const modelCodeArray = ['7K11', '61CM', '7K11'];
   block.textContent = '';
+  modelCodeArray.forEach((agCode) => {
+    getCosyImage(agCode).then((responseJson) => {
+      const screenWidth = window.innerWidth;
+      const resolutionKey = getResolutionKey(screenWidth);  
+      const cosyImageUrl = getCosyImageUrl(responseJson, resolutionKey, 20);
+      const imgTag = document.createElement('img');
+      imgTag.src = cosyImageUrl;
+      block.append(imgTag);
+    });
+
+  });
+
   buildContext(modelCodeArray).then(() => {
     // console.log(wdhSetPlaceholder);
     const wdhModelPlaceholder = fetchModelPlaceholderObject();
@@ -19,20 +33,6 @@ export default function decorate(block) {
     updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
     console.log(wdhSetPlaceholder);
     block.append(updatedPlaceholder);
-  });
-  modelCodeArray.forEach((agCode) => {
-    getCosyImage(agCode).then((responseJson) => {
-      const cosyImageUrl = getCosyImageUrl(responseJson, 'res_1280x720', 20);
-      const imgTag = document.createElement('img');
-      imgTag.src = cosyImageUrl;
-      block.append(imgTag);
-    });
-    getCosyImage(agCode).then((responseJson) => {
-      const cosyImageUrlNew = getCosyImageUrl(responseJson, 'res_640x360', 90);
-      const imgTag = document.createElement('img');
-      imgTag.src = cosyImageUrlNew;
-      block.append(imgTag);
-    });
   });
   const a = fetchSetPlaceholderObject();
   console.log(a);
