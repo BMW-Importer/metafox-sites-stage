@@ -428,7 +428,8 @@ function setDataAttributeToBlock(props) {
 
 export function loadVideoEmbed(props) {
   const [block, videoTitle, videoDescp, linkObject,
-    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false, analyticsLabel] = props;
+    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false,
+    analyticsLabel] = props;
 
   if (block?.dataset?.embedIsLoaded === true) return;
 

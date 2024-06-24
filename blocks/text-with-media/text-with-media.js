@@ -98,7 +98,7 @@ export default function decorate(block) {
     }
 
     // generate media
-    const analyticsLabelValue = analyticsLabel?.textContent?.trim() || ''
+    const analyticsLabelValue = analyticsLabel?.textContent?.trim() || '';
     generateMediaDom(mediaType, media, analyticsLabelValue);
     const headlineMedia = content.querySelector('h2');
 
