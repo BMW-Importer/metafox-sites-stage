@@ -16,7 +16,7 @@
     "fuelType": "E",
     "headlightsOn": true,
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": "",
     "imageAltText": "",
     "emissionDataWltp": {
@@ -70,7 +70,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "emissionDataWltp": {
       "co2": {
         "low": 0,

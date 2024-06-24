@@ -18,7 +18,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -74,7 +74,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -127,7 +127,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "modelName": "128ti",
     "hybridCode": "NOHY",
     "brand": "BM",
@@ -161,7 +161,7 @@
     "hidePrice": false,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/preconfiguration-vehicle-config-highquality-silver.jpg",
