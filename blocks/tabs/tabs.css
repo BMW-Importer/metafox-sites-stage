@@ -182,6 +182,13 @@ div:has(> .buttons-tab) {
     }
 }
 
+@media (width >= 1920px) {
+    .tabs li button {
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
+}
+
 body.activity main {
     grid-auto-flow: column;
     grid-template-rows: auto auto min-content minmax(auto, 100%);
