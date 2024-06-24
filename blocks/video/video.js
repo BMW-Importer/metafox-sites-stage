@@ -141,7 +141,7 @@ function triggerMediaPlayAnalytics(video) {
   window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
-  const { analyticsLabel: blockDetails } = video.dataset;
+  const { blockDetails } = video.closest('div').dataset;
   const mediaUrl = video.querySelector('source').getAttribute('src');
   const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
   video.dataset.analyticsBlockName = blockName || '';
@@ -189,8 +189,8 @@ function triggerMediaPlayAnalytics(video) {
 function triggerMediaCompleteAnalytics(video) {
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
+  const { blockDetails } = video.closest('div').dataset;
   const mediaUrl = video.querySelector('source').getAttribute('src');
-  const { analyticsLabel: blockDetails } = video.dataset;
   const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
 
   // Only assign non-blank values to data attributes
@@ -264,10 +264,11 @@ function triggerMediaCompleteAnalytics(video) {
 
 export function getVideoElement(props) {
   const [videoTitle, videoDescp, source, videoFormat, autoplay,
-    enableLoop, enableVideoControls, muted, posters, onHoverPlay] = props;
+    enableLoop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel] = props;
 
   const video = document.createElement('video');
   video.dataset.loading = 'true';
+  video.dataset.blockDetails = analyticsLabel;
   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
 
   // generate video controls
@@ -374,7 +375,7 @@ export function getVideoElement(props) {
     }
     if (!isVideoPlayed) {
       checkVideoEnd = setInterval(() => {
-        if (Math.ceil(video.currentTime) === Math.ceil(video.duration)) {
+        if (Math.ceil(video.currentTime) === Math.floor(video.duration)) {
           triggerMediaCompleteAnalytics(video);
           clearInterval(checkVideoEnd);
           isVideoPlayed = true;
@@ -427,7 +428,7 @@ function setDataAttributeToBlock(props) {
 
 export function loadVideoEmbed(props) {
   const [block, videoTitle, videoDescp, linkObject,
-    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false] = props;
+    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false, analyticsLabel] = props;
 
   if (block?.dataset?.embedIsLoaded === true) return;
 
@@ -450,11 +451,11 @@ export function loadVideoEmbed(props) {
   } else if (isMp4) {
     if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay]));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel]));
   } else if (isM3U8) {
     if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay]));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel]));
   }
 
   block.dataset.embedIsLoaded = true;
