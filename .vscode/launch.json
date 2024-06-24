@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Node: Launch Program",
+        "type": "node",
+        "request": "launch",
+        "program": "./scripts/api_utility/callwdhapi.js",
+        "stopOnEntry": true,
+        "console": "integratedTerminal",
+        "env": {
+          "COSY_API_TOKEN": "mVDNvWrVYESEggLrzWYoogeFFyPpJGTsIdOBlKivk",
+          "MODEL_NAME": "7K11"
+        }
+      }
+    ]
+  }
+  
