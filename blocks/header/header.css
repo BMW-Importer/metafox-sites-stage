@@ -1206,10 +1206,7 @@ header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .
     visibility: hidden; 
     transform: scaleY(0);
     transform-origin: top;
-    transition-delay: .5s, 0s;
-    transition-duration: .25s, .15s;
-    transition-property: transform, opacity;
-    transition-timing-function: cubic-bezier(.5,0,.5,1), cubic-bezier(.5,0,1,.5);
+    transition: transform .25s cubic-bezier(.5,0,.5,1) 0.5s, opacity .15s cubic-bezier(.5,0,1,.5) 0s;
   }
 
   .showfly .flyout-wrapper {
