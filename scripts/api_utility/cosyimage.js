@@ -5,7 +5,7 @@ function getApiUrl(modelJson) {
   const { posiSpec } = modelJson.model;
   const cosyApiUrl = config.cosyApiBaseUrl;
   const cosyHub = config.cosyApiHub;
-  const apiUrl = `${cosyApiUrl}${posiSpec.agCode}?hub=${cosyHub}&imagetype=webp&background=transparent&lightson=true&options=${posiSpec.fabric},${posiSpec.paintCode},${posiSpec.options}`;
+  const apiUrl = `${cosyApiUrl}${posiSpec.agCode}?hub=${cosyHub}&imagetype=webp&background=transparent&lightson=true&options=${posiSpec.fabric},${posiSpec.paint},${posiSpec.options}`;
   return apiUrl;
 }
 
