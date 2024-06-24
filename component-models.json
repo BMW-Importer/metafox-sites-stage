@@ -3661,98 +3661,6 @@
         "valueType": "string",
         "value": "h2",
         "hidden": true
-      },
-      {
-        "component": "tab",
-        "label": "Analytics",
-        "name": "analytics"
-      },
-      {
-        "component":"text-input",
-        "name":"analytics_label",
-        "label":"Analytics Label",
-        "valueType": "string"
-      },
-      {
-        "component":"select",
-        "name":"analytics_button",
-        "label":"Button/Link Type", 
-        "valueType": "string",
-        "options": [
-          {
-            "name": "exit",
-            "value": "exit"
-          },
-          {
-            "name": "download",
-            "value": "download"
-          },
-          {
-            "name": "other",
-            "value": "other"
-          }          
-        ]    
-      },
-      {
-        "component": "select",
-        "label": "Only if other is selected the following options should appear:",
-        "name": "analytics_others",
-        "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
-        "options": [
-          {
-            "name": "Learn More",
-            "value": "learnMore"
-          },
-          {
-            "name": "Configure",
-            "value": "Configure"
-          },
-          {
-            "name": "Technical Data",
-            "value": "Technical Data"
-          },
-          {
-            "name": "Options and Prices",
-            "value": "Options and Prices"
-          },
-          {
-            "name": "Vehicles in Stock",
-            "value": "Vehicles in Stock"
-          },
-          {
-            "name": "Request for Offer",
-            "value": "Request for Offer"
-          },
-          {
-            "name": "Sales and Service Network",
-            "value": "Sales and Service Network"
-          },
-          {
-            "name": "Test Drive",
-            "value": "Test Drive"
-          },
-          {
-            "name": "Newsletter Signup",
-            "value": "Newsletter Signup"
-          },
-          {
-            "name": "Contact",
-            "value": "Contact"
-          },
-          {
-            "name": "Search",
-            "value": "Search"
-          },
-          {
-            "name": "Show More / Show Less",
-            "value": "Show More / Show Less"
-          },
-          {
-            "name": "Other",
-            "value": "Other"
-          }    
-        ]
       }
     ]
   },
@@ -3856,6 +3764,98 @@
         "hidden": true,
         "value": "h6",
         "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "analytics"
+      },
+      {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": "string"
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
+        "valueType": "string",
+        "options": [
+          {
+            "name": "exit",
+            "value": "exit"
+          },
+          {
+            "name": "download",
+            "value": "download"
+          },
+          {
+            "name": "other",
+            "value": "other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following options should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
       }
     ]
   }
