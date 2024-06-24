@@ -26,10 +26,10 @@ export default function decorate(block) {
     // console.log(wdhSetPlaceholder);
     const wdhModelPlaceholder = fetchModelPlaceholderObject();
     const wdhSetPlaceholder = fetchSetPlaceholderObject();
-    const modelRegex = /\${model(.*?)}/g;
+    const modelRegex = /\{model(.*?)}/g;
     const textContent = placeholder.innerText;
     let updatedPlaceholder = replacePlaceholder(textContent, wdhModelPlaceholder, modelRegex);
-    const setRegex = /\${set(.*?)}/g;
+    const setRegex = /\{set(.*?)}/g;
     updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
     console.log(wdhSetPlaceholder);
     block.append(updatedPlaceholder);
