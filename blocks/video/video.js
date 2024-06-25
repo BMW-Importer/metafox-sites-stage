@@ -141,62 +141,23 @@ function triggerMediaPlayAnalytics(video) {
   window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
   const { analyticsLabel: sectionId } = video.closest('.section').dataset;
-  const mediaUrl = video.getAttribute('src');
-
+  const { blockDetails } = video.closest('div').dataset;
+  const mediaUrl = video.querySelector('source').getAttribute('src');
+  const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
   video.dataset.analyticsBlockName = blockName || '';
   video.dataset.analyticsSectionId = sectionId || '';
   video.dataset.analyticsMediaUrl = mediaUrl || '';
+  video.dataset.analyticsBlockDetails = blockDetails || '';
+  video.dataset.analyticsMediaHosting = mediaHostname || '';
 
   const mediaPlayObject = {
     event: 'media.play',
     eventInfo: {
-      id: '2121221',
+      id: '',
       attributes: {
         mediaInfo: {
           mediaName: '',
-          mediaHosting: 'renderings.evecp.bmw.cloud',
-          mediaType: 'video',
-        },
-      },
-      section: {
-        sectionInfo: {
-          sectionName: 'Section',
-          sectionID: '',
-        },
-      },
-      block: {
-        blockInfo: {
-          blockName: '',
-          blockDetails: '',
-        },
-      },
-    },
-  };
-
-  const randomNum = 100000 + Math.random() * 900000;
-  mediaPlayObject.eventInfo.id = Math.floor(randomNum).toString();
-  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
-  mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
-  mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
-  window.adobeDataLayer.push(mediaPlayObject);
-}
-
-function triggerMediaCompleteAnalytics(video) {
-  const { blockName } = video.closest('.block').dataset;
-  const { analyticsLabel: sectionId } = video.closest('.section').dataset;
-  const mediaUrl = video.getAttribute('src');
-  video.dataset.analyticsBlockName = blockName || '';
-  video.dataset.analyticsSectionId = sectionId || '';
-  video.dataset.analyticsMediaUrl = mediaUrl || '';
-
-  const mediaCompleteObject = {
-    event: 'video.complete',
-    eventInfo: {
-      id: '2121221',
-      attributes: {
-        mediaInfo: {
-          mediaName: '',
-          mediaHosting: 'renderings.evecp.bmw.cloud',
+          mediaHosting: '',
           mediaType: 'video',
         },
       },
@@ -216,19 +177,98 @@ function triggerMediaCompleteAnalytics(video) {
   };
 
   const randomNum = 100000 + Math.random() * 900000;
+  mediaPlayObject.eventInfo.id = Math.floor(randomNum).toString();
+  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
+  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
+  mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
+  mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
+  mediaPlayObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
+  window.adobeDataLayer.push(mediaPlayObject);
+}
+
+function triggerMediaCompleteAnalytics(video) {
+  const { blockName } = video.closest('.block').dataset;
+  const { analyticsLabel: sectionId } = video.closest('.section').dataset;
+  const { blockDetails } = video.closest('div').dataset;
+  const mediaUrl = video.querySelector('source').getAttribute('src');
+  const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
+
+  // Only assign non-blank values to data attributes
+  if (blockName) {
+    video.dataset.analyticsBlockName = blockName;
+  }
+  if (sectionId) {
+    video.dataset.analyticsSectionId = sectionId;
+  }
+  if (mediaUrl) {
+    video.dataset.analyticsMediaUrl = mediaUrl;
+  }
+  if (blockDetails) {
+    video.dataset.analyticsBlockDetails = blockDetails;
+  }
+  if (mediaHostname) {
+    video.dataset.analyticsMediaHosting = mediaHostname;
+  }
+
+  const mediaCompleteObject = {
+    event: 'media.complete',
+    eventInfo: {
+      id: '',
+      attributes: {
+        mediaInfo: {
+          mediaName: '',
+          mediaHosting: '',
+          mediaType: 'video',
+        },
+      },
+      section: {
+        sectionInfo: {
+          sectionName: '',
+          sectionID: '',
+        },
+      },
+      block: {
+        blockInfo: {
+          blockName: '',
+          blockDetails: '',
+        },
+      },
+    },
+  };
+
+  // Generate a random ID
+  const randomNum = 100000 + Math.random() * 900000;
   mediaCompleteObject.eventInfo.id = Math.floor(randomNum).toString();
-  mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
-  mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName || '';
-  mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
-  window.adobeDataLayer.push(mediaCompleteObject);
+
+  // Only assign non-blank values to the mediaCompleteObject
+  if (mediaUrl) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl;
+  }
+  if (blockName) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
+    mediaCompleteObject.eventInfo.block.blockInfo.blockName = blockName;
+  }
+  if (sectionId) {
+    mediaCompleteObject.eventInfo.section.sectionInfo.sectionID = sectionId;
+  }
+  if (mediaHostname) {
+    mediaCompleteObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname;
+  }
+
+  // Push to data layer only if mediaUrl is not blank (as an example of required field)
+  if (mediaUrl) {
+    mediaCompleteObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
+    window.adobeDataLayer.push(mediaCompleteObject);
+  }
 }
 
 export function getVideoElement(props) {
   const [videoTitle, videoDescp, source, videoFormat, autoplay,
-    enableLoop, enableVideoControls, muted, posters, onHoverPlay] = props;
+    enableLoop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel] = props;
 
   const video = document.createElement('video');
   video.dataset.loading = 'true';
+  video.dataset.blockDetails = analyticsLabel;
   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
 
   // generate video controls
@@ -262,11 +302,14 @@ export function getVideoElement(props) {
   }
 
   video.addEventListener('click', (event) => {
-    event.stopImmediatePropagation();
-    if (video.paused) {
-      video.play().catch();
-    } else {
-      video.pause();
+    const flyoutElem = document.querySelectorAll('.menu-flyout-wrapper.showfly');
+    if (flyoutElem.length === 0) {
+      event.stopImmediatePropagation();
+      if (video.paused) {
+        video.play().catch();
+      } else {
+        video.pause();
+      }
     }
   });
 
@@ -335,7 +378,7 @@ export function getVideoElement(props) {
     }
     if (!isVideoPlayed) {
       checkVideoEnd = setInterval(() => {
-        if (Math.ceil(video.currentTime) === Math.ceil(video.duration)) {
+        if (Math.ceil(video.currentTime) === Math.floor(video.duration)) {
           triggerMediaCompleteAnalytics(video);
           clearInterval(checkVideoEnd);
           isVideoPlayed = true;
@@ -388,7 +431,8 @@ function setDataAttributeToBlock(props) {
 
 export function loadVideoEmbed(props) {
   const [block, videoTitle, videoDescp, linkObject,
-    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false] = props;
+    autoplay, loop, enableVideoControls, muted, posters, onHoverPlay = false,
+    analyticsLabel] = props;
 
   if (block?.dataset?.embedIsLoaded === true) return;
 
@@ -411,11 +455,11 @@ export function loadVideoEmbed(props) {
   } else if (isMp4) {
     if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay]));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.mp4', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel]));
   } else if (isM3U8) {
     if (!isScriptAdded) triggerLoadingVideoJsLib();
     isScriptAdded = true;
-    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay]));
+    block.append(getVideoElement([videoTitle, videoDescp, linkObject, '.m3u8', autoplay, loop, enableVideoControls, muted, posters, onHoverPlay, analyticsLabel]));
   }
 
   block.dataset.embedIsLoaded = true;

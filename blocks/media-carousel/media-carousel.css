@@ -2,17 +2,17 @@
     margin: 0;
 }
 
-.video-img-carousel-card .video-js {
+.media-carousel .video-img-carousel-card .video-js {
     height: auto !important;
     margin-bottom: 1rem;
 }
 
-.video-img-carousel-card img {
+.media-carousel .video-img-carousel-card img {
     margin-bottom: 1rem;
 
 }
 
-.video-img-carousel-card video {
+.media-carousel .video-img-carousel-card video {
     aspect-ratio: 3 / 2;
     object-fit: cover;
     height: auto !important;
@@ -20,7 +20,7 @@
     position: relative !important;
 }
 
-.video-img-carousel-card picture img {
+.media-carousel .video-img-carousel-card picture img {
     aspect-ratio: 3 / 2;
     object-fit: cover;
     vertical-align: middle;
@@ -44,7 +44,7 @@
 }
 
 
-.media-carousel-wrapper .video-image-carousel-content .video-img-carousel-card {
+.media-carousel-wrapper .video-image-carousel-content .media-carousel {
     flex-shrink: 0;
     height: auto;
     touch-action: pan-y;
@@ -201,7 +201,7 @@
 }
 }
 
-.media-carousel-wrapper .video-img-carousel-card .video-img-cta a {
+.media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-cta a {
     display: inline-flex;
     cursor: pointer;
     align-items: center;
@@ -212,7 +212,7 @@
     word-break: break-word;
 }
 
-.media-carousel-wrapper .video-img-carousel-card .video-img-cta a::after {
+.media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-cta a::after {
     overflow-wrap: normal;
     font-size: 1.25rem;
     font-weight: 400;
@@ -234,12 +234,12 @@
     white-space: nowrap;
 }
 
-.media-carousel-wrapper .video-img-carousel-card .video-img-cta a:hover {
+.media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-cta a:hover {
     color: var(--link-hover-color);
 }
 
-.media-carousel-wrapper .video-img-carousel-card .video-img-title,
-.media-carousel-wrapper .video-img-carousel-card .video-img-description {
+.media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title,
+.media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description {
     margin-bottom: 0.5rem;
 }
 
@@ -254,12 +254,12 @@
         display: none;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title > * {
         font-size: 1.1875rem;  
         line-height: 1.75rem;
     }
     
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description>* {
         font-size: 1rem;
         line-height: 1.625rem;
     }
@@ -273,7 +273,7 @@
         width: 6rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title > * {
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
@@ -289,29 +289,29 @@
         padding: 0;
     }
 
-    .video-img-carousel-card .video-js {
+    .media-carousel .video-img-carousel-card .video-js {
         height: auto !important;
     }
 
-    .video-img-carousel-card video {
+    .media-carousel .video-img-carousel-card video {
         aspect-ratio: 3 / 2;
         object-fit: cover;
         height: auto !important;
         vertical-align: middle;
     }
 
-    .video-img-carousel-card picture img {
+    .media-carousel .video-img-carousel-card picture img {
         aspect-ratio: 3 / 2;
         object-fit: cover;
         vertical-align: middle;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title>* {
         font-size: 1.25rem;
         line-height: 1.875rem;
     }
     
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description>* {
         font-size: 1.0625rem;
         line-height: 1.75rem;
     }
@@ -327,13 +327,13 @@
         padding-right: 1.5rem;
     }
 
-    .video-img-carousel-card video {
+    .media-carousel .video-img-carousel-card video {
         aspect-ratio: 3 / 2;
         object-fit: cover;
         vertical-align: middle;
     }
 
-    .video-img-carousel-card picture img {
+    .media-carousel .video-img-carousel-card picture img {
         aspect-ratio: 3 / 2;
         object-fit: cover;
         vertical-align: middle;
@@ -466,24 +466,24 @@
         white-space: nowrap
     }
 
-    .video-img-carousel-card img,
-    .video-img-carousel-card .video-js {
+    .media-carousel .video-img-carousel-card img,
+    .media-carousel .video-img-carousel-card .video-js {
         margin-bottom: 1.5rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title{
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title>*{
         font-size: 1.5625rem;
         line-height: 2.375rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description > *{
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description > *{
         font-size: 1.1875rem;
         line-height: 1.875rem;
 
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title,
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title,
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description {
         margin-bottom: 1rem;
     }
 }
@@ -498,23 +498,23 @@
         padding: 0;
     }
 
-    .video-img-carousel-card img,
-    .video-img-carousel-card .video-js {
+    .media-carousel .video-img-carousel-card img,
+    .media-carousel .video-img-carousel-card .video-js {
         margin-bottom: 1.25rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title,
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title,
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description {
         margin-bottom: 0.75rem;
     }
 
-    .media-carousel-wrapper .video-img-carousel-card .video-img-title {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-title>* {
         font-size: 1.4375rem;
         font-weight: 300;
         line-height: 2.25rem;
     }
     
-    .media-carousel-wrapper .video-img-carousel-card .video-img-description>* {
+    .media-carousel-wrapper .media-carousel .video-img-carousel-card .video-img-description>* {
         font-size: 1.125rem;
         font-weight: 300;
         line-height: 1.75rem;

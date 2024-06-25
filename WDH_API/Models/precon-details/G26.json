@@ -18,7 +18,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -74,7 +74,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -130,7 +130,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {},
@@ -189,7 +189,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/PreCon_Architecture_A.jpg",
@@ -248,7 +248,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/PreCon_Architecture_C.jpg",
@@ -307,7 +307,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/PreCon_Architecture_B.jpg",
@@ -368,7 +368,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/bmw-x-series-ix-onepager-pc-essence.jpg",
@@ -423,7 +423,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/bmw-x-series-ix-onepager-pc-balance.jpg",
@@ -482,7 +482,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "imageTitle": " ",
     "imageAltText": " ",
     "backgroundImage": "/content/dam/bmw/common/preconfiguration/bmw-x-series-ix-onepager-pc-signature.jpg",
@@ -541,7 +541,7 @@
     "hidePrice": true,
     "fuelType": "E",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -599,7 +599,7 @@
     "fuelType": "O",
     "headlightsOn": true,
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {
@@ -656,7 +656,7 @@
     "hidePrice": true,
     "fuelType": "O",
     "productionDate": "",
-    "effectDate": "2024-06-18",
+    "effectDate": "2024-06-24",
     "backgroundImage": "",
     "emissionDataWltp": {
       "co2": {},

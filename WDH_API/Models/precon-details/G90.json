@@ -1,0 +1,31 @@
+{
+  "9269": {
+    "id": 9269,
+    "name": "BMW M5 Sedan sa M xDrive - Shop The Look",
+    "status": "OK",
+    "vehicleType": "SHOP_THE_LOOK",
+    "modelCode": "81FK",
+    "agModelCode": "81FK",
+    "vgModelCode": "81FK",
+    "modelRangeCode": "G90",
+    "options": "S01DF,S01GC,S01MB,S0230,S0248,S02NK,S02PA,S02VB,S02VC,S0302,S0322,S03DP,S03MF,S0428,S043P,S0453,S0459,S04FL,S04GQ,S04HA,S04MA,S04NB,S04NR,S04T2,S04T3,S04U9,S04UR,S04V1,S0548,S0552,S05AU,S05AV,S05DW,S05YA,S0654,S06AE,S06AF,S06AK,S06C4,S06F4,S06NX,S06PA,S06U3,S071C,S0760,S0776,S07M9,S07ME,S07VB,S0801,S0851,S0879,S08KA,S08R3,S08R9,S08TF,S08WN",
+    "paint": "P0C64",
+    "fabric": "FLKKG",
+    "headline": "",
+    "hidePrice": true,
+    "fuelType": "X",
+    "productionDate": "2024-09-02",
+    "effectDate": "2024-09-02",
+    "imageTitle": "BMW M5 Sedan with M xDrive",
+    "imageAltText": "BMW M5 Sedan with M xDrive",
+    "backgroundImage": "/content/dam/bmw/common/preconfiguration/PreCon_Color_White.jpg",
+    "modelName": "BMW M5 Limousine mit M xDrive",
+    "hybridCode": "PHEV",
+    "brand": "BM",
+    "cosyBrand": "WBBM",
+    "cosyUrl": "https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331sBgrfZ7dQMw1pf4oXQtUDCvSpKM4lxvpa2CpLYkjUPoxQkQGZIaMLWMEYXiwrt3rQ4Y8Z8X6Ausxpz9mlD3AfzBy2od4ewtTQLzB6ShtN8vbCUVo%25fMLWHdpB1dAJ0%25lI2gpdEXCw1pMWowyu4%25P6CbKM45jdsTjHv9DiUi5rTEiyiIifdscpF4HvHyH0KiIFJGJSxABHvIT9PvrO2JGvloMLUgpT9GsLDYeUilo90yYZvbHsLoACt%25whJ0yLOEfuOqTACygNWz3mlOECUkebX7sgNEbnjHz10UkNh56HlVAbnkq83mazOh5nmPX5xagq857MrHTRUmP81D4Jhxb7MPVYFf7Wh1DMztIZFeqVYDafvePjmztYRSGgM67aftxd9lyw1RSfWQosH%25VxdSeZL3NuzWQdjcyXh3aeZQ6KCoxXRjcZwBELsrx6Kc%252N8J4WwBKupciIFe%252B3iK7MIjup2XHBypv63iprJ2CAGwXHi4TpWq9%25rJHFlijpou4TJIsNR6L3FlTv0knGyXIslGAn5uCrv0s9O58dE4GA0og8a3NF9OALUPhXkIogOybMe3nvLUgChD3A5GybUEqYdX89ChbNmEpNPoEqhk7NggMLNmqn1ki3Dyk7m5VnvEYCn178z5GPtE5V1Pa8slfN8zVMRVcjSkPazDxzG6dnMRaYWa08Q5DxRteRYzZ8YWxfjxqCcPteWS6WmDKMfjedwe28BDS6jQ%25jzc2YInwlQaGcpRBqH9a0KEcw2FD4fXujNRUQoFSr1Iki",
+    "technicalData": {
+      "volt48": false
+    }
+  }
+}

@@ -209,7 +209,8 @@
       "quote",
       "media-carousel",
       "video-gallery",
-      "custom-asset-one"
+      "custom-asset-one",
+      "drivetrain-switch"
     ]
   },
   {
@@ -326,6 +327,12 @@
     "id": "video-gallery",
     "components": [
       "video-gallery-slide"
+    ]
+  },
+  {
+    "id": "drivetrain-switch",
+    "components": [
+      "drivetrain-model-card"
     ]
   }
 ]

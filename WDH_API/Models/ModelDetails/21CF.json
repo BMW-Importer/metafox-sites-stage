@@ -25,7 +25,6 @@
     "topSpeed": "200",
     "bodyTypeCode": "GF",
     "marketingBodyTypeCode": "SUV",
-    "pureElectricRange": 633,
     "posiSpec": {
       "cosyBrand": "WBBI",
       "agCode": "21CF",
@@ -40,7 +39,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-06-17",
+    "effectDate": "2024-06-24",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -72,21 +71,23 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
+            "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "0",
-            "electricConsumption": "21.4–19.5",
-            "electricRangeWltpCombined": "586–633",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "108.8",
             "additionalRangeDC": "145 - 196",
             "chargeACDC": "11 (-) / 195",
+            "chargeAC": "11",
             "charge_AC_0_100": "11",
-            "charge_DC_10_80": "35",
-            "chargingMaxAC": "11"
+            "chargeDC": "195",
+            "charge_DC_10_80": "35"
           },
           "weightMeasurements": {
             "length": "4953",
@@ -105,12 +106,6 @@
         "footnotes": {
           "emissionsConsumptionWltp": [
             "f4"
-          ],
-          "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
-            "f6"
-          ],
-          "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
-            "f6"
           ],
           "charging": [
             "f7"
