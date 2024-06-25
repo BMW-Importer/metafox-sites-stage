@@ -3439,10 +3439,10 @@
   },
   {
     "id": "drivetrain-switch",
-    "fields": [      
+    "fields": [
       {
         "component": "tab",
-        "label": "Details",
+        "label": "General",
         "name": "content"
       },
       {
@@ -3464,6 +3464,19 @@
       },
       {
         "component": "text",
+        "name": "content_labelsourceType",        
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+
+      {
+        "component": "tab",
+        "label": "Details",
+        "name": "content"
+      },
+      {
+        "component": "text",
         "label": "Active Model Title",
         "name": "content_activemodel",
         "description": "Defines the active model title to be displayed behind the image of the vehicle.",
@@ -3474,7 +3487,7 @@
         "label": "Active Model Title",
         "name": "content_activemodelType",        
         "valueType": "string",
-        "value": "h2",
+        "value": "h3",
         "hidden": true
       },     
       {
@@ -3509,19 +3522,12 @@
       {
         "component": "text",
         "label": "Technical Data Button Stying",
-        "name": "content_technocalLinkStyle",
+        "name": "content_technocalLinkType",
         "description": "Defines the styling applied to the button or if the button will displayed as a link.",
         "valueType": "string",
+        "value": "primary",
         "hidden": true
-      },
-      {
-        "component": "text",
-        "label": "Technical Data Button Stying ",
-        "name": "content_technocalLinkStyleType",        
-        "valueType": "string",
-        "value": "h5",
-        "hidden": true
-      },
+      },      
       {
         "component": "boolean",
         "label": "Enable Popover",
@@ -3541,7 +3547,7 @@
       {
         "component": "reference",
         "label": "Disclaimer",
-        "name": "content_disclaimerLink",
+        "name": "fragment_disclaimerLink",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the DriveTrain Switch. Please select the relevant disclaimers per market and language under /content/dam/metafox/",
         "valueType": "string"
       },
