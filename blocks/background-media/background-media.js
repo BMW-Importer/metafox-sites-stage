@@ -59,7 +59,14 @@ export default function decorate(block) {
   // loop through each children block to extract props of it
   bgMediaChildrens.forEach((childrenBlock) => {
     const [generalProps, generalPropIcon, copyTextContainer,
-      gradientEffectClasName, vidOrImgPros, cta1, cta2] = childrenBlock.children;
+      gradientEffectClasName, vidOrImgPros, cta1, cta2,
+      analyticscta1, analyticscta2] = childrenBlock.children;
+    const [analyticsLabelcta1, analyticsCategorycta1,
+      analyticsSubCategorycta1] = analyticscta1.children;
+    const [analyticsLabelcta2, analyticsCategorycta2,
+      analyticsSubCategorycta2] = analyticscta2.children;
+    childrenBlock.removeChild(analyticscta1);
+    childrenBlock.removeChild(analyticscta2);
     childrenBlock.textContent = '';
     childrenBlock.classList.add('background-media-item');
 
@@ -135,6 +142,33 @@ export default function decorate(block) {
     }
 
     if (isButtonPresent) generalProps.append(btnContainer);
+
+    const ctaElem = cta1.querySelector('a');
+    const ctaElem2 = cta2.querySelector('a');
+
+    if (ctaElem) {
+      if (analyticscta1.children) {
+        ctaElem.dataset.analyticsLabel = analyticsLabelcta1?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsCategory = analyticsCategorycta1?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsSubCategory = analyticsSubCategorycta1?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsCustomClick = 'true';
+        ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
+        ctaElem.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+      }
+      btnContainer?.append(ctaElem);
+    }
+
+    if (ctaElem2) {
+      if (analyticscta1.children) {
+        ctaElem2.dataset.analyticsLabel = analyticsLabelcta2?.textContent?.trim() || '';
+        ctaElem2.dataset.analyticsCategory = analyticsCategorycta2?.textContent?.trim() || '';
+        ctaElem2.dataset.analyticsSubCategory = analyticsSubCategorycta2?.textContent?.trim() || '';
+        ctaElem2.dataset.analyticsCustomClick = 'true';
+        ctaElem2.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
+        ctaElem2.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+      }
+      cta2?.append(ctaElem2);
+    }
 
     childrenBlock.append(generalProps);
 
