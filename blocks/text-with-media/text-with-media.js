@@ -1,6 +1,6 @@
 import { loadVideoEmbed } from '../video/video.js';
 
-function generateMediaDom(mediaType, media) {
+function generateMediaDom(mediaType, media, analyticsLabel) {
   const containerDiv = document.createElement('div');
   media.classList.add('media-container');
   if (mediaType === 'image') {
@@ -62,6 +62,7 @@ function generateMediaDom(mediaType, media) {
       isMuted,
       posterObj,
       onHoverPlay,
+      analyticsLabel,
     ]);
 
     media.textContent = '';
@@ -97,7 +98,8 @@ export default function decorate(block) {
     }
 
     // generate media
-    generateMediaDom(mediaType, media);
+    const analyticsLabelValue = analyticsLabel?.textContent?.trim() || '';
+    generateMediaDom(mediaType, media, analyticsLabelValue);
     const headlineMedia = content.querySelector('h2');
 
     const mediaTitleWrapper = document.createElement('p');

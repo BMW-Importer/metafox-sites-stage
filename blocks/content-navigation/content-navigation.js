@@ -119,8 +119,21 @@ function handleOnclickscrollToTop() {
 let scrollAmount = 0;
 
 function updateButtons(leftBtn, rightBtn, list) {
-  leftBtn.style.display = scrollAmount > 0 ? 'block' : 'none';
-  rightBtn.style.display = -scrollAmount < list.scrollWidth - list.clientWidth ? 'none' : 'block';
+  if (scrollAmount > 0) {
+    leftBtn.style.display = 'block';
+    list.classList.add('left-mask');
+  } else {
+    leftBtn.style.display = 'none';
+    list.classList.remove('left-mask');
+  }
+
+  if (-scrollAmount < list.scrollWidth - list.clientWidth) {
+    rightBtn.style.display = 'none';
+    list.classList.remove('right-mask');
+  } else {
+    rightBtn.style.display = 'block';
+    list.classList.add('right-mask');
+  }
 }
 
 function updateButtonsWithVariation(leftBtn, rightBtn) {
@@ -167,7 +180,7 @@ function scrollRight() {
 
 function checkAnchorLinkOverflow(ul, wrapper) {
   if (wrapper?.scrollWidth > viewPortWidth) {
-    ul.classList.add('list-overflow');
+    ul.classList.add('list-overflow', 'right-mask');
     wrapper.classList.add('wrapper-overflow');
   } else {
     ul.classList.remove('list-overflow');
