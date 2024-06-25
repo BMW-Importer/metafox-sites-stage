@@ -3,4 +3,14 @@
 <script src="/scripts/scripts.js" type="module"></script>
 <link rel="stylesheet" href="/styles/styles.css"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<script type="text/javascript"  src="https://main--metafox-sites--bmw-importer.hlx.page/scripts/epaas.js" onload="epaas.api.initialize({tenant: 'bmw_rs', locale: 'sr_RS', devmode:true, async : false, stage : 'int'})"></script>
+<!-- <script type="text/javascript"  src="https://main--metafox-sites--bmw-importer.hlx.page/scripts/epaas.js" onload="epaas.api.initialize({tenant: 'bmw_rs', locale: 'sr_RS', devmode:true, async : false, stage : 'int'})"></script> -->
+
+<script type="text/javascript">
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://main--metafox-sites--bmw-importer.hlx.page/scripts/epaas.js';
+    script.onload = function() {
+        epaas.api.initialize({tenant: 'bmw_rs', locale: 'sr_RS', devmode: true, async: false, stage: 'int'});
+    };
+    document.head.appendChild(script);
+</script>
