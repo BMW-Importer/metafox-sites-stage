@@ -284,7 +284,7 @@ export default function decorate(block) {
         anchor.dataset.analyticsSubCategory = analyticsSubCategory;
       }
       anchor.dataset.analyticsCustomClick = 'true';
-      const { blockName } = block.dataset.blockName;
+      const { blockName } = block.dataset;
       if (blockName) {
         anchor.dataset.analyticsBlockName = blockName;
       }
