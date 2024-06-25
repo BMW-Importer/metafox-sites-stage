@@ -260,10 +260,8 @@
       {
         "component": "boolean",
         "label": "Display in Content Navigation",
-        "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean",
-        "value": true
+        "valueType": "boolean"
       },
       {
         "component": "tab",
@@ -362,10 +360,8 @@
       {
         "component": "boolean",
         "label": "Display in Content Navigation",
-        "description": "",
         "name": "contentnavigation",
-        "valueType": "boolean",
-        "value": true
+        "valueType": "boolean"
       },
       {
         "component": "tab",
