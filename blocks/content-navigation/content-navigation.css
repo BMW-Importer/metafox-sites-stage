@@ -56,17 +56,15 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     border: none;
     background: transparent;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.5rem;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
     border-top: .25rem solid transparent;
     
   }
 
   .content-navigation-container .content-navigation-wrapper .active .cmp-contentnavigation-list-link {
     color: var(--light-text-color);
-    font-weight: 700;
-    font-size: 16px;    
     
   }
 
@@ -95,10 +93,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
   .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
     align-items: center;
     cursor: pointer;   
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 500;
     justify-content: center;
-    line-height: 1.5rem;
+    line-height: 24px;
     min-height: 3.25rem;
     text-align: center;
     border-radius: 0.187rem;
@@ -183,6 +181,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     height: 3.25rem;
     align-self: center;
     font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
    }
 
    .cmp-contentnavigation-wrapper.variation-btn .cmp-filter-toggle {
@@ -196,6 +196,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     height: 3.25rem;
     align-self: center;
     font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
    }
 
    .cmp-contentnavigation-wrapper .cmp-filter-toggle.visible-mobile-btn {
@@ -216,12 +218,12 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     display: flex;
     padding-left: 0;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
+    line-height: 22px;
    }
 
    .cmp-contentnavigation-wrapper.fixed-nav.variation-btn .visible-mobile-btn.cmp-filter-toggle {
-    color: var(--light-text-color)
-  
+    color: var(--light-text-color);
    }
 
    .content-navigation-container .content-navigation-wrapper {
@@ -318,7 +320,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
   }
 
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1) {
-     padding-top: 1rem;
+     padding-top: 0;
    }
 
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list.visible-mobile li:nth-child(1)::before {
@@ -341,7 +343,9 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       text-align: left;
       height: 52px;
       border-left: 4px solid transparent;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
    }
 
 
@@ -367,10 +371,10 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
     align-items: center;
     cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
     justify-content: center;
-    line-height: 2.5rem;
+    line-height: 22px;
     min-height: 2.25rem;
     text-align: center;
     border-radius: 0.1875rem;
@@ -382,6 +386,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     width: 9.37rem; 
     overflow: hidden;
     text-overflow: ellipsis; 
+    display: flex;
    }
 
    .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-item.active {
@@ -419,6 +424,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
 
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
       padding: 0.5rem;
+      font-size: 14px;
+      line-height: 22px;
     }
 
     .content-navigation-container .cmp-contentnavigation-wrapper:not(.fixed-nav) .cmp-contentnavigation-arrow-right {
@@ -485,7 +492,7 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       cursor: pointer;
       font-size: 1rem;
       position: absolute;
-      right: 2rem;
+      right: 5rem;
       padding: 0;
       margin: 0;
       top: 0;
@@ -662,7 +669,8 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
       min-height: 2rem;
       display: inline-flex;
       font-size: 14px;
-      line-height: 20px;
+      font-weight: 500;
+      line-height: 22px;
       padding: 4px 24px;
     }
 
@@ -673,6 +681,20 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     width: auto;
     scrollbar-width: none;
    }
+
+   .content-navigation-container .fixed-nav.wrapper-overflow .cmp-contentnavigation-list.list-overflow.right-mask {
+    
+    /* stylelint-disable-next-line color-function-notation */
+    mask: linear-gradient(to left, rgba(255, 255, 255, 0%) 0, rgb(255, 255, 255) 9rem);
+   }
+
+
+   .content-navigation-container .fixed-nav.wrapper-overflow .cmp-contentnavigation-list.list-overflow.left-mask {
+
+    /* stylelint-disable-next-line color-function-notation */
+    mask: linear-gradient(to right, rgba(255, 255, 255, 0%) 0, rgb(255, 255, 255) 9rem);
+   }
+
 
    main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-nav.wrapper-overflow.variation-btn {
     padding-right: 0 !important;
@@ -692,13 +714,13 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
     left: 0;
     right: 0;
     overflow: hidden;
-    padding-left: 1rem;
+    padding-left: 3rem;
     padding-right: 4rem !important;
    }
 
   }
 
-  @media (width >= 1280px) { 
+  @media (width >= 1280px){ 
     .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-wrapper .cmp-contentnavigation-list {
       list-style: none;
       padding: 0;
@@ -752,6 +774,18 @@ main .section.content-navigation-container .cmp-contentnavigation-wrapper.fixed-
   max-width: 100vw;
   padding-left: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
   padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2 )))/2);
+  }
+
+  .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-list-link {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;    
+  }
+
+  .content-navigation-container .content-navigation-wrapper .cmp-contentnavigation-anchor-container .cmp-contentnavigation-anchor {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
   }
 }
 
