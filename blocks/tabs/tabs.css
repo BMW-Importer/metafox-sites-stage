@@ -46,6 +46,11 @@ main .section.tabs-container {
 @media (width >=768px) {
     .buttons-tab {
         --tabs-multiplier: 10;
+    }
+}
+
+@media (width >= 768px) and (width < 1280px) {
+    .buttons-tab, .default-tab {
         --grid-full: 3rem
     }
 }
@@ -87,6 +92,10 @@ main .section.tabs-container {
     font-weight: 500;
     line-height: 1.5rem;
     padding: 0 0.5rem;
+    max-width: calc(100vw - var(--grid-full)* 6 + 1rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .default-tab li {
