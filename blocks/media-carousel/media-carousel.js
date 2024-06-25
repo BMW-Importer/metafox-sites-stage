@@ -276,7 +276,7 @@ function resizeBlock() {
 
   carousels.forEach((carouselContent) => {
     const block = carouselContent.closest('.media-carousel.block');
-    const cards = carouselContent.querySelectorAll('.video-img-carousel-card');
+    const cards = carouselContent.querySelectorAll('.media-carousel');
     const carouselLeftWrapper = block.querySelector('.carousel-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.carousel-wrapper-rth-area');
     const gap = viewport >= 768 ? 24 : 16;
@@ -338,10 +338,10 @@ export function mediaCarouselResizer() {
   });
 }
 
-function genarateVideo(mediaType, media, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap, videoImageCarouselContent) {
-  const videoCarouselCard = document.createElement('div');
+function genarateVideo(mediaType, media, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap) {
   const videoDOMContainer = document.createElement('div');
-  videoCarouselCard.classList.add('video-img-carousel-card');
+  media.classList.add('video-img-carousel-card');
+
   // video tab details
   const videoCarouselContentPtags = media?.querySelectorAll('p');
   const videoCarouselTitle = videoCarouselContentPtags[0] || '';
@@ -385,45 +385,36 @@ function genarateVideo(mediaType, media, vidImgTitleWrapper, vidImgDesWrapper, v
       onHoverPlay],
   );
   media.textContent = '';
-  videoCarouselCard.append(
+  media.append(
     videoDOMContainer,
     vidImgTitleWrapper,
     vidImgDesWrapper,
     vidImgCtaWrap,
   );
-  videoImageCarouselContent.append(videoCarouselCard);
 }
 
-function genearteImageDom(content, media, cta, block, videoImageCarouselContent, mediaType, callback) {
+function genearteImageDom(content, media, cta, mediaType) {
   const vidImgTitleWrapper = document.createElement('div');
   vidImgTitleWrapper.classList.add('video-img-title');
+
   const vidImgCtaWrap = document.createElement('div');
   vidImgCtaWrap.classList.add('video-img-cta');
+
   const vidImgDesWrapper = document.createElement('div');
   vidImgDesWrapper.classList.add('video-img-description');
 
-  const vidImgCarouselCard = document.createElement('div');
-  vidImgCarouselCard.classList.add('video-img-carousel-card');
-  const vidImgAnchorElm = cta?.querySelector('a')?.textContent || '';
-  const ctaHref = cta?.querySelector('a')?.getAttribute('href') || '';
-  let newAnchor = '';
-  if (cta?.querySelector('a')) {
-    newAnchor = document.createElement('a');
-    newAnchor.textContent = vidImgAnchorElm;
-    newAnchor.setAttribute('href', ctaHref);
-    newAnchor.textContent = vidImgAnchorElm;
-  }
+  media.classList.add('video-img-carousel-card');
+
+  const vidImgAnchorElm = cta?.querySelector('a') || '';
 
   const contentElem = content?.children;
-  let videoImgCarouselHeadline = content.querySelector('h2').textContent || '';
+  let videoImgCarouselHeadline = content.querySelector('h2') || '';
   videoImgCarouselHeadline = (videoImgCarouselHeadline !== null && videoImgCarouselHeadline !== undefined && videoImgCarouselHeadline) ? videoImgCarouselHeadline : '';
-  let videoImgCarouselCopyText = contentElem[1].textContent || '';
+  let videoImgCarouselCopyText = contentElem[1] || '';
   videoImgCarouselCopyText = (videoImgCarouselCopyText !== null && videoImgCarouselCopyText !== undefined && videoImgCarouselCopyText) ? videoImgCarouselCopyText : '';
 
-  cta.classList.add('hidden');
-  vidImgCtaWrap.append(newAnchor);
+  vidImgCtaWrap.append(vidImgAnchorElm);
 
-  content.classList.add('hidden');
   vidImgTitleWrapper.append(videoImgCarouselHeadline);
   vidImgDesWrapper.append(videoImgCarouselCopyText);
 
@@ -444,16 +435,10 @@ function genearteImageDom(content, media, cta, block, videoImageCarouselContent,
     imgDOMContainer.append(pictureElement);
     imageCarouselImgRef?.classList.add('hidden');
 
-    vidImgCarouselCard.append(imgDOMContainer, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap);
     media.textContent = '';
-    videoImageCarouselContent.append(vidImgCarouselCard);
+    media.append(imgDOMContainer, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap);
   } else if (mediaType === 'video') {
-    genarateVideo(mediaType, media, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap, videoImageCarouselContent);
-  }
-  media.append(videoImageCarouselContent);
-  block.append(media);
-  if (typeof callback === 'function') {
-    callback(media);
+    genarateVideo(mediaType, media, vidImgTitleWrapper, vidImgDesWrapper, vidImgCtaWrap);
   }
   resizeBlock();
 }
@@ -472,6 +457,7 @@ export default function decorate(block) {
 
   panels.forEach((panel) => {
     const [classes, content, media, cta] = panel.children;
+    panel.classList.add('media-carousel');
     panel.removeChild(classes);
     let mediaType;
     if (classes.textContent.includes('video-carousel')) {
@@ -483,14 +469,11 @@ export default function decorate(block) {
       content,
       media,
       cta,
-      block,
-      videoImageCarouselContent,
       mediaType,
-      (generateDom) => {
-        block.append(carouselLeftWrapper, carouselRightWrapper);
-        block.append(generateDom);
-        resizeBlock();
-      },
     );
+    videoImageCarouselContent.append(panel);
   });
+  block.append(videoImageCarouselContent);
+  block.append(carouselLeftWrapper, carouselRightWrapper);
+  resizeBlock();
 }
