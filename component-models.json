@@ -3914,7 +3914,7 @@
         "hidden": true
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "label": "Disclaimer",
         "name": "fragment_disclaimerLink",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the DriveTrain Switch. Please select the relevant disclaimers per market and language under /content/dam/metafox/",
