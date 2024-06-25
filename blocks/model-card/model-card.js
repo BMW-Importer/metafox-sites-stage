@@ -26,11 +26,19 @@ export default function decorate(block) {
     // console.log(wdhSetPlaceholder);
     const wdhModelPlaceholder = fetchModelPlaceholderObject();
     const wdhSetPlaceholder = fetchSetPlaceholderObject();
+    const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
     const modelRegex = /\{model(.*?)}/g;
     const textContent = placeholder.innerText;
     let updatedPlaceholder = replacePlaceholder(textContent, wdhModelPlaceholder, modelRegex);
     const setRegex = /\{set(.*?)}/g;
     updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
+
+    // technicalData
+
+    const techRegex = /\{tech(.*?)}/g;
+
+    updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, techRegex);
+
     console.log(wdhSetPlaceholder);
     block.append(updatedPlaceholder);
   });
