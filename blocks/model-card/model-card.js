@@ -1,7 +1,8 @@
-import { fetchSetPlaceholderObject, fetchModelPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
+import { fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
 import {
   buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder, getResolutionKey
 } from '../../scripts/common/wdh-util.js';
+
 
 export default function decorate(block) {
   const imgTag = document.createElement('img');
@@ -23,25 +24,23 @@ export default function decorate(block) {
   });
 
   buildContext(modelCodeArray).then(() => {
-    // console.log(wdhSetPlaceholder);
     const wdhModelPlaceholder = fetchModelPlaceholderObject();
     const wdhSetPlaceholder = fetchSetPlaceholderObject();
     const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
     const modelRegex = /\{model(.*?)}/g;
     const textContent = placeholder.innerText;
     let updatedPlaceholder = replacePlaceholder(textContent, wdhModelPlaceholder, modelRegex);
-    const setRegex = /\{set(.*?)}/g;
-    updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
+
+    // const setRegex = /\{set(.*?)}/g;
+    // updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, setRegex);
 
     // technicalData
-
     const techRegex = /\{tech(.*?)}/g;
-
-    updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhSetPlaceholder, techRegex);
-
-    console.log(wdhSetPlaceholder);
+    updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhTechPlaceholder, techRegex);
+    console.log(wdhTechPlaceholder);
     block.append(updatedPlaceholder);
+
   });
   const a = fetchSetPlaceholderObject();
-  console.log(a);
+  // console.log(a);
 }

@@ -1,3 +1,7 @@
+import { fetchPlaceholders } from '../aem.js';
+
+const placeholders = await fetchPlaceholders();
+
 const modelPlaceholderObject = {
   alt: '',
   enginePower: '',
@@ -130,6 +134,19 @@ const techPlaceholderObject = {
   overboostKW: '',
 };
 
+function processGearBoxValue(responseGearBoxValue) {
+  const separatedValues = responseGearBoxValue.split(' - ');
+  const numberOfGears = separatedValues[0].trim();
+  const transmissionType = separatedValues[1].trim();
+  const matchingEntry = Object.entries(placeholders)
+    .find(([key]) => key === transmissionType);
+  if (matchingEntry) {
+    const [, value] = matchingEntry;
+    return `${numberOfGears} - ${value}`;
+  }
+  return responseGearBoxValue;
+}
+
 export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.alt = responseJson.model.alt;
   modelPlaceholderObject.enginePower = responseJson.model.enginePower;
@@ -149,8 +166,8 @@ export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.driveType = responseJson.model.driveType;
   modelPlaceholderObject.electricRange = responseJson.model.electricRange;
   modelPlaceholderObject.fabric = responseJson.model.fabric;
-  modelPlaceholderObject.fuelType = responseJson.model.fuelType;
-  modelPlaceholderObject.gearBox = responseJson.model.gearBox;
+  modelPlaceholderObject.fuelType = responseJson.model.powerTrain.fuelType;
+  modelPlaceholderObject.gearBox = processGearBoxValue(responseJson.model.powerTrain.gearBox);
   modelPlaceholderObject.horsePower = responseJson.model.horsePower;
   modelPlaceholderObject.hybridCode = responseJson.model.hybridCode;
   modelPlaceholderObject.modelCode = responseJson.model.modelCode;
@@ -164,6 +181,11 @@ export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.systemMaxTorque = responseJson.model.systemMaxTorque;
   modelPlaceholderObject.systemPower = responseJson.model.systemPower;
   modelPlaceholderObject.trunkCapacity = responseJson.model.trunkCapacity;
+}
+
+export function buildTechDataPlaceholder(responseJson) {
+  console.log(responseJson.vechile);
+  techPlaceholderObject.brand = responseJson.vechile[0].brand;
 }
 
 export function buildSetPlaceholder(responseJsonArray) {
