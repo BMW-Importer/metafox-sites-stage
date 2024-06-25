@@ -45,7 +45,8 @@
 
 //   // disclaimer fragment
 //   const [disclaimerCF] = disclaimerFragment?.firstElementChild;
-//   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
+//   window.gqlOrigin =
+// window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
 //   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
 //     const cfData = response?.data;
 //     if (cfData) {
@@ -79,5 +80,3 @@
 //   // removing techdetail1 so that it wont appear in content tree
 //   block.removeChild(technicalDetail2Cell);
 // }
-
-
