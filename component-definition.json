@@ -880,12 +880,7 @@
                   "name": "Model Card",
                   "model": "drivetrain-model-card",
                   "group_modelType": "h2",
-                  "group_selectedmodel": false,
-                  "wdh_seriesType": "h2",
-                  "wdh_rangeType": "h3",
-                  "wdh_codeType": "h4",
-                  "wdh_techdataType": "h5",
-                  "wdh_transmissionType": "h6"
+                  "group_selectedmodel": false
                 }
               }
             }

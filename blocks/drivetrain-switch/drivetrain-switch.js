@@ -26,53 +26,64 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 function generateTechnicalData1(technicalDetail1Cell, techTableData) {
   // extracting technical data
   const tableRow1 = document.createElement('tr');
+  let tableRow1Html = '';
 
   const dataFactLabel1 = technicalDetail1Cell?.querySelector('h2');
   if (dataFactLabel1?.outerHTML) {
-    tableRow1.innerHTML = `<td class="" role="rowheader"><div>${dataFactLabel1.outerHTML}</div></td>`;
+    tableRow1Html = `<td class="" role="rowheader"><div>${dataFactLabel1.outerHTML}</div></td>`;
   }
   const dataFactVal1 = technicalDetail1Cell?.querySelector('h3');
   if (dataFactVal1?.outerHTML) {
-    tableRow1.innerHTML = `<td class="" role="cell"><div>${dataFactVal1.outerHTML}</div></td>`;
+    tableRow1Html += `<td class="" role="cell"><div>${dataFactVal1.outerHTML}</div></td>`;
   }
+
+  if (tableRow1Html) tableRow1.innerHTML = tableRow1Html;
   if (tableRow1.textContent) techTableData.append(tableRow1);
 
   const tableRow2 = document.createElement('tr');
+  let tableRow2Html = '';
 
   const dataFactLabel2 = technicalDetail1Cell?.querySelector('h4');
   if (dataFactLabel2?.outerHTML) {
-    tableRow2.innerHTML = `<td class="" role="rowheader"><div>${dataFactLabel2?.outerHTML}</div></td>`;
+    tableRow2Html = `<td class="" role="rowheader"><div>${dataFactLabel2?.outerHTML}</div></td>`;
   }
   const dataFactVal2 = technicalDetail1Cell?.querySelector('h5');
   if (dataFactVal2?.outerHTML) {
-    tableRow2.innerHTML = `<td class="" role="cell"><div>${dataFactVal2?.outerHTML}</div></td>`;
+    tableRow2Html += `<td class="" role="cell"><div>${dataFactVal2?.outerHTML}</div></td>`;
   }
+
+  if (tableRow2Html) tableRow2.innerHTML = tableRow2Html;
   if (tableRow2.textContent) techTableData.append(tableRow2);
 }
 
 function generateTechnicalData2(technicalDetail2Cell, techTableData) {
   const tableRow3 = document.createElement('tr');
+  let tableRow3Html = '';
 
   const dataFactLabel3 = technicalDetail2Cell?.querySelector('h2');
   if (dataFactLabel3?.outerHTML) {
-    tableRow3.innerHTML = `<td class="" role="rowheader"><div>${dataFactLabel3?.outerHTML}</div></td>`;
+    tableRow3Html = `<td class="" role="rowheader"><div>${dataFactLabel3?.outerHTML}</div></td>`;
   }
   const dataFactVal3 = technicalDetail2Cell?.querySelector('h3');
   if (dataFactVal3?.outerHTML) {
-    tableRow3.innerHTML = `<td class="" role="cell"><div>${dataFactVal3?.outerHTML}</div></td>`;
+    tableRow3Html += `<td class="" role="cell"><div>${dataFactVal3?.outerHTML}</div></td>`;
   }
+  if (tableRow3Html) tableRow3.innerHTML = tableRow3Html;
   if (tableRow3.textContent) techTableData.append(tableRow3);
 
   const tableRow4 = document.createElement('tr');
+  let tableRow4Html = '';
 
   const dataFactLabel4 = technicalDetail2Cell?.querySelector('h4');
   if (dataFactLabel4?.outerHTML) {
-    tableRow4.innerHTML = `<td class="" role="rowheader"><div>${dataFactLabel4?.outerHTML}</div></td>`;
+    tableRow4Html = `<td class="" role="rowheader"><div>${dataFactLabel4?.outerHTML}</div></td>`;
   }
   const dataFactVal4 = technicalDetail2Cell?.querySelector('h5');
   if (dataFactVal4?.outerHTML) {
-    tableRow4.innerHTML = `<td class="" role="cell"><div>${dataFactVal4?.outerHTML}</div></td>`;
+    tableRow4Html += `<td class="" role="cell"><div>${dataFactVal4?.outerHTML}</div></td>`;
   }
+
+  if (tableRow4Html) tableRow4.innerHTML = tableRow4Html;
   if (tableRow4.textContent) techTableData.append(tableRow4);
 }
 
