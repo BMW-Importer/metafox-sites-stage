@@ -856,14 +856,14 @@
                   "detail_technocalLinkType": "primary",
                   "detail_popoverType": "h6",
                   "detail_popover": true,
-                  "technical_fact1Type": "h1",
-                  "technical_value1Type": "h2",
-                  "technical_fact2Type": "h3",
-                  "technical_value2Type": "h4",
-                  "technical_fact3Type": "h5",
-                  "technical_value3Type": "h6",
-                  "technical1_fact4Type": "h1",
-                  "technical1_value4Type": "h2"
+                  "technical_fact1Type": "h2",
+                  "technical_value1Type": "h3",
+                  "technical_fact2Type": "h4",
+                  "technical_value2Type": "h5",
+                  "technical1_fact3Type": "h2",
+                  "technical1_value3Type": "h3",
+                  "technical1_fact4Type": "h4",
+                  "technical1_value4Type": "h5"
                 }
               }
             }

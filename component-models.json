@@ -3932,7 +3932,7 @@
         "component": "text",        
         "name": "technical_fact1Type",        
         "valueType": "string",
-        "value": "h1",
+        "value": "h2",
         "hidden": true
       },
       {
@@ -3946,7 +3946,7 @@
         "component": "text",        
         "name": "technical_value1Type",        
         "valueType": "string",
-        "value": "h2",
+        "value": "h3",
         "hidden": true
       },
       {
@@ -3960,7 +3960,7 @@
         "component": "text",        
         "name": "technical_fact2Type",        
         "valueType": "string",
-        "value": "h3",
+        "value": "h4",
         "hidden": true
       },
       {
@@ -3974,35 +3974,35 @@
         "component": "text",        
         "name": "technical_value2Type",        
         "valueType": "string",
-        "value": "h4",
-        "hidden": true
-      },
-      {
-        "component": "text-input",
-        "label": "Technical Data Fact Label 3",
-        "name": "technical_fact3",
-        "description": "Defines the label appearing above the Technical Data Fact Value 3.",        
-        "valueType": "string"
-      },
-      {
-        "component": "text",        
-        "name": "technical_fact3Type",        
-        "valueType": "string",
         "value": "h5",
         "hidden": true
       },
       {
         "component": "text-input",
+        "label": "Technical Data Fact Label 3",
+        "name": "technica1_fact3",
+        "description": "Defines the label appearing above the Technical Data Fact Value 3.",        
+        "valueType": "string"
+      },
+      {
+        "component": "text",        
+        "name": "technical1_fact3Type",        
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
         "label": "Technical Data Fact Value 3",
-        "name": "technical_value3",
+        "name": "technical1_value3",
         "description": "Defines value appearing underneath the Technical Data Fact Label 3. Placeholders can be authored to populate technical data values.",        
         "valueType": "string"
       },
       {
         "component": "text",        
-        "name": "technical_value3Type",        
+        "name": "technical1_value3Type",        
         "valueType": "string",
-        "value": "h6",
+        "value": "h3",
         "hidden": true
       },
       {
@@ -4016,7 +4016,7 @@
         "component": "text",        
         "name": "technical1_fact4Type",        
         "valueType": "string",
-        "value": "h1",
+        "value": "h4",
         "hidden": true
       },
       {
@@ -4030,7 +4030,7 @@
         "component": "text",        
         "name": "technical1_value4Type",        
         "valueType": "string",
-        "value": "h2",
+        "value": "h5",
         "hidden": true
       }
     ]
