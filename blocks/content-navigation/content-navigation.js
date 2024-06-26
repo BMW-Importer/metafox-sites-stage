@@ -216,7 +216,7 @@ export default function decorate(block) {
 
   const generealTabSelector = block.querySelectorAll('p:not([class])');
   const generalTabValues = getTextContent(generealTabSelector);
-  const [contentnavigationLabel, background, isEnabled, analyticsLabel, 
+  const [contentnavigationLabel, background, isEnabled, analyticsLabel,
     analyticsCategory, analyticsSubCategory] = generalTabValues;
 
   const getButtonTabValues = (selector) => Array.from(selector).map((p) => {
