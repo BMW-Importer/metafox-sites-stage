@@ -26,69 +26,64 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 function generateTechnicalData1(technicalDetail1Cell, techTableData) {
   // extracting technical data
   const tableRow1 = document.createElement('tr');
+  let tableRow1Html = '';
 
   const dataFactLabel1 = technicalDetail1Cell?.querySelector('h2');
   if (dataFactLabel1?.outerHTML) {
-    tableRow1.append(document.createRange().createContextualFragment(`
-    <td class="" role="rowheader"><div>${dataFactLabel1.outerHTML}</div></td>
-    `));
+    tableRow1Html = `<td class="" role="rowheader"><div>${dataFactLabel1.outerHTML}</div></td>`;
   }
   const dataFactVal1 = technicalDetail1Cell?.querySelector('h3');
   if (dataFactVal1?.outerHTML) {
-    tableRow1.append(document.createRange().createContextualFragment(`
-    <td class="" role="cell"><div>${dataFactVal1.outerHTML}</div></td>
-    `));
+    tableRow1Html += `<td class="" role="cell"><div>${dataFactVal1.outerHTML}</div></td>`;
   }
+
+  if (tableRow1Html) tableRow1.innerHTML = tableRow1Html;
   if (tableRow1.textContent) techTableData.append(tableRow1);
 
   const tableRow2 = document.createElement('tr');
+  let tableRow2Html = '';
 
   const dataFactLabel2 = technicalDetail1Cell?.querySelector('h4');
   if (dataFactLabel2?.outerHTML) {
-    tableRow2.append(document.createRange().createContextualFragment(`
-    <td class="" role="rowheader"><div>${dataFactLabel2?.outerHTML}</div></td>
-    `));
+    tableRow2Html = `<td class="" role="rowheader"><div>${dataFactLabel2?.outerHTML}</div></td>`;
   }
   const dataFactVal2 = technicalDetail1Cell?.querySelector('h5');
   if (dataFactVal2?.outerHTML) {
-    tableRow2.append(document.createRange().createContextualFragment(`
-    <td class="" role="cell"><div>${dataFactVal2?.outerHTML}</div></td>
-    `));
+    tableRow2Html += `<td class="" role="cell"><div>${dataFactVal2?.outerHTML}</div></td>`;
   }
+
+  if (tableRow2Html) tableRow2.innerHTML = tableRow2Html;
   if (tableRow2.textContent) techTableData.append(tableRow2);
 }
 
 function generateTechnicalData2(technicalDetail2Cell, techTableData) {
   const tableRow3 = document.createElement('tr');
+  let tableRow3Html = '';
 
   const dataFactLabel3 = technicalDetail2Cell?.querySelector('h2');
   if (dataFactLabel3?.outerHTML) {
-    tableRow3.append(document.createRange().createContextualFragment(`
-    <td class="" role="rowheader"><div>${dataFactLabel3?.outerHTML}</div></td>
-    `));
+    tableRow3Html = `<td class="" role="rowheader"><div>${dataFactLabel3?.outerHTML}</div></td>`;
   }
   const dataFactVal3 = technicalDetail2Cell?.querySelector('h3');
   if (dataFactVal3?.outerHTML) {
-    tableRow3.append(document.createRange().createContextualFragment(`
-    <td class="" role="cell"><div>${dataFactVal3?.outerHTML}</div></td>
-    `));
+    tableRow3Html += `<td class="" role="cell"><div>${dataFactVal3?.outerHTML}</div></td>`;
   }
+  if (tableRow3Html) tableRow3.innerHTML = tableRow3Html;
   if (tableRow3.textContent) techTableData.append(tableRow3);
 
   const tableRow4 = document.createElement('tr');
+  let tableRow4Html = '';
 
   const dataFactLabel4 = technicalDetail2Cell?.querySelector('h4');
   if (dataFactLabel4?.outerHTML) {
-    tableRow4.append(document.createRange().createContextualFragment(`
-    <td class="" role="rowheader"><div>${dataFactLabel4?.outerHTML}</div></td>
-    `));
+    tableRow4Html = `<td class="" role="rowheader"><div>${dataFactLabel4?.outerHTML}</div></td>`;
   }
   const dataFactVal4 = technicalDetail2Cell?.querySelector('h5');
   if (dataFactVal4?.outerHTML) {
-    tableRow4.append(document.createRange().createContextualFragment(`
-    <td class="" role="cell"><div>${dataFactVal4?.outerHTML}</div></td>
-    `));
+    tableRow4Html += `<td class="" role="cell"><div>${dataFactVal4?.outerHTML}</div></td>`;
   }
+
+  if (tableRow4Html) tableRow4.innerHTML = tableRow4Html;
   if (tableRow4.textContent) techTableData.append(tableRow4);
 }
 
@@ -99,15 +94,15 @@ function generateLeftPanelModelList(modelGroup, element, selectedModelDdlMob, an
   if (isSelected?.textContent === 'true') {
     element.append(
       document.createRange().createContextualFragment(`
-                <span>${modelCategory.textContent}</span>
+                <span>${modelCategory?.textContent}</span>
                 <span></span>`),
     );
-    selectedModelDdlMob.textContent = modelCategory.textContent;
+    selectedModelDdlMob.textContent = modelCategory?.textContent;
   } else {
     element.append(
       document.createRange().createContextualFragment(`
-                <span>${modelCategory.textContent}</span>
-                <a href='${modelLink.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
+                <span>${modelCategory?.textContent}</span>
+                <a href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
                 data-analytics-category='${BtnType?.textContent?.trim() || ''}'
                 data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
@@ -134,24 +129,31 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
 
 export default async function decorate(block) {
   block.classList.add('drivetrain-switch-block');
+
   const leftPanel = document.createElement('div');
   leftPanel.classList.add('dts-left-panel');
   const rightPanel = document.createElement('div');
   rightPanel.classList.add('dts-right-panel');
+
   const selectedModelDdlMob = document.createElement('button');
   selectedModelDdlMob.classList.add('dts-selected-model-mob');
+
   const leftPanelModelGrouping = document.createElement('ul');
   leftPanelModelGrouping.classList.add('dts-model-grouping');
+
   const rightPanelTitleAndImg = document.createElement('div');
   rightPanelTitleAndImg.classList.add('dts-right-model-title');
+
   const rightPanelTechDetail = document.createElement('div');
   rightPanelTechDetail.classList.add('dts-right-tech-detail');
+
   const techTable = document.createElement('table');
   techTable.setAttribute('role', 'table');
   rightPanelTechDetail.append(techTable);
   const techTableData = document.createElement('tbody');
   techTableData.setAttribute('role', 'rowgroup');
   techTable.append(techTableData);
+
   const [
     fuelType,
     detailCell,
@@ -165,20 +167,27 @@ export default async function decorate(block) {
     }
     return row;
   });
+
   // extracting detail cell
   const selectedFuelType = fuelType?.querySelector('h2');
   block.removeChild(fuelType);
+
   const activeModelTitle = detailCell?.querySelector('h3');
   rightPanelTitleAndImg.append(activeModelTitle);
   rightPanel.append(rightPanelTitleAndImg);
+
   const modelDescp = detailCell?.querySelector('h4');
   rightPanel.append(modelDescp);
+
   // appending table below the description
   rightPanel.append(rightPanelTechDetail);
+
   const technicalLink = detailCell?.querySelector('a');
   rightPanelTechDetail.append(technicalLink);
+
   const popover = detailCell?.querySelector('h6');
   if (popover.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
+
   // removing detailcell so that it wont appear in content tree
   block.removeChild(detailCell);
   // disclaimer fragment
@@ -215,7 +224,7 @@ export default async function decorate(block) {
   rows.forEach((element) => {
     const [modelGroup, context, analytics] = element?.children || '';
 
-    element.removeChild(context);
+    if (context) element.removeChild(context);
 
     // if (context) {
     //   const [seriesRangeCode, enableTechData, transmissionType] = context.children;
