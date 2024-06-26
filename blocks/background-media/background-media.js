@@ -143,19 +143,26 @@ export default function decorate(block) {
 
     if (isButtonPresent) generalProps.append(btnContainer);
 
+    // extract buttons
     const ctaElem = cta1.querySelector('a');
     const ctaElem2 = cta2.querySelector('a');
 
+    // appending the props
     if (ctaElem) {
       if (analyticscta1.children) {
         ctaElem.dataset.analyticsLabel = analyticsLabelcta1?.textContent?.trim() || '';
         ctaElem.dataset.analyticsCategory = analyticsCategorycta1?.textContent?.trim() || '';
         ctaElem.dataset.analyticsSubCategory = analyticsSubCategorycta1?.textContent?.trim() || '';
         ctaElem.dataset.analyticsCustomClick = 'true';
-        ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
-        ctaElem.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+        const { blockName } = block.dataset;
+        if (blockName) {
+          ctaElem2.dataset.analyticsBlockName = blockName;
+        }
+        const sectionId = block.closest('.section').dataset.analyticsLabel;
+        if (sectionId) {
+          ctaElem2.dataset.analyticsSectionId = sectionId;
+        }
       }
-      btnContainer?.append(ctaElem);
     }
 
     if (ctaElem2) {
@@ -164,10 +171,15 @@ export default function decorate(block) {
         ctaElem2.dataset.analyticsCategory = analyticsCategorycta2?.textContent?.trim() || '';
         ctaElem2.dataset.analyticsSubCategory = analyticsSubCategorycta2?.textContent?.trim() || '';
         ctaElem2.dataset.analyticsCustomClick = 'true';
-        ctaElem2.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
-        ctaElem2.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+        const { blockName } = block.dataset;
+        if (blockName) {
+          ctaElem.dataset.analyticsBlockName = blockName;
+        }
+        const sectionId = block.closest('.section').dataset.analyticsLabel;
+        if (sectionId) {
+          ctaElem.dataset.analyticsSectionId = sectionId;
+        }
       }
-      cta2?.append(ctaElem2);
     }
 
     childrenBlock.append(generalProps);
