@@ -23,7 +23,7 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   return response.json();
 }
 
-function generateTechnicalData1(technicalDetail1Cell, technicalDetail2Cell, techTableData) {
+function generateTechnicalData1(technicalDetail1Cell, techTableData) {
   // extracting technical data
   const tableRow1 = document.createElement('tr');
 
@@ -214,6 +214,8 @@ export default async function decorate(block) {
   // looping through children model card blocks
   rows.forEach((element) => {
     const [modelGroup, context, analytics] = element?.children || '';
+
+    element.removeChild(context);
 
     // if (context) {
     //   const [seriesRangeCode, enableTechData, transmissionType] = context.children;
