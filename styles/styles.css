@@ -487,13 +487,6 @@ main .section:first-child {
   }
 }
 
-/* desktop */
-@media (width = 1920px) {
-  body.appear.white-background main .section {
-      padding: 0;
-  }
-}
-
 @media (width >= 1280px){
   main .section {
     padding: 0 var(--section-desktop-padding);
