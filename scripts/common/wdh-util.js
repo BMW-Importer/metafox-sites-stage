@@ -68,6 +68,8 @@ export function replacePlaceholder(string, data, regex) {
   });
 }
 
+/* getting cosy images as per resoultion */
+
 export function getCosyImageUrl(response, resolution, angle) {
   const imagesObject = response.walkaround[resolution].images;
   const imgUrl = imagesObject.find((img) => img.angle === angle && img.viewImage !== undefined);
@@ -85,4 +87,17 @@ export async function getCosyImage(modelCode) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;
   }
+}
+
+export function getResolutionKey(screenWidth) {
+  // Define breakpoints for different screen sizes using min-width
+  const breakpoints = [
+    { key: 'res_2560x1440', minWidth: 1921 }, // Large Desktop
+    { key: 'res_1280x720', minWidth: 1025 }, // Medium Desktop
+    { key: 'res_1280x720', minWidth: 768 }, // Tablet
+    { key: 'res_640x360', minWidth: 0 }, // Mobile
+  ];
+  // Determine the appropriate resolution based on screen width
+  const matchingBreakpoint = breakpoints.find((breakpoint) => screenWidth >= breakpoint.minWidth);
+  return matchingBreakpoint ? matchingBreakpoint.key : 'res_1280x720'; // Default to medium desktop if no match for fallback case
 }
