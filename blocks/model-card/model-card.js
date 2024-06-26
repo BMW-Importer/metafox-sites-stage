@@ -1,31 +1,29 @@
-import { fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
+import { fetchModelPlaceholderObject, fetchTechDataPlaceholderObject } from '../../scripts/common/wdh-placeholders.js';
 import {
-  buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder, getResolutionKey
+  buildContext, getCosyImage, getCosyImageUrl, replacePlaceholder, getResolutionKey,
 } from '../../scripts/common/wdh-util.js';
 
-
 export default function decorate(block) {
-  const imgTag = document.createElement('img');
+  let imgTag = document.createElement('img');
   const props = [...block.children].map((row) => row.firstElementChild);
   const [, placeholder] = props;
   const modelCodeArray = ['7K11'];
- //  const modelCodeArray = ['7K11', '61CM', '7K11'];
+  //  const modelCodeArray = ['7K11', '61CM', '7K11'];
   block.textContent = '';
   modelCodeArray.forEach((agCode) => {
     getCosyImage(agCode).then((responseJson) => {
       const screenWidth = window.innerWidth;
-      const resolutionKey = getResolutionKey(screenWidth);  
+      const resolutionKey = getResolutionKey(screenWidth);
       const cosyImageUrl = getCosyImageUrl(responseJson, resolutionKey, 20);
-      const imgTag = document.createElement('img');
+      imgTag = document.createElement('img');
       imgTag.src = cosyImageUrl;
       block.append(imgTag);
     });
-
   });
 
   buildContext(modelCodeArray).then(() => {
     const wdhModelPlaceholder = fetchModelPlaceholderObject();
-    const wdhSetPlaceholder = fetchSetPlaceholderObject();
+    // const wdhSetPlaceholder = fetchSetPlaceholderObject();
     const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
     const modelRegex = /\{model(.*?)}/g;
     const textContent = placeholder.innerText;
@@ -39,8 +37,7 @@ export default function decorate(block) {
     updatedPlaceholder = replacePlaceholder(updatedPlaceholder, wdhTechPlaceholder, techRegex);
     console.log(wdhTechPlaceholder);
     block.append(updatedPlaceholder);
-
   });
-  const a = fetchSetPlaceholderObject();
+  // const a = fetchSetPlaceholderObject();
   // console.log(a);
 }
