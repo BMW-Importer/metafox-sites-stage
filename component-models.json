@@ -3987,7 +3987,7 @@
       {
         "component": "text-input",
         "label": "Technical Data Fact Label 3",
-        "name": "technica1_fact3",
+        "name": "technical1_fact3",
         "description": "Defines the label appearing above the Technical Data Fact Value 3.",        
         "valueType": "string"
       },
