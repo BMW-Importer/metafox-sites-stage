@@ -2167,6 +2167,13 @@
         "label": "Analytics"
       },
       {
+        "component":"text-input",
+        "name":"analytics_label",
+        "label":"Analytics Label",
+        "valueType": " "
+
+      },
+      {
         "component":"select",
         "name":"analytics_button",
         "label":"Button/Link Type", 

@@ -3,23 +3,23 @@
 const event_tracking = {
     event: "custom.link",
     eventInfo: {
-      id: "2121221",
+      id: "",
       category: {
-        primaryCategory: "exit",
-        subCategory: "social",
-        linkName: "Instagram",
-        linkURL: "https://www.bmw.rs/sr/elektricni-automobili.html",
+        primaryCategory: "",
+        subCategory: "",
+        linkName: "",
+        linkURL: "",
       },
       section: {
         sectionInfo: {
-          sectionName: "Header",
-          sectionID: "bmw/RS_sr/home/header",
+          sectionName: "",
+          sectionID: "",
         },
       },
       block: {
         blockInfo: {
-          blockName: "Column",
-          blockDetails: "Column",
+          blockName: "",
+          blockDetails: "",
         },
       },
     },
