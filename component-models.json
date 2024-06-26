@@ -4129,40 +4129,6 @@
         "valueType": "string"
       },
       {
-        "component": "boolean",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdata",
-        "description": "Defines if technical data is enabled.",
-        "required": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdataType",
-        "hidden": true,
-        "value": "h5",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Transmission Type",
-        "name": "wdh_transmission",
-        "description": "Defines the transmission type. The values will be populated by WDH based on the previous selections.",
-        "required": true,
-        "valueType": "string",
-        "condition": { "===": [{"var" : "wdh_techdata"}, true] },
-        "options": []
-      },
-      {
-        "component": "text",
-        "label": "Transmission Type",
-        "name": "wdh_transmissionType",
-        "hidden": true,
-        "value": "h6",
-        "valueType": "string"
-      },
-      {
         "component": "tab",
         "label": "Analytics",
         "name": "analytics"
