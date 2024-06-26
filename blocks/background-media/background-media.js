@@ -156,11 +156,11 @@ export default function decorate(block) {
         ctaElem.dataset.analyticsCustomClick = 'true';
         const { blockName } = block.dataset;
         if (blockName) {
-          ctaElem2.dataset.analyticsBlockName = blockName;
+          ctaElem.dataset.analyticsBlockName = blockName;
         }
         const sectionId = block.closest('.section').dataset.analyticsLabel;
         if (sectionId) {
-          ctaElem2.dataset.analyticsSectionId = sectionId;
+          ctaElem.dataset.analyticsSectionId = sectionId;
         }
       }
     }
@@ -173,11 +173,11 @@ export default function decorate(block) {
         ctaElem2.dataset.analyticsCustomClick = 'true';
         const { blockName } = block.dataset;
         if (blockName) {
-          ctaElem.dataset.analyticsBlockName = blockName;
+          ctaElem2.dataset.analyticsBlockName = blockName;
         }
         const sectionId = block.closest('.section').dataset.analyticsLabel;
         if (sectionId) {
-          ctaElem.dataset.analyticsSectionId = sectionId;
+          ctaElem2.dataset.analyticsSectionId = sectionId;
         }
       }
     }
