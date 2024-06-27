@@ -1,5 +1,5 @@
 const { body } = document;
-const sections = document.querySelectorAll('div[data-contentnavigation="true"],:not([data-contentnavigation])');
+const sections = document.querySelectorAll('div[data-contentnavigation="true"]');
 const viewPortWidth = window.innerWidth;
 
 function handleOnScrollActiveLink() {
