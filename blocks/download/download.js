@@ -1,5 +1,8 @@
 export default function decorate(block) {
+  const [, analytics] = block.children;
+  const [analyticsLabel] = analytics.querySelectorAll('p');
   const anchorEle = block.querySelector('a');
+  block.removeChild(analytics);
   function getFileType(url) {
     const lastDotPosition = url.lastIndexOf('.');
     if (lastDotPosition === -1) {
@@ -31,6 +34,9 @@ export default function decorate(block) {
     }
     if (linkName) {
       anchorEle.dataset.analyticsLinkName = linkName;
+    }
+    if (analyticsLabel) {
+      anchorEle.dataset.analyticsLabel = analyticsLabel?.textContent || '';
     }
   }
 }
