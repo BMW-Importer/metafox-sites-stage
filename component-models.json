@@ -3301,6 +3301,11 @@
     "id": "download",
     "fields": [
       {
+        "component": "tab",
+        "name": "general",
+        "label": "General"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "download",
@@ -3314,7 +3319,21 @@
         "value": "",
         "label": "Download Label",
         "description": "Defines the name of the downloadable element."
-      }
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"text-input",
+        "name":"analytics-label",
+        "label":"Analytics Label",
+        "valueType": "string",
+        "value": "",
+        "description": "Defines the label for analytics."
+      }   
     ]
   },
   {
@@ -3987,7 +4006,7 @@
       {
         "component": "text-input",
         "label": "Technical Data Fact Label 3",
-        "name": "technica1_fact3",
+        "name": "technical1_fact3",
         "description": "Defines the label appearing above the Technical Data Fact Value 3.",        
         "valueType": "string"
       },
@@ -4107,40 +4126,6 @@
         "label": "Model Card Context",
         "name": "wdh_customSeriesModelRangeSelection",
         "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",        
-        "valueType": "string"
-      },
-      {
-        "component": "boolean",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdata",
-        "description": "Defines if technical data is enabled.",
-        "required": true,
-        "valueType": "boolean"
-      },
-      {
-        "component": "text",
-        "label": "Enable Technical Data",
-        "name": "wdh_techdataType",
-        "hidden": true,
-        "value": "h5",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "label": "Transmission Type",
-        "name": "wdh_transmission",
-        "description": "Defines the transmission type. The values will be populated by WDH based on the previous selections.",
-        "required": true,
-        "valueType": "string",
-        "condition": { "===": [{"var" : "wdh_techdata"}, true] },
-        "options": []
-      },
-      {
-        "component": "text",
-        "label": "Transmission Type",
-        "name": "wdh_transmissionType",
-        "hidden": true,
-        "value": "h6",
         "valueType": "string"
       },
       {

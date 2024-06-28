@@ -1,0 +1,28 @@
+.drivetrain-switch-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.drivetrain-switch-block .dts-left-panel {
+    flex: 0 0 100%;
+}
+
+.drivetrain-switch-block .dts-right-panel {
+    flex: 0 0 100%;
+}
+
+/* desktop */
+@media (width >= 1280px) {
+    .drivetrain-switch-block {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .drivetrain-switch-block .dts-left-panel {
+        flex: 0 0 40%;
+    }
+    
+    .drivetrain-switch-block .dts-right-panel {
+        flex: 0 0 60%;
+    }
+}
