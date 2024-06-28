@@ -1,6 +1,8 @@
 import {
-  DEV, STAGE,
-  PROD, disclaimerGQlEndpoint,
+  DEV,
+  STAGE,
+  PROD,
+  disclaimerGQlEndpoint,
 } from '../../scripts/common/constants.js';
 
 const env = document.querySelector('meta[name="env"]').content;
@@ -21,6 +23,38 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
   const response = await fetch(endpointUrl);
   return response.json();
+}
+
+// when resize happens remove enablepopover class from left panel so that mobile dropdown
+//  wont appear in desktop mode
+export function drivetrainResize() {
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      const listOfDriveTrainBlocks = document.querySelectorAll('.drivetrain-switch-block');
+      listOfDriveTrainBlocks.forEach((block) => {
+        const leftPanel = block.querySelector('.dts-left-panel');
+        leftPanel.classList.remove('enablepopover');
+      });
+    }
+  });
+}
+
+function generateCloseIconClickEvent(closeIconLi) {
+  closeIconLi.addEventListener('click', (e) => {
+    const parentElem = e.target.closest('.dts-left-panel');
+    const parentBlock = e.target.closest('.drivetrain-switch-block');
+    const ddlBtn = parentBlock.querySelector('.dts-selected-model-mob');
+    ddlBtn?.classList?.remove('active');
+    parentElem.classList.remove('enablepopover');
+  });
+}
+
+function enableClickEvent(selectedModelDdlMob) {
+  selectedModelDdlMob.addEventListener('click', (e) => {
+    e.target.classList.add('active');
+    const nextElement = e.target.nextElementSibling;
+    nextElement.classList.add('enablepopover');
+  });
 }
 
 function generateTechnicalData1(technicalDetail1Cell, techTableData) {
@@ -91,24 +125,31 @@ function generateLeftPanelModelList(modelGroup, element, selectedModelDdlMob, an
   const [modelCategory, modelLink, isSelected] = modelGroup.children;
   const [analyticsLabel, BtnType, btnSubType] = analytics.children;
   element.textContent = '';
+  element.classList.add('dts-model-category-container');
   if (isSelected?.textContent === 'true') {
+    element.classList.add('selected');
     element.append(
       document.createRange().createContextualFragment(`
-                <span>${modelCategory?.textContent}</span>
-                <span></span>`),
+                <span class='dts-model-category-title'>${modelCategory?.textContent}</span>
+                <div class='dts-category-box'><img class='dts-model-category-img' src='https://picsum.photos/200/300'/>
+                <span class='dts-model-category-descp'>Fuel Type</span>
+                <i class="dts-model-category-icon--selected" aria-hidden="true"></i></div>`),
     );
-    selectedModelDdlMob.textContent = modelCategory?.textContent;
+    selectedModelDdlMob.innerHTML = `<span class='dts-selected-model-title'>${modelCategory?.textContent}</span>
+    <i class="dts-arrow-icon" data-icon="arrow_chevron_down" aria-hidden="true"></i>`;
   } else {
     element.append(
       document.createRange().createContextualFragment(`
-                <span>${modelCategory?.textContent}</span>
-                <a href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
+                <span class='dts-model-category-title'>${modelCategory?.textContent}</span>               
+                <div class='dts-category-box'><a class='dts-model-category-link' href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
                 data-analytics-category='${BtnType?.textContent?.trim() || ''}'
                 data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
-                data-analytics-custom-click='true'
-                ></a>`),
+                data-analytics-custom-click='true'>
+                <img class='dts-model-category-img' src='https://picsum.photos/200/300'/>
+                <span class='dts-model-category-descp'>Fuel Type</span>
+                </a></div>`),
     );
   }
 }
@@ -142,7 +183,7 @@ export default async function decorate(block) {
   leftPanelModelGrouping.classList.add('dts-model-grouping');
 
   const rightPanelTitleAndImg = document.createElement('div');
-  rightPanelTitleAndImg.classList.add('dts-right-model-title');
+  rightPanelTitleAndImg.classList.add('dts-right-model-title-container');
 
   const rightPanelTechDetail = document.createElement('div');
   rightPanelTechDetail.classList.add('dts-right-tech-detail');
@@ -173,10 +214,12 @@ export default async function decorate(block) {
   block.removeChild(fuelType);
 
   const activeModelTitle = detailCell?.querySelector('h3');
+  activeModelTitle.classList.add('dts-active-model-title');
   rightPanelTitleAndImg.append(activeModelTitle);
   rightPanel.append(rightPanelTitleAndImg);
 
   const modelDescp = detailCell?.querySelector('h4');
+  modelDescp.classList.add('dts-active-model-descp');
   rightPanel.append(modelDescp);
 
   // appending table below the description
@@ -205,7 +248,7 @@ export default async function decorate(block) {
       const disclaimerContent = document.createElement('div');
       disclaimerContent.className = 'disclaimer-content';
       disclaimerContent.innerHTML = disclaimerHtml;
-      rightPanelTechDetail.append(disclaimerContent);
+      rightPanel.append(disclaimerContent);
       block.removeChild(disclaimerFragment);
     }
   });
@@ -241,10 +284,33 @@ export default async function decorate(block) {
     }
   });
 
+  // clone selectedModel button and bind it inside left panel
+  const modelListItem = document.createElement('li');
+  modelListItem.classList.add('mob-visible');
+
+  const closeIconLi = document.createElement('li');
+  closeIconLi.classList.add('mob-visible', 'dts-close-btn-li');
+  const closeIconBtn = document.createElement('button');
+  closeIconBtn.classList.add('dts-close-btn');
+  closeIconBtn.innerHTML = `<i data-icon="close" aria-hidden="true"></i>`;
+  generateCloseIconClickEvent(closeIconBtn);
+  closeIconLi.append(closeIconBtn);
+
+  const cloneedSelectedModelDdlMob = selectedModelDdlMob.cloneNode(true);
+  cloneedSelectedModelDdlMob.className = 'dts-selected-model-mob-popover';
+  modelListItem.append(cloneedSelectedModelDdlMob);
+  leftPanelModelGrouping.insertBefore(modelListItem, leftPanelModelGrouping.firstChild);
+  leftPanelModelGrouping.insertBefore(closeIconLi, leftPanelModelGrouping.firstChild);
+
   // appending model group to UI
   leftPanel.append(leftPanelModelGrouping);
 
   block.textContent = '';
+  block.append(selectedModelDdlMob);
+
+
+
   block.append(leftPanel);
   block.append(rightPanel);
+  enableClickEvent(selectedModelDdlMob);
 }

@@ -5,6 +5,7 @@ import { changeAllVidSrcOnResize, enableObserverForVideos } from '../blocks/vide
 import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js';
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
 import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
+import { drivetrainResize } from '../blocks/drivetrain-switch/drivetrain-switch.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -14,6 +15,7 @@ addAnalyticsCustomClickEvent();
 enableObserverForVideos();
 mediaCarouselResizer();
 videoGalleryResizer();
+drivetrainResize();
 
 const page_tracking = {"page": {
   "pageInfo": {
