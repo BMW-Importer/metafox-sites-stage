@@ -1,11 +1,11 @@
 pipeline{  
   agent any 
   stages{ 
-   // stage('Build Application') {  
-    //    steps { 
-//	  sh 'mvn clean install' 
-  //      } 
-   // } 
+   stage('Build Application') {  
+        steps { 
+	  sh 'npm install' 
+        } 
+    } 
     stage('SonarQube Analysis') {
 	environment { 
 	  SONAR_METAFOX_SITES_TOKEN = credentials('sonar_metafox_sites')
