@@ -4228,7 +4228,7 @@
       {
         "component": "preconcustomtype",
         "label": "precon Context",
-        "name": "wdh_customSeriesModelRangeSelection",
+        "name": "wdh_preconcustomvalues",
         "description": "for testing purpose",        
         "valueType": "string"
       }
