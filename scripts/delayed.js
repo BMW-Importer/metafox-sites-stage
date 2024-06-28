@@ -91,10 +91,10 @@ function addAnalyticsCustomClickEvent() {
         if (!linkDomainName.includes("bmw")) {
           subCategory = "External page";
           linkName = linkURL;
-          return true;
+        }else{
+          subCategory = "Social";
+          linkName = e.target.getAttribute('data-analytics-link-label');
         }
-        subCategory = "Social";
-        linkName = e.target.getAttribute('data-analytics-link-label');
       }
       if (primaryCategory.toLowerCase() === "download") {
         subCategory = getFileType(linkURL);
