@@ -8,7 +8,7 @@ pipeline{
     } 
     stage('SonarQube Analysis') {
 	environment { 
-	  SONAR_METAFOX_SITES_TOKEN = credentials(sonar_metafox_sites')
+	  SONAR_METAFOX_SITES_TOKEN = credentials('sonar_metafox_sites')
 	}
         steps {
           script {
