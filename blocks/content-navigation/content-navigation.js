@@ -217,7 +217,7 @@ export default function decorate(block) {
   const generealTabSelector = block.querySelectorAll('p:not([class])');
   const generalTabValues = getTextContent(generealTabSelector);
   const [contentnavigationLabel, background, isEnabled, analyticsLabel,
-    analyticsCategory, analyticsSubCategory] = generalTabValues;
+    analyticsLinkType, analyticsLinkOtherType] = generalTabValues;
 
   const getButtonTabValues = (selector) => Array.from(selector).map((p) => {
     const anchor = p.querySelector('a');
@@ -280,11 +280,11 @@ export default function decorate(block) {
       if (analyticsLabel) {
         anchor.dataset.analyticsLabel = analyticsLabel;
       }
-      if (analyticsCategory) {
-        anchor.dataset.analyticsCategory = analyticsCategory;
+      if (analyticsLinkType) {
+        anchor.dataset.analyticsLinkType = analyticsLinkType;
       }
-      if (analyticsSubCategory) {
-        anchor.dataset.analyticsSubCategory = analyticsSubCategory;
+      if (analyticsLinkOtherType) {
+        anchor.dataset.analyticsLinkOtherType = analyticsLinkOtherType;
       }
       anchor.dataset.analyticsCustomClick = 'true';
       const { blockName } = block.dataset;
@@ -294,6 +294,10 @@ export default function decorate(block) {
       const sectionId = block.closest('.section').dataset.analyticsLabel;
       if (sectionId) {
         anchor.dataset.analyticsSectionId = sectionId;
+      }
+      const linkLabel = anchor?.textContent?.trim() || '';
+      if (linkLabel) {
+        anchor.dataset.analyticsLinkLabel = linkLabel;
       }
       anchorDiv.appendChild(anchor);
       return anchorDiv;

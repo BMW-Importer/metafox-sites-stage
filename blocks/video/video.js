@@ -268,7 +268,9 @@ export function getVideoElement(props) {
 
   const video = document.createElement('video');
   video.dataset.loading = 'true';
-  video.dataset.blockDetails = analyticsLabel;
+  if (analyticsLabel) {
+    video.dataset.blockDetails = analyticsLabel;
+  }
   video.addEventListener('loadedmetadata', () => delete video.dataset.loading);
 
   // generate video controls
