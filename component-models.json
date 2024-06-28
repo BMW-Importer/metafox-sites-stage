@@ -4221,5 +4221,17 @@
         ]
       }
     ]
+  },
+  {
+    "id": "preconcomp",
+    "fields": [
+      {
+        "component": "preconcustomtype",
+        "label": "precon Context",
+        "name": "wdh_customSeriesModelRangeSelection",
+        "description": "for testing purpose",        
+        "valueType": "string"
+      }
+    ]
   }
 ]
