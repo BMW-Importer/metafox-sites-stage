@@ -4301,17 +4301,11 @@
 
       },
       {
-        "component":"text-input",
-        "name":"analytics_label",
-        "label":"Analytics Label",
-        "valueType": ""
-
-      },
-      {
         "component":"select",
         "name":"analytics_button",
         "label":"Button/Link Type", 
         "valueType": "string",
+        "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
             "name": "exit",
