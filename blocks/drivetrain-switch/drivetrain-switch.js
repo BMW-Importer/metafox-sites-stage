@@ -4,12 +4,24 @@ import {
   PROD,
   disclaimerGQlEndpoint,
 } from '../../scripts/common/constants.js';
+import {
+  fetchModelPlaceholderObject,
+  fetchTechDataPlaceholderObject,
+} from '../../scripts/common/wdh-placeholders.js';
+import {
+  buildContext,
+  getCosyImage,
+  getCosyImageUrl,
+  replacePlaceholder,
+  getResolutionKey,
+} from '../../scripts/common/wdh-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
 const hostName = window?.location?.hostname;
 const regExp = /^(.*\.hlx\.(page|live)|localhost)$/;
 let galOrigin = '';
 let publishDomain = '';
+const modelText = 'Modeli';
 
 if (env === 'dev') {
   publishDomain = DEV.hostName;
@@ -25,6 +37,8 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   return response.json();
 }
 
+const modelRegex = /\{model(.*?)}/g;
+const techRegex = /\{tech(.*?)}/g;
 // when resize happens remove enablepopover class from left panel so that mobile dropdown
 //  wont appear in desktop mode
 export function drivetrainResize() {
@@ -57,17 +71,45 @@ function enableClickEvent(selectedModelDdlMob) {
   });
 }
 
-function generateTechnicalData1(technicalDetail1Cell, techTableData) {
-  // extracting technical data
+function generateTechnicalData1(
+  technicalDetail1Cell,
+  techTableData,
+  wdhModelPlaceholder,
+  wdhTechPlaceholder,
+) {
   const tableRow1 = document.createElement('tr');
   let tableRow1Html = '';
-
   const dataFactLabel1 = technicalDetail1Cell?.querySelector('h2');
   if (dataFactLabel1?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactLabel1.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+
+    dataFactLabel1.textContent = modelTextContent;
     tableRow1Html = `<td class="" role="rowheader"><div>${dataFactLabel1.outerHTML}</div></td>`;
   }
   const dataFactVal1 = technicalDetail1Cell?.querySelector('h3');
   if (dataFactVal1?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactVal1.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+
+    dataFactVal1.textContent = modelTextContent;
     tableRow1Html += `<td class="" role="cell"><div>${dataFactVal1.outerHTML}</div></td>`;
   }
 
@@ -79,10 +121,34 @@ function generateTechnicalData1(technicalDetail1Cell, techTableData) {
 
   const dataFactLabel2 = technicalDetail1Cell?.querySelector('h4');
   if (dataFactLabel2?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactLabel2.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+
+    dataFactLabel2.textContent = modelTextContent;
     tableRow2Html = `<td class="" role="rowheader"><div>${dataFactLabel2?.outerHTML}</div></td>`;
   }
   const dataFactVal2 = technicalDetail1Cell?.querySelector('h5');
   if (dataFactVal2?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactVal2.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+
+    dataFactVal2.textContent = modelTextContent;
     tableRow2Html += `<td class="" role="cell"><div>${dataFactVal2?.outerHTML}</div></td>`;
   }
 
@@ -90,16 +156,45 @@ function generateTechnicalData1(technicalDetail1Cell, techTableData) {
   if (tableRow2.textContent) techTableData.append(tableRow2);
 }
 
-function generateTechnicalData2(technicalDetail2Cell, techTableData) {
+function generateTechnicalData2(
+  technicalDetail2Cell,
+  techTableData,
+  wdhModelPlaceholder,
+  wdhTechPlaceholder,
+) {
   const tableRow3 = document.createElement('tr');
   let tableRow3Html = '';
 
   const dataFactLabel3 = technicalDetail2Cell?.querySelector('h2');
   if (dataFactLabel3?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactLabel3.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+    dataFactLabel3.textContent = modelTextContent;
+
     tableRow3Html = `<td class="" role="rowheader"><div>${dataFactLabel3?.outerHTML}</div></td>`;
   }
   const dataFactVal3 = technicalDetail2Cell?.querySelector('h3');
   if (dataFactVal3?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactVal3.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+    dataFactVal3.textContent = modelTextContent;
+
     tableRow3Html += `<td class="" role="cell"><div>${dataFactVal3?.outerHTML}</div></td>`;
   }
   if (tableRow3Html) tableRow3.innerHTML = tableRow3Html;
@@ -110,10 +205,33 @@ function generateTechnicalData2(technicalDetail2Cell, techTableData) {
 
   const dataFactLabel4 = technicalDetail2Cell?.querySelector('h4');
   if (dataFactLabel4?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactLabel3.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+    dataFactLabel3.textContent = modelTextContent;
     tableRow4Html = `<td class="" role="rowheader"><div>${dataFactLabel4?.outerHTML}</div></td>`;
   }
   const dataFactVal4 = technicalDetail2Cell?.querySelector('h5');
   if (dataFactVal4?.outerHTML) {
+    let modelTextContent = replacePlaceholder(
+      dataFactVal4.textContent,
+      wdhModelPlaceholder,
+      modelRegex,
+    );
+    modelTextContent = replacePlaceholder(
+      modelTextContent,
+      wdhTechPlaceholder,
+      techRegex,
+    );
+    dataFactVal4.textContent = modelTextContent;
+
     tableRow4Html += `<td class="" role="cell"><div>${dataFactVal4?.outerHTML}</div></td>`;
   }
 
@@ -121,17 +239,26 @@ function generateTechnicalData2(technicalDetail2Cell, techTableData) {
   if (tableRow4.textContent) techTableData.append(tableRow4);
 }
 
-function generateLeftPanelModelList(modelGroup, element, selectedModelDdlMob, analytics, block) {
+function generateLeftPanelModelList(
+  modelGroup,
+  element,
+  selectedModelDdlMob,
+  analytics,
+  block,
+  modelThumbnailElement,
+) {
   const [modelCategory, modelLink, isSelected] = modelGroup.children;
   const [analyticsLabel, BtnType, btnSubType] = analytics.children;
+  modelThumbnailElement.classList.add('dts-model-category-img');
   element.textContent = '';
   element.classList.add('dts-model-category-container');
+  const modelTitle = modelCategory?.textContent === 'all' ? modelText : (`${modelCategory?.textContent?.trim()?.toUpperCase()} ${modelText}`);
   if (isSelected?.textContent === 'true') {
     element.classList.add('selected');
     element.append(
       document.createRange().createContextualFragment(`
-                <span class='dts-model-category-title'>${modelCategory?.textContent}</span>
-                <div class='dts-category-box'><img class='dts-model-category-img' src='https://picsum.photos/200/300'/>
+                <span class='dts-model-category-title'>${modelTitle}</span>
+                <div class='dts-category-box'>${modelThumbnailElement.outerHTML}
                 <span class='dts-model-category-descp'>Fuel Type</span>
                 <i class="dts-model-category-icon--selected" aria-hidden="true"></i></div>`),
     );
@@ -140,14 +267,14 @@ function generateLeftPanelModelList(modelGroup, element, selectedModelDdlMob, an
   } else {
     element.append(
       document.createRange().createContextualFragment(`
-                <span class='dts-model-category-title'>${modelCategory?.textContent}</span>               
+                <span class='dts-model-category-title'>${modelTitle}</span>               
                 <div class='dts-category-box'><a class='dts-model-category-link' href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
                 data-analytics-category='${BtnType?.textContent?.trim() || ''}'
                 data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
-                <img class='dts-model-category-img' src='https://picsum.photos/200/300'/>
+                ${modelThumbnailElement.outerHTML}
                 <span class='dts-model-category-descp'>Fuel Type</span>
                 </a></div>`),
     );
@@ -166,6 +293,17 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
       technicalLink.dataset.analyticsSectionId = block?.closest('.section')?.dataset?.analyticsLabel || '';
     }
   }
+}
+
+// append visible class to first category title
+function appendClassToLeftModelCategory(block) {
+  const allModelCategory = block.querySelector('.dts-model-grouping li.ALL');
+  const iModelCategory = block.querySelector('.dts-model-grouping li.I');
+  const mModelCategory = block.querySelector('.dts-model-grouping li.M');
+
+  if (allModelCategory) allModelCategory.querySelector('.dts-model-category-title')?.classList.add('visible');
+  if (iModelCategory) iModelCategory.querySelector('.dts-model-category-title')?.classList?.add('visible');
+  if (mModelCategory) mModelCategory.querySelector('.dts-model-category-title')?.classList.add('visible');
 }
 
 export default async function decorate(block) {
@@ -190,6 +328,7 @@ export default async function decorate(block) {
 
   const techTable = document.createElement('table');
   techTable.setAttribute('role', 'table');
+  techTable.classList.add('dts-tech-detail-table');
   rightPanelTechDetail.append(techTable);
   const techTableData = document.createElement('tbody');
   techTableData.setAttribute('role', 'rowgroup');
@@ -226,6 +365,7 @@ export default async function decorate(block) {
   rightPanel.append(rightPanelTechDetail);
 
   const technicalLink = detailCell?.querySelector('a');
+  technicalLink.classList.add('dts-technical-link-btn');
   rightPanelTechDetail.append(technicalLink);
 
   const popover = detailCell?.querySelector('h6');
@@ -253,36 +393,126 @@ export default async function decorate(block) {
     }
   });
 
-  generateTechnicalData1(technicalDetail1Cell, techTableData);
+  // checking if multiple models are selected
+  // if yes then making first element as selcted model
+  let selectedModelCount = 0;
+  for (const element of rows) {
+    if (element?.children[0]?.children[2].textContent === 'true') {
+      selectedModelCount += 1;
+    }
+  }
 
-  // removing techdetail1 so that it wont appear in content tree
-  block.removeChild(technicalDetail1Cell);
-
-  generateTechnicalData2(technicalDetail2Cell, techTableData);
-
-  // removing techdetail1 so that it wont appear in content tree
-  block.removeChild(technicalDetail2Cell);
+  // setting first element as selected item
+  if (selectedModelCount > 1) {
+    let isSelectedValueSet = false;
+    for (const element of rows) {
+      const isSelectedElem = element.children[0].children[2];
+      if (!isSelectedValueSet) {
+        isSelectedElem.textContent = 'true';
+        isSelectedValueSet = 'true';
+      } else {
+        isSelectedElem.textContent = 'false';
+      }
+    }
+  }
 
   // looping through children model card blocks
-  rows.forEach((element) => {
+  for (const element of rows) {
     const [modelGroup, context, analytics] = element?.children || '';
-
-    if (context) element.removeChild(context);
-
-    // if (context) {
-    //   const [seriesRangeCode, enableTechData, transmissionType] = context.children;
-    // }
 
     bindAnalyticsValue(analytics, technicalLink, block);
 
-    if (modelGroup.children) {
-      generateLeftPanelModelList(modelGroup, element, selectedModelDdlMob, analytics, block);
-      const modelListItem = document.createElement('li');
-      modelListItem.append(element);
-      analytics.classList.add(selectedFuelType?.textContent || '');
-      leftPanelModelGrouping.append(modelListItem);
+    const [contextData] = context.children;
+    const splitContextData = contextData?.textContent?.split(',');
+
+    if (context) element.removeChild(context);
+    const agCode = splitContextData[2]?.trim() || '';
+
+    let modelThumbnailElement;
+
+    await getCosyImage(agCode).then((responseJson) => {
+      const screenWidth = window.innerWidth;
+      const resolutionKey = getResolutionKey(screenWidth);
+
+      const createPictureTag = (quality) => {
+        const pictureTag = document.createElement('picture');
+        const resolutions = [480, 1024, 1920];
+        resolutions.forEach((resolution) => {
+          const sourceTag = document.createElement('source');
+          sourceTag.srcset = getCosyImageUrl(
+            responseJson,
+            getResolutionKey(resolution),
+            quality,
+          );
+          sourceTag.media = `(min-width: ${resolution}px)`;
+          pictureTag.appendChild(sourceTag);
+        });
+
+        // Fallback img tag
+        const imgTag = document.createElement('img');
+        imgTag.src = getCosyImageUrl(responseJson, resolutionKey, quality);
+        imgTag.alt = 'Cosy Image';
+        pictureTag.appendChild(imgTag);
+
+        return pictureTag;
+      };
+
+      const createImgTag = (quality) => {
+        const imgTag = document.createElement('img');
+        imgTag.src = getCosyImageUrl(responseJson, resolutionKey, quality);
+        imgTag.alt = 'Cosy Image';
+        return imgTag;
+      };
+
+      // for condition based cosyImage if selected
+      if (modelGroup?.children[2].textContent === 'true') {
+        const modelPictureElement = createPictureTag(40);
+        modelPictureElement.classList.add('dts-active-model-img');
+        rightPanelTitleAndImg.append(modelPictureElement);
+      }
+      modelThumbnailElement = createImgTag(90);
+
+      if (modelGroup?.children) {
+        generateLeftPanelModelList(
+          modelGroup,
+          element,
+          selectedModelDdlMob,
+          analytics,
+          block,
+          modelThumbnailElement,
+        );
+        const modelListItem = document.createElement('li');
+        modelListItem.append(element);
+        modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim()?.toUpperCase() || '');
+        analytics.classList.add(selectedFuelType?.textContent || '');
+        leftPanelModelGrouping.append(modelListItem);
+      }
+    }).catch();
+
+    if (modelGroup?.children[2]?.textContent === 'true') {
+      await buildContext([agCode]).then(() => {
+        const wdhModelPlaceholder = fetchModelPlaceholderObject();
+        const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
+        // buildContext
+        generateTechnicalData1(
+          technicalDetail1Cell,
+          techTableData,
+          wdhModelPlaceholder,
+          wdhTechPlaceholder,
+        );
+        // removing techdetail1 so that it wont appear in content tree
+        block.removeChild(technicalDetail1Cell);
+
+        generateTechnicalData2(
+          technicalDetail2Cell,
+          techTableData,
+          wdhModelPlaceholder,
+          wdhTechPlaceholder,
+        );
+        block.removeChild(technicalDetail2Cell);
+      }).catch();
     }
-  });
+  }
 
   // clone selectedModel button and bind it inside left panel
   const modelListItem = document.createElement('li');
@@ -292,7 +522,7 @@ export default async function decorate(block) {
   closeIconLi.classList.add('mob-visible', 'dts-close-btn-li');
   const closeIconBtn = document.createElement('button');
   closeIconBtn.classList.add('dts-close-btn');
-  closeIconBtn.innerHTML = `<i data-icon="close" aria-hidden="true"></i>`;
+  closeIconBtn.innerHTML = '<i data-icon="close" aria-hidden="true"></i>';
   generateCloseIconClickEvent(closeIconBtn);
   closeIconLi.append(closeIconBtn);
 
@@ -307,10 +537,8 @@ export default async function decorate(block) {
 
   block.textContent = '';
   block.append(selectedModelDdlMob);
-
-
-
   block.append(leftPanel);
   block.append(rightPanel);
+  appendClassToLeftModelCategory(block);
   enableClickEvent(selectedModelDdlMob);
 }
