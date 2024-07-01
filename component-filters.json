@@ -336,5 +336,11 @@
     "components": [
       "drivetrain-model-card"
     ]
+  },
+  {
+    "id": "speed-dial",
+    "components":[
+      "speed-dial-item"
+    ]
   }
 ]

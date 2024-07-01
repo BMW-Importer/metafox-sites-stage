@@ -917,7 +917,39 @@
               }
             }
           }
+        },
+        {
+          "title": "Speed Dial",
+          "id": "speed-dial",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Speed Dial",
+                  "model": "speed-dial",
+                  "filter": "speed-dial"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Speed Dial Item",
+          "id": "speed-dial-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Speed Dial Item",
+                  "model": "speed-dial-item"
+                }
+              }
+            }
+          }
         }
+
       ]
     },    
     {
