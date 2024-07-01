@@ -705,7 +705,7 @@ textarea{
   font-style: normal;
   height: 1em;
   line-height: 1;
-  outline: 1px solid var(--text-color);
+  outline: none;
   text-align: left;
   text-transform: none;
   white-space: nowrap;
