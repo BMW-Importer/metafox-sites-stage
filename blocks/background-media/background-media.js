@@ -61,10 +61,10 @@ export default function decorate(block) {
     const [generalProps, generalPropIcon, copyTextContainer,
       gradientEffectClasName, vidOrImgPros, cta1, cta2,
       analyticscta1, analyticscta2] = childrenBlock.children;
-    const [analyticsLabelcta1, analyticsCategorycta1,
-      analyticsSubCategorycta1] = analyticscta1.children;
-    const [analyticsLabelcta2, analyticsCategorycta2,
-      analyticsSubCategorycta2] = analyticscta2.children;
+    const [analyticsLabelcta1, analyticsLinkTypecta1,
+      analyticsLinkOtherTypecta1] = analyticscta1.children;
+    const [analyticsLabelcta2, analyticsLinkTypecta2,
+      analyticsLinkOtherTypecta2] = analyticscta2.children;
     childrenBlock.removeChild(analyticscta1);
     childrenBlock.removeChild(analyticscta2);
     childrenBlock.textContent = '';
@@ -151,8 +151,10 @@ export default function decorate(block) {
     if (ctaElem) {
       if (analyticscta1.children) {
         ctaElem.dataset.analyticsLabel = analyticsLabelcta1?.textContent?.trim() || '';
-        ctaElem.dataset.analyticsCategory = analyticsCategorycta1?.textContent?.trim() || '';
-        ctaElem.dataset.analyticsSubCategory = analyticsSubCategorycta1?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsLinkType = analyticsLinkTypecta1?.textContent?.trim() || '';
+        if (analyticsLinkOtherTypecta1) {
+          ctaElem.dataset.analyticsLinkOtherType = analyticsLinkOtherTypecta1?.textContent?.trim() || '';
+        }
         ctaElem.dataset.analyticsCustomClick = 'true';
         const { blockName } = block.dataset;
         if (blockName) {
@@ -168,8 +170,10 @@ export default function decorate(block) {
     if (ctaElem2) {
       if (analyticscta1.children) {
         ctaElem2.dataset.analyticsLabel = analyticsLabelcta2?.textContent?.trim() || '';
-        ctaElem2.dataset.analyticsCategory = analyticsCategorycta2?.textContent?.trim() || '';
-        ctaElem2.dataset.analyticsSubCategory = analyticsSubCategorycta2?.textContent?.trim() || '';
+        ctaElem2.dataset.analyticsLinkType = analyticsLinkTypecta2?.textContent?.trim() || '';
+        if (analyticsLinkOtherTypecta2) {
+          ctaElem.dataset.analyticsLinkOtherType = analyticsLinkOtherTypecta2?.textContent?.trim() || '';
+        }
         ctaElem2.dataset.analyticsCustomClick = 'true';
         const { blockName } = block.dataset;
         if (blockName) {
