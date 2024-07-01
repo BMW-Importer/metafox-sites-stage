@@ -60,18 +60,52 @@ function analyticsTracking() {
     set_page_tracking();
 }
 
+function getFileType(url) {
+  const lastDotPosition = url.lastIndexOf('.');
+  if (lastDotPosition === -1) {
+    return '';
+  }
+  return url.substring(lastDotPosition + 1);
+}
+function getFileName(url) {
+  const lastSlashPosition = url.lastIndexOf('/');
+  return url.substring(lastSlashPosition + 1);
+}
+
 function addAnalyticsCustomClickEvent() {
   const listOfCustomClickBtns = document.querySelectorAll('a[data-analytics-custom-click=true]');
   listOfCustomClickBtns.forEach((btn)=> {
     btn.addEventListener('click', function(e) {
-      // e.preventDefault();
+      //e.preventDefault();
       const analyticsLabel = e.target.getAttribute('data-analytics-label');
-      const primaryCategory = e.target.getAttribute('data-analytics-category');
-      const subCategory = e.target.getAttribute('data-analytics-sub-category');
+      const primaryCategory = e.target.getAttribute('data-analytics-link-type');
+      const linkURL = e.target.getAttribute('href');
+      let subCategory;
+      let linkName;
+      
+      if (primaryCategory.toLowerCase() === "other") {
+        subCategory = "CTA";
+        linkName = e.target.getAttribute('data-analytics-link-other-type');
+      }
+      if (primaryCategory.toLowerCase() === "exit") {
+        let linkParsedUrl = new URL(linkURL);
+        let linkDomainName = linkParsedUrl.hostname.toLowerCase();
+        if (!linkDomainName.includes("bmw")) {
+          subCategory = "External page";
+          linkName = linkURL;
+        }else{
+          subCategory = "Social";
+          linkName = e.target.getAttribute('data-analytics-link-label');
+        }
+      }
+      if (primaryCategory.toLowerCase() === "download") {
+        subCategory = getFileType(linkURL);
+        linkName = getFileName(linkURL);
+      }
+      
       const blockName = e.target.getAttribute('data-analytics-block-name');
       const sectionId = e.target.getAttribute('data-analytics-section-id');
-      const linkURL = e.target.getAttribute('href');
-      const linkName = e.target.getAttribute('data-analytics-link-name');
+      
       pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL, linkName]);      
     });
   });

@@ -10,13 +10,13 @@
   }
   
   .accordion details summary {
-    font-size: 1.25rem;
+    font-size: 1.438rem;
     position: relative;
     cursor: pointer;
     list-style: none;
     overflow: auto;
-    font-weight: 700;
-    line-height: 2rem;
+    font-weight: 300;
+    line-height: 2.25rem;
     display: flex;
     min-height: 5rem;
     align-items: center;
@@ -63,4 +63,31 @@
 
   .accordion details .accordion-item-body p {
     margin: 0;
+    font-size: 1.125rem;
+    line-height:1.75rem;
   }
+
+  /* mobile */
+@media (width >= 360px) and (width < 768px) {
+  .accordion details summary {
+    font-size: 1.188rem;
+    line-height: 1.75rem;
+  }
+
+  .accordion details .accordion-item-body p {
+    font-size: 1rem;
+    line-height:1.625rem;
+  }
+}
+
+/* tablet */
+@media (width >= 768px) and (width < 1280px){
+  .accordion details summary {
+    line-height: 1.875rem;
+  }
+  
+  .accordion details .accordion-item-body p {
+    font-size: 1.063rem;
+    line-height:1.75rem;
+  }
+}

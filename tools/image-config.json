@@ -1,6 +1,5 @@
 {
   "aemTierType": [
-      "delivery",
       "author"
   ],
   "apiKey": "asset_search_service",

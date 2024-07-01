@@ -3,6 +3,7 @@
     "/content/metafox/:/",
     "/content/metafox/index/price-list:/auto-price-list.json",
     "/content/metafox/placeholders:/placeholders.json",
+    "/content/metafox/masters/en/placeholders:/masters/en/placeholders.json",
     "/content/metafox/metadata:/metadata.json",
     "/content/dam/metafox/:/assets/"
 ],

@@ -24,6 +24,19 @@ const event_tracking = {
       },
     },
   };
+
+  function removeEmptyObjectKeys(obj) {
+    for (const key in obj) {
+        if (typeof obj[key] === "object" && obj[key] !== null) {
+          removeEmptyObjectKeys(obj[key]);
+            if (Object.keys(obj[key]).length === 0) {
+                delete obj[key];
+            }
+        } else if (obj[key] === "") {
+            delete obj[key];
+        }
+    }
+  }
   
   export function pushCustomLinkAnalyticData(prop) {
     const [
@@ -48,7 +61,6 @@ const event_tracking = {
     }
   
     if (analyticsLabel) {
-      event_tracking.eventInfo.category.linkName = analyticsLabel;
       event_tracking.eventInfo.block.blockInfo.blockDetails = analyticsLabel;
     }
 
@@ -67,6 +79,8 @@ const event_tracking = {
     if (sectionId) {
       event_tracking.eventInfo.section.sectionInfo.sectionID = sectionId;
     }
+
+    removeEmptyObjectKeys(event_tracking);
   
     window.adobeDataLayer.push(event_tracking);
   }
