@@ -79,7 +79,7 @@ export default function decorate(block) {
 
     const [classes, content, media, cta, analytics] = childrenBlockProps.children;
     // removing classes div
-    const [analyticsLabel, analyticsCategory, analyticsSubCategory] = analytics.children;
+    const [analyticsLabel, analyticsLinkType, analyticsLinkOtherType] = analytics.children;
     childrenBlockProps.removeChild(classes);
     childrenBlockProps.removeChild(analytics);
     const imageAlignment = classes?.textContent?.split(',')?.[1] || 'left';
@@ -121,11 +121,14 @@ export default function decorate(block) {
       ctaElem?.classList?.add('text-with-media-cta');
       if (analytics.children) {
         ctaElem.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
-        ctaElem.dataset.analyticsCategory = analyticsCategory?.textContent?.trim() || '';
-        ctaElem.dataset.analyticsSubCategory = analyticsSubCategory?.textContent?.trim() || '';
+        ctaElem.dataset.analyticsLinkType = analyticsLinkType?.textContent?.trim() || '';
+        if (analyticsLinkOtherType) {
+          ctaElem.dataset.analyticsLinkOtherType = analyticsLinkOtherType?.textContent?.trim() || '';
+        }
         ctaElem.dataset.analyticsCustomClick = 'true';
         ctaElem.dataset.analyticsBlockName = ctaElem.closest('.block').dataset.blockName;
         ctaElem.dataset.analyticsSectionId = ctaElem.closest('.section').dataset.analyticsLabel;
+        ctaElem.dataset.analyticsLinkLabel = ctaElem?.textContent?.trim() || '';
       }
       content.append(ctaElem);
     }

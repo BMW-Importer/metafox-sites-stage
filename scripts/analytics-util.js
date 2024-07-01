@@ -48,7 +48,6 @@ const event_tracking = {
     }
   
     if (analyticsLabel) {
-      event_tracking.eventInfo.category.linkName = analyticsLabel;
       event_tracking.eventInfo.block.blockInfo.blockDetails = analyticsLabel;
     }
 
