@@ -164,6 +164,7 @@ export default function decorate(block) {
         if (sectionId) {
           ctaElem.dataset.analyticsSectionId = sectionId;
         }
+        ctaElem.dataset.analyticsLinkLabel = ctaElem?.textContent?.trim() || '';
       }
     }
 
@@ -183,6 +184,7 @@ export default function decorate(block) {
         if (sectionId) {
           ctaElem2.dataset.analyticsSectionId = sectionId;
         }
+        ctaElem.dataset.analyticsLinkLabel = ctaElem2?.textContent?.trim() || '';
       }
     }
 
