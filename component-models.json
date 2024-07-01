@@ -4233,5 +4233,17 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "shopbylookcomp",
+    "fields": [
+      {
+        "component": "shopbylookcustomtype",
+        "label": "Shop By Look Context",
+        "name": "wdh_shopbylookcustomvalues",
+        "description": "for testing purpose",        
+        "valueType": "string"
+      }
+    ]
   }
 ]
