@@ -90,7 +90,7 @@
 }
 
 .drivetrain-switch-block .dts-left-panel.enablepopover::before {
-    background-color: var(--text-color);    
+    background-color: #000c;    
     position: fixed;
     inset: 0;
     content: "";

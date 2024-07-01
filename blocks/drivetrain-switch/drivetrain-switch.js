@@ -298,8 +298,8 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
 // append visible class to first category title
 function appendClassToLeftModelCategory(block) {
   const allModelCategory = block.querySelector('.dts-model-grouping li.ALL');
-  const iModelCategory = block.querySelector('.dts-model-grouping li.I');
-  const mModelCategory = block.querySelector('.dts-model-grouping li.M');
+  const iModelCategory = block.querySelector('.dts-model-grouping li.i');
+  const mModelCategory = block.querySelector('.dts-model-grouping li.m');
 
   if (allModelCategory) allModelCategory.querySelector('.dts-model-category-title')?.classList.add('visible');
   if (iModelCategory) iModelCategory.querySelector('.dts-model-category-title')?.classList?.add('visible');
