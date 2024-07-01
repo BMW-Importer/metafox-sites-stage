@@ -137,6 +137,19 @@ function enableVideoFeature(props) {
   }
 }
 
+function removeEmptyObjectKeys(obj) {
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      removeEmptyObjectKeys(obj[key]);
+      if (Object.keys(obj[key]).length === 0) {
+        delete obj[key];
+      }
+    } else if (obj[key] === null || obj[key] === undefined || obj[key] === '') {
+      delete obj[key];
+    }
+  });
+}
+
 function triggerMediaPlayAnalytics(video) {
   window.adobeDataLayer = window.adobeDataLayer || [];
   const { blockName } = video.closest('.block').dataset;
@@ -144,11 +157,21 @@ function triggerMediaPlayAnalytics(video) {
   const { blockDetails } = video.closest('div').dataset;
   const mediaUrl = video.querySelector('source').getAttribute('src');
   const mediaHostname = mediaUrl ? new URL(mediaUrl).hostname : '';
-  video.dataset.analyticsBlockName = blockName || '';
-  video.dataset.analyticsSectionId = sectionId || '';
-  video.dataset.analyticsMediaUrl = mediaUrl || '';
-  video.dataset.analyticsBlockDetails = blockDetails || '';
-  video.dataset.analyticsMediaHosting = mediaHostname || '';
+  if (blockName) {
+    video.dataset.analyticsBlockName = blockName || '';
+  }
+  if (sectionId) {
+    video.dataset.analyticsSectionId = sectionId || '';
+  }
+  if (mediaUrl) {
+    video.dataset.analyticsMediaUrl = mediaUrl || '';
+  }
+  if (blockDetails) {
+    video.dataset.analyticsBlockDetails = blockDetails || '';
+  }
+  if (mediaHostname) {
+    video.dataset.analyticsMediaHosting = mediaHostname || '';
+  }
 
   const mediaPlayObject = {
     event: 'media.play',
@@ -178,12 +201,25 @@ function triggerMediaPlayAnalytics(video) {
 
   const randomNum = 100000 + Math.random() * 900000;
   mediaPlayObject.eventInfo.id = Math.floor(randomNum).toString();
-  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
-  mediaPlayObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
-  mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
-  mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
-  mediaPlayObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
-  window.adobeDataLayer.push(mediaPlayObject);
+  if (mediaUrl) {
+    mediaPlayObject.eventInfo.attributes.mediaInfo.mediaName = mediaUrl || '';
+  }
+  if (mediaHostname) {
+    mediaPlayObject.eventInfo.attributes.mediaInfo.mediaHosting = mediaHostname || '';
+  }
+  if (blockName) {
+    mediaPlayObject.eventInfo.block.blockInfo.blockName = blockName || '';
+  }
+  if (sectionId) {
+    mediaPlayObject.eventInfo.section.sectionInfo.sectionID = sectionId || '';
+  }
+  if (blockDetails) {
+    mediaPlayObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
+  }
+  if (mediaUrl) {
+    removeEmptyObjectKeys(mediaPlayObject);
+    window.adobeDataLayer.push(mediaPlayObject);
+  }
 }
 
 function triggerMediaCompleteAnalytics(video) {
@@ -258,6 +294,7 @@ function triggerMediaCompleteAnalytics(video) {
   // Push to data layer only if mediaUrl is not blank (as an example of required field)
   if (mediaUrl) {
     mediaCompleteObject.eventInfo.block.blockInfo.blockDetails = blockDetails || '';
+    removeEmptyObjectKeys(mediaCompleteObject);
     window.adobeDataLayer.push(mediaCompleteObject);
   }
 }
