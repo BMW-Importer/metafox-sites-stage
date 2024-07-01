@@ -691,27 +691,22 @@ textarea{
   font-size: 1.5rem
 }
 
-[data-icon]:not([data-icon=""]):before {
+[data-icon]:not([data-icon=""])::before {
   font-size: inherit;
   font-weight: 400;
-}
-
-[data-icon]:not([data-icon=""]):before {
   word-wrap: normal;
-  speak: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "liga";
   content: attr(data-icon);
   direction: ltr;
   display: block;
-  font-family: bmw_next_icons;
+  font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
   font-style: normal;
   height: 1em;
   line-height: 1;
-  outline: 1px solid #0000;
+  outline: 1px solid var(--text-color);
   text-align: left;
-  text-rendering: optimizeLegibility;
   text-transform: none;
   white-space: nowrap;
   width: auto;

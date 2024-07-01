@@ -1,7 +1,7 @@
 .drivetrain-switch-block {
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
 }
 
 .drivetrain-switch-block .dts-selected-model-mob {   
@@ -19,16 +19,16 @@
 }
 
 .drivetrain-switch-block .dts-right-tech-detail {
-    margin-top: 16px;
+    margin-top: 1rem;
 }
 
 .drivetrain-switch-block .dts-selected-model-mob-popover {
-    border: .125rem solid #4d4d4d;
+    border: .125rem solid var(--medium-text-color);
     height: 3rem;
     margin-top: 0;
     padding-left: 0;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--background-color);
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -41,20 +41,6 @@
     text-decoration: none;
 }
 
-.drivetrain-switch-block .dts-selected-model-mob-popover .dts-selected-model-title {
-    color: #262626;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-    padding-left: 1.25rem;
-}
-
-.dts-selected-model-mob-popover .dts-arrow-icon {
-    transform: rotate(-180deg);
-}
-
-
 .drivetrain-switch-block .dts-selected-model-title {
     color: var(--light-text-color);
     font-size: 0.875rem;
@@ -63,6 +49,19 @@
     padding-left: 1.25rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
     word-break: break-word;
+}
+
+.drivetrain-switch-block .dts-selected-model-mob-popover .dts-selected-model-title {
+    color: var(--light-text-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    padding-left: 1.25rem;
+}
+
+.dts-selected-model-mob-popover .dts-arrow-icon {
+    transform: rotate(-180deg);
 }
 
 .drivetrain-switch-block .dts-arrow-icon {
@@ -91,12 +90,9 @@
 }
 
 .drivetrain-switch-block .dts-left-panel.enablepopover::before {
-    background-color: #000c;
-    bottom: 0;
-    left: 0;
+    background-color: var(--text-color);    
     position: fixed;
-    right: 0;
-    top: 0;
+    inset: 0;
     content: "";
 }
 
@@ -106,7 +102,7 @@
     width: 100vw;
     bottom: 0;
     z-index: 9999;
-    background: white;
+    background: var(--background-color);
     padding: 0;
 }
 
@@ -126,13 +122,13 @@
 .drivetrain-switch-block .dts-active-model-title {
     position: absolute;
     margin: 0;   
-    color: #e6e6e6;
+    color: var(--light-grey-1);
     text-align: left;
     padding: .75rem 1.25rem 0 0;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 119px;
+    font-size: 7.4375rem;
     font-weight: 300;
-    line-height: 119px;
+    line-height: 7.4375rem;
     z-index: -1;
     width: 100%;
 }
@@ -140,7 +136,7 @@
 .drivetrain-switch-block .dts-close-btn {
     background-color: transparent;
     border: 0;
-    color: #fff;
+    color: var(--background-color);
     cursor: pointer;
     outline: 0;
     padding-right: 1.25rem;
@@ -148,7 +144,7 @@
 
 .drivetrain-switch-block .dts-close-btn-li {
     position: absolute;
-    top: -55px;
+    top: -3.4375rem;
     right: 0;
     cursor: pointer;
 }
@@ -156,11 +152,11 @@
 .drivetrain-switch-block .dts-active-model-descp {
     margin-top: 2rem;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 23px;
+    font-size: 1.4375rem;
     font-weight: 300;
-    line-height: 32px;
+    line-height: 2rem;
     width: 100%;
-    color: #262626;
+    color: var(--light-text-color);
     text-transform: unset;
 }
 
@@ -175,12 +171,12 @@
 }
 
 .drivetrain-switch-block .dts-model-category-title {
-    background-color: #f2f2f2;
+    background-color: var(--bg-media-ghost-btn);
     display: none;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 300;
-    line-height: 16px;
+    line-height: 1rem;
     padding: .5rem 1.25rem;
 }
 
@@ -189,13 +185,13 @@
 }
 
 .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
-    margin: 40px 0 24px;
-    background-color: #262626;
-    color: #fff;
+    margin: 2.5rem 0 1.5rem;
+    background-color: var(--light-text-color);
+    color: var(--background-color);
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
+    font-size: .875rem;
     font-weight: 500;
-    line-height: 22px;
+    line-height: 1.375rem;
     word-break: break-word;
     border: none;
     padding: 0 1rem;
@@ -207,7 +203,7 @@
 }
 
 .drivetrain-switch-block .dts-model-category-descp {
-    background-color: #fff;
+    background-color: var(--background-color);
     outline: 0;
     width: 100%;
     align-items: center;
@@ -220,28 +216,28 @@
     text-decoration: none;
     pointer-events: none;
     text-align: start;
-    color: #262626;
+    color: var(--light-text-color);
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
+    font-size: .875rem;
     font-weight: 300;
-    line-height: 22px;
+    line-height: 1.375rem;
     word-break: break-word;
 }
 
 .drivetrain-switch-block .dts-model-category-container.selected .dts-model-category-descp {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--text-color);
+    color: var(--background-color);
 }
 
-.drivetrain-switch-block .dts-model-category-icon--selected {
-    padding-right: 20px;
-    color: #fff;
+.drivetrain-switch-block .dts-model-category-icon-selected {
+    padding-right: 1.25rem;
+    color: var(--background-color);
     position: absolute;
     right: 0;
-    bottom: 15px;
+    bottom: .9375rem;
 }
 
-.drivetrain-switch-block .dts-model-category-icon--selected::before {
+.drivetrain-switch-block .dts-model-category-icon-selected::before {
     font-size: 1.5rem;
     font-weight: 400;
     word-wrap: normal;
@@ -249,13 +245,12 @@
     content: "checkmark";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
     font-style: normal;
-    height: 1em;
+    height: 1.5rem;
     line-height: 1;
-    outline: 1px solid #0000;
+    outline: 1px solid var(--text-color);
     text-align: left;
-    text-rendering: optimizeLegibility;
     text-transform: none;
     white-space: nowrap;
     width: auto;
@@ -272,7 +267,7 @@
 .drivetrain-switch-block .dts-tech-detail-table tbody {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 1rem 1rem;
+    grid-gap: 1rem;
 }
 
 .drivetrain-switch-block .dts-tech-detail-table tr {
@@ -298,11 +293,11 @@
 .drivetrain-switch-block .dts-tech-detail-table tr td:first-child h4,
 .drivetrain-switch-block .dts-tech-detail-table tr td:first-child h5,
 .drivetrain-switch-block .dts-tech-detail-table tr td:first-child h6 {
-    color:#666;
+    color:var(--light-border-color);
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 300;
-    line-height: 16px;
+    line-height: 1rem;
     margin: 0;
     text-transform: unset;
 }
@@ -312,68 +307,68 @@
 .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
 .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
 .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
-    color: #262626;
+    color: var(--light-text-color);
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 26px;
+    line-height: 1.625rem;
     margin: 0;
     text-transform: unset;
 }
 
 .drivetrain-switch-block .disclaimer-content p {
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    font-size: .75rem;
     font-weight: 300;
-    line-height: 18px;
-    color: #666;
+    line-height: 1.125rem;
+    color: var(--light-border-color);
     margin: 0;
 }
 
 .drivetrain-switch-block .disclaimer-content {
-    margin-top: 16px;
+    margin-top: 1rem;
 }
 
 @media (width >= 768px) {
     .drivetrain-switch-block .dts-right-model-title-container {
-        aspect-ratio: 1.7777777778;
+        aspect-ratio: 1.7778;
     }
 
     .drivetrain-switch-block .dts-active-model-title {
-        font-size: 126px;
-        line-height: 126px;
-        padding-top: 20px;
+        font-size: 7.875rem;
+        line-height: 7.875rem;
+        padding-top: 1.25rem;
     }
 
     .drivetrain-switch-block .dts-active-model-descp {
-        font-size: 25px;
-        line-height: 36px;
-        width: 66.6666666667%;
+        font-size: 1.5625rem;
+        line-height: 2.25rem;
+        width: 66.6667%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail {
-        width: 66.6666666667%;
+        width: 66.6667%;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
     }
 
     .drivetrain-switch-block .disclaimer-content {
-        width: 66.6666666667%;
+        width: 66.6667%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .drivetrain-switch-block .dts-selected-model-mob {
-        width: 66.6666666667%;
+        width: 66.6667%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
-        margin: 48px 0 24px;
+        margin: 3rem 0 1.5rem;
         width: 50% !important;
         margin-left: auto;
         margin-right: auto;
@@ -381,9 +376,9 @@
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn:hover {
         font-weight: 500;
-        background-color: #4d4d4d;
+        background-color: var(--medium-text-color);
         box-shadow: none;
-        color: #fff;
+        color: var(--background-color);
     }
     
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
@@ -391,8 +386,8 @@
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 1.25rem;
+        line-height: 1.875rem;
     }
 }
 
@@ -401,7 +396,7 @@
     .drivetrain-switch-block {
         display: grid;
         grid-template-columns: 19% 83.3%;
-        margin: 0 -12px 40px;
+        margin: 0 -.75rem 2.5rem;
     }
 
     .drivetrain-switch-block .mob-visible {
@@ -414,16 +409,14 @@
 
     .drivetrain-switch-block .dts-left-panel {
         display: block;
-        padding: 0 12px;
+        padding: 0 .75rem;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail {
-        margin: 16px 0 0;
-        column-gap: 2rem;
-        flex-direction: row;
-        flex-wrap: wrap;
+        margin: 1rem 0 0;        
+        flex-flow:row wrap;
         justify-content: center;
-        row-gap: 1.5rem;
+        gap: 1.5rem 2rem;
         width: auto;
         align-self: center;
         display: flex;
@@ -439,17 +432,17 @@
     
     .drivetrain-switch-block .dts-right-panel {
         margin-top: 0;
-        padding: 0 12px;
+        padding: 0 .75rem;
     }
 
     .drivetrain-switch-block .dts-right-model-title-container {
-        aspect-ratio: 2.3333333333;
+        aspect-ratio: 2.3333;
         overflow: hidden;
     }
 
     .drivetrain-switch-block .dts-active-model-title {        
-        padding-top: 24px;
-        padding-left: 96px;
+        padding-top: 1.5rem;
+        padding-left: 6rem;
     }
 
     .drivetrain-switch-block .dts-model-grouping {
@@ -458,7 +451,6 @@
         gap: 1.5rem;
         justify-content: center;
         transition: opacity .5s ease-in .25s;
-        width: -moz-fit-content;
         width: fit-content;
         padding: 0;
         margin: 0;
@@ -472,7 +464,7 @@
         position: relative;
     }
 
-    .drivetrain-switch-block .I .dts-model-category-title::after {
+    .drivetrain-switch-block .i .dts-model-category-title::after {
         position: relative;
         content: '';
         background-image: url("../../icons/BMW_subrand_i.png");
@@ -480,14 +472,14 @@
         background-repeat: no-repeat;
         background-position: center;
         display: inline-block;
-        height: 12px;
-        width: 32px;    
+        height: .75rem;
+        width: 2rem;    
         z-index: 2;  
         box-sizing: border-box;
         margin-left: 4px;
     }
 
-    .drivetrain-switch-block .M .dts-model-category-title::after {
+    .drivetrain-switch-block .m .dts-model-category-title::after {
         position: relative;
         content: '';
         background-image: url("../../icons/BMW_subrand_m.png");
@@ -496,8 +488,8 @@
         background-position: center;       
         z-index: 2;
         display: inline-block;
-        height: 12px;
-        width: 32px; 
+        height: .75rem;
+        width: 2rem; 
         left: 0;
         margin-left: 4px;
     }
@@ -518,9 +510,9 @@
         flex-direction: row;
         box-sizing: border-box;
         padding: .875rem;
-        border: .125rem solid #bbb;
-        background-color: #fff;
-        color: #262626;
+        border: .125rem solid var(--light-bbb);
+        background-color: var(--background-color);
+        color: var(--light-text-color);
         align-items: center;
         border-radius: 3px;
         box-shadow: inset 0 0 0 var(--border-width, .125rem) var(--border-color, unset);
@@ -534,25 +526,25 @@
         text-decoration: none;
     }
 
-    .drivetrain-switch-block .dts-model-category-icon--selected {
+    .drivetrain-switch-block .dts-model-category-icon-selected {
         display: none;
     }
 
     .drivetrain-switch-block .dts-model-category-descp {
         font-weight: 300;
         background-color: transparent;
-        color: #262626;
+        color: var(--light-text-color);
         padding: 0;
         min-height: unset;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-model-category-descp {
         background-color: transparent;
-        color: #262626;
+        color: var(--light-text-color);
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
-        border: .125rem solid #4d4d4d;
+        border: .125rem solid var(--medium-text-color);
         box-sizing: border-box;
         cursor: unset;
     }
@@ -577,19 +569,18 @@
         padding: .25em;
         width: 1rem;
         word-wrap: normal;
-        background: #4d4d4d;
+        background: var(--medium-text-color);
         border-radius: 50%;
-        color: #fff;
+        color: var(--background-color);
         content: "checkmark";
         direction: ltr;
         display: block;
-        font-family: bmw_next_icons;
+        font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
         font-style: normal;
         line-height: 1;
-        outline: 1px solid #0000;
+        outline: 1px solid var(--text-color);
         right: -.333em;
         text-align: left;
-        text-rendering: optimizeLegibility;
         text-transform: none;
         top: -10px;
         white-space: nowrap;
@@ -597,23 +588,21 @@
     }
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
-        margin: 24px 0 0;
+        margin: 1.5rem 0 0;
         width: auto !important;
         height: 3.25rem;
     } 
     
     .drivetrain-switch-block .disclaimer-content {
         width: 100%;
-        margin: 20px 0 0;
-        max-width: 732px;
+        margin: 1.25rem 0 0;
+        max-width: 45.75rem;
     }
 
-    .drivetrain-switch-block .dts-tech-detail-table tbody {
-        column-gap: 2rem;
+    .drivetrain-switch-block .dts-tech-detail-table tbody {        
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        row-gap: 1.5rem;
+        flex-flow: row wrap;
+        gap: 1.5rem 2rem;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table tr {
@@ -628,36 +617,36 @@
     .drivetrain-switch-block {
         display: grid;
         grid-template-columns: 25% 75%;
-        margin-bottom: 48px;
+        margin-bottom: 3rem;
     }
 
     .drivetrain-switch-block .dts-active-model-title {
-        font-size: 210px;
-        line-height: 210px;
+        font-size: 13.125rem;
+        line-height: 13.125rem;
         padding-top: 0;
-        padding-right: 24px;
+        padding-right: 1.5rem;
     }
 
     .drivetrain-switch-block .dts-active-model-descp {
-        font-size: 28px;
-        line-height: 40px;
-        width: 732px;
-        margin: -20px auto 0;
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+        width: 45.75rem;
+        margin: -1.25rem auto 0;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail {
-        margin: 20px auto 0;
-        max-width: 732px;
+        margin: 1.25rem auto 0;
+        max-width: 45.75rem;
     }
 
     .drivetrain-switch-block .disclaimer-content {
-        margin: 20px auto 0;
+        margin: 1.25rem auto 0;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
         margin: 0;
-        font-size: 15px;
-        line-height: 24px;
+        font-size: .9375rem;
+        line-height: 1.5rem;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
@@ -665,8 +654,8 @@
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
-        font-size: 23px;
-        line-height: 36px;
+        font-size: 1.4375rem;
+        line-height: 2.25rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
@@ -683,28 +672,29 @@
 
 @media (width >= 1920px) {
     .drivetrain-switch-block {        
-        margin-bottom: 64px;
+        margin-bottom: 4rem;
     }
+
     .drivetrain-switch-block .dts-active-model-title {
-        font-size: 252px;
-        line-height: 252px;
-        padding: 40px 32px 0 172px;
+        font-size: 15.75rem;
+        line-height: 15.75rem;
+        padding: 2.5rem 2rem 0 172px;
     }
 
     .drivetrain-switch-block .dts-active-model-descp {
-        font-size: 34px;
-        line-height: 48px;
-        margin-top: -24px;
+        font-size: 2.125rem;
+        line-height: 3rem;
+        margin-top: -1.5rem;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail {
-        margin-top: 24px;
+        margin-top: 1.5rem;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
         margin: 0;
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.625rem;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
@@ -712,15 +702,15 @@
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
-        font-size: 25px;
-        line-height: 38px;
+        font-size: 1.5625rem;
+        line-height: 2.375rem;
     }
 
     .drivetrain-switch-block .disclaimer-content {
-        margin: 24px auto 0;
+        margin: 1.5rem auto 0;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
-        padding: 18px;
+        padding: 1.125rem;
     }
 }

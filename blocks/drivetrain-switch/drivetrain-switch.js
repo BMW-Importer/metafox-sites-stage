@@ -260,7 +260,7 @@ function generateLeftPanelModelList(
                 <span class='dts-model-category-title'>${modelTitle}</span>
                 <div class='dts-category-box'>${modelThumbnailElement.outerHTML}
                 <span class='dts-model-category-descp'>Fuel Type</span>
-                <i class="dts-model-category-icon--selected" aria-hidden="true"></i></div>`),
+                <i class="dts-model-category-icon-selected" aria-hidden="true"></i></div>`),
     );
     selectedModelDdlMob.innerHTML = `<span class='dts-selected-model-title'>${modelCategory?.textContent}</span>
     <i class="dts-arrow-icon" data-icon="arrow_chevron_down" aria-hidden="true"></i>`;
@@ -393,101 +393,96 @@ export default async function decorate(block) {
     }
   });
 
-  // checking if multiple models are selected
-  // if yes then making first element as selcted model
-  let selectedModelCount = 0;
-  for (const element of rows) {
-    if (element?.children[0]?.children[2].textContent === 'true') {
-      selectedModelCount += 1;
+  const selectedModelCount = Array.from(rows).reduce((count, element) => {
+    if (element?.children[0]?.children[2]?.textContent === 'true') {
+      return count + 1;
     }
-  }
+    return count;
+  }, 0);
 
-  // setting first element as selected item
   if (selectedModelCount > 1) {
     let isSelectedValueSet = false;
-    for (const element of rows) {
+    Array.from(rows).forEach((element) => {
       const isSelectedElem = element.children[0].children[2];
       if (!isSelectedValueSet) {
         isSelectedElem.textContent = 'true';
-        isSelectedValueSet = 'true';
+        isSelectedValueSet = true;
       } else {
         isSelectedElem.textContent = 'false';
       }
-    }
+    });
   }
 
-  // looping through children model card blocks
-  for (const element of rows) {
-    const [modelGroup, context, analytics] = element?.children || '';
+  const cozyApiPromise = Array.from(rows).map(async (element) => {
+    const [modelGroup, context, analytics] = element?.children || [];
 
     bindAnalyticsValue(analytics, technicalLink, block);
 
-    const [contextData] = context.children;
+    const [contextData] = context?.children || [];
     const splitContextData = contextData?.textContent?.split(',');
 
     if (context) element.removeChild(context);
+
     const agCode = splitContextData[2]?.trim() || '';
 
-    let modelThumbnailElement;
+    const response = await getCosyImage(agCode);
 
-    await getCosyImage(agCode).then((responseJson) => {
-      const screenWidth = window.innerWidth;
-      const resolutionKey = getResolutionKey(screenWidth);
+    const screenWidth = window.innerWidth;
+    const resolutionKey = getResolutionKey(screenWidth);
 
-      const createPictureTag = (quality) => {
-        const pictureTag = document.createElement('picture');
-        const resolutions = [480, 1024, 1920];
-        resolutions.forEach((resolution) => {
-          const sourceTag = document.createElement('source');
-          sourceTag.srcset = getCosyImageUrl(
-            responseJson,
-            getResolutionKey(resolution),
-            quality,
-          );
-          sourceTag.media = `(min-width: ${resolution}px)`;
-          pictureTag.appendChild(sourceTag);
-        });
-
-        // Fallback img tag
-        const imgTag = document.createElement('img');
-        imgTag.src = getCosyImageUrl(responseJson, resolutionKey, quality);
-        imgTag.alt = 'Cosy Image';
-        pictureTag.appendChild(imgTag);
-
-        return pictureTag;
-      };
-
-      const createImgTag = (quality) => {
-        const imgTag = document.createElement('img');
-        imgTag.src = getCosyImageUrl(responseJson, resolutionKey, quality);
-        imgTag.alt = 'Cosy Image';
-        return imgTag;
-      };
-
-      // for condition based cosyImage if selected
-      if (modelGroup?.children[2].textContent === 'true') {
-        const modelPictureElement = createPictureTag(40);
-        modelPictureElement.classList.add('dts-active-model-img');
-        rightPanelTitleAndImg.append(modelPictureElement);
-      }
-      modelThumbnailElement = createImgTag(90);
-
-      if (modelGroup?.children) {
-        generateLeftPanelModelList(
-          modelGroup,
-          element,
-          selectedModelDdlMob,
-          analytics,
-          block,
-          modelThumbnailElement,
+    const createPictureTag = (quality) => {
+      const pictureTag = document.createElement('picture');
+      const resolutions = [480, 1024, 1920];
+      resolutions.forEach((resolution) => {
+        const sourceTag = document.createElement('source');
+        sourceTag.srcset = getCosyImageUrl(
+          response,
+          getResolutionKey(resolution),
+          quality,
         );
-        const modelListItem = document.createElement('li');
-        modelListItem.append(element);
-        modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim()?.toUpperCase() || '');
-        analytics.classList.add(selectedFuelType?.textContent || '');
-        leftPanelModelGrouping.append(modelListItem);
-      }
-    }).catch();
+        sourceTag.media = `(min-width: ${resolution}px)`;
+        pictureTag.appendChild(sourceTag);
+      });
+
+      // Fallback img tag
+      const imgTag = document.createElement('img');
+      imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+      imgTag.alt = 'Cosy Image';
+      pictureTag.appendChild(imgTag);
+
+      return pictureTag;
+    };
+
+    const createImgTag = (quality) => {
+      const imgTag = document.createElement('img');
+      imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+      imgTag.alt = 'Cosy Image';
+      return imgTag;
+    };
+
+    // for condition based cosyImage if selected
+    if (modelGroup?.children[2].textContent === 'true') {
+      const modelPictureElement = createPictureTag(40);
+      modelPictureElement.classList.add('dts-active-model-img');
+      rightPanelTitleAndImg.append(modelPictureElement);
+    }
+    const modelThumbnailElement = createImgTag(90);
+
+    if (modelGroup?.children) {
+      generateLeftPanelModelList(
+        modelGroup,
+        element,
+        selectedModelDdlMob,
+        analytics,
+        block,
+        modelThumbnailElement,
+      );
+      const modelListItem = document.createElement('li');
+      modelListItem.append(element);
+      modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim() || '');
+      analytics.classList.add(selectedFuelType?.textContent || '');
+      leftPanelModelGrouping.append(modelListItem);
+    }
 
     if (modelGroup?.children[2]?.textContent === 'true') {
       await buildContext([agCode]).then(() => {
@@ -512,7 +507,9 @@ export default async function decorate(block) {
         block.removeChild(technicalDetail2Cell);
       }).catch();
     }
-  }
+  });
+
+  await Promise.all(cozyApiPromise);
 
   // clone selectedModel button and bind it inside left panel
   const modelListItem = document.createElement('li');
