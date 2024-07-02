@@ -101,3 +101,19 @@ export function getResolutionKey(screenWidth) {
   const matchingBreakpoint = breakpoints.find((breakpoint) => screenWidth >= breakpoint.minWidth);
   return matchingBreakpoint ? matchingBreakpoint.key : 'res_1280x720'; // Default to medium desktop if no match for fallback case
 }
+
+export function getFuelTypeImage(powerTrain) {
+  const fuelTypeMap = {
+    E: 'fuel-type-bev',
+    X: 'fuel-type-phev',
+  };
+  return fuelTypeMap[powerTrain] || 'no_image_type';
+}
+
+export function getFuelTypeLabelDesc(powerTrain) {
+  const fuelTypeDesc = {
+    E: 'Vollelektrisch',
+    X: 'Plug-in-Hybrid',
+  };
+  return fuelTypeDesc[powerTrain] || ' ';
+}
