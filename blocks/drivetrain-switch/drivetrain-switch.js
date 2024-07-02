@@ -251,7 +251,7 @@ function generateLeftPanelModelList(
 ) {
   const [modelCategory, modelLink, isSelected] = modelGroup.children;
   const [analyticsLabel, BtnType, btnSubType] = analytics.children;
-  modelThumbnailElement.classList.add('dts-model-category-img');
+  modelThumbnailElement?.classList?.add('dts-model-category-img');
   element.textContent = '';
   element.classList.add('dts-model-category-container');
   const modelTitle = modelCategory?.textContent === 'all' ? modelText : (`${modelCategory?.textContent?.trim()?.toUpperCase()} ${modelText}`);
@@ -260,7 +260,7 @@ function generateLeftPanelModelList(
     element.append(
       document.createRange().createContextualFragment(`
                 <span class='dts-model-category-title'>${modelTitle}</span>
-                <div class='dts-category-box'>${modelThumbnailElement.outerHTML}
+                <div class='dts-category-box'>${modelThumbnailElement?.outerHTML || ''}
                 <span class='dts-model-category-descp'></span>
                 <i class="dts-model-category-icon-selected" aria-hidden="true"></i></div>`),
     );
@@ -276,7 +276,7 @@ function generateLeftPanelModelList(
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
-                ${modelThumbnailElement.outerHTML}
+                ${modelThumbnailElement?.outerHTML || ''}
                 <span class='dts-model-category-descp'></span>
                 </a></div>`),
     );
@@ -428,51 +428,61 @@ export default async function decorate(block) {
 
     if (context) element.removeChild(context);
 
-    if (!splitContextData || splitContextData?.length < 3) {
+    if (splitContextData || splitContextData?.length >= 3) {
       const agCode = splitContextData[2]?.trim() || '';
 
-      const response = await getCosyImage(agCode);
+      let response;
 
-      const screenWidth = window.innerWidth;
-      const resolutionKey = getResolutionKey(screenWidth);
-
-      const createPictureTag = (quality) => {
-        const pictureTag = document.createElement('picture');
-        const resolutions = [1025, 768];
-        resolutions.forEach((resolution) => {
-          const sourceTag = document.createElement('source');
-          sourceTag.srcset = getCosyImageUrl(
-            response,
-            getResolutionKey(resolution),
-            resolution === 768 ? 30 : quality,
-          );
-          sourceTag.media = `(min-width: ${resolution}px)`;
-          pictureTag.appendChild(sourceTag);
-        });
-
-        // Fallback img tag
-        const imgTag = document.createElement('img');
-        imgTag.src = getCosyImageUrl(response, resolutionKey, 20);
-        imgTag.alt = 'Cosy Image';
-        pictureTag.appendChild(imgTag);
-
-        return pictureTag;
-      };
-
-      const createImgTag = (quality) => {
-        const imgTag = document.createElement('img');
-        imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
-        imgTag.alt = 'Cosy Image';
-        return imgTag;
-      };
-
-      // for condition based cosyImage if selected
-      if (modelGroup?.children[2].textContent === 'true') {
-        const modelPictureElement = createPictureTag(40);
-        modelPictureElement.classList.add('dts-active-model-img');
-        rightPanelTitleAndImg.append(modelPictureElement);
+      try {
+        response = await getCosyImage(agCode);
+      } catch (error) {
+        console.error(error);
       }
-      const modelThumbnailElement = createImgTag(90);
+
+      let modelThumbnailElement;
+
+      if (response) {
+        const screenWidth = window.innerWidth;
+        const resolutionKey = getResolutionKey(screenWidth);
+
+        const createPictureTag = (quality) => {
+          const pictureTag = document.createElement('picture');
+          const resolutions = [1025, 768];
+          resolutions.forEach((resolution) => {
+            const sourceTag = document.createElement('source');
+            sourceTag.srcset = getCosyImageUrl(
+              response,
+              getResolutionKey(resolution),
+              resolution === 768 ? 30 : quality,
+            );
+            sourceTag.media = `(min-width: ${resolution}px)`;
+            pictureTag.appendChild(sourceTag);
+          });
+
+          // Fallback img tag
+          const imgTag = document.createElement('img');
+          imgTag.src = getCosyImageUrl(response, resolutionKey, 20);
+          imgTag.alt = 'Cosy Image';
+          pictureTag.appendChild(imgTag);
+
+          return pictureTag;
+        };
+
+        const createImgTag = (quality) => {
+          const imgTag = document.createElement('img');
+          imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+          imgTag.alt = 'Cosy Image';
+          return imgTag;
+        };
+
+        // for condition based cosyImage if selected
+        if (modelGroup?.children[2].textContent === 'true') {
+          const modelPictureElement = createPictureTag(40);
+          modelPictureElement.classList.add('dts-active-model-img');
+          rightPanelTitleAndImg.append(modelPictureElement);
+        }
+        modelThumbnailElement = createImgTag(90);
+      }
 
       if (modelGroup?.children) {
         generateLeftPanelModelList(
