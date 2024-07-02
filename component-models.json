@@ -4245,5 +4245,143 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "speed-dial-item",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "speeddialgen_tab"
+      },
+      {
+        "component": "select",
+        "name": "speeddialgen_icontype",
+        "value": "",
+        "label": "Icon Type",
+        "valueType": "string",
+        "required": true,
+        "description": "Defines the Icon to be displayed within the Speed dial next to the defined Link Label.",
+        "options": [
+          {
+            "name": "FAQ",
+            "value": "faq"
+          },
+          {
+            "name": "Contact",
+            "value": "contact"
+          },
+          {
+            "name": "Chat",
+            "value": "chat"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "name": "speeddialgen_linkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed in the button or as the link. ",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "speeddialgen_link",
+        "label": "Link",
+        "value": "",
+        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://",
+        "required": true
+      },
+      {
+        "component":"tab",
+        "name":"analytics_tab",
+        "label":"Analytics"
+
+      },
+      {
+        "component":"select",
+        "name":"analytics_button",
+        "label":"Button/Link Type", 
+        "valueType": "string",
+        "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
+        "options": [
+          {
+            "name": "exit",
+            "value": "exit"
+          },
+          {
+            "name": "download",
+            "value": "download"
+          },
+          {
+            "name": "other",
+            "value": "other"
+          }          
+        ]    
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following options should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }    
+        ]
+      }
+    ]
   }
 ]

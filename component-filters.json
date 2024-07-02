@@ -212,7 +212,8 @@
       "custom-asset-one",
       "drivetrain-switch",
       "preconcomp",
-      "shopbylookcomp"
+      "shopbylookcomp",
+      "speed-dial"
     ]
   },
   {
@@ -335,6 +336,12 @@
     "id": "drivetrain-switch",
     "components": [
       "drivetrain-model-card"
+    ]
+  },
+  {
+    "id": "speed-dial",
+    "components":[
+      "speed-dial-item"
     ]
   }
 ]
