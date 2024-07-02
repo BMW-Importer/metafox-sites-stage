@@ -49,7 +49,7 @@ export function drivetrainResize() {
       const listOfDriveTrainBlocks = document.querySelectorAll('.drivetrain-switch-block');
       listOfDriveTrainBlocks.forEach((block) => {
         const leftPanel = block.querySelector('.dts-left-panel');
-        leftPanel.classList.remove('enablepopover');
+        leftPanel?.classList?.remove('enablepopover');
       });
     }
   });
@@ -500,7 +500,7 @@ export default async function decorate(block) {
         leftPanelModelGrouping.append(modelListItem);
       }
 
-      if (modelGroup?.children[2]?.textContent === 'true') {
+      if (modelGroup?.children[2]?.textContent === 'true' && agCode) {
         await buildContext([agCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
