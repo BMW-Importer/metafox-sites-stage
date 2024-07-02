@@ -409,11 +409,13 @@ export default async function decorate(block) {
     let isSelectedValueSet = false;
     Array.from(rows).forEach((element) => {
       const isSelectedElem = element?.children[0]?.children[2];
-      if (!isSelectedValueSet) {
-        isSelectedElem?.textContent = 'true';
-        isSelectedValueSet = true;
-      } else {
-        isSelectedElem?.textContent = 'false';
+      if (isSelectedElem) {
+        if (!isSelectedValueSet) {
+          isSelectedElem.textContent = 'true';
+          isSelectedValueSet = true;
+        } else {
+          isSelectedElem.textContent = 'false';
+        }
       }
     });
   }
