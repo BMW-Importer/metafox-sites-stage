@@ -235,15 +235,15 @@
         "name": "background",
         "description": "Defines the background color of the section.",
         "value": "default",
-        "label": "Background",
+        "label": "Background Color",
         "valueType": "string",
         "options": [
           {
-            "name": "Default background",
+            "name": "Default",
             "value": "default"
           },
           {
-            "name": "Grey background",
+            "name": "Grey",
             "value": "grey"
           }
         ]
