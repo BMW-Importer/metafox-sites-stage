@@ -4256,7 +4256,7 @@
       },
       {
         "component": "select",
-        "name": "speeddial_icontype",
+        "name": "speeddialgen_icontype",
         "value": "",
         "label": "Icon Type",
         "valueType": "string",
