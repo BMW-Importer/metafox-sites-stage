@@ -162,6 +162,7 @@
 
 .drivetrain-switch-block .dts-model-category-img {
     display: none;
+    position: relative;
 }
 
 .drivetrain-switch-block .dts-model-category-container {
@@ -497,6 +498,8 @@
     .drivetrain-switch-block .dts-model-category-img {
         display: inline-block;
         max-width: 6.65vw;
+        background: transparent;
+        z-index: 2;
     }
 
     .drivetrain-switch-block .dts-active-model-descp {
@@ -578,13 +581,39 @@
         font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
         font-style: normal;
         line-height: 1;
-        outline: 1px solid var(--text-color);
+        outline: 1px solid transparent;
         right: -.333em;
         text-align: left;
         text-transform: none;
         top: -10px;
         white-space: nowrap;
         z-index: 9999;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-bev::after,
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box .fuel-type-phev::before {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: "liga";
+        content: 'fuel_type_bev';
+        direction: ltr;
+        display: block;
+        font-family: 'bmw_next_icons',Arial, Helvetica, Roboto, sans-serif;
+        font-style: normal;
+        outline: 1px solid #0000;
+        text-align: left;
+        text-transform: none;
+        white-space: nowrap;
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--fuel-icon-color);
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        position: absolute;
+        left: 1.25rem;
+        top: 1.4375rem;
+        z-index: 1;
+        font-weight: 500;
     }
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {

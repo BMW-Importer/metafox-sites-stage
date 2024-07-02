@@ -14,6 +14,8 @@ import {
   getCosyImageUrl,
   replacePlaceholder,
   getResolutionKey,
+  getFuelTypeImage,
+  getFuelTypeLabelDesc,
 } from '../../scripts/common/wdh-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
@@ -259,7 +261,7 @@ function generateLeftPanelModelList(
       document.createRange().createContextualFragment(`
                 <span class='dts-model-category-title'>${modelTitle}</span>
                 <div class='dts-category-box'>${modelThumbnailElement.outerHTML}
-                <span class='dts-model-category-descp'>Fuel Type</span>
+                <span class='dts-model-category-descp'></span>
                 <i class="dts-model-category-icon-selected" aria-hidden="true"></i></div>`),
     );
     selectedModelDdlMob.innerHTML = `<span class='dts-selected-model-title'>${modelCategory?.textContent}</span>
@@ -350,6 +352,7 @@ export default async function decorate(block) {
 
   // extracting detail cell
   const selectedFuelType = fuelType?.querySelector('h2');
+  const selectedFuelTypeText = selectedFuelType?.textContent.trim();
   block.removeChild(fuelType);
 
   const activeModelTitle = detailCell?.querySelector('h3');
@@ -400,7 +403,9 @@ export default async function decorate(block) {
     return count;
   }, 0);
 
-  if (selectedModelCount > 1) {
+  // if selected models is greater than 1 or if no model is selected then
+  // setting first element as selected model
+  if (selectedModelCount > 1 || selectedModelCount === 0) {
     let isSelectedValueSet = false;
     Array.from(rows).forEach((element) => {
       const isSelectedElem = element.children[0].children[2];
@@ -432,13 +437,13 @@ export default async function decorate(block) {
 
     const createPictureTag = (quality) => {
       const pictureTag = document.createElement('picture');
-      const resolutions = [480, 1024, 1920];
+      const resolutions = [1025, 768];
       resolutions.forEach((resolution) => {
         const sourceTag = document.createElement('source');
         sourceTag.srcset = getCosyImageUrl(
           response,
           getResolutionKey(resolution),
-          quality,
+          resolution === 768 ? 30 : quality,
         );
         sourceTag.media = `(min-width: ${resolution}px)`;
         pictureTag.appendChild(sourceTag);
@@ -446,7 +451,7 @@ export default async function decorate(block) {
 
       // Fallback img tag
       const imgTag = document.createElement('img');
-      imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+      imgTag.src = getCosyImageUrl(response, resolutionKey, 20);
       imgTag.alt = 'Cosy Image';
       pictureTag.appendChild(imgTag);
 
@@ -488,6 +493,32 @@ export default async function decorate(block) {
       await buildContext([agCode]).then(() => {
         const wdhModelPlaceholder = fetchModelPlaceholderObject();
         const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
+
+        const categoryItem = leftPanelModelGrouping.querySelectorAll('.dts-category-box');
+        if (categoryItem) {
+          const lastCatItem = categoryItem[categoryItem.length - 1];
+          if (selectedFuelTypeText === 'fuel-type') {
+            lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
+            lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
+
+            // if current model is selected then update value der also
+            if (modelGroup?.children[2].textContent === 'true') {
+              const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+              mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
+            }
+          } else {
+            lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
+
+            // if current model is selected then update value der also
+            if (modelGroup?.children[2].textContent === 'true') {
+              const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+              mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
+                wdhModelPlaceholder?.description,
+              );
+            }
+          }
+        }
+
         // buildContext
         generateTechnicalData1(
           technicalDetail1Cell,
