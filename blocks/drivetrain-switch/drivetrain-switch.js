@@ -285,7 +285,7 @@ function generateLeftPanelModelList(
 
 function bindAnalyticsValue(analytics, technicalLink, block) {
   if (analytics) {
-    const [analyticsLabel, BtnType, btnSubType] = analytics.children;
+    const [analyticsLabel, BtnType, btnSubType] = analytics?.children || [];
     if (technicalLink) {
       technicalLink.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
       technicalLink.dataset.analyticsCategory = BtnType?.textContent?.trim() || '';
@@ -299,7 +299,7 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
 
 // append visible class to first category title
 function appendClassToLeftModelCategory(block) {
-  const allModelCategory = block.querySelector('.dts-model-grouping li.ALL');
+  const allModelCategory = block.querySelector('.dts-model-grouping li.all');
   const iModelCategory = block.querySelector('.dts-model-grouping li.i');
   const mModelCategory = block.querySelector('.dts-model-grouping li.m');
 
@@ -356,23 +356,23 @@ export default async function decorate(block) {
   block.removeChild(fuelType);
 
   const activeModelTitle = detailCell?.querySelector('h3');
-  activeModelTitle.classList.add('dts-active-model-title');
+  activeModelTitle?.classList?.add('dts-active-model-title');
   rightPanelTitleAndImg.append(activeModelTitle);
   rightPanel.append(rightPanelTitleAndImg);
 
   const modelDescp = detailCell?.querySelector('h4');
-  modelDescp.classList.add('dts-active-model-descp');
+  modelDescp?.classList?.add('dts-active-model-descp');
   rightPanel.append(modelDescp);
 
   // appending table below the description
   rightPanel.append(rightPanelTechDetail);
 
   const technicalLink = detailCell?.querySelector('a');
-  technicalLink.classList.add('dts-technical-link-btn');
+  technicalLink?.classList?.add('dts-technical-link-btn');
   rightPanelTechDetail.append(technicalLink);
 
   const popover = detailCell?.querySelector('h6');
-  if (popover.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
+  if (popover?.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
 
   // removing detailcell so that it wont appear in content tree
   block.removeChild(detailCell);
@@ -408,17 +408,22 @@ export default async function decorate(block) {
   if (selectedModelCount > 1 || selectedModelCount === 0) {
     let isSelectedValueSet = false;
     Array.from(rows).forEach((element) => {
-      const isSelectedElem = element.children[0].children[2];
-      if (!isSelectedValueSet) {
-        isSelectedElem.textContent = 'true';
-        isSelectedValueSet = true;
-      } else {
-        isSelectedElem.textContent = 'false';
+      const isSelectedElem = element?.children[0]?.children[2];
+      if (isSelectedElem) {
+        if (!isSelectedValueSet) {
+          isSelectedElem.textContent = 'true';
+          isSelectedValueSet = true;
+        } else {
+          isSelectedElem.textContent = 'false';
+        }
       }
     });
   }
 
-  const cozyApiPromise = Array.from(rows).map(async (element) => {
+  /* eslint-disable no-await-in-loop */
+  /* eslint-disable no-restricted-syntax */
+  /* eslint-disable guard-for-in */
+  for (const element of rows) {
     const [modelGroup, context, analytics] = element?.children || [];
 
     bindAnalyticsValue(analytics, technicalLink, block);
@@ -500,7 +505,7 @@ export default async function decorate(block) {
         leftPanelModelGrouping.append(modelListItem);
       }
 
-      if (modelGroup?.children[2]?.textContent === 'true' && agCode) {
+      if (agCode) {
         await buildContext([agCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
@@ -518,6 +523,24 @@ export default async function decorate(block) {
                 mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
                   wdhModelPlaceholder?.fuelType,
                 );
+                // buildContext
+                generateTechnicalData1(
+                  technicalDetail1Cell,
+                  techTableData,
+                  wdhModelPlaceholder,
+                  wdhTechPlaceholder,
+                );
+
+                // removing techdetail1 so that it wont appear in content tree
+                block.removeChild(technicalDetail1Cell);
+
+                generateTechnicalData2(
+                  technicalDetail2Cell,
+                  techTableData,
+                  wdhModelPlaceholder,
+                  wdhTechPlaceholder,
+                );
+                block.removeChild(technicalDetail2Cell);
               }
             } else {
               lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
@@ -531,30 +554,14 @@ export default async function decorate(block) {
               }
             }
           }
-
-          // buildContext
-          generateTechnicalData1(
-            technicalDetail1Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          // removing techdetail1 so that it wont appear in content tree
-          block.removeChild(technicalDetail1Cell);
-
-          generateTechnicalData2(
-            technicalDetail2Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          block.removeChild(technicalDetail2Cell);
         }).catch();
       }
+    } else {
+      const modelListItem = document.createElement('li');
+      modelListItem.append(element);
+      leftPanelModelGrouping.append(modelListItem);
     }
-  });
-
-  await Promise.all(cozyApiPromise);
+  }
 
   // clone selectedModel button and bind it inside left panel
   const modelListItem = document.createElement('li');

@@ -114,6 +114,7 @@ export function getFuelTypeLabelDesc(powerTrain) {
   const fuelTypeDesc = {
     E: 'Vollelektrisch',
     X: 'Plug-in-Hybrid',
+    O: 'Dizel',
   };
   return fuelTypeDesc[powerTrain] || ' ';
 }
