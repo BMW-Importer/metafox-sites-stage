@@ -299,7 +299,7 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
 
 // append visible class to first category title
 function appendClassToLeftModelCategory(block) {
-  const allModelCategory = block.querySelector('.dts-model-grouping li.ALL');
+  const allModelCategory = block.querySelector('.dts-model-grouping li.all');
   const iModelCategory = block.querySelector('.dts-model-grouping li.i');
   const mModelCategory = block.querySelector('.dts-model-grouping li.m');
 
@@ -420,7 +420,10 @@ export default async function decorate(block) {
     });
   }
 
-  const cozyApiPromise = Array.from(rows).map(async (element) => {
+  /* eslint-disable no-await-in-loop */
+  /* eslint-disable no-restricted-syntax */
+  /* eslint-disable guard-for-in */
+  for (const element of rows) {
     const [modelGroup, context, analytics] = element?.children || [];
 
     bindAnalyticsValue(analytics, technicalLink, block);
@@ -502,7 +505,7 @@ export default async function decorate(block) {
         leftPanelModelGrouping.append(modelListItem);
       }
 
-      if (modelGroup?.children[2]?.textContent === 'true' && agCode) {
+      if (agCode) {
         await buildContext([agCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
@@ -520,6 +523,24 @@ export default async function decorate(block) {
                 mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
                   wdhModelPlaceholder?.fuelType,
                 );
+                // buildContext
+                generateTechnicalData1(
+                  technicalDetail1Cell,
+                  techTableData,
+                  wdhModelPlaceholder,
+                  wdhTechPlaceholder,
+                );
+
+                // removing techdetail1 so that it wont appear in content tree
+                block.removeChild(technicalDetail1Cell);
+
+                generateTechnicalData2(
+                  technicalDetail2Cell,
+                  techTableData,
+                  wdhModelPlaceholder,
+                  wdhTechPlaceholder,
+                );
+                block.removeChild(technicalDetail2Cell);
               }
             } else {
               lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
@@ -533,24 +554,6 @@ export default async function decorate(block) {
               }
             }
           }
-
-          // buildContext
-          generateTechnicalData1(
-            technicalDetail1Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          // removing techdetail1 so that it wont appear in content tree
-          block.removeChild(technicalDetail1Cell);
-
-          generateTechnicalData2(
-            technicalDetail2Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          block.removeChild(technicalDetail2Cell);
         }).catch();
       }
     } else {
@@ -558,9 +561,7 @@ export default async function decorate(block) {
       modelListItem.append(element);
       leftPanelModelGrouping.append(modelListItem);
     }
-  });
-
-  await Promise.all(cozyApiPromise);
+  }
 
   // clone selectedModel button and bind it inside left panel
   const modelListItem = document.createElement('li');
