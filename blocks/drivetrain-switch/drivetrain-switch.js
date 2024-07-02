@@ -277,7 +277,7 @@ function generateLeftPanelModelList(
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
                 ${modelThumbnailElement.outerHTML}
-                <span class='dts-model-category-descp'>Fuel Type</span>
+                <span class='dts-model-category-descp'></span>
                 </a></div>`),
     );
   }
@@ -428,115 +428,119 @@ export default async function decorate(block) {
 
     if (context) element.removeChild(context);
 
-    const agCode = splitContextData[2]?.trim() || '';
+    if (!splitContextData || splitContextData?.length < 3) {
+      const agCode = splitContextData[2]?.trim() || '';
 
-    const response = await getCosyImage(agCode);
+      const response = await getCosyImage(agCode);
 
-    const screenWidth = window.innerWidth;
-    const resolutionKey = getResolutionKey(screenWidth);
+      const screenWidth = window.innerWidth;
+      const resolutionKey = getResolutionKey(screenWidth);
 
-    const createPictureTag = (quality) => {
-      const pictureTag = document.createElement('picture');
-      const resolutions = [1025, 768];
-      resolutions.forEach((resolution) => {
-        const sourceTag = document.createElement('source');
-        sourceTag.srcset = getCosyImageUrl(
-          response,
-          getResolutionKey(resolution),
-          resolution === 768 ? 30 : quality,
+      const createPictureTag = (quality) => {
+        const pictureTag = document.createElement('picture');
+        const resolutions = [1025, 768];
+        resolutions.forEach((resolution) => {
+          const sourceTag = document.createElement('source');
+          sourceTag.srcset = getCosyImageUrl(
+            response,
+            getResolutionKey(resolution),
+            resolution === 768 ? 30 : quality,
+          );
+          sourceTag.media = `(min-width: ${resolution}px)`;
+          pictureTag.appendChild(sourceTag);
+        });
+
+        // Fallback img tag
+        const imgTag = document.createElement('img');
+        imgTag.src = getCosyImageUrl(response, resolutionKey, 20);
+        imgTag.alt = 'Cosy Image';
+        pictureTag.appendChild(imgTag);
+
+        return pictureTag;
+      };
+
+      const createImgTag = (quality) => {
+        const imgTag = document.createElement('img');
+        imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+        imgTag.alt = 'Cosy Image';
+        return imgTag;
+      };
+
+      // for condition based cosyImage if selected
+      if (modelGroup?.children[2].textContent === 'true') {
+        const modelPictureElement = createPictureTag(40);
+        modelPictureElement.classList.add('dts-active-model-img');
+        rightPanelTitleAndImg.append(modelPictureElement);
+      }
+      const modelThumbnailElement = createImgTag(90);
+
+      if (modelGroup?.children) {
+        generateLeftPanelModelList(
+          modelGroup,
+          element,
+          selectedModelDdlMob,
+          analytics,
+          block,
+          modelThumbnailElement,
         );
-        sourceTag.media = `(min-width: ${resolution}px)`;
-        pictureTag.appendChild(sourceTag);
-      });
+        const modelListItem = document.createElement('li');
+        modelListItem.append(element);
+        modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim() || '');
+        analytics.classList.add(selectedFuelType?.textContent || '');
+        leftPanelModelGrouping.append(modelListItem);
+      }
 
-      // Fallback img tag
-      const imgTag = document.createElement('img');
-      imgTag.src = getCosyImageUrl(response, resolutionKey, 20);
-      imgTag.alt = 'Cosy Image';
-      pictureTag.appendChild(imgTag);
+      if (modelGroup?.children[2]?.textContent === 'true') {
+        await buildContext([agCode]).then(() => {
+          const wdhModelPlaceholder = fetchModelPlaceholderObject();
+          const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
-      return pictureTag;
-    };
+          const categoryItem = leftPanelModelGrouping.querySelectorAll('.dts-category-box');
+          if (categoryItem) {
+            const lastCatItem = categoryItem[categoryItem.length - 1];
+            if (selectedFuelTypeText === 'fuel-type') {
+              lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
 
-    const createImgTag = (quality) => {
-      const imgTag = document.createElement('img');
-      imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
-      imgTag.alt = 'Cosy Image';
-      return imgTag;
-    };
+              // if current model is selected then update value der also
+              if (modelGroup?.children[2].textContent === 'true') {
+                const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+                mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
+                  wdhModelPlaceholder?.fuelType,
+                );
+              }
+            } else {
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
 
-    // for condition based cosyImage if selected
-    if (modelGroup?.children[2].textContent === 'true') {
-      const modelPictureElement = createPictureTag(40);
-      modelPictureElement.classList.add('dts-active-model-img');
-      rightPanelTitleAndImg.append(modelPictureElement);
-    }
-    const modelThumbnailElement = createImgTag(90);
-
-    if (modelGroup?.children) {
-      generateLeftPanelModelList(
-        modelGroup,
-        element,
-        selectedModelDdlMob,
-        analytics,
-        block,
-        modelThumbnailElement,
-      );
-      const modelListItem = document.createElement('li');
-      modelListItem.append(element);
-      modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim() || '');
-      analytics.classList.add(selectedFuelType?.textContent || '');
-      leftPanelModelGrouping.append(modelListItem);
-    }
-
-    if (modelGroup?.children[2]?.textContent === 'true') {
-      await buildContext([agCode]).then(() => {
-        const wdhModelPlaceholder = fetchModelPlaceholderObject();
-        const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
-
-        const categoryItem = leftPanelModelGrouping.querySelectorAll('.dts-category-box');
-        if (categoryItem) {
-          const lastCatItem = categoryItem[categoryItem.length - 1];
-          if (selectedFuelTypeText === 'fuel-type') {
-            lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
-            lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
-
-            // if current model is selected then update value der also
-            if (modelGroup?.children[2].textContent === 'true') {
-              const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-              mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
-            }
-          } else {
-            lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
-
-            // if current model is selected then update value der also
-            if (modelGroup?.children[2].textContent === 'true') {
-              const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-              mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                wdhModelPlaceholder?.description,
-              );
+              // if current model is selected then update value der also
+              if (modelGroup?.children[2].textContent === 'true') {
+                const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+                mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
+                  wdhModelPlaceholder?.description,
+                );
+              }
             }
           }
-        }
 
-        // buildContext
-        generateTechnicalData1(
-          technicalDetail1Cell,
-          techTableData,
-          wdhModelPlaceholder,
-          wdhTechPlaceholder,
-        );
-        // removing techdetail1 so that it wont appear in content tree
-        block.removeChild(technicalDetail1Cell);
+          // buildContext
+          generateTechnicalData1(
+            technicalDetail1Cell,
+            techTableData,
+            wdhModelPlaceholder,
+            wdhTechPlaceholder,
+          );
+          // removing techdetail1 so that it wont appear in content tree
+          block.removeChild(technicalDetail1Cell);
 
-        generateTechnicalData2(
-          technicalDetail2Cell,
-          techTableData,
-          wdhModelPlaceholder,
-          wdhTechPlaceholder,
-        );
-        block.removeChild(technicalDetail2Cell);
-      }).catch();
+          generateTechnicalData2(
+            technicalDetail2Cell,
+            techTableData,
+            wdhModelPlaceholder,
+            wdhTechPlaceholder,
+          );
+          block.removeChild(technicalDetail2Cell);
+        }).catch();
+      }
     }
   });
 
