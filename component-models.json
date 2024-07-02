@@ -352,7 +352,7 @@
         "component": "select",
         "name": "sectionbgcolor",
         "description": "Defines the background color of the flexible width section.",
-        "value": "",
+        "value": "grey",
         "label": "Background Color",
         "valueType": "string",
         "options": [
