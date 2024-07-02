@@ -34,6 +34,7 @@
   --opacity-color: #0006;
   --bg-media-btn-hover: #0653b6;
   --bg-media-ghost-btn: #f2f2f2;
+  --fuel-icon-color: #0066b1;
 
   /* base font size */
   --base-font-size: 16px;
@@ -686,4 +687,32 @@ textarea{
     letter-spacing: .6rem;
   }
 
+}
+
+/* icon */
+
+[data-icon]:not([data-icon=""]) {
+  display: inline-flex;
+  font-size: 1.5rem
+}
+
+[data-icon]:not([data-icon=""])::before {
+  font-size: inherit;
+  font-weight: 400;
+  word-wrap: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+  content: attr(data-icon);
+  direction: ltr;
+  display: block;
+  font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
+  font-style: normal;
+  height: 1em;
+  line-height: 1;
+  outline: none;
+  text-align: left;
+  text-transform: none;
+  white-space: nowrap;
+  width: auto;
 }
