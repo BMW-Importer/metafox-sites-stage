@@ -285,7 +285,7 @@ function generateLeftPanelModelList(
 
 function bindAnalyticsValue(analytics, technicalLink, block) {
   if (analytics) {
-    const [analyticsLabel, BtnType, btnSubType] = analytics.children;
+    const [analyticsLabel, BtnType, btnSubType] = analytics?.children || [];
     if (technicalLink) {
       technicalLink.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
       technicalLink.dataset.analyticsCategory = BtnType?.textContent?.trim() || '';
@@ -356,23 +356,23 @@ export default async function decorate(block) {
   block.removeChild(fuelType);
 
   const activeModelTitle = detailCell?.querySelector('h3');
-  activeModelTitle.classList.add('dts-active-model-title');
+  activeModelTitle?.classList?.add('dts-active-model-title');
   rightPanelTitleAndImg.append(activeModelTitle);
   rightPanel.append(rightPanelTitleAndImg);
 
   const modelDescp = detailCell?.querySelector('h4');
-  modelDescp.classList.add('dts-active-model-descp');
+  modelDescp?.classList?.add('dts-active-model-descp');
   rightPanel.append(modelDescp);
 
   // appending table below the description
   rightPanel.append(rightPanelTechDetail);
 
   const technicalLink = detailCell?.querySelector('a');
-  technicalLink.classList.add('dts-technical-link-btn');
+  technicalLink?.classList?.add('dts-technical-link-btn');
   rightPanelTechDetail.append(technicalLink);
 
   const popover = detailCell?.querySelector('h6');
-  if (popover.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
+  if (popover?.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
 
   // removing detailcell so that it wont appear in content tree
   block.removeChild(detailCell);
@@ -408,12 +408,12 @@ export default async function decorate(block) {
   if (selectedModelCount > 1 || selectedModelCount === 0) {
     let isSelectedValueSet = false;
     Array.from(rows).forEach((element) => {
-      const isSelectedElem = element.children[0].children[2];
+      const isSelectedElem = element?.children[0]?.children[2];
       if (!isSelectedValueSet) {
-        isSelectedElem.textContent = 'true';
+        isSelectedElem?.textContent = 'true';
         isSelectedValueSet = true;
       } else {
-        isSelectedElem.textContent = 'false';
+        isSelectedElem?.textContent = 'false';
       }
     });
   }
@@ -551,6 +551,10 @@ export default async function decorate(block) {
           block.removeChild(technicalDetail2Cell);
         }).catch();
       }
+    } else {
+      const modelListItem = document.createElement('li');
+      modelListItem.append(element);
+      leftPanelModelGrouping.append(modelListItem);
     }
   });
 
