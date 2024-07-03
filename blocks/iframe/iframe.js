@@ -34,7 +34,6 @@ export async function generateIFrameDOM(props) {
 
   // Build DOM
   const iFrameDOM = document.createRange().createContextualFragment(`
-    <div class="epaas-policy-page-container"></div>
       <div class="iframe-container">
       <iframe src="${anchor}" id="bmwIframe" style="border: 0; width: 100%; height: 100%; min-height: 900px;">
       </iframe>
