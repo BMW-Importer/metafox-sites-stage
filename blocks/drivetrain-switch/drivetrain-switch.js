@@ -423,6 +423,7 @@ export default async function decorate(block) {
   /* eslint-disable no-await-in-loop */
   /* eslint-disable no-restricted-syntax */
   /* eslint-disable guard-for-in */
+  /* eslint-disable no-console */
   for (const element of rows) {
     const [modelGroup, context, analytics] = element?.children || [];
 
@@ -519,7 +520,7 @@ export default async function decorate(block) {
             const lastCatItem = categoryItem[categoryItem.length - 1];
             if (selectedFuelTypeText === 'fuel-type') {
               lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
-              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);              
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
             } else {
               lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
 
