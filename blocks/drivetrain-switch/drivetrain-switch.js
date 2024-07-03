@@ -357,19 +357,19 @@ export default async function decorate(block) {
 
   const activeModelTitle = detailCell?.querySelector('h3');
   activeModelTitle?.classList?.add('dts-active-model-title');
-  rightPanelTitleAndImg.append(activeModelTitle);
+  rightPanelTitleAndImg.append(activeModelTitle || '');
   rightPanel.append(rightPanelTitleAndImg);
 
   const modelDescp = detailCell?.querySelector('h4');
   modelDescp?.classList?.add('dts-active-model-descp');
-  rightPanel.append(modelDescp);
+  rightPanel.append(modelDescp || '');
 
   // appending table below the description
   rightPanel.append(rightPanelTechDetail);
 
   const technicalLink = detailCell?.querySelector('a');
   technicalLink?.classList?.add('dts-technical-link-btn');
-  rightPanelTechDetail.append(technicalLink);
+  rightPanelTechDetail.append(technicalLink || '');
 
   const popover = detailCell?.querySelector('h6');
   if (popover?.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
@@ -433,7 +433,7 @@ export default async function decorate(block) {
 
     if (context) element.removeChild(context);
 
-    if (splitContextData || splitContextData?.length >= 3) {
+    if (splitContextData && splitContextData?.length >= 3) {
       const agCode = splitContextData[2]?.trim() || '';
 
       let response;
@@ -500,8 +500,12 @@ export default async function decorate(block) {
         );
         const modelListItem = document.createElement('li');
         modelListItem.append(element);
-        modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim() || '');
-        analytics.classList.add(selectedFuelType?.textContent || '');
+        if (modelGroup?.children[0] && modelGroup?.children[0]?.textContent) {
+          modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim());
+        }
+        if (selectedFuelType && selectedFuelType?.textContent) {
+          analytics.classList.add(selectedFuelType?.textContent);
+        }
         leftPanelModelGrouping.append(modelListItem);
       }
 
@@ -543,13 +547,13 @@ export default async function decorate(block) {
                 block.removeChild(technicalDetail2Cell);
               }
             } else {
-              lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
 
               // if current model is selected then update value der also
               if (modelGroup?.children[2].textContent === 'true') {
                 const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
                 mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                  wdhModelPlaceholder?.description,
+                  wdhModelPlaceholder?.seriesDescription,
                 );
               }
             }
