@@ -1223,7 +1223,13 @@
   {
     "id": "cookiepolicy",
     "fields": [
-      {}
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "iFrameUrl",
+        "label": "IFrame URL",
+        "value": ""
+      }
     ]
   },
   {
