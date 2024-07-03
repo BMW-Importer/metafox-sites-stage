@@ -232,9 +232,9 @@
       },
       {
         "component": "select",
-        "name": "background",
+        "name": "sectionbgcolor",
         "description": "Defines the background color of the section.",
-        "value": "default",
+        "value": "",
         "label": "Background Color",
         "valueType": "string",
         "options": [
@@ -461,9 +461,9 @@
       },
       {
         "component": "select",
-        "name": "background",
+        "name": "sectionbgcolor",
         "description": "Defines the background color of the tabs section.",
-        "value": "default",
+        "value": "",
         "label": "Background Color",
         "valueType": "string",
         "options": [
