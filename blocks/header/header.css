@@ -495,7 +495,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
   }
 
   header nav .menu-wrapper {
-    left: 100vw;
+    left: -100vw;
     transition: left .15s cubic-bezier(0,.5,.5,1);
     position: absolute;
     width: 100vw;
@@ -546,7 +546,7 @@ header.white-background .nav-wrapper .logo-wrapper .grey-image {
   }
 
   header nav .menu-wrapper {
-    left: 100vw;
+    left: -100vw;
     transition: left .15s cubic-bezier(0,.5,.5,1);
     position: absolute;
     width: 100vw;
