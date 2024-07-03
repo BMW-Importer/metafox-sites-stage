@@ -1221,6 +1221,10 @@
     ]
   },
   {
+    "id": "cookiepolicy",
+    "fields": []
+  },
+  {
     "id": "model-card",
     "fields": [
       {

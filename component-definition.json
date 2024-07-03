@@ -948,6 +948,18 @@
               }
             }
           }
+        },
+        {
+          "title": "cookiepolicy",
+          "id": "cookiepolicy",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block"
+                
+              }
+            }
+          }
         }
 
       ]
