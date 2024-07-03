@@ -519,33 +519,7 @@ export default async function decorate(block) {
             const lastCatItem = categoryItem[categoryItem.length - 1];
             if (selectedFuelTypeText === 'fuel-type') {
               lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
-              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
-
-              // if current model is selected then update value der also
-              if (modelGroup?.children[2].textContent === 'true') {
-                const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-                mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                  wdhModelPlaceholder?.fuelType,
-                );
-                // buildContext
-                generateTechnicalData1(
-                  technicalDetail1Cell,
-                  techTableData,
-                  wdhModelPlaceholder,
-                  wdhTechPlaceholder,
-                );
-
-                // removing techdetail1 so that it wont appear in content tree
-                block.removeChild(technicalDetail1Cell);
-
-                generateTechnicalData2(
-                  technicalDetail2Cell,
-                  techTableData,
-                  wdhModelPlaceholder,
-                  wdhTechPlaceholder,
-                );
-                block.removeChild(technicalDetail2Cell);
-              }
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);              
             } else {
               lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
 
@@ -557,6 +531,31 @@ export default async function decorate(block) {
                 );
               }
             }
+          }
+          // if current model is selected then update value der also
+          if (modelGroup?.children[2].textContent === 'true') {
+            const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+            mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
+              wdhModelPlaceholder?.fuelType,
+            );
+            // buildContext
+            generateTechnicalData1(
+              technicalDetail1Cell,
+              techTableData,
+              wdhModelPlaceholder,
+              wdhTechPlaceholder,
+            );
+
+            // removing techdetail1 so that it wont appear in content tree
+            block.removeChild(technicalDetail1Cell);
+
+            generateTechnicalData2(
+              technicalDetail2Cell,
+              techTableData,
+              wdhModelPlaceholder,
+              wdhTechPlaceholder,
+            );
+            block.removeChild(technicalDetail2Cell);
           }
         }).catch();
       }
