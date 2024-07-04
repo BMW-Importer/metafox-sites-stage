@@ -438,7 +438,7 @@ export default async function decorate(block) {
       const agCode = splitContextData[2]?.trim() || '';
       let transCode;
       if (splitContextData[3].trim() === 'true') {
-         transCode = splitContextData[4].trim() || '';        
+        transCode = splitContextData[4].trim() || '';
       }
       let response;
 
@@ -514,7 +514,7 @@ export default async function decorate(block) {
       }
 
       if (agCode) {
-        await buildContext([agCode,transCode]).then(() => {
+        await buildContext([agCode, transCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
