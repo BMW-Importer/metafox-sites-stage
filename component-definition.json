@@ -94,7 +94,7 @@
                 "template": {
                   "style":"alignment-center",
                   "fixedsectiontopmargin": true,
-                  "sectionbgcolor": "grey"
+                  "sectionbgcolor": "default"
                 }
               }
             }
@@ -112,7 +112,7 @@
                   "model": "flexible-width-section",
                   "sectiontopmargin": true,
                   "sectionalignment": "center",
-                  "sectionbgcolor": "grey",
+                  "sectionbgcolor": "default",
                   "sectionwidth":"grid-10",
                   "filter": "flexible-width-section"
                 }
@@ -131,7 +131,7 @@
                   "name": "Tabs Section",
                   "model": "tabs-section",
                   "filter": "tabs-section",
-                  "sectionbgcolor": "grey"
+                  "sectionbgcolor": "default"
                 }
               }
             }
