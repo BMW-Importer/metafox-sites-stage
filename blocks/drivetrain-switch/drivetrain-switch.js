@@ -271,8 +271,8 @@ function generateLeftPanelModelList(
       document.createRange().createContextualFragment(`
                 <span class='dts-model-category-title'>${modelTitle}</span>               
                 <div class='dts-category-box'><a class='dts-model-category-link' href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-                data-analytics-category='${BtnType?.textContent?.trim() || ''}'
-                data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
+                data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
+                data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
@@ -288,8 +288,8 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
     const [analyticsLabel, BtnType, btnSubType] = analytics?.children || [];
     if (technicalLink) {
       technicalLink.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsCategory = BtnType?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsSubCategory = btnSubType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkType = BtnType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkOtherType = btnSubType?.textContent?.trim() || '';
       technicalLink.dataset.analyticsCustomClick = 'true';
       technicalLink.dataset.analyticsBlockName = block?.dataset?.blockName || '';
       technicalLink.dataset.analyticsSectionId = block?.closest('.section')?.dataset?.analyticsLabel || '';

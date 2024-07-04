@@ -77,34 +77,46 @@ function addAnalyticsCustomClickEvent() {
   listOfCustomClickBtns.forEach((btn)=> {
     btn.addEventListener('click', function(e) {
       //e.preventDefault();
-      const analyticsLabel = e.target.getAttribute('data-analytics-label');
-      const primaryCategory = e.target.getAttribute('data-analytics-link-type');
-      const linkURL = e.target.getAttribute('href');
+      let anchorTag = e.target;
+      if (e.target.tagName.toLowerCase() !== 'a') {
+        anchorTag = e.target.closest('a[data-analytics-custom-click="true"]');
+      } 
+      const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+      const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+      const linkURL = anchorTag.getAttribute('href');
       let subCategory;
-      let linkName;
+      let linkName; 
       
       if (primaryCategory.toLowerCase() === "other") {
         subCategory = "CTA";
-        linkName = e.target.getAttribute('data-analytics-link-other-type');
+        linkName = anchorTag.getAttribute('data-analytics-link-other-type');
       }
       if (primaryCategory.toLowerCase() === "exit") {
-        let linkParsedUrl = new URL(linkURL);
-        let linkDomainName = linkParsedUrl.hostname.toLowerCase();
-        if (!linkDomainName.includes("bmw")) {
+        let linkParsedUrl = "";
+        let linkDomainName = '';
+        try {
+          linkParsedUrl = new URL(linkURL);
+        } catch (e) {
+        }
+        if(linkParsedUrl) {
+          linkDomainName = linkParsedUrl.hostname.toLowerCase();
+        }
+        if (linkDomainName && !linkDomainName.includes("bmw")) {
           subCategory = "External page";
           linkName = linkURL;
-        }else{
+        } else {
           subCategory = "Social";
-          linkName = e.target.getAttribute('data-analytics-link-label');
+          linkName = anchorTag?.textContent?.trim() || '';
         }
       }
+      
       if (primaryCategory.toLowerCase() === "download") {
         subCategory = getFileType(linkURL);
         linkName = getFileName(linkURL);
       }
       
-      const blockName = e.target.getAttribute('data-analytics-block-name');
-      const sectionId = e.target.getAttribute('data-analytics-section-id');
+      const blockName = anchorTag.getAttribute('data-analytics-block-name');
+      const sectionId = anchorTag.getAttribute('data-analytics-section-id');
       
       pushCustomLinkAnalyticData([analyticsLabel, primaryCategory, subCategory, blockName, sectionId, linkURL, linkName]);      
     });
