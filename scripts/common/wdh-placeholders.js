@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { fetchPlaceholders } from '../aem.js';
 
 const placeholders = await fetchPlaceholders();
@@ -184,7 +185,7 @@ export function buildModelPlaceholder(responseJson) {
 }
 
 export function buildTechDataPlaceholder(techJson) {
-  techPlaceholderObject.brand = ''; // key not found 
+  techPlaceholderObject.brand = ''; // key not found
   techPlaceholderObject.transmissionCode = techJson.transmissionCode;
   techPlaceholderObject.transmissionId = ''; // key not found
   techPlaceholderObject.volt48 = techJson.volt48;
@@ -223,10 +224,10 @@ export function buildTechDataPlaceholder(techJson) {
   techPlaceholderObject.noiseStationary = techJson.technicalData.emissionsConsumptionWltp.noiseStationary;
   techPlaceholderObject.batteryCapacity = techJson.technicalData.charging.batteryCapacity;
   techPlaceholderObject.chargeACDC = techJson.technicalData.charging.chargeACDC;
-  techPlaceholderObject.charge_DC_10_80 = techJson.technicalData.charging.charge_DC_10_80; 
+  techPlaceholderObject.charge_DC_10_80 = techJson.technicalData.charging.charge_DC_10_80;
   techPlaceholderObject.chargeDC = techJson.technicalData.charging.chargeDC;
   techPlaceholderObject.additionalRangeDC = techJson.technicalData.charging.additionalRangeDC;
-  techPlaceholderObject.chargeAC = techJson.technicalData.charging.chargeAC;  
+  techPlaceholderObject.chargeAC = techJson.technicalData.charging.chargeAC;
   techPlaceholderObject.charge_AC_0_100 = techJson.technicalData.charging.charge_AC_0_100;
   techPlaceholderObject.chargeAC_11 = techJson.technicalData.charging.chargeAC_11; // key not found;
   techPlaceholderObject.chargeAC_22 = techJson.technicalData.charging.chargeAC_22; // key not found;

@@ -42,15 +42,15 @@ async function fetchAllModels(modelCodes) {
 export async function buildContext(modelCodesArray) {
   const [modelCode, selectedTCode] = modelCodesArray;
   try {
-    await fetchAllModels([modelCode]).then((response) => {     
+    await fetchAllModels([modelCode]).then((response) => {
       buildSetPlaceholder(response);
       buildModelPlaceholder(response[0]);
-      response[0].model.vehicles.forEach(function(vehicleData) {
+      response[0].model.vehicles.forEach((vehicleData) => {
         if (vehicleData.transmissionCode === selectedTCode) {
           const vehicleDataResponse = vehicleData;
           buildTechDataPlaceholder(vehicleDataResponse);
         }
-      });    
+      });
       const modelPlaceholder = fetchModelPlaceholderObject();
       const setPlaceholder = fetchSetPlaceholderObject();
       const techPlaceholder = fetchTechDataPlaceholderObject();
