@@ -71,6 +71,12 @@ function enableClickEvent(selectedModelDdlMob) {
     const nextElement = e.target.nextElementSibling;
     nextElement.classList.add('enablepopover');
   });
+
+  const ddlIcon = selectedModelDdlMob.querySelector('i');
+  ddlIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.target.closest('.dts-selected-model-mob')?.click();
+  });
 }
 
 function generateTechnicalData1(
