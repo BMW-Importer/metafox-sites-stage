@@ -71,6 +71,12 @@ function enableClickEvent(selectedModelDdlMob) {
     const nextElement = e.target.nextElementSibling;
     nextElement.classList.add('enablepopover');
   });
+
+  const ddlIcon = selectedModelDdlMob.querySelector('i');
+  ddlIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.target.closest('.dts-selected-model-mob')?.click();
+  });
 }
 
 function generateTechnicalData1(
@@ -271,8 +277,8 @@ function generateLeftPanelModelList(
       document.createRange().createContextualFragment(`
                 <span class='dts-model-category-title'>${modelTitle}</span>               
                 <div class='dts-category-box'><a class='dts-model-category-link' href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-                data-analytics-category='${BtnType?.textContent?.trim() || ''}'
-                data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
+                data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
+                data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
@@ -288,8 +294,8 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
     const [analyticsLabel, BtnType, btnSubType] = analytics?.children || [];
     if (technicalLink) {
       technicalLink.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsCategory = BtnType?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsSubCategory = btnSubType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkType = BtnType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkOtherType = btnSubType?.textContent?.trim() || '';
       technicalLink.dataset.analyticsCustomClick = 'true';
       technicalLink.dataset.analyticsBlockName = block?.dataset?.blockName || '';
       technicalLink.dataset.analyticsSectionId = block?.closest('.section')?.dataset?.analyticsLabel || '';
@@ -436,7 +442,10 @@ export default async function decorate(block) {
 
     if (splitContextData && splitContextData?.length >= 3) {
       const agCode = splitContextData[2]?.trim() || '';
-
+      let transCode;
+      if (splitContextData[3].trim() === 'true') {
+        transCode = splitContextData[4].trim() || '';
+      }
       let response;
 
       try {
@@ -511,7 +520,7 @@ export default async function decorate(block) {
       }
 
       if (agCode) {
-        await buildContext([agCode]).then(() => {
+        await buildContext([agCode, transCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
