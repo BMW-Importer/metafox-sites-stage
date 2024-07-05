@@ -149,39 +149,40 @@ function processGearBoxValue(responseGearBoxValue) {
 }
 
 export function buildModelPlaceholder(responseJson) {
-  modelPlaceholderObject.alt = responseJson.model.alt;
-  modelPlaceholderObject.enginePower = responseJson.model.enginePower;
-  modelPlaceholderObject.description = responseJson.model.description;
-  modelPlaceholderObject.seriesDescription = responseJson.model.seriesDescription;
-  modelPlaceholderObject.acceleration = responseJson.model.acceleration;
-  modelPlaceholderObject.bodyTypeCode = responseJson.model.bodyTypeCode;
-  modelPlaceholderObject.shortRangeName = responseJson.model.shortRangeName;
-  modelPlaceholderObject.modelRangeCode = responseJson.model.modelRangeCode;
-  modelPlaceholderObject.marketingBodyTypeCode = responseJson.model.marketingBodyTypeCode;
-  modelPlaceholderObject.seriesCode = responseJson.model.seriesCode;
-  modelPlaceholderObject.agCode = responseJson.model.agCode;
-  modelPlaceholderObject.bodyTypeDescription = responseJson.model.bodyTypeDescription;
+  modelPlaceholderObject.alt = responseJson.model.alt || ''; // key not found
+  modelPlaceholderObject.enginePower = responseJson.model.enginePower || ''; // key not found
+  modelPlaceholderObject.acceleration = responseJson.model.acceleration || '';
+  modelPlaceholderObject.agCode = responseJson.model.posiSpec.agCode || '';
+  modelPlaceholderObject.bodyTypeCode = responseJson.model.bodyTypeCode || '';
+  modelPlaceholderObject.bodyTypeDescription = responseJson.model.bodyTypeDescription; // key not found
   modelPlaceholderObject.brand = responseJson.model.brand;
-  modelPlaceholderObject.cosyFallbackAlt = responseJson.model.cosyFallbackAlt;
-  modelPlaceholderObject.cosyBrand = responseJson.model.cosyBrand;
-  modelPlaceholderObject.driveType = responseJson.model.driveType;
-  modelPlaceholderObject.electricRange = responseJson.model.electricRange;
-  modelPlaceholderObject.fabric = responseJson.model.fabric;
+  modelPlaceholderObject.cosyBrand = responseJson.model.posiSpec.cosyBrand;
+  modelPlaceholderObject.cosyFallbackAlt = responseJson.model.cosyFallbackAlt; // key not found in model JSON
+  modelPlaceholderObject.description = responseJson.model.description;
+  modelPlaceholderObject.driveType = responseJson.model.powerTrain.driveType;
+  modelPlaceholderObject.electricRange = responseJson.model.electricRange; // key not found
+  modelPlaceholderObject.fabric = responseJson.model.posiSpec.fabric;
   modelPlaceholderObject.fuelType = responseJson.model.powerTrain.fuelType;
   modelPlaceholderObject.gearBox = processGearBoxValue(responseJson.model.powerTrain.gearBox);
   modelPlaceholderObject.horsePower = responseJson.model.horsePower;
   modelPlaceholderObject.hybridCode = responseJson.model.hybridCode;
+  modelPlaceholderObject.marketingBodyTypeCode = responseJson.model.marketingBodyTypeCode;
   modelPlaceholderObject.modelCode = responseJson.model.modelCode;
-  modelPlaceholderObject.name = responseJson.model.name;
-  modelPlaceholderObject.options = responseJson.model.options;
-  modelPlaceholderObject.power = responseJson.model.power;
-  modelPlaceholderObject.price = responseJson.model.price;
-  modelPlaceholderObject.paint = responseJson.model.paint;
-  modelPlaceholderObject.series = responseJson.model.series;
+  modelPlaceholderObject.modelRangeCode = responseJson.model.modelRangeCode;
+  modelPlaceholderObject.name = responseJson.model.name; // key not foun
+  modelPlaceholderObject.options = responseJson.model.posiSpec.options;
+  modelPlaceholderObject.paint = responseJson.model.posiSpec.paint;
+  modelPlaceholderObject.power = responseJson.model.power;  // key not found
+  modelPlaceholderObject.price = responseJson.model.price;  // key not found
   modelPlaceholderObject.seats = responseJson.model.seats;
-  modelPlaceholderObject.systemMaxTorque = responseJson.model.systemMaxTorque;
-  modelPlaceholderObject.systemPower = responseJson.model.systemPower;
+  modelPlaceholderObject.series = responseJson.model.series; //confusing data
+  modelPlaceholderObject.seriesCode = responseJson.model.seriesCode;
+  modelPlaceholderObject.seriesDescription = responseJson.model.seriesDescription;
+  modelPlaceholderObject.shortRangeName = responseJson.model.shortRangeName;
+  modelPlaceholderObject.systemMaxTorque = responseJson.model.powerTrain.systemMaxTorque;
+  modelPlaceholderObject.systemPower = responseJson.model.powerTrain.systemPower;
   modelPlaceholderObject.trunkCapacity = responseJson.model.trunkCapacity;
+
 }
 
 export function buildTechDataPlaceholder(techJson) {
