@@ -807,15 +807,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2185,15 +2185,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2585,15 +2585,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2673,17 +2673,17 @@
         "label":"Button/Link 2 Type", 
         "valueType": "string",
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
-        "options": [
+       "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3102,15 +3102,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3192,15 +3192,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4151,15 +4151,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4313,15 +4313,15 @@
         "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
