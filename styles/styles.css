@@ -430,6 +430,10 @@ main img {
   margin-top: 3rem;
 }
 
+[data-sectionbgcolor='grey'] {
+  background-color: var(--light-grey);
+}
+
 /* sections */
 main .section {
   max-width: var(--max-component-width);

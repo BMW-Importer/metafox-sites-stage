@@ -93,7 +93,8 @@
                 "resourceType": "core/franklin/components/section/v1/section",
                 "template": {
                   "style":"alignment-center",
-                  "fixedsectiontopmargin": true
+                  "fixedsectiontopmargin": true,
+                  "sectionbgcolor": "default"
                 }
               }
             }
@@ -111,6 +112,7 @@
                   "model": "flexible-width-section",
                   "sectiontopmargin": true,
                   "sectionalignment": "center",
+                  "sectionbgcolor": "default",
                   "sectionwidth":"grid-10",
                   "filter": "flexible-width-section"
                 }
@@ -128,7 +130,8 @@
                 "template": {
                   "name": "Tabs Section",
                   "model": "tabs-section",
-                  "filter": "tabs-section"
+                  "filter": "tabs-section",
+                  "sectionbgcolor": "default"
                 }
               }
             }
