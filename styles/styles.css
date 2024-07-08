@@ -507,6 +507,7 @@ main .section:first-child {
     width: 32%;
   }
 }
+
 /* large-desktop */
 @media (width >= 1920px){
   main .section {   
