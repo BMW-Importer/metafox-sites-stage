@@ -1,3 +1,8 @@
 export default async function decorate(block) {
-  console.log(block);
+  const precon = [...block.children];
+
+  precon.forEach((preconData) => {
+    const [wdhContext, linkTab] = preconData.children;
+    console.log(wdhContext, linkTab);
+  });
 }
