@@ -138,7 +138,7 @@ const techPlaceholderObject = {
 function processGearBoxValue(responseGearBoxValue) {
   const separatedValues = responseGearBoxValue.split(' - ');
   const numberOfGears = separatedValues[0].trim();
-  const transmissionType = separatedValues[1].trim();
+  const transmissionType = separatedValues[1]?.trim();
   const matchingEntry = Object.entries(placeholders)
     .find(([key]) => key === transmissionType);
   if (matchingEntry) {
