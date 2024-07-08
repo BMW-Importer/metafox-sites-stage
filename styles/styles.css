@@ -502,6 +502,12 @@ main .section:first-child {
 }
 
 /* large-desktop */
+@media (width>= 1440px){
+  .section.alignment-center.columns-container .columns.left .button-container a {
+    width: 32%;
+  }
+}
+/* large-desktop */
 @media (width >= 1920px){
   main .section {   
     max-width: 100vw;
