@@ -4460,12 +4460,24 @@
         "value": true
       },
       {
+        "component": "text",        
+        "name": "content_autoDataType",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Enable Accordion View",
         "name": "content_accordionView",
         "description": "Defines if the technical data element categories will be displayed as an accordion item. If toggled on, they will be displayed as an accordion, which will by default be expanded and can be collapsed.",
         "valueType": "boolean",
         "value": true
+      },
+      {
+        "component": "text",        
+        "name": "content_accordionViewType",
+        "valueType": "string",
+        "hidden": true
       },
       {
         "component": "aem-content",
