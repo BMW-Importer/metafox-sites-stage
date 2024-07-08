@@ -1,3 +1,4 @@
+/* eslint-disable for onject */
 import {
   buildModelPlaceholder, buildSetPlaceholder, buildTechDataPlaceholder,
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
@@ -126,3 +127,48 @@ export function getFuelTypeLabelDesc(powerTrain) {
   };
   return fuelTypeDesc[powerTrain] || ' ';
 }
+
+export async function getPreConApiResponse(modelCode) { // modelCode = 'F40'
+  try {
+    const endpointUrl = `/WDH_API/Models/precon-details/${modelCode}.json`;
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
+    const responseJson = await response.json();
+    return { modelCode, responseJson };
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+const preConModelResponse = await getPreConApiResponse('F40');
+console.log(preConModelResponse);
+
+async function matchPreCon(preConModelResponse) {
+  let matchedKey;
+  for (let key in preConModelResponse.responseJson) {
+    if (preConModelResponse.responseJson[key].id === '2136');
+    matchedKey = preConModelResponse.responseJson[key].modelCode;
+    break;
+  }
+  return matchedKey;
+}
+
+const preConData = await matchPreCon(preConModelResponse);
+console.log(preConData);
+
+export async function getPreConCosyImage(modelCode) {
+  try {
+    const endpointUrl = `/WDH_API/Models/precon-cosy/${modelCode}.json`;
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
+    const preConCosyResJSON = await response.json();
+    console.log(preConCosyResJSON);
+    return preConCosyResJSON;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+await getPreConCosyImage(preConData);
