@@ -1011,7 +1011,9 @@
                   "model": "technical-data",
                   "filter": "technical-data",
                   "content_autoData": "true",
-                  "content_accordionView": "true"
+                  "content_accordionView": "true",
+                  "content_autoDataType": "h2",
+                  "content_accordionViewType": "h3"
                 }
               }
             }
