@@ -861,15 +861,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2239,15 +2239,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2639,15 +2639,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2727,17 +2727,17 @@
         "label":"Button/Link 2 Type", 
         "valueType": "string",
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
-        "options": [
+       "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3156,15 +3156,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3246,15 +3246,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4205,15 +4205,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4306,6 +4306,61 @@
     ]
   },
   {
+    "id": "precon-vehicle",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Context",
+        "name": "wdh"
+      },
+      {
+        "component": "customtype",
+        "label": "Precon Context",
+        "name": "wdh_preconCustomModelRangeSelection",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",        
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "wdh_contextType",
+        "label": "Context Type",
+        "valueType": "string",
+        "description" : "Defines the type of context to be set.",
+        "options": [
+          {
+            "name": "Model Range",
+            "value": "Model Range"
+          },
+          {
+            "name": "Model Code",
+            "value": "ModelCOde"
+          },
+          {
+            "name": "All Options",
+            "value": "All Optiopns"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Contexturalised Link",
+        "name": "contexturalised"
+      },
+      {
+        "component": "text-input",
+        "label": "Link Label",
+        "name": "contexturalised_linkLabel",
+        "description": "Defines the text to be displayed in the contextualised button."
+      },
+      {
+        "component": "text-input",
+        "label": "Link",
+        "name": "contexturalised_linkText",
+        "description": "Defines the link of the contextualised button."
+      }
+    ]
+  },
+  {
     "id": "speed-dial-item",
     "fields": [
       {
@@ -4367,15 +4422,15 @@
         "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    

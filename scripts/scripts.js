@@ -248,10 +248,3 @@ document.fonts.addEventListener('loading', ({ target }) => {
       });
     });
 });
-
-window.addEventListener("message", (event) => {
-  if (event.data === "requestMetadata") {
-    const metaTenant = document.querySelector('meta[name="tenant"]').content;
-    event.source.postMessage({ description: metaTenant }, event.origin);
-  }
-});
