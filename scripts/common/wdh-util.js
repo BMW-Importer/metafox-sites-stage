@@ -128,13 +128,13 @@ export function getFuelTypeLabelDesc(powerTrain) {
   return fuelTypeDesc[powerTrain] || ' ';
 }
 
-export async function getPreConApiResponse(modelCode) { // modelCode = 'F40'
+export async function getPreConApiResponse(modelRange) { // modelRange = 'F40'
   try {
-    const endpointUrl = `/WDH_API/Models/precon-details/${modelCode}.json`;
+    const endpointUrl = `/WDH_API/Models/precon-details/${modelRange}.json`;
     const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
     const response = await fetch(`${origin}${endpointUrl}`);
     const responseJson = await response.json();
-    return { modelCode, responseJson };
+    return { modelRange, responseJson };
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;
