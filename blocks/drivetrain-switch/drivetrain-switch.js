@@ -80,7 +80,7 @@ function enableClickEvent(selectedModelDdlMob) {
       e.stopPropagation();
       e.target.closest('.dts-selected-model-mob')?.click();
     });
-  }  
+  }
 }
 
 function generateTechnicalData1(
@@ -318,6 +318,15 @@ function appendClassToLeftModelCategory(block) {
   if (mModelCategory) mModelCategory.querySelector('.dts-model-category-title')?.classList.add('visible');
 }
 
+function generateContentFragUI(cfData, rightPanel, block, disclaimerFragment) {
+  const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
+  const disclaimerContent = document.createElement('div');
+  disclaimerContent.className = 'disclaimer-content';
+  disclaimerContent.innerHTML = disclaimerHtml;
+  rightPanel.append(disclaimerContent);
+  block.removeChild(disclaimerFragment);
+}
+
 export default async function decorate(block) {
   block.classList.add('drivetrain-switch-block');
 
@@ -394,17 +403,16 @@ export default async function decorate(block) {
       galOrigin = publishDomain;
     }
   }
-  await getContentFragmentData(disclaimerCF, galOrigin).then((response) => {
+  /* eslint-disable no-console */
+  try {
+    const response = await getContentFragmentData(disclaimerCF, galOrigin);
     const cfData = response?.data;
     if (cfData) {
-      const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
-      const disclaimerContent = document.createElement('div');
-      disclaimerContent.className = 'disclaimer-content';
-      disclaimerContent.innerHTML = disclaimerHtml;
-      rightPanel.append(disclaimerContent);
-      block.removeChild(disclaimerFragment);
+      generateContentFragUI(cfData, rightPanel, block, disclaimerFragment);
     }
-  });
+  } catch (error) {
+    console.log('fragment fetching failed');
+  }
 
   const selectedModelCount = Array.from(rows).reduce((count, element) => {
     if (element?.children[0]?.children[2]?.textContent === 'true') {
@@ -514,10 +522,10 @@ export default async function decorate(block) {
         );
         const modelListItem = document.createElement('li');
         modelListItem.append(element);
-        if (modelGroup?.children[0] && modelGroup?.children[0]?.textContent) {
+        if (modelGroup?.children[0]?.textContent) {
           modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim());
         }
-        if (selectedFuelType && selectedFuelType?.textContent) {
+        if (selectedFuelType?.textContent) {
           analytics.classList.add(selectedFuelType?.textContent);
         }
         leftPanelModelGrouping.append(modelListItem);
