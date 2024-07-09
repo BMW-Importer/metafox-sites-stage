@@ -233,9 +233,9 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the colour of the background",
+        "description": "Defines the colour of the background.",
         "value": "white",
-        "label": "Background Color",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
@@ -351,9 +351,9 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the colour of the background",
+        "description": "Defines the colour of the background.",
         "value": "white",
-        "label": "Background Color",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
@@ -462,9 +462,9 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the colour of the background",
+        "description": "Defines the colour of the background.",
         "value": "white",
-        "label": "Background Color",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
