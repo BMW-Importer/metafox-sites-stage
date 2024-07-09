@@ -182,6 +182,7 @@ export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.systemMaxTorque = responseJson.model.powerTrain.systemMaxTorque || '';
   modelPlaceholderObject.systemPower = responseJson.model.powerTrain.systemPower || '';
   modelPlaceholderObject.trunkCapacity = responseJson.model.trunkCapacity || '';
+  modelPlaceholderObject.topSpeed = responseJson.model.topSpeed || '';
 }
 
 export function buildTechDataPlaceholder(techJson) {
