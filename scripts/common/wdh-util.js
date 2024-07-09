@@ -1,6 +1,6 @@
 import {
-  buildModelPlaceholder, buildSetPlaceholder,
-  fetchSetPlaceholderObject, fetchModelPlaceholderObject,
+  buildModelPlaceholder, buildSetPlaceholder, buildTechDataPlaceholder,
+  fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
 async function getApiResponse(modelCode) {
@@ -40,13 +40,21 @@ async function fetchAllModels(modelCodes) {
 }
 
 export async function buildContext(modelCodesArray) {
+  const [modelCode, selectedTCode] = modelCodesArray;
   try {
-    await fetchAllModels(modelCodesArray).then((response) => {
+    await fetchAllModels([modelCode]).then((response) => {
       buildSetPlaceholder(response);
       buildModelPlaceholder(response[0]);
+      response[0].model.vehicles.forEach((vehicleData) => {
+        if (vehicleData.transmissionCode === selectedTCode) {
+          const vehicleDataResponse = vehicleData;
+          buildTechDataPlaceholder(vehicleDataResponse);
+        }
+      });
       const modelPlaceholder = fetchModelPlaceholderObject();
       const setPlaceholder = fetchSetPlaceholderObject();
-      return { modelPlaceholder, setPlaceholder };
+      const techPlaceholder = fetchTechDataPlaceholderObject();
+      return { modelPlaceholder, setPlaceholder, techPlaceholder };
     });
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
@@ -114,6 +122,7 @@ export function getFuelTypeLabelDesc(powerTrain) {
   const fuelTypeDesc = {
     E: 'Vollelektrisch',
     X: 'Plug-in-Hybrid',
+    O: 'Dizel',
   };
   return fuelTypeDesc[powerTrain] || ' ';
 }

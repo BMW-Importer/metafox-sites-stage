@@ -231,6 +231,24 @@
         ]
       },
       {
+        "component": "select",
+        "name": "sectionbgcolor",
+        "description": "Defines the background color of the section.",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Grey",
+            "value": "grey"
+          }
+        ]
+      },
+      {
         "component": "boolean",
         "label": "Display Top Margin",
         "name": "fixedsectiontopmargin",
@@ -331,6 +349,24 @@
         ]
       },
       {
+        "component": "select",
+        "name": "sectionbgcolor",
+        "description": "Defines the background color of the flexible width section.",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Grey",
+            "value": "grey"
+          }
+        ]
+      },
+      {
         "component": "boolean",
         "label": "Display Top Margin",
         "name": "sectiontopmargin",
@@ -420,6 +456,24 @@
           {
             "name": "Buttons",
             "value": "primary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "sectionbgcolor",
+        "description": "Defines the background color of the tabs section.",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Grey",
+            "value": "grey"
           }
         ]
       },
@@ -807,15 +861,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -1218,6 +1272,11 @@
         "label": "IFrame URL",
         "value": ""
       }
+    ]
+  },
+  {
+    "id": "cookiepolicy",
+    "fields": [
     ]
   },
   {
@@ -2180,15 +2239,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2580,15 +2639,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -2668,17 +2727,17 @@
         "label":"Button/Link 2 Type", 
         "valueType": "string",
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
-        "options": [
+       "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3097,15 +3156,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -3187,15 +3246,15 @@
         "description":"Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4146,15 +4205,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4247,6 +4306,61 @@
     ]
   },
   {
+    "id": "precon-vehicle",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Context",
+        "name": "wdh"
+      },
+      {
+        "component": "preconcustomtype",
+        "label": "Precon Context",
+        "name": "wdh_preconCustomModelRangeSelection",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",        
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "wdh_contextType",
+        "label": "Context Type",
+        "valueType": "string",
+        "description" : "Defines the type of context to be set.",
+        "options": [
+          {
+            "name": "Model Range",
+            "value": "Model Range"
+          },
+          {
+            "name": "Model Code",
+            "value": "ModelCOde"
+          },
+          {
+            "name": "All Options",
+            "value": "All Optiopns"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Contexturalised Link",
+        "name": "contexturalised"
+      },
+      {
+        "component": "text-input",
+        "label": "Link Label",
+        "name": "contexturalised_linkLabel",
+        "description": "Defines the text to be displayed in the contextualised button."
+      },
+      {
+        "component": "text-input",
+        "label": "Link",
+        "name": "contexturalised_linkText",
+        "description": "Defines the link of the contextualised button."
+      }
+    ]
+  },
+  {
     "id": "speed-dial-item",
     "fields": [
       {
@@ -4308,15 +4422,15 @@
         "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }          
         ]    
@@ -4383,5 +4497,166 @@
         ]
       }
     ]
-  }
+  },
+  {
+    "id": "technical-data",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "content"
+      },
+      {
+        "component": "boolean",
+        "label": "Enable Automatic Data",
+        "name": "content_autoData",
+        "description": "Defines if automatic technical data will be pulled from the backend. If toggled on, the technical data values will be automatically fetched. If toggled off, the values and keys have to be manually authored in the Technical Data Spreadsheet.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",        
+        "name": "content_autoDataType",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Enable Accordion View",
+        "name": "content_accordionView",
+        "description": "Defines if the technical data element categories will be displayed as an accordion item. If toggled on, they will be displayed as an accordion, which will by default be expanded and can be collapsed.",
+        "valueType": "boolean",
+        "value": true
+      },
+      {
+        "component": "text",        
+        "name": "content_accordionViewType",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "aem-content",
+        "name": "content_spreadsheet",
+        "description": "Defines the Technical Data Spreadsheet that will be read if Automatic Data is toggled off.",
+        "label": "Technical Data Spreadsheet",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "model-data",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Context",
+        "name": "wdh"
+      },
+      {
+        "component": "customtype",
+        "label": "Model Card Context",
+        "name": "wdh_customSeriesModelRangeSelection",
+        "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
+        "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "analytics"
+      },
+      {
+        "component": "text-input",
+        "name": "analytics_label",
+        "label": "Analytics Label",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "analytics_button",
+        "label": "Button/Link Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "exit",
+            "value": "exit"
+          },
+          {
+            "name": "download",
+            "value": "download"
+          },
+          {
+            "name": "other",
+            "value": "other"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Only if other is selected the following options should appear:",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "analytics_button"
+            },
+            "other"
+          ]
+        },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }
+        ]
+      }
+    ]
+  }  
 ]

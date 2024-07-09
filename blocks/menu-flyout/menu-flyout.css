@@ -2,7 +2,7 @@
 
 /* menu-flyout css */
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -14,7 +14,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     background-image: linear-gradient(rgba(255 255 255 / 0%), rgba(255 255 255 / 100%));
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-scroll-indicator-arrow::before{
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-scroll-indicator-arrow::before{
     margin: .5rem;
     overflow-wrap: normal;
     font-size: 2rem;
@@ -165,7 +165,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertica
 }
 
 /* BMW info tab css */
-header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container{
     flex-wrap: wrap;
     height: auto;
     overflow-y: auto;
@@ -174,7 +174,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     max-height: calc(100vh - 15rem);
 }
 
-header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-link-list {
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-link-list {
  margin-left: 0;
  flex: 0 0 20%
 }
@@ -187,11 +187,11 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     }
     
     
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list {
         width: 50%;  
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0;
@@ -205,7 +205,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
     height: 19.5rem;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
        position: absolute;
     }
 
@@ -251,7 +251,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
 }
 
 @media (width >= 830px) and (width < 1023px) {
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list{
         width: 50%;
     }
 
@@ -263,7 +263,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
 }
 
 @media (width >= 1024px) and (width < 1280px) {
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .container-link-list{
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list{
         width: 25%;
     }
 }
@@ -275,7 +275,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         margin-left: 0;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0;
@@ -291,7 +291,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         display: flex;
     }
     
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
         display: none;
      }
 
@@ -354,7 +354,7 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         box-sizing: border-box
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container{
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container{
         flex-wrap: wrap;
         height: auto;
         overflow-y: auto;
@@ -363,15 +363,15 @@ header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-
         max-height: calc(100vh - 9rem);
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list-title {    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .link-list-wrapper.vertical .link-list-title {    
         margin-bottom: .75rem !important;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .link-list-wrapper.vertical .link-list .link-list-title.expand{    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .link-list-wrapper.vertical .link-list .link-list-title.expand{    
         margin-bottom: 1.5rem !important;
     }
 
-    header.header-wrapper .nav-brand .menu-flyout-wrapper:nth-last-child(2) .flyout-main-container .flyout-scroll-indicator-arrow {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
         bottom: 4.5%;
         left: 0;
         position: absolute;

@@ -213,7 +213,10 @@
       "drivetrain-switch",
       "preconcomp",
       "shopbylookcomp",
-      "speed-dial"
+      "speed-dial",
+      "cookiepolicy",
+      "technical-data",
+      "precon"
     ]
   },
   {
@@ -339,9 +342,21 @@
     ]
   },
   {
+    "id": "precon",
+    "components": [
+      "precon-vehicle"
+    ]
+  },
+  {
     "id": "speed-dial",
     "components":[
       "speed-dial-item"
+    ]
+  },
+  {
+    "id": "technical-data",
+    "components":[
+      "model-data"
     ]
   }
 ]

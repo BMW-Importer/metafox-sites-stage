@@ -288,4 +288,20 @@ export default async function decorate(block) {
     container.addEventListener('scroll', handleScroll);
   });
   handleClickFlyoutClose();
+
+  const menuElemsContainer = document.querySelector('.menu-link-container');
+  const menuWrapper = document.createElement('div');
+  menuWrapper.className = 'menu-wrapper';
+  const childElems = [...menuElemsContainer.children].splice(1);
+  const menuElems = [];
+  for (let i = 0; i < childElems.length; i += 1) {
+    if (childElems[i].classList.contains('subnavigation-text-wrapper')
+    || childElems[i].classList.contains('menu-link-wrapper')
+    || childElems[i].classList.contains('menu-flyout-wrapper')) {
+      menuElems[i] = childElems[i];
+    }
+  }
+  const logoWrapper = document.querySelector('.logo-wrapper');
+  menuWrapper.append(...menuElems);
+  logoWrapper.insertAdjacentElement('afterend', menuWrapper);
 }

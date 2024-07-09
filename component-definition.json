@@ -93,7 +93,8 @@
                 "resourceType": "core/franklin/components/section/v1/section",
                 "template": {
                   "style":"alignment-center",
-                  "fixedsectiontopmargin": true
+                  "fixedsectiontopmargin": true,
+                  "sectionbgcolor": "default"
                 }
               }
             }
@@ -111,6 +112,7 @@
                   "model": "flexible-width-section",
                   "sectiontopmargin": true,
                   "sectionalignment": "center",
+                  "sectionbgcolor": "default",
                   "sectionwidth":"grid-10",
                   "filter": "flexible-width-section"
                 }
@@ -128,7 +130,8 @@
                 "template": {
                   "name": "Tabs Section",
                   "model": "tabs-section",
-                  "filter": "tabs-section"
+                  "filter": "tabs-section",
+                  "sectionbgcolor": "default"
                 }
               }
             }
@@ -856,13 +859,21 @@
                   "detail_technocalLinkType": "primary",
                   "detail_popoverType": "h6",
                   "detail_popover": true,
+                  "technical_fact1":"Snaga",
                   "technical_fact1Type": "h2",
+                  "technical_value1":"{model.description}",
                   "technical_value1Type": "h3",
+                  "technical_fact2":" 0-100 km/h ",
                   "technical_fact2Type": "h4",
+                  "technical_value2":"{model.acceleration}",
                   "technical_value2Type": "h5",
+                  "technical1_fact3":"Vmax",
                   "technical1_fact3Type": "h2",
+                  "technical1_value3":"{model.topSpeed}",
                   "technical1_value3Type": "h3",
+                  "technical1_fact4":"Domet",
                   "technical1_fact4Type": "h4",
+                  "technical1_value4":"{model.shortRangeName}",
                   "technical1_value4Type": "h5"
                 }
               }
@@ -948,8 +959,89 @@
               }
             }
           }
+        },
+        {
+          "title": "PreCon",
+          "id": "precon",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "PreCon",
+                  "model": "precon",
+                  "filter":"precon"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "PreCon Vehicle",
+          "id": "precon-vehicle",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "PreCon Vehicle",
+                  "model": "precon-vehicle",
+                  "filter":"precon-vehicle"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "cookiepolicy",
+          "id": "cookiepolicy",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block","template": {
+                  "name": "cookiepolicy",
+                  "model": "cookiepolicy"
+                }
+                
+              }
+            }
+          }
+        },
+        {
+          "title": "Technical Data",
+          "id": "technical-data",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Technical Data",
+                  "model": "technical-data",
+                  "filter": "technical-data",
+                  "content_autoData": "true",
+                  "content_accordionView": "true",
+                  "content_autoDataType": "h2",
+                  "content_accordionViewType": "h3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Model Data",
+          "id": "model-data",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Model Data",
+                  "model": "model-data"
+                }
+              }
+            }
+          }
         }
-
       ]
     },    
     {

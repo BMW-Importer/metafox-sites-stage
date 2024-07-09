@@ -71,6 +71,12 @@ function enableClickEvent(selectedModelDdlMob) {
     const nextElement = e.target.nextElementSibling;
     nextElement.classList.add('enablepopover');
   });
+
+  const ddlIcon = selectedModelDdlMob.querySelector('i');
+  ddlIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.target.closest('.dts-selected-model-mob')?.click();
+  });
 }
 
 function generateTechnicalData1(
@@ -271,8 +277,8 @@ function generateLeftPanelModelList(
       document.createRange().createContextualFragment(`
                 <span class='dts-model-category-title'>${modelTitle}</span>               
                 <div class='dts-category-box'><a class='dts-model-category-link' href='${modelLink?.textContent}' data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-                data-analytics-category='${BtnType?.textContent?.trim() || ''}'
-                data-analytics-subCategory='${btnSubType?.textContent?.trim() || ''}'
+                data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
+                data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
                 data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
                 data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
                 data-analytics-custom-click='true'>
@@ -285,11 +291,11 @@ function generateLeftPanelModelList(
 
 function bindAnalyticsValue(analytics, technicalLink, block) {
   if (analytics) {
-    const [analyticsLabel, BtnType, btnSubType] = analytics.children;
+    const [analyticsLabel, BtnType, btnSubType] = analytics?.children || [];
     if (technicalLink) {
       technicalLink.dataset.analyticsLabel = analyticsLabel?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsCategory = BtnType?.textContent?.trim() || '';
-      technicalLink.dataset.analyticsSubCategory = btnSubType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkType = BtnType?.textContent?.trim() || '';
+      technicalLink.dataset.analyticsLinkOtherType = btnSubType?.textContent?.trim() || '';
       technicalLink.dataset.analyticsCustomClick = 'true';
       technicalLink.dataset.analyticsBlockName = block?.dataset?.blockName || '';
       technicalLink.dataset.analyticsSectionId = block?.closest('.section')?.dataset?.analyticsLabel || '';
@@ -299,7 +305,7 @@ function bindAnalyticsValue(analytics, technicalLink, block) {
 
 // append visible class to first category title
 function appendClassToLeftModelCategory(block) {
-  const allModelCategory = block.querySelector('.dts-model-grouping li.ALL');
+  const allModelCategory = block.querySelector('.dts-model-grouping li.all');
   const iModelCategory = block.querySelector('.dts-model-grouping li.i');
   const mModelCategory = block.querySelector('.dts-model-grouping li.m');
 
@@ -356,23 +362,23 @@ export default async function decorate(block) {
   block.removeChild(fuelType);
 
   const activeModelTitle = detailCell?.querySelector('h3');
-  activeModelTitle.classList.add('dts-active-model-title');
-  rightPanelTitleAndImg.append(activeModelTitle);
+  activeModelTitle?.classList?.add('dts-active-model-title');
+  rightPanelTitleAndImg.append(activeModelTitle || '');
   rightPanel.append(rightPanelTitleAndImg);
 
   const modelDescp = detailCell?.querySelector('h4');
-  modelDescp.classList.add('dts-active-model-descp');
-  rightPanel.append(modelDescp);
+  modelDescp?.classList?.add('dts-active-model-descp');
+  rightPanel.append(modelDescp || '');
 
   // appending table below the description
   rightPanel.append(rightPanelTechDetail);
 
   const technicalLink = detailCell?.querySelector('a');
-  technicalLink.classList.add('dts-technical-link-btn');
-  rightPanelTechDetail.append(technicalLink);
+  technicalLink?.classList?.add('dts-technical-link-btn');
+  rightPanelTechDetail.append(technicalLink || '');
 
   const popover = detailCell?.querySelector('h6');
-  if (popover.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
+  if (popover?.textContent === 'true') rightPanelTechDetail.classList.add('enable-popover');
 
   // removing detailcell so that it wont appear in content tree
   block.removeChild(detailCell);
@@ -408,17 +414,23 @@ export default async function decorate(block) {
   if (selectedModelCount > 1 || selectedModelCount === 0) {
     let isSelectedValueSet = false;
     Array.from(rows).forEach((element) => {
-      const isSelectedElem = element.children[0].children[2];
-      if (!isSelectedValueSet) {
-        isSelectedElem.textContent = 'true';
-        isSelectedValueSet = true;
-      } else {
-        isSelectedElem.textContent = 'false';
+      const isSelectedElem = element?.children[0]?.children[2];
+      if (isSelectedElem) {
+        if (!isSelectedValueSet) {
+          isSelectedElem.textContent = 'true';
+          isSelectedValueSet = true;
+        } else {
+          isSelectedElem.textContent = 'false';
+        }
       }
     });
   }
 
-  const cozyApiPromise = Array.from(rows).map(async (element) => {
+  /* eslint-disable no-await-in-loop */
+  /* eslint-disable no-restricted-syntax */
+  /* eslint-disable guard-for-in */
+  /* eslint-disable no-console */
+  for (const element of rows) {
     const [modelGroup, context, analytics] = element?.children || [];
 
     bindAnalyticsValue(analytics, technicalLink, block);
@@ -428,9 +440,12 @@ export default async function decorate(block) {
 
     if (context) element.removeChild(context);
 
-    if (splitContextData || splitContextData?.length >= 3) {
+    if (splitContextData && splitContextData?.length >= 3) {
       const agCode = splitContextData[2]?.trim() || '';
-
+      let transCode;
+      if (splitContextData[3].trim() === 'true') {
+        transCode = splitContextData[4].trim() || '';
+      }
       let response;
 
       try {
@@ -495,13 +510,17 @@ export default async function decorate(block) {
         );
         const modelListItem = document.createElement('li');
         modelListItem.append(element);
-        modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim() || '');
-        analytics.classList.add(selectedFuelType?.textContent || '');
+        if (modelGroup?.children[0] && modelGroup?.children[0]?.textContent) {
+          modelListItem.classList.add(modelGroup?.children[0]?.textContent?.trim());
+        }
+        if (selectedFuelType && selectedFuelType?.textContent) {
+          analytics.classList.add(selectedFuelType?.textContent);
+        }
         leftPanelModelGrouping.append(modelListItem);
       }
 
-      if (modelGroup?.children[2]?.textContent === 'true' && agCode) {
-        await buildContext([agCode]).then(() => {
+      if (agCode) {
+        await buildContext([agCode, transCode]).then(() => {
           const wdhModelPlaceholder = fetchModelPlaceholderObject();
           const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
@@ -511,50 +530,51 @@ export default async function decorate(block) {
             if (selectedFuelTypeText === 'fuel-type') {
               lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
               lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
-
-              // if current model is selected then update value der also
-              if (modelGroup?.children[2].textContent === 'true') {
-                const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-                mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                  wdhModelPlaceholder?.fuelType,
-                );
-              }
             } else {
-              lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
 
               // if current model is selected then update value der also
               if (modelGroup?.children[2].textContent === 'true') {
                 const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
                 mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                  wdhModelPlaceholder?.description,
+                  wdhModelPlaceholder?.seriesDescription,
                 );
               }
             }
           }
+          // if current model is selected then update value der also
+          if (modelGroup?.children[2].textContent === 'true') {
+            const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
+            mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
+              wdhModelPlaceholder?.fuelType,
+            );
+            // buildContext
+            generateTechnicalData1(
+              technicalDetail1Cell,
+              techTableData,
+              wdhModelPlaceholder,
+              wdhTechPlaceholder,
+            );
 
-          // buildContext
-          generateTechnicalData1(
-            technicalDetail1Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          // removing techdetail1 so that it wont appear in content tree
-          block.removeChild(technicalDetail1Cell);
+            // removing techdetail1 so that it wont appear in content tree
+            block.removeChild(technicalDetail1Cell);
 
-          generateTechnicalData2(
-            technicalDetail2Cell,
-            techTableData,
-            wdhModelPlaceholder,
-            wdhTechPlaceholder,
-          );
-          block.removeChild(technicalDetail2Cell);
+            generateTechnicalData2(
+              technicalDetail2Cell,
+              techTableData,
+              wdhModelPlaceholder,
+              wdhTechPlaceholder,
+            );
+            block.removeChild(technicalDetail2Cell);
+          }
         }).catch();
       }
+    } else {
+      const modelListItem = document.createElement('li');
+      modelListItem.append(element);
+      leftPanelModelGrouping.append(modelListItem);
     }
-  });
-
-  await Promise.all(cozyApiPromise);
+  }
 
   // clone selectedModel button and bind it inside left panel
   const modelListItem = document.createElement('li');

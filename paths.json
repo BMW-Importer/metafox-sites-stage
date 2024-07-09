@@ -5,6 +5,9 @@
     "/content/metafox/placeholders:/placeholders.json",
     "/content/metafox/masters/en/placeholders:/masters/en/placeholders.json",
     "/content/metafox/metadata:/metadata.json",
+    "/content/metafox/models-overview:/models-overview.json",
+    "/content/metafox/model-filters:/model-filters.json",
+    "/content/metafox/concept-cars-details:/concept-cars-details",
     "/content/dam/metafox/:/assets/"
 ],
   "includes": ["/content/metafox/","/content/dam/metafox/"]

@@ -616,6 +616,10 @@
         font-weight: 500;
     }
 
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box .fuel-type-phev::before {
+        content: 'fuel_type_phev';
+    }
+
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
         margin: 1.5rem 0 0;
         width: auto !important;

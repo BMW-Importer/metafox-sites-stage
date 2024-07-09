@@ -430,6 +430,10 @@ main img {
   margin-top: 3rem;
 }
 
+[data-sectionbgcolor='grey'] {
+  background-color: var(--light-grey);
+}
+
 /* sections */
 main .section {
   max-width: var(--max-component-width);
@@ -499,6 +503,13 @@ main .section:first-child {
  
   .appear.white-background main .section.columns-container .default-content-wrapper p {
     margin: 0
+  }
+}
+
+/* large-desktop */
+@media (width>= 1440px){
+  .section.alignment-center.columns-container .columns.left .button-container a {
+    width: 32%;
   }
 }
 
