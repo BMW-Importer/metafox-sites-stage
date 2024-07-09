@@ -855,6 +855,7 @@
                   "filter": "drivetrain-switch",
                   "content_labelsourceType": "h2",
                   "detail_activemodelType": "h3",
+                  "detail_descp":"{model.description}",
                   "detail_descpType": "h4",
                   "detail_technocalLinkType": "primary",
                   "detail_popoverType": "h6",
