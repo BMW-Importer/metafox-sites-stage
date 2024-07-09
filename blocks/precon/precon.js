@@ -2,6 +2,21 @@ import {
   getPreConApiResponse, getPreConCosyImage, getResolutionKey, getCosyImageUrl,
 } from '../../scripts/common/wdh-util.js';
 
+
+function configureCTA(selectedModel, currentVechileData) {
+ let selectedModelValue;
+ if (selectedModel === 'Model Range'){
+  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}`
+ }
+ if (selectedModel === 'Model Code') {
+  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}`
+ }
+ if (selectedModel === 'All Optiopns') {
+  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}/${currentVechileData.fabric}/${currentVechileData.paint}/${currentVechileData.options}`
+ }
+ return selectedModelValue;
+
+}
 export default async function decorate(block) {
   let headLineDom;
   const precon = [...block.children];
@@ -11,10 +26,15 @@ export default async function decorate(block) {
     let preConCosyImage;
     let preConHeadLine;
     let modelThumbnailElement;
+    let optionsValue;
+    let titleName;
+    let modeRangeCode;
     const [wdhContext, linkTab] = preconData.children;
-    const splitPrecoData = wdhContext.textContent.trim().split(',');
-    const selectedModelRange = splitPrecoData[1]?.trim(); // authored selected ModelRange G21
-    const selectedPreConId = splitPrecoData[2]?.trim(); // authored selected PRECODN-ID
+    const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
+    const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent|| '';
+    console.log(selctedModelData);
+    const selectedModelRange = splitPreconData[1]?.trim() || ''; // authored selected ModelRange G21
+    const selectedPreConId = splitPreconData[2]?.trim() || ''; // authored selected PRECODN-ID
     preconData.removeChild(wdhContext);
     preconData.removeChild(linkTab);    
     try {
@@ -29,14 +49,18 @@ export default async function decorate(block) {
       let preConModeCode;
       for (let key in preConModelResponse.responseJson) {
         if (preConModelResponse.responseJson[key].id === selectedPreConId); 
-        preConModeCode = preConModelResponse.responseJson[key].modelCode; // MODEL-CODE
-        preConHeadLine = preConModelResponse.responseJson[key].headline;  // Show the headline below cosy Image
+        preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
+        preConHeadLine = preConModelResponse.responseJson[key]?.headline;  // Show the headline below cosy Image
+        optionsValue = preConModelResponse.responseJson[key]?.options; //
+        let configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
+        console.log(configureLink);
         break;
-      }        
+      }
+      const optionsCount = optionsValue.split(',').length;
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
       headLineDom = document.createElement('div');
       headLineDom.classList.add('headerline-wrapper');
-      headLineDom.textContent = `HeadLine ${preConHeadLine}`
+      headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`
     }
     if (preConCosyImage) { // cosy image to show for Pre-Con
       const screenWidth = window.innerWidth;
@@ -58,15 +82,13 @@ export default async function decorate(block) {
         // Fallback img tag
         const imgTag = document.createElement('img');
         imgTag.src = getCosyImageUrl(preConCosyImage, resolutionKey, 40);
-        imgTag.alt = 'Cosy Image';
+        imgTag.alt = 'pre con Cosy Image';
         pictureTag.appendChild(imgTag);
         return pictureTag;
       };
-      preConImageDOM = createPictureTag(40);      
-    }
-    block.textContent = '';
-    block.appendChild(preConImageDOM);
-    block.append(headLineDom);
-  }    
+      preConImageDOM = createPictureTag(40);  
+      block.append(preConImageDOM);      
+      block.append(headLineDom);        
+    }   
+  }
 }
-
