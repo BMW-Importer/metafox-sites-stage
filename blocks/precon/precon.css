@@ -1,1 +1,30 @@
-/* css */
+.precon-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.precon-wrapper .precon-content {
+    box-sizing: border-box;
+    display: flex;
+    transition: transform 0.5s ease;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    transition-property: transform;
+    transition-timing-function: linear;
+    z-index: 1;
+}
+
+.precon-wrapper .precon-content .precon-card {
+    flex-shrink: 0;
+    height: auto;
+    touch-action: pan-y;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    position: relative;
+    transition-property: transform;
+    width: 226px;
+    gap: 20px;
+}
