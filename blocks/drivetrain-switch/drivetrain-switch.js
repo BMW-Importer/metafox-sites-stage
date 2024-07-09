@@ -17,7 +17,9 @@ import {
   getFuelTypeImage,
   getFuelTypeLabelDesc,
 } from '../../scripts/common/wdh-util.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
+const placeholders = await fetchPlaceholders();
 const env = document.querySelector('meta[name="env"]').content;
 const hostName = window?.location?.hostname;
 const regExp = /^(.*\.hlx\.(page|live)|localhost)$/;
@@ -73,10 +75,12 @@ function enableClickEvent(selectedModelDdlMob) {
   });
 
   const ddlIcon = selectedModelDdlMob.querySelector('i');
-  ddlIcon.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.target.closest('.dts-selected-model-mob')?.click();
-  });
+  if (ddlIcon) {
+    ddlIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.target.closest('.dts-selected-model-mob')?.click();
+    });
+  }  
 }
 
 function generateTechnicalData1(
@@ -527,9 +531,10 @@ export default async function decorate(block) {
           const categoryItem = leftPanelModelGrouping.querySelectorAll('.dts-category-box');
           if (categoryItem) {
             const lastCatItem = categoryItem[categoryItem.length - 1];
+            const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
             if (selectedFuelTypeText === 'fuel-type') {
-              lastCatItem.classList.add(getFuelTypeImage(wdhModelPlaceholder?.fuelType));
-              lastCatItem.querySelector('.dts-model-category-descp').textContent = getFuelTypeLabelDesc(wdhModelPlaceholder?.fuelType);
+              lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal));
+              lastCatItem.querySelector('.dts-model-category-descp').textContent = placeholders[fuelTypeVal] || '';
             } else {
               lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
 
@@ -545,9 +550,8 @@ export default async function decorate(block) {
           // if current model is selected then update value der also
           if (modelGroup?.children[2].textContent === 'true') {
             const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-            mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-              wdhModelPlaceholder?.fuelType,
-            );
+            const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
+            mobSelectedModelTxt.textContent = placeholders[fuelTypeVal] || '';
             // buildContext
             generateTechnicalData1(
               technicalDetail1Cell,
