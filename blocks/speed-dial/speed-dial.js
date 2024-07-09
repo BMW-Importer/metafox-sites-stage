@@ -19,17 +19,17 @@ function topFunction() {
 export default function decorate(block) {
   const speeddialBtn = document.createElement('button');
   const speeddialBackBtn = document.createElement('button');
-  speeddialBtn.classList.add('speeddial_button');
-  speeddialBackBtn.classList.add('speeddial_backtotop');
+  speeddialBtn.classList.add('speeddial-button');
+  speeddialBackBtn.classList.add('speeddial-backtotop');
 
   // creating a container for links
   const listOfLinkContainer = document.createElement('div');
   listOfLinkContainer.classList.add('list-of-containers');
   window.addEventListener('resize', () => {
     if (window.innerHeight < 466) {
-      listOfLinkContainer.classList.add('item--reversed');
+      listOfLinkContainer.classList.add('item-reversed');
     } else {
-      listOfLinkContainer.classList.remove('item--reversed');
+      listOfLinkContainer.classList.remove('item-reversed');
     }
   });
 
@@ -37,7 +37,7 @@ export default function decorate(block) {
 
   speeddialBtn.setAttribute('aria-expanded', false);
   speeddialBtn.addEventListener('click', () => {
-    speeddialBtn.classList.toggle('speeddial_btn--clicked');
+    speeddialBtn.classList.toggle('speeddial-btn-clicked');
     listOfLinkContainer.classList.toggle('btn-opened');
     const btnExpanded = speeddialBtn.getAttribute('aria-expanded') === 'true' || false;
     speeddialBtn.setAttribute('aria-expanded', !btnExpanded);

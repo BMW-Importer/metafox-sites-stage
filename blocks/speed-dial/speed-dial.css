@@ -1,4 +1,4 @@
- .speeddial_button, .speeddial_btn--clicked, .speeddial_backtotop {
+ .speeddial-button, .speeddial-btn-clicked, .speeddial-backtotop {
     background-color: var(--background-color);
     color: var(--light-text-color);
     border-radius: 50%;
@@ -16,7 +16,7 @@
     bottom: 12.5rem;
  }
 
- .speeddial_button {
+ .speeddial-button {
     margin-left: auto;
     pointer-events: auto;
  }
@@ -30,7 +30,7 @@
     bottom: 12.5rem;
  }
 
- .speeddial_backtotop {
+ .speeddial-backtotop {
     bottom: 16.5rem;
     margin-left: auto;
     z-index: 6030;
@@ -38,39 +38,43 @@
     display: none;
  }
 
-.speeddial_backtotop:focus-visible {
+.speeddial-backtotop:focus-visible {
     box-shadow: 0 0 0 .0625rem #fff, 0 0 0 .3125rem #1c69d4
 }
 
- .speeddial_button::before {
+ .speeddial-button::before {
     animation: slideup1 0.15s ease-out forwards;
     transform: translateY(-50%);
+    content: 'speech_bubbles';
  }
 
  @keyframes slideup1 {
     0% {
         transform: translateY(-50%);
     }
+
     100% {
         transform: translateY(0);
     }
  }
 
- .speeddial_btn--clicked::before {
+ .speeddial-btn-clicked::before {
     animation: slideup 0.15s ease-out forwards;
     transform: translateY(50%);
+    content: 'close';
  }
 
  @keyframes slideup {
     0% {
       transform: translateY(50%);
     }
+
     100% {
       transform: translateY(0);
     }
  }
 
- .speeddial_backtotop::before, .speeddial_button::before, .speeddial_btn--clicked::before, .cmp-speeddial-item-arrow::before {
+ .speeddial-backtotop::before, .speeddial-button::before, .speeddial-btn-clicked::before, .cmp-speeddial-item-arrow::before {
     word-wrap: normal;
     direction: ltr;
     display: block;
@@ -81,42 +85,34 @@
     line-height: 1;
     outline: 1px solid #0000;
     text-align: left;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     text-transform: none;
     white-space: nowrap;
     width: 1.5rem;
     font-weight: 400;
 }
 
-.speeddial_backtotop::before {
+.speeddial-backtotop::before {
     content: 'arrow_up';
 }
 
-.speeddial_button::before {
-    content: 'speech_bubbles';
-}
-
-.speeddial_btn--clicked::before {
-    content: 'close';
-}
-
-.speeddial_button:active {
+.speeddial-button:active {
     background-color: var(--light-bbb);
 }
 
-.speeddial_backtotop:hover {
+.speeddial-backtotop:hover {
     background-color: var(--light-bbb);
 }
 
-.speeddial_btn--clicked:hover {
+.speeddial-btn-clicked:hover {
     background-color: var(--background-color);
 }
 
-.speeddial_button[aria-expanded=false]:hover {
+.speeddial-button[aria-expanded="false"]:hover {
     background-color: var(--light-bbb);
 }
 
-.speeddial_button:focus, .speeddial_backtotop:focus {
+.speeddial-button:focus, .speeddial-backtotop:focus {
     background-color: var(--background-color);
 }
 
@@ -140,7 +136,7 @@
     transition: all 0.15s ease-out 0s;
 }
 
-.item--reversed {
+.item-reversed {
     transform: translateY(110%) scale(1);
     margin-bottom:0;
     margin-top: 12px;
@@ -151,7 +147,7 @@
     visibility: visible;
 }
 
-div:has(> .faq)::before, div:has(> .contact)::before {
+div:has(> .faq)::before, div:has(> .contact)::before, div:has(> .chat)::before {
     word-wrap: normal;
     content: 'help';
     direction: ltr;
@@ -163,7 +159,7 @@ div:has(> .faq)::before, div:has(> .contact)::before {
     line-height: 1;
     outline: 1px solid #0000;
     text-align: left;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     text-transform: none;
     white-space: nowrap;
     width: 1.5rem;
@@ -177,6 +173,10 @@ div:has(> .faq)::before {
 
 div:has(> .contact)::before {
     content: 'telephone';
+}
+
+div:has(> .chat)::before {
+    content: 'speech_bubbles';
 }
 
 .speed-dial-item {
@@ -214,7 +214,7 @@ div:has(> .contact)::before {
 }
 
 @media (width >=360px) and (width < 768px) {
-    .speeddial_button, .speeddial_btn--clicked, .speeddial_backtotop {
+    .speeddial-button, .speeddial-btn-clicked, .speeddial-backtotop {
         bottom: 6rem;
         right: 1rem;
     }
@@ -224,7 +224,7 @@ div:has(> .contact)::before {
         bottom: 6rem;
     }
 
-    .speeddial_backtotop {
+    .speeddial-backtotop {
         bottom: 10rem;
     }
 }
