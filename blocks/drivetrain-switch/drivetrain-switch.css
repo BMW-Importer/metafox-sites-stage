@@ -350,6 +350,11 @@
         padding-top: 1.25rem;
     }
 
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-size: 0.875rem;
+        line-height: 1.375rem;  
+    }
+
     .drivetrain-switch-block .dts-active-model-descp {
         font-size: 1.5625rem;
         line-height: 2.25rem;
