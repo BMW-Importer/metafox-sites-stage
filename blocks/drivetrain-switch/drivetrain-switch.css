@@ -323,7 +323,7 @@
     font-size: .75rem;
     font-weight: 300;
     line-height: 1.125rem;
-    color: var(--light-border-color);
+    color: var(--light-text-color);
     margin: 0;
 }
 
@@ -417,7 +417,7 @@
     .drivetrain-switch-block .dts-right-tech-detail {
         margin: 1rem 0 0;        
         flex-flow: row wrap;
-        gap: 1.5rem 2rem;
+        gap: 2rem 2.5rem;
         width: auto;
         align-self: center;
         display: flex;
@@ -512,7 +512,7 @@
         display: flex;
         flex-direction: row;
         box-sizing: border-box;
-        padding: .875rem;
+        padding: .75rem;
         border: .125rem solid var(--light-bbb);
         background-color: var(--background-color);
         color: var(--light-text-color);
@@ -628,7 +628,7 @@
     
     .drivetrain-switch-block .disclaimer-content {
         width: 100%;
-        margin: 1.25rem 0 0;
+        margin: 1rem 0 0;
         max-width: 45.75rem;
     }
 
@@ -724,13 +724,14 @@
     .drivetrain-switch-block .dts-right-tech-detail {
         margin-top: 1.5rem;
         max-width: 50.125rem;
+        gap: 2.5rem 3rem;
     }
 
 
     .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
         margin: 0;
         font-size: 1rem;
-        line-height: 1.625rem;
+        line-height: 1.625rem;  
     }
 
     .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
@@ -744,7 +745,7 @@
 
     .drivetrain-switch-block .disclaimer-content {
         margin: 1.5rem auto 0;
-        max-width: 50.125rem;
+        max-width: 50.125rem;    
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
