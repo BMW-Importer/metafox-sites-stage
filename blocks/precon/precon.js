@@ -25,18 +25,19 @@ export default async function decorate(block) {
     let preConModelResponse;
     let preConCosyImage;
     let preConHeadLine;
-    let modelThumbnailElement;
     let optionsValue;
     let titleName;
     let modeRangeCode;
+    let configureLink;
+    let configureCTADom;
+
     const [wdhContext, linkTab] = preconData.children;
     const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
-    const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent|| '';
-    console.log(selctedModelData);
+    const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
     const selectedModelRange = splitPreconData[1]?.trim() || ''; // authored selected ModelRange G21
     const selectedPreConId = splitPreconData[2]?.trim() || ''; // authored selected PRECODN-ID
     preconData.removeChild(wdhContext);
-    preconData.removeChild(linkTab);    
+    preconData.removeChild(linkTab);
     try {
       if (selectedModelRange) {
         preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
@@ -48,19 +49,23 @@ export default async function decorate(block) {
     if (preConModelResponse) {
       let preConModeCode;
       for (let key in preConModelResponse.responseJson) {
-        if (preConModelResponse.responseJson[key].id === selectedPreConId); 
+        if (preConModelResponse.responseJson[key].id === selectedPreConId);
         preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
-        preConHeadLine = preConModelResponse.responseJson[key]?.headline;  // Show the headline below cosy Image
+        preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
         optionsValue = preConModelResponse.responseJson[key]?.options; //
-        let configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
-        console.log(configureLink);
+        configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
         break;
       }
       const optionsCount = optionsValue.split(',').length;
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
       headLineDom = document.createElement('div');
       headLineDom.classList.add('headerline-wrapper');
-      headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`
+      headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`;
+      configureCTADom = document.createElement('a');
+      configureCTADom.classList.add('button');
+      configureCTADom.href = configureLink;
+      configureCTADom.textContent = "CLICK ME";
+      headLineDom.append(configureCTADom);
     }
     if (preConCosyImage) { // cosy image to show for Pre-Con
       const screenWidth = window.innerWidth;
@@ -86,9 +91,9 @@ export default async function decorate(block) {
         pictureTag.appendChild(imgTag);
         return pictureTag;
       };
-      preConImageDOM = createPictureTag(40);  
-      block.append(preConImageDOM);      
-      block.append(headLineDom);        
-    }   
+      preConImageDOM = createPictureTag(40);
+      block.append(preConImageDOM);
+      block.append(headLineDom);
+    }
   }
 }
