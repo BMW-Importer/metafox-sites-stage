@@ -25,7 +25,7 @@ const hostName = window?.location?.hostname;
 const regExp = /^(.*\.hlx\.(page|live)|localhost)$/;
 let galOrigin = '';
 let publishDomain = '';
-const modelText = placeholders?.modelText || '';
+const modelText = placeholders?.modeltext || '';
 
 if (env === 'dev') {
   publishDomain = DEV.hostName;
