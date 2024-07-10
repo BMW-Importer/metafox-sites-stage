@@ -3,7 +3,7 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
-async function getApiResponse(modelCode) {
+export async function getApiResponse(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode}.json`;
     const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
