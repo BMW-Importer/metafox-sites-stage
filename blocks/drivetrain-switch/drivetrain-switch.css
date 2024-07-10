@@ -247,7 +247,8 @@
     content: "checkmark";
     direction: ltr;
     display: block;
-    font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
+    font-family: var(--icon-font-family) !important;
+    opacity: var(--iconfont400-opacity);
     font-style: normal;
     height: 1.5rem;
     line-height: 1;
@@ -595,7 +596,8 @@
         content: "checkmark";
         direction: ltr;
         display: block;
-        font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
+        font-family: var(--icon-font-family) !important;
+        opacity: var(--iconfont400-opacity);
         font-style: normal;
         line-height: 1;
         outline: 1px solid transparent;
