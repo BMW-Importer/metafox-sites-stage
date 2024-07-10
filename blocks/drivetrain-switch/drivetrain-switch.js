@@ -534,8 +534,7 @@ export default async function decorate(block) {
 
       if (agCode) {
         try {
-          const buildContextResponse = await buildContext([agCode, transCode]);
-          if (buildContextResponse) {
+          const buildContextResponse = await buildContext([agCode, transCode]).then(() => {
             const wdhModelPlaceholder = fetchModelPlaceholderObject();
             const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
@@ -590,7 +589,8 @@ export default async function decorate(block) {
               );
               block.removeChild(technicalDetail2Cell);
             }
-          }
+          });
+          console.log(buildContextResponse);
         } catch (e) {
           console.error('build context failed');
         }
