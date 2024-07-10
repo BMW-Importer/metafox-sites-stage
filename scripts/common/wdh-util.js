@@ -4,7 +4,7 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
-async function getApiResponse(modelCode) {
+export async function getApiResponse(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode}.json`;
     const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
@@ -94,6 +94,21 @@ export async function getCosyImage(modelCode) {
     return responseJson;
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+/* To call api for getting spreadsheet data */
+
+export async function getTechnicalSpreadsheetData() {
+  try {
+    const endpointUrl = '/en/technical-data.json';
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
+    const responseJson = await response.json();
+    return { responseJson };
+  } catch (error) {
+    console.log('Error fetching data from spreadsheet', error);
     throw error;
   }
 }

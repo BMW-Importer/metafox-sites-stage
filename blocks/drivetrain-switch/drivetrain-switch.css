@@ -421,6 +421,7 @@
         width: auto;
         align-self: center;
         display: flex;
+        justify-content: flex-start;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table {
@@ -550,6 +551,7 @@
         border: .125rem solid var(--medium-text-color);
         box-sizing: border-box;
         cursor: unset;
+        padding: 0.875rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container .dts-category-box:hover {
@@ -591,7 +593,7 @@
     }
 
     .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-bev::after,
-    .drivetrain-switch-block .dts-model-category-container .dts-category-box .fuel-type-phev::before {
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-phev::after {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-feature-settings: "liga";
@@ -610,13 +612,13 @@
         font-size: 1.5rem;
         line-height: 1.5rem;
         position: absolute;
-        left: 1.25rem;
-        top: 1.4375rem;
+        left: .80rem;
+        top: 1.4rem;
         z-index: 1;
         font-weight: 500;
     }
 
-    .drivetrain-switch-block .dts-model-category-container .dts-category-box .fuel-type-phev::before {
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-phev::after {
         content: 'fuel_type_phev';
     }
 
@@ -691,8 +693,12 @@
         line-height: 2.25rem;
     }
 
-    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
         padding: 0.875rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+        padding: 1rem;
     }
 }
 
@@ -746,6 +752,10 @@
     .drivetrain-switch-block .disclaimer-content {
         margin: 1.5rem auto 0;
         max-width: 50.125rem;    
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
+        padding: 1rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
