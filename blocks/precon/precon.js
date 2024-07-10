@@ -4,19 +4,19 @@ import {
 
 
 function configureCTA(selectedModel, currentVechileData) {
- let selectedModelValue;
- if (selectedModel === 'Model Range'){
-  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}`
- }
- if (selectedModel === 'Model Code') {
-  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}`
- }
- if (selectedModel === 'All Optiopns') {
-  return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}/${currentVechileData.fabric}/${currentVechileData.paint}/${currentVechileData.options}`
- }
- return selectedModelValue;
-
+  let selectedModelValue;
+  if (selectedModel === 'modelRange'){
+    return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}`
+  }
+  if (selectedModel === 'modelCode') {
+    return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}`
+  }
+  if (selectedModel === 'allOptions') {
+    return selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}/${currentVechileData.fabric}/${currentVechileData.paint}/${currentVechileData.options}`
+  }
+  return selectedModelValue;
 }
+
 export default async function decorate(block) {
   let headLineDom;
   const precon = [...block.children];
