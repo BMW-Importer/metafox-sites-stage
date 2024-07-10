@@ -548,6 +548,8 @@ export default async function decorate(block) {
             const categoryItem = leftPanelModelGrouping.querySelectorAll('.dts-category-box');
             if (categoryItem) {
               const lastCatItem = categoryItem[categoryItem.length - 1];
+              const modelCozyImg = lastCatItem.querySelector('.dts-model-category-img');
+              modelCozyImg.alt = wdhModelPlaceholder?.description;
               const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
               if (selectedFuelTypeText === 'fuel-type') {
                 lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal?.toUpperCase()));
@@ -565,6 +567,11 @@ export default async function decorate(block) {
               } else {
                 mobSelectedModelTxt.textContent = wdhModelPlaceholder?.description;
               }
+
+              // updating alt text for image
+              const rightPanelImg = rightPanelTitleAndImg.querySelector('img');
+              rightPanelImg.alt = wdhModelPlaceholder?.description;
+
               // buildContext
               generateTechnicalData1(
                 technicalDetail1Cell,
