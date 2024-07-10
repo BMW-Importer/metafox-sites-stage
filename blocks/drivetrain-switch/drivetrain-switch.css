@@ -331,6 +331,14 @@
     margin-top: 1rem;
 }
 
+/* mobile */
+@media (width >= 360px) and (width < 768px) {
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-size: 0.875rem;
+        line-height: 1.375rem;  
+    }
+}
+
 @media (width >= 768px) {
     .drivetrain-switch-block .dts-right-model-title-container {
         aspect-ratio: 1.7778;
@@ -540,6 +548,8 @@
         color: var(--light-text-color);
         padding: 0;
         min-height: unset;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-model-category-descp {
