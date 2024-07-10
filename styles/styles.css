@@ -521,11 +521,6 @@ main .section:first-child {
     padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
   }
 
-  main .section.no-padding {
-    padding-left: calc((100vw - (var(--max-component-width))) / 2);
-    padding-right: calc((100vw - (var(--max-component-width))) / 2);
-  }
-
   .default-content-wrapper > p {    
     margin: 0 0 1rem;
   }
