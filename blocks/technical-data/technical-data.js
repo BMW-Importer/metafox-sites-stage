@@ -1,9 +1,5 @@
 // import { getApiResponse } from '../../scripts/common/wdh-util.js';
 
-// function generateTechDataUI(techdataObj){
-
-// }
-
 // export default async function decorate(block) {
 //     block.classList.add('technical-data-block');
 //     const [
@@ -59,7 +55,9 @@
 
 //     });
 
-//     if (listOfModels) {
+//     if (listOfModels.length > 1) {
+//         generateModelsDdl(listOfModels);
+//     } else {
 //         generateTechDataUI(listOfModels[0]);
 //     }
 // }

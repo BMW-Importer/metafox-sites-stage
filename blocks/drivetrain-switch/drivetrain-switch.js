@@ -20,7 +20,7 @@ import {
 import { fetchPlaceholders } from '../../scripts/aem.js';
 
 const lang = document.querySelector('meta[name="language"]').content;
-const placeholders = await fetchPlaceholders(lang);
+const placeholders = await fetchPlaceholders(`/${lang}`);
 const env = document.querySelector('meta[name="env"]').content;
 const hostName = window?.location?.hostname;
 const regExp = /^(.*\.hlx\.(page|live)|localhost)$/;
@@ -534,8 +534,7 @@ export default async function decorate(block) {
 
       if (agCode) {
         try {
-          const buildContextResponse = await buildContext([agCode, transCode]);
-          if (buildContextResponse) {
+          const buildContextResponse = await buildContext([agCode, transCode]).then(() => {
             const wdhModelPlaceholder = fetchModelPlaceholderObject();
             const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
@@ -590,7 +589,8 @@ export default async function decorate(block) {
               );
               block.removeChild(technicalDetail2Cell);
             }
-          }
+          });
+          console.log(buildContextResponse);
         } catch (e) {
           console.error('build context failed');
         }
