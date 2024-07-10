@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { fetchPlaceholders } from '../aem.js';
 
-const placeholders = await fetchPlaceholders();
+const lang = document.querySelector('meta[name="language"]').content;
+const placeholders = await fetchPlaceholders(lang);
 
 const modelPlaceholderObject = {
   alt: '',
