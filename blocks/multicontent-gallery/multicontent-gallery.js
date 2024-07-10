@@ -6,7 +6,7 @@ import { fetchPlaceholders } from '../../scripts/aem.js';
 let startTouchX = 0;
 let endTouchX = 0;
 const lang = document.querySelector('meta[name="language"]').content;
-const placeholders = await fetchPlaceholders(lang);
+const placeholders = await fetchPlaceholders(`/${lang}`);
 const { showmore, showless } = placeholders;
 
 function enableShowMoreButton() {
