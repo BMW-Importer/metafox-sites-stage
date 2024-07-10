@@ -543,8 +543,8 @@ export default async function decorate(block) {
               const modelCozyImg = lastCatItem.querySelector('.dts-model-category-img');
               modelCozyImg.alt = wdhModelPlaceholder?.description;
               const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
-              if (selectedFuelTypeText === 'fuel-type') {
-                lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal?.toUpperCase()));
+              lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal?.toUpperCase()));
+              if (selectedFuelTypeText === 'fuel-type') {                
                 lastCatItem.querySelector('.dts-model-category-descp').textContent = placeholders[fuelTypeVal] || '';
               } else {
                 lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
