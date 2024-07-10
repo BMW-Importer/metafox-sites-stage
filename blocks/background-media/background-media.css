@@ -659,12 +659,6 @@
         margin-right: auto;
         width: var(--max-component-width);
         max-width: var(--max-component-width);
-    }
-
-    .background-media.block.no-padding {
-        margin-left: calc(((1920px - 192px) - 100vw) / 2);
-        width: 100vw;
-        max-width: 100vw;
     }    
     
     .background-media.block .background-media-item-text {
