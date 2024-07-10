@@ -15,7 +15,6 @@ import {
   replacePlaceholder,
   getResolutionKey,
   getFuelTypeImage,
-  getFuelTypeLabelDesc,
 } from '../../scripts/common/wdh-util.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
 
@@ -554,22 +553,18 @@ export default async function decorate(block) {
                 lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal?.toUpperCase()));
                 lastCatItem.querySelector('.dts-model-category-descp').textContent = placeholders[fuelTypeVal] || '';
               } else {
-                lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
-
-                // if current model is selected then update value der also
-                if (modelGroup?.children[2]?.textContent === 'true') {
-                  const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
-                  mobSelectedModelTxt.textContent = getFuelTypeLabelDesc(
-                    wdhModelPlaceholder?.seriesDescription,
-                  );
-                }
+                lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.description;
               }
             }
             // if current model is selected then update value der also
             if (modelGroup?.children[2]?.textContent === 'true') {
               const mobSelectedModelTxt = selectedModelDdlMob.querySelector('.dts-selected-model-title');
               const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
-              mobSelectedModelTxt.textContent = placeholders[fuelTypeVal] || '';
+              if (selectedFuelTypeText === 'fuel-type') {
+                mobSelectedModelTxt.textContent = placeholders[fuelTypeVal] || '';
+              } else {
+                mobSelectedModelTxt.textContent = wdhModelPlaceholder?.description;
+              }
               // buildContext
               generateTechnicalData1(
                 technicalDetail1Cell,
