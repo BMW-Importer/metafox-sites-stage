@@ -105,6 +105,7 @@
     z-index: 9999;
     background: var(--background-color);
     padding: 0;
+    margin: 0;
 }
 
 .drivetrain-switch-block .dts-right-panel {
@@ -140,12 +141,12 @@
     color: var(--background-color);
     cursor: pointer;
     outline: 0;
-    padding-right: 1.25rem;
+    padding: 1px 20px 1px 6px;
 }
 
 .drivetrain-switch-block .dts-close-btn-li {
     position: absolute;
-    top: -3.4375rem;
+    top: -2rem;
     right: 0;
     cursor: pointer;
 }
@@ -197,6 +198,9 @@
     word-break: break-word;
     border: none;
     padding: 0 1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn:hover {
