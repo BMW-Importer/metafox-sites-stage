@@ -27,7 +27,7 @@
 //     const enableAutoData = techDataProp?.querySelector('h2');
 //     const enableAccordion = techDataProp?.querySelector('h3');
 //     if (enableAccordion) block.classList.append('techdata-enable-accordion');
-    
+
 //     const spreadSheetLink = techDataProp?.querySelector('a');
 
 //     const listOfModels = [];
@@ -41,7 +41,7 @@
 //         const splittedModelData = modelPropData?.textContent?.split(',');
 
 //         if (splittedModelData && splittedModelData?.length >= 3) {
-//             const agCode = splittedModelData[2]?.trim() || '';            
+//             const agCode = splittedModelData[2]?.trim() || '';
 //             try {
 //                 // wdh call or else spreadsheet call
 //                 if (enableAutoData) {
@@ -51,16 +51,15 @@
 //                         analytics: analyticsProp,
 //                         json: modelDetailResponse,
 //                     });
-//                 }                
+//                 }
 //             } catch (error) {
 //                 console.error('fetch model detail failed');
 //             }
 //         }
-        
+
 //     });
 
 //     if (listOfModels) {
 //         generateTechDataUI(listOfModels[0]);
 //     }
 // }
-

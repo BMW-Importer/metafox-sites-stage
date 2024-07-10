@@ -26,7 +26,7 @@ const hostName = window?.location?.hostname;
 const regExp = /^(.*\.hlx\.(page|live)|localhost)$/;
 let galOrigin = '';
 let publishDomain = '';
-const modelText = placeholders['modelText'] || '';
+const modelText = placeholders?.modelText || '';
 
 if (env === 'dev') {
   publishDomain = DEV.hostName;
@@ -540,7 +540,7 @@ export default async function decorate(block) {
             const wdhTechPlaceholder = fetchTechDataPlaceholderObject();
 
             // updating description
-            let descpTextContent = replacePlaceholder(
+            const descpTextContent = replacePlaceholder(
               modelDescp.textContent,
               wdhModelPlaceholder,
               modelRegex,
@@ -590,7 +590,6 @@ export default async function decorate(block) {
               );
               block.removeChild(technicalDetail2Cell);
             }
-
           }
         } catch (e) {
           console.error('build context failed');
