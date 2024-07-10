@@ -421,6 +421,7 @@
         width: auto;
         align-self: center;
         display: flex;
+        justify-content: center;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table {
@@ -550,6 +551,7 @@
         border: .125rem solid var(--medium-text-color);
         box-sizing: border-box;
         cursor: unset;
+        padding: 0.875rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container .dts-category-box:hover {
@@ -691,8 +693,12 @@
         line-height: 2.25rem;
     }
 
-    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
         padding: 0.875rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+        padding: 1rem;
     }
 }
 
@@ -746,6 +752,10 @@
     .drivetrain-switch-block .disclaimer-content {
         margin: 1.5rem auto 0;
         max-width: 50.125rem;    
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
+        padding: 1rem;
     }
 
     .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
