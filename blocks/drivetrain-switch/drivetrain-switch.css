@@ -421,6 +421,7 @@
         width: auto;
         align-self: center;
         display: flex;
+        justify-content: center;
     }
 
     .drivetrain-switch-block .dts-tech-detail-table {
