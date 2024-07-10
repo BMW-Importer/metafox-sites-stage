@@ -97,6 +97,21 @@ export async function getCosyImage(modelCode) {
   }
 }
 
+/* To call api for getting spreadsheet data */
+
+export async function getTechnicalSpreadsheetData() {
+  try {
+    const endpointUrl = '/en/technical-data.json';
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
+    const responseJson = await response.json();
+    return { responseJson };
+  } catch (error) {
+    console.log('Error fetching data from spreadsheet', error);
+    throw error;
+  }
+}
+
 export function getResolutionKey(screenWidth) {
   // Define breakpoints for different screen sizes using min-width
   const breakpoints = [

@@ -551,7 +551,7 @@ export default async function decorate(block) {
               const lastCatItem = categoryItem[categoryItem.length - 1];
               const fuelTypeVal = wdhModelPlaceholder?.fuelType?.toLowerCase() || '';
               if (selectedFuelTypeText === 'fuel-type') {
-                lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal));
+                lastCatItem.classList.add(getFuelTypeImage(fuelTypeVal?.toUpperCase()));
                 lastCatItem.querySelector('.dts-model-category-descp').textContent = placeholders[fuelTypeVal] || '';
               } else {
                 lastCatItem.querySelector('.dts-model-category-descp').textContent = wdhModelPlaceholder?.seriesDescription;
