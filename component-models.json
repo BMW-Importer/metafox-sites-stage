@@ -4329,15 +4329,15 @@
         "options": [
           {
             "name": "Model Range",
-            "value": "Model Range"
+            "value": "modelRange"
           },
           {
             "name": "Model Code",
-            "value": "ModelCOde"
+            "value": "modelCode"
           },
           {
             "name": "All Options",
-            "value": "All Optiopns"
+            "value": "allOptions"
           }
         ]
       },

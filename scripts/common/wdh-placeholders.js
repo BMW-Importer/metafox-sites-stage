@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { fetchPlaceholders } from '../aem.js';
 
-const placeholders = await fetchPlaceholders();
+const lang = document.querySelector('meta[name="language"]').content;
+const placeholders = await fetchPlaceholders(`/${lang}`);
 
 const modelPlaceholderObject = {
   alt: '',
@@ -160,7 +161,7 @@ export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.cosyFallbackAlt = responseJson.model.cosyFallbackAlt || '';
   modelPlaceholderObject.description = responseJson.model.description || '';
   modelPlaceholderObject.driveType = responseJson.model.powerTrain.driveType || '';
-  modelPlaceholderObject.electricRange = responseJson.model.electricRange || '';
+  modelPlaceholderObject.electricRange = responseJson.model.pureElectricRange || '';
   modelPlaceholderObject.fabric = responseJson.model.posiSpec.fabric || '';
   modelPlaceholderObject.fuelType = responseJson.model.powerTrain.fuelType || '';
   modelPlaceholderObject.gearBox = processGearBoxValue(responseJson.model.powerTrain.gearBox) || '';
