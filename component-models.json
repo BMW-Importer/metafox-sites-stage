@@ -233,14 +233,14 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the background color of the section.",
-        "value": "",
-        "label": "Background Color",
+        "description": "Defines the colour of the background.",
+        "value": "white",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
-            "name": "Default",
-            "value": "default"
+            "name": "White",
+            "value": "white"
           },
           {
             "name": "Grey",
@@ -351,14 +351,14 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the background color of the flexible width section.",
-        "value": "",
-        "label": "Background Color",
+        "description": "Defines the colour of the background.",
+        "value": "white",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
-            "name": "Default",
-            "value": "default"
+            "name": "White",
+            "value": "white"
           },
           {
             "name": "Grey",
@@ -462,14 +462,14 @@
       {
         "component": "select",
         "name": "sectionbgcolor",
-        "description": "Defines the background color of the tabs section.",
-        "value": "",
-        "label": "Background Color",
+        "description": "Defines the colour of the background.",
+        "value": "white",
+        "label": "Background Colour",
         "valueType": "string",
         "options": [
           {
-            "name": "Default",
-            "value": "default"
+            "name": "White",
+            "value": "white"
           },
           {
             "name": "Grey",
@@ -4329,15 +4329,15 @@
         "options": [
           {
             "name": "Model Range",
-            "value": "Model Range"
+            "value": "modelRange"
           },
           {
             "name": "Model Code",
-            "value": "ModelCOde"
+            "value": "modelCode"
           },
           {
             "name": "All Options",
-            "value": "All Optiopns"
+            "value": "allOptions"
           }
         ]
       },

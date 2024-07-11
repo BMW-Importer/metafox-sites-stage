@@ -39,7 +39,8 @@
     "components": [
       "icon-link-list",
       "copyright",
-      "link-list"
+      "link-list",
+      "speed-dial"
     ]
   },
   {
@@ -213,7 +214,6 @@
       "drivetrain-switch",
       "preconcomp",
       "shopbylookcomp",
-      "speed-dial",
       "cookiepolicy",
       "technical-data",
       "precon"

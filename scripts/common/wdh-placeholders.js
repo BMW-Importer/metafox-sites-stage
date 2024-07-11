@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { fetchPlaceholders } from '../aem.js';
 
-const placeholders = await fetchPlaceholders();
+const lang = document.querySelector('meta[name="language"]').content;
+const placeholders = await fetchPlaceholders(`/${lang}`);
 
 const modelPlaceholderObject = {
   alt: '',
@@ -138,7 +139,7 @@ const techPlaceholderObject = {
 function processGearBoxValue(responseGearBoxValue) {
   const separatedValues = responseGearBoxValue.split(' - ');
   const numberOfGears = separatedValues[0].trim();
-  const transmissionType = separatedValues[1].trim();
+  const transmissionType = separatedValues[1]?.trim();
   const matchingEntry = Object.entries(placeholders)
     .find(([key]) => key === transmissionType);
   if (matchingEntry) {
@@ -182,74 +183,75 @@ export function buildModelPlaceholder(responseJson) {
   modelPlaceholderObject.systemMaxTorque = responseJson.model.powerTrain.systemMaxTorque || '';
   modelPlaceholderObject.systemPower = responseJson.model.powerTrain.systemPower || '';
   modelPlaceholderObject.trunkCapacity = responseJson.model.trunkCapacity || '';
+  modelPlaceholderObject.topSpeed = responseJson.model.topSpeed || '';
 }
 
 export function buildTechDataPlaceholder(techJson) {
   techPlaceholderObject.brand = ''; // key not found
-  techPlaceholderObject.transmissionCode = techJson.transmissionCode;
+  techPlaceholderObject.transmissionCode = techJson?.transmissionCode || '';
   techPlaceholderObject.transmissionId = ''; // key not found
-  techPlaceholderObject.volt48 = techJson.volt48;
-  techPlaceholderObject.id_leist_konst = techJson.iD_LEIST_KONST;
-  techPlaceholderObject.systemPower = techJson.technicalData.powerTrain.systemPower;
-  techPlaceholderObject.systemMaxTorque = techJson.technicalData.powerTrain.systemMaxTorque;
-  techPlaceholderObject.gearBox = processGearBoxValue(techJson.technicalData.powerTrain.gearBox);
-  techPlaceholderObject.driveType = techJson.technicalData.powerTrain.driveType;
-  techPlaceholderObject.cylinders = techJson.technicalData.engine.cylinders;
-  techPlaceholderObject.technicalCapacity = techJson.technicalData.engine.technicalCapacity;
-  techPlaceholderObject.nominalPower = techJson.technicalData.engine.nominalPower;
-  techPlaceholderObject.nominalTorque = techJson.technicalData.engine.nominalTorque;
-  techPlaceholderObject.electricSystemPower = techJson.technicalData.electric.electricSystemPower;
-  techPlaceholderObject.electricSystemMaxTorque = techJson.technicalData.electric.electricSystemMaxTorque;
-  techPlaceholderObject.acceleration = techJson.technicalData.performance.acceleration;
-  techPlaceholderObject.topSpeed = techJson.technicalData.performance.topSpeed;
-  techPlaceholderObject.electricTopSpeed = techJson.technicalData.performance.electricTopSpeed;
-  techPlaceholderObject.consumptionWltpCombined = techJson.technicalData.emissionsConsumptionWltp.consumptionWltpCombined;
-  techPlaceholderObject.consumptionWltpCombinedBest = techJson.technicalData.emissionsConsumptionWltp.consumptionWltpCombinedBest;
-  techPlaceholderObject.emissionsWltpCombined = techJson.technicalData.emissionsConsumptionWltp.emissionsWltpCombined;
-  techPlaceholderObject.emissionsWltpCombinedBest = techJson.technicalData.emissionsConsumptionWltp.emissionsWltpCombinedBest;
-  techPlaceholderObject.electricConsumption = techJson.technicalData.emissionsConsumptionWltp.electricConsumption;
-  techPlaceholderObject.electricConsumptionBest = techJson.technicalData.emissionsConsumptionWltp.electricConsumptionBest;
-  techPlaceholderObject.electricRangeWltpCombined = techJson.technicalData.emissionsConsumptionWltp.electricRangeWltpCombined;
-  techPlaceholderObject.electricRangeWltpCombinedBest = techJson.technicalData.emissionsConsumptionWltp.electricRangeWltpCombinedBest;
-  techPlaceholderObject.efficiencyCategoryMin = techJson.technicalData.emissionsConsumptionWltp.efficiencyCategoryMin;
-  techPlaceholderObject.efficiencyCategoryMax = techJson.technicalData.emissionsConsumptionWltp.efficiencyCategoryMaxChargeSustaining;
-  techPlaceholderObject.co2EquivalentOverallBest = techJson.technicalData.emissionsConsumptionWltp.co2EquivalentOverallBest;
-  techPlaceholderObject.co2EquivalentOverall = techJson.technicalData.emissionsConsumptionWltp.co2EquivalentOverall;
-  techPlaceholderObject.petrolEquivalentOverallBest = techJson.technicalData.emissionsConsumptionWltp.petrolEquivalentOverallBest;
-  techPlaceholderObject.petrolEquivalentOverall = techJson.technicalData.emissionsConsumptionWltp.petrolEquivalentOverall;
-  techPlaceholderObject.primaryEnergyPetrolEquivalentBest = techJson.technicalData.emissionsConsumptionWltp.primaryEnergyPetrolEquivalentBest;
-  techPlaceholderObject.primaryEnergyPetrolEquivalent = techJson.technicalData.emissionsConsumptionWltp.primaryEnergyPetrolEquivalent;
-  techPlaceholderObject.electricRangeWltpCity = techJson.technicalData.emissionsConsumptionWltp.electricRangeWltpCity;
-  techPlaceholderObject.noiseDriving = techJson.technicalData.emissionsConsumptionWltp.noiseDriving;
-  techPlaceholderObject.noiseStationary = techJson.technicalData.emissionsConsumptionWltp.noiseStationary;
-  techPlaceholderObject.batteryCapacity = techJson.technicalData.charging.batteryCapacity;
-  techPlaceholderObject.chargeACDC = techJson.technicalData.charging.chargeACDC;
-  techPlaceholderObject.charge_DC_10_80 = techJson.technicalData.charging.charge_DC_10_80;
-  techPlaceholderObject.chargeDC = techJson.technicalData.charging.chargeDC;
-  techPlaceholderObject.additionalRangeDC = techJson.technicalData.charging.additionalRangeDC;
-  techPlaceholderObject.chargeAC = techJson.technicalData.charging.chargeAC;
-  techPlaceholderObject.charge_AC_0_100 = techJson.technicalData.charging.charge_AC_0_100;
-  techPlaceholderObject.chargeAC_11 = techJson.technicalData.charging.chargeAC_11; // key not found;
-  techPlaceholderObject.chargeAC_22 = techJson.technicalData.charging.chargeAC_22; // key not found;
-  techPlaceholderObject.charge_AC_0_100_11 = techJson.technicalData.charging.charge_AC_0_100_11; // key not found
-  techPlaceholderObject.charge_AC_0_100_22 = techJson.technicalData.charging.charge_AC_0_100_22; // key not found;
-  techPlaceholderObject.chargingMaxAC = techJson.technicalData.charging.chargingMaxAC; // key not found
-  techPlaceholderObject.lengthWidthHeight = techJson.technicalData.weightMeasurements.lengthWidthHeight; // key not found;
-  techPlaceholderObject.length = techJson.technicalData.weightMeasurements.length;
-  techPlaceholderObject.width = techJson.technicalData.weightMeasurements.width;
-  techPlaceholderObject.height = techJson.technicalData.weightMeasurements.height;
-  techPlaceholderObject.widthMirrors = techJson.technicalData.weightMeasurements.widthMirrors;
-  techPlaceholderObject.wheelTurn = techJson.technicalData.weightMeasurements.wheelTurn;
-  techPlaceholderObject.weightNotLoaded = techJson.technicalData.weightMeasurements.weightNotLoaded;
-  techPlaceholderObject.weightMax = techJson.technicalData.weightMeasurements.weightMax;
-  techPlaceholderObject.permittedLoad = techJson.technicalData.weightMeasurements.permittedLoad;
-  techPlaceholderObject.permittedAxleLoad = techJson.technicalData.weightMeasurements.permittedAxleLoad;
-  techPlaceholderObject.trunkCapacity = techJson.technicalData.weightMeasurements.trunkCapacity;
-  techPlaceholderObject.tankCapacity = techJson.technicalData.weightMeasurements.tankCapacity;
-  techPlaceholderObject.fuelType = techJson.technicalData.powerTrain.fuelType;
-  techPlaceholderObject.hybridCode = techJson.hybridCode;
-  techPlaceholderObject.overboostMax = techJson.footnotesData.overboostMax;
-  techPlaceholderObject.overboostKW = techJson.footnotesData.overboostKW;
+  techPlaceholderObject.volt48 = techJson?.volt48 || '';
+  techPlaceholderObject.id_leist_konst = techJson?.iD_LEIST_KONST || '';
+  techPlaceholderObject.systemPower = techJson?.technicalData?.powerTrain?.systemPower || '';
+  techPlaceholderObject.systemMaxTorque = techJson?.technicalData?.powerTrain?.systemMaxTorque || '';
+  techPlaceholderObject.gearBox = processGearBoxValue(techJson?.technicalData?.powerTrain?.gearBox || '');
+  techPlaceholderObject.driveType = techJson?.technicalData?.powerTrain?.driveType || '';
+  techPlaceholderObject.cylinders = techJson?.technicalData?.engine?.cylinders || '';
+  techPlaceholderObject.technicalCapacity = techJson?.technicalData?.engine?.technicalCapacity || '';
+  techPlaceholderObject.nominalPower = techJson?.technicalData?.engine?.nominalPower || '';
+  techPlaceholderObject.nominalTorque = techJson?.technicalData?.engine?.nominalTorque || '';
+  techPlaceholderObject.electricSystemPower = techJson?.technicalData?.electric?.electricSystemPower || '';
+  techPlaceholderObject.electricSystemMaxTorque = techJson?.technicalData?.electric?.electricSystemMaxTorque || '';
+  techPlaceholderObject.acceleration = techJson?.technicalData?.performance?.acceleration || '';
+  techPlaceholderObject.topSpeed = techJson?.technicalData?.performance?.topSpeed || '';
+  techPlaceholderObject.electricTopSpeed = techJson?.technicalData?.performance?.electricTopSpeed || '';
+  techPlaceholderObject.consumptionWltpCombined = techJson?.technicalData?.emissionsConsumptionWltp?.consumptionWltpCombined || '';
+  techPlaceholderObject.consumptionWltpCombinedBest = techJson?.technicalData?.emissionsConsumptionWltp?.consumptionWltpCombinedBest || '';
+  techPlaceholderObject.emissionsWltpCombined = techJson?.technicalData?.emissionsConsumptionWltp?.emissionsWltpCombined || '';
+  techPlaceholderObject.emissionsWltpCombinedBest = techJson?.technicalData?.emissionsConsumptionWltp?.emissionsWltpCombinedBest || '';
+  techPlaceholderObject.electricConsumption = techJson?.technicalData?.emissionsConsumptionWltp?.electricConsumption || '';
+  techPlaceholderObject.electricConsumptionBest = techJson?.technicalData?.emissionsConsumptionWltp?.electricConsumptionBest || '';
+  techPlaceholderObject.electricRangeWltpCombined = techJson?.technicalData?.emissionsConsumptionWltp?.electricRangeWltpCombined || '';
+  techPlaceholderObject.electricRangeWltpCombinedBest = techJson?.technicalData?.emissionsConsumptionWltp?.electricRangeWltpCombinedBest || '';
+  techPlaceholderObject.efficiencyCategoryMin = techJson?.technicalData?.emissionsConsumptionWltp?.efficiencyCategoryMin || '';
+  techPlaceholderObject.efficiencyCategoryMax = techJson?.technicalData?.emissionsConsumptionWltp?.efficiencyCategoryMaxChargeSustaining || '';
+  techPlaceholderObject.co2EquivalentOverallBest = techJson?.technicalData?.emissionsConsumptionWltp?.co2EquivalentOverallBest || '';
+  techPlaceholderObject.co2EquivalentOverall = techJson?.technicalData?.emissionsConsumptionWltp?.co2EquivalentOverall || '';
+  techPlaceholderObject.petrolEquivalentOverallBest = techJson?.technicalData?.emissionsConsumptionWltp?.petrolEquivalentOverallBest || '';
+  techPlaceholderObject.petrolEquivalentOverall = techJson?.technicalData?.emissionsConsumptionWltp?.petrolEquivalentOverall || '';
+  techPlaceholderObject.primaryEnergyPetrolEquivalentBest = techJson?.technicalData?.emissionsConsumptionWltp?.primaryEnergyPetrolEquivalentBest || '';
+  techPlaceholderObject.primaryEnergyPetrolEquivalent = techJson?.technicalData?.emissionsConsumptionWltp?.primaryEnergyPetrolEquivalent || '';
+  techPlaceholderObject.electricRangeWltpCity = techJson?.technicalData?.emissionsConsumptionWltp?.electricRangeWltpCity || '';
+  techPlaceholderObject.noiseDriving = techJson?.technicalData?.emissionsConsumptionWltp?.noiseDriving || '';
+  techPlaceholderObject.noiseStationary = techJson?.technicalData?.emissionsConsumptionWltp?.noiseStationary || '';
+  techPlaceholderObject.batteryCapacity = techJson?.technicalData?.charging?.batteryCapacity || '';
+  techPlaceholderObject.chargeACDC = techJson?.technicalData?.charging?.chargeACDC || '';
+  techPlaceholderObject.charge_DC_10_80 = techJson?.technicalData?.charging?.charge_DC_10_80 || '';
+  techPlaceholderObject.chargeDC = techJson?.technicalData?.charging?.chargeDC || '';
+  techPlaceholderObject.additionalRangeDC = techJson?.technicalData?.charging?.additionalRangeDC || '';
+  techPlaceholderObject.chargeAC = techJson?.technicalData?.charging?.chargeAC || '';
+  techPlaceholderObject.charge_AC_0_100 = techJson?.technicalData?.charging?.charge_AC_0_100 || '';
+  techPlaceholderObject.chargeAC_11 = techJson?.technicalData?.charging?.chargeAC_11 || ''; // key not found;
+  techPlaceholderObject.chargeAC_22 = techJson?.technicalData?.charging?.chargeAC_22 || ''; // key not found;
+  techPlaceholderObject.charge_AC_0_100_11 = techJson?.technicalData?.charging?.charge_AC_0_100_11 || ''; // key not found
+  techPlaceholderObject.charge_AC_0_100_22 = techJson?.technicalData?.charging?.charge_AC_0_100_22 || ''; // key not found;
+  techPlaceholderObject.chargingMaxAC = techJson?.technicalData?.charging?.chargingMaxAC || ''; // key not found
+  techPlaceholderObject.lengthWidthHeight = techJson?.technicalData?.weightMeasurements?.lengthWidthHeight || ''; // key not found;
+  techPlaceholderObject.length = techJson?.technicalData?.weightMeasurements?.length || '';
+  techPlaceholderObject.width = techJson?.technicalData?.weightMeasurements?.width || '';
+  techPlaceholderObject.height = techJson?.technicalData?.weightMeasurements?.height || '';
+  techPlaceholderObject.widthMirrors = techJson?.technicalData?.weightMeasurements?.widthMirrors || '';
+  techPlaceholderObject.wheelTurn = techJson?.technicalData?.weightMeasurements?.wheelTurn || '';
+  techPlaceholderObject.weightNotLoaded = techJson?.technicalData?.weightMeasurements?.weightNotLoaded || '';
+  techPlaceholderObject.weightMax = techJson?.technicalData?.weightMeasurements?.weightMax || '';
+  techPlaceholderObject.permittedLoad = techJson?.technicalData?.weightMeasurements?.permittedLoad || '';
+  techPlaceholderObject.permittedAxleLoad = techJson?.technicalData?.weightMeasurements?.permittedAxleLoad || '';
+  techPlaceholderObject.trunkCapacity = techJson?.technicalData?.weightMeasurements?.trunkCapacity || '';
+  techPlaceholderObject.tankCapacity = techJson?.technicalData?.weightMeasurements?.tankCapacity || '';
+  techPlaceholderObject.fuelType = techJson?.technicalData?.powerTrain?.fuelType || '';
+  techPlaceholderObject.hybridCode = techJson?.hybridCode || '';
+  techPlaceholderObject.overboostMax = techJson?.footnotesData?.overboostMax || '';
+  techPlaceholderObject.overboostKW = techJson?.footnotesData?.overboostKW || '';
 }
 
 export function buildSetPlaceholder(responseJsonArray) {

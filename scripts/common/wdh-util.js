@@ -4,7 +4,7 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
-async function getApiResponse(modelCode) {
+export async function getApiResponse(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode}.json`;
     const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
@@ -98,6 +98,21 @@ export async function getCosyImage(modelCode) {
   }
 }
 
+/* To call api for getting spreadsheet data */
+
+export async function getTechnicalSpreadsheetData() {
+  try {
+    const endpointUrl = '/en/technical-data.json';
+    const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
+    const response = await fetch(`${origin}${endpointUrl}`);
+    const responseJson = await response.json();
+    return { responseJson };
+  } catch (error) {
+    console.log('Error fetching data from spreadsheet', error);
+    throw error;
+  }
+}
+
 export function getResolutionKey(screenWidth) {
   // Define breakpoints for different screen sizes using min-width
   const breakpoints = [
@@ -128,13 +143,13 @@ export function getFuelTypeLabelDesc(powerTrain) {
   return fuelTypeDesc[powerTrain] || ' ';
 }
 
-export async function getPreConApiResponse(modelCode) { // modelCode = 'F40'
+export async function getPreConApiResponse(modelRange) { // modelRange = 'F40'
   try {
-    const endpointUrl = `/WDH_API/Models/precon-details/${modelCode}.json`;
+    const endpointUrl = `/WDH_API/Models/precon-details/${modelRange}.json`;
     const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${window.hlx.codeBasePath}` : '';
     const response = await fetch(`${origin}${endpointUrl}`);
     const responseJson = await response.json();
-    return { modelCode, responseJson };
+    return { modelRange, responseJson };
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;

@@ -94,7 +94,7 @@
                 "template": {
                   "style":"alignment-center",
                   "fixedsectiontopmargin": true,
-                  "sectionbgcolor": "default"
+                  "sectionbgcolor": "white"
                 }
               }
             }
@@ -112,7 +112,7 @@
                   "model": "flexible-width-section",
                   "sectiontopmargin": true,
                   "sectionalignment": "center",
-                  "sectionbgcolor": "default",
+                  "sectionbgcolor": "white",
                   "sectionwidth":"grid-10",
                   "filter": "flexible-width-section"
                 }
@@ -131,7 +131,7 @@
                   "name": "Tabs Section",
                   "model": "tabs-section",
                   "filter": "tabs-section",
-                  "sectionbgcolor": "default"
+                  "sectionbgcolor": "white"
                 }
               }
             }
@@ -855,17 +855,26 @@
                   "filter": "drivetrain-switch",
                   "content_labelsourceType": "h2",
                   "detail_activemodelType": "h3",
+                  "detail_descp":"{model.description}",
                   "detail_descpType": "h4",
                   "detail_technocalLinkType": "primary",
                   "detail_popoverType": "h6",
                   "detail_popover": true,
+                  "technical_fact1":"Snaga",
                   "technical_fact1Type": "h2",
+                  "technical_value1":"{model.description}",
                   "technical_value1Type": "h3",
+                  "technical_fact2":" 0-100 km/h ",
                   "technical_fact2Type": "h4",
+                  "technical_value2":"{model.acceleration}",
                   "technical_value2Type": "h5",
+                  "technical1_fact3":"Vmax",
                   "technical1_fact3Type": "h2",
+                  "technical1_value3":"{model.topSpeed}",
                   "technical1_value3Type": "h3",
+                  "technical1_fact4":"Domet",
                   "technical1_fact4Type": "h4",
+                  "technical1_value4":"{model.shortRangeName}",
                   "technical1_value4Type": "h5"
                 }
               }
