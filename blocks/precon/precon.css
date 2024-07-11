@@ -5,26 +5,372 @@
     margin: 2rem 0;
 }
 
-.precon-wrapper .precon-content {
-    box-sizing: border-box;
-    display: flex;
-    transition: transform 0.5s ease;
-    flex-direction: row;
+.precon-wrapper .precon-image-container picture img {
+    aspect-ratio: 2.5 / 1;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto !important;
+    object-fit: contain;
     width: 100%;
-    position: relative;
-    transition-property: transform;
-    transition-timing-function: linear;
-    z-index: 1;
 }
 
-.precon-wrapper .precon-content .precon-card {
+.precon-wrapper .precon-image-container picture {
+    display: flex;
+    justify-content: center;
+}
+    
+
+.precon-wrapper .precon-image-container {
+    position: relative;
+    transition-property: transform;
+    width: 100%;
+    box-sizing: initial;
+    display: flex;
+    height: 100%;
+    z-index: 1;
+    transform: translateZ(0);
+}
+
+.precon-wrapper .precon-image-container .img-card-container {
     flex-shrink: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     height: auto;
     touch-action: pan-y;
     backface-visibility: hidden;
     transform: translateZ(0);
     position: relative;
     transition-property: transform;
-    width: 226px;
-    gap: 20px;
+}
+
+.precon-wrapper .precon-image-container .img-card-container.active {
+    filter: none;
+}
+
+.precon-wrapper .precon-image-container .img-card-container.not-active {
+    filter: blur(.125rem);
+    opacity: .7;
+    transition: filter .25s linear;
+    right: .75rem;
+}
+
+@media (width >= 1280px){
+    .precon-wrapper .precon-wrapper-lft-area,
+    .precon-wrapper .precon-wrapper-rth-area {
+        justify-content: flex-end;
+        left: 0;
+        width: 1rem;
+        align-items: center;
+        cursor: pointer;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+    }
+    
+    .precon-wrapper .precon-wrapper-lft-area {
+        justify-content: flex-end;
+        left: 0;
+    
+    }
+    
+    .precon-wrapper .precon-wrapper-rth-area {
+        justify-content: flex-start;
+        left: auto;
+        right: 0;
+    
+    }
+}
+    
+    .precon-wrapper .precon-wrapper-lft-area .carousel-btn-prev {
+        line-height: 1;
+        margin-right: 2rem;
+        background-color: white;
+        box-shadow: #00000029 0 0.375rem 1.25rem 0, #0000003D 0 0 0.0625rem 0;
+        height: 3rem;
+        width: 3rem;
+        opacity: 0.9;
+        border-width: 0;
+        border-style: initial;
+        border-color: initial;
+        border-image: initial;
+        padding: 0;
+        border-radius: 0.125rem;
+        transition: opacity 0.75s ease-in-out 0s;
+    }
+    
+    .precon-wrapper .precon-wrapper-lft-area .carousel-btn-prev::before {
+        overflow-wrap: normal;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "arrow_chevron_left";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        color: var(--text-color);
+        font-style: normal;
+        height: 1em;
+        line-height: 1;
+        text-align: center;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap
+    }
+    
+    .precon-wrapper .precon-wrapper-rth-area .carousel-btn-next {
+        line-height: 1;
+        margin-left: 2rem;
+        background-color: white;
+        box-shadow: #00000029 0 0.375rem 1.25rem 0, #0000003D 0 0 0.0625rem 0;
+        height: 3rem;
+        width: 3rem;
+        opacity: 0.9;
+        border-width: 0;
+        border-style: initial;
+        border-color: initial;
+        border-image: initial;
+        padding: 0;
+        border-radius: 0.125rem;
+        transition: opacity 0.75s ease-in-out 0s;
+    }
+    
+    .precon-wrapper .precon-wrapper-rth-area .carousel-btn-next::before {
+        overflow-wrap: normal;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "arrow_chevron_right";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        color: var(--text-color);
+        font-style: normal;
+        height: 1em;
+        line-height: 1;
+        text-align: center;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap
+    }
+
+    @media (width >= 360px) {
+        .precon-wrapper .precon-wrapper-lft-area,
+        .precon-wrapper .precon-wrapper-rth-area {
+            display: none;
+        }
+    
+        /* .precon-wrapper .precon .img-card .video-img-title > * {
+            font-size: 1.1875rem;  
+            line-height: 1.75rem;
+        } */
+        
+        /* .precon-wrapper .precon .img-card .video-img-description>* {
+            font-size: 1rem;
+            line-height: 1.625rem;
+        } */
+    }
+    
+    @media (width >= 1280px) {
+        .precon-wrapper .precon-wrapper-lft-area,
+        .precon-wrapper .precon-wrapper-rth-area {
+            display: flex;
+            justify-content: flex-start;
+            width: 15rem;
+        }
+
+        .precon .img-card picture img {
+            aspect-ratio: 2.5;
+            object-fit: cover;
+            vertical-align: middle;
+            transition: margin .25s linear;
+            width: 80%;
+        }
+    
+        /* .precon-wrapper .precon .img-card .video-img-title > * {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        } */
+    }
+    
+    @media (width >= 768px) and (width < 1280px) {
+        .precon-wrapper .precon-image-container {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+    
+        .section.precon-container {
+            padding: 0;
+        }
+    
+    }
+    
+    @media (width >= 360px) and (width < 768px) {
+        .section.precon-container {
+            padding: 0;
+        }
+    
+        .precon-wrapper .precon-image-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    
+        .precon .img-card picture img {
+            object-fit: cover;
+            vertical-align: middle;
+        }
+    
+    }
+    
+    @media (width >= 1920px) {
+        .precon-wrapper {
+            --grid-full: 6rem;
+    
+            margin-left: calc(var(--grid-full)* -1);
+            margin-right: calc(var(--grid-full)* -1);
+            width: calc(100% + var(--grid-full)* 2);
+        }
+    
+        .section.precon-container .precon-wrapper .block {
+            padding-left: 6rem !important;
+            padding-right: 6rem !important;
+        }
+    
+        .section.precon-container .precon-wrapper .precon {
+            list-style: none;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+    
+        .precon-wrapper .precon-wrapper-lft-area,
+        .precon-wrapper .precon-wrapper-rth-area {
+            justify-content: flex-end;
+            left: 0;
+            align-items: center;
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+        }
+    
+        .precon-wrapper .precon-wrapper-lft-area {
+            justify-content: flex-end;
+            left: 0;
+    
+        }
+    
+        .precon-wrapper .precon-wrapper-rth-area {
+            justify-content: flex-start;
+            left: auto;
+            right: 0;
+    
+        }
+    
+        .precon-wrapper .precon-wrapper-lft-area .carousel-btn-prev {
+            line-height: 1;
+            margin-right: 2rem;
+            background-color: white;
+            box-shadow: #00000029 0 0.375rem 1.25rem 0, #0000003D 0 0 0.0625rem 0;
+            height: 3rem;
+            width: 3rem;
+            opacity: 0.9;
+            border-width: 0;
+            border-style: initial;
+            border-color: initial;
+            border-image: initial;
+            padding: 0;
+            border-radius: 0.125rem;
+            transition: opacity 0.75s ease-in-out 0s;
+        }
+    
+        .precon-wrapper .precon-wrapper-lft-area .carousel-btn-prev::before {
+            overflow-wrap: normal;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+            content: "arrow_chevron_left";
+            direction: ltr;
+            display: block;
+            font-family: var(--icon-font-family) !important;
+            opacity: var(--iconfont400-opacity);
+            color: var(--text-color);
+            font-style: normal;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            text-rendering: optimizelegibility;
+            text-transform: none;
+            width: auto;
+            outline: transparent solid 1px;
+            white-space: nowrap
+        }
+    
+        .precon-wrapper .precon-wrapper-rth-area .carousel-btn-next {
+            line-height: 1;
+            margin-left: 2rem;
+            background-color: white;
+            box-shadow: #00000029 0 0.375rem 1.25rem 0, #0000003D 0 0 0.0625rem 0;
+            height: 3rem;
+            width: 3rem;
+            opacity: 0.9;
+            border-width: 0;
+            border-style: initial;
+            border-color: initial;
+            border-image: initial;
+            padding: 0;
+            border-radius: 0.125rem;
+            transition: opacity 0.75s ease-in-out 0s;
+        }
+    
+        .precon-wrapper .precon-wrapper-rth-area .carousel-btn-next::before {
+            overflow-wrap: normal;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+            content: "arrow_chevron_right";
+            direction: ltr;
+            display: block;
+            font-family: var(--icon-font-family) !important;
+            opacity: var(--iconfont400-opacity);
+            color: var(--text-color);
+            font-style: normal;
+            height: 1em;
+            line-height: 1;
+            text-align: center;
+            text-rendering: optimizelegibility;
+            text-transform: none;
+            width: auto;
+            outline: transparent solid 1px;
+            white-space: nowrap
+        }
+    
+        .precon .img-card img {
+            margin-bottom: 1.5rem;
+        }
+
+    }
+    
+    @media (width >= 1280px) and (width < 1920px) {
+        .precon-wrapper .precon-image-container {
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+    
+        .section.precon-container {
+            padding: 0;
+        }
+    
+        .precon .img-card img {
+            margin-bottom: 1.25rem;
+        }
+
 }
