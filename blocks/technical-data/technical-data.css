@@ -1,0 +1,301 @@
+.technical-data-block {
+    padding-top: 48px;
+}
+
+.techdata-selected-model-title {
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 32px;
+    text-align: start;
+    word-break: break-word;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.techdata-ddl-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0px;
+}
+
+.techdata-model-ddl-title {
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    text-align: start;
+    word-break: break-word;
+}
+
+.techdata-model-ddl-selected {
+    border-radius: 3px;
+    cursor: pointer;
+    min-height: 3.25rem;
+    padding: 0 0 0 1.25rem;
+    align-items: center;
+    background-color: #fff !important;
+    border: .0625rem solid #bbb;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: .5rem;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+    width: 100%;    
+}
+
+.techdata-model-ddl-selected-text {
+    color: #262626;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.techdata-model-ddl-icon {
+    color: #666;
+    padding: 0 1.25rem;
+    transition: transform .5s ease-in-out;
+}
+
+.techdata-model-ddl-ul-container {
+    display: none;
+    flex-flow: column nowrap;
+    height: 100%;
+    justify-content: flex-end;
+    left: 0;
+    max-height: unset;
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 6070;
+}
+
+.techdata-model-ddl-ul-container.active {
+    display: flex;
+}
+
+.techdata-model-ddl-ul-container::before {
+    background-color: #000c;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    content: " ";
+    box-sizing: border-box;
+}
+
+.techdata-model-ddl-ul {   
+    max-height: 75vh;
+    z-index: 6070;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.techdata-model-ddl-selected-mob {    
+    border-radius: 3px;
+    cursor: pointer;
+    min-height: 3.25rem;
+    padding: 0 0 0 1.25rem;
+    text-decoration: none;
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-right: 0;
+    text-align: left;
+    width: 100%;
+    border: .125rem solid #4d4d4d;
+    height: 3rem;
+    margin-top: 0;
+    padding-left: 0; 
+}
+
+.techdata-model-ddl-selected-mob .techdata-model-ddl-icon {
+    transform: rotate(-180deg);
+}
+
+.techdata-model-ddl-fuel-title {
+    background-color: #f2f2f2;
+    display: block;
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 1rem;
+    padding: .5rem 1.25rem;
+    color: #262626;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+}
+
+.techdata-model-ddl-model-container {
+    margin: 0;
+    padding: 0;
+}
+
+.techdata-model-ddl-model-btn {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    min-height: 3.25rem;
+    padding: 0 0 0 1.25rem;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    color: #262626;
+    font-size: .875rem;
+    font-weight: 300;
+    justify-content: space-between;
+    line-height: 1.375rem;
+    outline: 0;
+    width: 100%;
+}
+
+.techdata-model-ddl-model-item-title {
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 14px;
+    color: #262626;
+    font-weight: 300;
+    line-height: 22px;
+    text-align: start;
+}
+
+/* tablet */
+@media (width >= 768px) {
+    .techdata-selected-model-title {
+        font-size: 25px;
+        line-height: 36px;        
+    }
+}
+
+/* desktop */
+@media (width >= 1024px) {
+    .techdata-ddl-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .techdata-model-ddl-selected-mob {
+        display: none;
+    }
+
+    .techdata-model-ddl-container {
+        position: relative;
+    }
+
+    .techdata-model-ddl-ul-container {
+        display: none;
+        flex-flow: unset;
+        justify-content: unset;
+        opacity: unset;
+        top: unset;
+        background-color: #fff;
+        border-radius: 0 0 .1875rem .1875rem;
+        box-shadow: 0 .125rem .5rem 0 #00000014, 0 0 .0625rem 0 #0000003d;
+        list-style: none;
+        max-height: 234px;
+        overflow: hidden auto;
+        position: absolute;
+        scrollbar-color: #4d4d4d #e6e6e6;
+        scrollbar-width: thin;
+        width: 100%;
+        z-index: 10;
+        height: auto;
+    }
+
+    .techdata-model-ddl-ul-container.active {
+        display: block;
+    }    
+    
+    .techdata-model-ddl-ul-container::before {
+        background-color: unset;
+        bottom: unset;
+        left: unset;
+        position: unset;
+        right: unset;
+        top: unset;
+        content: unset;
+        box-sizing: unset;
+    }
+
+    .techdata-model-ddl-ul {
+        max-height: unset;
+        z-index: unset;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+    }
+}
+
+/* desktop */
+@media (width >= 1280px) {
+    .technical-data-block {
+        padding-top: 64px;
+    }
+
+    .techdata-selected-model-title {
+        font-size: 28px;
+        line-height: 40px;
+        margin-bottom: 12px;
+    }
+
+    .techdata-ddl-container {
+        padding-top: 40px;
+    }
+
+    .techdata-model-ddl-selected-text {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .techdata-model-ddl-selected-mob {
+        display: none;
+    }
+
+    .techdata-model-ddl-model-item-title {
+        font-size: 15px;
+        line-height: 24px;
+    }
+}
+
+/* desktop */
+@media (width >= 1920px) {
+    .technical-data-block {
+        padding-top: 80px;
+    }
+
+    .techdata-selected-model-title {
+        font-size: 34px;
+        line-height: 48px;
+        margin-bottom: 16px;      
+    }
+
+    .techdata-ddl-container {
+        padding-bottom: 2.5rem;
+        padding-top: 3rem;
+    }
+
+    .techdata-model-ddl-selected-text {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .techdata-model-ddl-model-item-title {
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
