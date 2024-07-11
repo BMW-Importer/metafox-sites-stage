@@ -1,0 +1,797 @@
+.drivetrain-switch-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    margin-top: 8px;
+}
+
+.drivetrain-switch-block .dts-selected-model-mob {   
+    align-items: center;
+    background-color: var(--background-color);
+    border: .0625rem solid var(--light-bbb);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: .5rem;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    min-height:3.25rem;
+}
+
+.drivetrain-switch-block .dts-right-tech-detail {
+    margin-top: 1rem;
+}
+
+.drivetrain-switch-block .dts-selected-model-mob-popover {
+    border: .125rem solid var(--medium-text-color);
+    height: 3rem;
+    margin-top: 0;
+    padding-left: 0;
+    align-items: center;
+    background-color: var(--background-color);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-right: 0;
+    text-align: left;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    min-height: 3.25rem;
+    text-decoration: none;
+}
+
+.drivetrain-switch-block .dts-selected-model-title {
+    color: var(--light-text-color);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    padding-left: 1.25rem;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    word-break: break-word;
+}
+
+.drivetrain-switch-block .dts-selected-model-mob-popover .dts-selected-model-title {
+    color: var(--light-text-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    padding-left: 1.25rem;
+}
+
+.dts-selected-model-mob-popover .dts-arrow-icon {
+    transform: rotate(-180deg);
+}
+
+.drivetrain-switch-block .dts-arrow-icon {
+    color: var(--light-border-color);
+    padding: 0 1.25rem;
+    transition: transform .5s ease-in-out;
+}
+
+.drivetrain-switch-block .dts-selected-model-mob.active .dts-arrow-icon {
+    transform: rotate(-180deg);
+}
+
+.drivetrain-switch-block .dts-left-panel {
+    flex: 0 0 100%;
+    display: none;
+}
+
+.drivetrain-switch-block .dts-left-panel.enablepopover {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+.drivetrain-switch-block .dts-left-panel.enablepopover::before {
+    background-color: #000c;    
+    position: fixed;
+    inset: 0;
+    content: "";
+}
+
+.drivetrain-switch-block .enablepopover .dts-model-grouping {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    z-index: 9999;
+    background: var(--background-color);
+    padding: 0;
+    margin: 0;
+}
+
+.drivetrain-switch-block .dts-right-panel {
+    flex: 0 0 100%;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.drivetrain-switch-block .dts-right-model-title-container {
+    position: relative;     
+    width: 100%;
+    aspect-ratio: 1.5;
+}
+
+.drivetrain-switch-block .dts-active-model-title {
+    position: absolute;
+    margin: 0;   
+    color: var(--light-grey-1);
+    text-align: left;
+    padding: .75rem 1.25rem 0 0;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 7.4375rem;
+    font-weight: 300;
+    line-height: 7.4375rem;
+    z-index: -1;
+    width: 100%;
+}
+
+.drivetrain-switch-block .dts-close-btn {
+    background-color: transparent;
+    border: 0;
+    color: var(--background-color);
+    cursor: pointer;
+    outline: 0;
+    padding: 1px 20px 1px 6px;
+}
+
+.drivetrain-switch-block .dts-close-btn-li {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    cursor: pointer;
+}
+
+.drivetrain-switch-block .dts-active-model-descp {
+    margin-top: 2rem;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 1.4375rem;
+    font-weight: 300;
+    line-height: 2rem;
+    width: 100%;
+    color: var(--light-text-color);
+    text-transform: unset;
+}
+
+.drivetrain-switch-block .dts-model-category-img {
+    display: none;
+    position: relative;
+}
+
+.drivetrain-switch-block .dts-model-category-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.drivetrain-switch-block .dts-model-category-title {
+    background-color: var(--bg-media-ghost-btn);
+    display: none;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 1rem;
+    padding: .5rem 1.25rem;
+}
+
+.drivetrain-switch-block .dts-model-category-title.visible {
+    display: block;
+}
+
+.drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
+    margin: 2.5rem 0 1.5rem;
+    background-color: var(--light-text-color);
+    color: var(--background-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.375rem;
+    word-break: break-word;
+    border: none;
+    padding: 0 1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn:hover {
+    outline: none !important;
+    border: none !important;
+}
+
+.drivetrain-switch-block .dts-model-category-descp {
+    background-color: var(--background-color);
+    outline: 0;
+    width: 100%;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: start;
+    min-height: 3.25rem;
+    padding: 0 0 0 1.25rem;
+    text-decoration: none;
+    pointer-events: none;
+    text-align: start;
+    color: var(--light-text-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    word-break: break-word;
+}
+
+.drivetrain-switch-block .dts-model-category-container.selected .dts-model-category-descp {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.drivetrain-switch-block .dts-model-category-icon-selected {
+    padding-right: 1.25rem;
+    color: var(--background-color);
+    position: absolute;
+    right: 0;
+    bottom: .9375rem;
+}
+
+.drivetrain-switch-block .dts-model-category-icon-selected::before {
+    font-size: 1.5rem;
+    font-weight: 400;
+    word-wrap: normal;
+    font-feature-settings: "liga";
+    content: "checkmark";
+    direction: ltr;
+    display: block;
+    font-family: var(--icon-font-family) !important;
+    opacity: var(--iconfont400-opacity);
+    font-style: normal;
+    height: 1.5rem;
+    line-height: 1;
+    outline: 1px solid var(--text-color);
+    text-align: left;
+    text-transform: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+.drivetrain-switch-block .dts-active-model-img img{
+    object-fit: cover;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table {
+    width: 100%;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tbody {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tr {
+    grid-gap: .5rem 1.5rem;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(var(--technicaldata-alignment, 2), auto);
+    height: 100%;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child {
+    display: flex;
+    justify-content: start;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child h2,
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child h3,
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child h4,
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child h5,
+.drivetrain-switch-block .dts-tech-detail-table tr td:first-child h6 {
+    color:var(--light-border-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 1rem;
+    margin: 0;
+    text-transform: unset;
+}
+
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h3,
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
+.drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
+    color: var(--light-text-color);
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.625rem;
+    margin: 0;
+    text-transform: unset;
+}
+
+.drivetrain-switch-block .disclaimer-content p {
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 1.125rem;
+    color: var(--light-text-color);
+    margin: 0;
+}
+
+.drivetrain-switch-block .disclaimer-content {
+    margin-top: 1rem;
+}
+
+/* mobile */
+@media (width >= 360px) and (width < 768px) {
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-size: 0.875rem;
+        line-height: 1.375rem;  
+    }
+}
+
+@media (width >= 768px) {
+    .drivetrain-switch-block .dts-right-model-title-container {
+        aspect-ratio: 1.7778;
+    }
+
+    .drivetrain-switch-block .dts-active-model-title {
+        font-size: 7.875rem;
+        line-height: 7.875rem;
+        padding-top: 1.25rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-size: 0.875rem;
+        line-height: 1.375rem;  
+    }
+
+    .drivetrain-switch-block .dts-active-model-descp {
+        font-size: 1.5625rem;
+        line-height: 2.25rem;
+        width: 66.6667%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail {
+        width: 66.6667%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .drivetrain-switch-block .disclaimer-content {
+        width: 66.6667%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .drivetrain-switch-block .dts-selected-model-mob {
+        width: 66.6667%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
+        margin: 3rem 0 1.5rem;
+        width: 50% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn:hover {
+        font-weight: 500;
+        background-color: var(--medium-text-color);
+        box-shadow: none;
+        color: var(--background-color);
+    }
+    
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h3,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+}
+
+/* desktop */
+@media (width >= 1024px) {
+    .drivetrain-switch-block {
+        display: grid;
+        grid-template-columns: 19% 83.3%;
+        margin: 1.5rem -.75rem 2.5rem;
+    }
+
+    .drivetrain-switch-block .mob-visible {
+        display: none;
+    }
+
+    .drivetrain-switch-block .dts-selected-model-mob {
+        display: none;
+    }
+
+    .drivetrain-switch-block .dts-left-panel {
+        display: block;
+        padding: 0 .75rem;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail {
+        margin: 1rem 0 0;        
+        flex-flow: row wrap;
+        gap: 1.5rem 2rem;
+        width: auto;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table {
+        width: auto;    
+    }
+
+    .drivetrain-switch-block .dts-left-panel.enablepopover {
+        position: relative;
+    }
+    
+    .drivetrain-switch-block .dts-right-panel {
+        margin-top: 0;
+        padding: 0 .75rem;
+    }
+
+    .drivetrain-switch-block .dts-right-model-title-container {
+        aspect-ratio: 2.3333;
+        overflow: hidden;
+    }
+
+    .drivetrain-switch-block .dts-active-model-title {        
+        padding-top: 1.5rem;
+        padding-left: 6rem;
+    }
+
+    .drivetrain-switch-block .dts-model-grouping {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        justify-content: center;
+        transition: opacity .5s ease-in .25s;
+        width: fit-content;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .drivetrain-switch-block .dts-model-category-title {
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .drivetrain-switch-block .i .dts-model-category-title::after {
+        position: relative;
+        content: '';
+        background-image: url("../../icons/BMW_subrand_i.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        height: .75rem;
+        width: 2rem;    
+        z-index: 2;  
+        box-sizing: border-box;
+        margin-left: 4px;
+    }
+
+    .drivetrain-switch-block .m .dts-model-category-title::after {
+        position: relative;
+        content: '';
+        background-image: url("../../icons/BMW_subrand_m.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;       
+        z-index: 2;
+        display: inline-block;
+        height: .75rem;
+        width: 2rem; 
+        left: 0;
+        margin-left: 4px;
+    }
+
+    .drivetrain-switch-block .dts-model-category-img {
+        display: inline-block;
+        max-width: 6.25vw;
+        background: transparent;
+        z-index: 2;
+    }
+
+    .drivetrain-switch-block .dts-active-model-descp {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .drivetrain-switch-block  .dts-category-box {
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        padding: .75rem;
+        border: .125rem solid var(--light-bbb);
+        background-color: var(--background-color);
+        color: var(--light-text-color);
+        align-items: center;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 var(--border-width, .125rem) var(--border-color, unset);
+        cursor: pointer;
+        gap: .25rem;
+        justify-content: center;
+        justify-content: unset;
+        min-height: 3.25rem;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .drivetrain-switch-block .dts-model-category-icon-selected {
+        display: none;
+    }
+
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-weight: 300;
+        background-color: transparent;
+        color: var(--light-text-color);
+        padding: 0;
+        min-height: unset;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-model-category-descp {
+        background-color: transparent;
+        color: var(--light-text-color);
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+        border: .125rem solid var(--medium-text-color);
+        box-sizing: border-box;
+        cursor: unset;
+        padding: 0.875rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box:hover {
+        box-shadow: 0 .375rem 1.25rem 0 #00000029, 0 0 .0625rem 0 #0000003d;
+    }
+
+    .drivetrain-switch-block .dts-model-category-link {
+        display: flex;
+        gap: .25rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box::before {
+        position: absolute;
+        font-size: 1rem;
+        font-weight: 400;
+        height: 1rem;
+        padding: .25em;
+        width: 1rem;
+        word-wrap: normal;
+        background: var(--medium-text-color);
+        border-radius: 50%;
+        color: var(--background-color);
+        content: "checkmark";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family) !important;
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        line-height: 1;
+        outline: 1px solid transparent;
+        right: -.333em;
+        text-align: left;
+        text-transform: none;
+        top: -10px;
+        white-space: nowrap;
+        z-index: 9999;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-bev::after,
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-phev::after {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: "liga";
+        content: 'fuel_type_bev';
+        direction: ltr;
+        display: block;
+        font-family: 'bmw_next_icons',Arial, Helvetica, Roboto, sans-serif;
+        font-style: normal;
+        outline: 1px solid #0000;
+        text-align: left;
+        text-transform: none;
+        white-space: nowrap;
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--fuel-icon-color);
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        position: absolute;
+        left: .80rem;
+        top: 1.4rem;
+        z-index: 1;
+        font-weight: 500;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box.fuel-type-phev::after {
+        content: 'fuel_type_phev';
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
+        margin: 1.5rem 0 0;
+        width: auto !important;
+        height: 3.25rem;
+    } 
+    
+    .drivetrain-switch-block .disclaimer-content {
+        width: 100%;
+        margin: 1rem 0 0;
+        max-width: 45.75rem;
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table tbody {        
+        display: flex;
+        flex-flow: row wrap;
+        gap: 1.5rem 2rem;
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table tr {
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+@media (width >= 1280px) {
+    .drivetrain-switch-block {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        margin-bottom: 3rem;
+    }
+
+    .drivetrain-switch-block .dts-active-model-title {
+        font-size: 13.125rem;
+        line-height: 13.125rem;
+        padding-top: 0;
+        padding-right: 1.5rem;
+    }
+
+    .drivetrain-switch-block .dts-active-model-descp {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+        width: 45.75rem;
+        margin: -1.25rem auto 0;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail {
+        margin: 1.25rem auto 0;
+        max-width: 45.75rem;
+        gap: 2rem 2.5rem;
+        justify-content: flex-start;
+    }
+
+    .drivetrain-switch-block .disclaimer-content {
+        margin: 1.25rem auto 0;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
+        margin: 0;
+        font-size: .9375rem;
+        line-height: 1.5rem;
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h3,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
+        font-size: 1.4375rem;
+        line-height: 2.25rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
+        padding: 0.875rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+        padding: 1rem;
+    }
+}
+
+@media (width >= 1440px) {
+    .drivetrain-switch-block {
+        display: grid;
+        grid-template-columns: 25% 75%;
+    }
+}
+
+@media (width >= 1920px) {
+    .drivetrain-switch-block {        
+        margin-bottom: 4rem;
+    }
+
+    .drivetrain-switch-block .dts-active-model-title {
+        font-size: 15.75rem;
+        line-height: 15.75rem;
+        padding: 2.5rem 2rem 0 172px;
+    }
+
+    .drivetrain-switch-block .dts-active-model-descp {
+        font-size: 2.125rem;
+        line-height: 3rem;
+        margin-top: -1.5rem;
+        width: 50.125rem;;
+    }
+
+    .drivetrain-switch-block .dts-right-tech-detail {
+        margin-top: 1.5rem;
+        max-width: 50.125rem;
+        gap: 2.5rem 3rem;
+    }
+
+
+    .drivetrain-switch-block .dts-right-tech-detail .dts-technical-link-btn {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.625rem;  
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h2,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h3,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h4,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h5,
+    .drivetrain-switch-block .dts-tech-detail-table tr td:nth-child(2) h6 {
+        font-size: 1.5625rem;
+        line-height: 2.375rem;
+    }
+
+    .drivetrain-switch-block .disclaimer-content {
+        margin: 1.5rem auto 0;
+        max-width: 50.125rem;    
+    }
+
+    .drivetrain-switch-block .dts-model-category-container .dts-category-box {
+        padding: 1rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-container.selected .dts-category-box {
+        padding: 1.125rem;
+    }
+
+    .drivetrain-switch-block .dts-tech-detail-table tbody {        
+        gap: 2.5rem 3rem;
+    }
+
+    .drivetrain-switch-block .dts-model-category-descp {
+        font-size: 1rem;
+        line-height: 1.625rem;
+        
+    }
+}

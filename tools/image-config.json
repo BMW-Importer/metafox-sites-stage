@@ -1,0 +1,29 @@
+{
+  "repoNames": [
+    "delivery-p48114-e244559.adobeaemcloud.com",
+    "delivery-p48114-e244609.adobeaemcloud.com"
+  ],
+  "filterSchema": [
+      {
+          "fields": [
+              {
+                  "element": "checkbox",
+                  "name": "type",
+                  "defaultValue": [
+                      "image/*"
+                  ],
+                  "options": [
+                      {
+                          "label": "Image",
+                          "value": "image/*",
+                          "readOnly": true
+                      }
+                  ],
+                  "orientation": "horizontal"
+              }
+          ],
+          "header": "File Type",
+          "groupKey": "FileTypeGroup"
+      }
+  ]
+}

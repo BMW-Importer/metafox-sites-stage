@@ -2,15 +2,22 @@ import {
   sampleRUM,
   loadHeader,
   loadFooter,
-  decorateButtons,
   decorateIcons,
-  decorateSections,
   decorateBlocks,
+  decorateSections,
   decorateTemplateAndTheme,
   waitForLCP,
   loadBlocks,
   loadCSS,
+  buildBlock,
+  readBlockConfig,
 } from './aem.js';
+
+import { decorateBMWButtons } from './bmw-util.js';
+
+if (!window.modelDataMap) {
+  window.modelDataMap = new Map();
+}
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -60,18 +67,53 @@ async function loadFonts() {
   }
 }
 
+function buildTabs(main) {
+  const tabs = [...main.querySelectorAll(':scope > div')]
+    .map((section) => {
+      const sectionMeta = section.querySelector('div.section-metadata');
+      if (sectionMeta) {
+        const meta = readBlockConfig(sectionMeta);
+        return [section, meta['tab-label']];
+      }
+      return null;
+    })
+    .filter((el) => !!el && el[1]);
+
+  if (tabs.length) {
+    const section = document.createElement('div');
+    section.className = 'section';
+    const ul = document.createElement('ul');
+    ul.append(...tabs
+      .map(([, tab]) => {
+        if (tab) {
+          const li = document.createElement('li');
+          li.innerText = tab;
+          return li;
+        }
+        return null;
+      })
+      .filter((li) => li !== null));
+
+    const tabsBlock = buildBlock('tabs', [[ul]]);
+    section.append(tabsBlock);
+    tabs[0][0].insertAdjacentElement('beforebegin', section);
+  }
+}
+
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildTabs(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
 }
+
 
 /**
  * Decorates the main element.
@@ -80,11 +122,11 @@ function buildAutoBlocks() {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
-  decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateBMWButtons(main);
 }
 
 /**
@@ -110,6 +152,51 @@ async function loadEager(doc) {
     // do nothing
   }
 }
+function launchVariables() {
+  const headElement = document.querySelector('head');
+  const scriptElement = document.createElement('script');
+  scriptElement.setAttribute('src', 'https://assets.adobedtm.com/413a8cbe910e/2a9212d4511b/launch-6ca074b36c7e-development.min.js');
+  headElement.appendChild(scriptElement);
+}
+
+
+function opt_in_info() {
+  const dateTime = new Date();
+
+  // Format the date components
+  const year = dateTime.getFullYear();
+  const month = (dateTime.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+  const day = dateTime.getDate().toString().padStart(2, '0');
+  const hours = dateTime.getHours().toString().padStart(2, '0');
+  const minutes = dateTime.getMinutes().toString().padStart(2, '0');
+  const seconds = dateTime.getSeconds().toString().padStart(2, '0');
+  const milliseconds = dateTime.getMilliseconds().toString().padStart(3, '0');
+  const timezoneOffset = -dateTime.getTimezoneOffset();
+  const timezoneOffsetHours = Math.floor(Math.abs(timezoneOffset) / 60).toString().padStart(2, '0');
+  const timezoneOffsetMinutes = (Math.abs(timezoneOffset) % 60).toString().padStart(2, '0');
+  const timezoneSign = timezoneOffset >= 0 ? '+' : '-';
+
+  // Construct the timestamp string
+  const timestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
+  console.log("Time of optin : " + timestamp);
+  const adobeDtm = window.adobeDataLayer;
+  console.log(adobeDtm.version);
+  const d = new Date();
+  alloy('setConsent', {
+    consent: [{
+      standard: 'Adobe',
+      version: '2.0',
+      value: {
+        collect: {
+          val: 'y'
+        },
+        metadata: {
+          time: timestamp
+        }
+      }
+    }]
+  });
+}
 
 /**
  * Loads everything that doesn't need to be delayed.
@@ -128,7 +215,6 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
@@ -140,25 +226,25 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+  import('./delayed.js');
 }
-
-function launchVariables() {
-  if (window.adobeDataLayer) {
-    if (window.location.hostname.startsWith('main') || window.location.pathname.endsWith('ancestor')) {
-      window.adobeDataLayer.push({ event: 'aem page loaded', foo: 'bar', key: 'value' });
-    } else {
-      window.adobeDataLayer.push({ event: 'Configurator Start', foo: 'bar', key: 'value' });
-    }
-  }
-}
-
 async function loadPage() {
+  launchVariables();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  launchVariables();
+  opt_in_info();
 }
 
 loadPage();
+
+document.fonts.addEventListener('loading', ({ target }) => {
+  [...target].filter(ff => ff.family === 'bmw_next_icons')
+    .forEach((ff) => {
+      ff.loaded.then(() => {
+        document.body.classList.add(`iconfont${ff.weight}-loaded`);
+        console.log(`Icon font ${ff.weight} loaded`);
+      });
+    });
+});

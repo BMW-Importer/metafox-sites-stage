@@ -10,12 +10,23 @@ export default async function decorate(block) {
   block.textContent = '';
 
   // load footer fragment
-  const footerPath = footerMeta.footer || '/footer';
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
   // decorate footer DOM
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  while (fragment.firstElementChild) {
+    // if curent div has data attr radio then its footer section
+
+    if (fragment.firstElementChild.hasAttribute('data-radio')) {
+      if (fragment.firstElementChild.getAttribute('data-radio') === 'white') {
+        fragment.firstElementChild.classList.add('footer-white-bg');
+      } else if (fragment.firstElementChild.getAttribute('data-radio') === 'grey') {
+        fragment.firstElementChild.classList.add('footer-grey-bg');
+      }
+    }
+    footer.append(fragment.firstElementChild);
+  }
 
   block.append(footer);
 }

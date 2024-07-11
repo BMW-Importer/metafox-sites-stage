@@ -1,0 +1,138 @@
+{
+  "model": {
+    "modelCode": "21ET",
+    "brand": "BM",
+    "description": "X6 M Competition",
+    "shortName": "X6 M Competition",
+    "shortRangeName": "F96",
+    "modelRangeCode": "F96",
+    "modelRanges": [
+      "F96"
+    ],
+    "seriesCode": "X6",
+    "series": [
+      "X6"
+    ],
+    "seriesDescription": "BMW X6",
+    "seriesDescriptions": [
+      "BMW X6"
+    ],
+    "hybridCode": "NOHY",
+    "fromPrice": 184910,
+    "acceleration": "3.9",
+    "trunkCapacity": 580,
+    "seats": 5,
+    "horsePower": 625,
+    "topSpeed": "250",
+    "marketingVehicleType": "M",
+    "bodyTypeCode": "SC",
+    "marketingBodyTypeCode": "SUV",
+    "bodyTypeDescription": "SAC",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "21ET",
+      "paint": "P0C5A",
+      "fabric": "FX3DA",
+      "options": "S01EZ,S04MC,S01MA,S01MD,S02PA,S02VB,S02VC,S0302,S03KA,S03M5,S03ME,S03MF,S03MG,S0407,S0417,S0418,S0420,S0423,S0428,S044A,S0453,S0459,S0488,S04FL,S04GQ,S04HA,S04HB,S04M5,S04MA,S04NB,S04NM,S04T7,S05AL,S05AU,S05AV,S05DW,S0654,S06C4,S06CP,S06F1,S06NX,S06PA,S06U3,S06U8,S0760,S0776,S07M9,S07ME,S07RS,CTRLLIGHTSON",
+      "productionDate": "2023-02-05"
+    },
+    "powerTrain": {
+      "fuelType": "O",
+      "systemPower": "460 (625)",
+      "systemMaxTorque": "750",
+      "gearBox": "8 - automatisch",
+      "driveType": "AR"
+    },
+    "effectDate": "2024-06-24",
+    "vehicles": [
+      {
+        "transmissionCode": "A",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "10",
+        "volt48": true,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "460 (625)",
+            "systemMaxTorque": "750",
+            "gearBox": "8 - automatisch",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "8",
+            "technicalCapacity": "4395",
+            "nominalPower": "460 (625) / 6000",
+            "nominalTorque": "750 / 1800 - 5800"
+          },
+          "electric": {
+            "systemPower": "9 (12) / -",
+            "systemMaxTorque": "200"
+          },
+          "performance": {
+            "acceleration": "3.9",
+            "topSpeed": "250",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "-",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "0",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "length": "4948",
+            "width": "2019",
+            "height": "1695",
+            "widthMirrors": "2212 (1119 / 1093)",
+            "wheelTurn": "2972.0",
+            "weightNotLoaded": "2445",
+            "weightMax": "3040",
+            "permittedLoad": "670",
+            "trailerLoad": "2700 / 140",
+            "trunkCapacity": "580–1530",
+            "tankCapacity": "83.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "charging": [
+            "f7"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      }
+    ]
+  }
+}

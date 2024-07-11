@@ -3,33 +3,183 @@
     "id": "main",
     "components": [
       "section",
-      "BMW UI Comps"
+      "bmw_main_section",
+      "footer-section",
+      "header-section",
+      "bmw-video",
+      "flexible-width-section",
+      "tabs-section"
     ]
   },
   {
     "id": "columns",
-    "components": []
-  },
-  {
-    "id": "BMW UI Comps",
-    "components": [
-      "text-image",
-      "section"
-    ]
+    "components": ["column"]
   },
   {
     "id": "column",
     "components": [
-      "text",
+      "title",
+      "copy_text",
       "image",
       "button",
-      "title"
+      "headline",
+      "eyebrow"
     ]
+  },
+  {
+    "id": "bmw_main_section",
+    "components": [
+      "text-image",
+      "text-image-v2",
+      "section"
+    ]
+  },
+  {
+    "id": "footer-section",
+    "components": [
+      "icon-link-list",
+      "copyright",
+      "link-list",
+      "speed-dial"
+    ]
+  },
+  {
+    "id": "header-section",
+    "components": [
+      "logo",
+      "subnavigation-text",
+      "menu-link",
+      "menu-flyout",
+      "icon-link-list"
+    ]
+  },
+  {
+    "id": "menu-flyout",
+    "components": [
+      "link-list",
+      "menu-teaser"
+    ]
+  },
+  {
+    "id": "menu-teaser",
+    "components": [
+      "copy_text",
+      "button"
+    ]
+  },
+  {
+    "id": "text-with-media",
+    "components": [
+      "text-with-image",
+      "text-with-video"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": ["superscript"],
+      "list": ["bullist", "numlist"],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "text-with-image",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "text-with-video",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "video-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "image-carousel",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "quote",
+    "components": [],
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [""],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
   },
   {
     "id": "section",
     "components": [
-      "text",
+      "copy_text",
       "image",
       "button",
       "title",
@@ -37,14 +187,176 @@
       "cards",
       "columns",
       "text-image",
-      "text-image-vertical",
-      "BMW-Iframe"
+      "text-image-v2",
+      "iframe",
+      "footer-text",
+      "icon",
+      "icon-link-list",
+      "bmw-video",
+      "link-list",
+      "copy_text",
+      "video",
+      "multicontent-gallery",
+      "text-with-media",
+      "model-card",
+      "content-navigation",
+      "accordion",
+      "disclaimer",
+      "eyebrow",
+      "headline",
+      "background-media",
+      "disclaimer",
+      "download",
+      "quote",
+      "media-carousel",
+      "video-gallery",
+      "custom-asset-one",
+      "drivetrain-switch",
+      "preconcomp",
+      "shopbylookcomp",
+      "cookiepolicy",
+      "technical-data",
+      "precon"
     ]
   },
   {
-    "id": "cards",
+    "id":"flexible-width-section",
+    "components":[
+      "copy_text",
+      "button",
+      "title",
+      "image",
+      "video",
+      "accordion",
+      "disclaimer",
+      "eyebrow",
+      "headline",
+      "download",
+      "quote",
+      "custom-asset-one"
+    ]
+  },
+  {
+    "id": "tabs-section",
     "components": [
-      "card"
+      "copy_text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "video"
+    ]
+  },
+  {
+    "id": "copy_text",
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": ["bullist", "numlist"],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": ["h3"],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+    "id": "subnavigation-text",
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [],
+      "advanced": ["h3"],
+      "extensions": [],
+       "editor": []
+    }
+  },
+  {
+    "id": "cards",
+    "components": ["card"]
+  },
+  {
+    "id": "icon-link-list",
+    "components": ["icon"]
+  },
+  {
+    "id": "link-list",
+    "components": [],
+    "rte": {
+      "format": [],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": ["bullist"],
+      "insert": ["link"],
+      "advanced": [],
+      "extensions": [],
+      "editor": []
+    }
+  },
+  {
+    "id": "multicontent-gallery",
+    "components": [
+      "video-slide",
+      "image-slide"
+    ]
+  },
+  {
+    "id": "video-slide",
+    "components": []
+  },
+  {
+    "id": "image-slide",
+    "components": []
+  },
+  {
+    "id": "media-carousel",
+    "components": [
+      "video-carousel",
+      "image-carousel"
+    ]
+  },
+  {
+    "id": "background-media",
+    "components":[
+      "background-image",
+      "background-video"
+    ]
+  },
+  {
+    "id": "video-gallery",
+    "components": [
+      "video-gallery-slide"
+    ]
+  },
+  {
+    "id": "drivetrain-switch",
+    "components": [
+      "drivetrain-model-card"
+    ]
+  },
+  {
+    "id": "precon",
+    "components": [
+      "precon-vehicle"
+    ]
+  },
+  {
+    "id": "speed-dial",
+    "components":[
+      "speed-dial-item"
+    ]
+  },
+  {
+    "id": "technical-data",
+    "components":[
+      "model-data"
     ]
   }
 ]

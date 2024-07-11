@@ -1,0 +1,49 @@
+.fg div {
+  max-width: 600px;
+  color: grey;
+}
+
+main .text-image-v2-container > div {
+  max-width: unset;
+}
+  
+main .text-image-v2-container {
+  padding: 30px;
+}
+
+.text-image-v2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.bg {
+  height: 350px;
+  width: auto;
+}
+
+.bg img {
+  width: auto;
+  height: 350px;
+  position: relative;
+}
+
+.bg p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fg {
+  height: 350px;
+  width: fit-content;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+

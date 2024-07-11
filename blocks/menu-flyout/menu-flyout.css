@@ -1,0 +1,421 @@
+/* stylelint-disable no-descending-specificity */
+
+/* menu-flyout css */
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3.75rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    background-image: linear-gradient(rgba(255 255 255 / 0%), rgba(255 255 255 / 100%));
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-scroll-indicator-arrow::before{
+    margin: .5rem;
+    overflow-wrap: normal;
+    font-size: 2rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga";
+    content: "arrow_chevron_down";
+    direction: ltr;
+    display: block;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    text-transform: none;
+    width: auto;
+    outline: transparent solid 1px;
+    white-space: nowrap;
+    color: var(--light-text-color)    
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-link-list {
+    padding: 0 0.75rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
+    margin-right: 25%;
+    display: block;
+    width: 100%;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image {
+    margin-bottom: 0.5rem;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .copy-text {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-color);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+    font-family: var(--fixed-font-family);
+    font-size: 0.9375rem;
+    color: var(--light-text-color);
+    line-height: 1.25rem;
+    font-weight: 500;
+    word-break: break-all;
+    text-decoration: none;
+    align-items: center;
+    display: inline-flex;
+    text-wrap: pretty;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
+    align-items: center;
+    display: inline-flex;
+    color: var(--light-text-color);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a:hover,
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a:hover::after,
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a:hover
+  {
+    text-decoration: none;
+    color: var(--light-link-hover-color);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a::after {
+    overflow-wrap: normal;
+    font-size: 1.25rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga";
+    content: "arrow_chevron_right";
+    direction: ltr;
+    display: block;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    text-transform: none;
+    width: auto;
+    outline: transparent solid 1px;
+    white-space: nowrap;
+    color: var(--light-text-color)
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-title {
+    padding-right: 0;
+    margin: 0 0 1rem;
+    color: var(--light-text-color);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1rem;
+    word-break: break-all;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail {
+    list-style-type: none;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
+    margin: 0 0 .75rem;
+    display: flex;
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li:not(:first-child) a::after {
+    overflow-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "liga";
+    content: " ";
+    direction: ltr;
+    display: block;
+    font-family: var(--icon-font-family);
+    opacity: var(--iconfont400-opacity);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    height: 1em;
+    line-height: 1;
+    text-align: left;
+    text-rendering: optimizelegibility;
+    text-transform: none;
+    width: auto;
+    outline: transparent solid 1px;
+    white-space: nowrap;
+}
+
+.flyout-menu-teaser p {
+    margin: 0;
+}
+
+/* BMW info tab css */
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container{
+    flex-wrap: wrap;
+    height: auto;
+    overflow-y: auto;
+    align-items: revert;
+    row-gap: 3rem;
+    max-height: calc(100vh - 15rem);
+}
+
+header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-link-list {
+ margin-left: 0;
+ flex: 0 0 20%
+}
+
+/* ipad mini and ipad air */
+@media (width >= 768px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser{
+        width: 100%;
+    }
+    
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list {
+        width: 50%;  
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 0 2.25rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+    width: 100%;
+    height: 19.5rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
+       position: absolute;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .link-label a {
+        line-height: 1.25rem;
+       
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
+        margin: 0 0 .75rem;
+    }
+}
+
+@media (width >= 768px) and (width < 830px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .container-menu-teaser{
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-link-list,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container.single-submenu .flyout-menu-teaser {
+        padding: 0;
+        position: relative;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
+        padding: 0 2.25rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-main-container.single-submenu .link-list-wrapper.vertical li {
+        margin-bottom: 1.5rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;
+       
+    }
+}
+
+@media (width >= 830px) and (width < 1023px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list{
+        width: 50%;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+    }
+}
+
+@media (width >= 1024px) and (width < 1280px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .container-link-list{
+        width: 25%;
+    }
+}
+
+/* ipad pro */
+@media (width >= 830px) and (width < 1280px) {
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout .flyout-main-container .flyout-link-list .link-list .link-list-detail{
+        overflow: unset;
+        margin-left: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        row-gap:0;
+        padding: 0 2.5rem;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title::after {
+        display: none;
+    }
+
+    header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper .flyout-main-container {
+        display: flex;
+    }
+    
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
+        display: none;
+     }
+
+     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser {
+        width: 65%;
+     }
+
+     header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img{
+        width: 30.375rem;
+        height: 17.0625rem;
+     }
+
+     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .flyout-wrapper {
+        padding: 0 2.25rem;
+     }
+
+     header nav[aria-expanded="true"] .nav-brand.mobile-flyout .menu-flyout-wrapper.showfly .link-list-wrapper.vertical .link-list-title {
+        padding-right: 0;
+        margin: 0 0 1rem;
+        color: var(--light-text-color);
+        font-size: 0.625rem;
+        font-weight: 300;
+        line-height: 0.75rem;
+        letter-spacing: 0.125rem;
+        word-break: break-all;
+        text-transform: uppercase;
+      }
+
+      header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+        word-break: unset;
+    }
+   
+}
+
+/* mobile */
+@media (width < 768px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical li {
+        margin: 0 0 1.5rem;
+        display: flex;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser {
+        padding: 0;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture, header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+        height: 9.375rem;
+        width: 100%;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-link-list, 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .container-menu-teaser,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-wrapper.bmw-info .flyout-main-container .container-link-list {
+        margin-left: 8.3%;
+        width: 83.3%;
+        padding: 0 0.5rem;
+        box-sizing: border-box
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container{
+        flex-wrap: wrap;
+        height: auto;
+        overflow-y: auto;
+        align-items: revert;
+        row-gap: 4rem;
+        max-height: calc(100vh - 9rem);
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .link-list-wrapper.vertical .link-list-title {    
+        margin-bottom: .75rem !important;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .link-list-wrapper.vertical .link-list .link-list-title.expand{    
+        margin-bottom: 1.5rem !important;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper:last-child .flyout-main-container .flyout-scroll-indicator-arrow {
+        bottom: 4.5%;
+        left: 0;
+        position: absolute;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-size: 0.875rem;
+        line-height: 22px;
+        font-weight: 500;       
+    }
+}
+
+/* Desktop  */
+@media (width >= 1280px) and (width < 1920px) { 
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+        width: 15.875rem;
+        height: 8.938rem;
+  }
+}
+
+/* large desktop */
+@media (width >= 1920px) {
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .flyout-wrapper .flyout-main-container .flyout-scroll-indicator-arrow {
+        display: none;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image picture,
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .menu-flyout .flyout-main-container .flyout-menu-teaser .menu-teaser-image img {
+      width: 25.875rem;
+      height: 14.5rem;
+    }
+
+    header.header-wrapper .nav-brand .menu-flyout-wrapper .link-list-wrapper.vertical .link-list-detail li a {
+        font-family: var(--fixed-font-family);
+        font-size: 1rem;
+        color: var(--light-text-color);
+        line-height: 1.625rem;
+        font-weight: 500;
+        word-break: break-all;
+        text-decoration: none;
+        align-items: center;
+        display: inline-flex;
+        text-wrap: pretty;
+    }
+
+  }

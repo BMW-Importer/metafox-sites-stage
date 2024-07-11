@@ -1,0 +1,93 @@
+[data-sectionwidth^='grid'] {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: 0;
+  grid-template-areas: "leftEmpty content rightEmpty";
+}
+
+ [data-sectionwidth^='grid'] > div {
+  grid-area: content;
+}
+
+ [data-sectionwidth='grid-8'] {
+ /* 8/12 = 66.66% */
+  grid-template-columns: 1fr 4fr 1fr;
+}
+
+ [data-sectionwidth='grid-6'] {
+ /* 6/12 = 50% */
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+ [data-sectionwidth='grid-10'] {
+  /* 10/12 = 83.33% */
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='center'] {
+  text-align: center;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='left'] {
+  text-align: left;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='right'] {
+  text-align: right;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='center'] .button-container > .align-icon {
+  justify-content: center;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='left']  .button-container > .align-icon {
+  justify-content: left;
+}
+
+ [data-sectionwidth^='grid'][data-sectionalignment='right'] .button-container > .align-icon {
+  justify-content: right;
+}
+
+[data-sectiontopmargin='true'] {
+  margin-top: 3rem;
+}
+
+[data-sectionbgcolor='grey'] {
+  background-color: var(--light-grey-1);
+}
+
+/* tablet */
+@media (width >=768px) and (width < 1280px) {
+   [data-sectionwidth^='grid'] {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-gap: 0;
+    grid-template-areas: "leftEmpty content rightEmpty";
+  }
+  
+  [data-sectiontopmargin='true'] {
+    margin-top: 2.5rem;
+  }
+
+   [data-sectionwidth^='grid'] >  div {
+    word-break: break-word
+  }
+}
+
+/* mobile */
+@media (width >=360px) and (width < 768px) {
+   [data-sectionwidth^='grid'] {
+    display: grid;
+    grid-template-columns: 0fr 1fr 0fr;
+    grid-gap: 0;
+    grid-template-areas: "leftEmpty content rightEmpty";
+  }
+
+   [data-sectiontopmargin='true'] {
+    margin-top: 2.5rem;
+  }
+
+   [data-sectionwidth^='grid'] >  div {
+    word-break: break-word
+  }
+}

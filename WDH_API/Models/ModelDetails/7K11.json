@@ -1,0 +1,217 @@
+{
+  "model": {
+    "modelCode": "7K11",
+    "brand": "BM",
+    "description": "116i",
+    "shortName": "116i",
+    "shortRangeName": "F40",
+    "modelRangeCode": "F40",
+    "modelRanges": [
+      "F40"
+    ],
+    "seriesCode": "1",
+    "series": [
+      "1"
+    ],
+    "seriesDescription": "BMW Serije 1",
+    "seriesDescriptions": [
+      "BMW Serije 1"
+    ],
+    "hybridCode": "NOHY",
+    "fromPrice": 33596,
+    "acceleration": "10.6",
+    "trunkCapacity": 380,
+    "seats": 5,
+    "horsePower": 109,
+    "topSpeed": "199",
+    "bodyTypeCode": "CP",
+    "marketingBodyTypeCode": "CP",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "7K11",
+      "paint": "P0C1D",
+      "fabric": "FKKSW",
+      "options": "S01CB,S01DF,S01DZ,S01RL,S0230,S0249,S02PA,S02VB,S02VE,S0423,S0428,S0481,S0493,S04NE,S04P2,S0508,S0544,S0548,S0563,S05A1,S05A2,S05AQ,S05DA,S0654,S06AE,S06AF,S06AK,S06C1,S0704,S0710,S0715,S0760,S0775,S07LF,S0801,S0851,S0879,S08KA,S08R9,S08TF"
+    },
+    "powerTrain": {
+      "fuelType": "O",
+      "systemPower": "80 (109)",
+      "systemMaxTorque": "190",
+      "gearBox": "6 - handgeschaltet",
+      "driveType": "VR"
+    },
+    "effectDate": "2024-06-24",
+    "vehicles": [
+      {
+        "transmissionCode": "Default",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "00",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "80 (109)",
+            "systemMaxTorque": "190",
+            "gearBox": "6 - handgeschaltet",
+            "driveType": "VR"
+          },
+          "engine": {
+            "cylinders": "3",
+            "technicalCapacity": "1499",
+            "nominalPower": "80 (109) / 4300 - 6500",
+            "nominalTorque": "190 / 1380 - 3800"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "performance": {
+            "acceleration": "10.6",
+            "topSpeed": "199",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "6.6–5.7",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "151–129",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "length": "4319",
+            "width": "1799",
+            "height": "1434",
+            "widthMirrors": "2081 (1045 / 1036)",
+            "wheelTurn": "2670.0",
+            "weightNotLoaded": "1395",
+            "weightMax": "1850",
+            "permittedLoad": "530",
+            "trailerLoad": "1100 / 75",
+            "trunkCapacity": "380–1200",
+            "tankCapacity": "42.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      },
+      {
+        "transmissionCode": "S02TF",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "00",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "80 (109)",
+            "systemMaxTorque": "190",
+            "gearBox": "7 - automatisch",
+            "driveType": "VR"
+          },
+          "engine": {
+            "cylinders": "3",
+            "technicalCapacity": "1499",
+            "nominalPower": "80 (109) / 4300 - 6500",
+            "nominalTorque": "190 / 1380 - 3800"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "performance": {
+            "acceleration": "10.6",
+            "topSpeed": "199",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "6.8–5.8",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "154–133",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "length": "4319",
+            "width": "1799",
+            "height": "1434",
+            "widthMirrors": "2081 (1045 / 1036)",
+            "wheelTurn": "2670.0",
+            "weightNotLoaded": "1415",
+            "weightMax": "1870",
+            "permittedLoad": "530",
+            "trailerLoad": "1100 / 75",
+            "trunkCapacity": "380–1200",
+            "tankCapacity": "42.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      }
+    ]
+  }
+}
