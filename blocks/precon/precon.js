@@ -26,10 +26,16 @@ function updateCarousel(content, currentIndex, gap) {
 
 function updateDots(dotsWrapper, currentIndex) {
   const dots = dotsWrapper.querySelectorAll('.dot');
+  if (currentIndex === null || currentIndex === undefined) {
+    currentIndex = 1;
+  }
+
   dots.forEach((dot, index) => {
     if (index === currentIndex) {
+      console.log(currentIndex);
       dot.classList.add('active');
     } else {
+      console.log(currentIndex);
       dot.classList.remove('active');
     }
   });
@@ -45,7 +51,7 @@ function onHoverCarousel(content, currentIndex, direction, gap) {
 }
 
 function onHoverCarouselLeave(content, currentIndex, gap) {
-  content.style.transform = 'translate3d(-261.818px, 0px, 0px)';
+  content.style.transform = 'translate3d(0px, 0px, 0px)';
   content.style.transitionDuration = '0ms';
   content.style.transitionDelay = '0ms';
   if (iconClicked) {
@@ -142,7 +148,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
 
   const preButton = block && block.querySelector('.carousel-btn-prev');
   const nexButton = block.querySelector('.carousel-btn-next');
-  let currentIndex = 0;
+  let currentIndex = 1;
   function updateDotCarousel() {
     updateCarousel(content, currentIndex, gap);
   }
@@ -171,7 +177,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
   for (let i = 0; i < totalDots; i += 1) {
     const dotButton = document.createElement('button');
     dotButton.classList.add('dot');
-    if (i === 0) dotButton.classList.add('active');
+    if (i === 1) dotButton.classList.add('active');
     dotButton.addEventListener('click', (createClickHandler(i)));
     dotsWrapper.append(dotButton);
   }
@@ -308,7 +314,7 @@ export function resizePreconBlock() {
       carouselContent,
       totalItems,
       cardsToShow,
-      0,
+      1,
       gap,
     );
     if (viewport >= 1024 && totalItems > 1) {
@@ -323,7 +329,8 @@ export function resizePreconBlock() {
       );
     }
     addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
-    updateCarousel(carouselContent, 0, gap);
+    updateCarousel(carouselContent, 1, gap);
+    updateDots(block.querySelector('.dots-navigation'), 1);
   });
 }
 
@@ -337,19 +344,26 @@ export function preconResizer() {
   });
 }
 
-function generatePrecon(wdhContext, linkTab, preconData) {
+function generatePrecon(linkTab, preconData,headLineDom, configureCTADom,splitPreconData) {
+
   const preTitle = document.createElement('div');
   preTitle.classList.add('precon-title');
+
+  const preConPriceDetailWrapper = document.createElement('div');
+  preConPriceDetailWrapper.classList.add('price-details-wrapper');
+
+  preTitle.textContent = splitPreconData[3] || '';
 
   const preCtaWrap = document.querySelector('.precon-link');
 
   const preconDesWrapper = document.createElement('div');
   preconDesWrapper.classList.add('precon-description');
 
-  const preconAnchorElm = linkTab?.querySelector('a') || '';
+  // const preconAnchorElm = linkTab?.querySelector('a') || '';
+  preCtaWrap.append(configureCTADom);
+  preConPriceDetailWrapper.append(headLineDom, preCtaWrap)
 
-  preCtaWrap.append(preconAnchorElm);
-  preconData.append(wdhContext, preCtaWrap)
+  preconData.append(preTitle, preConPriceDetailWrapper);
   resizePreconBlock();
 }
 
@@ -368,55 +382,14 @@ function configureCTA(selectedModel, currentVechileData) {
   return selectedModelValue;
 }
 
-async function generateCosyImage(headLineDom, wdhContext, imageDomContainer) {
+async function generateCosyImage(imageDomContainer, preConCosyImage) {
   const imageCardContainer = document.createElement('div');
   imageCardContainer.classList.add('img-card-container');
   const imageCard = document.createElement('div');
   imageCard.classList.add('img-card');
-
-  let preConModelResponse;
-  let preConCosyImage;
-  let preConHeadLine;
-  let optionsValue;
-  let configureLink;
-  let configureCTADom;
   let preConImageDOM;
-  
-const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
-const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
-const selectedModelRange = splitPreconData[1]?.trim() || ''; // authored selected ModelRange G21
-const selectedPreConId = splitPreconData[2]?.trim() || ''; // authored selected PRECODN-ID
-preconData.removeChild(wdhContext);
-preconData.removeChild(linkTab);
-try {
-  if (selectedModelRange) {
-    preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
-    console.log('preConModel response', preConModelResponse);
-  }
-} catch (error) {
-  console.error(error);
-}
-if (preConModelResponse) {
-  let preConModeCode;
-  for (let key in preConModelResponse.responseJson) {
-    if (preConModelResponse.responseJson[key].id === selectedPreConId);
-    preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
-    preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
-    optionsValue = preConModelResponse.responseJson[key]?.options; //
-    configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
-    break;
-  }
-  const optionsCount = optionsValue.split(',').length;
-  preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
-  headLineDom = document.createElement('div');
-  headLineDom.classList.add('headerline-wrapper');
-  headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`;
-  configureCTADom = document.createElement('a');
-  configureCTADom.classList.add('button');
-  configureCTADom.href = configureLink;
-  configureCTADom.textContent = "CLICK ME";
-  headLineDom.append(configureCTADom);
-}
+
+
 if (preConCosyImage) { // cosy image to show for Pre-Con
   const screenWidth = window.innerWidth;
   const resolutionKey = getResolutionKey(screenWidth);
@@ -441,9 +414,10 @@ if (preConCosyImage) { // cosy image to show for Pre-Con
     pictureTag.appendChild(imgTag);
     return pictureTag;
   };
+  
 
-  preConImageDOM = createPictureTag(40);
-    imageCard.append(preConImageDOM, preConHeadLine)
+    preConImageDOM = createPictureTag(40);
+    imageCard.append(preConImageDOM)
     imageCardContainer.append(imageCard);
     imageDomContainer.append(imageCardContainer);
   }
@@ -467,12 +441,52 @@ export default async function decorate(block) {
   const precon = [...block.children];
   for (const preconData of precon) {
     const [wdhContext, linkTab] = preconData.children;
-    
-    preconData.children[0].classList.add('precon-wdh');
+    preconData.classList.add('pre-content-outer-wrapper')
+    preconData.children[0].classList.add('hidden');
     preconData.children[1].classList.add('precon-link');
 
-    generateCosyImage(headLineDom, wdhContext, imageDomContainer);
-    generatePrecon(wdhContext, linkTab, preconData);
+    let preConModelResponse;
+    let preConCosyImage;
+    let preConHeadLine;
+    let optionsValue;
+    let configureLink;
+    let configureCTADom;
+    
+  const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
+  const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
+  const selectedModelRange = splitPreconData[1]?.trim() || ''; // authored selected ModelRange G21
+  const selectedPreConId = splitPreconData[2]?.trim() || ''; // authored selected PRECODN-ID
+  try {
+    if (selectedModelRange) {
+      preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
+      console.log('preConModel response', preConModelResponse);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  if (preConModelResponse) {
+    let preConModeCode;
+    for (let key in preConModelResponse.responseJson) {
+      if (preConModelResponse.responseJson[key].id === selectedPreConId);
+      preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
+      preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
+      optionsValue = preConModelResponse.responseJson[key]?.options; //
+      configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
+      break;
+    }
+    const optionsCount = optionsValue.split(',').length;
+    preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
+    headLineDom = document.createElement('div');
+    headLineDom.classList.add('headerline-wrapper');
+    headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`;
+    configureCTADom = document.createElement('a');
+    configureCTADom.classList.add('button');
+    configureCTADom.href = configureLink;
+    configureCTADom.textContent = "CLICK ME";
+  }
+    
+    generateCosyImage(imageDomContainer, preConCosyImage);
+    generatePrecon(linkTab, preconData, headLineDom, configureCTADom, splitPreconData);
     contentData.append(preconData);
   }
   block.textContent = '';

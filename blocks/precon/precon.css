@@ -5,6 +5,11 @@
     margin: 2rem 0;
 }
 
+.precon-wrapper .precon.block {
+    display: flex;
+    flex-direction: column;
+}
+
 .precon-wrapper .precon-image-container picture img {
     aspect-ratio: 2.5 / 1;
     vertical-align: middle;
@@ -14,10 +19,10 @@
     width: 100%;
 }
 
-.precon-wrapper .precon-image-container picture {
+/* .precon-wrapper .precon-image-container picture {
     display: flex;
     justify-content: center;
-}
+} */
     
 
 .precon-wrapper .precon-image-container {
@@ -45,6 +50,34 @@
     transition-property: transform;
 }
 
+.precon-wrapper .dots-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.precon-wrapper .dot {
+    background-color: #8e8e8e;
+    cursor: pointer;
+    border: 0;
+    height: .5rem;
+    margin: .125rem .75rem;
+    padding: 0;
+    width: .5rem;
+    position: relative;
+    flex: 0 1 auto;
+    border-radius: 50%;
+    font-size: 0;
+    text-indent: -187.5rem;
+}
+
+.precon-wrapper .dot.active {
+    background-color: #262626;
+    transform: scale(1.5);
+    margin: .125rem .75rem;
+    cursor: pointer;
+}
+
 .precon-wrapper .precon-image-container .img-card-container.active {
     filter: none;
 }
@@ -55,6 +88,15 @@
     transition: filter .25s linear;
     right: .75rem;
 }
+.precon-wrapper .precon-content-data{
+    order: 1;
+}
+
+.precon-wrapper .precon-content-data .precon-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    }
 
 @media (width >= 1280px){
     .precon-wrapper .precon-wrapper-lft-area,
@@ -81,6 +123,44 @@
         left: auto;
         right: 0;
     
+    }
+
+    .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
+        padding: 8.333%;
+        padding-top: 1.5rem;
+    }
+
+    .precon-wrapper .precon-content-data .price-details-wrapper {
+        --grid-gutter : .75rem;
+        display: flex;
+        gap: calc(var(--grid-gutter) * 2);
+    }
+
+    .precon-wrapper .precon-content-data .price-details-wrapper .headerline-wrapper {
+        flex: 9;
+    }
+
+    .precon-wrapper .precon-content-data .precon-link{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-end;
+        flex: 3;
+    }
+    .precon-wrapper .precon-content-data .precon-link a {
+        background-color: #262626;
+        color: #fff;
+        align-items: center;
+        border: 0;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        min-height: 3.25rem;
+        padding: .25rem;
+        text-align: center;
+        text-decoration: none;
     }
 }
     
@@ -183,6 +263,7 @@
             display: flex;
             justify-content: flex-start;
             width: 15rem;
+            height: 50%;
         }
 
         .precon .img-card picture img {
@@ -361,6 +442,11 @@
     
     @media (width >= 1280px) and (width < 1920px) {
         .precon-wrapper .precon-image-container {
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+
+        .precon-wrapper .precon-content-data {
             padding-left: 6rem;
             padding-right: 6rem;
         }
