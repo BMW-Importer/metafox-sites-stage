@@ -1187,15 +1187,15 @@
         "options": [
           {
             "name": "Exit",
-            "value": "Exit"
+            "value": "exit"
           },
           {
             "name": "Download",
-            "value": "Download"
+            "value": "download"
           },
           {
             "name": "Other",
-            "value": "Other"
+            "value": "other"
           }          
         ]    
       },
@@ -4347,16 +4347,18 @@
         "name": "contexturalised"
       },
       {
-        "component": "text-input",
-        "label": "Link Label",
-        "name": "contexturalised_linkLabel",
-        "description": "Defines the text to be displayed in the contextualised button."
+        "component": "text",
+        "label": "Link",
+        "valueType": "string",
+        "name": "contextualised_linkText",
+        "description": "Defines the link of the contextualised button."
       },
       {
-        "component": "text-input",
-        "label": "Link",
-        "name": "contexturalised_linkText",
-        "description": "Defines the link of the contextualised button."
+        "component": "text",
+        "valueType": "string",
+        "label": "Link Label",
+        "name": "contextualised_linkLabel",
+        "description": "Defines the text to be displayed in the contextualised button."
       }
     ]
   },
@@ -4576,15 +4578,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }
         ]
