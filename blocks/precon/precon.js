@@ -352,7 +352,7 @@ export function preconResizer() {
   });
 }
 
-function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, configureCTADom,splitPreconData, optionsCount) {
+function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, configureCTADom, preConModelName, optionsCount) {
 
   const preTitle = document.createElement('div');
   preTitle.classList.add('precon-title');
@@ -392,13 +392,14 @@ function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, co
   preConWidget.append(preLeasingWrapper)
   preConPriceInnerWrapper.append(preConswatches, preConWidget)
 
-  preTitle.textContent = splitPreconData[3] || '';
+  preTitle.textContent = preConModelName || '';
 
   const preCtaWrap = document.querySelector('.precon-link');
 
   const preconDesWrapper = document.createElement('div');
   preconDesWrapper.classList.add('precon-description');
 
+  // linkTab.textContent = '';
   preCtaWrap.append(configureCTADom);
   preconPreiceDetails.append(headLineDom, preConPriceInnerWrapper);
   preConPriceDetailWrapper.append(preconPreiceDetails, preCtaWrap)
@@ -437,7 +438,7 @@ if (preConCosyImage) { // cosy image to show for Pre-Con
   const resolutionKey = getResolutionKey(screenWidth);
   const createPictureTag = (quality) => {
     const pictureTag = document.createElement('picture');
-    const resolutions = [1025, 768];
+    const resolutions = [767, 1023, 1919];
     resolutions.forEach((resolution) => {
       const sourceTag = document.createElement('source');
       sourceTag.srcset = getCosyImageUrl(
@@ -495,6 +496,8 @@ export default async function decorate(block) {
     let configureLink;
     let configureCTADom;
     let optionsCount;
+    let preConModeCode;
+    let preConModelName;
     
   const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
   const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
@@ -509,11 +512,11 @@ export default async function decorate(block) {
     console.error(error);
   }
   if (preConModelResponse) {
-    let preConModeCode;
     for (let key in preConModelResponse.responseJson) {
       if (preConModelResponse.responseJson[key].id === selectedPreConId);
       preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
       preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
+      preConModelName = preConModelResponse.responseJson[key]?.modelName;
       optionsValue = preConModelResponse.responseJson[key]?.options; //
       configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
       break;
@@ -522,16 +525,17 @@ export default async function decorate(block) {
     preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
     headLineDom = document.createElement('div');
     headLineDom.classList.add('headerline-wrapper');
-    headLineDom.textContent = `HeadLine test: ${preConHeadLine}`;
+    headLineDom.textContent =  `${preConHeadLine}`;
     
     configureCTADom = document.createElement('a');
     configureCTADom.classList.add('button');
     configureCTADom.href = configureLink;
-    configureCTADom.textContent = "CLICK ME";
+    configureCTADom.textContent = linkTab.querySelector('p').textContent;
+    linkTab.textContent = '';
   }
     
     generateCosyImage(imageDomContainer, preConCosyImage);
-    generatePrecon(wdhContext, linkTab, preconData, headLineDom, configureCTADom, splitPreconData, optionsCount);
+    generatePrecon(wdhContext, linkTab, preconData, headLineDom, configureCTADom, preConModelName, optionsCount);
     contentData.append(preconData);
   }
   block.textContent = '';
