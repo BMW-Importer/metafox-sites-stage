@@ -2,7 +2,6 @@ import {
   getPreConApiResponse, getPreConCosyImage, getResolutionKey, getCosyImageUrl,
 } from '../../scripts/common/wdh-util.js';
 
-
 let iconClicked = false;
 
 function updateCarousel(content, currentIndex, gap) {
@@ -12,6 +11,8 @@ function updateCarousel(content, currentIndex, gap) {
   content.style.transitionDuration = '750ms';
   content.style.transitionDelay = '100ms';
 
+  const preconWrapper = document.querySelectorAll(`.pre-content-outer-wrapper`)
+
   const cards = content.children;
   for (let i = 0; i < cards.length; i++) {
     if (i === currentIndex) {
@@ -20,6 +21,13 @@ function updateCarousel(content, currentIndex, gap) {
     } else {
       cards[i].classList.remove('active');
       cards[i].classList.add('not-active');
+    }
+  }
+  for (let i = 0; i < preconWrapper.length; i++) {
+    if (i === currentIndex) {
+      preconWrapper[i].classList.remove('in-active');
+    } else {
+      preconWrapper[i].classList.add('in-active');
     }
   }
 }
@@ -32,10 +40,8 @@ function updateDots(dotsWrapper, currentIndex) {
 
   dots.forEach((dot, index) => {
     if (index === currentIndex) {
-      console.log(currentIndex);
       dot.classList.add('active');
     } else {
-      console.log(currentIndex);
       dot.classList.remove('active');
     }
   });
@@ -217,19 +223,21 @@ function addIconCarouselControls(
   function updateIconCarousel() {
     updateCarousel(content, currentIndex, gap);
   }
+  nextButton.style.display = 'none';
+  prevButton.style.display = 'none';
 
   carouselRightWrapper.addEventListener('mouseover', () => {
-    onHoverCarousel(content, currentIndex, 'right', gap);
+    nextButton.style.display = 'block';
   });
   carouselRightWrapper.addEventListener('mouseleave', () => {
-    onHoverCarouselLeave(content, currentIndex, gap);
+    nextButton.style.display = 'none';
   });
 
   carouselLeftWrapper.addEventListener('mouseover', () => {
-    onHoverCarousel(content, currentIndex, 'left', gap);
+    prevButton.style.display = 'block';
   });
   carouselLeftWrapper.addEventListener('mouseleave', () => {
-    onHoverCarouselLeave(content, currentIndex, gap);
+    prevButton.style.display = 'none';
   });
 
   carouselLeftWrapper.addEventListener('click', () => {
@@ -344,13 +352,45 @@ export function preconResizer() {
   });
 }
 
-function generatePrecon(linkTab, preconData,headLineDom, configureCTADom,splitPreconData) {
+function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, configureCTADom,splitPreconData, optionsCount) {
 
   const preTitle = document.createElement('div');
   preTitle.classList.add('precon-title');
 
+  const preconPreiceDetails = document.createElement('div');
+  preconPreiceDetails.classList.add('pre-price-details');
+
   const preConPriceDetailWrapper = document.createElement('div');
   preConPriceDetailWrapper.classList.add('price-details-wrapper');
+
+  const preConPriceInnerWrapper = document.createElement('div');
+  preConPriceInnerWrapper.classList.add('price-details-inner-wrapper');
+
+  const preConswatches = document.createElement('div');
+  preConswatches.classList.add('swatches');
+
+  const preConWidget = document.createElement('div');
+  preConWidget.classList.add('financial-widget-wrapper');
+
+  const preLeasingWrapper = document.createElement('div');
+  preLeasingWrapper.classList.add('leasing-wrapper');
+
+  const img = document.createElement('img');
+  img.classList.add('swatches-image');
+  img.src = "https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z";
+  img.alt = 'img';
+
+  const img2 = document.createElement('img');
+  img2.classList.add('swatches-image');
+  img2.src = "https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z";
+  img2.alt = 'alt';
+
+  const optionCountDiv = document.createElement('span');
+  optionCountDiv.classList.add('options-count','swatches-image');
+  optionCountDiv.textContent = `+${optionsCount}`;
+  preConswatches.append(img, img2, optionCountDiv)
+  preConWidget.append(preLeasingWrapper)
+  preConPriceInnerWrapper.append(preConswatches, preConWidget)
 
   preTitle.textContent = splitPreconData[3] || '';
 
@@ -359,11 +399,13 @@ function generatePrecon(linkTab, preconData,headLineDom, configureCTADom,splitPr
   const preconDesWrapper = document.createElement('div');
   preconDesWrapper.classList.add('precon-description');
 
-  // const preconAnchorElm = linkTab?.querySelector('a') || '';
   preCtaWrap.append(configureCTADom);
-  preConPriceDetailWrapper.append(headLineDom, preCtaWrap)
+  preconPreiceDetails.append(headLineDom, preConPriceInnerWrapper);
+  preConPriceDetailWrapper.append(preconPreiceDetails, preCtaWrap)
+  wdhContext.textContent = '';
+  wdhContext.append(preTitle, preConPriceDetailWrapper)
 
-  preconData.append(preTitle, preConPriceDetailWrapper);
+  preConOuterWrapper.append(wdhContext);
   resizePreconBlock();
 }
 
@@ -439,10 +481,11 @@ export default async function decorate(block) {
   preconRightWrapper.classList.add('precon-wrapper-rth-area');
 
   const precon = [...block.children];
-  for (const preconData of precon) {
+  for (let i=0;i<precon.length;i++) {
+    const preconData=precon[i]
     const [wdhContext, linkTab] = preconData.children;
-    preconData.classList.add('pre-content-outer-wrapper')
-    preconData.children[0].classList.add('hidden');
+    preconData.classList.add('pre-content-outer-wrapper', `pre-content-outer-wrapper-${i}`, 'in-active')
+    preconData.children[0].classList.add('precon-wdh');
     preconData.children[1].classList.add('precon-link');
 
     let preConModelResponse;
@@ -451,6 +494,7 @@ export default async function decorate(block) {
     let optionsValue;
     let configureLink;
     let configureCTADom;
+    let optionsCount;
     
   const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
   const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
@@ -474,11 +518,12 @@ export default async function decorate(block) {
       configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
       break;
     }
-    const optionsCount = optionsValue.split(',').length;
+    optionsCount = optionsValue.split(',').length;
     preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
     headLineDom = document.createElement('div');
     headLineDom.classList.add('headerline-wrapper');
-    headLineDom.textContent = `HeadLine test: ${preConHeadLine}, ${optionsCount}`;
+    headLineDom.textContent = `HeadLine test: ${preConHeadLine}`;
+    
     configureCTADom = document.createElement('a');
     configureCTADom.classList.add('button');
     configureCTADom.href = configureLink;
@@ -486,7 +531,7 @@ export default async function decorate(block) {
   }
     
     generateCosyImage(imageDomContainer, preConCosyImage);
-    generatePrecon(linkTab, preconData, headLineDom, configureCTADom, splitPreconData);
+    generatePrecon(wdhContext, linkTab, preconData, headLineDom, configureCTADom, splitPreconData, optionsCount);
     contentData.append(preconData);
   }
   block.textContent = '';
