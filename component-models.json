@@ -4343,21 +4343,21 @@
       },
       {
         "component": "tab",
-        "label": "Contexturalised Link",
+        "label": "cta_Contexturalised Link",
         "name": "contexturalised"
       },
       {
         "component": "text",
         "label": "Link",
         "valueType": "string",
-        "name": "contextualised_linkText",
+        "name": "contextualised_Link",
         "description": "Defines the link of the contextualised button."
       },
       {
         "component": "text",
         "valueType": "string",
         "label": "Link Label",
-        "name": "contextualised_linkLabel",
+        "name": "contextualised_linkText",
         "description": "Defines the text to be displayed in the contextualised button."
       }
     ]
