@@ -1,45 +1,110 @@
 import { getApiResponse } from '../../scripts/common/wdh-util.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
+import { techDataMarkUp } from '../../scripts/common/technical-data-structure.js';
 
 const ddlModelTitle = 'Izaberite model';
 const ddlTransmissionTypeTitle = 'Izaberite menjač';
 const tehcDataHeading = 'TECHNICAL DATA FOR ';
 const savedListOfModels = [];
 const lang = document.querySelector('meta[name="language"]').content;
-const placeholders = await fetchPlaceholders(`/${lang}`);
+let placeholders = await fetchPlaceholders(`/${lang}`);
+const arrowIconMarkUp = document.createRange().
+  createContextualFragment(`<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>`);
+
+const placeholders2 = {
+  techDataTotalPower: "Total Power",
+  techDataEngineType: "Engine type",
+  techDataPowerInKw: "Power in kW (hp)",
+  techDataTorqueInNm: "Torque in Nm",
+  techDataTransmission: "Transmission",
+  techDataGearBox: "Gearbox",
+  techDataDrive: "Drive",
+  techDataTwinPower:"TwinPower Turbo internal combustion engine",
+  techDataCylinders:"Cylinders",
+  techDataVolumneInCm:"Volume in cm",
+  techDataNominalPowerInKw:"Nominal power in kW (HP)/1/min",
+  techDataNominalSpeedInNm:"Nominal speed in Nm/1/min",
+  techDataElectricMotor:"Electric motor",
+  techDataNominalPowerElectricMotorKw: "Nominal power of the electric motor in kW (HP)",
+  techDataNominalTorqueInNm: "(Nominal) torque in Nm",
+  techDataPerformance: "Performance",
+  techDataAccelerationZeroToHundread:"Acceleration 0-100 km/h for s",
+  techDataMaximumSpeedInKm:"Maximum speed in km/h",
+  techDataMaximumSpeedInKmElectricMotor:"Maximum speed in km/h (electric motor)",
+  techDataConsumptionEmission: "Consumption/Emissions",
+  techDataFuelConsumptionCombinedWltpUl: "Fuel consumption, combined WLTP ul/100 km",
+  techDataC02EmissionsCombinedWltpUgkm: "C02 emissions, combined WLTP ug/km",
+  techDataEnergyConsumptionCombinedWltpInKwh: "Energy consumption, combined WLTP in kWh/100 km",
+  techDataElectricRangeWltpInKm: "Electric range, WLTP in km",
+  techDataHighVoltageBatteryCharging: "High voltage battery/48V, charging",
+  techDataBatteryCapacityInKwh: "Battery capacity in kWh",
+  techDataAdditionalRangeAfterMinOfCharge: "Additional range after 10 minutes of charging at a high-power station in km",
+  techDataMaximumChargingPowerAcDcInKw: "Maximum charging power AC/DC in kW",
+  techDataChargingTimeAcHr: "Charging time AC 0–100% hr",
+  techDataChargingTimeDcInMin: "Charging time DC 10–80% in min",
+};
+
+placeholders = Object.assign({}, placeholders, placeholders2);
+
+function replacePlaceholders(template, data) {
+  return template.replace(/{(\w+(\.\w+)*?)}/g, (match, path) => {
+      const keys = path.split('.');
+      let value = data;
+      for (const key of keys) {
+          if (value && value[key] !== undefined) {
+              value = value[key];
+          } else {
+              return match;
+          }
+      }
+      return value;
+  });
+}
 
 function generateTechUi(parentBlock) {
-  // const selectedModel = parentBlock.querySelector();
-  // const selectedTransmissionType = parentBlock.querySelector();
-  // const table = document.createElement
+  const technicalDataTableContainer = parentBlock.querySelector('.techdata-tables-container');
+  const selectedModel = parentBlock.querySelector('.models-type-ddl .techdata-model-ddl-model-item.active');
+  const selectedTransmissionType = parentBlock.querySelector('.transmission-type-ddl .techdata-model-ddl-model-item.active');
+  const agCode = selectedModel?.querySelector('.techdata-model-ddl-model-btn')?.getAttribute('data-agcode') || '';
+  const transmissionType = selectedTransmissionType?.querySelector('.techdata-model-ddl-model-btn')?.getAttribute('data-transmission-code') || '';
+  const agCodeArrayObj = agCode ? savedListOfModels.filter(vehicle => vehicle.agCode === agCode) : savedListOfModels;
+  let technicalData;
+  if (transmissionType) {
+    const transCodeArray = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicles?.filter(transType => transType?.transmissionCode === transmissionType);
+    technicalData = transCodeArray[0].technicalData;
+  } else {
+    technicalData = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicle[0]?.technicalData;
+  }
+
+  if (technicalData) {
+    technicalDataTableContainer.textContent = '';
+
+    const data = {placeholders, technicalData};
+    const replacedHtml = replacePlaceholders(techDataMarkUp, data);
+    technicalDataTableContainer.innerHTML = replacedHtml;
+  }
 }
 
 function bindClickEventForTransTypeDdlSelection(parentBlock) {
   const modelSelectionList = parentBlock.querySelectorAll('.techdata-model-ddl-model-btn.transmission-ddl');
   modelSelectionList.forEach((transmissionTypeBtn) => {
     transmissionTypeBtn.addEventListener('click', (e) => {
+      const immediateParentUl = e.target.closest('.techdata-model-ddl-ul');
+      const listOfModelBtns = immediateParentUl.querySelectorAll('.techdata-model-ddl-model-item');
+      const currentSelectedLi = e.target.closest('.techdata-model-ddl-model-item');
       const parentBlockElem = e.target.closest('.technical-data-block');
-      const modelDdl = parentBlockElem.querySelector('.techdata-model-ddl-selected.transmission-ddl-selected');
-      const immediateParentLi = e.target.closest('.techdata-model-ddl-model-item');
-      const parentUl = e.target.closest('.techdata-model-ddl-ul');
-      const listOfModelLi = parentUl.querySelectorAll('.techdata-model-ddl-model-item');
-      const modelDdlContainer = e.target.closest('.techdata-model-ddl-container');
-      const selectedTitle = modelDdlContainer.querySelector('.techdata-model-ddl-selected-text');
-      const userClickedModelTitle = e.target.querySelector('.techdata-model-ddl-model-item-title');
 
-      if (selectedTitle) selectedTitle.textContent = userClickedModelTitle.textContent;
-
-      listOfModelLi.forEach((modelLi) => {
-        modelLi.classList.remove('active');
+      // loop through this list and remove active class
+      listOfModelBtns.forEach((liElem) => {
+        liElem.classList.remove('active');
       });
 
-      if (immediateParentLi) immediateParentLi.classList.add('active');
-      if (modelDdl) {
-        if (modelDdl.classList.contains('clicked')) modelDdl.click();
-      }
+      // set current clicked item as active
+      currentSelectedLi.classList.add('active');
 
-      generateTechUi(parentBlockElem);
-    });    
+      // function to update techData and generate
+      updateUiAfterDdlSelection('transmission-selection', parentBlockElem);
+    });
   });
 }
 
@@ -48,8 +113,8 @@ function generateTransTypeDdl(agCode, parentBlock) {
   const dropDownContainer = parentBlock.querySelector('.techdata-ddl-container');
 
   const transmissionTypeDdl = parentBlock.querySelector('.transmission-type-ddl');
-  if(transmissionTypeDdl) transmissionTypeDdl.remove();
-  
+  if (transmissionTypeDdl) transmissionTypeDdl.remove();
+
   const modelDdlContainer = document.createElement('div');
   modelDdlContainer.classList.add('techdata-model-ddl-container');
   modelDdlContainer.classList.add('transmission-type-ddl');
@@ -109,10 +174,12 @@ function generateTransTypeDdl(agCode, parentBlock) {
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
             data-analytics-custom-click='true'>
-            <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span></button></li>`);
+            <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span>
+            <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true">
+            </button></li>`);
     modelsUnderTheFuelList.append(modelLi);
 
-    
+
     liItem.append(modelsUnderTheFuelList);
     modelDdlList.append(liItem);
   }
@@ -122,8 +189,49 @@ function generateTransTypeDdl(agCode, parentBlock) {
   bindClickEventForTransTypeDdlSelection(parentBlock);
 
   // select first tranmission type if present
-  const firstTranmissionType = parentBlock.querySelector('.transmission-type-ddl .techdata-model-ddl-model-btn.transmission-ddl');
-  if(firstTranmissionType) firstTranmissionType.click();
+  const firstTranmissionType = parentBlock.querySelector('.techdata-model-ddl-model-btn.transmission-ddl');
+  if (firstTranmissionType) firstTranmissionType.click();
+}
+
+function updateUiAfterDdlSelection(selectionType, block) {
+  // hidding drop down which are active i.e opened or visible
+  const activeDdl = block.querySelectorAll('.techdata-model-ddl-ul-container.active');
+  activeDdl.forEach((ddl) => {
+    const parentContainer = ddl.closest('.techdata-model-ddl-container');
+    const ddlTriggerBtn = parentContainer.querySelector('.techdata-model-ddl-selected');
+    if (ddlTriggerBtn) ddlTriggerBtn.click();
+  });
+
+  if (selectionType === 'model-selection') {
+    const parentModelDdlContainer = block.querySelector('.models-type-ddl');
+    const activeModelLi = parentModelDdlContainer.querySelector('.techdata-model-ddl-model-item.active');
+    const activeModelLiBtn = activeModelLi.querySelector('.techdata-model-ddl-model-btn');
+    const activeModelLiBtnText = activeModelLiBtn.querySelector('.techdata-model-ddl-model-item-title');
+    const listOfSelectedText = parentModelDdlContainer.querySelectorAll('.techdata-model-ddl-selected-text');
+
+    // updating selected model value
+    listOfSelectedText.forEach((spanElem) => {
+      spanElem.textContent = activeModelLiBtnText?.textContent;
+    });
+
+    // calling function to generate transmission type dropdown
+    const agCode = activeModelLiBtn.getAttribute('data-agcode')
+    generateTransTypeDdl(agCode, block);
+  } else {
+    const parentModelDdlContainer = block.querySelector('.transmission-type-ddl');
+    const activeModelLi = parentModelDdlContainer.querySelector('.techdata-model-ddl-model-item.active');
+    const activeModelLiBtn = activeModelLi.querySelector('.techdata-model-ddl-model-btn');
+    const activeModelLiBtnText = activeModelLiBtn.querySelector('.techdata-model-ddl-model-item-title');
+    const listOfSelectedText = parentModelDdlContainer.querySelectorAll('.techdata-model-ddl-selected-text');
+
+    // updating selected model value
+    listOfSelectedText.forEach((spanElem) => {
+      spanElem.textContent = activeModelLiBtnText?.textContent;
+    });
+
+    // generate UI
+    generateTechUi(block);
+  }
 }
 
 function enableClickEventForModelDdl(ddlContainer) {
@@ -131,27 +239,21 @@ function enableClickEventForModelDdl(ddlContainer) {
     const modelSelectionList = ddlContainer.querySelectorAll('.techdata-model-ddl-model-btn.models-ddl');
     modelSelectionList.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        const agCode = e.target.getAttribute('data-agcode');
-        const parentBlock = e.target.closest('.technical-data-block');
-        const modelDdl = parentBlock.querySelector('.techdata-model-ddl-selected.model-ddl-selected');
-        const immediateParentLi = e.target.closest('.techdata-model-ddl-model-item');
-        const modelDdlContainer = e.target.closest('.techdata-model-ddl-container');
-        const selectedTitle = modelDdlContainer.querySelector('.techdata-model-ddl-selected-text');
-        const userClickedModelTitle = e.target.querySelector('.techdata-model-ddl-model-item-title');
+        const immediateParentUl = e.target.closest('.techdata-model-ddl-ul');
+        const listOfModelBtns = immediateParentUl.querySelectorAll('.techdata-model-ddl-model-item');
+        const currentSelectedLi = e.target.closest('.techdata-model-ddl-model-item');
+        const parentBlockElem = e.target.closest('.technical-data-block');
 
-        if (selectedTitle) selectedTitle.textContent = userClickedModelTitle.textContent;
-
-        const parentUl = e.target.closest('.techdata-model-ddl-ul');
-        const listOfModelLi = parentUl.querySelectorAll('.techdata-model-ddl-model-item');
-        listOfModelLi.forEach((modelLi) => {
-          modelLi.classList.remove('active');
+        // loop through this list and remove active class
+        listOfModelBtns.forEach((liElem) => {
+          liElem.classList.remove('active');
         });
 
-        if (immediateParentLi) immediateParentLi.classList.add('active');
-        if (modelDdl) {
-          if (modelDdl.classList.contains('clicked')) modelDdl.click();
-        }
-        generateTransTypeDdl(agCode, parentBlock);        
+        // set current clicked item as active
+        currentSelectedLi.classList.add('active');
+
+        // function to update techData and generate
+        updateUiAfterDdlSelection('model-selection', parentBlockElem);
       });
     });
   }
@@ -179,6 +281,7 @@ function enableClickEventForClose(closeBtn) {
 function generateModelsDdl(listOfModels, dropDownContainer, block) {
   const modelDdlContainer = document.createElement('div');
   modelDdlContainer.classList.add('techdata-model-ddl-container');
+  modelDdlContainer.classList.add('models-type-ddl');
 
   const modelHeadingSpan = document.createElement('span');
   modelHeadingSpan.classList.add('techdata-model-ddl-title');
@@ -332,7 +435,7 @@ export default async function decorate(block) {
 
   if (rows.length > 1) {
     generateModelsDdl(listOfModels, dropDownContainer, block);
-    enableClickEventForModelDdl(dropDownContainer);    
+    enableClickEventForModelDdl(dropDownContainer);
   } else {
     generateTechDataUI(listOfModels[0].agCode);
   }

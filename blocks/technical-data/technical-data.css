@@ -235,11 +235,137 @@
     margin-left: auto;
 }
 
+.techdata-table {
+    display: block;
+    width: 100%;
+    border-bottom: .0625rem solid #e6e6e6;
+}
+
+.techdata-table caption {   
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: .125rem;
+    height: 4.5rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    position: relative;
+    text-align: start;
+}
+
+.techdata-table-caption-btn {
+    background-color: #0000 !important;
+    color: #262626 !important;
+    border: 0;
+    box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 300;
+    height: 100%;
+    line-height: 26px;
+    padding: 0;
+    text-align: start;
+    width: auto;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+}
+
+.techdata__caption-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform .5s ease-in-out;
+}
+
+.techdata__caption-icon:before {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.techdata-table tbody {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out, opacity .25s ease-in-out;
+    grid-gap: calc( 1.5rem * 2) calc( .5rem * 2);
+    padding: 24px;
+}
+
+.techdata-table tbody tr {
+    grid-gap: .5rem 1.5rem;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(1, auto);
+    height: 100%;
+    position: relative;
+}
+
+.techdata-table tbody tr:nth-of-type(2n-1):before {
+    background: #f6f6f6;
+    content: "";
+    inset: calc( 1.5rem * -1);
+    position: absolute;
+    width: calc(100% + (1.5rem * 2) + ( .5rem * 0));
+    z-index: -10;
+}
+
+.techdata-table-td {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    text-align: start;
+}
+
+.techdata-table-td-text {
+    margin: 0;
+}
+.techdata-table-td-text.label {
+    color: #666;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+}
+
+.techdata-table-td-text.value {
+    color: #262626;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
 /* tablet */
 @media (width >= 768px) {
     .techdata-selected-model-title {
         font-size: 25px;
         line-height: 36px;        
+    }
+
+    .techdata-table tbody {
+        grid-gap: calc( 1.5rem * 2) calc( .75rem * 2);
+        grid-template-columns: repeat( 3, 1fr);
+    }
+
+    .techdata-table tbody tr:nth-of-type(2n-1):before {
+        width: unset;
+        background: unset;
+        content: "";
+        inset: calc(1.5rem * -1);
+        position: absolute;
+        z-index: -10;
+    }
+
+    .techdata-table tbody tr:nth-of-type(6n-5):before {
+        width: calc(300% + (1.5rem * 2) + (.75rem * 4));
+        background: #f6f6f6;
+        content: "";
+        inset: calc(1.5rem * -1);
+        position: absolute;
+        z-index: -10;
     }
 }
 
@@ -306,6 +432,24 @@
     .techdata-model-ddl-close-btn {
         display: none;
     }
+
+    .techdata-table caption {
+        height: 5rem;
+    }
+
+    .techdata-table-caption-btn {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .techdata-table tbody tr {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .techdata-table-td.value {
+        text-align: end;
+        justify-content: end;
+    }
 }
 
 /* desktop */
@@ -337,6 +481,16 @@
         font-size: 15px;
         line-height: 24px;
     }
+
+    .techdata-table-caption-btn {
+        font-size: 23px;
+        line-height: 36px;
+    }
+
+    .techdata-table-td-text.value {
+        font-size: 15px;
+        line-height: 24px;
+    }
 }
 
 /* desktop */
@@ -362,6 +516,16 @@
     }
 
     .techdata-model-ddl-model-item-title {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .techdata-table-caption-btn {
+        font-size: 25px;
+        line-height: 38px;
+    }
+
+    .techdata-table-td-text.value {
         font-size: 16px;
         line-height: 26px;
     }
