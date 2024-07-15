@@ -1187,15 +1187,15 @@
         "options": [
           {
             "name": "Exit",
-            "value": "Exit"
+            "value": "exit"
           },
           {
             "name": "Download",
-            "value": "Download"
+            "value": "download"
           },
           {
             "name": "Other",
-            "value": "Other"
+            "value": "other"
           }          
         ]    
       },
