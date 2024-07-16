@@ -6,6 +6,7 @@ import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
 import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
 import { drivetrainResize } from '../blocks/drivetrain-switch/drivetrain-switch.js';
+import { timeStamp } from './bmw-util.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -123,25 +124,9 @@ function addAnalyticsCustomClickEvent() {
   });
 }
 
-var dateTime = new Date();
-
-// Format the date components
-var year = dateTime.getFullYear();
-var month = (dateTime.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
-var day = dateTime.getDate().toString().padStart(2, '0');
-var hours = dateTime.getHours().toString().padStart(2, '0');
-var minutes = dateTime.getMinutes().toString().padStart(2, '0');
-var seconds = dateTime.getSeconds().toString().padStart(2, '0');
-var milliseconds = dateTime.getMilliseconds().toString().padStart(3, '0');
-var timezoneOffset = -dateTime.getTimezoneOffset();
-var timezoneOffsetHours = Math.floor(Math.abs(timezoneOffset) / 60).toString().padStart(2, '0');
-var timezoneOffsetMinutes = (Math.abs(timezoneOffset) % 60).toString().padStart(2, '0');
-var timezoneSign = timezoneOffset >= 0 ? '+' : '-';
-
-// Construct the timestamp string
-var timestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}${timezoneSign}${timezoneOffsetHours}:${timezoneOffsetMinutes}`;
 function set_page_tracking(){
   // adding page tracking properties
+  const dateTime = new Date();
   if(document.referrer !== ''){
     page_tracking.page.pageInfo.windowInfo.previousDomain = document.referrer;
     page_tracking.page.pageInfo.referringURL = document.referrer;
@@ -158,7 +143,7 @@ function set_page_tracking(){
     var geoReg = document.querySelector('meta[name="georegion"]');
     page_tracking.page.pageInfo.timeInfo.localTime = dateTime.toLocaleTimeString([], {hour12: false});
     page_tracking.page.pageInfo.timeInfo.utcTime = dateTime.toUTCString().match(/(\d{2}:\d{2}:\d{2})/)[0];
-    page_tracking.page.pageInfo.version = 'acdl: ' +timestamp;
+    page_tracking.page.pageInfo.version = 'acdl: ' +timeStamp();
     page_tracking.page.pageInfo.destinationURL = window.location.href;
     page_tracking.page.pageInfo.pageTitle = document.title;
     // eventinfo
