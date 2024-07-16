@@ -133,6 +133,8 @@ export function getConsentValue() {
 
   if (advertisingValue === 1) {
     userConsentValue = 'y';
+  } else {
+    userConsentValue = 'n';
   }
 
   return userConsentValue;

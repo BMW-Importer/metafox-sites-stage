@@ -204,7 +204,8 @@ async function loadLazy(doc) {
 
 
 function addDataAEP (userConsent){
- alloy("setConsent", {
+  console.log('userConsent', userConsent,'and', getConsentValue(),'timeStamp', timeStamp(), 'userConsent')
+  alloy("setConsent", {
               consent: [{
               standard: "Adobe",
               version: "2.0",
@@ -218,14 +219,11 @@ function addDataAEP (userConsent){
               }
               }]
       });
+      console.log('alloy function end');  
 }
 
 function consentValueOnPageLoad () {
   console.log(consentcontroller.api.isUsageAllowed(), 'isUsageAllowed value')
-
-  // if(isUsageAllowed()){
-  //   addDataAEP(userConsent);
-  // }
 }
 
 /**
