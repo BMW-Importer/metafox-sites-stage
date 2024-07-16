@@ -883,7 +883,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -1187,15 +1187,15 @@
         "options": [
           {
             "name": "Exit",
-            "value": "Exit"
+            "value": "exit"
           },
           {
             "name": "Download",
-            "value": "Download"
+            "value": "download"
           },
           {
             "name": "Other",
-            "value": "Other"
+            "value": "other"
           }          
         ]    
       },
@@ -1204,11 +1204,11 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2268,7 +2268,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2661,7 +2661,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2751,7 +2751,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3178,7 +3178,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3268,7 +3268,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4227,7 +4227,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4444,7 +4444,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4576,15 +4576,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }
         ]
@@ -4605,7 +4605,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
