@@ -4343,8 +4343,8 @@
       },
       {
         "component": "tab",
-        "label": "cta_Contexturalised Link",
-        "name": "contexturalised"
+        "label": "cta_Contextualised Link",
+        "name": "contextualised"
       },
       {
         "component": "text",
@@ -4357,7 +4357,7 @@
         "component": "text",
         "valueType": "string",
         "label": "Link Label",
-        "name": "contextualised_linkText",
+        "name": "contextualised_LinkText",
         "description": "Defines the text to be displayed in the contextualised button."
       }
     ]
