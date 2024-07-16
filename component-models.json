@@ -883,7 +883,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -1204,11 +1204,11 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2268,7 +2268,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2661,7 +2661,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2751,7 +2751,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3178,7 +3178,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3268,7 +3268,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4227,7 +4227,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4446,7 +4446,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4607,7 +4607,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
