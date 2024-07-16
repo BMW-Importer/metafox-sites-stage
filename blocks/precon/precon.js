@@ -3,17 +3,18 @@ import {
 } from '../../scripts/common/wdh-util.js';
 
 let iconClicked = false;
-
 function updateCarousel(content, currentIndex, gap) {
-  const itemWidth = (content.children[currentIndex].offsetWidth);
-  const offset = -(currentIndex * (itemWidth));
+  const itemWidth = content?.children[currentIndex]?.offsetWidth;
+  let offset = -(currentIndex * (itemWidth *0.60));
+  if(currentIndex === 0) offset = itemWidth *0.50
+  const cards = content.children;
+  if(currentIndex === cards.length - 1) offset -= itemWidth *0.40
   content.style.transform = `translate3d(${offset}px, 0px, 0px)`;
   content.style.transitionDuration = '750ms';
   content.style.transitionDelay = '100ms';
 
   const preconWrapper = document.querySelectorAll(`.pre-content-outer-wrapper`)
 
-  const cards = content.children;
   for (let i = 0; i < cards.length; i++) {
     if (i === currentIndex) {
       cards[i].classList.add('active');
@@ -32,12 +33,9 @@ function updateCarousel(content, currentIndex, gap) {
   }
 }
 
+
 function updateDots(dotsWrapper, currentIndex) {
   const dots = dotsWrapper.querySelectorAll('.dot');
-  if (currentIndex === null || currentIndex === undefined) {
-    currentIndex = 1;
-  }
-
   dots.forEach((dot, index) => {
     if (index === currentIndex) {
       dot.classList.add('active');
@@ -45,24 +43,6 @@ function updateDots(dotsWrapper, currentIndex) {
       dot.classList.remove('active');
     }
   });
-}
-function onHoverCarousel(content, currentIndex, direction, gap) {
-  const itemWidth = (content.children[currentIndex].offsetWidth);
-  const offsetPercentage = 0.07;
-  const currentOffset = -(currentIndex * (itemWidth + gap));
-  const offset = direction === 'right' ? -((offsetPercentage * itemWidth) + gap) : ((offsetPercentage * itemWidth) + gap);
-  content.style.transform = `translate3d(${offset + currentOffset}px, 0px, 0px)`;
-  content.style.transitionDuration = '750ms';
-  content.style.transitionDelay = '100ms';
-}
-
-function onHoverCarouselLeave(content, currentIndex, gap) {
-  content.style.transform = 'translate3d(0px, 0px, 0px)';
-  content.style.transitionDuration = '0ms';
-  content.style.transitionDelay = '0ms';
-  if (iconClicked) {
-    updateCarousel(content, currentIndex, gap);
-  }
 }
 
 function updateButtonVisibility(prevButton, nextButton, currentIndex, totalItems, itemsToShow) {
@@ -154,7 +134,7 @@ function addDotsNavigation(block, content, totalItems, itemsToShow, gap) {
 
   const preButton = block && block.querySelector('.carousel-btn-prev');
   const nexButton = block.querySelector('.carousel-btn-next');
-  let currentIndex = 1;
+  let currentIndex = 0;
   function updateDotCarousel() {
     updateCarousel(content, currentIndex, gap);
   }
@@ -294,8 +274,9 @@ function updateItemsToShow(preconGalleryContent) {
   const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
   const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
   const ultraScreenWidth = viewport - (paddingLeftDesktop + paddingRightDesktop);
+
+  const cardsToShow = 1;
   const availableWidth = viewport >= 1920 ? ultraScreenWidth : desktopScreenWidth;
-  const cardsToShow = 1.5;
   return { cardsToShow, availableWidth, totalItems };
 }
 
@@ -305,16 +286,19 @@ export function resizePreconBlock() {
   carousels.forEach((carouselContent) => {
     const block = carouselContent.closest('.precon.block');
     const cards = carouselContent.querySelectorAll('.img-card-container');
+    console.log(cards);
     const carouselLeftWrapper = block.querySelector('.precon-wrapper-lft-area');
     const carouselRightWrapper = block.querySelector('.precon-wrapper-rth-area');
-
     const gap = 0;
     const { cardsToShow, availableWidth, totalItems } = updateItemsToShow(carouselContent);
-
-    const cardWidth = ((availableWidth - (cardsToShow - 1)) / cardsToShow);
+  
     cards.forEach((card) => {
-      card.style.width = `${cardWidth}px`;
-      card.style.marginRight = `${gap}px`;
+      if (viewport < 768) {
+        card.style.width = `${availableWidth * 0.625}px`;
+      } else {
+        card.style.width = `${(availableWidth * 0.454545) + 87.273}px`;
+      }
+        card.style.marginRight = `${gap}px`;
     });
 
     addTouchSlideFunctionality(
@@ -337,14 +321,13 @@ export function resizePreconBlock() {
       );
     }
     addDotsNavigation(block, carouselContent, totalItems, cardsToShow, gap);
-    updateCarousel(carouselContent, 1, gap);
-    updateDots(block.querySelector('.dots-navigation'), 1);
+    updateCarousel(carouselContent, 0, gap);
+    updateDots(block.querySelector('.dots-navigation'), 0);
   });
 }
 
 export function preconResizer() {
   resizePreconBlock();
-  console.log('hello');
 
   // windo resize event
   window.addEventListener('resize', () => {
@@ -352,7 +335,7 @@ export function preconResizer() {
   });
 }
 
-function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, configureCTADom, preConModelName, optionsCount) {
+function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, configureCTADom, configureLink, preConModelName, optionsCount) {
 
   const preTitle = document.createElement('div');
   preTitle.classList.add('precon-title');
@@ -398,7 +381,6 @@ function generatePrecon(wdhContext, linkTab, preConOuterWrapper, headLineDom, co
 
   const preconDesWrapper = document.createElement('div');
   preconDesWrapper.classList.add('precon-description');
-  // linkTab.textContent = '';
   preCtaWrap.append(configureCTADom);
   preconPreiceDetails.append(headLineDom, preConPriceInnerWrapper);
   preConPriceDetailWrapper.append(preconPreiceDetails, preCtaWrap)
@@ -492,39 +474,39 @@ if (preConCosyImage) { // cosy image to show for Pre-Con
 }
 
 export default async function decorate(block) {
-  let headLineDom;
   const preconLeftWrapper = document.createElement('div');
   preconLeftWrapper.classList.add('precon-wrapper-lft-area');
-
+  
   const contentData = document.createElement('div');
   contentData.classList.add('precon-content-data');
-
+  
   const imageDomContainer = document.createElement('div');
   imageDomContainer.classList.add('precon-image-container');
-
+  
   const parentBlock = document.createElement('div');
   parentBlock.classList.add('precon-swiper-initialized');
-
+  
   const preconRightWrapper = document.createElement('div');
   preconRightWrapper.classList.add('precon-wrapper-rth-area');
-
+  
   const backgroundImages = 'https://www.bmw.rs/etc.clientlibs/bmw-web/clientlibs/clientlib-site/resources/images/street-bg_1x_320.webp';
-  const quality = 50; // Adjust as needed
+  const quality = 50;
   const pictureElement = createBgImgaeUrl(backgroundImages, quality);
-
+  
   const bgImg = document.createElement('picture').appendChild(pictureElement);
   bgImg.classList.add('precon-background');
-
+  
   const precon = [...block.children];
-  for (let i=0;i<precon.length;i++) {
-    const preconData=precon[i]
+  for (let i=0; i< precon.length; i++) {
+    const preconData = precon[i]
     const [wdhContext, linkTab] = preconData.children;
     preconData.classList.add('pre-content-outer-wrapper', `pre-content-outer-wrapper-${i}`, 'in-active')
     preconData.children[0].classList.add('precon-wdh');
     preconData.children[1].classList.add('precon-link');
-
+    
     let preConModelResponse;
     let preConCosyImage;
+    let headLineDom;
     let preConHeadLine;
     let optionsValue;
     let configureLink;
@@ -540,7 +522,6 @@ export default async function decorate(block) {
   try {
     if (selectedModelRange) {
       preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
-      console.log('preConModel response', preConModelResponse);
     }
   } catch (error) {
     console.error(error);
@@ -560,16 +541,15 @@ export default async function decorate(block) {
     headLineDom = document.createElement('div');
     headLineDom.classList.add('headerline-wrapper');
     headLineDom.textContent =  `${preConHeadLine}`|| '';
-    
-    configureCTADom = document.createElement('a');
-    configureCTADom.classList.add('button');
-    configureCTADom.href = configureLink;
-    configureCTADom.textContent = linkTab.querySelector('p')?.textContent || '';
-    linkTab.textContent = '';
+    configureCTADom = linkTab.querySelector('a') || '';
+    if (configureCTADom) {
+      configureCTADom.href = configureLink || (linkTab.querySelector('a').href || '');
+      configureCTADom.textContent = linkTab.querySelectorAll('p')[1]?.textContent || '';
+      linkTab.textContent = '';
+    }
   }
-    
     generateCosyImage(imageDomContainer, preConCosyImage);
-    generatePrecon(wdhContext, linkTab, preconData, headLineDom, configureCTADom, preConModelName, optionsCount);
+    generatePrecon(wdhContext, linkTab, preconData, headLineDom, configureCTADom, configureLink, preConModelName, optionsCount);
     contentData.append(preconData);
   }
   parentBlock.append(bgImg, imageDomContainer);
