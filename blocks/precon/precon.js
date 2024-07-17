@@ -422,7 +422,6 @@ export default async function decorate(block) {
     const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
     const selectedModelRange = splitPreconData[2]?.trim() || ''; // authored selected ModelRange G21
     const selectedPreConId = splitPreconData[3]?.trim() || ''; // authored selected PRECODN-ID
-    const mockHeadline = splitPreconData[5]?.trim() || '';
     try {
       if (selectedModelRange) {
         // eslint-disable-next-line no-await-in-loop
@@ -434,7 +433,8 @@ export default async function decorate(block) {
     if (preConModelResponse) {
       // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-unreachable-loop
       for (const key in preConModelResponse.responseJson) {
-        if (preConModelResponse.responseJson[key].id === selectedPreConId);
+        // eslint-disable-next-line eqeqeq
+        if (preConModelResponse.responseJson[key].id == selectedPreConId);
         preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
         // eslint-disable-next-line max-len
         preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
@@ -448,7 +448,7 @@ export default async function decorate(block) {
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
       headLineDom = document.createElement('div');
       headLineDom.classList.add('headerline-wrapper');
-      headLineDom.textContent = `${preConHeadLine}` || mockHeadline;
+      headLineDom.textContent = `${preConHeadLine}` || '';
       configureCTADom = linkTab?.querySelector('a') || '';
       const isHighlited = linkTab.querySelectorAll('p')[1]?.textContent.trim() === 'true';
       if (configureCTADom) {
