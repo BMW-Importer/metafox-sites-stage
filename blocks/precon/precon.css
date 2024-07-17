@@ -22,15 +22,6 @@
     top: 25%;
 }
 
-.precon-wrapper .precon.block .precon-background img {
-    max-height: 90%;
-    width: 100%;
-}
-
-.precon-wrapper .precon-content-data .pre-content-outer-wrapper.in-active {
-    display: none;
-}
-
 .precon-image-container img {
     aspect-ratio: 2.5;
     display: block;
@@ -38,6 +29,20 @@
     max-width: 100%;
     object-fit: cover;
     width: 100%;
+}
+
+.img-card-container.not-active img {
+    transition: margin .25s linear;
+    width: 80%;
+}
+
+.precon-wrapper .precon.block .precon-background img {
+    max-height: 90%;
+    width: 100%;
+}
+
+.precon-wrapper .precon-content-data .pre-content-outer-wrapper.in-active {
+    display: none;
 }
 
 .precon-wrapper .precon-image-container {
@@ -100,8 +105,6 @@
     width: .75rem;
 }
 
-
-
 .img-card-container.not-active {
     filter: blur(.125rem);
     opacity: .7;
@@ -113,15 +116,9 @@
     position: relative;
 }
 
-
 .img-card picture {
     display: flex;
     justify-content: center;
-}
-
-.img-card-container.not-active img {
-    transition: margin .25s linear;
-    width: 80%;
 }
 
 .precon-wrapper .precon-content-data {
@@ -319,6 +316,7 @@
 
     .precon-wrapper .precon-content-data .price-details-wrapper {
         --grid-gutter: .75rem;
+        
         display: flex;
         gap: calc(var(--grid-gutter) * 2);
     }
@@ -330,7 +328,6 @@
     .precon-wrapper .precon-content-data .precon-link {
         flex: 3;
     }
-
 
     .precon .img-card picture img {
         aspect-ratio: 2.5;

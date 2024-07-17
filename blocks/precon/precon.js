@@ -13,6 +13,7 @@ function createBgImgaeUrl(backgroundImages, quality) {
   const resolutions = [320, 768, 1024];
   resolutions.forEach((resolution) => {
     const sourceTag = document.createElement('source');
+    // eslint-disable-next-line max-len
     sourceTag.srcset = getBackgroundImgURL(backgroundImages, getResolutionKey(resolution), resolution === 768 ? 30 : quality);
     sourceTag.media = `(min-width: ${resolution}px)`;
     pictureTag.appendChild(sourceTag);
@@ -65,6 +66,7 @@ function configureCTA(selectedModel, currentVechileData) {
   return selectedModelValue;
 }
 
+// eslint-disable-next-line max-len
 function generatePrecon(wdhContext, preConOuterWrapper, headLineDom, configureCTADom, preConModelName, optionsCount) {
   const preTitle = document.createElement('div');
   preTitle.classList.add('precon-title');
@@ -87,49 +89,49 @@ function generatePrecon(wdhContext, preConOuterWrapper, headLineDom, configureCT
   const preLeasingWrapper = document.createElement('div');
   preLeasingWrapper.classList.add('leasing-wrapper');
 
-  const img = document.createElement('img')
+  const img = document.createElement('img');
   img.classList.add('swatches-image');
-  img.src = "https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z";
+  img.src = 'https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z';
   img.alt = 'img';
 
-  const img2 = document.createElement('img')
+  const img2 = document.createElement('img');
   img2.classList.add('swatches-image');
-  img2.src = "https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z";
+  img2.src = 'https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-73318jQYfFqIbPXnvzqUxEw8%25P6wBKM4adOKU2JBzcbt3aJqZvjDlwXYuw4sD9%25UHNMClix2t5JUABN745UXgtUDUCH1T3IjAeSw27BzcKX3aJQbAFKdqfkEramzOSs5m%2565ezICP4Ws86OG7c1QUDCJnxbZsCsluMw8m9hvU1AIs75Z';
   img2.alt = 'alt';
 
-  const optionCountDiv = document.createElement('span')
+  const optionCountDiv = document.createElement('span');
   optionCountDiv.classList.add('options-count', 'swatches-image');
   optionCountDiv.textContent = `+${optionsCount}`;
-  preConswatches.append(img, img2, optionCountDiv)
-  preConWidget.append(preLeasingWrapper)
-  preConPriceInnerWrapper.append(preConswatches, preConWidget)
+  preConswatches.append(img, img2, optionCountDiv);
+  preConWidget.append(preLeasingWrapper);
+  preConPriceInnerWrapper.append(preConswatches, preConWidget);
 
   preTitle.textContent = preConModelName || '';
 
   const preCtaWrap = document.querySelector('.precon-link');
 
-  const preconDesWrapper = document.createElement('div')
+  const preconDesWrapper = document.createElement('div');
   preconDesWrapper.classList.add('precon-description');
   preCtaWrap.append(configureCTADom);
   preconPreiceDetails.append(headLineDom, preConPriceInnerWrapper);
-  preConPriceDetailWrapper.append(preconPreiceDetails, preCtaWrap)
+  preConPriceDetailWrapper.append(preconPreiceDetails, preCtaWrap);
   wdhContext.textContent = '';
-  wdhContext.append(preTitle, preConPriceDetailWrapper)
+  wdhContext.append(preTitle, preConPriceDetailWrapper);
   preConOuterWrapper.append(wdhContext);
 }
 
 async function generateCosyImage(imageDomContainer, preConCosyImage) {
-
   if (preConCosyImage) { // cosy image to show for Pre-Con
-    const imageCardContainer = document.createElement('div')
+    const imageCardContainer = document.createElement('div');
     imageCardContainer.classList.add('img-card-container', 'not-active');
-    const imageCard = document.createElement('div')
+    const imageCard = document.createElement('div');
     imageCard.classList.add('img-card');
     const preConImageDOM = createPictureTag(40, preConCosyImage);
-    imageCard.append(preConImageDOM)
+    imageCard.append(preConImageDOM);
     imageCardContainer.append(imageCard);
     imageDomContainer.append(imageCardContainer);
   }
+  // eslint-disable-next-line no-use-before-define
   resizePreconBlock();
 }
 
@@ -138,7 +140,6 @@ function updateCarousel(currentIndex) {
   if (!content) return;
   const imageContainer = content.querySelector('.precon-image-container');
   const itemWidth = imageContainer.children[currentIndex]?.offsetWidth;
-
 
   const viewport = window.innerWidth;
   let multiplier = 0.60;
@@ -151,16 +152,17 @@ function updateCarousel(currentIndex) {
   }
 
   const defaultOffset = itemWidth * multiplier;
-  let offset = defaultOffset - (currentIndex * itemWidth);
+  const offset = defaultOffset - (currentIndex * itemWidth);
   imageContainer.style.transform = `translate3d(${offset}px, 0px, 0px)`;
   imageContainer.style.transitionDuration = '750ms';
   imageContainer.style.transitionDelay = '100ms';
 
   const cards = imageContainer.children;
-  const preconWrapper = document.querySelectorAll(`.precon-content-data .pre-content-outer-wrapper`)
+  const preconWrapper = document.querySelectorAll('.precon-content-data .pre-content-outer-wrapper');
   const dots = content.querySelectorAll('.dot');
   const itemsToShow = 1;
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < cards.length; i++) {
     if (i === currentIndex) {
       cards[i].classList.remove('not-active', 'blur-inactive');
@@ -198,7 +200,7 @@ function addTouchSlideFunctionality() {
   const content = mainContent.querySelector('.precon-image-container');
   const totalItems = content.children.length;
   const itemsToShow = 1;
-  let index = Array.from(content.querySelectorAll('.img-card-container')).findIndex(each => each.classList.contains('active'));
+  let index = Array.from(content.querySelectorAll('.img-card-container')).findIndex((each) => each.classList.contains('active'));
   let startX = 0;
   let currentX = 0;
   let isDragging = false;
@@ -251,7 +253,7 @@ function addTouchSlideFunctionality() {
   });
 }
 
-function dotClickHandler(e) {
+function dotClickHandler() {
   const index = Number(this.classList[1].split('-')[1]);
   updateCarousel(index);
 }
@@ -259,7 +261,7 @@ function dotClickHandler(e) {
 function buttonClick(direction) {
   const mainContent = document.querySelector('.precon-swiper-initialized');
   const content = mainContent.querySelector('.precon-image-container');
-  let index = Array.from(content.querySelectorAll('.img-card-container')).findIndex(each => each.classList.contains('active'));
+  const index = Array.from(content.querySelectorAll('.img-card-container')).findIndex((each) => each.classList.contains('active'));
   if (direction === 'left') updateCarousel(index - 1);
   else updateCarousel(index + 1);
 }
@@ -267,8 +269,8 @@ function buttonClick(direction) {
 function buttonHover(direction, start = true) {
   const mainContent = document.querySelector('.precon-swiper-initialized');
   const content = mainContent.querySelector('.precon-image-container');
-  const cards = content.querySelectorAll('.img-card-container')
-  let index = Array.from(cards).findIndex(each => each.classList.contains('active'));
+  const cards = content.querySelectorAll('.img-card-container');
+  const index = Array.from(cards).findIndex((each) => each.classList.contains('active'));
   if (direction === 'left' && start) cards[index - 1].classList.add('blur-inactive');
   else if (direction === 'left' && !start) cards[index - 1].classList.remove('blur-inactive');
   else if (direction === 'right' && start) cards[index + 1].classList.add('blur-inactive');
@@ -276,10 +278,10 @@ function buttonHover(direction, start = true) {
 }
 
 function addButtons(preconLeftWrapper, preconRightWrapper) {
-  //create buttons
-  const prevButton = document.createElement('button')
+  // create buttons
+  const prevButton = document.createElement('button');
   prevButton.classList.add('carousel-btn-prev');
-  const nextButton = document.createElement('button')
+  const nextButton = document.createElement('button');
   nextButton.classList.add('carousel-btn-next');
 
   preconLeftWrapper.addEventListener('click', () => buttonClick('left'));
@@ -290,7 +292,7 @@ function addButtons(preconLeftWrapper, preconRightWrapper) {
   preconLeftWrapper.addEventListener('mouseleave', () => buttonHover('left', false));
   preconRightWrapper.addEventListener('mouseleave', () => buttonHover('right', false));
 
-  //add buttons to wrappers
+  // add buttons to wrappers
   preconLeftWrapper.append(prevButton);
   preconRightWrapper.append(nextButton);
 }
@@ -339,7 +341,7 @@ export function resizePreconBlock() {
       card.style.width = `${multiplier ? availableWidth * multiplier : 872.727}px`;
       card.style.marginRight = `${gap}px`;
     });
-  })
+  });
   updateCarousel(defaultIndex);
   addTouchSlideFunctionality();
 }
@@ -354,29 +356,28 @@ export function preconResizer() {
 }
 
 export default async function decorate(block) {
-
-  const parentBlock = document.createElement('div')
+  const parentBlock = document.createElement('div');
   parentBlock.classList.add('precon-swiper-initialized');
 
-  const bgImg = document.createElement('picture')
+  const bgImg = document.createElement('picture');
   bgImg.classList.add('precon-background');
 
-  const imageDomContainer = document.createElement('div')
+  const imageDomContainer = document.createElement('div');
   imageDomContainer.classList.add('precon-image-container');
 
-  const preconLeftWrapper = document.createElement('div')
+  const preconLeftWrapper = document.createElement('div');
   preconLeftWrapper.classList.add('precon-wrapper-lft-area');
 
-  const preconRightWrapper = document.createElement('div')
+  const preconRightWrapper = document.createElement('div');
   preconRightWrapper.classList.add('precon-wrapper-rth-area');
 
-  const dotsWrapper = document.createElement('div')
+  const dotsWrapper = document.createElement('div');
   dotsWrapper.classList.add('dots-navigation');
 
-  const contentData = document.createElement('div')
+  const contentData = document.createElement('div');
   contentData.classList.add('precon-content-data');
 
-  //add background image
+  // add background image
   const backgroundImages = 'https://www.bmw.rs/etc.clientlibs/bmw-web/clientlibs/clientlib-site/resources/images/street-bg_1x_320.webp';
   const quality = 50;
   const pictureElement = createBgImgaeUrl(backgroundImages, quality);
@@ -386,11 +387,12 @@ export default async function decorate(block) {
   addButtons(preconLeftWrapper, preconRightWrapper);
 
   const precon = [...block.children];
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < precon.length; i++) {
-    const preconData = precon[i]
+    const preconData = precon[i];
     const [linkTab, wdhContext] = preconData.children;
 
-    preconData.classList.add('pre-content-outer-wrapper', `pre-content-outer-wrapper-${i}`, 'in-active')
+    preconData.classList.add('pre-content-outer-wrapper', `pre-content-outer-wrapper-${i}`, 'in-active');
     preconData.children[0].classList.add('precon-link');
     preconData.children[1].classList.add('precon-wdh');
 
@@ -412,15 +414,18 @@ export default async function decorate(block) {
     const mockHeadline = splitPreconData[5]?.trim() || '';
     try {
       if (selectedModelRange) {
+        // eslint-disable-next-line no-await-in-loop
         preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
       }
     } catch (error) {
       console.error(error);
     }
     if (preConModelResponse) {
-      for (let key in preConModelResponse.responseJson) {
+      // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-unreachable-loop
+      for (const key in preConModelResponse.responseJson) {
         if (preConModelResponse.responseJson[key].id === selectedPreConId);
         preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
+        // eslint-disable-next-line max-len
         preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
         preConModelName = preConModelResponse.responseJson[key]?.modelName;
         optionsValue = preConModelResponse.responseJson[key]?.options; //
@@ -428,8 +433,9 @@ export default async function decorate(block) {
         break;
       }
       optionsCount = optionsValue.split(',').length;
+      // eslint-disable-next-line no-await-in-loop
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
-      headLineDom = document.createElement('div')
+      headLineDom = document.createElement('div');
       headLineDom.classList.add('headerline-wrapper');
       headLineDom.textContent = `${preConHeadLine}` || mockHeadline;
       configureCTADom = linkTab?.querySelector('a') || '';
@@ -442,10 +448,11 @@ export default async function decorate(block) {
         defaultIndex = i;
       }
     }
+    // eslint-disable-next-line max-len
     generatePrecon(wdhContext, preconData, headLineDom, configureCTADom, preConModelName, optionsCount);
     contentData.append(preconData);
     generateCosyImage(imageDomContainer, preConCosyImage);
-    const dotButton = document.createElement('button')
+    const dotButton = document.createElement('button');
     dotButton.classList.add('dot', `dot-${i}`);
     dotButton.addEventListener('click', dotClickHandler);
     dotsWrapper.append(dotButton);

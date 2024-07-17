@@ -1,4 +1,3 @@
-/* eslint-disable for onject */
 import {
   buildModelPlaceholder, buildSetPlaceholder, buildTechDataPlaceholder,
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
@@ -92,7 +91,7 @@ const mockResponses = {
 };
 
 /* dummy URL called */
-export function getCosyImageUrl(response, resolution, angle) {
+export function getCosyImageUrl() {
   const imagesObject = mockResponses.imageResponse1;
   // const imgUrl = imagesObject.find((img) => img.angle === angle && img.viewImage !== undefined);
   return imagesObject;
@@ -181,5 +180,3 @@ export async function getPreConCosyImage(modelCode) {
     throw error;
   }
 }
-
-
