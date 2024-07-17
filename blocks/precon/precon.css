@@ -140,17 +140,17 @@
 
 .precon-title {
     text-align: center;
-    font-size: 1.4375rem;
+    font-size: 1.1875rem;
     font-weight: 300;
-    line-height: 2.25rem;
+    line-height: 1.75rem;
 }
 
 .headerline-wrapper {
     margin-bottom: 1.5rem;
     margin-top: .5rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1.75rem;
+    line-height: 1.625rem;
     text-align: center;
 }
 
@@ -303,7 +303,7 @@
 }
 
 
-@media (width >=1280px) {
+@media (width >= 1280px) {
     .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
         padding: 8.333%;
         padding-top: 1.5rem;
@@ -369,14 +369,14 @@
     }
 }
 
-@media (width >=768px) and (width < 1024px) {
+@media (width >= 768px) and (width < 1024px) {
     .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
         padding-left: 16.667%;
         padding-right: 16.667%;
     }
 }
 
-@media (width >=768px) and (width < 1280px) {
+@media (width >= 768px) and (width < 1280px) {
     .precon-wrapper .precon-image-container {
         padding-left: 3rem;
         padding-right: 3rem;
@@ -391,6 +391,16 @@
         padding: 0;
     }
 
+    .headerline-wrapper {
+        font-size: 1.0625rem;
+        line-height: 1.75rem;
+    }
+
+    .precon-title {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
+
     .precon-wrapper .precon-content-data .precon-link a {
         margin: 0 auto;
         width: 50%;
@@ -398,7 +408,7 @@
 
 }
 
-@media (width >=360px) and (width < 768px) {
+@media (width >= 360px) and (width < 768px) {
     .section.precon-container {
         padding: 0;
     }
@@ -416,7 +426,7 @@
 
 }
 
-@media (width >=1920px) {
+@media (width >= 1920px) {
     .section.precon-container .precon-wrapper .precon {
         list-style: none;
         margin-left: auto;
@@ -431,9 +441,19 @@
         margin-bottom: 1.5rem;
     }
 
+    .headerline-wrapper {
+        font-size: 1.1875rem;
+        line-height: 1.875rem;
+    }
+
+    .precon-title {
+        font-size: 1.5625rem;
+        line-height: 2.375rem;
+    }
+
 }
 
-@media (width >=1280px) and (width < 1920px) {
+@media (width >= 1280px) and (width < 1920px) {
     .precon-wrapper .precon-image-container {
         padding-left: 6rem;
         padding-right: 6rem;
@@ -446,6 +466,16 @@
 
     .section.precon-container {
         padding: 0;
+    }
+
+    .headerline-wrapper {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    .precon-title {
+        font-size: 1.4375rem;
+        line-height: 2.25rem;
     }
 
     .precon .img-card img {
