@@ -433,16 +433,19 @@ export default async function decorate(block) {
     if (preConModelResponse) {
       // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-unreachable-loop
       for (const key in preConModelResponse.responseJson) {
+        console.log(preConModelResponse.responseJson[key].id, selectedPreConId, preConModelResponse.responseJson[key].id == selectedPreConId);
+    
         // eslint-disable-next-line eqeqeq
-        if (preConModelResponse.responseJson[key].id == selectedPreConId);
-        preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
-        // eslint-disable-next-line max-len
-        preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
-        preConModelName = preConModelResponse.responseJson[key]?.modelName;
-        optionsValue = preConModelResponse.responseJson[key]?.options; //
-        configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
-        break;
-      }
+        if (preConModelResponse.responseJson[key].id == selectedPreConId) {
+            preConModeCode = preConModelResponse.responseJson[key]?.modelCode; // MODEL-CODE
+            // eslint-disable-next-line max-len
+            preConHeadLine = preConModelResponse.responseJson[key]?.headline; // Show the headline below cosy Image
+            preConModelName = preConModelResponse.responseJson[key]?.modelName;
+            optionsValue = preConModelResponse.responseJson[key]?.options; //
+            configureLink = configureCTA(selctedModelData, preConModelResponse.responseJson[key]);
+            break;
+        }
+    }
       optionsCount = optionsValue.split(',').length;
       // eslint-disable-next-line no-await-in-loop
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
