@@ -8,6 +8,12 @@ function getBackgroundImgURL(backgroundImages, resolutionKey, quality) {
   return `${backgroundImages}?res=${resolutionKey}&q=${quality}`;
 }
 
+export function getConfiguratorURL() {
+  const url = document.querySelector('meta[name="configuratorurl"]')?.content;
+  return url;
+}
+const configuratorURL = getConfiguratorURL();
+
 function createBgImgaeUrl(backgroundImages, quality) {
   const pictureTag = document.createElement('picture');
   const resolutions = [320, 768, 1024];
@@ -28,40 +34,19 @@ function createBgImgaeUrl(backgroundImages, quality) {
   return pictureTag;
 }
 
-function createPictureTag(quality, preConCosyImage) {
-  const screenWidth = window.innerWidth;
-  const resolutionKey = getResolutionKey(screenWidth);
-  const pictureTag = document.createElement('picture');
-  const resolutions = [767, 1023, 1919];
-  resolutions.forEach((resolution) => {
-    const sourceTag = document.createElement('source');
-    sourceTag.srcset = getCosyImageUrl(
-      preConCosyImage,
-      getResolutionKey(resolution),
-      resolution === 768 ? 30 : quality,
-    );
-    sourceTag.media = `(min-width: ${resolution}px)`;
-    pictureTag.appendChild(sourceTag);
-  });
-
-  // Fallback img tag
-  const imgTag = document.createElement('img');
-  imgTag.src = getCosyImageUrl(preConCosyImage, resolutionKey, 40);
-  imgTag.alt = 'pre con Cosy Image';
-  pictureTag.appendChild(imgTag);
-  return pictureTag;
-}
-
 function configureCTA(selectedModel, currentVechileData) {
   let selectedModelValue;
   if (selectedModel === 'modelRange') {
-    selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}`;
+    // eslint-disable-next-line no-return-assign
+    return selectedModelValue = `${configuratorURL}/${currentVechileData.modelRangeCode}`;
   }
   if (selectedModel === 'modelCode') {
-    selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}`;
+    // eslint-disable-next-line no-return-assign
+    return selectedModelValue = `${configuratorURL}/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}`;
   }
   if (selectedModel === 'allOptions') {
-    selectedModelValue = `https://configure.bmw.rs/sr_RS/configure/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}/${currentVechileData.fabric}/${currentVechileData.paint}/${currentVechileData.options}`;
+    // eslint-disable-next-line no-return-assign
+    return selectedModelValue = `${configuratorURL}/${currentVechileData.modelRangeCode}/${currentVechileData.modelCode}/${currentVechileData.fabric}/${currentVechileData.paint}/${currentVechileData.options}`;
   }
   return selectedModelValue;
 }
@@ -121,12 +106,38 @@ function generatePrecon(wdhContext, preConOuterWrapper, headLineDom, configureCT
 }
 
 async function generateCosyImage(imageDomContainer, preConCosyImage) {
-  if (preConCosyImage) { // cosy image to show for Pre-Con
-    const imageCardContainer = document.createElement('div');
-    imageCardContainer.classList.add('img-card-container', 'not-active');
-    const imageCard = document.createElement('div');
-    imageCard.classList.add('img-card');
-    const preConImageDOM = createPictureTag(40, preConCosyImage);
+  const imageCardContainer = document.createElement('div');
+  imageCardContainer.classList.add('img-card-container');
+  const imageCard = document.createElement('div');
+  imageCard.classList.add('img-card');
+  let preConImageDOM;
+
+  if (preConCosyImage) {
+    const screenWidth = window.innerWidth;
+    const resolutionKey = getResolutionKey(screenWidth);
+    const createPictureTag = () => {
+      const pictureTag = document.createElement('picture');
+      const resolutions = [767, 1023, 1919];
+      resolutions.forEach((resolution) => {
+        const quality = (resolution <= 767) ? 40 : 30;
+        const sourceTag = document.createElement('source');
+        sourceTag.srcset = getCosyImageUrl(
+          preConCosyImage,
+          resolutionKey,
+          quality,
+        );
+        sourceTag.media = `(min-width: ${resolution}px)`;
+        pictureTag.appendChild(sourceTag);
+      });
+      const imgTag = document.createElement('img');
+      const quality = (screenWidth <= 767) ? 40 : 30;
+      imgTag.src = getCosyImageUrl(preConCosyImage, resolutionKey, quality);
+      imgTag.alt = 'pre con Cosy Image';
+      pictureTag.appendChild(imgTag);
+      return pictureTag;
+    };
+
+    preConImageDOM = createPictureTag();
     imageCard.append(preConImageDOM);
     imageCardContainer.append(imageCard);
     imageDomContainer.append(imageCardContainer);
