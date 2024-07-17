@@ -614,11 +614,13 @@ export default async function decorate(block) {
           const modelDetailResponse = await getApiResponse(authoredAgCode);
           generateAuthoredModels(modelDetailResponse, authoredAgCode, listOfModels, analyticsProp, modelData);
         } else {
-          const formattedResponse = formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
         }
       } catch (error) {
         console.error('fetch model detail failed');
       }
+    } else {
+      dropDownContainer.append(modelData);
     }
   }
 
