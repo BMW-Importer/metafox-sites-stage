@@ -374,6 +374,10 @@
         padding-left: 16.667%;
         padding-right: 16.667%;
     }
+
+    .precon-wrapper .precon-wrapper-lft-area, .precon-wrapper .precon-wrapper-rth-area{
+        display: none;
+    }
 }
 
 @media (width >= 768px) and (width < 1280px) {
@@ -422,6 +426,10 @@
     .precon .img-card picture img {
         object-fit: cover;
         vertical-align: middle;
+    }
+
+    .precon-wrapper .precon-wrapper-lft-area, .precon-wrapper .precon-wrapper-rth-area{
+        display: none;
     }
 
 }
