@@ -6,6 +6,7 @@ import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
 import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
 import { drivetrainResize } from '../blocks/drivetrain-switch/drivetrain-switch.js';
+import { onLoadCalculateTechDataTableHeight, technicalDataResize, onLoadTechDataAttachAnchorClick } from '../blocks/technical-data/technical-data.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -16,6 +17,9 @@ enableObserverForVideos();
 mediaCarouselResizer();
 videoGalleryResizer();
 drivetrainResize();
+onLoadCalculateTechDataTableHeight();
+technicalDataResize();
+onLoadTechDataAttachAnchorClick();
 
 const page_tracking = {"page": {
   "pageInfo": {

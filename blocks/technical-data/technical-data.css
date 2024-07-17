@@ -47,6 +47,10 @@
     width: 100%;    
 }
 
+.techdata-model-ddl-selected:hover{
+    border: .125rem solid #4d4d4d;
+}
+
 .techdata-model-ddl-selected.clicked .techdata-model-ddl-icon{
     transform: rotate(-180deg);
 }
@@ -105,6 +109,7 @@
     background-color: #fff;
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
 }
 
 .techdata-model-ddl-selected-mob {    
@@ -254,6 +259,10 @@
     text-align: start;
 }
 
+.techdata-disable-accordion .techdata-table caption {
+    cursor: unset;
+}
+
 .techdata-table-caption-btn {
     background-color: #0000 !important;
     color: #262626 !important;
@@ -268,6 +277,12 @@
     text-align: start;
     width: auto;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    white-space: break-spaces;
+    padding-right: 24px;
+}
+
+.techdata-disable-accordion .techdata-table-caption-btn {
+    cursor: unset;
 }
 
 .techdata__caption-icon {
@@ -278,9 +293,17 @@
     transition: transform .5s ease-in-out;
 }
 
+.techdata-disable-accordion .techdata__caption-icon {
+    display: none !important;
+}
+
 .techdata__caption-icon:before {
     font-size: 1.5rem;
     font-weight: 400;
+}
+
+.techdata__caption-icon.clicked {
+    transform: rotate(180deg) translateY(50%);
 }
 
 .techdata-table tbody {
@@ -291,6 +314,11 @@
     transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out, opacity .25s ease-in-out;
     grid-gap: calc( 1.5rem * 2) calc( .5rem * 2);
     padding: 24px;
+}
+
+.techdata-table tbody.clicked {
+    max-height: 0 !important;
+    opacity: 0 !important;    
 }
 
 .techdata-table tbody tr {
@@ -336,6 +364,95 @@
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
+}
+
+.techdata-table-head {
+    padding: 24px;
+    margin-top: -24px;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out, opacity .25s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    box-sizing: border-box;
+}
+
+.techdata-table-head .techdata-table-head-tr:first-child {
+    grid-column: 1 / -1;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(2) {
+    grid-column: 1 / 1;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(3) {
+    grid-column: 2 / -1;
+}
+
+.techdata-table-img {
+    max-width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.techdata-table-head .techdata-table-head-tr:first-child .techdata-table-img {
+    aspect-ratio: 2.1;
+}
+
+.techdata-table-head-td {
+    display: block;
+    position: relative;
+}
+
+.techdata-table-img-measurements {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    font-size: 14px;
+    font-weight: 300;
+    gap: .5rem;
+    justify-content: center;
+    left: 50%;
+    line-height: 22px;
+    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+    position: absolute;
+    transform: translate(-50%);
+    white-space: nowrap;
+    width: 83.3333333333%;
+}
+
+.techdata-table-img-measurements::before,
+.techdata-table-img-measurements::after {
+    background: #262626;
+    content: "";
+    height: 1px;
+    width: 100%;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(2) .techdata-table-img-measurements {
+    width: 50%;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(3) .techdata-table-img-measurements {
+    flex-direction: column;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+}
+
+.techdata-table-img-side-text,
+.techdata-table-img-front-text,
+.techdata-table-img-back-text {
+    margin: 0;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(3) .techdata-table-img-measurements::before,
+.techdata-table-head .techdata-table-head-tr:nth-child(3) .techdata-table-img-measurements::after {
+    height: 100%;
+}
+
+.techdata-table-head .techdata-table-head-tr:nth-child(3) .techdata-table-img-back-text {
+
 }
 
 /* tablet */
@@ -491,6 +608,11 @@
         font-size: 15px;
         line-height: 24px;
     }
+
+    .techdata-table-img-measurements {
+        font-size: 15px;
+        line-height: 24px;
+    }
 }
 
 /* desktop */
@@ -526,6 +648,11 @@
     }
 
     .techdata-table-td-text.value {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .techdata-table-img-measurements {
         font-size: 16px;
         line-height: 26px;
     }
