@@ -448,7 +448,7 @@ export default async function decorate(block) {
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
       headLineDom = document.createElement('div');
       headLineDom.classList.add('headerline-wrapper');
-      headLineDom.textContent = `${preConHeadLine}`|| '';
+      headLineDom.textContent = `${preConHeadLine}` || '';
       configureCTADom = linkTab?.querySelector('a') || '';
       const isHighlited = linkTab.querySelectorAll('p')[1]?.textContent.trim() === 'true';
       if (configureCTADom) {
