@@ -4780,52 +4780,86 @@
       {
         "component": "tab",
         "label": "All Models Overview",
-        "name": "all_models_overview"
+        "name": "content_models_overview"
       },
       {
           "component": "text-input",
           "valueType": "string",
-          "name": "contentnav_descption",
+          "name": "content_description",
           "label": "Content Navigation Description",
           "value": "",
           "description": "Summarises the description of the Content Navigation for the accessibility purposes.",
           "required": true
       },
       {
+        "component": "text",
+        "name": "content_descriptionType",        
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
         "component": "boolean",
         "label": "Activate Configurator Variant",
-        "name": "activate_confvariant",
+        "name": "content_confvariant",
         "description": "Defines if some models will appear on the Configurator page.",
         "valueType": "boolean",
         "value": false
       },
       {
+        "component": "text",
+        "name": "content_confvariantType",        
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
         "component": "text-input",
         "valueType": "string",
-        "name": "filter_headline",
+        "name": "content_headline",
         "label": "Filter Headline",
         "value": "",
         "description": "Defines the headline for the filters"
     },
     {
+      "component": "text",
+      "name": "content_headlineType",        
+      "valueType": "string",
+      "value": "h4",
+      "hidden": true
+    },
+    {
       "component": "aem-content",
-      "name": "filter_spreadsheet",
+      "name": "content_spreadsheet1",
       "description": "Contains the filter labels and their translations.",
       "label": "Filter Spreadsheet ",
       "valueType": "string"
     },
     {
+      "component": "text",
+      "name": "content_spreadsheet1Type",        
+      "valueType": "string",
+      "value": "h5",
+      "hidden": true
+    },
+    {
       "component": "aem-content",
-      "name": "model_spreadsheet",
+      "name": "content_spreadsheet2",
       "description": "Contains all models labels and details (e.g. model name, model code, price etc.).",
       "label": "Model Overview Spreadsheet",
       "valueType": "string"
     },
     {
+      "component": "text",
+      "name": "content_spreadsheet2Type",        
+      "valueType": "string",
+      "value": "h5",
+      "hidden": true
+    },
+    {
       "component":"tab",
       "name":"analytics_tab",
       "label":"Analytics"
-
     },
     {
       "component":"select",
