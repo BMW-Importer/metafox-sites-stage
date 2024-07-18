@@ -164,20 +164,20 @@ function opt_in_info() {
   const adobeDtm = window.adobeDataLayer;
   console.log(adobeDtm.version);
   const d = new Date();
-  // alloy('setConsent', {
-  //   consent: [{
-  //     standard: 'Adobe',
-  //     version: '2.0',
-  //     value: {
-  //       collect: {
-  //         val: 'y'
-  //       },
-  //       metadata: {
-  //         time: timeStamp()
-  //       }
-  //     }
-  //   }]
-  // });
+  alloy('setConsent', {
+    consent: [{
+      standard: 'Adobe',
+      version: '2.0',
+      value: {
+        collect: {
+        val: getConsentValue()
+        },
+        metadata: {
+        time: timeStamp()
+        }
+    }
+    }]
+  });
 }
 
 /**
@@ -223,7 +223,11 @@ function addDataAEP (userConsent){
 }
 
 function consentValueOnPageLoad () {
-  console.log(consentcontroller.api.isUsageAllowed(), 'isUsageAllowed value')
+  console.log(epaas.api.isRegulationAccepted(), 'isUsageAllowed value')
+  const ePassRegulationAccepted = epaas.api.isRegulationAccepted();
+  if (ePassRegulationAccepted || !ePassRegulationAccepted) {
+    addDataAEP (userConsent)
+  }
 }
 
 /**
