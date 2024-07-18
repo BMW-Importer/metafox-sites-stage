@@ -50,7 +50,7 @@ const page_tracking = {"page": {
   "event": "pageview",
   "user": {
     "consent": {
-        "analytics": true,
+        "analytics": false,
         "marketing": true,
         "personalization": false
     }
