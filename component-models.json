@@ -530,6 +530,24 @@
     ]
   },
   {
+    "id": "all-models-section",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
