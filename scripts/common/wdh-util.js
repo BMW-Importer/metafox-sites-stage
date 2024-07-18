@@ -97,17 +97,11 @@ export async function getCosyImage(modelCode) {
   }
 }
 
-function isAuthorUrl(host) {
-  return host.startsWith('author-') && host.endsWith('.adobeaemcloud.com');
-}
-
 /* To call api for getting spreadsheet data */
 
 export async function getTechnicalSpreadsheetData(authoredPath) {
-  try {
-    let endpointUrl = isAuthorUrl(window.location.host) ? authoredPath : authoredPath.split('/').pop();
-    const origin = isAuthorUrl(window.location.host) ? `${window.hlx.codeBasePath}` : '';
-    const response = await fetch(`${origin}${endpointUrl}`);
+  try {    
+    const response = await fetch(authoredPath);
     const responseJson = await response.json();
     return { responseJson };
   } catch (error) {

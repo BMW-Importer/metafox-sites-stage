@@ -319,7 +319,14 @@
 
 .techdata-table tbody.clicked {
     max-height: 0 !important;
-    opacity: 0 !important;    
+    opacity: 0 !important;
+    padding: 0 !important;
+}
+
+.techdata-table thead.clicked {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    padding: 0 !important; 
 }
 
 .techdata-table tbody tr {
@@ -452,8 +459,58 @@
     height: 100%;
 }
 
-.techdata-table-head .techdata-table-head-tr:nth-child(3) .techdata-table-img-back-text {
+.techdata-table-disclaimer-container {
+    margin-bottom: 2.5rem;
+    opacity: .8203;
+    padding-top: 3rem;
+}
 
+.techdata-table-disclaimer-p {
+    margin: 0;
+    margin-bottom: 16px;
+    display: flex;
+    position: relative;
+}
+
+.techdata-table-disclaimer-a {
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: unset;
+    color: inherit;
+    cursor: pointer;
+    display: inline;
+    font-weight: inherit;
+    text-decoration: none;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #666;
+}
+
+.techdata-table-disclaimer-a:hover {
+    text-decoration: none;
+    color: #666;
+}
+
+.techdata-table-disclaimer-span {
+    padding-left: 1rem;
+    pointer-events: none;
+    z-index: 10;
+    color: #666;
+    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
+
+.techdata-table-disclaimer-span p {
+    margin: 0;
 }
 
 /* tablet */
@@ -545,6 +602,7 @@
         display: flex;
         flex-direction: column;
         list-style: none;
+        overflow-y: unset;
     }
 
     .techdata-model-ddl-close-btn {
@@ -567,6 +625,10 @@
     .techdata-table-td.value {
         text-align: end;
         justify-content: end;
+    }
+
+    .techdata-table-disclaimer-container {
+        margin-bottom: 3rem;
     }
 }
 
@@ -613,6 +675,10 @@
     .techdata-table-img-measurements {
         font-size: 15px;
         line-height: 24px;
+    }
+
+    .techdata-table-disclaimer-container {
+        margin-bottom: 80px;
     }
 }
 
