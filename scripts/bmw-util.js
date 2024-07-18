@@ -133,8 +133,32 @@ export function getConsentValue() {
 
   if (advertisingValue === 1) {
     userConsentValue = 'y';
+  }
+
+  return userConsentValue;
+}
+
+export function marketingValue() {
+  // Get the 'cc_consentCookie' cookie
+  // eslint-disable-next-line camelcase
+  const cc_consentCookie = getCookie('cc_consentCookie');
+  let advertisingValue;
+  // eslint-disable-next-line camelcase
+  if (cc_consentCookie) {
+    // Parse the JSON string to an object
+    const cookieObject = JSON.parse(cc_consentCookie);
+
+    // Access the advertising value
+    advertisingValue = cookieObject.bmw_rs.cmm.advertising;
   } else {
-    userConsentValue = 'n';
+    console.log('Cookie not found');
+  }
+  /* cookie code end ** */
+
+  let userConsentValue = 'false';
+
+  if (advertisingValue === 1) {
+    userConsentValue = 'true';
   }
 
   return userConsentValue;

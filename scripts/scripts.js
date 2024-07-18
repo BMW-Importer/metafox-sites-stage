@@ -222,8 +222,7 @@ function addDataAEP (userConsent){
       console.log('alloy function end');  
 }
 
-function consentValueOnPageLoad () {
-  console.log(epaas.api.isRegulationAccepted(), 'isUsageAllowed value')
+function consentValueOnPageLoad (userConsent) {
   const ePassRegulationAccepted = epaas.api.isRegulationAccepted();
   if (ePassRegulationAccepted || !ePassRegulationAccepted) {
     addDataAEP (userConsent)

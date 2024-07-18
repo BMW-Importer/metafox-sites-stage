@@ -6,7 +6,7 @@ import { mediaCarouselResizer } from '../blocks/media-carousel/media-carousel.js
 import { pushCustomLinkAnalyticData } from './analytics-util.js';
 import { videoGalleryResizer } from '../blocks/video-gallery/video-gallery.js';
 import { drivetrainResize } from '../blocks/drivetrain-switch/drivetrain-switch.js';
-import { timeStamp } from './bmw-util.js';
+import { timeStamp, marketingValue } from './bmw-util.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -210,6 +210,8 @@ function set_page_tracking(){
     if (geoReg && geoReg.content) {
       page_tracking.page.pageInfo.geoRegion = geoReg.content;
     }
+
+    page_tracking.user.consent.marketing =  marketingValue();
     
     window.adobeDataLayer.push(page_tracking);
 
