@@ -4346,13 +4346,15 @@
         "component":"text-input",
         "name":"analytics_label",
         "label":"Analytics Label",
-        "valueType": "string"
+        "valueType": "string",
+        "description": "Defines a brief description of the content for analytics. Please fill out this field in English."
       },
       {
         "component":"select",
         "name":"analytics_button",
         "label":"Button/Link Type", 
         "valueType": "string",
+        "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
             "name": "Exit",
@@ -4373,6 +4375,7 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
+        "description": "Defines the category of the Button/Link authored if Other is selected as its Type.",
         "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
@@ -4801,7 +4804,7 @@
       {
         "component": "customtype",
         "label": "Model Card Context",
-        "name": "wdh_customSeriesModelRangeSelection",
+        "name": "wdh_techdatacustomfield",
         "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
         "valueType": "string"
       },
