@@ -1,16 +1,16 @@
 .technical-data-block {
-    padding-top: 48px;
+    padding-top: 3rem;
 }
 
 .techdata-selected-model-title {
-    font-size: 23px;
+    font-size: 1.4375rem;
     font-weight: 300;
-    line-height: 32px;
+    line-height: 2rem;
     text-align: start;
     word-break: break-word;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+    font-family: var(--fixed-font-family);
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .techdata-ddl-container {
@@ -21,10 +21,10 @@
 }
 
 .techdata-model-ddl-title {
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
-    font-size: 12px;
+    font-family: var(--fixed-font-family);
+    font-size: 0.75rem;
     font-weight: 300;
-    line-height: 16px;
+    line-height: 1rem;
     text-align: start;
     word-break: break-word;
 }
@@ -35,8 +35,8 @@
     min-height: 3.25rem;
     padding: 0 0 0 1.25rem;
     align-items: center;
-    background-color: #fff !important;
-    border: .0625rem solid #bbb;
+    background-color: var(--background-color) !important;
+    border: .0625rem solid var(--light-bbb);
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -48,16 +48,16 @@
 }
 
 .techdata-model-ddl-selected:hover{
-    border: .125rem solid #4d4d4d;
+    border: .125rem solid var(--medium-text-color);
 }
 
 .techdata-model-ddl-selected-text {
-    color: #262626;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
+    color: var(--light-text-color);
+    font-family: var(--fixed-font-family);
+    font-size: 0.875rem;
     font-weight: 400;
-    line-height: 22px;
-    padding-left: 20px;
+    line-height: 1.375rem;
+    padding-left: 1.25rem;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
     overflow: hidden;
@@ -65,7 +65,7 @@
 }
 
 .techdata-model-ddl-icon {
-    color: #666;
+    color: var(--light-border-color);
     padding: 0 1.25rem;
     transition: transform .5s ease-in-out;
 }
@@ -89,7 +89,7 @@
 }
 
 .techdata-model-ddl-ul-container::before {
-    background-color: #000c;    
+    background-color: var(--ddl-selected-color);    
     position: fixed;    
     inset: 0;
     content: " ";
@@ -99,7 +99,7 @@
 .techdata-model-ddl-ul {   
     max-height: 75vh;
     z-index: 6070;
-    background-color: #fff;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     overflow-y: scroll;
@@ -112,14 +112,14 @@
     padding: 0 0 0 1.25rem;
     text-decoration: none;
     align-items: center;
-    background-color: #fff !important;
+    background-color: var(--background-color) !important;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     padding-right: 0;
     text-align: left;
     width: 100%;
-    border: .125rem solid #4d4d4d;
+    border: .125rem solid var(--medium-text-color);
     height: 3rem;
     margin-top: 0;
     padding-left: 0; 
@@ -134,14 +134,14 @@
 }
 
 .techdata-model-ddl-fuel-title {
-    background-color: #f2f2f2;
+    background-color: var(--bg-media-ghost-btn);
     display: block;
     font-size: .75rem;
     font-weight: 300;
     line-height: 1rem;
     padding: .5rem 1.25rem;
-    color: #262626;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    color: var(--light-text-color);
+    font-family: var(--fixed-font-family);
 }
 
 .techdata-model-ddl-model-container {
@@ -157,10 +157,10 @@
     padding: 0 0 0 1.25rem;
     text-align: center;
     text-decoration: none;
-    background-color: #fff !important;
+    background-color: var(--background-color) !important;
     border: 0;
     border-radius: 0;
-    color: #262626;
+    color: var(--light-text-color);
     font-size: .875rem;
     font-weight: 300;
     justify-content: space-between;
@@ -170,26 +170,26 @@
 }
 
 .techdata-model-ddl-model-item.active .techdata-model-ddl-model-btn {
-    background-color: #000 !important;    
+    background-color: var(--text-color) !important;    
 }
 
 .techdata-model-ddl-model-item-title {
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
-    color: #262626;
+    font-family: var(--fixed-font-family);
+    font-size: 0.875rem;
+    color: var(--light-text-color);
     font-weight: 300;
-    line-height: 22px;
+    line-height: 1.375rem;
     text-align: start;
 }
 
 .techdata-model-ddl-model-selected-icon {
     display: none;
-    color: #fff;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
+    color: var(--background-color);
+    font-family: var(--fixed-font-family);
+    font-size: 0.875rem;
     font-weight: 400;
-    line-height: 22px;
-    padding-right: 20px;
+    line-height: 1.375rem;
+    padding-right: 1.25rem;
 }
 
 .techdata-model-ddl-model-selected-icon::before {
@@ -200,11 +200,11 @@
     content: "checkmark";
     direction: ltr;
     display: block;
-    font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
+    font-family: var(--icon-font-family);
     font-style: normal;
     height: 1em;
     line-height: 1;
-    outline: 1px solid #0000;
+    outline: 1px solid var(--text-color);
     text-align: left;
     text-transform: none;
     white-space: nowrap;
@@ -214,7 +214,7 @@
 }
 
 .techdata-model-ddl-model-item.active .techdata-model-ddl-model-item-title {
-    color: #fff;
+    color: var(--background-color);
     font-weight: 400;
 }
 
@@ -229,7 +229,7 @@
     color: var(--background-color);
     cursor: pointer;
     outline: 0;
-    padding: 1px 20px 1px 6px;
+    padding: 1px 1.25rem 1px 0.375rem;
     z-index: 6070;
     display: inline;
     width: auto;
@@ -239,7 +239,7 @@
 .techdata-table {
     display: block;
     width: 100%;
-    border-bottom: .0625rem solid #e6e6e6;
+    border-bottom: .0625rem solid var(--light-grey-1);
 }
 
 .techdata-table caption {   
@@ -260,21 +260,21 @@
 }
 
 .techdata-table-caption-btn {
-    background-color: #0000 !important;
-    color: #262626 !important;
+    background-color: var(--text-color) !important;
+    color: var(--light-text-color) !important;
     border: 0;
     box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
     cursor: pointer;
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-weight: 300;
     height: 100%;
-    line-height: 26px;
+    line-height: 1.625rem;
     padding: 0;
     text-align: start;
     width: auto;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
+    font-family: var(--fixed-font-family);
     white-space: break-spaces;
-    padding-right: 24px;
+    padding-right: 1.5rem;
     overflow-y: unset;
 }
 
@@ -310,7 +310,7 @@
     overflow: hidden;
     transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out, opacity .25s ease-in-out;
     grid-gap: calc( 1.5rem * 2) calc( .5rem * 2);
-    padding: 24px;
+    padding: 1.5rem;
 }
 
 .techdata-table tbody.clicked {
@@ -337,7 +337,7 @@
 }
 
 .techdata-table tbody tr:nth-of-type(2n-1)::before {
-    background: #f6f6f6;
+    background: var(--light-grey);
     content: "";
     inset: calc( 1.5rem * -1);
     position: absolute;
@@ -358,24 +358,24 @@
 }
 
 .techdata-table-td-text.label {
-    color: #666;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    color: var(--light-border-color);
+    font-family: var(--fixed-font-family);
+    font-size: 0.75rem;
     font-weight: 300;
-    line-height: 16px;
+    line-height: 1rem;
 }
 
 .techdata-table-td-text.value {
-    color: #262626;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 14px;
+    color: var(--light-text-color);
+    font-family: var(--fixed-font-family);
+    font-size: 0.875rem;
     font-weight: 300;
-    line-height: 22px;
+    line-height: 1.375rem;
 }
 
 .techdata-table-head {
-    padding: 24px;
-    margin-top: -24px;
+    padding: 1.5rem;
+    margin-top: -1.5rem;
     overflow: hidden;
     transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out, opacity .25s ease-in-out;
     display: grid;
@@ -414,13 +414,13 @@
     align-items: center;
     bottom: 0;
     display: flex;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 300;
     gap: .5rem;
     justify-content: center;
     left: 50%;
-    line-height: 22px;
-    font-family: bmwTypeNextWeb,Arial,Helvetica,Roboto,sans-serif;
+    line-height: 1.375rem;
+    font-family: var(--fixed-font-family);
     position: absolute;
     transform: translate(-50%);
     white-space: nowrap;
@@ -429,7 +429,7 @@
 
 .techdata-table-img-measurements::before,
 .techdata-table-img-measurements::after {
-    background: #262626;
+    background: var(--light-text-color);
     content: "";
     height: 1px;
     width: 100%;
@@ -466,7 +466,7 @@
 
 .techdata-table-disclaimer-p {
     margin: 0;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     display: flex;
     position: relative;
 }
@@ -480,27 +480,27 @@
     cursor: pointer;
     display: inline;    
     text-decoration: none;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    font-family: var(--fixed-font-family);
+    font-size: 0.75rem;
     font-weight: 300;
-    line-height: 18px;
-    color: #666;
+    line-height: 1.125rem;
+    color: var(--light-border-color);
 }
 
 .techdata-table-disclaimer-a:hover {
     text-decoration: none;
-    color: #666;
+    color: var(--light-border-color);
 }
 
 .techdata-table-disclaimer-span {
     padding-left: 1rem;
     pointer-events: none;
     z-index: 10;
-    color: #666;
-    font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
-    font-size: 12px;
+    color: var(--light-border-color);
+    font-family: var(--fixed-font-family);
+    font-size: 0.75rem;
     font-weight: 300;
-    line-height: 18px;
+    line-height: 1.125rem;
 }
 
 .techdata-table-disclaimer-span p {
@@ -510,8 +510,8 @@
 /* tablet */
 @media (width >= 768px) {
     .techdata-selected-model-title {
-        font-size: 25px;
-        line-height: 36px;        
+        font-size: 1.5625rem;
+        line-height: 2.25rem;        
     }
 
     .techdata-table tbody {
@@ -530,7 +530,7 @@
 
     .techdata-table tbody tr:nth-of-type(6n-5)::before {
         width: calc(300% + (1.5rem * 2) + (.75rem * 4));
-        background: #f6f6f6;
+        background: var(--light-grey);
         content: "";
         inset: calc(1.5rem * -1);
         position: absolute;
@@ -558,14 +558,14 @@
         justify-content: unset;
         opacity: unset;
         top: unset;
-        background-color: #fff;
+        background-color: var(--background-color);
         border-radius: 0 0 .1875rem .1875rem;
         box-shadow: 0 .125rem .5rem 0 #00000014, 0 0 .0625rem 0 #0000003d;
         list-style: none;
-        max-height: 234px;
+        max-height: 14.625rem;
         overflow: hidden auto;
         position: absolute;
-        scrollbar-color: #4d4d4d #e6e6e6;
+        scrollbar-color: var(--medium-text-color) var(--light-grey-1);
         scrollbar-width: thin;
         width: 100%;
         z-index: 10;
@@ -590,7 +590,7 @@
     .techdata-model-ddl-ul {
         max-height: unset;
         z-index: unset;
-        background-color: #fff;
+        background-color: var(--background-color);
         margin: 0;
         padding: 0;
         display: flex;
@@ -608,8 +608,8 @@
     }
 
     .techdata-table-caption-btn {
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 1.25rem;
+        line-height: 1.875rem;
     }
 
     .techdata-table tbody tr {
@@ -629,22 +629,22 @@
 /* desktop */
 @media (width >= 1280px) {
     .technical-data-block {
-        padding-top: 64px;
+        padding-top: 4rem;
     }
 
     .techdata-selected-model-title {
-        font-size: 28px;
-        line-height: 40px;
-        margin-bottom: 12px;
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+        margin-bottom: 0.75rem;
     }
 
     .techdata-ddl-container {
-        padding-top: 40px;
+        padding-top: 2.5rem;
     }
 
     .techdata-model-ddl-selected-text {
-        font-size: 15px;
-        line-height: 24px;
+        font-size: 0.9375rem;
+        line-height: 1.5rem;
     }
 
     .techdata-model-ddl-selected-mob {
@@ -652,40 +652,40 @@
     }
 
     .techdata-model-ddl-model-item-title {
-        font-size: 15px;
-        line-height: 24px;
+        font-size: 0.9375rem;
+        line-height: 1.5rem;
     }
 
     .techdata-table-caption-btn {
-        font-size: 23px;
-        line-height: 36px;
+        font-size: 1.4375rem;
+        line-height: 2.25rem;
     }
 
     .techdata-table-td-text.value {
-        font-size: 15px;
-        line-height: 24px;
+        font-size: 0.9375rem;
+        line-height: 1.5rem;
     }
 
     .techdata-table-img-measurements {
-        font-size: 15px;
-        line-height: 24px;
+        font-size: 0.9375rem;
+        line-height: 1.5rem;
     }
 
     .techdata-table-disclaimer-container {
-        margin-bottom: 80px;
+        margin-bottom: 5rem;
     }
 }
 
 /* desktop */
 @media (width >= 1920px) {
     .technical-data-block {
-        padding-top: 80px;
+        padding-top: 5rem;
     }
 
     .techdata-selected-model-title {
-        font-size: 34px;
-        line-height: 48px;
-        margin-bottom: 16px;      
+        font-size: 2.125rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;      
     }
 
     .techdata-ddl-container {
@@ -694,27 +694,27 @@
     }
 
     .techdata-model-ddl-selected-text {
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.625rem;
     }
 
     .techdata-model-ddl-model-item-title {
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.625rem;
     }
 
     .techdata-table-caption-btn {
-        font-size: 25px;
-        line-height: 38px;
+        font-size: 1.5625rem;
+        line-height: 2.375rem;
     }
 
     .techdata-table-td-text.value {
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.625rem;
     }
 
     .techdata-table-img-measurements {
-        font-size: 16px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.625rem;
     }
 }
