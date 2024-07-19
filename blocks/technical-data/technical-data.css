@@ -17,7 +17,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 2rem 0px;
+    padding: 2rem 0;
 }
 
 .techdata-model-ddl-title {
@@ -49,10 +49,6 @@
 
 .techdata-model-ddl-selected:hover{
     border: .125rem solid #4d4d4d;
-}
-
-.techdata-model-ddl-selected.clicked .techdata-model-ddl-icon{
-    transform: rotate(-180deg);
 }
 
 .techdata-model-ddl-selected-text {
@@ -93,12 +89,9 @@
 }
 
 .techdata-model-ddl-ul-container::before {
-    background-color: #000c;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
+    background-color: #000c;    
+    position: fixed;    
+    inset: 0;
     content: " ";
     box-sizing: border-box;
 }
@@ -133,6 +126,10 @@
 }
 
 .techdata-model-ddl-selected-mob .techdata-model-ddl-icon {
+    transform: rotate(-180deg);
+}
+
+.techdata-model-ddl-selected.clicked .techdata-model-ddl-icon {
     transform: rotate(-180deg);
 }
 
@@ -203,13 +200,12 @@
     content: "checkmark";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons, Arial, Helvetica, Roboto, sans-serif;
+    font-family: 'bmw_next_icons', Arial, Helvetica, Roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
     outline: 1px solid #0000;
     text-align: left;
-    text-rendering: optimizeLegibility;
     text-transform: none;
     white-space: nowrap;
     width: auto;
@@ -286,7 +282,7 @@
     cursor: unset;
 }
 
-.techdata__caption-icon {
+.techdata-caption-icon {
     position: absolute;
     right: 0;
     top: 50%;
@@ -294,16 +290,16 @@
     transition: transform .5s ease-in-out;
 }
 
-.techdata-disable-accordion .techdata__caption-icon {
+.techdata-disable-accordion .techdata-caption-icon {
     display: none !important;
 }
 
-.techdata__caption-icon:before {
+.techdata-caption-icon::before {
     font-size: 1.5rem;
     font-weight: 400;
 }
 
-.techdata__caption-icon.clicked {
+.techdata-caption-icon.clicked {
     transform: rotate(180deg) translateY(50%);
 }
 
@@ -320,13 +316,15 @@
 .techdata-table tbody.clicked {
     max-height: 0 !important;
     opacity: 0 !important;
-    padding: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .techdata-table thead.clicked {
     max-height: 0 !important;
     opacity: 0 !important;
-    padding: 0 !important; 
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .techdata-table tbody tr {
@@ -338,7 +336,7 @@
     position: relative;
 }
 
-.techdata-table tbody tr:nth-of-type(2n-1):before {
+.techdata-table tbody tr:nth-of-type(2n-1)::before {
     background: #f6f6f6;
     content: "";
     inset: calc( 1.5rem * -1);
@@ -358,6 +356,7 @@
 .techdata-table-td-text {
     margin: 0;
 }
+
 .techdata-table-td-text.label {
     color: #666;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
@@ -425,7 +424,7 @@
     position: absolute;
     transform: translate(-50%);
     white-space: nowrap;
-    width: 83.3333333333%;
+    width: 83.3333%;
 }
 
 .techdata-table-img-measurements::before,
@@ -473,18 +472,13 @@
 }
 
 .techdata-table-disclaimer-a {
-    bottom: 0;
-    left: 0;
     margin: 0;
     padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+    position: absolute;    
+    inset: 0;
     border: unset;
-    color: inherit;
     cursor: pointer;
-    display: inline;
-    font-weight: inherit;
+    display: inline;    
     text-decoration: none;
     font-family: bmwTypeNextWeb, Arial, Helvetica, Roboto, sans-serif;
     font-size: 12px;
@@ -525,7 +519,7 @@
         grid-template-columns: repeat( 3, 1fr);
     }
 
-    .techdata-table tbody tr:nth-of-type(2n-1):before {
+    .techdata-table tbody tr:nth-of-type(2n-1)::before {
         width: unset;
         background: unset;
         content: "";
@@ -534,7 +528,7 @@
         z-index: -10;
     }
 
-    .techdata-table tbody tr:nth-of-type(6n-5):before {
+    .techdata-table tbody tr:nth-of-type(6n-5)::before {
         width: calc(300% + (1.5rem * 2) + (.75rem * 4));
         background: #f6f6f6;
         content: "";

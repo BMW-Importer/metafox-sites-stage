@@ -2,7 +2,7 @@ export const techDataMarkUp = `
 <table class='techdata-table total-power'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataTotalPower}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -49,7 +49,7 @@ export const techDataMarkUp = `
 <table class='techdata-table twin-power'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataTwinPower}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -88,7 +88,7 @@ export const techDataMarkUp = `
 <table class='techdata-table electric-motor'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataElectricMotor}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -111,7 +111,7 @@ export const techDataMarkUp = `
 <table class='techdata-table performance'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataPerformance}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -142,7 +142,7 @@ export const techDataMarkUp = `
 <table class='techdata-table Consumption-Emissions'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataConsumptionEmission}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -181,7 +181,7 @@ export const techDataMarkUp = `
 <table class='techdata-table high-voltage-battery'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataHighVoltageBatteryCharging}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <tr class="techdata-table-tr" role="row">
     <td class="techdata-table-td label" role="rowheader">
@@ -229,7 +229,7 @@ export const techDataMarkUp = `
 <table class='techdata-table dimenssion-weights'>
 <caption>
 <button class='techdata-table-caption-btn'>{placeholders.techDataDimensionsWeights}</button>
-<i class="techdata__caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
+<i class="techdata-caption-icon" data-icon="arrow_chevron_up" aria-hidden="true"></i>
 </caption>
 <thead class="techdata-table-head">
     <tr class="techdata-table-head-tr">
@@ -356,4 +356,4 @@ export const techDataMarkUp = `
 </table>
 `;
 
-export const techDataWdhResponsObject = `{"model":{"modelCode":"{responseJson.ModelCode}","brand":"","description":"","shortName":"","shortRangeName":"","modelRangeCode":"","modelRanges":[""],"seriesCode":"","series":[""],"seriesDescription":"","seriesDescriptions":[""],"hybridCode":"","fromPrice":0,"acceleration":"","trunkCapacity":0,"seats":0,"horsePower":0,"topSpeed":"","bodyTypeCode":"","marketingBodyTypeCode":"","posiSpec":{"cosyBrand":"","agCode":"","paint":"","fabric":"","options":""},"powerTrain":{"fuelType":"","systemPower":"","systemMaxTorque":"","gearBox":"","driveType":""},"effectDate":"","vehicles":[{"transmissionCode":"{responseJson.TransmissionType}","hybridCode":"","iD_LEIST_KONST":"","volt48":true,"technicalData":{"powerTrain":{"fuelType":"{responseJson.EngineType}","systemPower":"{responseJson.Power}","systemMaxTorque":"{responseJson.Torque}","gearBox":"{responseJson.Transmission}","driveType":"{responseJson.DriveType}"},"engine":{"cylinders":"","technicalCapacity":"","nominalPower":"{responseJson.NominalPower}","nominalTorque":""},"electric":{"systemPower":"-"},"performance":{"acceleration":"{responseJson.Acceleration}","topSpeed":"{responseJson.MaximumSpeed}","electricTopSpeed":""},"emissionsConsumptionWltp":{"consumptionWltpCombined":"{responseJson.EnergyConsumption}","consumptionWltpCombinedChargeSustaining":"","emissionsWltpCombined":"","electricConsumption":"","electricRangeWltpCombined":"{responseJson.ElectricRange}","efficiencyCategoryMinChargeSustaining":"","efficiencyCategoryMaxChargeSustaining":"","noiseDriving":"","noiseStationary":""},"charging":{"batteryCapacity":"{responseJson.BatteryCapacity}","additionalRangeDC":"","chargeACDC":"{responseJson.MaximumChargingPower}","chargeAC":"{responseJson.ChargingTimeAC}","charge_AC_0_100":"","chargeDC":"{responseJson.ChargingTimeDC}","charge_DC_10_80":""},"weightMeasurements":{"length":"{responseJson.Length}","width":"{responseJson.Width}","height":"{responseJson.Height}","widthMirrors":"","wheelTurn":"{responseJson.Wheelbase}","weightNotLoaded":"{responseJson.EmptyVehicleWeight}","weightMax":"","permittedLoad":"","trailerLoad":"{responseJson.TowingHook}","trunkCapacity":"{responseJson.LuggageCapacity}","tankCapacity":""}},"footnotes":{},"footnotesData":{"overboostMax":"","overboostKW":""}}]}}`;
+export const techDataWdhResponsObject = '{"model":{"modelCode":"{responseJson.ModelCode}","brand":"","description":"","shortName":"","shortRangeName":"","modelRangeCode":"","modelRanges":[""],"seriesCode":"","series":[""],"seriesDescription":"","seriesDescriptions":[""],"hybridCode":"","fromPrice":0,"acceleration":"","trunkCapacity":0,"seats":0,"horsePower":0,"topSpeed":"","bodyTypeCode":"","marketingBodyTypeCode":"","posiSpec":{"cosyBrand":"","agCode":"","paint":"","fabric":"","options":""},"powerTrain":{"fuelType":"","systemPower":"","systemMaxTorque":"","gearBox":"","driveType":""},"effectDate":"","vehicles":[{"transmissionCode":"{responseJson.TransmissionType}","hybridCode":"","iD_LEIST_KONST":"","volt48":true,"technicalData":{"powerTrain":{"fuelType":"{responseJson.EngineType}","systemPower":"{responseJson.Power}","systemMaxTorque":"{responseJson.Torque}","gearBox":"{responseJson.Transmission}","driveType":"{responseJson.DriveType}"},"engine":{"cylinders":"","technicalCapacity":"","nominalPower":"{responseJson.NominalPower}","nominalTorque":""},"electric":{"systemPower":"-"},"performance":{"acceleration":"{responseJson.Acceleration}","topSpeed":"{responseJson.MaximumSpeed}","electricTopSpeed":""},"emissionsConsumptionWltp":{"consumptionWltpCombined":"{responseJson.EnergyConsumption}","consumptionWltpCombinedChargeSustaining":"","emissionsWltpCombined":"","electricConsumption":"","electricRangeWltpCombined":"{responseJson.ElectricRange}","efficiencyCategoryMinChargeSustaining":"","efficiencyCategoryMaxChargeSustaining":"","noiseDriving":"","noiseStationary":""},"charging":{"batteryCapacity":"{responseJson.BatteryCapacity}","additionalRangeDC":"","chargeACDC":"{responseJson.MaximumChargingPower}","chargeAC":"{responseJson.ChargingTimeAC}","charge_AC_0_100":"","chargeDC":"{responseJson.ChargingTimeDC}","charge_DC_10_80":""},"weightMeasurements":{"length":"{responseJson.Length}","width":"{responseJson.Width}","height":"{responseJson.Height}","widthMirrors":"","wheelTurn":"{responseJson.Wheelbase}","weightNotLoaded":"{responseJson.EmptyVehicleWeight}","weightMax":"","permittedLoad":"","trailerLoad":"{responseJson.TowingHook}","trunkCapacity":"{responseJson.LuggageCapacity}","tankCapacity":""}},"footnotes":{},"footnotesData":{"overboostMax":"","overboostKW":""}}]}}';

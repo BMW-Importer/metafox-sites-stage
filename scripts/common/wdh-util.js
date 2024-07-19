@@ -100,7 +100,7 @@ export async function getCosyImage(modelCode) {
 /* To call api for getting spreadsheet data */
 
 export async function getTechnicalSpreadsheetData(authoredPath) {
-  try {    
+  try {
     const response = await fetch(authoredPath);
     const responseJson = await response.json();
     return { responseJson };
