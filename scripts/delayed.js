@@ -50,9 +50,9 @@ const page_tracking = {"page": {
   "event": "pageview",
   "user": {
     "consent": {
-        "analytics": false,
+        "analytics": true,
         "marketing": true,
-        "personalization": false
+        "personalization": true
     }
 }}
 
@@ -212,6 +212,8 @@ function set_page_tracking(){
     }
 
     page_tracking.user.consent.marketing =  marketingValue();
+    page_tracking.user.consent.analytics =  marketingValue();
+    page_tracking.user.consent.personalization =  marketingValue();
     
     window.adobeDataLayer.push(page_tracking);
 
