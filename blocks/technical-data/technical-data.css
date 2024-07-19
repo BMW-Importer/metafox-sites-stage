@@ -260,7 +260,7 @@
 }
 
 .techdata-table-caption-btn {
-    background-color: var(--text-color) !important;
+    background-color:transparent !important;
     color: var(--light-text-color) !important;
     border: 0;
     box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
@@ -276,6 +276,11 @@
     white-space: break-spaces;
     padding-right: 1.5rem;
     overflow-y: unset;
+}
+
+.techdata-table-caption-btn:hover {
+    background-color:transparent !important;
+    color: var(--light-text-color) !important;
 }
 
 .techdata-disable-accordion .techdata-table-caption-btn {
