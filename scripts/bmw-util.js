@@ -155,10 +155,10 @@ export function marketingValue() {
   }
   /* cookie code end ** */
 
-  let userConsentValue = 'false';
+  let userConsentValue = false;
 
   if (advertisingValue === 1) {
-    userConsentValue = 'true';
+    userConsentValue = true;
   }
 
   return userConsentValue;
