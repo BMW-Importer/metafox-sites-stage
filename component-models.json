@@ -82,6 +82,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "fileReferenceMimeType"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "alt",
@@ -190,6 +196,12 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "imageMimeType"
       },
       {
         "component": "text-area",
@@ -530,6 +542,24 @@
     ]
   },
   {
+    "id": "all-models-section",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Analytics",
+        "name": "tab-analytics"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "description": "Defines the name of the section for analytics. Please define the Section Name in English.",
+        "name": "analytics-label",
+        "value": "",
+        "label": "Section Label"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -538,6 +568,12 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "imageMimeType"
       },
       {
         "component": "text-input",
@@ -566,6 +602,12 @@
         "value": "",
         "description": "Image path from AEM DAM - only choose from the dedicated asset folder",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "fileReferenceMimeType"
       },
       {
         "component": "text-input",
@@ -635,6 +677,12 @@
         "value": "",
         "description": "Image path from AEM DAM - only choose from the dedicated asset folder",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bg_fileReferenceMimeType"
       },
       {
         "component": "text-input",
@@ -812,6 +860,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_fileReferenceMimeType"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "media_fileReferenceAlt",
@@ -883,7 +937,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -1073,6 +1127,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_desktopPosterFileReferenceMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_mobilePosterFileReference",
@@ -1080,6 +1140,12 @@
         "value": "",
         "description": "Defines the the poster image of the video that will play on mobile. It will be displayed while loading the page.",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_mobilePosterFileReferenceMimeType"
       },
       {
         "component": "boolean",
@@ -1187,15 +1253,15 @@
         "options": [
           {
             "name": "Exit",
-            "value": "Exit"
+            "value": "exit"
           },
           {
             "name": "Download",
-            "value": "Download"
+            "value": "download"
           },
           {
             "name": "Other",
-            "value": "Other"
+            "value": "other"
           }          
         ]    
       },
@@ -1204,11 +1270,11 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
-        "condition": { "===": [{"var" : "analytics_button"}, "Other"] },
+        "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -1738,12 +1804,24 @@
         "description": "Defines the path that will be displaying poster image on desktop while loading the page."
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "desktopPosterRefMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "mobilePosterRef",
         "label": "Mobile Poster Image Path",
         "multi": false,
         "description": "Defines the path that will be displaying poster image on mobile while loading the page."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "mobilePosterRefMimeType"
       },
       {
         "component": "boolean",
@@ -1845,6 +1923,12 @@
         "name": "img_image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "img_imageMimeType"
       },
       {
         "component": "text",
@@ -1996,12 +2080,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoSlidePosterMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_videoSlidePosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoSlidePosterMobileMimeType"
       },
       {
         "component": "boolean",
@@ -2112,6 +2208,12 @@
         "description": "Defines media object that can be displayed on the right side.",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_imageSlideImgMimeType"
       },
       {
         "component": "text-input",
@@ -2268,7 +2370,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2542,6 +2644,12 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgImgImage_imageMimeType"
+      },
+      {
         "component": "text-input",
         "label": "Alt Text",
         "name": "bgImgImage_imageAlt",
@@ -2661,7 +2769,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -2751,7 +2859,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3026,11 +3134,23 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgVidVideo_imgMimeType"
+      },
+      {
         "component": "reference",
         "label": "Mobile Poster Image Path",
         "name": "bgVidVideo_imgMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgVidVideo_imgMobileMimeType"
       },
       {
         "component": "boolean",
@@ -3178,7 +3298,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3268,7 +3388,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -3487,12 +3607,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoCarouselPosterDesktopMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_videoCarouselPosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoCarouselPosterMobileMimeType"
       },
       {
         "component": "text",
@@ -3668,6 +3800,12 @@
       {
         "component": "text",
         "valueType": "string",
+        "hidden": true,
+        "name": "media_imageCarouselImgMimeType"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "media_imageCarouselImgAlt",
         "description": "Defines textual description of images for users with visual limitation.",
         "value": "",
@@ -3792,12 +3930,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "videoSlide_videoPosterDesktopMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "videoSlide_videoPosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "videoSlide_videoPosterMobileMimeType"
       },
       {
         "component": "text",
@@ -4230,7 +4380,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4285,18 +4435,6 @@
     ]
   },
   {
-    "id": "preconcomp",
-    "fields": [
-      {
-        "component": "preconcustomtype",
-        "label": "precon Context",
-        "name": "wdh_preconcustomvalues",
-        "description": "for testing purpose",        
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "shopbylookcomp",
     "fields": [
       {
@@ -4311,6 +4449,33 @@
   {
     "id": "precon-vehicle",
     "fields": [
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "contextualised"
+      },
+      {
+        "component": "text",
+        "label": "Link",
+        "valueType": "string",
+        "name": "contextualised_Link",
+        "description": "Defines the link of the contextualised button."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "label": "Link Label",
+        "name": "contextualised_LinkText",
+        "description": "Defines the text to be displayed in the contextualised button."
+      },
+      {
+        "component": "boolean",
+        "label": "Select as Highlighted Model",
+        "name": "contextualised_HighlightedModel",
+        "description": "Defines the vehicle that will be highlighted when loading the page.",
+        "valueType": "boolean",
+        "value": false
+      },
       {
         "component": "tab",
         "label": "Context",
@@ -4346,20 +4511,102 @@
       },
       {
         "component": "tab",
-        "label": "Contexturalised Link",
-        "name": "contexturalised"
+        "label": "Analytics",
+        "name": "analytics"
       },
       {
         "component": "text-input",
-        "label": "Link Label",
-        "name": "contexturalised_linkLabel",
-        "description": "Defines the text to be displayed in the contextualised button."
+        "name": "analytics_label",
+        "label": "Analytics Label",
+        "valueType": "string"
       },
       {
-        "component": "text-input",
-        "label": "Link",
-        "name": "contexturalised_linkText",
-        "description": "Defines the link of the contextualised button."
+        "component": "select",
+        "name": "analytics_button",
+        "label": "Button/Link Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Exit",
+            "value": "exit"
+          },
+          {
+            "name": "Download",
+            "value": "download"
+          },
+          {
+            "name": "Other",
+            "value": "other"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Button/Link Category",
+        "name": "analytics_others",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "analytics_button"
+            },
+            "other"
+          ]
+        },
+        "options": [
+          {
+            "name": "Learn More",
+            "value": "learnMore"
+          },
+          {
+            "name": "Configure",
+            "value": "Configure"
+          },
+          {
+            "name": "Technical Data",
+            "value": "Technical Data"
+          },
+          {
+            "name": "Options and Prices",
+            "value": "Options and Prices"
+          },
+          {
+            "name": "Vehicles in Stock",
+            "value": "Vehicles in Stock"
+          },
+          {
+            "name": "Request for Offer",
+            "value": "Request for Offer"
+          },
+          {
+            "name": "Sales and Service Network",
+            "value": "Sales and Service Network"
+          },
+          {
+            "name": "Test Drive",
+            "value": "Test Drive"
+          },
+          {
+            "name": "Newsletter Signup",
+            "value": "Newsletter Signup"
+          },
+          {
+            "name": "Contact",
+            "value": "Contact"
+          },
+          {
+            "name": "Search",
+            "value": "Search"
+          },
+          {
+            "name": "Show More / Show Less",
+            "value": "Show More / Show Less"
+          },
+          {
+            "name": "Other",
+            "value": "Other"
+          }
+        ]
       }
     ]
   },
@@ -4447,7 +4694,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4579,15 +4826,15 @@
         "valueType": "string",
         "options": [
           {
-            "name": "exit",
+            "name": "Exit",
             "value": "exit"
           },
           {
-            "name": "download",
+            "name": "Download",
             "value": "download"
           },
           {
-            "name": "other",
+            "name": "Other",
             "value": "other"
           }
         ]
@@ -4608,7 +4855,7 @@
         "options": [
           {
             "name": "Learn More",
-            "value": "learnMore"
+            "value": "LearnMore"
           },
           {
             "name": "Configure",
@@ -4661,5 +4908,176 @@
         ]
       }
     ]
+  },
+  {
+    "id": "all-models",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "All Models Overview",
+        "name": "content_models_overview"
+      },
+      {
+          "component": "text-input",
+          "valueType": "string",
+          "name": "content_description",
+          "label": "Content Navigation Description",
+          "value": "",
+          "description": "Summarises the description of the Content Navigation for the accessibility purposes.",
+          "required": true
+      },
+      {
+        "component": "text",
+        "name": "content_descriptionType",        
+        "valueType": "string",
+        "value": "h2",
+        "hidden": true
+      },
+      {
+        "component": "boolean",
+        "label": "Activate Configurator Variant",
+        "name": "content_confvariant",
+        "description": "Defines if some models will appear on the Configurator page.",
+        "valueType": "boolean",
+        "value": false
+      },
+      {
+        "component": "text",
+        "name": "content_confvariantType",        
+        "valueType": "string",
+        "value": "h3",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline",
+        "label": "Filter Headline",
+        "value": "",
+        "description": "Defines the headline for the filters"
+    },
+    {
+      "component": "text",
+      "name": "content_headlineType",        
+      "valueType": "string",
+      "value": "h4",
+      "hidden": true
+    },
+    {
+      "component": "aem-content",
+      "name": "content_spreadsheet1",
+      "description": "Contains the filter labels and their translations.",
+      "label": "Filter Spreadsheet ",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "content_spreadsheet1Type",        
+      "valueType": "string",
+      "value": "h5",
+      "hidden": true
+    },
+    {
+      "component": "aem-content",
+      "name": "content_spreadsheet2",
+      "description": "Contains all models labels and details (e.g. model name, model code, price etc.).",
+      "label": "Model Overview Spreadsheet",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "content_spreadsheet2Type",        
+      "valueType": "string",
+      "value": "h5",
+      "hidden": true
+    },
+    {
+      "component":"tab",
+      "name":"analytics_tab",
+      "label":"Analytics"
+    },
+    {
+      "component":"select",
+      "name":"analytics_button",
+      "label":"Button/Link Type", 
+      "valueType": "string",
+      "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
+      "options": [
+        {
+          "name": "Exit",
+          "value": "exit"
+        },
+        {
+          "name": "Download",
+          "value": "download"
+        },
+        {
+          "name": "Other",
+          "value": "other"
+        }          
+      ]    
+    },
+    {
+      "component": "select",
+      "label": "Only if other is selected the following options should appear:",
+      "name": "analytics_others",
+      "valueType": "string",
+      "condition": { "===": [{"var" : "analytics_button"}, "other"] },
+      "options": [
+        {
+          "name": "Learn More",
+          "value": "LearnMore"
+        },
+        {
+          "name": "Configure",
+          "value": "Configure"
+        },
+        {
+          "name": "Technical Data",
+          "value": "Technical Data"
+        },
+        {
+          "name": "Options and Prices",
+          "value": "Options and Prices"
+        },
+        {
+          "name": "Vehicles in Stock",
+          "value": "Vehicles in Stock"
+        },
+        {
+          "name": "Request for Offer",
+          "value": "Request for Offer"
+        },
+        {
+          "name": "Sales and Service Network",
+          "value": "Sales and Service Network"
+        },
+        {
+          "name": "Test Drive",
+          "value": "Test Drive"
+        },
+        {
+          "name": "Newsletter Signup",
+          "value": "Newsletter Signup"
+        },
+        {
+          "name": "Contact",
+          "value": "Contact"
+        },
+        {
+          "name": "Search",
+          "value": "Search"
+        },
+        {
+          "name": "Show More / Show Less",
+          "value": "Show More / Show Less"
+        },
+        {
+          "name": "Other",
+          "value": "Other"
+        }    
+      ]
+    }
+   ]
   }  
 ]
