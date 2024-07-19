@@ -247,6 +247,8 @@ async function generateTechUi(parentBlock) {
   const selectedTransmissionType = parentBlock.querySelector('.transmission-type-ddl .techdata-model-ddl-model-item.active');
   const agCode = selectedModel?.querySelector('.techdata-model-ddl-model-btn')?.getAttribute('data-agcode') || '';
   const transmissionType = selectedTransmissionType?.querySelector('.techdata-model-ddl-model-btn')?.getAttribute('data-transmission-code') || '';
+  const selectedModelHeading = parentBlock.querySelector('.techdata-selected-model-title');
+  selectedModelHeading.textContent = '';
   const agCodeArrayObj = agCode ? savedListOfModels.filter(
     (vehicle) => vehicle.agCode === agCode,
   ) : savedListOfModels;
@@ -265,6 +267,11 @@ async function generateTechUi(parentBlock) {
 
   if (technicalData) {
     technicalDataTableContainer.textContent = '';
+    const brand = agCodeArrayObj[0]?.json?.responseJson?.model?.brand;
+    const description = agCodeArrayObj[0]?.json?.responseJson?.model?.description;
+    // appending selected model detail in heading
+    selectedModelHeading.textContent = `${placeholders?.techDataTechnicalDataFor} 
+     ${brand} ${description}`;
 
     const data = { placeholders, technicalData };
     const replacedHtml = replacePlaceholders(techDataMarkUp, data);

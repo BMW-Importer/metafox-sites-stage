@@ -278,7 +278,8 @@
     overflow-y: unset;
 }
 
-.techdata-table-caption-btn:hover {
+.techdata-table-caption-btn:hover,
+.techdata-table-caption-btn:focus {
     background-color:transparent !important;
     color: var(--light-text-color) !important;
 }
