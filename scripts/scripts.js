@@ -160,25 +160,25 @@ function launchVariables() {
 }
 
 
-function opt_in_info() {
-  const adobeDtm = window.adobeDataLayer;
-  console.log(adobeDtm.version);
-  const d = new Date();
-  alloy('setConsent', {
-    consent: [{
-      standard: 'Adobe',
-      version: '2.0',
-      value: {
-        collect: {
-        val: getConsentValue()
-        },
-        metadata: {
-        time: timeStamp()
-        }
-    }
-    }]
-  });
-}
+// function opt_in_info() {
+//   const adobeDtm = window.adobeDataLayer;
+//   console.log(adobeDtm.version);
+//   const d = new Date();
+//   alloy('setConsent', {
+//     consent: [{
+//       standard: 'Adobe',
+//       version: '2.0',
+//       value: {
+//         collect: {
+//         val: getConsentValue()
+//         },
+//         metadata: {
+//         time: timeStamp()
+//         }
+//     }
+//     }]
+//   });
+// }
 
 /**
  * Loads everything that doesn't need to be delayed.
@@ -245,7 +245,7 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  opt_in_info();
+  // opt_in_info();
   
 }
 
