@@ -290,7 +290,7 @@
   {
     "id": "stock-locator-model-properties",
     "components": [],
-    "richtextFallbackBanner": {
+    "rte": {
       "format": [],
       "alignment": [],
       "indentation": [],
