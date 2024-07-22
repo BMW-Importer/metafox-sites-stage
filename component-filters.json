@@ -288,6 +288,22 @@
     ]
   },
   {
+    "id": "stock-locator-model-properties",
+    "components": [],
+    "rte": {
+      "format": [],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
    "id" : "stock-locator-section",
    "components":[
     "headline",
