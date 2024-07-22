@@ -181,6 +181,47 @@ function replaceSpreadSheetPlaceholders(template, data) {
   return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
 }
 
+function sortFootNotesArray(uniqueFootnotestArray) {
+  return uniqueFootnotestArray?.sort((a, b) => {
+    // Extract the numeric part of the strings
+    const numA = parseInt(a.slice(1));
+    const numB = parseInt(b.slice(1));
+    
+    // Compare the numeric parts
+    return numA - numB;
+  });
+}
+
+function generateSupElementForFootnotes(footNotesObj) {
+  for (const key in footNotesObj) {
+    if (footNotesObj.hasOwnProperty(key)) {
+      // Get the class name and the href value
+      const className = key;
+      const values = footNotesObj[key];
+      
+      const elements = document.querySelectorAll(`.${className}`);
+      
+      elements.forEach(function(element) {
+        values.forEach(function(value, index) {
+          const sup = document.createElement('sup');          
+          sup.setAttribute('id', `ref-${value}`)
+          sup.classList.add('footnotes-reference-sup');
+          const anchorElem = document.createElement('a');
+          anchorElem.classList.add('footnotes-reference-a')
+          anchorElem.setAttribute('href',`#disclaimer-${value}`);
+          sup.append(anchorElem);
+          element.appendChild(sup);          
+        });
+      });
+    }
+  }
+}
+
+// Function to handle smooth scroll to a target element
+function smoothScroll(target) {
+  document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+}
+
 async function generateDisclaimer(footNotesObj) {
   let publishDomain = '';
   if (env === 'dev') {
@@ -193,8 +234,11 @@ async function generateDisclaimer(footNotesObj) {
   const regex = /^(.*\.hlx\.(page|live)|localhost)$/;
   const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : ''; 
   const footNotesArray = Object.values(footNotesObj).flat();
-  const uniqueFootnotestArray = [...new Set(footNotesArray)];
+  const uniqueFootnotestArray = sortFootNotesArray([...new Set(footNotesArray)]);
   const listOfDisclaimer = [];
+
+  // loop through footnotes and create sup element
+  generateSupElementForFootnotes(footNotesObj);
   /* eslint-disable no-await-in-loop */
   /* eslint-disable no-console */
   /* eslint-disable no-restricted-syntax */
@@ -203,7 +247,10 @@ async function generateDisclaimer(footNotesObj) {
     const response = await fetch(`${gqlOrigin}${replacedValuesInUrl}`);
     const responseJson = await response.json();
     responseJson?.data?.disclaimercfmodelList?.items?.forEach((item) => {
-      listOfDisclaimer.push(item?.disclaimer?.html);
+      listOfDisclaimer.push({
+        key: fValue,
+        value: item?.disclaimer?.html
+    });
     });
   }
 
@@ -239,6 +286,24 @@ function deleteEmptyTableValues(tableContainer) {
     if (table.querySelectorAll('tbody').length === 0) {
       table.remove();
     }
+  });
+}
+
+function bindClickEventForFootNotesLink(parentBlock) {
+  // Add click event listeners to references
+  parentBlock.querySelectorAll('.footnotes-reference-a').forEach(function (ref) {
+    ref.addEventListener('click', function (event) {
+      event.preventDefault();
+      smoothScroll(ref.getAttribute('href'));
+    });
+  });
+
+  // Add click event listeners to disclaimers
+  parentBlock.querySelectorAll('.techdata-table-disclaimer-a').forEach(function (disclaimer) {
+    disclaimer.addEventListener('click', function (event) {
+      event.preventDefault();
+      smoothScroll(disclaimer.getAttribute('href'));
+    });
   });
 }
 
@@ -291,10 +356,18 @@ async function generateTechUi(parentBlock) {
       const aTag = document.createElement('a');
       aTag.classList.add('techdata-table-disclaimer-a');
       aTag.textContent = index + 1;
+      aTag.setAttribute('id', `disclaimer-${disclaimerItem.key}`);
+      aTag.setAttribute('href', `#ref-${disclaimerItem.key}`);
+
+      // fetching all footnotes and appending disclaimer index as sup value
+      const listOfFootNotRef = parentBlock.querySelectorAll(`a[href='#disclaimer-${disclaimerItem.key}']`);
+      listOfFootNotRef.forEach((refElem) => {
+        refElem.textContent = `${index+1}`;
+      });
 
       const spanTag = document.createElement('span');
       spanTag.classList.add('techdata-table-disclaimer-span');
-      spanTag.innerHTML = disclaimerItem;
+      spanTag.innerHTML = disclaimerItem.value;
 
       pTag.append(aTag);
       pTag.append(spanTag);
@@ -304,6 +377,9 @@ async function generateTechUi(parentBlock) {
     if (disclaimerContainer.children.length > 0) {
       technicalDataTableContainer.append(disclaimerContainer);
     }
+
+    // bind click event for disclaimer navigation
+    bindClickEventForFootNotesLink(parentBlock);
 
     // making cozy call
     const imageSide = technicalDataTableContainer.querySelector('.techdata-table-img-side');
