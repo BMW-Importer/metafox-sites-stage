@@ -5098,19 +5098,19 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "generalTab1"
+        "name": "mp_general"
       },
       {
         "component": "text",
         "label": "Model Tile Button Label",
-        "name": "modelTitleButton",
+        "name": "mp_general_modelTitleButton",
         "valueType": "string",
         "description": "Defines the label of the button appearing in the model tile that directs the user to the more detailed overview.",
         "value": "See the details"
       },
       {
         "component": "select",
-        "name": "modelTitleButtonStyling",
+        "name": "mp_general_modelTitleButtonStyling",
         "label": "Model Tile Button Styling",
         "valueType": "string",
         "hidden": true,
@@ -5119,14 +5119,14 @@
       },
       {
         "component": "reference",
-        "name": "info-icon-text",
+        "name": "mp_general_infoIcon",
         "label": "Info Icon Text",
         "valueType": "string",
         "description": "Defines the text appearing in the tooltip of the info icon displayed next to the price. Please select the relevant Info Icon Text per market and language under /content/dam/metafox/."
       },
       {
         "component": "text",
-        "name": "results-count-text",
+        "name": "mp_general_resultsCount",
         "label": "Results Count Text",
         "valueType": "string",
         "value": "{count} of {count}",
@@ -5134,7 +5134,7 @@
       },
       {
         "component": "reference",
-        "name": "disclaimer",
+        "name": "mp_general_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
@@ -5142,11 +5142,11 @@
       {
         "component": "tab",
         "label": "Fallback Banner",
-        "name": "content"
+        "name": "content_tab"
       },
       {
         "component": "richtext",
-        "name": "rte",
+        "name": "content_tab_rte",
         "label": "Fallback Banner Content",
         "valueType": "string",
         "value": "Sorry, there are no vehicles in stock matching your filter criteria. (note: in headline styling) Please enter new filter criteria. (note: in paragraph styling)",
@@ -5220,7 +5220,7 @@
       {
         "component": "tab",
         "label": "Analytics",
-        "name": "analytics"
+        "name": "tab-analytics"
       },
       {
         "component": "select",
