@@ -5079,5 +5079,17 @@
       ]
     }
    ]
-  }  
+  },
+  {
+    "id" : "stock-locator-section",
+    "fields" :[
+      {
+        "component": "text",
+        "name": "stock-locator-label",        
+        "valueType": "string",
+        "label": "stock locator label",
+        "description": "Defines the name of the Section for analytics. Please define the Section Name in English."
+      }
+    ]
+  } 
 ]

@@ -9,7 +9,8 @@
       "bmw-video",
       "flexible-width-section",
       "tabs-section",
-      "all-models-section"
+      "all-models-section",
+      "stock-locator-section"
     ]
   },
   {
@@ -285,6 +286,14 @@
     "components": [
       "all-models"
     ]
+  },
+  {
+   "id" : "stock-locator-section",
+   "components":[
+    "headline",
+    "copy_text",
+    "stock-locator-model-properties"
+   ]
   },
   {
     "id": "copy_text",

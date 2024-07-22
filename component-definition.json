@@ -152,6 +152,22 @@
               }
             }
           }
+        },
+        {
+          "title": "Stock Locator Section",
+          "id": "stock-locator-section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "name": "Stock Locator Section",
+                  "model": "stock-locator-section",
+                  "filter": "stock-locator-section"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -1075,6 +1091,22 @@
                   "content_headlineType": "h4",
                   "content_spreadsheet1Type": "h5",
                   "content_spreadsheet2Type": "h6"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stock Locator Model Overview Properties",
+          "id": "stock-locator-model-properties",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Stock Locator Model Overview Propertie",
+                  "model": "stock-locator-model-properties",
+                  "filter": "stock-locator-model-properties"
                 }
               }
             }
