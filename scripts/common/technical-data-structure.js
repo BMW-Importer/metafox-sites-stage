@@ -356,4 +356,118 @@ export const techDataMarkUp = `
 </table>
 `;
 
-export const techDataWdhResponsObject = '{"model":{"modelCode":"{responseJson.ModelCode}","brand":"","description":"","shortName":"","shortRangeName":"","modelRangeCode":"","modelRanges":[""],"seriesCode":"","series":[""],"seriesDescription":"","seriesDescriptions":[""],"hybridCode":"","fromPrice":0,"acceleration":"","trunkCapacity":0,"seats":0,"horsePower":0,"topSpeed":"","bodyTypeCode":"","marketingBodyTypeCode":"","posiSpec":{"cosyBrand":"","agCode":"","paint":"","fabric":"","options":""},"powerTrain":{"fuelType":"","systemPower":"","systemMaxTorque":"","gearBox":"","driveType":""},"effectDate":"","vehicles":[{"transmissionCode":"{responseJson.TransmissionType}","hybridCode":"","iD_LEIST_KONST":"","volt48":true,"technicalData":{"powerTrain":{"fuelType":"{responseJson.EngineType}","systemPower":"{responseJson.Power}","systemMaxTorque":"{responseJson.Torque}","gearBox":"{responseJson.Transmission}","driveType":"{responseJson.DriveType}"},"engine":{"cylinders":"","technicalCapacity":"","nominalPower":"{responseJson.NominalPower}","nominalTorque":""},"electric":{"systemPower":"-"},"performance":{"acceleration":"{responseJson.Acceleration}","topSpeed":"{responseJson.MaximumSpeed}","electricTopSpeed":""},"emissionsConsumptionWltp":{"consumptionWltpCombined":"{responseJson.EnergyConsumption}","consumptionWltpCombinedChargeSustaining":"","emissionsWltpCombined":"","electricConsumption":"","electricRangeWltpCombined":"{responseJson.ElectricRange}","efficiencyCategoryMinChargeSustaining":"","efficiencyCategoryMaxChargeSustaining":"","noiseDriving":"","noiseStationary":""},"charging":{"batteryCapacity":"{responseJson.BatteryCapacity}","additionalRangeDC":"","chargeACDC":"{responseJson.MaximumChargingPower}","chargeAC":"{responseJson.ChargingTimeAC}","charge_AC_0_100":"","chargeDC":"{responseJson.ChargingTimeDC}","charge_DC_10_80":""},"weightMeasurements":{"length":"{responseJson.Length}","width":"{responseJson.Width}","height":"{responseJson.Height}","widthMirrors":"","wheelTurn":"{responseJson.Wheelbase}","weightNotLoaded":"{responseJson.EmptyVehicleWeight}","weightMax":"","permittedLoad":"","trailerLoad":"{responseJson.TowingHook}","trunkCapacity":"{responseJson.LuggageCapacity}","tankCapacity":""}},"footnotes":{},"footnotesData":{"overboostMax":"","overboostKW":""}}]}}';
+export const techDataWdhResponsObject = `
+{
+    "model": {
+        "modelCode": "{responseJson.ModelCode}",
+        "brand": "",
+        "description": "",
+        "shortName": "",
+        "shortRangeName": "",
+        "modelRangeCode": "",
+        "modelRanges": [
+            ""
+        ],
+        "seriesCode": "",
+        "series": [
+            ""
+        ],
+        "seriesDescription": "",
+        "seriesDescriptions": [
+            ""
+        ],
+        "hybridCode": "",
+        "fromPrice": 0,
+        "acceleration": "",
+        "trunkCapacity": 0,
+        "seats": 0,
+        "horsePower": 0,
+        "topSpeed": "",
+        "bodyTypeCode": "",
+        "marketingBodyTypeCode": "",
+        "posiSpec": {
+            "cosyBrand": "",
+            "agCode": "",
+            "paint": "",
+            "fabric": "",
+            "options": ""
+        },
+        "powerTrain": {
+            "fuelType": "",
+            "systemPower": "",
+            "systemMaxTorque": "",
+            "gearBox": "",
+            "driveType": ""
+        },
+        "effectDate": "",
+        "vehicles": [
+            {
+                "transmissionCode": "{responseJson.TransmissionType}",
+                "hybridCode": "",
+                "iD_LEIST_KONST": "",
+                "volt48": true,
+                "technicalData": {
+                    "powerTrain": {
+                        "fuelType": "{responseJson.EngineType}",
+                        "systemPower": "{responseJson.Power}",
+                        "systemMaxTorque": "{responseJson.TorqueNm}",
+                        "gearBox": "{responseJson.Gearbox}",
+                        "driveType": "{responseJson.Drive}"
+                    },
+                    "engine": {
+                        "cylinders": "{responseJson.Cylinders}",
+                        "technicalCapacity": "",
+                        "nominalPower": "{responseJson.NominalPower}",
+                        "nominalTorque": "{responseJson.NominalTorqueNm}"
+                    },
+                    "electric": {
+                        "systemPower": "{responseJson.ElectricNominalPowerkW"
+                    },
+                    "performance": {
+                        "acceleration": "{responseJson.Acceleration}",
+                        "topSpeed": "{responseJson.MaximumSpeed}",
+                        "electricTopSpeed": "{responseJson.ElectricMaximumSpeed}"
+                    },
+                    "emissionsConsumptionWltp": {
+                        "consumptionWltpCombined": "{responseJson.EnergyConsumptionWLTP}",
+                        "consumptionWltpCombinedChargeSustaining": "",
+                        "emissionsWltpCombined": "{responseJson.CO2Emissions}",
+                        "electricConsumption": "",
+                        "electricRangeWltpCombined": "{responseJson.ElectricRange}",
+                        "efficiencyCategoryMinChargeSustaining": "",
+                        "efficiencyCategoryMaxChargeSustaining": "",
+                        "noiseDriving": "{responseJson.PassageNoiseLevel}",
+                        "noiseStationary": "{responseJson.NoiseLevelStanding}"
+                    },
+                    "charging": {
+                        "batteryCapacity": "{responseJson.BatteryCapacity}",
+                        "additionalRangeDC": "",
+                        "chargeACDC": "{responseJson.MaximumChargingPower}",
+                        "chargeAC": "{responseJson.ChargeAC}",
+                        "charge_AC_0_100": "{responseJson.ChargeACDC}",
+                        "chargeDC": "{responseJson.ChargeDC}",
+                        "charge_DC_10_80": ""
+                    },
+                    "weightMeasurements": {
+                        "length": "{responseJson.Length}",
+                        "width": "{responseJson.Width}",
+                        "height": "{responseJson.Height}",
+                        "widthMirrors": "{responseJson.WidthIncMirrors}",
+                        "wheelTurn": "{responseJson.Wheelbase}",
+                        "weightNotLoaded": "{responseJson.EmptyWeight}",
+                        "weightMax": "{responseJson.MaximumWeight}",
+                        "permittedLoad": "",
+                        "trailerLoad": "{responseJson.TowingHook}",
+                        "trunkCapacity": "{responseJson.LuggageSpaceCapacity}",
+                        "tankCapacity": "{responseJson.TankVolume}"
+                    }
+                },
+                "footnotes": {},
+                "footnotesData": {
+                    "overboostMax": "",
+                    "overboostKW": ""
+                }
+            }
+        ]
+    }
+}`;

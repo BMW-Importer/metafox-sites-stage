@@ -697,7 +697,7 @@ async function generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile) 
   try {
     const regex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
     const isMatch = regex.exec(window.location.host);
-    const origin = isMatch ? `${spreadSheetPath + spreadSheetFile}` : spreadSheetFile;
+    const origin = isMatch ? `${spreadSheetPath}.json` : spreadSheetFile;
     const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
     if (spreadSheetResponse) {
       const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
