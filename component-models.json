@@ -5146,7 +5146,7 @@
       },
       {
         "component": "richtext",
-        "name": "rte",
+        "name": "richtextFallbackBanner",
         "label": "Fallback Banner Content",
         "valueType": "string",
         "value": "Sorry, there are no vehicles in stock matching your filter criteria. (note: in headline styling) Please enter new filter criteria. (note: in paragraph styling)",
