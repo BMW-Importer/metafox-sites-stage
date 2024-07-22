@@ -5149,6 +5149,7 @@
         "name": "content_fallbackBanner",
         "label": "Fallback Banner Content",
         "valueType": "string",
+        "value": "Sorry, there are no vehicles in stock matching your filter criteria. (note: in headline styling) Please enter new filter criteria. (note: in paragraph styling)",
         "description": "Defines the content of the fallback banner displayed if there are no results matching the applied filter. Please use Headline 1 styling for the headline, paragraph for the copy text and links can be added if required."
       }
     ]
@@ -5203,7 +5204,7 @@
         "description": "Defines the text appearing in the tooltip of the info icon displayed next to the price. Please select the relevant Info Icon Text per market and language under /content/dam/metafox/"
       },
       {
-        "component": "Reference",
+        "component": "reference",
         "name": "fallback-image-options",
         "label": "Fallback Image for Options",
         "valueType": "string",
