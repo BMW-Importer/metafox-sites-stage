@@ -7,7 +7,7 @@ async function getData() {
   const apiHeaders = {
     'x-api-key': `${process.env.API_TOKEN}`,
   };
-  const data = await callApi('https://productdata-int1.api.bmw//pdh/categoryhub/v1.0/all/bmw+marketB4R1+bmw_rs+sr_RS/latest', apiHeaders);
+  const data = await callApi('https://productdata.api.bmw/pdh/categoryhub/v1.0/all/bmw+marketB4R1+bmw_rs+sr_RS/latest', apiHeaders);
   if (data) {
     await writeToFile('all_models.json', JSON.stringify(data, null, 2), API_FOLDER);
   }

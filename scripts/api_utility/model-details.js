@@ -31,7 +31,7 @@ async function getModelsData(modelName) {
     await getCosyUrl(data);
   }
 
-  return JSON.stringify(data);
+  // return JSON.stringify(data);
 }
 
 getModelsData(process.env.MODEL_NAME);

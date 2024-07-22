@@ -1,22 +1,25 @@
 // eslint-disable-next-line import/no-unresolved
 const axios = require('axios');
 const fs = require('fs');
-const path = require('path');
+const { promisify } = require('util');
 
-const ensureDirectoryExistence = (filePath) => {
+const writeFileAsync = promisify(fs.writeFile);
+// const path = require('path');
+
+/* const ensureDirectoryExistence = (filePath) => {
   const dirname = path.dirname(filePath);
   if (fs.existsSync(dirname)) {
     return true;
   }
   fs.mkdirSync(dirname);
   return true;
-};
+}; */
 
 const writeToFile = async (modelName, data, apiFolder) => {
   try {
     const filePath = apiFolder + modelName;
-    ensureDirectoryExistence(filePath);
-    await fs.writeFileSync(filePath, data);
+    // ensureDirectoryExistence(filePath);
+    writeFileAsync(filePath, data);
   } catch (error) {
     console.error(`Error writing to file ${modelName}:`, error);
   }
@@ -27,7 +30,7 @@ const callApi = async (url, options = {}) => {
     const response = await axios(url, options);
     return response.data;
   } catch (error) {
-    await writeToFile(`error_${url}.txt`, 'API call failed');
+    await writeToFile('wdh_error.txt', `\n${error.message}`, 'WDH_API/');
     return null;
   }
 };
