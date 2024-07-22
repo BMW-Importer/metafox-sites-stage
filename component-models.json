@@ -5087,8 +5087,69 @@
         "component": "text",
         "name": "stock-locator-label",        
         "valueType": "string",
-        "label": "stock locator label",
+        "label": "Section Label",
         "description": "Defines the name of the Section for analytics. Please define the Section Name in English."
+      }
+    ]
+  },
+  {
+    "id": "stock-locator-model-properties",
+    "fields":[
+      {
+        "component": "tab",
+        "label": "General",
+        "name": "general"
+      },
+      {
+        "component": "text",
+        "label": "Model Tile Button Label",
+        "name": "model-title-button-lable",
+        "valueType": "string",
+        "description": "Defines the label of the button appearing in the model tile that directs the user to the more detailed overview.",
+        "value": "See the details"
+      },
+      {
+        "component": "select",
+        "name": "model-title-button-style",
+        "label": "Model Tile Button Styling",
+        "valueType": "string",
+        "hidden": true,
+        "value": "Money Button",
+        "description": "Defines the styling applied to the button or if the button will displayed as a link."
+      },
+      {
+        "component": "reference",
+        "name": "info-icon-text",
+        "label": "Info Icon Text",
+        "valueType": "string",
+        "description": "Defines the text appearing in the tooltip of the info icon displayed next to the price. Please select the relevant Info Icon Text per market and language under /content/dam/metafox/."
+      },
+      {
+        "component": "text",
+        "name": "results-count-text",
+        "label": "Results Count Text",
+        "valueType": "string",
+        "value": "{count} of {count}",
+        "description": "Defines the text displaying the number of results being displayed above the show more results button."
+      },
+      {
+        "component": "reference",
+        "name": "disclaimer",
+        "label": "Disclaimers",
+        "valueType": "string",
+        "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
+      },
+      {
+        "component": "tab",
+        "label": "Fallback Banner",
+        "name": "fallbackBanner"
+      },
+      {
+        "component": "richtext",
+        "name": "fallback-banner-content",
+        "label": "Fallback Banner Content",
+        "valueType": "string",
+        "description": "Defines the content of the fallback banner displayed if there are no results matching the applied filter. Please use Headline 1 styling for the headline, paragraph for the copy text and links can be added if required."
       }
     ]
   } 
