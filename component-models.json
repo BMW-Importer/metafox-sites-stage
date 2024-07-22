@@ -4802,7 +4802,7 @@
         "name": "wdh"
       },
       {
-        "component": "customtype",
+        "component": "techdatacustomfield",
         "label": "Model Card Context",
         "name": "wdh_techdatacustomfield",
         "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
