@@ -89,10 +89,10 @@ function enableClickEventForDdl(ddl) {
     const parentElem = e.target.closest('.techdata-model-ddl-container');
     const ddlBtn = parentElem.querySelector('.techdata-model-ddl-ul-container');
     e.target.classList.toggle('clicked');
-    if (ddlBtn) ddlBtn.classList.toggle('active');
+    ddlBtn?.classList?.toggle('active');
 
     // Check if dropdown is open
-    const isOpen = e.target.classList.contains('clicked') || (ddlBtn && ddlBtn.classList.contains('active'));
+    const isOpen = e.target.classList.contains('clicked') || ddlBtn?.classList?.contains('active');
 
     // Function to close dropdown
     /* eslint-disable func-names */
@@ -190,7 +190,8 @@ async function generateDisclaimer(footNotesObj) {
   } else {
     publishDomain = PROD.hostName;
   }
-  const gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
+  const regex = /^(.*\.hlx\.(page|live)|localhost)$/;
+  const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : ''; 
   const footNotesArray = Object.values(footNotesObj).flat();
   const uniqueFootnotestArray = [...new Set(footNotesArray)];
   const listOfDisclaimer = [];
@@ -411,7 +412,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
   const listOfTranmissions = agCodeArrayObj.map(
     (vehicle) => vehicle?.json?.responseJson?.model?.vehicles,
   );
-  const [analyticsLabel, BtnType, btnSubType] = agCodeArrayObj[0]?.analytics?.children || [];
+  const [analyticsLabel] = agCodeArrayObj[0]?.analytics?.children || [];
 
   // if list of tranmission type is 1 then hide ddl
   if (listOfTranmissions && listOfTranmissions.length > 0) {
@@ -547,7 +548,7 @@ function enableClickEventForModelDdl(ddlContainer) {
   }
 }
 
-function generateModelsDdl(listOfModels, dropDownContainer, block) {
+function generateModelsDdl(listOfModels, dropDownContainer) {
   const modelDdlContainer = document.createElement('div');
   modelDdlContainer.classList.add('techdata-model-ddl-container');
   modelDdlContainer.classList.add('models-type-ddl');
@@ -590,7 +591,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
 
   /* eslint-disable no-restricted-syntax */
   for (const fuel in listOfModels) {
-    if (Object.prototype.hasOwnProperty.call(listOfModels, fuel)) {
+    if (Object.hasOwn(listOfModels, fuel)) {
       const liItem = document.createElement('li');
 
       const fuelHeadingSpan = document.createElement('span');
@@ -680,7 +681,7 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp)
 function removeSpacesInObjectKey(obj) {
   const replacedObj = {};
   for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+    if (Object.hasOwn(obj, key)) {
       const newKey = key.replace(/ /g, '');
       if (typeof obj[key] === 'object' && obj[key] !== null) {
         replacedObj[newKey] = removeSpacesInObjectKey(obj[key]);
@@ -690,6 +691,64 @@ function removeSpacesInObjectKey(obj) {
     }
   }
   return replacedObj;
+}
+
+async function generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile) {
+  try {
+    const regex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
+    const isMatch = regex.exec(window.location.host);
+    const origin = isMatch ? `${spreadSheetPath + spreadSheetFile}` : spreadSheetFile;
+    const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
+    if (spreadSheetResponse) {
+      const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
+      savedSpreadSheetModels = {
+        responseJson: {
+          data:
+          Object.keys(
+            convertedObj?.responseJson?.data,
+          ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
+        },
+      };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels) {
+  /* eslint-disable no-await-in-loop */
+  for (const modelData of rows) {
+    const [modelProp, analyticsProp] = modelData?.children || [];
+    modelData.textContent = '';
+
+    modelProp.classList.add('techdata-model-ddl');
+
+    const [modelPropData] = modelProp?.children || [];
+    const splittedModelData = modelPropData?.textContent?.split(',');
+
+    if (splittedModelData && splittedModelData?.length >= 3) {
+      const authoredAgCode = splittedModelData[2]?.trim() || '';
+      try {
+        // wdh call or else spreadsheet call
+        if (enableAutoData?.textContent === 'true') {
+          const modelDetailResponse = await getApiResponse(authoredAgCode);
+          generateAuthoredModels(
+            modelDetailResponse,
+            authoredAgCode,
+            listOfModels,
+            analyticsProp,
+            modelData,
+          );
+        } else {
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+        }
+      } catch (error) {
+        console.error('fetch model detail failed');
+      }
+    } else {
+      emptyModels.append(modelData);
+    }
+  }
 }
 
 /* eslint-disable no-restricted-syntax */
@@ -731,19 +790,7 @@ export default async function decorate(block) {
 
   if (enableAutoData?.textContent === 'false') {
     try {
-      const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${spreadSheetPath + spreadSheetFile}` : spreadSheetFile;
-      const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
-      if (spreadSheetResponse) {
-        const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
-        savedSpreadSheetModels = {
-          responseJson: {
-            data:
-            Object.keys(
-              convertedObj?.responseJson?.data,
-            ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
-          },
-        };
-      }
+      await generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile);      
     } catch (e) {
       console.error(e);
     }
@@ -751,41 +798,9 @@ export default async function decorate(block) {
 
   const emptyModels = document.createElement('div');
 
-  /* eslint-disable no-await-in-loop */
-  for (const modelData of rows) {
-    const [modelProp, analyticsProp] = modelData?.children || [];
-    modelData.textContent = '';
+  await loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels);  
 
-    modelProp.classList.add('techdata-model-ddl');
-
-    const [modelPropData] = modelProp?.children || [];
-    const splittedModelData = modelPropData?.textContent?.split(',');
-
-    if (splittedModelData && splittedModelData?.length >= 3) {
-      const authoredAgCode = splittedModelData[2]?.trim() || '';
-      try {
-        // wdh call or else spreadsheet call
-        if (enableAutoData?.textContent === 'true') {
-          const modelDetailResponse = await getApiResponse(authoredAgCode);
-          generateAuthoredModels(
-            modelDetailResponse,
-            authoredAgCode,
-            listOfModels,
-            analyticsProp,
-            modelData,
-          );
-        } else {
-          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
-        }
-      } catch (error) {
-        console.error('fetch model detail failed');
-      }
-    } else {
-      emptyModels.append(modelData);
-    }
-  }
-
-  generateModelsDdl(listOfModels, dropDownContainer, block);
+  generateModelsDdl(listOfModels, dropDownContainer);
   enableClickEventForModelDdl(dropDownContainer);
 
   block.textContent = '';
