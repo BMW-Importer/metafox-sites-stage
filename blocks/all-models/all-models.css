@@ -1,3 +1,129 @@
-/* .all-models {
-    padding: 10px;
-} */
+.filter-title {
+    margin: 1.5rem 0;
+}
+
+.filter-btn-row {
+    display: flex;
+}
+
+.filter-btn {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px #bbb;
+    color: var(--light-border-color);
+
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 1.5rem;
+    margin-right: .5rem;
+    min-height: 2.25rem;
+    padding: 0 1rem;
+    text-align: center;
+    transition: all .25s ease-in-out;
+    white-space: nowrap;
+    border-radius: 0;
+}
+
+.filter-btn:focus {
+    background: transparent;
+}
+
+.filter-btn:hover {
+    box-shadow: inset 0 0 0 1px var(--light-text-color);
+    color: var(--light-text-color);
+    background: transparent;
+}
+
+.active {
+    background: var(--medium-text-color);
+    color: var(--light-grey);
+}
+
+.toggle-icon {
+    transform: rotate(45deg);
+}
+
+.filter-btn-icon {
+    margin-right: 0.5rem;
+}
+
+.filter-btn-icon::before {
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    content: "plus";
+    direction: ltr;
+    display: block;
+    font-family: bmw_next_icons;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    height: 1em;
+    line-height: 1;
+    outline: 1px solid transparent;
+    text-align: left;
+    text-transform: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+.overlay-wrap {
+    margin-bottom: 1.25rem;
+}
+
+.show-more-btn {
+    min-height: 2.25rem;
+    width: max-content;
+    background: transparent;
+    color: var(--light-text-color);
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.show-more-btn:hover {
+    background: transparent;
+    color: var(--medium-text-color);
+}
+
+.show-more-icon::before {
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    content: "arrow_chevron_right";
+    direction: ltr;
+    display: block;
+    font-family: bmw_next_icons;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    height: 1em;
+    line-height: 1;
+    margin-left: -.25rem;
+    outline: 1px solid transparent;
+    text-align: left;
+    text-transform: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+.number-overlay {
+    color: var(--light-text-color);
+    display: inline-flex;
+    font-size: var(--body-2-font-size);
+    font-weight: var(--default-font-weight);
+    line-height: var(--body-2-line-height);
+    margin-bottom: 1rem;
+}
+
+.total-number {
+    text-decoration: underline;
+}
