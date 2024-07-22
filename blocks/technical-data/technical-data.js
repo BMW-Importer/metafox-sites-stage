@@ -432,8 +432,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
     const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item"><button class="techdata-model-ddl-model-btn transmission-ddl" data-transmission-code="${fuel.transmissionCode}"
             data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
+            data-analytics-link-type='technicaldata.option'
+            data-analytics-subcategory-1='${agCode || ''}'
+            data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
             data-analytics-custom-click='true'>
@@ -601,7 +602,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
       modelsUnderTheFuelList.classList.add('techdata-model-ddl-model-container');
 
       listOfModels[fuel].forEach((model) => {
-        const [analyticsLabel, BtnType, btnSubType] = model?.analytics?.children || [];
+        const [analyticsLabel] = model?.analytics?.children || [];
         let listOfAttributes = '';
         // fetchinf data attributes of authored model card
         /* eslint-disable no-plusplus */
@@ -611,12 +612,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
         }
         const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item" ${listOfAttributes}><button class="techdata-model-ddl-model-btn models-ddl" data-agcode="${model?.agCode}"
-            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
-            data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
-            data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'>
             <span class="techdata-model-ddl-model-item-title">${model?.description || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true"></i>
             </button></li>`);
