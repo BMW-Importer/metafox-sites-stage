@@ -10,6 +10,7 @@ import { techDataMarkUp, techDataWdhResponsObject } from '../../scripts/common/t
 import {
   DEV, STAGE, PROD, disclaimerTechDataEndPoint,
 } from '../../scripts/common/constants.js';
+import { pushCustomLinkAnalyticData } from '../../scripts/analytics-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
 const savedListOfModels = [];
@@ -304,6 +305,27 @@ function bindClickEventForFootNotesLink(parentBlock) {
   });
 }
 
+function triggerAnalytics(clickedElem) {
+  const anchorTag = clickedElem.target;
+  const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+  const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+  const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+  const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+  const blockName = anchorTag.getAttribute('data-analytics-block-name');
+  const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+
+  pushCustomLinkAnalyticData([
+    analyticsLabel,
+    primaryCategory,
+    subCategory,
+    blockName,
+    sectionId,
+    '',
+    '',
+    subCategory2,
+  ]);
+}
+
 async function generateTechUi(parentBlock) {
   const technicalDataTableContainer = parentBlock.querySelector('.techdata-tables-container');
   const selectedModel = parentBlock.querySelector('.models-type-ddl .techdata-model-ddl-model-item.active');
@@ -340,6 +362,13 @@ async function generateTechUi(parentBlock) {
     const replacedHtml = replacePlaceholders(techDataMarkUp, data);
     technicalDataTableContainer.innerHTML = replacedHtml;
 
+    // replace engine type with placeholder
+    const fuelTypeElem = technicalDataTableContainer.querySelector('.value.powerTrain_fuelType');
+    if (fuelTypeElem) {
+      const fuelValue = fuelTypeElem.textContent.toLowerCase();
+      fuelTypeElem.textContent = placeholders[fuelValue] || fuelTypeElem.textContent;
+    }
+
     // generate disclaimer data
     const disclaimerData = await generateDisclaimer(footNotes);
 
@@ -372,7 +401,9 @@ async function generateTechUi(parentBlock) {
     });
 
     if (disclaimerContainer.children.length > 0) {
-      technicalDataTableContainer.append(disclaimerContainer);
+      const container = parentBlock.querySelector('.techdata-disclaimer-container');
+      container.textContent = '';
+      container.append(disclaimerContainer);
     }
 
     // bind click event for disclaimer navigation
@@ -511,7 +542,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
             data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            >
             <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true">
             </button></li>`);
@@ -558,6 +589,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
         const ddlTriggerBtn = parentContainer.querySelector('.techdata-model-ddl-selected');
         if (ddlTriggerBtn) ddlTriggerBtn.click();
       });
+
+      // trigger analytics
+      triggerAnalytics(e);
 
       // generate UI
       generateTechUi(parentBlockElem);
@@ -840,6 +874,9 @@ export default async function decorate(block) {
     return row;
   });
 
+  headline1.classList.add('techdata-rte-btn-container');
+  headline2.classList.add('techdata-rte-btn-container');
+
   const heading = document.createElement('h2');
   heading.classList.add('techdata-selected-model-title');
   heading.textContent = placeholders.techDataTechnicalDataFor;
@@ -849,6 +886,14 @@ export default async function decorate(block) {
 
   const techDetailsTableContainer = document.createElement('div');
   techDetailsTableContainer.classList.add('techdata-tables-container');
+
+  const rteContainer = document.createElement('div');
+  rteContainer.classList.add('techdata-rte-container');
+  rteContainer.append(headline1);
+  rteContainer.append(headline2);
+
+  const disclaimerContainer = document.createElement('div');
+  disclaimerContainer.classList.add('techdata-disclaimer-container');
 
   const enableAutoData = techDataProp?.querySelector('h2');
   const enableAccordion = techDataProp?.querySelector('h3');
@@ -883,8 +928,8 @@ export default async function decorate(block) {
   block.append(dropDownContainer);
   if (emptyModels.children.length > 0) block.append(emptyModels);
   block.append(techDetailsTableContainer);
-  block.append(headline1);
-  block.append(headline2);
+  block.append(rteContainer);
+  block.append(disclaimerContainer);
 
   // click first model to select it
   const firstModelDdlItem = block.querySelector('.techdata-model-ddl-model-btn.models-ddl');
