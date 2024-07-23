@@ -428,7 +428,7 @@
       "indentation": [],
       "sr_script": [],
       "list": [],
-      "insert": [],
+      "insert": ["link"],
       "advanced": ["h2"],
       "extensions": [],
        "editor": []
