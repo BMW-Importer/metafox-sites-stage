@@ -421,6 +421,17 @@
     "id": "technical-data",
     "components":[
       "model-data"
-    ]
+    ],
+    "rte": {
+      "format": [],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [],
+      "advanced": ["h2"],
+      "extensions": [],
+       "editor": []
+    }
   }
 ]

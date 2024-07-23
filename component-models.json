@@ -4792,72 +4792,58 @@
         "required": true
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
-        "name": "content_headlineAndText1",
+        "name": "headline1_headlineAndText1",
         "label": "Headline and Text",
-        "value": "h2",
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
       },
       {
-        "component": "text",        
-        "name": "content_headlineAndText1Type",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1Link",
+        "name": "headline1_headline1Link",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1LinkText",
+        "name": "headline1_headline1LinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed as the Link Button."        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1LinkType",
+        "name": "headline1_headline1LinkType",
         "label": "Link Label",
         "hidden": true        
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
-        "name": "content_headlineAndText2",
-        "label": "Headline and Text",
-        "value": "h2",
+        "name": "headline2_headlineAndText2",
+        "label": "Headline and Text",        
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
       },
       {
-        "component": "text",        
-        "name": "content_headlineAndText2Type",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2Link",
+        "name": "headline2_headline2Link",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2LinkText",
+        "name": "headline2_headline2LinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed as the Link Button."        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2LinkType",
+        "name": "headline2_headline2LinkType",
         "label": "Link Label",
         "hidden": true        
       }

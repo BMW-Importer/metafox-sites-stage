@@ -1055,10 +1055,8 @@
                   "content_accordionView": "true",
                   "content_autoDataType": "h2",
                   "content_accordionViewType": "h3",
-                  "content_headlineAndText1Type": "h2",
-                  "content_headline1LinkType": "secondary",
-                  "content_headlineAndText2Type": "h2",
-                  "content_headline2LinkType": "secondary"
+                  "headline1_headline1LinkType": "secondary",
+                  "headline2_headline2LinkType": "secondary"
                 }
               }
             }
