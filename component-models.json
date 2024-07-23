@@ -4792,17 +4792,11 @@
         "required": true
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
         "name": "headline1_headlineAndText1",
         "label": "Headline and Text",
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
-      },
-      {
-        "component": "text",        
-        "name": "headline1_headlineAndText1Type",
-        "valueType": "string",
-        "hidden": true
       },
       {
         "component": "text-input",
@@ -4826,17 +4820,11 @@
         "hidden": true        
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
         "name": "headline2_headlineAndText2",
         "label": "Headline and Text",        
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
-      },
-      {
-        "component": "text",        
-        "name": "headline2_headlineAndText2Type",
-        "valueType": "string",
-        "hidden": true
       },
       {
         "component": "text-input",
