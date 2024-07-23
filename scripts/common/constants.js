@@ -13,10 +13,7 @@ export const disclaimerGQlEndpoint = '/graphql/execute.json/metafox/getDisclaime
 export const wdhModelDetailsEndpoint = '/WDH_API/Models/ModelDetails/';
 
 export const stockLocatorOrigin = 'https://slwa-internet-backend.api.bmw';
-export const endpoint1 = '/api/v1/filters-new/';
-export const endpoint2 = '/api/v1/vehicles/';
+export const stockLocatorFilterEndPoint = '/api/v1/filters-new/';
+export const stockLocatorVehiclesEndPoint = '/api/v1/vehicles/';
 
-// host :https://slwa-internet-backend.api.bmw
-// endpoint1: /api/v1/filters-new/ (filtersData)
-// endpoint2: /api/v1/vehicles/  (modelsData)
-// dynamicData: bmw_rs?locale=sr_RS& (get metaData from language(sr/en)& georegion(RS))
+export const disclaimerTechDataEndPoint = '/graphql/execute.json/metafox/getDisclaimerCFModelTag;tagValue=metafox:{fvalue};disclaimerCFPath={encryptedstring}';

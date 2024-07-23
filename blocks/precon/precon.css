@@ -121,6 +121,14 @@
     justify-content: center;
 }
 
+img.card-animation-right {
+    margin-right: .25rem;
+}
+
+img.card-animation-left {
+    margin-left: .25rem;
+}
+
 .precon-wrapper .precon-content-data {
     z-index: 1;
 }
@@ -598,7 +606,7 @@
         position: relative;
     }
 
-    .stock-locator-container .filter-wrapper .filter-list.dropdown-list-wrapper .series-checkbox{
+    .stock-locator-container .filter-wrapper .filter-list.dropdown-list-wrapper .filter-checkbox{
         width: 20px;
         height: 20px;
     }
@@ -641,7 +649,7 @@
         list-style-type: none;
     } 
 
-    .series-checkbox {
+    .filter-checkbox {
         display: none;
     }
 

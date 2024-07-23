@@ -8,7 +8,9 @@
       "header-section",
       "bmw-video",
       "flexible-width-section",
-      "tabs-section"
+      "tabs-section",
+      "all-models-section",
+      "stock-locator-section"
     ]
   },
   {
@@ -245,10 +247,70 @@
       "title",
       "hero",
       "cards",
+      "columns",
+      "text-image",
+      "text-image-v2",
+      "iframe",
+      "footer-text",
+      "icon",
+      "icon-link-list",
+      "bmw-video",
+      "link-list",
+      "copy_text",
       "video",
+      "multicontent-gallery",
+      "text-with-media",
+      "model-card",
+      "content-navigation",
+      "accordion",
+      "disclaimer",
       "eyebrow",
-      "headline"
+      "headline",
+      "background-media",
+      "disclaimer",
+      "download",
+      "quote",
+      "media-carousel",
+      "video-gallery",
+      "custom-asset-one",
+      "drivetrain-switch",
+      "preconcomp",
+      "shopbylookcomp",
+      "cookiepolicy",
+      "technical-data",
+      "precon"
     ]
+  },
+  {
+    "id": "all-models-section",
+    "components": [
+      "all-models"
+    ]
+  },
+  {
+    "id": "stock-locator-model-properties",
+    "components": [],
+    "rte": {
+      "format": [],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": [],
+      "blocks": [],
+      "advanced": [""],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
+   "id" : "stock-locator-section",
+   "components":[
+    "headline",
+    "copy_text",
+    "stock-locator-model-properties",
+    "stock-locator-model-defination"
+   ]
   },
   {
     "id": "copy_text",
