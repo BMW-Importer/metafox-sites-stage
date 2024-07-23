@@ -3,6 +3,8 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
+import { stockLocatorOrigin, endpoint1 } from './constants.js';
+
 export async function getApiResponse(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode}.json`;
@@ -175,6 +177,31 @@ export async function getPreConCosyImage(modelCode) {
     const response = await fetch(`${origin}${endpointUrl}`);
     const preConCosyResJSON = await response.json();
     return preConCosyResJSON;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+/* stock loctor base API Calls */
+
+export function dynamicData() {
+  const url = 'bmw';
+  const lang = 'rs'; // document.querySelector('meta[name="language"]').content;
+  const georegion = document.querySelector('meta[name="georegion"]').content;
+  const formedURL = `${url}_${lang}?locale=sr_${georegion}&`;
+  console.log(formedURL);
+  return formedURL;
+}
+
+const dynamicURLData = dynamicData();
+
+export async function getStockLocatorFiltersData() {
+  try {
+    const url = `${stockLocatorOrigin}${endpoint1}${dynamicURLData}`;
+    const response = await fetch(`${url}`);
+    const responseJson = await response.json();
+    return responseJson;
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;
