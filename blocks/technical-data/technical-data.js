@@ -830,9 +830,11 @@ export default async function decorate(block) {
   block.classList.add('technical-data-block');
   const [
     techDataProp,
+    headline1,
+    headline2,
     ...rows
   ] = [...block.children].map((row, index) => {
-    if (index < 1) {
+    if (index < 3) {
       return row;
     }
     return row;
@@ -881,6 +883,8 @@ export default async function decorate(block) {
   block.append(dropDownContainer);
   if (emptyModels.children.length > 0) block.append(emptyModels);
   block.append(techDetailsTableContainer);
+  block.append(headline1);
+  block.append(headline2);
 
   // click first model to select it
   const firstModelDdlItem = block.querySelector('.techdata-model-ddl-model-btn.models-ddl');
