@@ -3,7 +3,15 @@
 }
 
 .filter-btn-row {
+    align-items: center;
     display: flex;
+    margin-bottom: 1.5rem;
+    margin-left: -1.5rem;
+    margin-top: -.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: .25rem 1.5rem;
+    width: calc(100% + 1.5rem);
 }
 
 .filter-btn {
@@ -126,4 +134,189 @@
 
 .total-number {
     text-decoration: underline;
+}
+
+.content-nav-selected-value {
+    background-color: #fffffff2;
+    color: var(--light-text-color);
+    align-items: center;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    justify-content: space-between;
+    margin-left: -1rem;
+    min-height: 3.25rem;
+    padding: .25rem 1rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: none;
+    width: calc(100% + 1rem);
+    z-index: 10;
+}
+.content-nav-selected-value:after {
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    content: "arrow_chevron_down";
+    direction: ltr;
+    display: block;
+    display: inline-flex;
+    font-family: bmw_next_icons;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    height: 1em;
+    line-height: 1;
+    margin-right: -1rem;
+    outline: 1px solid #0000;
+    position: relative;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    transition: transform .5s ease-in-out;
+    white-space: nowrap;
+    width: auto;
+}
+@media screen and (min-width: 768px) {
+    .content-nav-selected-value {
+        display: none;
+    }
+}
+.nav-background {
+    display: block;
+    height: calc(100% + 1px);
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    transition: opacity .25s ease-in;
+    width: 100vw;
+    z-index: -10;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-background {
+        background-color: #fffffff2;
+        border-bottom: .0625rem solid var(--light-grey-1);
+        opacity: 1;
+        transition: none;
+    }
+}
+
+.nav-container {
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-container {
+        flex-direction: row;
+    }
+}
+
+.navbar-wrap {
+    position: absolute;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-wrap {
+        clip-path: none;
+        height: 4rem;
+        position: relative;
+        visibility: visible;
+        width: auto;
+    }
+}
+
+.nav-list {
+    color: var(--light-border-color);
+    background-color: #fff;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    float: left;
+    left: 0;
+    list-style: none;
+    overflow: hidden;
+    transition: padding .25s ease-in;
+    white-space: nowrap;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-list {
+        background-color: initial;
+        display: flex;
+        flex-direction: row;
+        height: inherit;
+        padding: 0;
+        position: relative;
+        transition: none;
+        width: auto;
+    }
+}
+
+.nav-list-item {
+    width: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-list-item {
+        min-height: 100%;
+        width: auto;
+    }
+}
+
+.nav-list-button {
+    align-items: center;
+    border: 0;
+    border-color: #0000;
+    border-radius: 3px;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-width, 0) var(--border-color, unset);
+    cursor: pointer;
+    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    min-height: 3.25rem;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    background-color: #0000;
+    color: var(--light-border-color);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-list-button {
+        border-color: #0000;
+        border-style: solid;
+        border-width: .25rem 0;
+        font-size: var(--body-2-font-size);
+        font-weight: var(--clickable-font-weight);
+        justify-content: center;
+        line-height: var(--body-2-line-height);
+        margin: 0;
+        min-width: 0;
+        padding: 0 1rem;
+        pointer-events: all;
+        width: auto;
+    }
+
+    .nav-list-button:hover {
+        border-bottom-color: var(--medium-text-color);
+        background: #0000;
+    }
 }

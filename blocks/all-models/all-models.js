@@ -42,6 +42,59 @@ export default function decorate(block) {
   numberWrap.classList.add('number-wrap');
   numberWrap.innerHTML = `<span class='total-number'>99</span>&nbsp;<span class='found-text'>found vehicles</span>`;
   
+  const navBar = document.createElement('div');
+  navBar.innerHTML = `<div class='nav-container'>
+  <button class='content-nav-selected-value'>BMW i</button>
+  <div class='nav-background'></div>
+    <nav class='navbar-wrap'>
+      <ul class='nav-list'>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>BMW i</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>X</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>M</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>8</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>7</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>6</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>5</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>4</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>3</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>2</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>1</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Z4</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Concept cars</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Protection Vehicles</button>
+        </li>
+      </ul>
+    </nav>
+    </div>
+  `
+  
   buttonRow.append(hybridButton);
   buttonRow.append(electricButton);
   buttonRow.append(mButton);
@@ -53,9 +106,9 @@ export default function decorate(block) {
   allModelParentContainer.append(buttonRow);
   allModelParentContainer.append(overlayContainer);
   allModelParentContainer.append(numberWrap);
+  allModelParentContainer.append(navBar);
   block.append(allModelParentContainer);
   
-
   selectModelClick(hybridButton);
   selectModelClick(electricButton);
   selectModelClick(mButton);
