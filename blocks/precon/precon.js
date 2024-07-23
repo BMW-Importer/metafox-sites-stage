@@ -395,6 +395,8 @@ function handleToggleFilterDropDown() {
       }
     });
   });
+  // eslint-disable-next-line no-use-before-define
+  handleCheckBoxSelectionForSeries();
 }
 
 function handleMobileSeriesFilter() {
@@ -415,55 +417,66 @@ function handleCancelSelectedValue() {
   });
 }
 
-function updateSelectedValues(selectedValues) {
-  const selectedValuesContainer = document.querySelector('.selected-filter-list');
-  selectedValuesContainer.textContent = '';
+// function updateSelectedValues(selectedValues) {
+//   const selectedValuesContainer = document.querySelector('.selected-filter-list');
+//   selectedValuesContainer.textContent = '';
+//   selectedValues.forEach((value) => {
+//     const valueElement = document.createElement('div');
+//     valueElement.classList.add('selected-filter-value');
+//     valueElement.textContent = value;
+//     const cancelElement = document.createElement('div');
+//     cancelElement.classList.add('cancel-filter');
+//     selectedValuesContainer.appendChild(valueElement);
+//     valueElement.appendChild(cancelElement);
+//   });
+//   // Append the new container below the filter list
+//   const existingContainer = document.getElementById('selected-values-container');
+//   if (existingContainer) {
+//     existingContainer.remove();
+//   }
+//   handleCancelSelectedValue();
+// }
+
+function handleCheckBoxSelectionForSeries() {
+  const filterLists = document.querySelectorAll('.filter-list');
+  filterLists.forEach((filterList) => {
+    const filterLabelHeading = filterList.previousElementSibling;
+    const checkboxes = filterList.querySelectorAll('.filter-checkbox');
+    const selectedValues = [];
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          if (!filterLabelHeading.classList.contains('is-active')) {
+            filterLabelHeading.classList.add('is-active');
+          }
+          selectedValues.push(checkbox.id);
+        } else {
+          const index = selectedValues.indexOf(checkbox.id);
+          if (index !== -1) {
+            selectedValues.splice(index, 1);
+          }
+          // Remove is-active class if no checkbox is selected
+          if (selectedValues.length === 0) {
+            filterLabelHeading.classList.remove('is-active');
+          }
+        }
+        // Update the displayed selected values
+        // eslint-disable-next-line no-use-before-define
+        updateSelectedValues(selectedValues, filterList);
+      });
+    });
+  });
+}
+
+function updateSelectedValues(selectedValues, filterList) {
+  const selectedList = filterList.nextElementSibling;
+  selectedList.innerHTML = '';
   selectedValues.forEach((value) => {
     const valueElement = document.createElement('div');
     valueElement.classList.add('selected-filter-value');
     valueElement.textContent = value;
-    const cancelElement = document.createElement('div');
-    cancelElement.classList.add('cancel-filter');
-    selectedValuesContainer.appendChild(valueElement);
-    valueElement.appendChild(cancelElement);
-  });
-  // Append the new container below the filter list
-  const existingContainer = document.getElementById('selected-values-container');
-  if (existingContainer) {
-    existingContainer.remove();
-  }
-  handleCancelSelectedValue();
-}
-
-function handleCheckBoxSelectionForSeries() {
-  const filterList = document.querySelector('.filter-list');
-  const filterLabelHeading = filterList?.previousElementSibling;
-  const checkboxes = filterList?.querySelectorAll('.series-checkbox');
-  const selectedValues = [];
-
-  checkboxes?.forEach((checkbox) => {
-    checkbox?.addEventListener('change', () => {
-      // Add is-active class to ul
-      if (checkbox.checked) {
-        if (!filterLabelHeading.classList.contains('is-active')) {
-          filterLabelHeading.classList.add('is-active');
-        }
-        // Add value to the array
-        selectedValues.push(checkbox.id);
-      } else {
-        // Remove value from the array
-        const index = selectedValues.indexOf(checkbox.id);
-        if (index !== -1) {
-          selectedValues.splice(index, 1);
-        }
-        // Remove is-active class if no checkbox is selected
-        if (selectedValues.length === 0) {
-          filterLabelHeading.classList.remove('is-active');
-        }
-      }
-      // Update the displayed selected values
-      updateSelectedValues(selectedValues);
-    });
+    selectedList.appendChild(valueElement);
   });
 }
 
@@ -516,12 +529,11 @@ function stockLocatorFilterDom(filterData, typeKey) {
   filterWrapperContainer.appendChild(filterList);
   filterWrapperContainer.appendChild(selectedFilterList);
   document.querySelector('.precon-wrapper').appendChild(filterContainer);
-  handleCheckBoxSelectionForSeries();
   handleMobileSeriesFilter();
   return filterContainer;
 }
 
-function sortSeriesAlphabetically(data) {
+function sortFilterResponse(data) {
   if (!data) return [];
   return data.sort((a, b) => {
     const idA = a.id.toUpperCase();
@@ -538,7 +550,7 @@ function sortSeriesAlphabetically(data) {
 
 function processFilterData(filterData, typeKey) {
   if (!filterData) return;
-  const sortedFilterData = sortSeriesAlphabetically(filterData);
+  const sortedFilterData = sortFilterResponse(filterData);
   const filterResponseData = [];
 
   sortedFilterData.forEach((data) => {
