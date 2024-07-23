@@ -5,7 +5,9 @@ import {
 
 import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEndPoint } from './constants.js';
 // eslint-disable-next-line import/no-cycle
-import { vehicleURL } from '../../blocks/precon/precon.js';
+// import { vehicleURL } from '../../blocks/precon/precon.js';
+// eslint-disable-next-line import/no-cycle
+import { vehicleURL } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
 
 export async function getApiResponse(modelCode) {
   try {

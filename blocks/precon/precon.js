@@ -637,12 +637,6 @@ async function stockLocatorFiltersAPI() {
   createStockLocatorFilter(stockLocatorFilterData);
 }
 
-async function stockLocatorVehicleAPI() {
-  const stockLocatorVehicleResponse = await getStockLocatorVehiclesData();
-  const stockLocatorVehicleData = stockLocatorVehicleResponse.data.attributes;
-  console.log(stockLocatorVehicleData);
-}
-
 export default async function decorate(block) {
   const parentBlock = document.createElement('div');
   parentBlock.classList.add('precon-swiper-initialized');
@@ -697,8 +691,8 @@ export default async function decorate(block) {
 
     const splitPreconData = wdhContext.querySelectorAll('p')[0]?.textContent.split(',') || '';
     const selctedModelData = wdhContext.querySelectorAll('p')[1]?.textContent || '';
-    const selectedModelRange = splitPreconData[1]?.trim() || ''; // authored selected ModelRange G21
-    const selectedPreConId = splitPreconData[2]?.trim() || ''; // authored selected PRECODN-ID
+    const selectedModelRange = splitPreconData[2]?.trim() || ''; // authored selected ModelRange G21
+    const selectedPreConId = splitPreconData[3]?.trim() || ''; // authored selected PRECODN-ID
     try {
       if (selectedModelRange) {
         // eslint-disable-next-line no-await-in-loop
@@ -721,7 +715,7 @@ export default async function decorate(block) {
           break;
         }
       }
-      optionsCount = optionsValue?.split(',').length;
+      optionsCount = optionsValue.split(',').length;
       // eslint-disable-next-line no-await-in-loop
       preConCosyImage = await getPreConCosyImage(preConModeCode); // Calling PRECON Cosy Image
       headLineDom = document.createElement('div');
@@ -746,7 +740,6 @@ export default async function decorate(block) {
     dotButton.addEventListener('click', dotClickHandler);
     dotsWrapper.append(dotButton);
   }
-
   // stock locator API called here
   stockLocatorFiltersAPI();
   parentBlock.append(bgImg, imageDomContainer, preconLeftWrapper, preconRightWrapper, dotsWrapper);

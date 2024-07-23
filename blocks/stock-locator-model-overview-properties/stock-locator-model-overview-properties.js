@@ -1,3 +1,4 @@
 export default async function decorate(block) {
-  console.log(block);
+  const modelOverview = [...block.children];
+  console.log(modelOverview);
 }
