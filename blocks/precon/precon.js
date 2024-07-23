@@ -741,7 +741,7 @@ export default async function decorate(block) {
     dotsWrapper.append(dotButton);
   }
   // stock locator API called here
-  stockLocatorFiltersAPI();
+  // stockLocatorFiltersAPI();
   parentBlock.append(bgImg, imageDomContainer, preconLeftWrapper, preconRightWrapper, dotsWrapper);
   block.textContent = '';
   block.append(parentBlock, contentData);
