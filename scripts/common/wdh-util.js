@@ -3,7 +3,9 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
-import { stockLocatorOrigin, stockLocatorFilterEndPoint } from './constants.js';
+import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEndPoint } from './constants.js';
+// eslint-disable-next-line import/no-cycle
+import { vehicleURL } from '../../blocks/precon/precon.js';
 
 export async function getApiResponse(modelCode) {
   try {
@@ -188,6 +190,18 @@ const dynamicURLData = dynamicData();
 export async function getStockLocatorFiltersData() {
   try {
     const url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
+    const response = await fetch(`${url}`);
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+export async function getStockLocatorVehiclesData() {
+  try {
+    const url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}`;
     const response = await fetch(`${url}`);
     const responseJson = await response.json();
     return responseJson;
