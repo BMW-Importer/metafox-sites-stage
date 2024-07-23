@@ -372,7 +372,9 @@ async function generateTechUi(parentBlock) {
     });
 
     if (disclaimerContainer.children.length > 0) {
-      technicalDataTableContainer.append(disclaimerContainer);
+      const container = parentBlock.querySelector('.techdata-disclaimer-container');
+      container.textContent = '';
+      container.append(disclaimerContainer);
     }
 
     // bind click event for disclaimer navigation
@@ -840,6 +842,9 @@ export default async function decorate(block) {
     return row;
   });
 
+  headline1.classList.add('techdata-rte-btn-container');
+  headline2.classList.add('techdata-rte-btn-container');
+
   const heading = document.createElement('h2');
   heading.classList.add('techdata-selected-model-title');
   heading.textContent = placeholders.techDataTechnicalDataFor;
@@ -849,6 +854,14 @@ export default async function decorate(block) {
 
   const techDetailsTableContainer = document.createElement('div');
   techDetailsTableContainer.classList.add('techdata-tables-container');
+
+  const rteContainer = document.createElement('div');
+  rteContainer.classList.add('techdata-rte-container');
+  rteContainer.append(headline1);
+  rteContainer.append(headline2);
+
+  const disclaimerContainer = document.createElement('div');
+  disclaimerContainer.classList.add('techdata-disclaimer-container');
 
   const enableAutoData = techDataProp?.querySelector('h2');
   const enableAccordion = techDataProp?.querySelector('h3');
@@ -883,8 +896,8 @@ export default async function decorate(block) {
   block.append(dropDownContainer);
   if (emptyModels.children.length > 0) block.append(emptyModels);
   block.append(techDetailsTableContainer);
-  block.append(headline1);
-  block.append(headline2);
+  block.append(rteContainer);
+  block.append(disclaimerContainer);
 
   // click first model to select it
   const firstModelDdlItem = block.querySelector('.techdata-model-ddl-model-btn.models-ddl');
