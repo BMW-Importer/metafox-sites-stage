@@ -122,13 +122,7 @@ function addAnalyticsCustomClickEvent() {
       if (primaryCategory.toLowerCase() === "download") {
         subCategory = getFileType(linkURL);
         linkName = getFileName(linkURL);
-      }
-
-      // technical data related analytics
-      if (primaryCategory.toLowerCase() === "technicaldata.option") {
-        subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
-        subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
-      }
+      }      
       
       const blockName = anchorTag.getAttribute('data-analytics-block-name');
       const sectionId = anchorTag.getAttribute('data-analytics-section-id');
@@ -140,8 +134,7 @@ function addAnalyticsCustomClickEvent() {
         blockName,
         sectionId,
         linkURL,
-        linkName,
-        subCategory2
+        linkName
       ]);      
     });
   });

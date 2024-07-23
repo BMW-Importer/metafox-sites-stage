@@ -521,7 +521,7 @@
     margin-left: 0;
 }
 
-.techdata-table-td-text .footnotes-reference-sup:not(:first-of-type):before {
+.techdata-table-td-text .footnotes-reference-sup:not(:first-of-type)::before {
     content: ",";
     margin: 0 2px;
     font-size: 0.75rem;
@@ -534,7 +534,7 @@
     margin-left: 0;
 }
 
-.techdata-table-caption-btn .footnotes-reference-sup:not(:first-of-type):before {
+.techdata-table-caption-btn .footnotes-reference-sup:not(:first-of-type)::before {
     content: ",";
     margin: 0 2px;
     font-size: 0.75rem;

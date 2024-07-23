@@ -10,6 +10,7 @@ import { techDataMarkUp, techDataWdhResponsObject } from '../../scripts/common/t
 import {
   DEV, STAGE, PROD, disclaimerTechDataEndPoint,
 } from '../../scripts/common/constants.js';
+import { pushCustomLinkAnalyticData } from '../../scripts/analytics-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
 const savedListOfModels = [];
@@ -304,6 +305,27 @@ function bindClickEventForFootNotesLink(parentBlock) {
   });
 }
 
+function triggerAnalytics(clickedElem) {
+  const anchorTag = clickedElem.target;
+  const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+  const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+  const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+  const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+  const blockName = anchorTag.getAttribute('data-analytics-block-name');
+  const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+
+  pushCustomLinkAnalyticData([
+    analyticsLabel,
+    primaryCategory,
+    subCategory,
+    blockName,
+    sectionId,
+    '',
+    '',
+    subCategory2,
+  ]);
+}
+
 async function generateTechUi(parentBlock) {
   const technicalDataTableContainer = parentBlock.querySelector('.techdata-tables-container');
   const selectedModel = parentBlock.querySelector('.models-type-ddl .techdata-model-ddl-model-item.active');
@@ -339,6 +361,13 @@ async function generateTechUi(parentBlock) {
     const data = { placeholders, technicalData };
     const replacedHtml = replacePlaceholders(techDataMarkUp, data);
     technicalDataTableContainer.innerHTML = replacedHtml;
+
+    // replace engine type with placeholder
+    const fuelTypeElem = technicalDataTableContainer.querySelector('.value.powerTrain_fuelType');
+    if (fuelTypeElem) {
+      const fuelValue = fuelTypeElem.textContent.toLowerCase();
+      fuelTypeElem.textContent = placeholders[fuelValue] || fuelTypeElem.textContent;
+    }
 
     // generate disclaimer data
     const disclaimerData = await generateDisclaimer(footNotes);
@@ -513,7 +542,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
             data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            >
             <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true">
             </button></li>`);
@@ -560,6 +589,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
         const ddlTriggerBtn = parentContainer.querySelector('.techdata-model-ddl-selected');
         if (ddlTriggerBtn) ddlTriggerBtn.click();
       });
+
+      // trigger analytics
+      triggerAnalytics(e);
 
       // generate UI
       generateTechUi(parentBlockElem);
