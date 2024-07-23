@@ -1,5 +1,5 @@
-import {getStockLocatorFiltersData
-} from '../../scripts/common/wdh-util.js';
+import { getStockLocatorFiltersData } from '../../scripts/common/wdh-util.js';
+
 function handleToggleFilterDropDown() {
   let currentlyOpenDropdown = null;
 
@@ -31,14 +31,14 @@ function handleMobileSeriesFilter() {
   });
 }
 
-function handleCancelSelectedValue() {
-  const cancelSelctor = document.querySelectorAll('.cancel-filter');
-  cancelSelctor?.forEach((item) => {
-    cancelSelctor?.addEventListener('click', () => {
-      console.log(item);
-    });
-  });
-}
+// function handleCancelSelectedValue() {
+//   const cancelSelctor = document.querySelectorAll('.cancel-filter');
+//   cancelSelctor?.forEach((item) => {
+//     cancelSelctor?.addEventListener('click', () => {
+//       console.log(item);
+//     });
+//   });
+// }
 
 // function updateSelectedValues(selectedValues) {
 //   const selectedValuesContainer = document.querySelector('.selected-filter-list');
@@ -191,7 +191,7 @@ function createStockLocatorFilter(filterResponse) {
   handleToggleFilterDropDown();
 }
 
- async function stockLocatorAPiCalled() {
+async function stockLocatorAPiCalled() {
   const stockFilterResponse = await getStockLocatorFiltersData();
   const stockFilterData = stockFilterResponse.data.attributes;
   createStockLocatorFilter(stockFilterData);

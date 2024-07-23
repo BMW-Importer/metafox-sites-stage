@@ -31,14 +31,13 @@
 
     .stock-locator-container .filter-wrapper .filter-label-heading:hover {
         border-color: transparent;
-        box-shadow: 0 10px 17px 0 rgba(0, 0, 0, 12%), 0 4px 8px 0 rgba(0, 0, 0, 15%);
+        box-shadow: #0000001f 0 10px 17px 0, #00000026 0 4px 8px 0;
         border-width: 0;
     }
 
     .stock-locator-container .filter-wrapper .filter-label-heading.is-active:hover {
         border-color: transparent;
-        -webkit-box-shadow: 0 10px 17px 0 rgba(0, 0, 0, 12%), 0 4px 8px 0 rgba(0, 0, 0, 15%);
-        box-shadow: 0 10px 17px 0 rgba(0, 0, 0, 12%), 0 4px 8px 0 rgba(0, 0, 0, 15%);
+        box-shadow: #0000001f 0 10px 17px 0, #00000026 0 4px 8px 0;
         border-width: 0;
         border-left: 4px solid #1c69d4;
     }
@@ -86,8 +85,7 @@
         margin-left: -1px;
         border-color: transparent;
         border-top: 2px solid #f2f2f2;
-        -webkit-box-shadow: 0 10px 17px 0 rgba(0, 0, 0, .12), 0 4px 8px 0 rgba(0, 0, 0, .15);
-        box-shadow: 0 10px 17px 0 rgba(0, 0, 0, .12), 0 4px 8px 0 rgba(0, 0, 0, .15);
+        box-shadow: #0000001f 0 10px 17px 0, #00000026 0 4px 8px 0;
     }
 
     .stock-locator-container .filter-wrapper .selected-filter-list{
