@@ -512,6 +512,27 @@
 .techdata-table-disclaimer-span p {
     margin: 0;
 }
+ 
+.footnotes-reference-sup {
+    margin-left: 3px;
+}
+
+.footnotes-reference-a {
+    display: inline;   
+    margin: -.5rem;
+    padding: .5rem;
+    text-decoration: none !important;
+    font-family: var(--fixed-font-family);
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1rem;
+    color: var(--light-text-color) !important;
+}
+
+.techdata-table-td .footnotes-reference-a {
+    font-size: 0.6563rem;
+    line-height: 0;
+}
 
 /* tablet */
 @media (width >= 768px) {
@@ -680,6 +701,11 @@
     .techdata-table-disclaimer-container {
         margin-bottom: 5rem;
     }
+
+    .techdata-table-td .footnotes-reference-a {
+        font-size: 0.7031rem;
+        line-height: 0;
+    }
 }
 
 /* desktop */
@@ -722,5 +748,10 @@
     .techdata-table-img-measurements {
         font-size: 1rem;
         line-height: 1.625rem;
+    }
+
+    .techdata-table-td .footnotes-reference-a {
+        font-size: 0.75rem;
+        line-height: 0;
     }
 }

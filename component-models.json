@@ -2985,8 +2985,7 @@
         "component": "text",
         "valueType": "string",
         "name": "bgVidGeneral_headlineclassType",
-        "value": "h2",
-        "label": "Eyebrow",
+        "value": "h2",        
         "hidden": true
       },
       {
@@ -4789,7 +4788,78 @@
         "name": "content_spreadsheet",
         "description": "Defines the Technical Data Spreadsheet that will be read if Automatic Data is toggled off.",
         "label": "Technical Data Spreadsheet",
-        "valueType": "string"
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headlineAndText1",
+        "label": "Headline and Text",
+        "value": "h2",
+        "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
+      },
+      {
+        "component": "text",        
+        "name": "content_headlineAndText1Type",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline1Link",
+        "label": "Link",
+        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline1LinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed as the Link Button."        
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline1LinkType",
+        "label": "Link Label",
+        "hidden": true        
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headlineAndText2",
+        "label": "Headline and Text",
+        "value": "h2",
+        "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
+      },
+      {
+        "component": "text",        
+        "name": "content_headlineAndText2Type",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline2Link",
+        "label": "Link",
+        "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline2LinkText",
+        "label": "Link Label",
+        "description": "Defines the text to be displayed as the Link Button."        
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_headline2LinkType",
+        "label": "Link Label",
+        "hidden": true        
       }
     ]
   },
@@ -4818,94 +4888,6 @@
         "name": "analytics_label",
         "label": "Analytics Label",
         "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "analytics_button",
-        "label": "Button/Link Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Exit",
-            "value": "exit"
-          },
-          {
-            "name": "Download",
-            "value": "download"
-          },
-          {
-            "name": "Other",
-            "value": "other"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "label": "Only if other is selected the following options should appear:",
-        "name": "analytics_others",
-        "valueType": "string",
-        "condition": {
-          "===": [
-            {
-              "var": "analytics_button"
-            },
-            "other"
-          ]
-        },
-        "options": [
-          {
-            "name": "Learn More",
-            "value": "LearnMore"
-          },
-          {
-            "name": "Configure",
-            "value": "Configure"
-          },
-          {
-            "name": "Technical Data",
-            "value": "Technical Data"
-          },
-          {
-            "name": "Options and Prices",
-            "value": "Options and Prices"
-          },
-          {
-            "name": "Vehicles in Stock",
-            "value": "Vehicles in Stock"
-          },
-          {
-            "name": "Request for Offer",
-            "value": "Request for Offer"
-          },
-          {
-            "name": "Sales and Service Network",
-            "value": "Sales and Service Network"
-          },
-          {
-            "name": "Test Drive",
-            "value": "Test Drive"
-          },
-          {
-            "name": "Newsletter Signup",
-            "value": "Newsletter Signup"
-          },
-          {
-            "name": "Contact",
-            "value": "Contact"
-          },
-          {
-            "name": "Search",
-            "value": "Search"
-          },
-          {
-            "name": "Show More / Show Less",
-            "value": "Show More / Show Less"
-          },
-          {
-            "name": "Other",
-            "value": "Other"
-          }
-        ]
       }
     ]
   },

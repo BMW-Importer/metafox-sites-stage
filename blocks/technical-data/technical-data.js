@@ -89,10 +89,10 @@ function enableClickEventForDdl(ddl) {
     const parentElem = e.target.closest('.techdata-model-ddl-container');
     const ddlBtn = parentElem.querySelector('.techdata-model-ddl-ul-container');
     e.target.classList.toggle('clicked');
-    if (ddlBtn) ddlBtn.classList.toggle('active');
+    ddlBtn?.classList?.toggle('active');
 
     // Check if dropdown is open
-    const isOpen = e.target.classList.contains('clicked') || (ddlBtn && ddlBtn.classList.contains('active'));
+    const isOpen = e.target.classList.contains('clicked') || ddlBtn?.classList?.contains('active');
 
     // Function to close dropdown
     /* eslint-disable func-names */
@@ -181,6 +181,44 @@ function replaceSpreadSheetPlaceholders(template, data) {
   return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
 }
 
+function sortFootNotesArray(uniqueFootnotesArray) {
+  return uniqueFootnotesArray?.sort((a, b) => {
+    // Extract the numeric part of the strings
+    const numA = parseInt(a.slice(1), 10); // Specifying radix 10
+    const numB = parseInt(b.slice(1), 10); // Specifying radix 10
+
+    // Compare the numeric parts
+    return numA - numB;
+  });
+}
+
+function generateSupElementForFootnotes(footNotesObj) {
+  Object.keys(footNotesObj).forEach((className) => {
+    const values = footNotesObj[className];
+    const elements = document.querySelectorAll(`.${className}`);
+
+    elements.forEach((element) => {
+      values.forEach((value) => {
+        const sup = document.createElement('sup');
+        sup.setAttribute('id', `ref-${value}`);
+        sup.classList.add('footnotes-reference-sup');
+
+        const anchorElem = document.createElement('a');
+        anchorElem.classList.add('footnotes-reference-a');
+        anchorElem.setAttribute('href', `#disclaimer-${value}`);
+        sup.appendChild(anchorElem);
+
+        element.appendChild(sup);
+      });
+    });
+  });
+}
+
+// Function to handle smooth scroll to a target element
+function smoothScroll(target) {
+  document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+}
+
 async function generateDisclaimer(footNotesObj) {
   let publishDomain = '';
   if (env === 'dev') {
@@ -190,10 +228,14 @@ async function generateDisclaimer(footNotesObj) {
   } else {
     publishDomain = PROD.hostName;
   }
-  const gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
+  const regex = /^(.*\.hlx\.(page|live)|localhost)$/;
+  const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : '';
   const footNotesArray = Object.values(footNotesObj).flat();
-  const uniqueFootnotestArray = [...new Set(footNotesArray)];
+  const uniqueFootnotestArray = sortFootNotesArray([...new Set(footNotesArray)]);
   const listOfDisclaimer = [];
+
+  // loop through footnotes and create sup element
+  generateSupElementForFootnotes(footNotesObj);
   /* eslint-disable no-await-in-loop */
   /* eslint-disable no-console */
   /* eslint-disable no-restricted-syntax */
@@ -202,7 +244,10 @@ async function generateDisclaimer(footNotesObj) {
     const response = await fetch(`${gqlOrigin}${replacedValuesInUrl}`);
     const responseJson = await response.json();
     responseJson?.data?.disclaimercfmodelList?.items?.forEach((item) => {
-      listOfDisclaimer.push(item?.disclaimer?.html);
+      listOfDisclaimer.push({
+        key: fValue,
+        value: item?.disclaimer?.html,
+      });
     });
   }
 
@@ -238,6 +283,24 @@ function deleteEmptyTableValues(tableContainer) {
     if (table.querySelectorAll('tbody').length === 0) {
       table.remove();
     }
+  });
+}
+
+function bindClickEventForFootNotesLink(parentBlock) {
+  // Add click event listeners to references
+  parentBlock.querySelectorAll('.footnotes-reference-a').forEach((ref) => {
+    ref.addEventListener('click', (event) => {
+      event.preventDefault();
+      smoothScroll(ref.getAttribute('href'));
+    });
+  });
+
+  // Add click event listeners to disclaimers
+  parentBlock.querySelectorAll('.techdata-table-disclaimer-a').forEach((disclaimer) => {
+    disclaimer.addEventListener('click', (event) => {
+      event.preventDefault();
+      smoothScroll(disclaimer.getAttribute('href'));
+    });
   });
 }
 
@@ -290,10 +353,18 @@ async function generateTechUi(parentBlock) {
       const aTag = document.createElement('a');
       aTag.classList.add('techdata-table-disclaimer-a');
       aTag.textContent = index + 1;
+      aTag.setAttribute('id', `disclaimer-${disclaimerItem.key}`);
+      aTag.setAttribute('href', `#ref-${disclaimerItem.key}`);
+
+      // fetching all footnotes and appending disclaimer index as sup value
+      const listOfFootNotRef = parentBlock.querySelectorAll(`a[href='#disclaimer-${disclaimerItem.key}']`);
+      listOfFootNotRef.forEach((refElem) => {
+        refElem.textContent = `${index + 1}`;
+      });
 
       const spanTag = document.createElement('span');
       spanTag.classList.add('techdata-table-disclaimer-span');
-      spanTag.innerHTML = disclaimerItem;
+      spanTag.innerHTML = disclaimerItem.value;
 
       pTag.append(aTag);
       pTag.append(spanTag);
@@ -303,6 +374,9 @@ async function generateTechUi(parentBlock) {
     if (disclaimerContainer.children.length > 0) {
       technicalDataTableContainer.append(disclaimerContainer);
     }
+
+    // bind click event for disclaimer navigation
+    bindClickEventForFootNotesLink(parentBlock);
 
     // making cozy call
     const imageSide = technicalDataTableContainer.querySelector('.techdata-table-img-side');
@@ -411,7 +485,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
   const listOfTranmissions = agCodeArrayObj.map(
     (vehicle) => vehicle?.json?.responseJson?.model?.vehicles,
   );
-  const [analyticsLabel, BtnType, btnSubType] = agCodeArrayObj[0]?.analytics?.children || [];
+  const [analyticsLabel] = agCodeArrayObj[0]?.analytics?.children || [];
 
   // if list of tranmission type is 1 then hide ddl
   if (listOfTranmissions && listOfTranmissions.length > 0) {
@@ -432,8 +506,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
     const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item"><button class="techdata-model-ddl-model-btn transmission-ddl" data-transmission-code="${fuel.transmissionCode}"
             data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
+            data-analytics-link-type='technicaldata.option'
+            data-analytics-subcategory-1='${agCode || ''}'
+            data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
             data-analytics-custom-click='true'>
@@ -546,7 +621,7 @@ function enableClickEventForModelDdl(ddlContainer) {
   }
 }
 
-function generateModelsDdl(listOfModels, dropDownContainer, block) {
+function generateModelsDdl(listOfModels, dropDownContainer) {
   const modelDdlContainer = document.createElement('div');
   modelDdlContainer.classList.add('techdata-model-ddl-container');
   modelDdlContainer.classList.add('models-type-ddl');
@@ -589,7 +664,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
 
   /* eslint-disable no-restricted-syntax */
   for (const fuel in listOfModels) {
-    if (Object.prototype.hasOwnProperty.call(listOfModels, fuel)) {
+    if (Object.hasOwn(listOfModels, fuel)) {
       const liItem = document.createElement('li');
 
       const fuelHeadingSpan = document.createElement('span');
@@ -601,7 +676,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
       modelsUnderTheFuelList.classList.add('techdata-model-ddl-model-container');
 
       listOfModels[fuel].forEach((model) => {
-        const [analyticsLabel, BtnType, btnSubType] = model?.analytics?.children || [];
+        const [analyticsLabel] = model?.analytics?.children || [];
         let listOfAttributes = '';
         // fetchinf data attributes of authored model card
         /* eslint-disable no-plusplus */
@@ -611,12 +686,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
         }
         const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item" ${listOfAttributes}><button class="techdata-model-ddl-model-btn models-ddl" data-agcode="${model?.agCode}"
-            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
-            data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
-            data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'>
             <span class="techdata-model-ddl-model-item-title">${model?.description || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true"></i>
             </button></li>`);
@@ -684,7 +754,7 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp)
 function removeSpacesInObjectKey(obj) {
   const replacedObj = {};
   for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+    if (Object.hasOwn(obj, key)) {
       const newKey = key.replace(/ /g, '');
       if (typeof obj[key] === 'object' && obj[key] !== null) {
         replacedObj[newKey] = removeSpacesInObjectKey(obj[key]);
@@ -694,6 +764,64 @@ function removeSpacesInObjectKey(obj) {
     }
   }
   return replacedObj;
+}
+
+async function generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile) {
+  try {
+    const regex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
+    const isMatch = regex.exec(window.location.host);
+    const origin = isMatch ? `${spreadSheetPath}.json` : spreadSheetFile;
+    const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
+    if (spreadSheetResponse) {
+      const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
+      savedSpreadSheetModels = {
+        responseJson: {
+          data:
+          Object.keys(
+            convertedObj?.responseJson?.data,
+          ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
+        },
+      };
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels) {
+  /* eslint-disable no-await-in-loop */
+  for (const modelData of rows) {
+    const [modelProp, analyticsProp] = modelData?.children || [];
+    modelData.textContent = '';
+
+    modelProp.classList.add('techdata-model-ddl');
+
+    const [modelPropData] = modelProp?.children || [];
+    const splittedModelData = modelPropData?.textContent?.split(',');
+
+    if (splittedModelData && splittedModelData?.length >= 3) {
+      const authoredAgCode = splittedModelData[2]?.trim() || '';
+      try {
+        // wdh call or else spreadsheet call
+        if (enableAutoData?.textContent === 'true') {
+          const modelDetailResponse = await getApiResponse(authoredAgCode);
+          generateAuthoredModels(
+            modelDetailResponse,
+            authoredAgCode,
+            listOfModels,
+            analyticsProp,
+            modelData,
+          );
+        } else {
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+        }
+      } catch (error) {
+        console.error('fetch model detail failed');
+      }
+    } else {
+      emptyModels.append(modelData);
+    }
+  }
 }
 
 /* eslint-disable no-restricted-syntax */
@@ -735,19 +863,7 @@ export default async function decorate(block) {
 
   if (enableAutoData?.textContent === 'false') {
     try {
-      const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${spreadSheetPath + spreadSheetFile}` : spreadSheetFile;
-      const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
-      if (spreadSheetResponse) {
-        const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
-        savedSpreadSheetModels = {
-          responseJson: {
-            data:
-            Object.keys(
-              convertedObj?.responseJson?.data,
-            ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
-          },
-        };
-      }
+      await generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile);
     } catch (e) {
       console.error(e);
     }
@@ -755,41 +871,9 @@ export default async function decorate(block) {
 
   const emptyModels = document.createElement('div');
 
-  /* eslint-disable no-await-in-loop */
-  for (const modelData of rows) {
-    const [modelProp, analyticsProp] = modelData?.children || [];
-    modelData.textContent = '';
+  await loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels);
 
-    modelProp.classList.add('techdata-model-ddl');
-
-    const [modelPropData] = modelProp?.children || [];
-    const splittedModelData = modelPropData?.textContent?.split(',');
-
-    if (splittedModelData && splittedModelData?.length >= 3) {
-      const authoredAgCode = splittedModelData[2]?.trim() || '';
-      try {
-        // wdh call or else spreadsheet call
-        if (enableAutoData?.textContent === 'true') {
-          const modelDetailResponse = await getApiResponse(authoredAgCode);
-          generateAuthoredModels(
-            modelDetailResponse,
-            authoredAgCode,
-            listOfModels,
-            analyticsProp,
-            modelData,
-          );
-        } else {
-          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
-        }
-      } catch (error) {
-        console.error('fetch model detail failed');
-      }
-    } else {
-      emptyModels.append(modelData);
-    }
-  }
-
-  generateModelsDdl(listOfModels, dropDownContainer, block);
+  generateModelsDdl(listOfModels, dropDownContainer);
   enableClickEventForModelDdl(dropDownContainer);
 
   block.textContent = '';
