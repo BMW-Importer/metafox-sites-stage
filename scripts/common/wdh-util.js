@@ -180,7 +180,6 @@ export function dynamicData() {
   const lang = 'rs'; // document.querySelector('meta[name="language"]').content;
   const georegion = document.querySelector('meta[name="georegion"]').content;
   const formedURL = `${url}_${lang}?locale=sr_${georegion}&`;
-  console.log(formedURL);
   return formedURL;
 }
 
