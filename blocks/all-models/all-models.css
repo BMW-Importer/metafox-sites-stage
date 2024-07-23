@@ -157,6 +157,7 @@
     width: calc(100% + 1rem);
     z-index: 10;
 }
+
 .content-nav-selected-value:after {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
@@ -182,11 +183,7 @@
     white-space: nowrap;
     width: auto;
 }
-@media screen and (min-width: 768px) {
-    .content-nav-selected-value {
-        display: none;
-    }
-}
+
 .nav-background {
     display: block;
     height: calc(100% + 1px);
@@ -200,41 +197,40 @@
     z-index: -10;
 }
 
-@media screen and (min-width: 768px) {
-    .nav-background {
-        background-color: #fffffff2;
-        border-bottom: .0625rem solid var(--light-grey-1);
-        opacity: 1;
-        transition: none;
-    }
-}
-
-.nav-container {
+.content-navigation {
     flex-direction: column;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-@media screen and (min-width: 768px) {
-    .nav-container {
-        flex-direction: row;
-    }
+.content-navigation .nav-arrow-left {
+    cursor: pointer;
+    display: none;
+    font-size: 2rem;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 10;
+    align-items: center;
+}
+
+.content-navigation .nav-arrow-right {
+    cursor: pointer;
+    display: none;
+    font-size: 2rem;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 10;
+    align-items: center;
 }
 
 .navbar-wrap {
     position: absolute;
     width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-    .navbar-wrap {
-        clip-path: none;
-        height: 4rem;
-        position: relative;
-        visibility: visible;
-        width: auto;
-    }
 }
 
 .nav-list {
@@ -251,28 +247,8 @@
     width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-    .nav-list {
-        background-color: initial;
-        display: flex;
-        flex-direction: row;
-        height: inherit;
-        padding: 0;
-        position: relative;
-        transition: none;
-        width: auto;
-    }
-}
-
 .nav-list-item {
     width: auto;
-}
-
-@media screen and (min-width: 768px) {
-    .nav-list-item {
-        min-height: 100%;
-        width: auto;
-    }
 }
 
 .nav-list-button {
@@ -300,6 +276,45 @@
 }
 
 @media screen and (min-width: 768px) {
+    .content-nav-selected-value {
+        display: none;
+    }
+
+    .nav-background {
+        background-color: #fffffff2;
+        border-bottom: .0625rem solid var(--light-grey-1);
+        opacity: 1;
+        transition: none;
+    }
+
+    .content-navigation {
+        flex-direction: row;
+    }
+
+    .navbar-wrap {
+        clip-path: none;
+        height: 4rem;
+        position: relative;
+        visibility: visible;
+        width: auto;
+    }
+
+    .nav-list {
+        background-color: initial;
+        display: flex;
+        flex-direction: row;
+        height: inherit;
+        padding: 0;
+        position: relative;
+        transition: none;
+        width: auto;
+    }
+
+    .nav-list-item {
+        min-height: 100%;
+        width: auto;
+    }
+
     .nav-list-button {
         border-color: #0000;
         border-style: solid;
@@ -313,6 +328,9 @@
         padding: 0 1rem;
         pointer-events: all;
         width: auto;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        line-height: 1.5rem;
     }
 
     .nav-list-button:hover {
