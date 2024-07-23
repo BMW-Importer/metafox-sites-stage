@@ -181,40 +181,37 @@ function replaceSpreadSheetPlaceholders(template, data) {
   return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
 }
 
-function sortFootNotesArray(uniqueFootnotestArray) {
-  return uniqueFootnotestArray?.sort((a, b) => {
+function sortFootNotesArray(uniqueFootnotesArray) {
+  return uniqueFootnotesArray?.sort((a, b) => {
     // Extract the numeric part of the strings
-    const numA = parseInt(a.slice(1));
-    const numB = parseInt(b.slice(1));
-    
+    const numA = parseInt(a.slice(1), 10); // Specifying radix 10
+    const numB = parseInt(b.slice(1), 10); // Specifying radix 10
+
     // Compare the numeric parts
     return numA - numB;
   });
 }
 
 function generateSupElementForFootnotes(footNotesObj) {
-  for (const key in footNotesObj) {
-    if (footNotesObj.hasOwnProperty(key)) {
-      // Get the class name and the href value
-      const className = key;
-      const values = footNotesObj[key];
-      
-      const elements = document.querySelectorAll(`.${className}`);
-      
-      elements.forEach(function(element) {
-        values.forEach(function(value, index) {
-          const sup = document.createElement('sup');          
-          sup.setAttribute('id', `ref-${value}`)
-          sup.classList.add('footnotes-reference-sup');
-          const anchorElem = document.createElement('a');
-          anchorElem.classList.add('footnotes-reference-a')
-          anchorElem.setAttribute('href',`#disclaimer-${value}`);
-          sup.append(anchorElem);
-          element.appendChild(sup);          
-        });
+  Object.keys(footNotesObj).forEach((className) => {
+    const values = footNotesObj[className];
+    const elements = document.querySelectorAll(`.${className}`);
+
+    elements.forEach((element) => {
+      values.forEach((value) => {
+        const sup = document.createElement('sup');
+        sup.setAttribute('id', `ref-${value}`);
+        sup.classList.add('footnotes-reference-sup');
+
+        const anchorElem = document.createElement('a');
+        anchorElem.classList.add('footnotes-reference-a');
+        anchorElem.setAttribute('href', `#disclaimer-${value}`);
+        sup.appendChild(anchorElem);
+
+        element.appendChild(sup);
       });
-    }
-  }
+    });
+  });
 }
 
 // Function to handle smooth scroll to a target element
@@ -232,7 +229,7 @@ async function generateDisclaimer(footNotesObj) {
     publishDomain = PROD.hostName;
   }
   const regex = /^(.*\.hlx\.(page|live)|localhost)$/;
-  const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : ''; 
+  const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : '';
   const footNotesArray = Object.values(footNotesObj).flat();
   const uniqueFootnotestArray = sortFootNotesArray([...new Set(footNotesArray)]);
   const listOfDisclaimer = [];
@@ -249,8 +246,8 @@ async function generateDisclaimer(footNotesObj) {
     responseJson?.data?.disclaimercfmodelList?.items?.forEach((item) => {
       listOfDisclaimer.push({
         key: fValue,
-        value: item?.disclaimer?.html
-    });
+        value: item?.disclaimer?.html,
+      });
     });
   }
 
@@ -291,16 +288,16 @@ function deleteEmptyTableValues(tableContainer) {
 
 function bindClickEventForFootNotesLink(parentBlock) {
   // Add click event listeners to references
-  parentBlock.querySelectorAll('.footnotes-reference-a').forEach(function (ref) {
-    ref.addEventListener('click', function (event) {
+  parentBlock.querySelectorAll('.footnotes-reference-a').forEach((ref) => {
+    ref.addEventListener('click', (event) => {
       event.preventDefault();
       smoothScroll(ref.getAttribute('href'));
     });
   });
 
   // Add click event listeners to disclaimers
-  parentBlock.querySelectorAll('.techdata-table-disclaimer-a').forEach(function (disclaimer) {
-    disclaimer.addEventListener('click', function (event) {
+  parentBlock.querySelectorAll('.techdata-table-disclaimer-a').forEach((disclaimer) => {
+    disclaimer.addEventListener('click', (event) => {
       event.preventDefault();
       smoothScroll(disclaimer.getAttribute('href'));
     });
@@ -362,7 +359,7 @@ async function generateTechUi(parentBlock) {
       // fetching all footnotes and appending disclaimer index as sup value
       const listOfFootNotRef = parentBlock.querySelectorAll(`a[href='#disclaimer-${disclaimerItem.key}']`);
       listOfFootNotRef.forEach((refElem) => {
-        refElem.textContent = `${index+1}`;
+        refElem.textContent = `${index + 1}`;
       });
 
       const spanTag = document.createElement('span');
@@ -866,7 +863,7 @@ export default async function decorate(block) {
 
   if (enableAutoData?.textContent === 'false') {
     try {
-      await generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile);      
+      await generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile);
     } catch (e) {
       console.error(e);
     }
@@ -874,7 +871,7 @@ export default async function decorate(block) {
 
   const emptyModels = document.createElement('div');
 
-  await loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels);  
+  await loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels);
 
   generateModelsDdl(listOfModels, dropDownContainer);
   enableClickEventForModelDdl(dropDownContainer);
