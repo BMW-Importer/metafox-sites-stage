@@ -11,3 +11,4 @@ export const PROD = {
 };
 export const disclaimerGQlEndpoint = '/graphql/execute.json/metafox/getDisclaimerCFModel;disclaimerCfPath=';
 export const wdhModelDetailsEndpoint = '/WDH_API/Models/ModelDetails/';
+export const disclaimerTechDataEndPoint = '/graphql/execute.json/metafox/getDisclaimerCFModelTag;tagValue=metafox:{fvalue};disclaimerCFPath={encryptedstring}';

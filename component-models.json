@@ -82,6 +82,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "fileReferenceMimeType"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "alt",
@@ -190,6 +196,12 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "imageMimeType"
       },
       {
         "component": "text-area",
@@ -558,6 +570,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "imageMimeType"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "imageAlt",
@@ -584,6 +602,12 @@
         "value": "",
         "description": "Image path from AEM DAM - only choose from the dedicated asset folder",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "fileReferenceMimeType"
       },
       {
         "component": "text-input",
@@ -653,6 +677,12 @@
         "value": "",
         "description": "Image path from AEM DAM - only choose from the dedicated asset folder",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bg_fileReferenceMimeType"
       },
       {
         "component": "text-input",
@@ -828,6 +858,12 @@
         "description": "Defines the image to be displayed.",
         "required": true,
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_fileReferenceMimeType"
       },
       {
         "component": "text-input",
@@ -1091,6 +1127,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_desktopPosterFileReferenceMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_mobilePosterFileReference",
@@ -1098,6 +1140,12 @@
         "value": "",
         "description": "Defines the the poster image of the video that will play on mobile. It will be displayed while loading the page.",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_mobilePosterFileReferenceMimeType"
       },
       {
         "component": "boolean",
@@ -1756,12 +1804,24 @@
         "description": "Defines the path that will be displaying poster image on desktop while loading the page."
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "desktopPosterRefMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "mobilePosterRef",
         "label": "Mobile Poster Image Path",
         "multi": false,
         "description": "Defines the path that will be displaying poster image on mobile while loading the page."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "mobilePosterRefMimeType"
       },
       {
         "component": "boolean",
@@ -1863,6 +1923,12 @@
         "name": "img_image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "img_imageMimeType"
       },
       {
         "component": "text",
@@ -2014,12 +2080,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoSlidePosterMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_videoSlidePosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoSlidePosterMobileMimeType"
       },
       {
         "component": "boolean",
@@ -2130,6 +2208,12 @@
         "description": "Defines media object that can be displayed on the right side.",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_imageSlideImgMimeType"
       },
       {
         "component": "text-input",
@@ -2558,6 +2642,12 @@
         "description": "Defines the image to be displayed.",
         "valueType": "string",
         "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgImgImage_imageMimeType"
       },
       {
         "component": "text-input",
@@ -3044,11 +3134,23 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgVidVideo_imgMimeType"
+      },
+      {
         "component": "reference",
         "label": "Mobile Poster Image Path",
         "name": "bgVidVideo_imgMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "bgVidVideo_imgMobileMimeType"
       },
       {
         "component": "boolean",
@@ -3505,12 +3607,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoCarouselPosterDesktopMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "media_videoCarouselPosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "media_videoCarouselPosterMobileMimeType"
       },
       {
         "component": "text",
@@ -3686,6 +3800,12 @@
       {
         "component": "text",
         "valueType": "string",
+        "hidden": true,
+        "name": "media_imageCarouselImgMimeType"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "media_imageCarouselImgAlt",
         "description": "Defines textual description of images for users with visual limitation.",
         "value": "",
@@ -3810,12 +3930,24 @@
         "required": true
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "videoSlide_videoPosterDesktopMimeType"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "videoSlide_videoPosterMobile",
         "description": "Defines the path that will be displaying poster image on mobile while loading the page.",
         "label": "Mobile Poster Image Path",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "hidden": true,
+        "name": "videoSlide_videoPosterMobileMimeType"
       },
       {
         "component": "text",
@@ -4214,13 +4346,15 @@
         "component":"text-input",
         "name":"analytics_label",
         "label":"Analytics Label",
-        "valueType": "string"
+        "valueType": "string",
+        "description": "Defines a brief description of the content for analytics. Please fill out this field in English."
       },
       {
         "component":"select",
         "name":"analytics_button",
         "label":"Button/Link Type", 
         "valueType": "string",
+        "description": "Defines the Button/Link type for event tracking in analytics. Please select Other for a CTA leading to another page on the BMW Serbia website.",
         "options": [
           {
             "name": "Exit",
@@ -4241,6 +4375,7 @@
         "label": "Only if other is selected the following options should appear:",
         "name": "analytics_others",
         "valueType": "string",
+        "description": "Defines the category of the Button/Link authored if Other is selected as its Type.",
         "condition": { "===": [{"var" : "analytics_button"}, "other"] },
         "options": [
           {
@@ -4667,9 +4802,9 @@
         "name": "wdh"
       },
       {
-        "component": "customtype",
+        "component": "techdatacustomfield",
         "label": "Model Card Context",
-        "name": "wdh_customSeriesModelRangeSelection",
+        "name": "wdh_techdatacustomfield",
         "description": "Defines the link to the page a user lands on when clicking on the panel with the vehicle image on the left-hand side of the DriveTrain Switch.",
         "valueType": "string"
       },
