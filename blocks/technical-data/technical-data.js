@@ -179,7 +179,7 @@ function replacePlaceholders(template, data) {
 }
 
 function replaceSpreadSheetPlaceholders(template, data) {
-  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
+  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : ""));
 }
 
 function sortFootNotesArray(uniqueFootnotesArray) {
