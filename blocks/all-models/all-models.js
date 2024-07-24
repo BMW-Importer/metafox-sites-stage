@@ -1,5 +1,5 @@
 export default function decorate(block) {
-  const [description, analytics ] = [...block.children];
+  const [description, analytics] = [...block.children];
   const contentNavDesc = description?.querySelector('h2') || '';
   const activateConfigVar = description?.querySelector('h3') || '';
   const filterSpreadsheet = description?.querySelector('h5') || '';
@@ -8,7 +8,7 @@ export default function decorate(block) {
   const allModelParentContainer = document.createElement('div');
   allModelParentContainer.classList.add('all-model-parent-div');
   const modelTitle = document.createElement('h2');
-  modelTitle.innerHTML = "Find your BMW";
+  modelTitle.innerHTML = 'Find your BMW';
 
   const filterTitle = description.querySelector('h4');
   filterTitle.classList.add('filter-title');
@@ -42,10 +42,18 @@ export default function decorate(block) {
   numberWrap.classList.add('number-wrap');
   numberWrap.innerHTML = `<span class='total-number'>99</span>&nbsp;<span class='found-text'>found vehicles</span>`;
   
+  const leftBtn = document.createElement('button');
+  leftBtn.classList.add('nav-arrow-left');
+  const rightBtn = document.createElement('button');
+  rightBtn.classList.add('nav-arrow-right');
+
   const navBar = document.createElement('div');
-  navBar.innerHTML = `<div class='nav-container'>
-  <button class='content-nav-selected-value'>BMW i</button>
+  navBar.classList.add('content-navigation');
+  navBar.innerHTML = `
+  <button class='content-nav-selected-value' id='navMenuBtn'>BMW i</button>
   <div class='nav-background'></div>
+  <div class="nav-arrow-left"></div>
+  <div class="nav-arrow-right"></div>
     <nav class='navbar-wrap'>
       <ul class='nav-list'>
         <li class='nav-list-item'>
@@ -92,9 +100,8 @@ export default function decorate(block) {
         </li>
       </ul>
     </nav>
-    </div>
-  `
-  
+  `;
+
   buttonRow.append(hybridButton);
   buttonRow.append(electricButton);
   buttonRow.append(mButton);
@@ -113,21 +120,29 @@ export default function decorate(block) {
   selectModelClick(electricButton);
   selectModelClick(mButton);
   selectModelClick(iButton);
+
+  toggleNavContent();
 }
 
 function selectModelClick(button) {
   button.addEventListener('click', (e) => {
     const parentElem = e.target.parentElement;
-    if(parentElem.localName == 'button'){
-    if(!parentElem.firstChild.classList.contains('toggle-icon')){
-      parentElem.firstChild.classList.add('toggle-icon');
-      parentElem.style.background = '#4d4d4d';
-      parentElem.style.color = '#f6f6f6';
+    if (parentElem.localName == 'button') {
+      if (!parentElem.firstChild.classList.contains('toggle-icon')) {
+        parentElem.firstChild.classList.add('toggle-icon');
+        parentElem.style.background = '#4d4d4d';
+        parentElem.style.color = '#f6f6f6';
+      } else {
+        parentElem.firstChild.classList.remove('toggle-icon');
+        parentElem.style.background = 'transparent';
+        parentElem.style.color = '#666';
+      }
     }
-    else {
-      parentElem.firstChild.classList.remove('toggle-icon');
-      parentElem.style.background = 'transparent';
-      parentElem.style.color = '#666';
-    }}
+  });
+}
+
+function toggleNavContent(){
+  const selectedButton = document.getElementById('navMenuBtn');
+  selectedButton.addEventListener('click', (e) => {
   });
 }
