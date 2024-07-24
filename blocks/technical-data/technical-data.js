@@ -10,6 +10,7 @@ import { techDataMarkUp, techDataWdhResponsObject } from '../../scripts/common/t
 import {
   DEV, STAGE, PROD, disclaimerTechDataEndPoint,
 } from '../../scripts/common/constants.js';
+import { pushCustomLinkAnalyticData } from '../../scripts/analytics-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
 const savedListOfModels = [];
@@ -89,10 +90,10 @@ function enableClickEventForDdl(ddl) {
     const parentElem = e.target.closest('.techdata-model-ddl-container');
     const ddlBtn = parentElem.querySelector('.techdata-model-ddl-ul-container');
     e.target.classList.toggle('clicked');
-    if (ddlBtn) ddlBtn.classList.toggle('active');
+    ddlBtn?.classList?.toggle('active');
 
     // Check if dropdown is open
-    const isOpen = e.target.classList.contains('clicked') || (ddlBtn && ddlBtn.classList.contains('active'));
+    const isOpen = e.target.classList.contains('clicked') || ddlBtn?.classList?.contains('active');
 
     // Function to close dropdown
     /* eslint-disable func-names */
@@ -178,7 +179,45 @@ function replacePlaceholders(template, data) {
 }
 
 function replaceSpreadSheetPlaceholders(template, data) {
-  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
+  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : ''));
+}
+
+function sortFootNotesArray(uniqueFootnotesArray) {
+  return uniqueFootnotesArray?.sort((a, b) => {
+    // Extract the numeric part of the strings
+    const numA = parseInt(a.slice(1), 10); // Specifying radix 10
+    const numB = parseInt(b.slice(1), 10); // Specifying radix 10
+
+    // Compare the numeric parts
+    return numA - numB;
+  });
+}
+
+function generateSupElementForFootnotes(footNotesObj) {
+  Object.keys(footNotesObj).forEach((className) => {
+    const values = footNotesObj[className];
+    const elements = document.querySelectorAll(`.${className}`);
+
+    elements.forEach((element) => {
+      values.forEach((value) => {
+        const sup = document.createElement('sup');
+        sup.setAttribute('id', `ref-${value}`);
+        sup.classList.add('footnotes-reference-sup');
+
+        const anchorElem = document.createElement('a');
+        anchorElem.classList.add('footnotes-reference-a');
+        anchorElem.setAttribute('href', `#disclaimer-${value}`);
+        sup.appendChild(anchorElem);
+
+        element.appendChild(sup);
+      });
+    });
+  });
+}
+
+// Function to handle smooth scroll to a target element
+function smoothScroll(target) {
+  document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
 }
 
 async function generateDisclaimer(footNotesObj) {
@@ -190,10 +229,14 @@ async function generateDisclaimer(footNotesObj) {
   } else {
     publishDomain = PROD.hostName;
   }
-  const gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
+  const regex = /^(.*\.hlx\.(page|live)|localhost)$/;
+  const gqlOrigin = regex.exec(window.location.hostname) ? publishDomain : '';
   const footNotesArray = Object.values(footNotesObj).flat();
-  const uniqueFootnotestArray = [...new Set(footNotesArray)];
+  const uniqueFootnotestArray = sortFootNotesArray([...new Set(footNotesArray)]);
   const listOfDisclaimer = [];
+
+  // loop through footnotes and create sup element
+  generateSupElementForFootnotes(footNotesObj);
   /* eslint-disable no-await-in-loop */
   /* eslint-disable no-console */
   /* eslint-disable no-restricted-syntax */
@@ -202,7 +245,10 @@ async function generateDisclaimer(footNotesObj) {
     const response = await fetch(`${gqlOrigin}${replacedValuesInUrl}`);
     const responseJson = await response.json();
     responseJson?.data?.disclaimercfmodelList?.items?.forEach((item) => {
-      listOfDisclaimer.push(item?.disclaimer?.html);
+      listOfDisclaimer.push({
+        key: fValue,
+        value: item?.disclaimer?.html,
+      });
     });
   }
 
@@ -241,6 +287,45 @@ function deleteEmptyTableValues(tableContainer) {
   });
 }
 
+function bindClickEventForFootNotesLink(parentBlock) {
+  // Add click event listeners to references
+  parentBlock.querySelectorAll('.footnotes-reference-a').forEach((ref) => {
+    ref.addEventListener('click', (event) => {
+      event.preventDefault();
+      smoothScroll(ref.getAttribute('href'));
+    });
+  });
+
+  // Add click event listeners to disclaimers
+  parentBlock.querySelectorAll('.techdata-table-disclaimer-a').forEach((disclaimer) => {
+    disclaimer.addEventListener('click', (event) => {
+      event.preventDefault();
+      smoothScroll(disclaimer.getAttribute('href'));
+    });
+  });
+}
+
+function triggerAnalytics(clickedElem) {
+  const anchorTag = clickedElem.target;
+  const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+  const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+  const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+  const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+  const blockName = anchorTag.getAttribute('data-analytics-block-name');
+  const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+
+  pushCustomLinkAnalyticData([
+    analyticsLabel,
+    primaryCategory,
+    subCategory,
+    blockName,
+    sectionId,
+    '',
+    '',
+    subCategory2,
+  ]);
+}
+
 async function generateTechUi(parentBlock) {
   const technicalDataTableContainer = parentBlock.querySelector('.techdata-tables-container');
   const selectedModel = parentBlock.querySelector('.models-type-ddl .techdata-model-ddl-model-item.active');
@@ -261,8 +346,8 @@ async function generateTechUi(parentBlock) {
     technicalData = transCodeArray[0].technicalData;
     footNotes = transCodeArray[0].footnotes;
   } else {
-    technicalData = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicle[0]?.technicalData;
-    footNotes = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicle[0]?.footnotes;
+    technicalData = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicles[0]?.technicalData;
+    footNotes = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicles[0]?.footnotes;
   }
 
   if (technicalData) {
@@ -277,6 +362,13 @@ async function generateTechUi(parentBlock) {
     const replacedHtml = replacePlaceholders(techDataMarkUp, data);
     technicalDataTableContainer.innerHTML = replacedHtml;
 
+    // replace engine type with placeholder
+    const fuelTypeElem = technicalDataTableContainer.querySelector('.value.powerTrain_fuelType');
+    if (fuelTypeElem) {
+      const fuelValue = fuelTypeElem.textContent.toLowerCase();
+      fuelTypeElem.textContent = placeholders[fuelValue] || fuelTypeElem.textContent;
+    }
+
     // generate disclaimer data
     const disclaimerData = await generateDisclaimer(footNotes);
 
@@ -290,10 +382,18 @@ async function generateTechUi(parentBlock) {
       const aTag = document.createElement('a');
       aTag.classList.add('techdata-table-disclaimer-a');
       aTag.textContent = index + 1;
+      aTag.setAttribute('id', `disclaimer-${disclaimerItem.key}`);
+      aTag.setAttribute('href', `#ref-${disclaimerItem.key}`);
+
+      // fetching all footnotes and appending disclaimer index as sup value
+      const listOfFootNotRef = parentBlock.querySelectorAll(`a[href='#disclaimer-${disclaimerItem.key}']`);
+      listOfFootNotRef.forEach((refElem) => {
+        refElem.textContent = `${index + 1}`;
+      });
 
       const spanTag = document.createElement('span');
       spanTag.classList.add('techdata-table-disclaimer-span');
-      spanTag.innerHTML = disclaimerItem;
+      spanTag.innerHTML = disclaimerItem.value;
 
       pTag.append(aTag);
       pTag.append(spanTag);
@@ -301,8 +401,13 @@ async function generateTechUi(parentBlock) {
     });
 
     if (disclaimerContainer.children.length > 0) {
-      technicalDataTableContainer.append(disclaimerContainer);
+      const container = parentBlock.querySelector('.techdata-disclaimer-container');
+      container.textContent = '';
+      container.append(disclaimerContainer);
     }
+
+    // bind click event for disclaimer navigation
+    bindClickEventForFootNotesLink(parentBlock);
 
     // making cozy call
     const imageSide = technicalDataTableContainer.querySelector('.techdata-table-img-side');
@@ -411,7 +516,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
   const listOfTranmissions = agCodeArrayObj.map(
     (vehicle) => vehicle?.json?.responseJson?.model?.vehicles,
   );
-  const [analyticsLabel, BtnType, btnSubType] = agCodeArrayObj[0]?.analytics?.children || [];
+  const [analyticsLabel] = agCodeArrayObj[0]?.analytics?.children || [];
 
   // if list of tranmission type is 1 then hide ddl
   if (listOfTranmissions && listOfTranmissions.length > 0) {
@@ -432,11 +537,12 @@ function generateTransTypeDdl(agCode, parentBlock) {
     const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item"><button class="techdata-model-ddl-model-btn transmission-ddl" data-transmission-code="${fuel.transmissionCode}"
             data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
+            data-analytics-link-type='technicaldata.option'
+            data-analytics-subcategory-1='${agCode || ''}'
+            data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            >
             <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true">
             </button></li>`);
@@ -483,6 +589,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
         const ddlTriggerBtn = parentContainer.querySelector('.techdata-model-ddl-selected');
         if (ddlTriggerBtn) ddlTriggerBtn.click();
       });
+
+      // trigger analytics
+      triggerAnalytics(e);
 
       // generate UI
       generateTechUi(parentBlockElem);
@@ -546,7 +655,7 @@ function enableClickEventForModelDdl(ddlContainer) {
   }
 }
 
-function generateModelsDdl(listOfModels, dropDownContainer, block) {
+function generateModelsDdl(listOfModels, dropDownContainer) {
   const modelDdlContainer = document.createElement('div');
   modelDdlContainer.classList.add('techdata-model-ddl-container');
   modelDdlContainer.classList.add('models-type-ddl');
@@ -589,7 +698,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
 
   /* eslint-disable no-restricted-syntax */
   for (const fuel in listOfModels) {
-    if (Object.prototype.hasOwnProperty.call(listOfModels, fuel)) {
+    if (Object.hasOwn(listOfModels, fuel)) {
       const liItem = document.createElement('li');
 
       const fuelHeadingSpan = document.createElement('span');
@@ -601,7 +710,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
       modelsUnderTheFuelList.classList.add('techdata-model-ddl-model-container');
 
       listOfModels[fuel].forEach((model) => {
-        const [analyticsLabel, BtnType, btnSubType] = model?.analytics?.children || [];
+        const [analyticsLabel] = model?.analytics?.children || [];
         let listOfAttributes = '';
         // fetchinf data attributes of authored model card
         /* eslint-disable no-plusplus */
@@ -611,12 +720,7 @@ function generateModelsDdl(listOfModels, dropDownContainer, block) {
         }
         const modelLi = document.createRange().createContextualFragment(`
             <li class="techdata-model-ddl-model-item" ${listOfAttributes}><button class="techdata-model-ddl-model-btn models-ddl" data-agcode="${model?.agCode}"
-            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'
-            data-analytics-link-type='${BtnType?.textContent?.trim() || ''}'
-            data-analytics-link-other-type='${btnSubType?.textContent?.trim() || ''}'
-            data-analytics-block-name='${block?.dataset?.blockName?.trim() || ''}'
-            data-analytics-section-id='${block?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            data-analytics-label='${analyticsLabel?.textContent?.trim() || ''}'>
             <span class="techdata-model-ddl-model-item-title">${model?.description || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true"></i>
             </button></li>`);
@@ -665,9 +769,9 @@ function generateAuthoredModels(
 /* eslint-disable no-console */
 function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp) {
   try {
-    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj) => {
-      if (modelObj[0].ModelCode === authoredAgCode) {
-        const responseJson = modelObj[0];
+    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
+      if (modelObj[index].ModelCode === authoredAgCode) {
+        const responseJson = modelObj[index];
         const newObj = replaceSpreadSheetPlaceholders(techDataWdhResponsObject, responseJson);
         const responseObj = {
           responseJson: JSON.parse(newObj),
@@ -684,7 +788,7 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp)
 function removeSpacesInObjectKey(obj) {
   const replacedObj = {};
   for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+    if (Object.hasOwn(obj, key)) {
       const newKey = key.replace(/ /g, '');
       if (typeof obj[key] === 'object' && obj[key] !== null) {
         replacedObj[newKey] = removeSpacesInObjectKey(obj[key]);
@@ -696,65 +800,29 @@ function removeSpacesInObjectKey(obj) {
   return replacedObj;
 }
 
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-console */
-export default async function decorate(block) {
-  block.classList.add('technical-data-block');
-  const [
-    techDataProp,
-    ...rows
-  ] = [...block.children].map((row, index) => {
-    if (index < 1) {
-      return row;
+async function generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile) {
+  try {
+    const regex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
+    const isMatch = regex.exec(window.location.host);
+    const origin = isMatch ? `${spreadSheetPath}.json` : spreadSheetFile;
+    const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
+    if (spreadSheetResponse) {
+      const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
+      savedSpreadSheetModels = {
+        responseJson: {
+          data:
+          Object.keys(
+            convertedObj?.responseJson?.data,
+          ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
+        },
+      };
     }
-    return row;
-  });
-
-  const heading = document.createElement('h2');
-  heading.classList.add('techdata-selected-model-title');
-  heading.textContent = placeholders.techDataTechnicalDataFor;
-
-  const dropDownContainer = document.createElement('div');
-  dropDownContainer.classList.add('techdata-ddl-container');
-
-  const techDetailsTableContainer = document.createElement('div');
-  techDetailsTableContainer.classList.add('techdata-tables-container');
-
-  const enableAutoData = techDataProp?.querySelector('h2');
-  const enableAccordion = techDataProp?.querySelector('h3');
-  if (enableAccordion?.textContent === 'true') {
-    block.classList.add('techdata-enable-accordion');
-  } else {
-    block.classList.add('techdata-disable-accordion');
+  } catch (e) {
+    console.error(e);
   }
+}
 
-  const spreadSheetPath = techDataProp?.querySelector('a')?.textContent;
-  const spreadSheetFile = techDataProp?.querySelector('a')?.getAttribute('href');
-
-  const listOfModels = [];
-
-  if (enableAutoData?.textContent === 'false') {
-    try {
-      const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${spreadSheetPath + spreadSheetFile}` : spreadSheetFile;
-      const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
-      if (spreadSheetResponse) {
-        const convertedObj = removeSpacesInObjectKey(spreadSheetResponse);
-        savedSpreadSheetModels = {
-          responseJson: {
-            data:
-            Object.keys(
-              convertedObj?.responseJson?.data,
-            ).map((key) => ({ [key]: convertedObj?.responseJson?.data[key] })),
-          },
-        };
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  const emptyModels = document.createElement('div');
-
+async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels) {
   /* eslint-disable no-await-in-loop */
   for (const modelData of rows) {
     const [modelProp, analyticsProp] = modelData?.children || [];
@@ -788,8 +856,71 @@ export default async function decorate(block) {
       emptyModels.append(modelData);
     }
   }
+}
 
-  generateModelsDdl(listOfModels, dropDownContainer, block);
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
+export default async function decorate(block) {
+  block.classList.add('technical-data-block');
+  const [
+    techDataProp,
+    headline1,
+    headline2,
+    ...rows
+  ] = [...block.children].map((row, index) => {
+    if (index < 3) {
+      return row;
+    }
+    return row;
+  });
+
+  headline1.classList.add('techdata-rte-btn-container');
+  headline2.classList.add('techdata-rte-btn-container');
+
+  const heading = document.createElement('h2');
+  heading.classList.add('techdata-selected-model-title');
+  heading.textContent = placeholders.techDataTechnicalDataFor;
+
+  const dropDownContainer = document.createElement('div');
+  dropDownContainer.classList.add('techdata-ddl-container');
+
+  const techDetailsTableContainer = document.createElement('div');
+  techDetailsTableContainer.classList.add('techdata-tables-container');
+
+  const rteContainer = document.createElement('div');
+  rteContainer.classList.add('techdata-rte-container');
+  rteContainer.append(headline1);
+  rteContainer.append(headline2);
+
+  const disclaimerContainer = document.createElement('div');
+  disclaimerContainer.classList.add('techdata-disclaimer-container');
+
+  const enableAutoData = techDataProp?.querySelector('h2');
+  const enableAccordion = techDataProp?.querySelector('h3');
+  if (enableAccordion?.textContent === 'true') {
+    block.classList.add('techdata-enable-accordion');
+  } else {
+    block.classList.add('techdata-disable-accordion');
+  }
+
+  const spreadSheetPath = techDataProp?.querySelector('a')?.textContent;
+  const spreadSheetFile = techDataProp?.querySelector('a')?.getAttribute('href');
+
+  const listOfModels = [];
+
+  if (enableAutoData?.textContent === 'false') {
+    try {
+      await generateTechDataSpreadSheetObj(spreadSheetPath, spreadSheetFile);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const emptyModels = document.createElement('div');
+
+  await loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listOfModels);
+
+  generateModelsDdl(listOfModels, dropDownContainer);
   enableClickEventForModelDdl(dropDownContainer);
 
   block.textContent = '';
@@ -797,6 +928,8 @@ export default async function decorate(block) {
   block.append(dropDownContainer);
   if (emptyModels.children.length > 0) block.append(emptyModels);
   block.append(techDetailsTableContainer);
+  block.append(rteContainer);
+  block.append(disclaimerContainer);
 
   // click first model to select it
   const firstModelDdlItem = block.querySelector('.techdata-model-ddl-model-btn.models-ddl');
