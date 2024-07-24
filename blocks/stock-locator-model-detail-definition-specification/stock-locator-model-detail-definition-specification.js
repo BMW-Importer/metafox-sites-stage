@@ -140,49 +140,47 @@ function constructVehicleUrl(selectedValues) {
   return fullUrl;
 }
 
-function updateSelectedValues(selectedValues) {
+function updateSelectedValues(values) {
   const selectedList = document.querySelector('.series-selected-list');
   selectedList.innerHTML = '';
 
-  let hasSelectedValues = false; // Flag to check if there are any selected values
+  let hasSelectedValues = false;
 
-  // Iterate over the selected values for each heading
-  for (const [heading, values] of Object.entries(selectedValues)) {
-    console.log(selectedValues);
-    if (values.length > 0) {
-      hasSelectedValues = true;
+  for (const [heading, valuesArray] of Object.entries(values)) {
+      if (valuesArray.length > 0) {
+          hasSelectedValues = true;
 
-      // Iterate over the selected values for this heading
-      values.forEach((value) => {
-        const valueElement = document.createElement('div');
-        valueElement.classList.add('selected-filter-value');
-        const eleSpan = document.createElement('span');
-        eleSpan.textContent = value;
-        const cancelElement = document.createElement('a');
-        cancelElement.classList.add('cancel-filter');
-        cancelElement.textContent = '×'; // Add text to the cancel link
-        valueElement.append(eleSpan, cancelElement);
-        selectedList.append(valueElement);
-      });
-    }
+          valuesArray.forEach((value) => {
+              const valueElement = document.createElement('div');
+              valueElement.classList.add('selected-filter-value');
+              const eleSpan = document.createElement('span');
+              eleSpan.textContent = value;
+              const cancelElement = document.createElement('a');
+              cancelElement.classList.add('cancel-filter');
+              cancelElement.textContent = '×';
+              valueElement.append(eleSpan, cancelElement);
+              selectedList.append(valueElement);
+          });
+      }
   }
 
   if (!document.querySelector('.reset-filter') && hasSelectedValues) {
-    const resetFilterElement = document.createElement('div');
-    resetFilterElement.classList.add('reset-filter');
-    const resetSpan = document.createElement('span');
-    resetSpan.textContent = 'Reset The filters';
-    const resetAnchor = document.createElement('a');
-    resetAnchor.classList.add('reset-filter-link');
-    resetFilterElement.append(resetSpan, resetAnchor);
-    
-    selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
-    resetFilterElement.addEventListener('click', () => resetAllFilters(selectedValues));
-  }
+      const resetFilterElement = document.createElement('div');
+      resetFilterElement.classList.add('reset-filter');
+      const resetSpan = document.createElement('span');
+      resetSpan.textContent = 'Reset The filters';
+      const resetAnchor = document.createElement('a');
+      resetAnchor.classList.add('reset-filter-link');
+      resetFilterElement.append(resetSpan, resetAnchor);
+      
+      selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
+      resetFilterElement.addEventListener('click', () => {
+        resetAllFilters(values);
+    });
+    }
 }
 
-function resetAllFilters(selectedValues) {
-  console.log('reset all filters');
+function resetAllFilters(values) {
   const checkboxes = document.querySelectorAll('.filter-checkbox');
   checkboxes.forEach((checkbox) => {
     checkbox.checked = false;
@@ -193,11 +191,15 @@ function resetAllFilters(selectedValues) {
     label.classList.remove('is-active');
   });
 
-  updateSelectedValues([]);
+  values.DriveType = '';
+  values.Fuel = '';
+  values.Series = '';
+
+  updateSelectedValues(values);
 
   currentlyOpenDropdown.style.display = 'none';
   currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
-  vehicleURL = constructVehicleUrl([]);
+  vehicleURL = constructVehicleUrl(values);
   getStockLocatorVehiclesData(vehicleURL);
 };
 
