@@ -4939,25 +4939,11 @@
       "valueType": "string"
     },
     {
-      "component": "text",
-      "name": "content_spreadsheet1Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
-    },
-    {
       "component": "aem-content",
-      "name": "content_spreadsheet2",
+      "name": "model_spreadsheet2",
       "description": "Contains all models labels and details (e.g. model name, model code, price etc.).",
       "label": "Model Overview Spreadsheet",
       "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "content_spreadsheet2Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
     },
     {
       "component":"tab",
