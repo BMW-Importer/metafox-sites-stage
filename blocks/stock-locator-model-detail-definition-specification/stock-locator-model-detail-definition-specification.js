@@ -1,4 +1,5 @@
-import { getStockLocatorFiltersData } from '../../scripts/common/wdh-util.js';
+// eslint-disable-next-line import/no-cycle
+import { getStockLocatorFiltersData, getStockLocatorVehiclesData } from '../../scripts/common/wdh-util.js';
 
 function handleToggleFilterDropDown() {
   let currentlyOpenDropdown = null;
@@ -31,41 +32,62 @@ function handleMobileSeriesFilter() {
   });
 }
 
-// function handleCancelSelectedValue() {
-//   const cancelSelctor = document.querySelectorAll('.cancel-filter');
-//   cancelSelctor?.forEach((item) => {
-//     cancelSelctor?.addEventListener('click', () => {
-//       console.log(item);
+function handleCancelSelectedValue() {
+  const cancelSelctor = document.querySelectorAll('.cancel-filter');
+  cancelSelctor?.forEach((item) => {
+    cancelSelctor?.addEventListener('click', () => {
+      console.log(item);
+    });
+  });
+}
+
+// function handleCheckBoxSelectionForSeries() {
+//   const filterLists = document.querySelectorAll('.filter-list');
+//   filterLists.forEach((filterList) => {
+//     const filterLabelHeading = filterList.previousElementSibling;
+//     const checkboxes = filterList.querySelectorAll('.filter-checkbox');
+//     const selectedValues = [];
+//     const selectedCheckBoxType = [];
+
+//     checkboxes.forEach((checkbox) => {
+//       checkbox.addEventListener('change', () => {
+//         if (checkbox.checked) {
+//           if (!filterLabelHeading.classList.contains('is-active')) {
+//             filterLabelHeading.classList.add('is-active');
+//           }
+//           selectedValues.push(checkbox.id);
+//           selectedCheckBoxType.push(filterLabelHeading.textContent);
+//         } else {
+//           const index = selectedValues.indexOf(checkbox.id);
+//           if (index !== -1) {
+//             selectedValues.splice(index, 1);
+//           }
+//           // Remove is-active class if no checkbox is selected
+//           if (selectedValues.length === 0) {
+//             filterLabelHeading.classList.remove('is-active');
+//           }
+//         }
+//         // Update the displayed selected values
+//         // eslint-disable-next-line no-use-before-define
+//         updateSelectedValues(selectedValues, filterList);
+//         console.log(selectedValues);
+//         console.log(selectedCheckBoxType);
+//       });
 //     });
 //   });
 // }
 
-// function updateSelectedValues(selectedValues) {
-//   const selectedValuesContainer = document.querySelector('.selected-filter-list');
-//   selectedValuesContainer.textContent = '';
-//   selectedValues.forEach((value) => {
-//     const valueElement = document.createElement('div');
-//     valueElement.classList.add('selected-filter-value');
-//     valueElement.textContent = value;
-//     const cancelElement = document.createElement('div');
-//     cancelElement.classList.add('cancel-filter');
-//     selectedValuesContainer.appendChild(valueElement);
-//     valueElement.appendChild(cancelElement);
-//   });
-//   // Append the new container below the filter list
-//   const existingContainer = document.getElementById('selected-values-container');
-//   if (existingContainer) {
-//     existingContainer.remove();
-//   }
-//   handleCancelSelectedValue();
-// }
+// eslint-disable-next-line import/no-mutable-exports
+export let vehicleURL;
 
 function handleCheckBoxSelectionForSeries() {
   const filterLists = document.querySelectorAll('.filter-list');
+  const selectedValues = {};
+
   filterLists.forEach((filterList) => {
     const filterLabelHeading = filterList.previousElementSibling;
     const checkboxes = filterList.querySelectorAll('.filter-checkbox');
-    const selectedValues = [];
+    const headingText = filterLabelHeading.textContent;
 
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener('change', () => {
@@ -73,34 +95,76 @@ function handleCheckBoxSelectionForSeries() {
           if (!filterLabelHeading.classList.contains('is-active')) {
             filterLabelHeading.classList.add('is-active');
           }
-          selectedValues.push(checkbox.id);
-        } else {
-          const index = selectedValues.indexOf(checkbox.id);
-          if (index !== -1) {
-            selectedValues.splice(index, 1);
+          if (!selectedValues[headingText]) {
+            selectedValues[headingText] = [];
           }
-          // Remove is-active class if no checkbox is selected
-          if (selectedValues.length === 0) {
+          if (!selectedValues[headingText].includes(checkbox.id)) {
+            selectedValues[headingText].push(checkbox.id);
+          }
+        } else {
+          const index = selectedValues[headingText].indexOf(checkbox.id);
+          if (index !== -1) {
+            selectedValues[headingText].splice(index, 1);
+          }
+          // Remove is-active class if no checkbox is selected for this heading
+          if (selectedValues[headingText].length === 0) {
             filterLabelHeading.classList.remove('is-active');
           }
         }
         // Update the displayed selected values
         // eslint-disable-next-line no-use-before-define
-        updateSelectedValues(selectedValues, filterList);
+        updateSelectedValues(selectedValues);
+        console.log(selectedValues);
+        // eslint-disable-next-line no-use-before-define
+        vehicleURL = constructVehicleUrl(selectedValues);
+        getStockLocatorVehiclesData(vehicleURL);
       });
     });
   });
 }
 
-function updateSelectedValues(selectedValues, filterList) {
-  const selectedList = filterList.nextElementSibling;
+function constructVehicleUrl(selectedValues) {
+  const urlParams = [];
+  if (selectedValues.Series && selectedValues.Series.length > 0) {
+    urlParams.push(`series=${selectedValues.Series.join(',')}`);
+  }
+  if (selectedValues.Fuel && selectedValues.Fuel.length > 0) {
+    urlParams.push(`fuel=${selectedValues.Fuel.join(',')}`);
+  }
+  if (selectedValues.DriveType && selectedValues.DriveType.length > 0) {
+    urlParams.push(`drive=${selectedValues.DriveType.join(',')}`);
+  }
+
+  const fullUrl = `${urlParams.join('&')}`;
+  document.querySelector('body').setAttribute('data-vehicle-url', fullUrl);
+  return fullUrl;
+}
+
+function updateSelectedValues(selectedValues) {
+  const selectedList = document.querySelector('.series-selected-list');
   selectedList.innerHTML = '';
-  selectedValues.forEach((value) => {
-    const valueElement = document.createElement('div');
-    valueElement.classList.add('selected-filter-value');
-    valueElement.textContent = value;
-    selectedList.appendChild(valueElement);
-  });
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [heading, values] of Object.entries(selectedValues)) {
+    if (values.length > 0) {
+      // Create a heading element
+      const headingElement = document.createElement('div');
+      headingElement.classList.add('selected-filter-heading', 'hidden');
+      headingElement.textContent = heading;
+      selectedList.appendChild(headingElement);
+
+      // Iterate over the selected values for this heading
+      values.forEach((value) => {
+        const valueElement = document.createElement('div');
+        valueElement.classList.add('selected-filter-value');
+        valueElement.textContent = value;
+        selectedList.appendChild(valueElement);
+
+        const cancelElement = document.createElement('div');
+        cancelElement.classList.add('cancel-filter');
+        selectedList.appendChild(cancelElement);
+      });
+    }
+  }
 }
 
 function stockLocatorFilterDom(filterData, typeKey) {
@@ -151,7 +215,7 @@ function stockLocatorFilterDom(filterData, typeKey) {
   filterWrapperContainer.appendChild(filterLabelHeading);
   filterWrapperContainer.appendChild(filterList);
   filterWrapperContainer.appendChild(selectedFilterList);
-  document.querySelector('.stock-locator-model-detail-definition-specification-wrapper').appendChild(filterContainer);
+  document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(filterContainer);
   handleMobileSeriesFilter();
   return filterContainer;
 }
@@ -191,10 +255,10 @@ function createStockLocatorFilter(filterResponse) {
   handleToggleFilterDropDown();
 }
 
-async function stockLocatorAPiCalled() {
-  const stockFilterResponse = await getStockLocatorFiltersData();
-  const stockFilterData = stockFilterResponse.data.attributes;
-  createStockLocatorFilter(stockFilterData);
+async function stockLocatorFiltersAPI() {
+  const stockLocatorFilterResponse = await getStockLocatorFiltersData();
+  const stockLocatorFilterData = stockLocatorFilterResponse.data.attributes;
+  createStockLocatorFilter(stockLocatorFilterData);
 }
 
 export default async function decorate(block) {
@@ -204,5 +268,5 @@ export default async function decorate(block) {
     console.log(general);
     // stock locator API called here
   });
-  stockLocatorAPiCalled();
+  stockLocatorFiltersAPI();
 }
