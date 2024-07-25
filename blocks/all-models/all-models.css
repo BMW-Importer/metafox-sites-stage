@@ -45,7 +45,7 @@
     background: transparent;
 }
 
-.active {
+.filter-btn.active {
     background: var(--medium-text-color);
     color: var(--light-grey);
 }
@@ -341,7 +341,15 @@
 
 
 /*Filter Popover Styles started*/
-.filter-overlay-wrap .filter-overlay {
+.filter-overlay-wrap {
+    display: none;
+}
+
+.filter-overlay-wrap.active .show-more-btn {
+    display: none;
+}
+
+.filter-overlay-wrap.active {
     -webkit-overflow-scrolling: auto;
     align-items: flex-start;
     background: rgba(0,0,0,.8);
@@ -356,41 +364,35 @@
     width: 100vw;
     z-index: 6050;
 }
-
-.filter-overlay-wrap .filter-overlay-hidden {
-    visibility: hidden;
-}
-
+ 
 .filter-overlay-wrap .filter-content {
-    background: #fff;
+    background: var(--background-color);
     margin: auto;
     min-height: 100vh;
     padding: 1.5rem 0 0;
     position: relative;
     width: 100%
 }
-
+ 
 .filter-overlay-wrap .filter-heading,
 .filter-overlay-wrap .filter-body,
 .filter-overlay-wrap .filter-footer {
     background: inherit;
     padding: 0 1.5rem 1.5rem
 }
-
+ 
 .filter-overlay-wrap .filter-group {
     border: 0;
     margin: 0 0 1.5rem;
     padding: 0
 }
-
+ 
 .filter-overlay-wrap .filter-group-heading {
-    font-size: var(--subsection-2-font-size);
-    font-weight: var(--default-font-weight);
-    line-height: var(--subsection-2-line-height);
+    font-size: 1.25rem;
+    line-height: 1.875rem;
     margin-bottom: 1rem
 }
-
-
+ 
 .filter-overlay-wrap .filter-checkbox{
     align-items: center;
     cursor: pointer;
@@ -403,17 +405,16 @@
     margin-bottom: .6875rem;
     padding-top: .3125rem
 }
-
+ 
 .filter-overlay-wrap .filter-checkbox label {
     cursor: pointer;
     display: flex;
-    font-size: var(--body-2-font-size);
-    font-weight: var(--default-font-weight);
-    line-height: var(--body-2-line-height);
+    font-size: .9375rem;
+    line-height: 1.5rem;
     padding-left: 2.5rem;
     width: 100%;
 }
-
+ 
 .filter-overlay-wrap .filter-checkbox input {
     cursor: pointer;
     height: 0;
@@ -421,26 +422,26 @@
     position: absolute;
     width: 0;
 }
-
+ 
 .filter-overlay-wrap .filter-checkbox-icon {
     background-color: initial;
-    border: .125rem solid #bbb;
-    color: #fff;
-    height: 1.5rem;
+    border: .125rem solid var(--light-bbb);
+    color: var(--background-color);
+    height: 1.25rem;
     left: 0;
     pointer-events: none;
     position: absolute;
     top: 0;
     transition: background-color .25s ease-in-out, border .25s ease-in-out;
-    width: 1.5rem;
+    width: 1.25rem;
     top: auto;
 }
-
+ 
 .filter-overlay-wrap .filter-checkbox input:checked+.filter-checkbox-icon {
-    background-color: #4d4d4d;
+    background-color: var(--medium-text-color);
     border-color: transparent
 }
-
+ 
 .filter-overlay-wrap .filter-checkbox input:checked+.filter-checkbox-icon:after {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
@@ -462,52 +463,53 @@
     font-size: 1.25rem;
     font-weight: 400;
 }
-
+ 
 .filter-overlay-wrap .filter-footer button {
     background-color: transparent;
     align-items: center;
     cursor: pointer;
     display: flex;
-    justify-content: center;
     min-height: 3.25rem;
     min-width: 12rem;
     padding: .25rem;
     text-align: center;
-    color: #262626;
+    color: var(--light-text-color);
     border-radius: 0px;
 }
-
+ 
 .filter-overlay-wrap .show-filter-btn {
-    box-shadow: inset 0 0 0 1px #262626;
+    box-shadow: inset 0 0 0 1px var(--light-text-color);
+    justify-content: center;
 }
-
+ 
 .filter-overlay-wrap .filter-trash-icon {
     margin-right: .25rem;
 }
-
+ 
 .filter-overlay-wrap .filter-group-body {
     display: flex;
     flex-wrap: wrap;
+    column-gap: 1.5rem;
 }
-
+ 
 .filter-overlay-wrap .filter-footer {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
     row-gap: 1rem;
     z-index: 30;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid var(--light-grey-1);
     position: -webkit-sticky;
     position: sticky;
     padding: 1rem 1.5rem 0;
-  
+ 
     bottom: 0;
-    
+   
 }
-
+ 
 .filter-overlay-wrap .filter-close-button {
     background-color: initial;
-    color: #262626;
+    color: var(--light-text-color);
     height: 3rem;
     margin-top: 68px;
     padding: 0;
@@ -516,7 +518,7 @@
     top: 0;
     width: 3rem;
 }
-
+ 
 .filter-overlay-wrap .filter-close-button:before {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
@@ -527,7 +529,7 @@
     direction: ltr;
     display: block;
     display: inline-block;
-    font-family: bmw_next_icons;
+    font-family: 'bmw_next_icons';
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
@@ -539,33 +541,50 @@
     white-space: nowrap;
     width: auto;
 }
-
+ 
+.filter-overlay-wrap .clear-filter-btn span:before {
+    font-size: 1rem;
+    font-weight: 400;
+}
+ 
+.filter-overlay-wrap .clear-filter-btn {
+    justify-content: center;
+}
+ 
 @media screen and (min-width: 768px) {
     .filter-overlay-wrap .filter-heading,
     .filter-overlay-wrap .filter-body {
         padding:0 3rem 1.5rem
     }
-
+ 
     .filter-overlay-wrap .filter-footer {
         column-gap: 1.5rem;
         grid-template-columns: 1fr 1fr;
         padding: 1.5rem 3rem 1.5rem;
-
+ 
     }
     .filter-overlay-wrap .filter-close-button{
         margin: .5rem;
     }
-
+ 
     .filter-overlay-wrap .filter-checkbox {
-        flex: 1 1 50%;
+        flex: 1 1 45%;
     }
-
+ 
     .filter-overlay-wrap .filter-content {
         min-height:24rem;
         padding: 3rem 0 0
     }
+ 
+    .filter-overlay-wrap .clear-filter-btn {
+        justify-content: flex-start;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        padding-left: .5rem;
+    }
 }
-
+ 
 @media screen and (min-width: 1024px) {
     .filter-overlay-wrap .filter-content {
         max-width:54rem;

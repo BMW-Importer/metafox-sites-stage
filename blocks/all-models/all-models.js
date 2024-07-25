@@ -4,152 +4,151 @@ import {
 
 // delete - dummy json's - start
 const filterJsonApiResponse = {
-  "total": 7,
-  "offset": 0,
-  "limit": 7,
-  "data": [
+  total: 7,
+  offset: 0,
+  limit: 7,
+  data: [
     {
-      "Filter Type English": "Body Type",
-      "Filter Type Serbian": "Tip karoserije",
-      "Filter Name English": "Sedan",
-      "Filter Name Serbian": "Sedan",
-      "Filter Code": "",
-      "Is Default In Screen": false,
+      'Filter Type English': 'Body Type',
+      'Filter Type Serbian': 'Tip karoserije',
+      'Filter Name English': 'Sedan',
+      'Filter Name Serbian': 'Sedan',
+      'Filter Code': '',
+      'Is Default In Screen': false,
     },
     {
-      "Filter Type English": "Body Type",
-      "Filter Type Serbian": "Tip karoserije",
-      "Filter Name English": "SUV",
-      "Filter Name Serbian": "SUV",
-      "Filter Code": "",
-      "Is Default In Screen": true,
-      "isSelected": true
+      'Filter Type English': 'Body Type',
+      'Filter Type Serbian': 'Tip karoserije',
+      'Filter Name English': 'SUV',
+      'Filter Name Serbian': 'SUV',
+      'Filter Code': '',
+      'Is Default In Screen': true,
+      isSelected: true,
     },
     {
-      "Filter Type English": "Body Type",
-      "Filter Type Serbian": "Tip karoserije",
-      "Filter Name English": "Hatchback",
-      "Filter Name Serbian": "Hatchback",
-      "Filter Code": "",
-      "Is Default In Screen": true
+      'Filter Type English': 'Body Type',
+      'Filter Type Serbian': 'Tip karoserije',
+      'Filter Name English': 'Hatchback',
+      'Filter Name Serbian': 'Hatchback',
+      'Filter Code': '',
+      'Is Default In Screen': true,
     },
     {
-      "Filter Type English": "Fuel Type",
-      "Filter Type Serbian": "Fuel Type",
-      "Filter Name English": "Gasoline",
-      "Filter Name Serbian": "Benzene",
-      "Filter Code": "O",
-      "Is Default In Screen": false,
+      'Filter Type English': 'Fuel Type',
+      'Filter Type Serbian': 'Fuel Type',
+      'Filter Name English': 'Gasoline',
+      'Filter Name Serbian': 'Benzene',
+      'Filter Code': 'O',
+      'Is Default In Screen': false,
     },
     {
-      "Filter Type English": "Fuel Type",
-      "Filter Type Serbian": "Fuel Type",
-      "Filter Name English": "Diesel",
-      "Filter Name Serbian": "Dizel",
-      "Filter Code": "D",
-      "Is Default In Screen": false,
+      'Filter Type English': 'Fuel Type',
+      'Filter Type Serbian': 'Fuel Type',
+      'Filter Name English': 'Diesel',
+      'Filter Name Serbian': 'Dizel',
+      'Filter Code': 'D',
+      'Is Default In Screen': false,
     },
     {
-      "Filter Type English": "Fuel Type",
-      "Filter Type Serbian": "Fuel Type",
-      "Filter Name English": "Plugin Hybrid",
-      "Filter Name Serbian": "Plugin Hi-Brid",
-      "Filter Code": "X",
-      "Is Default In Screen": true,
-      "isSelected": true
+      'Filter Type English': 'Fuel Type',
+      'Filter Type Serbian': 'Fuel Type',
+      'Filter Name English': 'Plugin Hybrid',
+      'Filter Name Serbian': 'Plugin Hi-Brid',
+      'Filter Code': 'X',
+      'Is Default In Screen': true,
+      isSelected: true,
     },
     {
-      "Filter Type English": "Fuel Type",
-      "Filter Type Serbian": "Fuel Type",
-      "Filter Name English": "Electric",
-      "Filter Name Serbian": "Električni",
-      "Filter Code": "E",
-      "Is Default In Screen": true,
-      "isSelected": false
-    }
+      'Filter Type English': 'Fuel Type',
+      'Filter Type Serbian': 'Fuel Type',
+      'Filter Name English': 'Electric',
+      'Filter Name Serbian': 'Električni',
+      'Filter Code': 'E',
+      'Is Default In Screen': true,
+      isSelected: false,
+    },
   ],
-  ":type": "sheet"
+  ':type': 'sheet',
 };
 
 const allModelOverViewApiResponse = {
-  "total": 4,
-  "offset": 0,
-  "limit": 4,
-  "data": [
+  total: 4,
+  offset: 0,
+  limit: 4,
+  data: [
     {
-      "Model Name": "BMW i5",
-      "Category/Group": "i",
-      "Analytics": "",
-      "Model Code": "7K11",
-      "Price": "9812734",
-      "Sub brand Icon": "i",
-      "New Label": "true",
-      "Fuel Type": "O",
-      "Body Type": "Sedan",
-      "Show More Button": "true",
-      "Show More Button Link": "https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html",
-      "Configurator Button": "true",
-      "Stock Locator Button": "true"
+      'Model Name': 'BMW i5',
+      'Category/Group': 'i',
+      Analytics: '',
+      'Model Code': '7K11',
+      Price: '9812734',
+      'Sub brand Icon': 'i',
+      'New Label': 'true',
+      'Fuel Type': 'O',
+      'Body Type': 'Sedan',
+      'Show More Button': 'true',
+      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
+      'Configurator Button': 'true',
+      'Stock Locator Button': 'true',
     },
     {
-      "Model Name": "BMW 5 Series 5 Sedan",
-      "Category/Group": "5",
-      "Analytics": "",
-      "Model Code": "7K12",
-      "Price": "1234",
-      "Sub brand Icon": "M",
-      "New Label": "true",
-      "Fuel Type": "O, D",
-      "Body Type": "Sedan",
-      "Show More Button": "true",
-      "Show More Button Link": "https://www.bmw.rs/sr/all-models/bmw-serija-5-pregled/sedan/bmw-serija-5-limuzina-pregled.html",
-      "Configurator Button": "true",
-      "Stock Locator Button": "true"
+      'Model Name': 'BMW 5 Series 5 Sedan',
+      'Category/Group': '5',
+      Analytics: '',
+      'Model Code': '7K12',
+      Price: '1234',
+      'Sub brand Icon': 'M',
+      'New Label': 'true',
+      'Fuel Type': 'O, D',
+      'Body Type': 'Sedan',
+      'Show More Button': 'true',
+      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-serija-5-pregled/sedan/bmw-serija-5-limuzina-pregled.html',
+      'Configurator Button': 'true',
+      'Stock Locator Button': 'true',
     },
     {
-      "Model Name": "BMW iX",
-      "Category/Group": "i,X",
-      "Analytics": "",
-      "Model Code": "7K31",
-      "Price": "1234",
-      "Sub brand Icon": "i",
-      "New Label": "false",
-      "Fuel Type": "O, D",
-      "Body Type": "SUV",
-      "Show More Button": "true",
-      "Show More Button Link": "https://www.bmw.rs/sr/all-models/bmw-i/bmw-ix/2021/bmw-ix.html",
-      "Configurator Button": "true",
-      "Stock Locator Button": ""
+      'Model Name': 'BMW iX',
+      'Category/Group': 'i,X',
+      Analytics: '',
+      'Model Code': '7K31',
+      Price: '1234',
+      'Sub brand Icon': 'i',
+      'New Label': 'false',
+      'Fuel Type': 'O, D',
+      'Body Type': 'SUV',
+      'Show More Button': 'true',
+      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/bmw-ix/2021/bmw-ix.html',
+      'Configurator Button': 'true',
+      'Stock Locator Button': '',
     },
     {
-      "Model Name": "BMW M5 Series Sedan",
-      "Category/Group": "5,M",
-      "Analytics": "",
-      "Model Code": "10FK",
-      "Price": "2346233",
-      "Sub brand Icon": "M",
-      "New Label": "true",
-      "Fuel Type": "O,D,X",
-      "Body Type": "Sedan",
-      "Show More Button": "true",
-      "Show More Button Link": "https://www.bmw.rs/sr/all-models/m-series/m5-series/bmw-m5-sedan.html",
-      "Configurator Button": "true",
-      "Stock Locator Button": "true"
-    }
+      'Model Name': 'BMW M5 Series Sedan',
+      'Category/Group': '5,M',
+      Analytics: '',
+      'Model Code': '10FK',
+      Price: '2346233',
+      'Sub brand Icon': 'M',
+      'New Label': 'true',
+      'Fuel Type': 'O,D,X',
+      'Body Type': 'Sedan',
+      'Show More Button': 'true',
+      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/m-series/m5-series/bmw-m5-sedan.html',
+      'Configurator Button': 'true',
+      'Stock Locator Button': 'true',
+    },
   ],
-  ":type": "sheet"
-}
+  ':type': 'sheet',
+};
 // delete - dummy json's - end
 
-let savedFilterTypesJson = [];
 const allModelFilterJson = {};
 const allModelOverviewJson = {};
 const lang = document.querySelector('meta[name="language"]').content;
 const authorPageRegex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
 
-function filterCloseBtnClick(button) {
+function filterCloseBtnClick(button, showMoreButton) {
   button.addEventListener('click', () => {
-    button.closest('.filter-overlay-wrap').querySelector('.filter-overlay').classList.add('filter-overlay-hidden');
+    showMoreButton.click();
   });
 }
 
@@ -159,95 +158,6 @@ function filterClearBtnClick(button) {
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
     });
-  });
-}
-
-function renderfilterPopoverData(overlayContainer) {
-  const filterPopoverOverlay = document.createElement('div');
-  filterPopoverOverlay.classList.add('filter-overlay', 'filter-overlay-hidden');
-  const filterPopoverContent = document.createElement('div');
-  filterPopoverContent.classList.add('filter-content');
-  const filterPopoverHeader = document.createElement('h3');
-  filterPopoverHeader.classList.add('filter-heading');
-  filterPopoverHeader.textContent = 'FILTER';
-  filterPopoverContent.append(filterPopoverHeader);
-  const groupedFilterData = {};
-  if (savedFilterTypesJson) {
-    const lang = document.querySelector('meta[name="language"]').content;
-    savedFilterTypesJson.forEach((obj) => {
-      const filterType = (lang === 'en') ? obj['Filter Type English'] : obj['Filter Type Serbian'];
-      const filterName = (lang === 'en') ? obj['Filter Name English'] : obj['Filter Name Serbian'];
-      const filterCode = obj['Filter Code'];
-      if (!groupedFilterData[filterType]) {
-        groupedFilterData[filterType] = [];
-      }
-      groupedFilterData[filterType].push({
-        filterType,
-        filterName,
-        filterCode,
-      });
-    });
-  }
-
-  if (groupedFilterData) {
-    const filterPopoverBody = document.createElement('div');
-    filterPopoverBody.classList.add('filter-body');
-    Object.entries(groupedFilterData).forEach(([filterType]) => {
-      const filterGroupDiv = document.createElement('fieldset');
-      filterGroupDiv.classList.add('filter-group');
-      const filterGroupHeading = document.createElement('legend');
-      filterGroupHeading.classList.add('filter-group-heading');
-      filterGroupHeading.textContent = filterType;
-      filterGroupDiv.append(filterGroupHeading);
-      const filterGroupBody = document.createElement('div');
-      filterGroupBody.classList.add('filter-group-body');
-      const filterArray = groupedFilterData[filterType];
-      filterArray.forEach((filter) => {
-        const filterCheckbox = document.createElement('div');
-        filterCheckbox.classList.add('filter-checkbox');
-        const checkboxInput = document.createElement('input');
-        checkboxInput.setAttribute('type', 'checkbox');
-        checkboxInput.setAttribute('id', filter.filterName);
-        const checkboxIcon = document.createElement('span');
-        checkboxIcon.className = 'filter-checkbox-icon';
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.setAttribute('for', filter.filterName);
-        checkboxLabel.textContent = filter.filterName;
-        filterCheckbox.append(checkboxInput, checkboxIcon, checkboxLabel);
-        filterGroupBody.append(filterCheckbox);
-      });
-      filterGroupDiv.append(filterGroupBody);
-      filterPopoverBody.append(filterGroupDiv);
-    });
-    filterPopoverContent.append(filterPopoverBody);
-    filterPopoverOverlay.append(filterPopoverContent);
-  }
-  const filterPopoverFooter = document.createElement('div');
-  filterPopoverFooter.classList.add('filter-footer');
-
-  const showResultButton = document.createElement('button');
-  showResultButton.classList.add('show-filter-btn');
-  showResultButton.innerHTML = '<span class="btn-text">Show results (99)</span>';
-
-  const clearButton = document.createElement('button');
-  clearButton.classList.add('clear-filter-btn');
-  clearButton.innerHTML = '<span class="filter-trash-icon" data-icon="trash_can"></span><span class="btn-text">Clear the filter</span>';
-  filterClearBtnClick(clearButton);
-
-  filterPopoverFooter.append(showResultButton);
-  filterPopoverFooter.append(clearButton);
-  filterPopoverContent.append(filterPopoverFooter);
-  const closeButton = document.createElement('button');
-  closeButton.classList.add('filter-close-button');
-  closeButton.setAttribute('type', 'button');
-  filterPopoverContent.append(closeButton);
-  filterCloseBtnClick(closeButton);
-  overlayContainer.append(filterPopoverOverlay);
-}
-
-function showMoreBtnClick(button) {
-  button.addEventListener('click', () => {
-    button.closest('.filter-overlay-wrap').querySelector('.filter-overlay').classList.remove('filter-overlay-hidden');
   });
 }
 
@@ -277,73 +187,103 @@ function toggleNavContent() {
 // ------------------------- bharath Code Start -------------------------------
 
 function generateAllModelUi(block) {
-  // loop through filter json to find which are options whch are selected 
-  const listOfSelectedOptions;
+  // loop through filter json to find which are options whch are selected
 
   // loop through global model overview json and filter it based on selections
 
-  //generate UI
+  // generate UI
+}
+
+function generateContentNavigation(block) {
+  // function to generate content navigation based on selected filter
 }
 
 // function to generate filter popui based on filter json
 function generateFilterPopup(block) {
   const filterOverLay = block.querySelector('.filter-overlay-wrap');
-  const bodyTypeFilters = filterOverLay.querySelector('.body-type-filter-options');
-  bodyTypeFilters.textContent = '';
 
-  const fuelTypeOptions = filterOverLay.querySelector('.fuel-type-filter-options');
-  fuelTypeOptions.textContent = '';
-  
-  allModelFilterJson.forEach((options) => {
+  const bodyTypeFiltersOptions = filterOverLay.querySelector('.body-type-filter-options');
+  bodyTypeFiltersOptions.textContent = '';
+
+  const fuelTypeFilterOptions = filterOverLay.querySelector('.fuel-type-filter-options');
+  fuelTypeFilterOptions.textContent = '';
+
+  allModelFilterJson.data.forEach((options) => {
     // if isSelected then filter option is selected by user previously
+    const { isSelected } = options;
+
+    const optionDiv = document.createElement('div');
+    optionDiv.classList.add('filter-checkbox');
+
+    const checkboxInput = document.createElement('input');
+    checkboxInput.setAttribute('type', 'checkbox');
+    checkboxInput.setAttribute('id', options['Filter Code']);
+
+    const checkboxIcon = document.createElement('span');
+    checkboxIcon.className = 'filter-checkbox-icon';
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.setAttribute('for', options['Filter Code']);
+    checkboxLabel.textContent = options['Filter Name English'];
+
+    if (isSelected) checkboxInput.setAttribute('checked', 'true');
+
+    optionDiv.append(checkboxInput, checkboxIcon, checkboxLabel);
+
     if (options['Filter Type English'] === 'Body Type') {
-      const isSelected = options['isSelected'];
-      const optionDiv = document.createElement('div');
-      const inputElem = document.createElement('input');
-
-      bodyTypeFilters.append(optionDiv);
-
+      bodyTypeFiltersOptions.append(optionDiv);
     } else if (options['Filter Type English'] === 'Fuel Type') {
-
+      fuelTypeFilterOptions.append(optionDiv);
     }
   });
 }
 
-
 // function to generate selected filter options in UI
 function generateSelectedFilterOptions(block) {
-  const buttonRow = block.querySelector('.filter-btn-row');  
+  const buttonRow = block.querySelector('.filter-btn-row');
 
   // if children is present then UI is already loaded,
   // so now toggle active class to default filter &
   // append selected filter options as buttons
-  if (buttonRow.children) {
+  if (buttonRow.children.length) {
     const selectedFilterRow = buttonRow.querySelector('.selected-filter-btn-row');
-    selectedFilterRow.textContent = '';
+    // selectedFilterRow.textContent = '';
 
-    allModelFilterJson.forEach((options) => {
+    allModelFilterJson.data.forEach((options) => {
       if (options['Is Default In Screen']) {
-        if (options['isSelected']) {
-         // make default button selected
+        const button = buttonRow.querySelector(`button[data-filter-code='${options['Filter Code']}']`);
+        if (options.isSelected) {
+          // make default button selected
+          button.classList.add('active');
         } else {
           // make default button unselected
+          button.classList.remove('active');
         }
       } else {
-        //
+        // show dynamic button
+        // const dynFilterButton = document.createElement('button');
+        // dynFilterButton.classList.add('filter-btn');
+        // dynFilterButton.classList.add('default-filter-button');
+        // dynFilterButton.setAttribute('data-filter-type', options['Filter Name English']);
+        // dynFilterButton.setAttribute('data-filter-option', options['Filter Type English']);
+        // dynFilterButton.setAttribute('data-filter-code', options['Filter Code']);
+        // dynFilterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
+        // selectedFilterRow.append(dynFilterButton)
       }
     });
   } else {
     // loop through filterJsonArray and bind buttons inside buttonRow element
-    allModelFilterJson.forEach((options) => {
-      if (options['Is Default In Screen'] === 'true') {
+    allModelFilterJson.data.forEach((options) => {
+      if (options['Is Default In Screen'] === true) {
         const filterButton = document.createElement('button');
         filterButton.classList.add('filter-btn');
         filterButton.classList.add('default-filter-button');
         filterButton.setAttribute('data-filter-type', options['Filter Name English']);
-        filterButton.setAttribute('data-filter-option', options['Filter Type English']);        
+        filterButton.setAttribute('data-filter-option', options['Filter Type English']);
+        filterButton.setAttribute('data-filter-code', options['Filter Code']);
         filterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
         buttonRow.append(filterButton);
-      }      
+      }
     });
 
     // creating div show selected options in filter popup other than default filter btns
@@ -353,6 +293,7 @@ function generateSelectedFilterOptions(block) {
   }
 
   // function to generate navigation bar
+  generateContentNavigation();
 
   // function to generate all model ui based on filter selection
   generateAllModelUi(block);
@@ -364,10 +305,10 @@ function enableShowMoreBtnClickEvent(showMoreBtn) {
     const parentDiv = e.target.closest('.all-model-parent-div');
     const filterOverLay = parentDiv?.querySelector('.filter-overlay-wrap');
     if (filterOverLay) {
-      filterOverLay.toggle('active');
+      filterOverLay.classList.toggle('active');
 
       if (filterOverLay.classList.contains('active')) generateFilterPopup(parentDiv);
-    }    
+    }
   });
 }
 
@@ -386,7 +327,7 @@ async function getSpreadSheetData(type, prop) {
     //     allModelFilterJson.data = spreadSheetResponse?.data || [];
     //   } else {
     //     allModelOverviewJson.data = spreadSheetResponse?.data || [];
-    //   }      
+    //   }
     // }
 
     if (type === 'filter') {
@@ -399,7 +340,7 @@ async function getSpreadSheetData(type, prop) {
   }
 }
 
-export default async function decorate(block) {
+export default async function decorate(block) {  
   const [description, modelSpreadSheet] = [...block.children];
 
   await getSpreadSheetData('filter', description);
@@ -431,6 +372,34 @@ export default async function decorate(block) {
 
   const overlayContainer = document.createElement('div');
   overlayContainer.classList.add('filter-overlay-wrap');
+  overlayContainer.insertAdjacentHTML('beforeend', `
+  <div class="filter-content">
+    <h3 class="filter-heading">FILTER</h3>
+    <div class="filter-body">
+      <fieldset class="filter-group">
+        <legend class="filter-group-heading">Body Type</legend>
+        <div class="filter-group-body body-type-filter-options"></div>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend class="filter-group-heading">Fuel Type</legend>
+        <div class="filter-group-body fuel-type-filter-options"></div>
+      </fieldset>
+    </div>
+    <div class="filter-footer">
+      <button class="show-filter-btn">
+        <span class="btn-text">Show results (99)</span>
+      </button>
+      <button class="clear-filter-btn">
+        <span class="filter-trash-icon" data-icon="trash_can"></span>
+        <span class="btn-text">Clear the filter</span>
+      </button>
+    </div>
+    <button class="filter-close-button" type="button"></button>
+  </div>
+`);
+  const closeButton = overlayContainer.querySelector('.filter-close-button');
+  filterCloseBtnClick(closeButton, showMoreButton);
+
   allModelParentContainer.append(overlayContainer);
 
   const numberWrap = document.createElement('div');
@@ -444,123 +413,5 @@ export default async function decorate(block) {
 
   block.append(allModelParentContainer);
 
-  generateSelectedFilterOptions(block);  
-
-  //------------------------------------------ CODE ENDS HERE --------------------------------------------------------
-
-
-
-
-  const spreadSheetPath = description?.querySelector('a')?.textContent;
-  const spreadSheetFile = description?.querySelector('a')?.getAttribute('href');
-  const modifiedSpreadSheetFile = spreadSheetFile.replace('/en', '');
-  const origin = window.location.host.match('author-(.*?).adobeaemcloud.com(.*?)') ? `${spreadSheetPath + spreadSheetFile}` : modifiedSpreadSheetFile;
-  const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
-  if (spreadSheetResponse) {
-    savedFilterTypesJson = spreadSheetResponse.responseJson.data;
-  }
-
-  
-
-  const hybridButton = document.createElement('button');
-  hybridButton.classList.add('filter-btn');
-  hybridButton.innerHTML = '<span class="filter-btn-icon"></span><span class="btn-text">Plug-in Hybrid</span>';
-
-  const electricButton = document.createElement('button');
-  electricButton.classList.add('filter-btn');
-  electricButton.innerHTML = '<span class="filter-btn-icon"></span><span class="btn-text">Electric</span>';
-
-  const mButton = document.createElement('button');
-  mButton.classList.add('filter-btn');
-  mButton.innerHTML = '<span class="filter-btn-icon"></span><span class="btn-text">BMW M</span>';
-
-  const iButton = document.createElement('button');
-  iButton.classList.add('filter-btn');
-  iButton.innerHTML = '<span class="filter-btn-icon"></span><span class="btn-text">BMW i</span>';
-
-  
-  
- 
-
-  const leftBtn = document.createElement('button');
-  leftBtn.classList.add('nav-arrow-left');
-  const rightBtn = document.createElement('button');
-  rightBtn.classList.add('nav-arrow-right');
-
-  
-  navBar.innerHTML = `
-  <button class='content-nav-selected-value' id='navMenuBtn'>BMW i</button>
-  <div class='nav-background'></div>
-  <div class='nav-arrow-left'></div>
-  <div class="nav-arrow-right"></div>
-    <nav class='navbar-wrap'>
-      <ul class='nav-list'>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>BMW i</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>X</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>M</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>8</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>7</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>6</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>5</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>4</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>3</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>2</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>1</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Z4</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Concept cars</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Protection Vehicles</button>
-        </li>
-      </ul>
-    </nav>
-  `;
-
-  buttonRow.append(hybridButton);
-  buttonRow.append(electricButton);
-  buttonRow.append(mButton);
-  buttonRow.append(iButton);
-  overlayContainer.append(showMoreButton);
-  renderfilterPopoverData(overlayContainer);
-
-  allModelParentContainer.append(modelTitle);
-  allModelParentContainer.append(filterTitle);
-  allModelParentContainer.append(buttonRow);
-  allModelParentContainer.append(overlayContainer);
-  allModelParentContainer.append(numberWrap);
-  allModelParentContainer.append(navBar);
-  block.append(allModelParentContainer);
-  selectModelClick(hybridButton);
-  selectModelClick(electricButton);
-  selectModelClick(mButton);
-  selectModelClick(iButton);
-
-  showMoreBtnClick(showMoreButton);
-
-  toggleNavContent();
+  generateSelectedFilterOptions(block);
 }
