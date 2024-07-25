@@ -777,9 +777,9 @@ function generateAuthoredModels(
 function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData) {
   try {
     let isAuthoredModelFound = false;
-    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
-      isAuthoredModelFound = true;
+    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {      
       if (modelObj[index].ModelCode === authoredAgCode) {
+        isAuthoredModelFound = true;
         const responseJson = modelObj[index];
         const newObj = replaceSpreadSheetPlaceholders(techDataWdhResponsObject, responseJson);
         const responseObj = {
