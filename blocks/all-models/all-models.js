@@ -13,7 +13,7 @@ const filterJsonApiResponse = {
       'Filter Type Serbian': 'Tip karoserije',
       'Filter Name English': 'Sedan',
       'Filter Name Serbian': 'Sedan',
-      'Filter Code': '',
+      'Filter Code': 'c',
       'Is Default In Screen': false,
     },
     {
@@ -21,16 +21,15 @@ const filterJsonApiResponse = {
       'Filter Type Serbian': 'Tip karoserije',
       'Filter Name English': 'SUV',
       'Filter Name Serbian': 'SUV',
-      'Filter Code': '',
-      'Is Default In Screen': true,
-      isSelected: true,
+      'Filter Code': 'b',
+      'Is Default In Screen': true,      
     },
     {
       'Filter Type English': 'Body Type',
       'Filter Type Serbian': 'Tip karoserije',
       'Filter Name English': 'Hatchback',
       'Filter Name Serbian': 'Hatchback',
-      'Filter Code': '',
+      'Filter Code': 'a',
       'Is Default In Screen': true,
     },
     {
@@ -55,8 +54,7 @@ const filterJsonApiResponse = {
       'Filter Name English': 'Plugin Hybrid',
       'Filter Name Serbian': 'Plugin Hi-Brid',
       'Filter Code': 'X',
-      'Is Default In Screen': true,
-      isSelected: true,
+      'Is Default In Screen': true,      
     },
     {
       'Filter Type English': 'Fuel Type',
@@ -64,8 +62,7 @@ const filterJsonApiResponse = {
       'Filter Name English': 'Electric',
       'Filter Name Serbian': 'Električni',
       'Filter Code': 'E',
-      'Is Default In Screen': true,
-      isSelected: false,
+      'Is Default In Screen': true,     
     },
   ],
   ':type': 'sheet',
@@ -79,9 +76,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW i5',
       'Category/Group': 'i',
-      Analytics: '',
+      'Analytics': '',
       'Model Code': '7K11',
-      Price: '9812734',
+      'Price': '9812734',
       'Sub brand Icon': 'i',
       'New Label': 'true',
       'Fuel Type': 'O',
@@ -94,9 +91,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW 5 Series 5 Sedan',
       'Category/Group': '5',
-      Analytics: '',
+      'Analytics': '',
       'Model Code': '7K12',
-      Price: '1234',
+      'Price': '1234',
       'Sub brand Icon': 'M',
       'New Label': 'true',
       'Fuel Type': 'O, D',
@@ -109,9 +106,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW iX',
       'Category/Group': 'i,X',
-      Analytics: '',
+      'Analytics': '',
       'Model Code': '7K31',
-      Price: '1234',
+      'Price': '1234',
       'Sub brand Icon': 'i',
       'New Label': 'false',
       'Fuel Type': 'O, D',
@@ -124,9 +121,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW M5 Series Sedan',
       'Category/Group': '5,M',
-      Analytics: '',
+      'Analytics': '',
       'Model Code': '10FK',
-      Price: '2346233',
+      'Price': '2346233',
       'Sub brand Icon': 'M',
       'New Label': 'true',
       'Fuel Type': 'O,D,X',
@@ -146,6 +143,8 @@ const allModelOverviewJson = {};
 const lang = document.querySelector('meta[name="language"]').content;
 const authorPageRegex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
 
+
+
 function filterCloseBtnClick(button, showMoreButton) {
   button.addEventListener('click', () => {
     showMoreButton.click();
@@ -154,10 +153,10 @@ function filterCloseBtnClick(button, showMoreButton) {
 
 function filterClearBtnClick(button) {
   button.addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll('.filter-overlay input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    // loop through filter json and make all isSelected to false
+
+    // call "generateSelectedFilterOptions"
+
   });
 }
 
@@ -242,9 +241,6 @@ function generateFilterPopup(block) {
 function generateSelectedFilterOptions(block) {
   const buttonRow = block.querySelector('.filter-btn-row');
 
-  // if children is present then UI is already loaded,
-  // so now toggle active class to default filter &
-  // append selected filter options as buttons
   if (buttonRow.children.length) {
     const selectedFilterRow = buttonRow.querySelector('.selected-filter-btn-row');
     // selectedFilterRow.textContent = '';
@@ -263,7 +259,7 @@ function generateSelectedFilterOptions(block) {
         // show dynamic button
         // const dynFilterButton = document.createElement('button');
         // dynFilterButton.classList.add('filter-btn');
-        // dynFilterButton.classList.add('default-filter-button');
+        // dynFilterButton.classList.add('selected-filter-button');
         // dynFilterButton.setAttribute('data-filter-type', options['Filter Name English']);
         // dynFilterButton.setAttribute('data-filter-option', options['Filter Type English']);
         // dynFilterButton.setAttribute('data-filter-code', options['Filter Code']);
@@ -340,7 +336,24 @@ async function getSpreadSheetData(type, prop) {
   }
 }
 
-export default async function decorate(block) {  
+function filterPopupInputChangeEvent(event) {
+  const parentBlock = event.target.closest('.all-model-parent-div');
+  const checkbox = event.target;
+  if (checkbox && checkbox.type === 'checkbox') {
+    const isChecked = checkbox.checked;
+    const filterCode = checkbox.getAttribute('id');
+    if (isChecked) {
+      allModelFilterJson.data.forEach((item) => item['Filter Code'] === filterCode && (item['isSelected'] = true));
+    } else {
+      allModelFilterJson.data.forEach((item) => item['Filter Code'] === filterCode && (item['isSelected'] = false));
+    }
+
+    // call function to update filter button and UI
+    generateSelectedFilterOptions(parentBlock);    
+  }
+}
+
+export default async function decorate(block) {
   const [description, modelSpreadSheet] = [...block.children];
 
   await getSpreadSheetData('filter', description);
@@ -397,6 +410,10 @@ export default async function decorate(block) {
     <button class="filter-close-button" type="button"></button>
   </div>
 `);
+
+  const filterBody = overlayContainer.querySelector('.filter-body');
+  filterBody.addEventListener('change', filterPopupInputChangeEvent);  
+
   const closeButton = overlayContainer.querySelector('.filter-close-button');
   filterCloseBtnClick(closeButton, showMoreButton);
 
