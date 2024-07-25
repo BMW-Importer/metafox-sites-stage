@@ -115,19 +115,21 @@ function removeLastSelectedValue(values) {
 // eslint-disable-next-line import/no-mutable-exports
 export let vehicleURL;
 
+let getStockLocatorVehicles = [];
 
-function cardTiles(filterVehicle) {
+function cardTiles() {
   const cardWrapper = document.querySelector('.card-tile-wrapper') || document.createElement('div');
   cardWrapper.innerHTML = '';
   cardWrapper.classList.add('card-tile-wrapper');
-  filterVehicle.data.map((vehicle) => {
-  const { model, powerKw, powerPs, priceInformation : {baseCurrencyCodeA, finalPriceWithTax}, groupReference } = vehicle.attributes;
+
+  const cardList = document.createElement('ul');
+  cardList.classList.add('card-tile-list');
 
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-tile-container');
 
-  const cardList = document.createElement('ul');
-  cardList.classList.add('card-tile-list');
+  getStockLocatorVehicles.data.map((vehicle) => {
+  const { model, powerKw, powerPs, priceInformation : {baseCurrencyCodeA, finalPriceWithTax}, groupReference } = vehicle.attributes;
 
   const cardListElement = document.createElement('li');
   cardListElement.classList.add('card-tile-list-ele');
@@ -148,14 +150,21 @@ function cardTiles(filterVehicle) {
   const detailContent = document.createElement('div');
   detailContent.classList.add('detail-content');
 
+  const modelContainer = document.createElement('div');
+  modelContainer.classList.add('model-container');
+
   const modelName = document.createElement('h4');
   modelName.classList.add('model-name');
   modelName.textContent = model;
+  modelContainer.append(modelName);
+
 
   const cardLayerInfoContainer = document.createElement('div');
   cardLayerInfoContainer.classList.add('card-layer-info-container');
+
   const cardLayerInfoItem = document.createElement('div');
   cardLayerInfoItem.classList.add('card-layer-info-item');
+
   const infoSpan = document.createElement('span');
   infoSpan.textContent = `${powerKw} kW (${powerPs} KS)`
 
@@ -169,21 +178,25 @@ function cardTiles(filterVehicle) {
   priceContainer.append(price);
   cardLayerInfoItem.append(infoSpan);
   cardLayerInfoContainer.append(cardLayerInfoItem);
-  detailContent.append(modelName);
+  detailContent.append(modelContainer, cardLayerInfoContainer, priceContainer);
+
   pictureTag.append(imgElem);
   cardImgContainer.append(pictureTag);
-  cardListElement.append(cardImgContainer, detailContent, cardLayerInfoContainer, priceContainer);
+
+  cardListElement.append(cardImgContainer, detailContent);
+
   cardList.append(cardListElement);
-  cardContainer.append(cardList);
-  cardWrapper.append(cardContainer);
 });
+cardContainer.append(cardList);
+cardWrapper.append(cardContainer);
 document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
 
 }
 
 async function vehicleFiltersAPI() {
-  const getStockLocatorVehicles = await getStockLocatorVehiclesData();
-  cardTiles(getStockLocatorVehicles);
+  getStockLocatorVehicles = await getStockLocatorVehiclesData();
+  cardTiles();
+  console.log(getStockLocatorVehicles);
 }
 let selectedbolean = false;
 
@@ -222,8 +235,8 @@ async function handleCheckBoxSelectionForSeries() {
         // Update the displayed selected values
         updateSelectedValues(selectedValues);
         vehicleURL = constructVehicleUrl(selectedValues);
-        const data = await getStockLocatorVehiclesData(vehicleURL);
-        cardTiles(data);
+        getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
+        cardTiles();
       });
     });
   });
@@ -516,7 +529,7 @@ export default async function decorate(block) {
   const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
 
-  // const modelDetails = [...block.children];
+  stockLocatorFiltersAPI(dropDownContainer);
 
   const props = [...block.children].map((row) => row.firstElementChild);
   const env = document.querySelector('meta[name="env"]').content;
@@ -545,6 +558,7 @@ export default async function decorate(block) {
 
   block.textContent = '';
   vehicleFiltersAPI();
-  createRelevanceDropdown(dropDownContainer);
-  stockLocatorFiltersAPI(dropDownContainer);
+  setTimeout(function () {
+    createRelevanceDropdown(dropDownContainer);
+  }, 500);
 }
