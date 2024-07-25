@@ -328,7 +328,6 @@ function triggerAnalytics(clickedElem) {
         subCategory2,
       ]);
     }
-
   } catch (error) {
     console.error(error);
   }
@@ -779,6 +778,7 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp,
   try {
     let isAuthoredModelFound = false;
     savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
+      isAuthoredModelFound = true;
       if (modelObj[index].ModelCode === authoredAgCode) {
         const responseJson = modelObj[index];
         const newObj = replaceSpreadSheetPlaceholders(techDataWdhResponsObject, responseJson);
@@ -789,9 +789,9 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp,
       }
     });
 
-     if (!isAuthoredModelFound) {
-      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
-     }
+    if (!isAuthoredModelFound) {
+     generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
+    }
   } catch (e) {
     console.log(e);
   }
