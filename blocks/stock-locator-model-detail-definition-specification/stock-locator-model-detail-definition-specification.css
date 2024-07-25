@@ -46,6 +46,11 @@
         cursor: pointer;
     }
 
+    .card-tile-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
     .stocklocator-card-img {
         width : 350px;
         height: 150px;
