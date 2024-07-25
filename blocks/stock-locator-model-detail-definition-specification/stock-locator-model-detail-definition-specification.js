@@ -116,10 +116,13 @@ function removeLastSelectedValue(values) {
 export let vehicleURL;
 
 let getStockLocatorVehicles = [];
+let currentPage = 1;
+let perPageCard = 9;
 
 function cardTiles() {
   const cardWrapper = document.querySelector('.card-tile-wrapper') || document.createElement('div');
   cardWrapper.innerHTML = '';
+
   cardWrapper.classList.add('card-tile-wrapper');
 
   const cardList = document.createElement('ul');
@@ -128,7 +131,11 @@ function cardTiles() {
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-tile-container');
 
-  getStockLocatorVehicles.data.map((vehicle) => {
+  const start = (currentPage - 1) * perPageCard;
+  const end = start + perPageCard;
+  const vehicleData = getStockLocatorVehicles.data.slice(start, end);
+
+  vehicleData.map((vehicle) => {
   const { model, powerKw, powerPs, priceInformation : {baseCurrencyCodeA, finalPriceWithTax}, groupReference } = vehicle.attributes;
 
   const cardListElement = document.createElement('li');
@@ -187,16 +194,44 @@ function cardTiles() {
 
   cardList.append(cardListElement);
 });
+
+const totalCards = getStockLocatorVehicles.data.length;
+const showMoreButton = document.querySelector('.show-more-button') || document.createElement('button');
+
+if (!showMoreButton.classList.contains('show-more-button')) {
+  showMoreButton.textContent = 'Show More';
+  showMoreButton.classList.add('show-more-button');
+  showMoreButton.addEventListener('click', showMoreCards);
+}
+
+if (currentPage * perPageCard >= totalCards) {
+  showMoreButton.style.display = 'none';
+} else {
+  showMoreButton.style.display = 'block';
+}
+
 cardContainer.append(cardList);
-cardWrapper.append(cardContainer);
+cardWrapper.append(cardContainer, showMoreButton);
 document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
 
+}
+function showMoreCards() {
+  currentPage++;
+  cardTiles();
+}
+
+function sortVehiclesByPrice() {
+  getStockLocatorVehicles.data.sort((a, b) => {
+    const priceA = a.attributes.priceInformation.finalPriceWithTax.max;
+    const priceB = b.attributes.priceInformation.finalPriceWithTax.max;
+    return priceB - priceA; // Descending order
+  });
 }
 
 async function vehicleFiltersAPI() {
   getStockLocatorVehicles = await getStockLocatorVehiclesData();
+  sortVehiclesByPrice();
   cardTiles();
-  console.log(getStockLocatorVehicles);
 }
 let selectedbolean = false;
 
