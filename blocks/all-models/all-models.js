@@ -13,7 +13,8 @@ const filterJsonApiResponse = {
       "Filter Type Serbian": "Tip karoserije",
       "Filter Name English": "Sedan",
       "Filter Name Serbian": "Sedan",
-      "Filter Code": ""
+      "Filter Code": "",
+      "Is Default In Screen": false,
     },
     {
       "Filter Type English": "Body Type",
@@ -37,7 +38,8 @@ const filterJsonApiResponse = {
       "Filter Type Serbian": "Fuel Type",
       "Filter Name English": "Gasoline",
       "Filter Name Serbian": "Benzene",
-      "Filter Code": "O"
+      "Filter Code": "O",
+      "Is Default In Screen": false,
     },
     {
       "Filter Type English": "Fuel Type",
@@ -45,6 +47,7 @@ const filterJsonApiResponse = {
       "Filter Name English": "Diesel",
       "Filter Name Serbian": "Dizel",
       "Filter Code": "D",
+      "Is Default In Screen": false,
     },
     {
       "Filter Type English": "Fuel Type",
@@ -141,6 +144,7 @@ const allModelOverViewApiResponse = {
 let savedFilterTypesJson = [];
 const allModelFilterJson = {};
 const allModelOverviewJson = {};
+const lang = document.querySelector('meta[name="language"]').content;
 const authorPageRegex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
 
 function filterCloseBtnClick(button) {
@@ -300,7 +304,7 @@ function generateFilterPopup(block) {
       bodyTypeFilters.append(optionDiv);
 
     } else if (options['Filter Type English'] === 'Fuel Type') {
-      
+
     }
   });
 }
@@ -308,27 +312,44 @@ function generateFilterPopup(block) {
 
 // function to generate selected filter options in UI
 function generateSelectedFilterOptions(block) {
-  const buttonRow = block.querySelector('.filter-btn-row');
+  const buttonRow = block.querySelector('.filter-btn-row');  
 
   // if children is present then UI is already loaded,
   // so now toggle active class to default filter &
   // append selected filter options as buttons
-  if (buttonRow.children) { 
+  if (buttonRow.children) {
+    const selectedFilterRow = buttonRow.querySelector('.selected-filter-btn-row');
+    selectedFilterRow.textContent = '';
+
     allModelFilterJson.forEach((options) => {
       if (options['Is Default In Screen']) {
         if (options['isSelected']) {
-          const btn = document.createElement('button');
-          btn.textContent = options[];
-          buttonRow.append(btn);
+         // make default button selected
         } else {
-          
+          // make default button unselected
         }
       } else {
-
+        //
       }
     });
   } else {
+    // loop through filterJsonArray and bind buttons inside buttonRow element
+    allModelFilterJson.forEach((options) => {
+      if (options['Is Default In Screen'] === 'true') {
+        const filterButton = document.createElement('button');
+        filterButton.classList.add('filter-btn');
+        filterButton.classList.add('default-filter-button');
+        filterButton.setAttribute('data-filter-type', options['Filter Name English']);
+        filterButton.setAttribute('data-filter-option', options['Filter Type English']);        
+        filterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
+        buttonRow.append(filterButton);
+      }      
+    });
 
+    // creating div show selected options in filter popup other than default filter btns
+    const selectedFilterOptionsRow = document.createElement('div');
+    selectedFilterOptionsRow.classList.add('selected-filter-btn-row');
+    buttonRow.append(selectedFilterOptionsRow);
   }
 
   // function to generate navigation bar
