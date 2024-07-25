@@ -46,6 +46,11 @@
         cursor: pointer;
     }
 
+    .stocklocator-card-img {
+        width : 350px;
+        height: 150px;
+    }
+
     .stock-locator-container .filter-wrapper .filter-label-heading.is-active{
         border-left: 4px solid #1c69d4;
     }
