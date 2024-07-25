@@ -305,25 +305,33 @@ function bindClickEventForFootNotesLink(parentBlock) {
   });
 }
 
+/* eslint-disable no-console */
 function triggerAnalytics(clickedElem) {
-  const anchorTag = clickedElem.target;
-  const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
-  const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
-  const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
-  const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
-  const blockName = anchorTag.getAttribute('data-analytics-block-name');
-  const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+  try {
+    if (clickedElem?.target) {
+      const anchorTag = clickedElem.target;
+      const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+      const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+      const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+      const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+      const blockName = anchorTag.getAttribute('data-analytics-block-name');
+      const sectionId = anchorTag.getAttribute('data-analytics-section-id');
 
-  pushCustomLinkAnalyticData([
-    analyticsLabel,
-    primaryCategory,
-    subCategory,
-    blockName,
-    sectionId,
-    '',
-    '',
-    subCategory2,
-  ]);
+      pushCustomLinkAnalyticData([
+        analyticsLabel,
+        primaryCategory,
+        subCategory,
+        blockName,
+        sectionId,
+        '',
+        '',
+        subCategory2,
+      ]);
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function generateTechUi(parentBlock) {
@@ -769,6 +777,7 @@ function generateAuthoredModels(
 /* eslint-disable no-console */
 function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp) {
   try {
+    let isAuthoredModelFound = false;
     savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
       if (modelObj[index].ModelCode === authoredAgCode) {
         const responseJson = modelObj[index];
@@ -779,6 +788,10 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp)
         generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp);
       }
     });
+
+     if (!isAuthoredModelFound) {
+      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp);
+     }
   } catch (e) {
     console.log(e);
   }
