@@ -775,7 +775,7 @@ function generateAuthoredModels(
 }
 
 /* eslint-disable no-console */
-function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp) {
+function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData) {
   try {
     let isAuthoredModelFound = false;
     savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
@@ -785,12 +785,12 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp)
         const responseObj = {
           responseJson: JSON.parse(newObj),
         };
-        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp);
+        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp, modelData);
       }
     });
 
      if (!isAuthoredModelFound) {
-      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp);
+      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
      }
   } catch (e) {
     console.log(e);
@@ -860,7 +860,7 @@ async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listO
             modelData,
           );
         } else {
-          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData);
         }
       } catch (error) {
         console.error('fetch model detail failed');
