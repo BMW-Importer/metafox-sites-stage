@@ -5088,7 +5088,7 @@
         "description": "Defines the text displaying the number of results being displayed above the show more results button."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "mp_general_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
@@ -5166,7 +5166,7 @@
         "description": "Defines the fallback image to be displayed if there is no defined image for the vehicle options."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "content_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
