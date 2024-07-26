@@ -777,7 +777,7 @@ function generateAuthoredModels(
 function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData) {
   try {
     let isAuthoredModelFound = false;
-    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {      
+    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
       if (modelObj[index].ModelCode === authoredAgCode) {
         isAuthoredModelFound = true;
         const responseJson = modelObj[index];
@@ -790,7 +790,7 @@ function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp,
     });
 
     if (!isAuthoredModelFound) {
-     generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
+      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
     }
   } catch (e) {
     console.log(e);
