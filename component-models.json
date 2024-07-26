@@ -5073,7 +5073,7 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "mp_general_infoIcon",
         "label": "Info Icon Text",
         "valueType": "string",
@@ -5152,7 +5152,7 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "content_infoIconText",
         "label": "Info Icon Text",
         "valueType": "string",
