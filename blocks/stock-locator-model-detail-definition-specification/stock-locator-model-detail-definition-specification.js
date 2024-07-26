@@ -96,8 +96,7 @@ const cardLimit = 9;
 let showMoreClicked = false;
 const sortdirection = 'asc';
 
-function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
-  let vehicleData;
+function cardTiles(getStockLocatorVehicles) {
   const cardWrapper = document.querySelector('.card-tile-wrapper') || document.createElement('div');
   cardWrapper.innerHTML = '';
   cardWrapper.classList.add('card-tile-wrapper');
@@ -108,15 +107,15 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
   const start = (cardCurrentPage - 1) * cardLimit;
   const end = start + cardLimit;
   // on Page load show only 9 and highPrice car from vechile API
-  if (!isLoadVehcilePage) {
-    console.log('+++++++++++++ higest PRICE vehicle on Page load ++++++++++');
-    vehicleData = getStockLocatorVehicles?.data.slice(start, end);
-    // eslint-disable-next-line no-param-reassign
-    isLoadVehcilePage = true;
-  } else {
-    vehicleData = getStockLocatorVehicles?.data;
-  }
-
+  // if (!isLoadVehcilePage) {
+  //   console.log('+++++++++++++ higest PRICE vehicle on Page load ++++++++++');
+  //   vehicleData = getStockLocatorVehicles?.data.slice(start, end);
+  //   // eslint-disable-next-line no-param-reassign
+  //   isLoadVehcilePage = true;
+  // } else {
+  //   vehicleData = getStockLocatorVehicles?.data;
+  // }
+  const vehicleData = getStockLocatorVehicles?.data;
   vehicleData?.map((vehicle) => {
     const {
       // eslint-disable-next-line max-len
@@ -345,7 +344,7 @@ async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentP
   const showMoreCardRes = await getShowMoreCards(fullUrl);
 
   // Call cardTiles function with the fetched data
-  cardTiles({ data: showMoreCardRes.data }, true);
+  cardTiles({ data: showMoreCardRes.data });
 
   // Do not concatenate data when offset is greater than or equal to pageCount
   if (offset < pageCount) {
@@ -376,8 +375,8 @@ async function vehicleFiltersAPI() {
   const onPageLoadVehcileData = false;
   const getStockLocatorVehicles = await getStockLocatorVehiclesData();
   sortVehiclesByPrice(getStockLocatorVehicles);
-  cardTiles(getStockLocatorVehicles, onPageLoadVehcileData);
   popupButton();
+  cardTiles(getStockLocatorVehicles);
 }
 
 async function handleCheckBoxSelectionForSeries() {
@@ -414,7 +413,7 @@ async function handleCheckBoxSelectionForSeries() {
         updateSelectedValues(selectedValues);
         vehicleURL = constructVehicleUrl(selectedValues);
         const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
-        cardTiles(getStockLocatorVehicles, true);
+        cardTiles(getStockLocatorVehicles);
       });
     });
   });
@@ -712,9 +711,7 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 export default async function decorate(block) {
   const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
-
   stockLocatorFiltersAPI(dropDownContainer);
-
   const props = [...block.children].map((row) => row.firstElementChild);
   const env = document.querySelector('meta[name="env"]').content;
   let publishDomain = '';
@@ -741,6 +738,8 @@ export default async function decorate(block) {
   });
 
   block.textContent = '';
-  vehicleFiltersAPI();
-  createRelevanceDropdown(dropDownContainer);
+  setTimeout(() => {
+    createRelevanceDropdown(dropDownContainer);
+    vehicleFiltersAPI();
+  }, 400);
 }

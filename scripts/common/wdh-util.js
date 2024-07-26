@@ -207,9 +207,8 @@ export async function getStockLocatorVehiclesData() {
   if (vehicleURL) {
     url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}&${filterData}`;
   } else {
-    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}`;
+    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}${filterData}`;
   }
-
   try {
     const response = await fetch(url);
     if (!response.ok) {
