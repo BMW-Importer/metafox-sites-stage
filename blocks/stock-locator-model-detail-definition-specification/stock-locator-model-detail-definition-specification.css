@@ -49,6 +49,7 @@
     .card-tile-list {
         display: flex;
         flex-wrap: wrap;
+        padding: 0;
     }
 
     .stocklocator-card-img {
@@ -188,17 +189,14 @@
         cursor: pointer;
     }
 
-    .card-tile-list .card-tile-list-ele{
-        width: 33%;
+    .card-tile-list-ele{
+        width: 100%;
         max-width: 382px;
-    }
-
-    .card-tile-list-ele:nth-child(-n+3) {
-        display: list-item;
-    }
-    
-    .stock-locator-card{
+        transition: all .2s ease-in-out;
+        position: relative;
         padding: 30px 25px;
+        flex-wrap: wrap;
+        display: flex;
     }
     
     .card-tile-list-ele:hover {
@@ -208,8 +206,12 @@
     .card-tile-list-ele:hover > * {
         box-shadow: none; 
     }
-    
-    .button{
+
+    .image-container {
+        margin-bottom: 20px;
+    }
+
+    .button {
         display: flex;
         justify-content: center;
         align-items: center;
