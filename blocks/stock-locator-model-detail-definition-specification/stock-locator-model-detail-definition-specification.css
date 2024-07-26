@@ -229,11 +229,39 @@
     .model-details-wrapper .price-container{
         margin-bottom: 10px;
         position: relative;
+        display: flex;
+        align-items: center;
     }
 
     .model-details-wrapper .price-container span{
         font-size: 1.25rem;
         line-height: 1.75rem;
+    }
+
+    .popup-toggle-button {
+        cursor: pointer;
+    }
+    
+    .popup-toggle-button::before{
+        overflow-wrap: normal;
+        font-size: 2rem;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "arrow_chevron_down";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        height: 1em;
+        line-height: 1;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap;
+        color: var(--light-text-color)    
     }
 
     .model-details-wrapper .model-container{
@@ -252,10 +280,6 @@
         text-decoration: none;
         background-color: #1c69d4;
         margin:30px 0 16px;
-    }
-
-    .popup-toggle-button {
-        cursor: pointer;
     }
 
     .stock-model-description-wrapper{
@@ -279,15 +303,6 @@
         display: inline-block;
     }
     
-    .description-popup-button {
-        cursor: pointer;
-        margin-left: 10px;
-        font-style: normal; 
-        font-weight: bold;
-        border: 1px solid #666;
-        padding: 2px 12px;
-        border-radius: 50%;
-    }
 
     .stock-model-description-popup{
         position: relative;
@@ -348,13 +363,37 @@
         margin: 0;
     
     }
+
     .description-popup-close-button {
-        padding: 0;
-        margin: 0;
-        border: 0;
         position: absolute;
-        right: 0;
-        bottom: 10px;
+        height: 2rem;
+        position: absolute;
+        bottom: -24%;
+        right: -4%;
+        margin: 10px;
+    }
+
+    .description-popup-close-button::before{
+        overflow-wrap: normal;
+        font-size: 2rem;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "close";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        height: 1em;
+        line-height: 1;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap;
+        color: #4d4d4d;
+  
     }
     .expand-button, .collapse-button, .description-popup-close-button {
         cursor: pointer;
@@ -381,8 +420,41 @@
         font-size: .875rem;
         font-weight: 700;
         line-height: 1.25rem;
+    }
 
+    .description-icon-div{
+        width: 22px;
+        border-width: 2px;
+        margin: 0 10px;
+        height: 22px;
+        cursor: pointer;
+        border-style: solid;
+        line-height: 22px;
+        font-size: 1.25rem;
+        border-color: #e6e6e6;
+        border-radius: 9999px;
+    }
 
+    .description-popup-button::before {
+        overflow-wrap: normal;
+        font-size: 2rem;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "i";
+        color: #666;
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap;
+        line-height: 19px;
+        text-align: center;
     }
 }
 

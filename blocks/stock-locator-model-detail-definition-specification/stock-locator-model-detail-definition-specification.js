@@ -93,8 +93,16 @@ export let showMoreUrl;
 const cardCurrentPage = 1;
 const cardLimit = 9;
 
-let showMoreClicked = false;
 const sortdirection = 'asc';
+
+let detailBtn, count, cfDetails, bannerTxt;
+
+export function propsData(modelButtonTxt, countText, cfData, bannerContent) {
+  detailBtn = modelButtonTxt;
+  count = countText;
+  cfDetails = cfData;
+  bannerTxt = bannerContent;
+}
 
 function cardTiles(getStockLocatorVehicles) {
   const cardWrapper = document.querySelector('.card-tile-wrapper') || document.createElement('div');
@@ -115,13 +123,22 @@ function cardTiles(getStockLocatorVehicles) {
   // } else {
   //   vehicleData = getStockLocatorVehicles?.data;
   // }
+  let seeDetailBtn;
+  let disclaimerContent;
+  if (document.querySelector('.section.stock-locator-model-detail-definition-specification-container.stock-locator-model-overview-properties-container')) {
+   if (cfDetails) {
+    const disclaimerHtml = cfDetails?.disclaimercfmodelByPath?.item?.disclaimer?.html;
+    disclaimerContent = document.createElement('div');
+    disclaimerContent.innerHTML = disclaimerHtml;
+  }
+    seeDetailBtn = detailBtn?.querySelector('p') || '';
+  }
   const vehicleData = getStockLocatorVehicles?.data;
   vehicleData?.map((vehicle) => {
     const {
       // eslint-disable-next-line max-len
       model, powerKw, powerPs, priceInformation: { baseCurrencyCodeA, finalPriceWithTax }, groupReference,
     } = vehicle.attributes;
-
     const cardListElement = document.createElement('li');
     cardListElement.classList.add('card-tile-list-ele');
 
@@ -166,8 +183,9 @@ function cardTiles(getStockLocatorVehicles) {
 
     const StockLocatorHideButtonLink = document.createElement('a');
     const StockLocatorHideButtonText = document.createElement('span');
+    StockLocatorHideButtonText.append(seeDetailBtn.textContent);
 
-    StockLocatorHideButtonLink.appendChild(StockLocatorHideButtonText);
+    StockLocatorHideButtonLink.append(StockLocatorHideButtonText);
     StockLocatorHideButton.appendChild(StockLocatorHideButtonLink);
     StockLocatorCardButtonContainer.appendChild(StockLocatorHideButton);
 
@@ -180,8 +198,13 @@ function cardTiles(getStockLocatorVehicles) {
     const priceContainer = document.createElement('div');
     priceContainer.classList.add('price-container');
 
+    const iconDiv = document.createElement('div');
+    iconDiv.classList.add('description-icon-div');
+
     const descriptionPopupButton = document.createElement('i');
     descriptionPopupButton.classList.add('description-popup-button');
+
+    iconDiv.append(descriptionPopupButton);
 
     const descriptionPopupContainer = document.createElement('div');
     descriptionPopupContainer.classList.add('description-popup-container');
@@ -194,12 +217,11 @@ function cardTiles(getStockLocatorVehicles) {
 
     const descriptionPopupContentHeaderText = document.createElement('p');
     descriptionPopupContentHeader.appendChild(descriptionPopupContentHeaderText);
-    descriptionPopupContentHeaderText.textContent = ' BMW 320d xDrive ';
+    descriptionPopupContentHeaderText.textContent = model;
 
-    const descriptionPopupCloseButton = document.createElement('button');
+    const descriptionPopupCloseButton = document.createElement('div');
     descriptionPopupCloseButton.classList.add('description-popup-close-button');
     descriptionPopupContentHeader.appendChild(descriptionPopupCloseButton);
-    descriptionPopupCloseButton.textContent = 'X';
 
     const descriptionPopupContentBody = document.createElement('div');
     descriptionPopupContentBody.classList.add('description-popup-content-body');
@@ -211,7 +233,7 @@ function cardTiles(getStockLocatorVehicles) {
     const descriptionPopupPriceInfoText = document.createElement('span');
     const descriptionPopupPriceInfoPrice = document.createElement('span');
     descriptionPopupPriceInfoText.textContent = ' Preporučena maloprodajna cena ';
-    descriptionPopupPriceInfoPrice.textContent = '65.379 EUR';
+    descriptionPopupPriceInfoPrice.textContent = `${finalPriceWithTax.min} ${baseCurrencyCodeA}`;
     descriptionPopupPriceInfo.append(
       descriptionPopupPriceInfoText,
       descriptionPopupPriceInfoPrice,
@@ -225,8 +247,8 @@ function cardTiles(getStockLocatorVehicles) {
     descriptionPopupDisclaimer.classList.add('description-popup-disclaimer');
 
     const descriptionPopupDisclaimerText = document.createElement('p');
+    descriptionPopupDisclaimerText.append(disclaimerContent.textContent);
     descriptionPopupDisclaimer.appendChild(descriptionPopupDisclaimerText);
-    descriptionPopupDisclaimerText.textContent = 'Sve BMW automobile je moguće naručiti u jednom od preporučenih paketa dodatne opreme, ali i konfigurisati u potpunosti prema željama klijenta. Sve cene su informativnog karaktera. Proizvođač/prodavac zadržava pravo da bez prethodne najave promeni opremu ili cene.  Cene su sa uračunatim PDV-om, izražene u EUR. Plaćanje se vrši po srednjem kursu NBS na dan uplate.';
 
     const popupToggleButtonContainer = document.createElement('div');
     popupToggleButtonContainer.classList.add('popup-toggle-button-container');
@@ -237,7 +259,6 @@ function cardTiles(getStockLocatorVehicles) {
 
     const popupToggleButton = document.createElement('div');
     popupToggleButton.classList.add('popup-toggle-button');
-    popupToggleButton.textContent = '▼';
 
     popupToggleButtonContainer.appendChild(popupToggleButton);
     descriptionPopupDisclaimerWrapper.append(
@@ -262,7 +283,7 @@ function cardTiles(getStockLocatorVehicles) {
     price.classList.add('car-price');
     price.textContent = `${finalPriceWithTax.min} ${baseCurrencyCodeA}`;
 
-    priceContainer.append(price, descriptionPopupButton, descriptionPopupContainer);
+    priceContainer.append(price, iconDiv, descriptionPopupContainer);
     cardLayerInfoItem.append(infoSpan);
     cardLayerInfoContainer.append(cardLayerInfoItem);
     modelDetailsWrapper.append(modelContainer, cardLayerInfoContainer, priceContainer);
@@ -304,8 +325,6 @@ function pagination(meta) {
 }
 
 function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount) {
-  // let showRelativeClickedData = false;
-  // console.log(`Showing page ${currentPage} of ${totalPages}`);
   const showMoreButton = document.createElement('button');
   showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
   showMoreButton.classList.add('show-more-button');
@@ -599,7 +618,6 @@ function createStockLocatorFilter(filterResponse, dropDownContainer) {
 }
 
 function popupButton() {
-  console.log('hi');
   const infoButtons = document.querySelectorAll('.description-popup-button');
   const popupTexts = document.querySelectorAll('.description-popup-container');
   const closeButtons = document.querySelectorAll('.description-popup-close-button');
