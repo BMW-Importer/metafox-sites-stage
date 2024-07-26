@@ -264,6 +264,10 @@
         color: var(--light-text-color)    
     }
 
+    .popup-toggle-button.up-arrow::before {
+        content: "arrow_chevron_up";
+    }
+
     .model-details-wrapper .model-container{
         margin-bottom: 5px;
     }

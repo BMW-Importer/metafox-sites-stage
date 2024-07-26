@@ -641,10 +641,12 @@ function popupButton() {
     toggleButton.addEventListener('click', () => {
       if (descriptionPopupDisclaimer.style.height === '100px' || descriptionPopupDisclaimer.style.height === '') {
         descriptionPopupDisclaimer.style.height = 'max-content';
-        toggleButton.textContent = '▲';
+        toggleButton.classList.add('up-arrow');
+        toggleButton.classList.remove('down-arrow');
       } else {
         descriptionPopupDisclaimer.style.height = '100px';
-        toggleButton.textContent = '▼';
+        toggleButton.classList.add('down-arrow');
+        toggleButton.classList.remove('up-arrow');
       }
     });
 
