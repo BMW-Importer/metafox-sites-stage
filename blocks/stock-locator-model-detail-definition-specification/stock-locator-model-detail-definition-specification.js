@@ -126,6 +126,10 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
     const cardListElement = document.createElement('li');
     cardListElement.classList.add('card-tile-list-ele');
 
+    const stockLocatorCard = document.createElement('div');
+    stockLocatorCard.classList.add('stock-locator-card');
+
+
     const modelCard = document.createElement('div');
     modelCard.classList.add('model-card');
 
@@ -153,6 +157,23 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
     const cardLayerInfoContainer = document.createElement('div');
     cardLayerInfoContainer.classList.add('card-layer-info-container');
 
+    const StockLocatorCardButton = document.createElement('div');
+    StockLocatorCardButton.classList.add('stock-locator-card-button');
+
+    const StockLocatorCardButtonContainer = document.createElement('div');
+    StockLocatorCardButtonContainer.classList.add('stock-locator-card-button-container');
+
+    const StockLocatorHideButton = document.createElement('div');
+    StockLocatorHideButton.classList.add('stock-locator-hide-button');
+
+    const StockLocatorHideButtonLink = document.createElement('a');
+    const StockLocatorHideButtonText = document.createElement('span');
+
+    StockLocatorHideButtonLink.appendChild(StockLocatorHideButtonText);
+    StockLocatorHideButton.appendChild(StockLocatorHideButtonLink);
+    StockLocatorCardButtonContainer.appendChild(StockLocatorHideButton);
+
+
     const cardLayerInfoItem = document.createElement('div');
     cardLayerInfoItem.classList.add('card-layer-info-item');
 
@@ -162,11 +183,84 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
     const priceContainer = document.createElement('div');
     priceContainer.classList.add('price-container');
 
+    const descriptionPopupButton = document.createElement('i');
+    descriptionPopupButton.classList.add('description-popup-button');
+
+    const descriptionPopupContainer = document.createElement('div');
+    descriptionPopupContainer.classList.add('description-popup-container');
+
+    const descriptionPopupContent = document.createElement('div');
+    descriptionPopupContent.classList.add('description-popup-content');
+
+    const descriptionPopupContentHeader = document.createElement('div');
+    descriptionPopupContentHeader.classList.add('description-popup-content-header');
+
+    const descriptionPopupContentHeaderText = document.createElement('p');
+    descriptionPopupContentHeader.appendChild(descriptionPopupContentHeaderText);
+
+    const descriptionPopupCloseButton = document.createElement('button');
+    descriptionPopupCloseButton.classList.add('description-popup-close-button');
+    descriptionPopupContentHeader.appendChild(descriptionPopupCloseButton);
+
+    const descriptionPopupContentBody = document.createElement('div');
+    descriptionPopupContentBody.classList.add('description-popup-content-body');
+    descriptionPopupContent.appendChild(descriptionPopupContentBody);
+
+    const descriptionPopupPriceInfo = document.createElement('div');
+    descriptionPopupPriceInfo.classList.add('description-popup-price-info');
+
+    const descriptionPopupPriceInfoText = document.createElement('span');
+    const descriptionPopupPriceInfoPrice = document.createElement('span');
+    descriptionPopupPriceInfo.appendChild(
+      descriptionPopupPriceInfoText,
+      descriptionPopupPriceInfoPrice,
+    );
+
+    const descriptionPopupDisclaimerWrapper = document.createElement('div');
+    descriptionPopupDisclaimerWrapper.classList.add('description-popup-disclaimer-wrapper');
+    descriptionPopupContentBody.appendChild(descriptionPopupDisclaimerWrapper);
+
+    const descriptionPopupDisclaimer = document.createElement('div');
+    descriptionPopupDisclaimer.classList.add('description-popup-disclaimer');
+
+    const descriptionPopupDisclaimerText = document.createElement('p');
+    descriptionPopupDisclaimer.appendChild(descriptionPopupDisclaimerText);
+
+    const popupToggleButtonContainer = document.createElement('div');
+    popupToggleButtonContainer.classList.add('popup-toggle-button-container');
+    descriptionPopupDisclaimerWrapper.append(
+      descriptionPopupDisclaimer,
+      popupToggleButtonContainer,
+    );
+
+    const popupToggleButton = document.createElement('button');
+    popupToggleButton.classList.add('popup-toggle-button');
+
+    popupToggleButtonContainer.appendChild(popupToggleButton);
+    descriptionPopupDisclaimerWrapper.appendChild(
+      descriptionPopupDisclaimer,
+      popupToggleButtonContainer,
+    );
+
+    descriptionPopupContentBody.appendChild(
+      descriptionPopupPriceInfo,
+      descriptionPopupDisclaimerWrapper,
+    );
+
+    descriptionPopupContent.appendChild(
+      descriptionPopupContentHeader,
+      descriptionPopupContentBody,
+    );
+
+    descriptionPopupContainer.appendChild(descriptionPopupContent);
+    // stockModelDescriptionPopup.appendChild(descriptionPopupContainer);
+
+
     const price = document.createElement('span');
     price.classList.add('car-price');
     price.textContent = `${finalPriceWithTax.min} ${baseCurrencyCodeA}`;
 
-    priceContainer.append(price);
+    priceContainer.append(price, descriptionPopupButton, descriptionPopupContainer);
     cardLayerInfoItem.append(infoSpan);
     cardLayerInfoContainer.append(cardLayerInfoItem);
     detailContent.append(modelContainer, cardLayerInfoContainer, priceContainer);
@@ -174,7 +268,11 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
     pictureTag.append(imgElem);
     cardImgContainer.append(pictureTag);
 
-    cardListElement.append(cardImgContainer, detailContent);
+    //stockLocatorCard.appendChild(cardImgContainer, detailContent, StockLocatorCardButtonContainer);
+    stockLocatorCard.appendChild(cardImgContainer);
+    stockLocatorCard.appendChild(detailContent);
+    stockLocatorCard.appendChild(StockLocatorCardButtonContainer);
+    cardListElement.appendChild(stockLocatorCard);
 
     cardList.append(cardListElement);
   });
@@ -279,6 +377,7 @@ async function vehicleFiltersAPI() {
   const getStockLocatorVehicles = await getStockLocatorVehiclesData();
   sortVehiclesByPrice(getStockLocatorVehicles);
   cardTiles(getStockLocatorVehicles, onPageLoadVehcileData);
+  popupButton();
 }
 
 async function handleCheckBoxSelectionForSeries() {
@@ -497,41 +596,48 @@ function createStockLocatorFilter(filterResponse, dropDownContainer) {
   handleToggleFilterDropDown();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const infoButton = document.querySelector('.description-popup-button');
-  const popupText = document.querySelector('.description-popup-container');
-  const closeButton = document.querySelector('.description-popup-close-button');
-  const toggleButton = document.querySelector('.popup-toggle-button');
-  const descriptionPopupDisclaimer = document.querySelector('.description-popup-disclaimer');
+function popupButton() {
+  console.log('hi');
+  const infoButtons = document.querySelectorAll('.description-popup-button');
+  const popupTexts = document.querySelectorAll('.description-popup-container');
+  const closeButtons = document.querySelectorAll('.description-popup-close-button');
+  const toggleButtons = document.querySelectorAll('.popup-toggle-button');
+  const descriptionPopupDisclaimers = document.querySelectorAll('.description-popup-disclaimer');
 
-  infoButton.addEventListener('click', () => {
-    popupText.style.display = 'block';
-  });
+  infoButtons.forEach((infoButton, index) => {
+    const popupText = popupTexts[index];
+    const closeButton = closeButtons[index];
+    const toggleButton = toggleButtons[index];
+    const descriptionPopupDisclaimer = descriptionPopupDisclaimers[index];
 
-  closeButton.addEventListener('click', () => {
-    popupText.style.display = 'none';
-  });
+    infoButton.addEventListener('click', () => {
+      popupText.style.display = 'block';
+    });
 
-  toggleButton.addEventListener('click', () => {
-    if (popupText.classList.contains('expanded')) {
-      popupText.classList.remove('expanded');
-      descriptionPopupDisclaimer.style.height = '200px';
-      toggleButton.textContent = '▼';
-    } else {
-      popupText.classList.add('expanded');
-      toggleButton.textContent = '▲';
-
-      descriptionPopupDisclaimer.style.height = 'max-content';
-    }
-  });
-
-  // Optional: Click outside to close the popup
-  document.addEventListener('click', (event) => {
-    if (!popupText.contains(event.target) && !infoButton.contains(event.target)) {
+    closeButton.addEventListener('click', () => {
       popupText.style.display = 'none';
-    }
+    });
+
+    toggleButton.addEventListener('click', () => {
+      if (popupText.classList.contains('expanded')) {
+        popupText.classList.remove('expanded');
+        descriptionPopupDisclaimer.style.height = '200px';
+        toggleButton.textContent = '▼';
+      } else {
+        popupText.classList.add('expanded');
+        toggleButton.textContent = '▲';
+        descriptionPopupDisclaimer.style.height = 'max-content';
+      }
+    });
+
+    // Optional: Click outside to close the popup
+    document.addEventListener('click', (event) => {
+      if (!popupText.contains(event.target) && !infoButton.contains(event.target)) {
+        popupText.style.display = 'none';
+      }
+    });
   });
-});
+}
 
 async function stockLocatorFiltersAPI(dropDownContainer) {
   const stockLocatorFilterResponse = await getStockLocatorFiltersData();
@@ -636,7 +742,5 @@ export default async function decorate(block) {
 
   block.textContent = '';
   vehicleFiltersAPI();
-  setTimeout(() => {
-    createRelevanceDropdown(dropDownContainer);
-  }, 500);
+  createRelevanceDropdown(dropDownContainer);
 }
