@@ -90,9 +90,9 @@ function removeLastSelectedValue(values) {
 export let vehicleURL;
 export let showMoreUrl;
 
-let currentPage = 1;
-const limit = 9;
-let offset = 9;
+const cardCurrentPage = 1;
+const cardLimit = 9;
+
 let showMoreClicked = false;
 const sortdirection = 'asc';
 
@@ -100,24 +100,20 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
   let vehicleData;
   const cardWrapper = document.querySelector('.card-tile-wrapper') || document.createElement('div');
   cardWrapper.innerHTML = '';
-
   cardWrapper.classList.add('card-tile-wrapper');
-
   const cardList = document.createElement('ul');
   cardList.classList.add('card-tile-list');
-
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-tile-container');
-  const start = (currentPage - 1) * limit;
-  const end = start + limit;
+  const start = (cardCurrentPage - 1) * cardLimit;
+  const end = start + cardLimit;
   // on Page load show only 9 and highPrice car from vechile API
   if (!isLoadVehcilePage) {
-    console.log('only 9 Data +++++++++++++++++++');
+    console.log('+++++++++++++ higest PRICE vehicle on Page load ++++++++++');
     vehicleData = getStockLocatorVehicles?.data.slice(start, end);
     // eslint-disable-next-line no-param-reassign
     isLoadVehcilePage = true;
   } else {
-    console.log('Show all Data++++++++++++++');
     vehicleData = getStockLocatorVehicles?.data;
   }
 
@@ -182,39 +178,66 @@ function cardTiles(getStockLocatorVehicles, isLoadVehcilePage) {
 
     cardList.append(cardListElement);
   });
-
-  const totalCards = getStockLocatorVehicles.data.length;
-  const showMoreButton = document.querySelector('.show-more-button') || document.createElement('button');
-
-  if (!showMoreButton.classList.contains('show-more-button')) {
-    showMoreButton.textContent = 'Show More';
-    showMoreButton.classList.add('show-more-button');
-    showMoreButton.addEventListener('click', showMoreCards);
-  }
-
-  // if (currentPage * limit >= totalCards) {
-  //   showMoreButton.style.display = 'none';
-  // } else {
-  //   showMoreButton.style.display = 'block';
-  // }
-
   cardContainer.append(cardList);
-  cardWrapper.append(cardContainer, showMoreButton);
+  cardWrapper.append(cardContainer);
   document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
+  // eslint-disable-next-line no-use-before-, no-use-before-define
+  pagination(getStockLocatorVehicles.meta);
 }
 
-function constructShowMoreUrl() {
+function pagination(meta) {
+  const pageOffset = meta.offset;
+  const pageLimit = meta.limit;
+  const pageCount = meta.count;
+
+  // Calculate total number of pages
+  const totalPages = Math.ceil(pageCount / pageLimit);
+  const currentPage = Math.floor(pageOffset / pageLimit) + 1;
+
+  const showMoreButton = document.querySelector('.show-more-button');
+  if (showMoreButton) {
+    showMoreButton.remove();
+  }
+
+  if (pageCount >= pageLimit) {
+    showPage(currentPage, totalPages, pageOffset, pageLimit);
+  }
+}
+
+function showPage(currentPage, totalPages, pageOffset, pageLimit) {
+  // let showRelativeClickedData = false;
+  // console.log(`Showing page ${currentPage} of ${totalPages}`);
+  const showMoreButton = document.createElement('button');
+  showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
+  showMoreButton.classList.add('show-more-button');
+  document.querySelector('.stock-locator-model-detail-definition-specification-wrapper').appendChild(showMoreButton);
+  showMoreButton.addEventListener('click', () => {
+    currentPage++;
+    showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
+    const showMoreURLData = document.body.getAttribute('data-vehicle-url');
+    // eslint-disable-next-line no-use-before-define
+    constructShowMoreUrl(showMoreURLData, pageOffset, pageLimit, currentPage);
+  });
+}
+let allFetchedVehicles = [];
+
+async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentPage) {
+  console.log(`currentPage${currentPage}offsetValue${pageOffset}`);
+  let offset = pageOffset;
   offset = currentPage * limit;
   const urlParams = new URLSearchParams({
     limit,
     sortdirection,
     offset,
   });
-  const fullUrl = `${urlParams.toString()}`;
+  const fullUrl = `${showMoreURLData}&${urlParams.toString()}`;
 
   // Set the URL in the data attribute of the body
   document.querySelector('body').setAttribute('data-show-more-url', fullUrl);
-  return fullUrl;
+  const showMoreCardRes = await getShowMoreCards(fullUrl);
+  allFetchedVehicles = allFetchedVehicles.concat(showMoreCardRes.data);
+  cardTiles({ data: allFetchedVehicles }, true);
+  // return fullUrl;
 }
 
 async function showMoreCards() {

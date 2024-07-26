@@ -7,7 +7,7 @@ import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEnd
 // eslint-disable-next-line import/no-cycle
 // import { vehicleURL } from '../../blocks/precon/precon.js';
 // eslint-disable-next-line import/no-cycle
-import { vehicleURL, showMoreUrl } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
+import { vehicleURL } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
 
 export async function getApiResponse(modelCode) {
   try {
@@ -201,38 +201,39 @@ export async function getStockLocatorFiltersData() {
   }
 }
 
-  export async function getStockLocatorVehiclesData() {
-    let url;
-    if (vehicleURL) { 
-      url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}`;
-    } else {
-      url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}`;
-    }
-  
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const responseJson = await response.json();
-      return responseJson;
-    } catch (error) {
-      console.log('Error fetching data for building get placeholder', error);
-      throw error;
-    }
+export async function getStockLocatorVehiclesData() {
+  let url;
+  const filterData = 'limit=9&sortby=relevance&sortdirection=asc&offset=0';
+  if (vehicleURL) {
+    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}&${filterData}`;
+  } else {
+    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}`;
   }
 
-  export async function getShowMoreCards() {
-    const url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${showMoreUrl}`;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const responseJson = await response.json();
-      return responseJson;
-    } catch (error) {
-      console.log('Error fetching data for building get placeholder', error);
-      throw error;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
   }
+}
+
+export async function getShowMoreCards(cardUrl) {
+  const url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${cardUrl}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseJson = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
