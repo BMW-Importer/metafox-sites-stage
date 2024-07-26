@@ -4873,7 +4873,8 @@
         "component": "text-input",
         "name": "analytics_label",
         "label": "Analytics Label",
-        "valueType": "string"
+        "valueType": "string",
+        "description": "Defines a brief description of the content for analytics. Please fill out this field in English."
       }
     ]
   },
