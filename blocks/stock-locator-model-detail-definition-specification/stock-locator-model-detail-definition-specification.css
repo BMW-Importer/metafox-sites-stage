@@ -190,13 +190,15 @@
     }
 
     .card-tile-list-ele{
-        width: 100%;
-        max-width: 382px;
+        width: 393.333px;
         transition: all .2s ease-in-out;
         position: relative;
+        margin-right: 5px;
+    }
+
+    .card-tile-list-ele .stock-locator-card{
         padding: 30px 25px;
-        flex-wrap: wrap;
-        display: flex;
+
     }
     
     .card-tile-list-ele:hover {
@@ -217,19 +219,52 @@
         align-items: center;
     
     }
+    
+    .model-details-wrapper .card-layer-info-item{
+        margin-bottom: 20px;
+        font-size: .875rem;
+        line-height: 1.25rem;
+    }
+
+    .model-details-wrapper .price-container{
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    .model-details-wrapper .price-container span{
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    .model-details-wrapper .model-container{
+        margin-bottom: 5px;
+    }
+
+    .model-details-wrapper .model-container h4{
+        font-size: 20px;
+        line-height: 24px;
+    }
+
     .stock-locator-card-button-container .stock-locator-hide-button{
         display: none;
         width: 100%;
         height: 50px;
         text-decoration: none;
         background-color: #1c69d4;
+        margin:30px 0 16px;
     }
+
+    .popup-toggle-button {
+        cursor: pointer;
+    }
+
     .stock-model-description-wrapper{
         display: flex;
         gap: 5px;
         margin-bottom: 20px;
         margin-top: 5px
     } 
+
     .stock-locator-card-button-container .stock-locator-hide-button a {
         text-decoration: none;
         padding: 15px;
@@ -244,22 +279,20 @@
         display: inline-block;
     }
     
-    
     .description-popup-button {
         cursor: pointer;
         margin-left: 10px;
         font-style: normal; 
         font-weight: bold;
         border: 1px solid #666;
-        padding: 2px 8px;
+        padding: 2px 12px;
         border-radius: 50%;
     }
+
     .stock-model-description-popup{
         position: relative;
     }
-    .price-container{
-        position: relative;
-    }
+
     .price-container .description-popup-container {
         display: none; 
         position: absolute; 
@@ -267,18 +300,16 @@
         border: 1px solid #ccc;
         margin-top: 5px; 
         width: 400px;
-        top: -60px;
-        left: 130px;
+        top: -45px;
+        left: 160px;
         z-index: 8;
     
     }
+
     li::marker{
        content: '';
     }
-    /* .description-popup-container::before{
-        top: calc(50% - 10px);
-        left: -8px;
-    } */
+    
     .popup-arrow{
         border: solid transparent;
         border-width: 15px;
@@ -292,7 +323,15 @@
         display: flex;
         justify-content:space-between;
         position: relative;
+        margin-bottom: 10px;
         
+    }
+
+    .description-popup-content-header p{
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: 700;
+        margin: 0;
     }
     
     .description-popup-content {
@@ -312,7 +351,6 @@
     .description-popup-close-button {
         padding: 0;
         margin: 0;
-        background-color: #fff;
         border: 0;
         position: absolute;
         right: 0;
@@ -322,18 +360,29 @@
         cursor: pointer;
         font-size: 50px;
     }
-    
-    /* .expand-button:hover, .collapse-button:hover, .description-popup-close-button:hover {
-        background-color: #ddd;
-    } */
-    .description-popup-disclaimer{
-        height: 200px;
-        overflow: hidden;
-        
+   
+    .description-popup-disclaimer-wrapper .description-popup-disclaimer{
+        height: 100px;
+        overflow: hidden;  
     }
-    .description-popup-price-info{
+    .description-popup-disclaimer-wrapper .description-popup-disclaimer p{
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 300;
+
+    }
+    .description-popup-content .description-popup-price-info{
         display: flex;
         justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .description-popup-content .description-popup-price-info span{
+        font-size: .875rem;
+        font-weight: 700;
+        line-height: 1.25rem;
+
+
     }
 }
 
