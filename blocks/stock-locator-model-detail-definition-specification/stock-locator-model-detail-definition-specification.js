@@ -193,7 +193,6 @@ function pagination(meta) {
   // Calculate total number of pages
   const totalPages = Math.ceil(pageCount / pageLimit);
   const currentPage = Math.floor(pageOffset / pageLimit) + 1;
-
   const showMoreButton = document.querySelector('.show-more-button');
   if (showMoreButton) {
     showMoreButton.remove();
@@ -204,7 +203,7 @@ function pagination(meta) {
   }
 }
 
-function showPage(currentPage, totalPages, pageOffset, pageLimit) {
+function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount) {
   // let showRelativeClickedData = false;
   // console.log(`Showing page ${currentPage} of ${totalPages}`);
   const showMoreButton = document.createElement('button');
@@ -216,12 +215,12 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit) {
     showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
-    constructShowMoreUrl(showMoreURLData, pageOffset, pageLimit, currentPage);
+    constructShowMoreUrl(showMoreURLData, pageOffset, pageLimit, currentPage, pageCount);
   });
 }
 let allFetchedVehicles = [];
 
-async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentPage) {
+async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentPage, pageCount) {
   console.log(`currentPage${currentPage}offsetValue${pageOffset}`);
   let offset = pageOffset;
   offset = currentPage * limit;
@@ -234,8 +233,14 @@ async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentP
 
   // Set the URL in the data attribute of the body
   document.querySelector('body').setAttribute('data-show-more-url', fullUrl);
+  if (pageOffset >= pageCount) {
+    console.log('Offset matches the count value. No more pages to show.');
+    return false;
+  }
   const showMoreCardRes = await getShowMoreCards(fullUrl);
   allFetchedVehicles = allFetchedVehicles.concat(showMoreCardRes.data);
+
+  // offset 24 >>
   cardTiles({ data: allFetchedVehicles }, true);
   // return fullUrl;
 }
