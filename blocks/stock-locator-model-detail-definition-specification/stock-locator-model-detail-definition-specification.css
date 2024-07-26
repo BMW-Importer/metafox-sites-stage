@@ -116,6 +116,11 @@
     .stock-locator-container .filter-wrapper .filter-list.dropdown-list-wrapper {
         max-height: 150px;
         overflow-y: auto;
+        position: absolute;
+        width: calc(100% + 4px);
+        z-index: 100;
+        margin-left: -2px;
+        background: white;
         margin-left: -1px;
         border-color: transparent;
         border-top: 2px solid #f2f2f2;
