@@ -247,7 +247,7 @@ function cardTiles(getStockLocatorVehicles) {
     descriptionPopupDisclaimer.classList.add('description-popup-disclaimer');
 
     const descriptionPopupDisclaimerText = document.createElement('p');
-    descriptionPopupDisclaimerText.append(disclaimerContent.textContent);
+    descriptionPopupDisclaimerText.append(disclaimerContent?.textContent);
     descriptionPopupDisclaimer.appendChild(descriptionPopupDisclaimerText);
 
     const popupToggleButtonContainer = document.createElement('div');
@@ -320,13 +320,18 @@ function pagination(meta) {
   }
 
   if (pageCount >= pageLimit) {
-    showPage(currentPage, totalPages, pageOffset, pageLimit);
+    showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount);
   }
 }
 
 function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount) {
   const showMoreButton = document.createElement('button');
-  showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
+  let countDetails = count.textContent;
+  let newStr = countDetails.replace(/{count}/, currentPage);
+  newStr = newStr.replace(/{count}/, totalPages);
+
+  showMoreButton.textContent = newStr;
+
   showMoreButton.classList.add('show-more-button');
   document.querySelector('.stock-locator-model-detail-definition-specification-wrapper').appendChild(showMoreButton);
   showMoreButton.addEventListener('click', () => {
@@ -380,7 +385,6 @@ async function showMoreCards() {
   const showMoreCardRes = await getShowMoreCards(showMoreUrl);
   currentPage++;
   cardTiles(showMoreCardRes);
-  console.log(showMoreCardRes);
 }
 
 function sortVehiclesByPrice(getStockLocatorVehicles) {
@@ -748,7 +752,6 @@ export default async function decorate(block) {
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
     const cfData = response?.data;
-    console.log(cfData);
     if (cfData) {
       const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
       const disclaimerContent = document.createElement('div');
