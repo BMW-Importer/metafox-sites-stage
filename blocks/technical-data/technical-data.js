@@ -305,25 +305,32 @@ function bindClickEventForFootNotesLink(parentBlock) {
   });
 }
 
+/* eslint-disable no-console */
 function triggerAnalytics(clickedElem) {
-  const anchorTag = clickedElem.target;
-  const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
-  const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
-  const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
-  const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
-  const blockName = anchorTag.getAttribute('data-analytics-block-name');
-  const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+  try {
+    if (clickedElem?.target) {
+      const anchorTag = clickedElem.target;
+      const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+      const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+      const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+      const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+      const blockName = anchorTag.getAttribute('data-analytics-block-name');
+      const sectionId = anchorTag.getAttribute('data-analytics-section-id');
 
-  pushCustomLinkAnalyticData([
-    analyticsLabel,
-    primaryCategory,
-    subCategory,
-    blockName,
-    sectionId,
-    '',
-    '',
-    subCategory2,
-  ]);
+      pushCustomLinkAnalyticData([
+        analyticsLabel,
+        primaryCategory,
+        subCategory,
+        blockName,
+        sectionId,
+        '',
+        '',
+        subCategory2,
+      ]);
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function generateTechUi(parentBlock) {
@@ -767,18 +774,24 @@ function generateAuthoredModels(
 }
 
 /* eslint-disable no-console */
-function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp) {
+function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData) {
   try {
+    let isAuthoredModelFound = false;
     savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
       if (modelObj[index].ModelCode === authoredAgCode) {
+        isAuthoredModelFound = true;
         const responseJson = modelObj[index];
         const newObj = replaceSpreadSheetPlaceholders(techDataWdhResponsObject, responseJson);
         const responseObj = {
           responseJson: JSON.parse(newObj),
         };
-        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp);
+        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp, modelData);
       }
     });
+
+    if (!isAuthoredModelFound) {
+      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
+    }
   } catch (e) {
     console.log(e);
   }
@@ -847,7 +860,7 @@ async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listO
             modelData,
           );
         } else {
-          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData);
         }
       } catch (error) {
         console.error('fetch model detail failed');

@@ -27,6 +27,7 @@
     line-height: 1rem;
     text-align: start;
     word-break: break-word;
+    color: var(--light-border-color);
 }
 
 .techdata-model-ddl-selected {
