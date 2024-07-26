@@ -233,16 +233,26 @@ async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentP
 
   // Set the URL in the data attribute of the body
   document.querySelector('body').setAttribute('data-show-more-url', fullUrl);
-  if (pageOffset >= pageCount) {
-    console.log('Offset matches the count value. No more pages to show.');
+
+  if (offset >= pageCount) {
+    console.log('Offset matches or exceeds the count value. No more pages to show.');
+    // Remove the show more button
+    const showMoreButton = document.querySelector('.show-more-button');
+    if (showMoreButton) {
+      showMoreButton.remove();
+    }
     return false;
   }
-  const showMoreCardRes = await getShowMoreCards(fullUrl);
-  allFetchedVehicles = allFetchedVehicles.concat(showMoreCardRes.data);
 
-  // offset 24 >>
-  cardTiles({ data: allFetchedVehicles }, true);
-  // return fullUrl;
+  const showMoreCardRes = await getShowMoreCards(fullUrl);
+
+  // Call cardTiles function with the fetched data
+  cardTiles({ data: showMoreCardRes.data }, true);
+
+  // Do not concatenate data when offset is greater than or equal to pageCount
+  if (offset < pageCount) {
+    allFetchedVehicles = allFetchedVehicles.concat(showMoreCardRes.data);
+  }
 }
 
 async function showMoreCards() {
