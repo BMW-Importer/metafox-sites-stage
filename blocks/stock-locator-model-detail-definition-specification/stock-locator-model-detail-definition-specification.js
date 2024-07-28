@@ -337,7 +337,14 @@ const allFetchedVehicles = {
   meta: {},
 };
 
-async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentPage, pageCount, getStockLocatorVehicles) {
+async function constructShowMoreUrl(
+  showMoreURLData,
+  pageOffset,
+  limit,
+  currentPage,
+  pageCount,
+  getStockLocatorVehicles,
+) {
   // Calculate the new offset based on current page and limit
   const offset = currentPage * limit;
 
