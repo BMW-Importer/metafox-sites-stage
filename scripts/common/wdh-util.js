@@ -190,8 +190,14 @@ export function dynamicData() {
 const dynamicURLData = dynamicData();
 
 export async function getStockLocatorFiltersData() {
+  let url;
+  if (vehicleURL) {
+    url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}${vehicleURL}`;
+  } else {
+    url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
+  }
   try {
-    const url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
+    // url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
     const response = await fetch(`${url}`);
     const responseJson = await response.json();
     return responseJson;

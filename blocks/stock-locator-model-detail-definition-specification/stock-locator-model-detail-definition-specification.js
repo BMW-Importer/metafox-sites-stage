@@ -22,7 +22,7 @@ function handleToggleFilterDropDown() {
     });
   });
   // eslint-disable-next-line no-use-before-define
-  handleCheckBoxSelectionForSeries();
+  handleCheckBoxSelection();
 }
 
 function handleMobileSeriesFilter() {
@@ -104,17 +104,6 @@ function cardTiles(getStockLocatorVehicles) {
   cardList.classList.add('card-tile-list');
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-tile-container');
-  const start = (cardCurrentPage - 1) * cardLimit;
-  const end = start + cardLimit;
-  // on Page load show only 9 and highPrice car from vechile API
-  // if (!isLoadVehcilePage) {
-  //   console.log('+++++++++++++ higest PRICE vehicle on Page load ++++++++++');
-  //   vehicleData = getStockLocatorVehicles?.data.slice(start, end);
-  //   // eslint-disable-next-line no-param-reassign
-  //   isLoadVehcilePage = true;
-  // } else {
-  //   vehicleData = getStockLocatorVehicles?.data;
-  // }
   const vehicleData = getStockLocatorVehicles?.data;
   vehicleData?.map((vehicle) => {
     const {
@@ -124,11 +113,8 @@ function cardTiles(getStockLocatorVehicles) {
 
     const cardListElement = document.createElement('li');
     cardListElement.classList.add('card-tile-list-ele');
-
     const stockLocatorCard = document.createElement('div');
     stockLocatorCard.classList.add('stock-locator-card');
-
-
     const modelCard = document.createElement('div');
     modelCard.classList.add('model-card');
 
@@ -156,23 +142,21 @@ function cardTiles(getStockLocatorVehicles) {
     const cardLayerInfoContainer = document.createElement('div');
     cardLayerInfoContainer.classList.add('card-layer-info-container');
 
-    const StockLocatorCardButton = document.createElement('div');
-    StockLocatorCardButton.classList.add('stock-locator-card-button');
+    const stockLocatorCardButton = document.createElement('div');
+    stockLocatorCardButton.classList.add('stock-locator-card-button');
 
-    const StockLocatorCardButtonContainer = document.createElement('div');
-    StockLocatorCardButtonContainer.classList.add('stock-locator-card-button-container');
+    const stockLocatorCardButtonContainer = document.createElement('div');
+    stockLocatorCardButtonContainer.classList.add('stock-locator-card-button-container');
 
-    const StockLocatorHideButton = document.createElement('div');
-    StockLocatorHideButton.classList.add('stock-locator-hide-button');
+    const stockLocatorHideButton = document.createElement('div');
+    stockLocatorHideButton.classList.add('stock-locator-hide-button');
 
     const StockLocatorHideButtonLink = document.createElement('a');
     const StockLocatorHideButtonText = document.createElement('span');
-
+    StockLocatorHideButtonText.textContent = 'Pogledajte detalje';
     StockLocatorHideButtonLink.appendChild(StockLocatorHideButtonText);
-    StockLocatorHideButton.appendChild(StockLocatorHideButtonLink);
-    StockLocatorCardButtonContainer.appendChild(StockLocatorHideButton);
-
-
+    stockLocatorHideButton.appendChild(StockLocatorHideButtonLink);
+    stockLocatorCardButtonContainer.appendChild(stockLocatorHideButton);
     const cardLayerInfoItem = document.createElement('div');
     cardLayerInfoItem.classList.add('card-layer-info-item');
 
@@ -253,8 +237,6 @@ function cardTiles(getStockLocatorVehicles) {
 
     descriptionPopupContainer.appendChild(descriptionPopupContent);
     // stockModelDescriptionPopup.appendChild(descriptionPopupContainer);
-
-
     const price = document.createElement('span');
     price.classList.add('car-price');
     price.textContent = `${finalPriceWithTax.min} ${baseCurrencyCodeA}`;
@@ -266,11 +248,9 @@ function cardTiles(getStockLocatorVehicles) {
 
     pictureTag.append(imgElem);
     cardImgContainer.append(pictureTag);
-
-    //stockLocatorCard.appendChild(cardImgContainer, detailContent, StockLocatorCardButtonContainer);
     stockLocatorCard.appendChild(cardImgContainer);
     stockLocatorCard.appendChild(detailContent);
-    stockLocatorCard.appendChild(StockLocatorCardButtonContainer);
+    stockLocatorCard.appendChild(stockLocatorCardButtonContainer);
     cardListElement.appendChild(stockLocatorCard);
 
     cardList.append(cardListElement);
@@ -296,13 +276,11 @@ function pagination(meta) {
   }
 
   if (pageCount >= pageLimit) {
-    showPage(currentPage, totalPages, pageOffset, pageLimit);
+    showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount);
   }
 }
 
 function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount) {
-  // let showRelativeClickedData = false;
-  // console.log(`Showing page ${currentPage} of ${totalPages}`);
   const showMoreButton = document.createElement('button');
   showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
   showMoreButton.classList.add('show-more-button');
@@ -317,6 +295,7 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount) {
 }
 let allFetchedVehicles = [];
 
+// eslint-disable-next-line consistent-return
 async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentPage, pageCount) {
   console.log(`currentPage${currentPage}offsetValue${pageOffset}`);
   let offset = pageOffset;
@@ -327,25 +306,16 @@ async function constructShowMoreUrl(showMoreURLData, pageOffset, limit, currentP
     offset,
   });
   const fullUrl = `${showMoreURLData}&${urlParams.toString()}`;
-
-  // Set the URL in the data attribute of the body
   document.querySelector('body').setAttribute('data-show-more-url', fullUrl);
 
   if (offset >= pageCount) {
-    console.log('Offset matches or exceeds the count value. No more pages to show.');
-    // Remove the show more button
     const showMoreButton = document.querySelector('.show-more-button');
     if (showMoreButton) {
       showMoreButton.remove();
     }
-    return false;
   }
-
   const showMoreCardRes = await getShowMoreCards(fullUrl);
-
-  // Call cardTiles function with the fetched data
   cardTiles({ data: showMoreCardRes.data });
-
   // Do not concatenate data when offset is greater than or equal to pageCount
   if (offset < pageCount) {
     allFetchedVehicles = allFetchedVehicles.concat(showMoreCardRes.data);
@@ -379,7 +349,7 @@ async function vehicleFiltersAPI() {
   cardTiles(getStockLocatorVehicles);
 }
 
-async function handleCheckBoxSelectionForSeries() {
+async function handleCheckBoxSelection() {
   const filterLists = document.querySelectorAll('.filter-list');
   const selectedValues = {};
   filterLists.forEach((filterList) => {
@@ -409,7 +379,10 @@ async function handleCheckBoxSelectionForSeries() {
             filterLabelHeading.classList.remove('is-active');
           }
         }
-        // Update the displayed selected values
+
+        // update the filter DOM value after selection
+        
+        // update the Vehicle DOM after selection
         updateSelectedValues(selectedValues);
         vehicleURL = constructVehicleUrl(selectedValues);
         const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
@@ -596,7 +569,6 @@ function createStockLocatorFilter(filterResponse, dropDownContainer) {
 }
 
 function popupButton() {
-  console.log('hi');
   const infoButtons = document.querySelectorAll('.description-popup-button');
   const popupTexts = document.querySelectorAll('.description-popup-container');
   const closeButtons = document.querySelectorAll('.description-popup-close-button');
@@ -648,7 +620,6 @@ async function stockLocatorFiltersAPI(dropDownContainer) {
 function handleRelevanceSingleSelect() {
   const relevanceDropdown = document.querySelector('.stock-locator-container.relevance .filter-list');
   const items = relevanceDropdown.querySelectorAll('.filter-item-relevance');
-
   items.forEach((item) => {
     item.addEventListener('click', () => {
       items.forEach((i) => i.classList.remove('selected')); // Deselect all items
@@ -661,28 +632,23 @@ function handleRelevanceSingleSelect() {
 function createRelevanceDropdown(dropDownContainer) {
   const filterWrapperContent = document.createElement('div');
   filterWrapperContent.classList.add('stock-locator-container', 'relevance');
-
   const filterWrapper = document.createElement('div');
   filterWrapper.className = 'filter-wrapper';
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.className = 'filter-label';
   filterLabelHeading.textContent = 'Sort by';
   filterWrapper.appendChild(filterLabelHeading);
-
   const filterList = document.createElement('div');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper');
-
   const filterLabelDefault = document.createElement('div');
   filterLabelDefault.className = 'filter-label-heading';
   filterLabelDefault.textContent = 'Relevance';
   filterWrapper.appendChild(filterLabelDefault);
   filterWrapper.appendChild(filterList);
-
   const sortOptions = [
-    { id: 'a-z', text: 'A-Z' },
-    { id: 'z-a', text: 'Z-A' },
+    { id: 'des', text: 'descending price' },
+    { id: 'asc', text: 'ascending price' },
   ];
-
   sortOptions.forEach((option) => {
     const listItem = document.createElement('div');
     listItem.className = 'filter-item-relevance';
