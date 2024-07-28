@@ -1,6 +1,7 @@
 import {
   DEV, STAGE, PROD, disclaimerGQlEndpoint,
 } from '../../scripts/common/constants.js';
+import { propsData } from '../stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   const endpointUrl = gqlOrigin + disclaimerGQlEndpoint + disclaimerCFPath.innerText;
@@ -10,9 +11,14 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
+  
+  const [modelButtonTxt ,countAndDisclaimer, bannerContent] = props;
+  const pTags = countAndDisclaimer.querySelectorAll('p');
+  const countText = pTags[0] || '';
+  const disclaimerCF = pTags[1] || '';
+
   const env = document.querySelector('meta[name="env"]').content;
   let publishDomain = '';
-  const [disclaimerCF] = props;
   if (env === 'dev') {
     publishDomain = DEV.hostName;
   } else if (env === 'stage') {
@@ -24,12 +30,6 @@ export default function decorate(block) {
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
     const cfData = response?.data;
-    if (cfData) {
-      const disclaimerHtml = cfData?.disclaimercfmodelByPath?.item?.disclaimer?.html;
-      const disclaimerContent = document.createElement('div');
-      disclaimerContent.className = 'disclaimer-content';
-      disclaimerContent.innerHTML = disclaimerHtml;
-      block.appendChild(disclaimerContent);
-    }
+    propsData(modelButtonTxt, countText, cfData,bannerContent);
   });
 }
