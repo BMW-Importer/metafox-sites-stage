@@ -1,6 +1,7 @@
 import {
   getTechnicalSpreadsheetData,
 } from '../../scripts/common/wdh-util.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
 // delete - dummy json's - start
 const filterJsonApiResponse = {
@@ -22,7 +23,7 @@ const filterJsonApiResponse = {
       'Filter Name English': 'SUV',
       'Filter Name Serbian': 'SUV',
       'Filter Code': 'b',
-      'Is Default In Screen': true,      
+      'Is Default In Screen': true,
     },
     {
       'Filter Type English': 'Body Type',
@@ -54,7 +55,7 @@ const filterJsonApiResponse = {
       'Filter Name English': 'Plugin Hybrid',
       'Filter Name Serbian': 'Plugin Hi-Brid',
       'Filter Code': 'X',
-      'Is Default In Screen': true,      
+      'Is Default In Screen': true,
     },
     {
       'Filter Type English': 'Fuel Type',
@@ -62,7 +63,7 @@ const filterJsonApiResponse = {
       'Filter Name English': 'Electric',
       'Filter Name Serbian': 'Električni',
       'Filter Code': 'E',
-      'Is Default In Screen': true,     
+      'Is Default In Screen': true,
     },
   ],
   ':type': 'sheet',
@@ -76,9 +77,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW i5',
       'Category/Group': 'i',
-      'Analytics': '',
+      Analytics: '',
       'Model Code': '7K11',
-      'Price': '9812734',
+      Price: '9812734',
       'Sub brand Icon': 'i',
       'New Label': 'true',
       'Fuel Type': 'O',
@@ -91,9 +92,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW 5 Series 5 Sedan',
       'Category/Group': '5',
-      'Analytics': '',
+      Analytics: '',
       'Model Code': '7K12',
-      'Price': '1234',
+      Price: '1234',
       'Sub brand Icon': 'M',
       'New Label': 'true',
       'Fuel Type': 'O, D',
@@ -106,9 +107,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW iX',
       'Category/Group': 'i,X',
-      'Analytics': '',
+      Analytics: '',
       'Model Code': '7K31',
-      'Price': '1234',
+      Price: '1234',
       'Sub brand Icon': 'i',
       'New Label': 'false',
       'Fuel Type': 'O, D',
@@ -121,9 +122,9 @@ const allModelOverViewApiResponse = {
     {
       'Model Name': 'BMW M5 Series Sedan',
       'Category/Group': '5,M',
-      'Analytics': '',
+      Analytics: '',
       'Model Code': '10FK',
-      'Price': '2346233',
+      Price: '2346233',
       'Sub brand Icon': 'M',
       'New Label': 'true',
       'Fuel Type': 'O,D,X',
@@ -142,8 +143,25 @@ const allModelFilterJson = {};
 const allModelOverviewJson = {};
 const lang = document.querySelector('meta[name="language"]').content;
 const authorPageRegex = /author-(.*?)\.adobeaemcloud\.com(.*?)/;
+let placeholders = await fetchPlaceholders(`/${lang}`);
 
+const placeholders2 = {
+  allModelCategoryi: 'BMW i',
+  allModelCategoryX: 'X',
+  allModelCategoryM: 'M',
+  allModelCategory8: '8',
+  allModelCategory7: '7',
+  allModelCategory6: '6',
+  allModelCategory5: '5',
+  allModelCategory4: '4',
+  allModelCategory3: '3',
+  allModelCategory2: '2',
+  allModelCategory1: '1',
+  allModelCategoryZ4: 'Z4',
+  allModelFromText: 'From',
+};
 
+placeholders = { ...placeholders, ...placeholders2 };
 
 function filterCloseBtnClick(button, showMoreButton) {
   button.addEventListener('click', () => {
@@ -152,11 +170,11 @@ function filterCloseBtnClick(button, showMoreButton) {
 }
 
 function filterClearBtnClick(button) {
-  button.addEventListener('click', () => {
-    // loop through filter json and make all isSelected to false
-
-    // call "generateSelectedFilterOptions"
-
+  button.addEventListener('click', (event) => {
+    const parentBlock = event.target.closest('.all-model-parent-div');
+    allModelFilterJson.data.forEach((item) => item.isSelected = false);
+    generateSelectedFilterOptions(parentBlock);
+    generateFilterPopup(parentBlock);
   });
 }
 
@@ -185,12 +203,112 @@ function toggleNavContent() {
 
 // ------------------------- bharath Code Start -------------------------------
 
+function generateGroupMarkUp(groupName, allModelfilteredArray) {
+  const filterArrayBasedOnCategory = allModelfilteredArray.filter((model) => model['Category/Group'].includes(groupName));
+
+  const bmwiGroup = document.createElement('div');
+  bmwiGroup.classList.add('all-model-group-container');
+
+  if (filterArrayBasedOnCategory.length) {
+    const bmwiGroupHeading = document.createElement('h2');
+    bmwiGroupHeading.classList.add('all-model-group-title');
+    bmwiGroupHeading.textContent = placeholders[`allModelCategory${groupName}`];
+    bmwiGroup.append(bmwiGroupHeading);
+
+    const listOfModelsContainer = document.createElement('div');
+    listOfModelsContainer.classList.add('all-model-group-list');
+    bmwiGroup.append(listOfModelsContainer);
+
+    filterArrayBasedOnCategory.forEach((model) => {
+      let fuelTypeMarkUp = '';
+      const fuelDetails = model['Fuel Type'].split(',');
+      fuelDetails.forEach((fuelType, index) => {
+        if (index > 0) {
+          fuelTypeMarkUp += '<span class=\'all-model-fuel-type\'>•</span>';
+        }
+        fuelTypeMarkUp += `<span class='all-model-fuel-type'>${placeholders[fuelType?.toLowerCase()?.trim()]}</span>`;
+      });
+
+      listOfModelsContainer.insertAdjacentHTML('beforeend', `
+    <div class='all-model-card-container'>
+      <div class='all-model-card-img-container'>
+
+      </div>
+      <button class='all-model-card-btn'></button>
+      <div class='all-model-detail-container'>
+        <h5 class='all-model-detail-model-name'>${model['Model Name']}</h5>
+        <p class='all-model-detail-model-fuel'>${fuelTypeMarkUp}</p>
+        <p class='all-model-detail-model-price'>${placeholders.allModelFromText} &nbsp; ${model.Price}</p>
+      </div>
+    </div>
+    `);
+    });
+  }
+  return bmwiGroup;
+}
+
+function generateAllModelMarkUp(allModelfilteredArray, block) {
+  const allModelContainer = block.querySelector('.all-model-container');
+  allModelContainer.textContent = '';
+
+  // bmwi models
+  const bmwiGroupMarkUp = generateGroupMarkUp('i', allModelfilteredArray);
+  allModelContainer.append(bmwiGroupMarkUp);
+
+  const xGroupMarkUp = generateGroupMarkUp('X', allModelfilteredArray);
+  allModelContainer.append(xGroupMarkUp);
+
+  const mGroupMarkUp = generateGroupMarkUp('M', allModelfilteredArray);
+  allModelContainer.append(mGroupMarkUp);
+
+  const eightGroupMarkUp = generateGroupMarkUp('8', allModelfilteredArray);
+  allModelContainer.append(eightGroupMarkUp);
+
+  const sevenGroupMarkUp = generateGroupMarkUp('7', allModelfilteredArray);
+  allModelContainer.append(sevenGroupMarkUp);
+
+  const sixGroupMarkUp = generateGroupMarkUp('6', allModelfilteredArray);
+  allModelContainer.append(sixGroupMarkUp);
+
+  const fiveGroupMarkUp = generateGroupMarkUp('5', allModelfilteredArray);
+  allModelContainer.append(fiveGroupMarkUp);
+
+  const fourGroupMarkUp = generateGroupMarkUp('4', allModelfilteredArray);
+  allModelContainer.append(fourGroupMarkUp);
+
+  const threeGroupMarkUp = generateGroupMarkUp('3', allModelfilteredArray);
+  allModelContainer.append(threeGroupMarkUp);
+
+  const twoGroupMarkUp = generateGroupMarkUp('2', allModelfilteredArray);
+  allModelContainer.append(twoGroupMarkUp);
+
+  const oneGroupMarkUp = generateGroupMarkUp('1', allModelfilteredArray);
+  allModelContainer.append(oneGroupMarkUp);
+
+  const z4GroupMarkUp = generateGroupMarkUp('Z4', allModelfilteredArray);
+  allModelContainer.append(z4GroupMarkUp);
+}
+
 function generateAllModelUi(block) {
   // loop through filter json to find which are options whch are selected
+  const selectedFilterArray = filterJsonApiResponse.data.filter((item) => item.isSelected === true);
 
-  // loop through global model overview json and filter it based on selections
+  let allModelfilteredArray = {};
 
-  // generate UI
+  if (selectedFilterArray.length > 0) {
+    allModelOverViewApiResponse.data.forEach((item) => {
+      selectedFilterArray.forEach((selectedItem) => {
+        if ((selectedItem['Filter Type English'] === 'Fuel Type' && item['Fuel Type'].includes(selectedItem['Filter Name English']))
+          || (selectedItem['Filter Type English'] === 'Body Type' && item['Body Type'].includes(selectedItem['Filter Name English']))) {
+          allModelfilteredArray.push(item);
+        }
+      });
+    });
+  } else {
+    allModelfilteredArray = allModelOverViewApiResponse.data;
+  }
+
+  generateAllModelMarkUp(allModelfilteredArray, block);
 }
 
 function generateContentNavigation(block) {
@@ -238,12 +356,11 @@ function generateFilterPopup(block) {
 }
 
 // function to generate selected filter options in UI
-function generateSelectedFilterOptions(block) {
+function generateSelectedFilterOptions(block, filterCode) {
   const buttonRow = block.querySelector('.filter-btn-row');
 
   if (buttonRow.children.length) {
     const selectedFilterRow = buttonRow.querySelector('.selected-filter-btn-row');
-    // selectedFilterRow.textContent = '';
 
     allModelFilterJson.data.forEach((options) => {
       if (options['Is Default In Screen']) {
@@ -255,19 +372,32 @@ function generateSelectedFilterOptions(block) {
           // make default button unselected
           button.classList.remove('active');
         }
-      } else {
-        // show dynamic button
-        // const dynFilterButton = document.createElement('button');
-        // dynFilterButton.classList.add('filter-btn');
-        // dynFilterButton.classList.add('selected-filter-button');
-        // dynFilterButton.setAttribute('data-filter-type', options['Filter Name English']);
-        // dynFilterButton.setAttribute('data-filter-option', options['Filter Type English']);
-        // dynFilterButton.setAttribute('data-filter-code', options['Filter Code']);
-        // dynFilterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
-        // selectedFilterRow.append(dynFilterButton)
+      } else if (filterCode === options['Filter Code']) {
+        const selectedFilterBtn = selectedFilterRow.querySelector(`button[data-filter-code='${filterCode}']`);
+        if (!selectedFilterBtn) {
+          const dynFilterButton = document.createElement('button');
+          dynFilterButton.classList.add('filter-btn');
+          dynFilterButton.classList.add('selected-filter-button');
+          dynFilterButton.classList.add('active');
+          dynFilterButton.setAttribute('data-filter-type', options['Filter Name English']);
+          dynFilterButton.setAttribute('data-filter-option', options['Filter Type English']);
+          dynFilterButton.setAttribute('data-filter-code', options['Filter Code']);
+          dynFilterButton.setAttribute('type', 'button');
+          dynFilterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
+          selectedFilterRow.append(dynFilterButton);
+        } else {
+          selectedFilterBtn.remove();
+        }
       }
     });
+    if (!filterCode) {
+      selectedFilterRow.innerHTML = '';
+    }
   } else {
+    // creating div show selected options in filter popup other than default filter btns
+    const selectedFilterOptionsRow = document.createElement('div');
+    selectedFilterOptionsRow.classList.add('selected-filter-btn-row');
+
     // loop through filterJsonArray and bind buttons inside buttonRow element
     allModelFilterJson.data.forEach((options) => {
       if (options['Is Default In Screen'] === true) {
@@ -277,14 +407,23 @@ function generateSelectedFilterOptions(block) {
         filterButton.setAttribute('data-filter-type', options['Filter Name English']);
         filterButton.setAttribute('data-filter-option', options['Filter Type English']);
         filterButton.setAttribute('data-filter-code', options['Filter Code']);
+        filterButton.setAttribute('type', 'button');
+        if (options.isSelected) filterButton.classList.add('active');
         filterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
         buttonRow.append(filterButton);
+      } else if (options.isSelected) {
+        const dynFilterButton = document.createElement('button');
+        dynFilterButton.classList.add('filter-btn');
+        dynFilterButton.classList.add('selected-filter-button');
+        dynFilterButton.classList.add('active');
+        dynFilterButton.setAttribute('data-filter-type', options['Filter Name English']);
+        dynFilterButton.setAttribute('data-filter-option', options['Filter Type English']);
+        dynFilterButton.setAttribute('data-filter-code', options['Filter Code']);
+        dynFilterButton.setAttribute('type', 'button');
+        dynFilterButton.innerHTML = `<span class="filter-btn-icon"></span><span class="btn-text">${options['Filter Name English']}</span>`;
+        selectedFilterOptionsRow.append(dynFilterButton);
       }
     });
-
-    // creating div show selected options in filter popup other than default filter btns
-    const selectedFilterOptionsRow = document.createElement('div');
-    selectedFilterOptionsRow.classList.add('selected-filter-btn-row');
     buttonRow.append(selectedFilterOptionsRow);
   }
 
@@ -343,13 +482,42 @@ function filterPopupInputChangeEvent(event) {
     const isChecked = checkbox.checked;
     const filterCode = checkbox.getAttribute('id');
     if (isChecked) {
-      allModelFilterJson.data.forEach((item) => item['Filter Code'] === filterCode && (item['isSelected'] = true));
+      allModelFilterJson.data.forEach((item) => {
+        if (item['Filter Code'] === filterCode) {
+          item.isSelected = true;
+        }
+      });
     } else {
-      allModelFilterJson.data.forEach((item) => item['Filter Code'] === filterCode && (item['isSelected'] = false));
+      allModelFilterJson.data.forEach((item) => {
+        if (item['Filter Code'] === filterCode) {
+          item.isSelected = false;
+        }
+      });
     }
-
     // call function to update filter button and UI
-    generateSelectedFilterOptions(parentBlock);    
+    generateSelectedFilterOptions(parentBlock, filterCode);
+  }
+}
+
+function filterBtnRowClickEvent(event) {
+  const parentBlock = event.target.closest('.all-model-parent-div');
+  const button = event.target.closest('.filter-btn');
+  if (button) {
+    const filterCode = button.getAttribute('data-filter-code');
+    if (button.classList.contains('active')) {
+      allModelFilterJson.data.forEach((item) => {
+        if (item['Filter Code'] === filterCode) {
+          item.isSelected = false;
+        }
+      });
+    } else {
+      allModelFilterJson.data.forEach((item) => {
+        if (item['Filter Code'] === filterCode) {
+          item.isSelected = true;
+        }
+      });
+    }
+    generateSelectedFilterOptions(parentBlock, filterCode);
   }
 }
 
@@ -375,6 +543,7 @@ export default async function decorate(block) {
 
   const buttonRow = document.createElement('div');
   buttonRow.classList.add('filter-btn-row');
+  buttonRow.addEventListener('click', filterBtnRowClickEvent);
   allModelParentContainer.append(buttonRow);
 
   const showMoreButton = document.createElement('button');
@@ -412,10 +581,13 @@ export default async function decorate(block) {
 `);
 
   const filterBody = overlayContainer.querySelector('.filter-body');
-  filterBody.addEventListener('change', filterPopupInputChangeEvent);  
+  filterBody.addEventListener('change', filterPopupInputChangeEvent);
 
   const closeButton = overlayContainer.querySelector('.filter-close-button');
   filterCloseBtnClick(closeButton, showMoreButton);
+
+  const clearButton = overlayContainer.querySelector('.clear-filter-btn');
+  filterClearBtnClick(clearButton);
 
   allModelParentContainer.append(overlayContainer);
 
@@ -427,6 +599,10 @@ export default async function decorate(block) {
   const navBar = document.createElement('div');
   navBar.classList.add('content-navigation');
   allModelParentContainer.append(navBar);
+
+  const allModelsContainer = document.createElement('div');
+  allModelsContainer.classList.add('all-model-container');
+  allModelParentContainer.append(allModelsContainer);
 
   block.append(allModelParentContainer);
 
