@@ -400,6 +400,7 @@ async function vehicleFiltersAPI() {
 }
 
 async function handleCheckBoxSelection() {
+  showLoadingIcon();
   const filterLists = document.querySelectorAll('.filter-list');
   const selectedValues = {};
   filterLists.forEach((filterList) => {
@@ -441,6 +442,7 @@ async function handleCheckBoxSelection() {
       });
     });
   });
+  hideLoadingIcon();
 }
 
 function constructVehicleUrl(selectedValues) {
@@ -725,27 +727,26 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   return response.json();
 }
 
-function createLoadingIconDom() {
+export function createLoadingIconDom() {
   const loadingIcon = document.createElement('div');
   const loadSpinnerContainer = document.createElement('img');
   loadSpinnerContainer.classList.add('loader-spinner');
-  loadSpinnerContainer.classList.add('hidden');
   loadingIcon.classList.add('loading-icon');
   loadingIcon.appendChild(loadSpinnerContainer);
   document.querySelector('.stock-locator-model-overview-properties-container').append(loadingIcon);
 }
 
-function showLoadingIcon() {
-  const loadSpinnerContainer = document.querySelector('.loader-spinner');
+export function hideLoadingIcon() {
+  const loadSpinnerContainer = document.querySelector('.loading-icon');
   if (loadSpinnerContainer) {
-    loadSpinnerContainer.classList.remove('hidden');
+    loadSpinnerContainer.classList.add('hidden');
   }
 }
 
-function hideLoadingIcon() {
-  const loadSpinnerContainer = document.querySelector('.loader-spinner');
+export function showLoadingIcon() {
+  const loadSpinnerContainer = document.querySelector('.loading-icon');
   if (loadSpinnerContainer) {
-    loadSpinnerContainer.classList.add('hidden');
+    loadSpinnerContainer.classList.remove('hidden');
   }
 }
 
@@ -781,7 +782,7 @@ export default async function decorate(block) {
   setTimeout(() => {
     createRelevanceDropdown(dropDownContainer);
     vehicleFiltersAPI();
+    hideLoadingIcon();
   }, 1000);
   createLoadingIconDom();
-  showLoadingIcon();
 }
