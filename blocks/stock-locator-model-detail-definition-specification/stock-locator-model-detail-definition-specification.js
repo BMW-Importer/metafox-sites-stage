@@ -470,18 +470,18 @@ function updateFilterDropDownValuePostSelection(newFilterData) {
 
 function constructVehicleUrl(selectedValues) {
   const urlParams = [];
-  if (selectedValues.Series && selectedValues.Series.length > 0) {
-    urlParams.push(`series=${selectedValues.Series.join(',')}`);
+  if (selectedValues['Series'] && selectedValues['Series'].length > 0) {
+    urlParams.push(`series=${selectedValues['Series'].join(',')}`);
   }
-  if (selectedValues.Fuel && selectedValues.Fuel.length > 0) {
-    urlParams.push(`fuel=${selectedValues.Fuel.join(',')}`);
+  if (selectedValues['Fuel Type'] && selectedValues['Fuel Type'].length > 0) {
+    urlParams.push(`fuel=${selectedValues['Fuel Type'].join(',')}`);
   }
-  if (selectedValues.DriveType && selectedValues.DriveType.length > 0) {
-    urlParams.push(`driveType=${selectedValues.DriveType.join(',')}`);
+  if (selectedValues['Drive Train'] && selectedValues['Drive Train'].length > 0) {
+    urlParams.push(`driveType=${selectedValues['Drive Train'].join(',')}`);
   }
-
   const fullUrl = `${urlParams.join('&')}`;
   document.querySelector('body').setAttribute('data-vehicle-url', fullUrl);
+  console.log(fullUrl);
   return fullUrl;
 }
 
@@ -493,6 +493,7 @@ function updateSelectedValues(values) {
 
   // eslint-disable-next-line no-restricted-syntax, no-unused-vars
   for (const [heading, valuesArray] of Object.entries(values)) {
+    debugger
     if (valuesArray.length > 0) {
       hasSelectedValues = true;
 
@@ -551,6 +552,23 @@ function resetAllFilters(values) {
   getStockLocatorVehiclesData(vehicleURL);
 }
 
+function showFilterLabel(typeKey) {
+  let filterLabel;
+  const filterLabelHeading = typeKey.charAt(0).toUpperCase() + typeKey.slice(1);
+  if (filterLabelHeading === 'DriveType') {
+    filterLabel = 'Drive Train';
+  }
+  if (filterLabelHeading === 'Fuel') {
+    filterLabel = 'Fuel Type';
+  }
+
+  if (filterLabelHeading === 'Series') {
+    filterLabel = 'Series';
+  }
+
+  return filterLabel;
+}
+
 function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   const boxContainer = document.createElement('div');
   boxContainer.classList.add('box-container', `${typeKey}-box`);
@@ -570,8 +588,12 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
 
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
-  filterLabelHeading.textContent = typeKey.charAt(0).toUpperCase() + typeKey.slice(1);
+  filterLabelHeading.textContent = showFilterLabel(typeKey);
 
+  // (typeKey.charAt(0).toUpperCase() + typeKey.slice(1));
+  
+  //(typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'DriveType' ? 'Drive Train': (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'Fule';
+  
   const filterList = document.createElement('ul');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
 
