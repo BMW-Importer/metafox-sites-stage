@@ -318,14 +318,14 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, get
   const showMoreButton = document.createElement('button');
   const countDetails = count?.textContent;
 
-  let newStr = countDetails.replace(/{count}/, getStockLocatorVehicles.data.length);
-  newStr = newStr.replace(/{count}/, pageCount);
+  //  let newStr = countDetails.replace(/{count}/, getStockLocatorVehicles.data.length);
+  // newStr = newStr.replace(/{count}/, pageCount);
 
   showMoreButton.textContent = 'Load More';
   showMoreContainer.appendChild(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
   showMoreContainer.appendChild(showMoreButton);
-  vehicleCountWrapper.textContent = newStr;
+  // vehicleCountWrapper.textContent = newStr;
   document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
@@ -702,7 +702,7 @@ function createRelevanceDropdown(dropDownContainer) {
   filterList.classList.add('filter-list', 'dropdown-list-wrapper');
   const filterLabelDefault = document.createElement('div');
   filterLabelDefault.className = 'filter-label-heading';
-  filterLabelDefault.textContent = 'Relevance';
+  filterLabelDefault.textContent = 'Descending price (default)';
   filterWrapper.appendChild(filterLabelDefault);
   filterWrapper.appendChild(filterList);
   const sortOptions = [

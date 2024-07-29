@@ -212,7 +212,7 @@ export async function getStockLocatorFiltersData() {
 export async function getStockLocatorVehiclesData() {
   showLoadingIcon();
   let url;
-  const filterData = 'limit=9&sortby=relevance&sortdirection=asc&offset=0';
+  const filterData = 'limit=9&sortdirection=asc&offset=0&';
   if (vehicleURL) {
     url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}&${filterData}`;
   } else {

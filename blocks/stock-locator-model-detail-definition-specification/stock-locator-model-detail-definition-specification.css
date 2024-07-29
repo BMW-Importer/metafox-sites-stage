@@ -9,7 +9,7 @@
     }
     
     .stock-locator-container {
-        width: 20%;
+        width: 22%;
         padding-bottom: 10px;
         padding-right: 10px;
     }
@@ -17,6 +17,11 @@
     .stock-locator-container.relevance {
         display: flex;
         order: 0;
+        width: 25%;        
+    }
+
+    .stock-locator-container.relevance .filter-wrapper {
+        margin-top: -20px;
     }
 
     .box-container {
