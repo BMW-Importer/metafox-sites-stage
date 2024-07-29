@@ -1,8 +1,11 @@
 import {
+  getResolutionKey,
+  getCosyImageUrl,
+  getCosyImage,
   getTechnicalSpreadsheetData,
 } from '../../scripts/common/wdh-util.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
-
+const viewPortWidth = window.innerWidth;
 // delete - dummy json's - start
 const filterJsonApiResponse = {
   total: 7,
@@ -163,6 +166,42 @@ const placeholders2 = {
 
 placeholders = { ...placeholders, ...placeholders2 };
 
+// Fetch the cozy image URL based on model code
+async function fetchCozyImageUrl(modelCode) {
+  const pictureTag = document.createElement('picture');
+  try {
+    const response = await getCosyImage(modelCode);
+
+    const screenWidth = window.innerWidth;
+    const resolutionKey = getResolutionKey(screenWidth);
+
+    const createPictureTag = (quality) => {      
+      const resolutions = [1025, 768];
+      resolutions.forEach((resolution) => {
+        const sourceTag = document.createElement('source');
+        sourceTag.srcset = getCosyImageUrl(
+          response,
+          getResolutionKey(resolution),
+          quality,
+        );
+        sourceTag.media = `(min-width: ${resolution}px)`;
+        pictureTag.appendChild(sourceTag);
+      });
+
+      // Fallback img tag
+      const imgTag = document.createElement('img');
+      imgTag.src = getCosyImageUrl(response, resolutionKey, quality);
+      imgTag.alt = modelCode;
+      pictureTag.appendChild(imgTag);
+    };
+
+    createPictureTag(90);
+  } catch (error) {
+    console.error('Error fetching image:', error);
+  }
+  return pictureTag;
+}
+
 function filterCloseBtnClick(button, showMoreButton) {
   button.addEventListener('click', () => {
     showMoreButton.click();
@@ -195,13 +234,93 @@ function selectModelClick(button) {
   });
 }
 
-function toggleNavContent() {
-  const selectedButton = document.getElementById('navMenuBtn');
-  selectedButton.addEventListener('click', () => {
+let scrollAmount = 0;
+function scrollToRight() {
+  const leftButton = document.querySelector('.nav-arrow-left');
+  const rightButton = document.querySelector('.nav-arrow-right');
+  const list = document.querySelector('.nav-list');
+  const parentDiv = document.querySelector('.content-navigation');
+  
+  rightButton.addEventListener('click', (e) => {
+    scrollAmount = list.scrollWidth - parentDiv.clientWidth;
+    if (e.target.parentElement.classList.contains('arrow-right-active')) {
+    list.style.transition = 'margin-left .25s ease-in';
+    list.style.marginLeft = `-${scrollAmount + 10}px`;
+    updateButtons(leftButton, rightButton, parentDiv, list);
+    }
+  });
+}
+function scrollToLeft() {
+  const leftButton = document.querySelector('.nav-arrow-left');
+  const rightButton = document.querySelector('.nav-arrow-right');
+  const list = document.querySelector('.nav-list');
+  const parentDiv = document.querySelector('.content-navigation');
+  
+  leftButton.addEventListener('click', (e) => {
+    scrollAmount = list.scrollWidth - parentDiv.clientWidth;
+    if (e.target.parentElement.classList.contains('arrow-left-active')) {
+    list.style.transition = 'margin-left .25s ease-in';
+    list.style.marginLeft = scrollAmount;
+    updateButtons(leftButton, rightButton, parentDiv, list);
+    }
+  });
+}
+function updateButtons(leftBtn, rightBtn, parentDiv, list) {
+  if (scrollAmount > 0) {
+    leftBtn.style.visibility = 'visible';
+    parentDiv.classList.add('arrow-left-active');
+  } else {
+    leftBtn.style.visibility = 'hidden';
+    parentDiv.classList.remove('arrow-left-active');
+  }
+
+  if (-scrollAmount < list.scrollWidth - list.clientWidth) {
+    rightBtn.style.visibility = 'hidden';
+    parentDiv.classList.remove('arrow-right-active');
+  } else {
+    rightBtn.style.visibility = 'visible';
+    parentDiv.classList.add('arrow-right-active');
+  }
+}
+
+function handleContenNavMobile() {
+  const buttonSelector = document.getElementById('navMenuBtn');
+  buttonSelector.addEventListener('click', (e) => {
+    if (!e.target.parentElement.classList.contains('content-navigation-active')) {
+     // console.log('sibling:', e.target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.children[0].children[0].children[0]);
+      e.target.parentElement.classList.add('content-navigation-active');
+      e.target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.children[0].classList.add('mobile-only');
+      e.target.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.children[0].children[0].children[0].classList.add('nav-list-button-active');
+    } else {
+      e.target.parentElement.classList.remove('content-navigation-active');
+    }
   });
 }
 
 // ------------------------- bharath Code Start -------------------------------
+
+function lazyLoadCozyImages(block) {
+  const imageContainer = block.querySelectorAll('.all-model-card-img-container');
+
+  const lazyLoad = async (imageContainer) => {
+    const modelCode = imageContainer.getAttribute('data-model-code');
+    const pictureTag = await fetchCozyImageUrl(modelCode);
+    imageContainer.append(pictureTag);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const imageContainer = entry.target;
+        lazyLoad(imageContainer).then(() => observer.unobserve(imageContainer));
+      }
+    });
+  });
+
+  imageContainer.forEach((container) => {
+    observer.observe(container);
+  });
+}
 
 function generateGroupMarkUp(groupName, allModelfilteredArray) {
   const filterArrayBasedOnCategory = allModelfilteredArray.filter((model) => model['Category/Group'].includes(groupName));
@@ -224,14 +343,14 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
       const fuelDetails = model['Fuel Type'].split(',');
       fuelDetails.forEach((fuelType, index) => {
         if (index > 0) {
-          fuelTypeMarkUp += '<span class=\'all-model-fuel-type\'>•</span>';
+          fuelTypeMarkUp += '<span class=\'all-model-fuel-type\'> • </span>';
         }
         fuelTypeMarkUp += `<span class='all-model-fuel-type'>${placeholders[fuelType?.toLowerCase()?.trim()]}</span>`;
       });
 
       listOfModelsContainer.insertAdjacentHTML('beforeend', `
     <div class='all-model-card-container'>
-      <div class='all-model-card-img-container'>
+      <div class='all-model-card-img-container' data-model-code='${model['Model Code']}'>
 
       </div>
       <button class='all-model-card-btn'></button>
@@ -287,6 +406,9 @@ function generateAllModelMarkUp(allModelfilteredArray, block) {
 
   const z4GroupMarkUp = generateGroupMarkUp('Z4', allModelfilteredArray);
   if (z4GroupMarkUp.children.length > 0) allModelContainer.append(z4GroupMarkUp);
+
+  // lazy load cozy images
+  lazyLoadCozyImages(block);
 }
 
 function generateAllModelUi(block) {
@@ -298,7 +420,16 @@ function generateAllModelUi(block) {
   if (selectedFilterArray.length > 0) {
     allModelOverViewApiResponse.data.forEach((item) => {
       selectedFilterArray.forEach((selectedItem) => {
-        if ((selectedItem['Filter Type English'] === 'Fuel Type' && item['Fuel Type'].includes(selectedItem['Filter Name English']))
+        let convertedFuelTypes = '';
+        const fuelTypes = item['Fuel Type'].toLowerCase().split(',');
+        fuelTypes.forEach((fuelType, index) => {
+          if (index > 0) {
+            convertedFuelTypes += ',';
+          }
+          convertedFuelTypes += placeholders[fuelType.trim()]
+        });
+
+        if ((selectedItem['Filter Type English'] === 'Fuel Type' && convertedFuelTypes?.toLowerCase().includes(selectedItem['Filter Name English'].toLowerCase()))
           || (selectedItem['Filter Type English'] === 'Body Type' && item['Body Type'].includes(selectedItem['Filter Name English']))) {
           allModelfilteredArray.push(item);
         }
@@ -521,6 +652,26 @@ function filterBtnRowClickEvent(event) {
   }
 }
 
+function applyStickyNav() {
+  var nav = document.querySelector('.content-navigation');
+  var sticky = nav.offsetTop;
+  if (window.pageYOffset < sticky) {
+    nav.classList.add("sticky");
+  } else {
+    nav.classList.remove("sticky");
+  }
+}
+
+function handleTabletView() {
+  const isTabletView = viewPortWidth >= 768 && viewPortWidth <= 1024;
+  const rightArrow = document.querySelector('.nav-arrow-right');
+  const contentNav = document.querySelector('.content-navigation');
+  if (isTabletView) {
+    rightArrow.style.visibility = 'visible';
+    contentNav.classList.add('arrow-right-active');
+  }
+}
+
 export default async function decorate(block) {
   const [description, modelSpreadSheet] = [...block.children];
 
@@ -599,6 +750,64 @@ export default async function decorate(block) {
   const navBar = document.createElement('div');
   navBar.classList.add('content-navigation');
   allModelParentContainer.append(navBar);
+  const leftBtn = document.createElement('button');
+  leftBtn.classList.add('nav-arrow-left');
+  const rightBtn = document.createElement('button');
+  rightBtn.classList.add('nav-arrow-right');
+
+
+  navBar.innerHTML = `
+  <button class='content-nav-selected-value' id='navMenuBtn'>BMW i</button>
+  <div class='nav-background'></div>
+  <div class='nav-arrow-left'></div>
+  <div class="nav-arrow-right"></div>
+    <nav class='navbar-wrap'>
+      <ul class='nav-list'>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>BMW i</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>X</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>M</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>8</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>7</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>6</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>5</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>4</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>3</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>2</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>1</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Z4</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Concept cars</button>
+        </li>
+        <li class='nav-list-item'>
+          <button class='nav-list-button'>Protection Vehicles</button>
+        </li>
+      </ul>
+    </nav>
+  `;
 
   const allModelsContainer = document.createElement('div');
   allModelsContainer.classList.add('all-model-container');
@@ -607,4 +816,9 @@ export default async function decorate(block) {
   block.append(allModelParentContainer);
 
   generateSelectedFilterOptions(block);
+  handleContenNavMobile();
+  
+  handleTabletView();
+  scrollToRight();
+  scrollToLeft();
 }
