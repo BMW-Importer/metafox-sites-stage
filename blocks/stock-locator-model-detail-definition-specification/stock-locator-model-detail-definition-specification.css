@@ -1,6 +1,6 @@
 /******* stock locator Desktop ******/ 
 
-@media (width >= 1280px) and (width < 1920px) {
+@media (width >= 1280px) {
     .stock-locator-model-detail-definition-specification .dropdown-container {
         display: flex;
         flex-wrap: wrap;
@@ -16,7 +16,7 @@
 
     .stock-locator-container.relevance {
         display: flex;
-        order: 1;
+        order: 0;
     }
 
     .box-container {
@@ -376,7 +376,6 @@
     .description-popup-close-button {
         position: absolute;
         height: 2rem;
-        position: absolute;
         bottom: -24%;
         right: -4%;
         margin: 10px;
@@ -512,4 +511,85 @@
     border: 2px solid #1c69d4;
  }
  
+}
+
+@media (width >= 768px) and (width < 1024px) {
+    .stock-locator-model-detail-definition-specification-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .stock-locator-model-detail-definition-specification.block {
+        order: 1;
+    }
+
+    .filter-container {
+        order: 0;
+        display: flex;
+    }
+
+    .filter-btn {
+        min-height: 3.25rem;
+        min-width: 200px;
+        display: flex;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: .25rem;
+        color: #333;
+        background: #fff;
+        border-radius: 0;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2), 0 1px 2px 0 rgba(0, 0, 0, .1);
+    }
+
+    .icon-filter {
+        font-size: 1.5rem;
+    }
+
+    .icon-filter::before {
+        overflow-wrap: normal;
+        font-size: 1.5rem;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "filter";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        line-height: 1;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap;
+        color: #bbb; 
+    }
+
+    .filter-popup-container {
+        
+    }
+
+    .close-filter-popup::before {
+        overflow-wrap: normal;
+        font-size: 1.5rem;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-feature-settings: "liga";
+        content: "close";
+        direction: ltr;
+        display: block;
+        font-family: var(--icon-font-family);
+        opacity: var(--iconfont400-opacity);
+        font-style: normal;
+        line-height: 1;
+        text-rendering: optimizelegibility;
+        text-transform: none;
+        width: auto;
+        outline: transparent solid 1px;
+        white-space: nowrap;
+        color: black; 
+    }
 }

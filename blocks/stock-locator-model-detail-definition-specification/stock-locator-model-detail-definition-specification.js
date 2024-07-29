@@ -310,14 +310,14 @@ function pagination(meta, getStockLocatorVehicles) {
 // eslint-disable-next-line max-len
 function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles) {
   const showMoreButton = document.createElement('button');
-  const countDetails = count.textContent;
+  const countDetails = count?.textContent;
   let newStr = countDetails.replace(/{count}/, currentPage);
   newStr = newStr.replace(/{count}/, totalPages);
   showMoreButton.textContent = newStr;
   showMoreButton.classList.add('show-more-button');
-  document.querySelector('.stock-locator-model-detail-definition-specification-wrapper').appendChild(showMoreButton);
+  document.querySelector('.card-tile-wrapper').appendChild(showMoreButton);
   showMoreButton.addEventListener('click', () => {
-    showMoreButton.textContent = `Page ${currentPage} of ${totalPages}`;
+    showMoreButton.textContent = newStr;
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
     constructShowMoreUrl(
