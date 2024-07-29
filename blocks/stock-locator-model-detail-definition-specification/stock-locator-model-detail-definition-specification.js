@@ -123,7 +123,6 @@ function cardTiles(getStockLocatorVehicles) {
       // eslint-disable-next-line max-len
       model, powerKw, powerPs, priceInformation: { baseCurrencyCodeA, finalPriceWithTax }, groupReference,
     } = vehicle.attributes;
-    console.log(groupReference);
     const cardListElement = document.createElement('li');
     cardListElement.classList.add('card-tile-list-ele');
     const stockLocatorCard = document.createElement('div');
@@ -165,8 +164,8 @@ function cardTiles(getStockLocatorVehicles) {
     stockLocatorHideButton.classList.add('stock-locator-hide-button');
 
     const stockLocatorHideButtonLink = document.createElement('a');
+    stockLocatorHideButtonLink.href = `#/details/${groupReference}`;
     const StockLocatorHideButtonText = document.createElement('span');
-    // StockLocatorHideButtonText.textContent = 'Pogledajte detalje';
     stockLocatorHideButtonLink.appendChild(StockLocatorHideButtonText);
     stockLocatorHideButton.appendChild(stockLocatorHideButtonLink);
     stockLocatorCardButtonContainer.appendChild(stockLocatorHideButton);
@@ -726,6 +725,30 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
   return response.json();
 }
 
+function createLoadingIconDom() {
+  const loadingIcon = document.createElement('div');
+  const loadSpinnerContainer = document.createElement('img');
+  loadSpinnerContainer.classList.add('loader-spinner');
+  loadSpinnerContainer.classList.add('hidden');
+  loadingIcon.classList.add('loading-icon');
+  loadingIcon.appendChild(loadSpinnerContainer);
+  document.querySelector('.stock-locator-model-overview-properties-container').append(loadingIcon);
+}
+
+function showLoadingIcon() {
+  const loadSpinnerContainer = document.querySelector('.loader-spinner');
+  if (loadSpinnerContainer) {
+    loadSpinnerContainer.classList.remove('hidden');
+  }
+}
+
+function hideLoadingIcon() {
+  const loadSpinnerContainer = document.querySelector('.loader-spinner');
+  if (loadSpinnerContainer) {
+    loadSpinnerContainer.classList.add('hidden');
+  }
+}
+
 export default async function decorate(block) {
   const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
@@ -758,5 +781,7 @@ export default async function decorate(block) {
   setTimeout(() => {
     createRelevanceDropdown(dropDownContainer);
     vehicleFiltersAPI();
-  }, 400);
+  }, 1000);
+  createLoadingIconDom();
+  showLoadingIcon();
 }
