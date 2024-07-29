@@ -253,40 +253,40 @@ function generateAllModelMarkUp(allModelfilteredArray, block) {
 
   // bmwi models
   const bmwiGroupMarkUp = generateGroupMarkUp('i', allModelfilteredArray);
-  allModelContainer.append(bmwiGroupMarkUp);
+  if (bmwiGroupMarkUp.children.length > 0) allModelContainer.append(bmwiGroupMarkUp);
 
   const xGroupMarkUp = generateGroupMarkUp('X', allModelfilteredArray);
-  allModelContainer.append(xGroupMarkUp);
+  if (xGroupMarkUp.children.length > 0) allModelContainer.append(xGroupMarkUp);
 
   const mGroupMarkUp = generateGroupMarkUp('M', allModelfilteredArray);
-  allModelContainer.append(mGroupMarkUp);
+  if (mGroupMarkUp.children.length > 0) allModelContainer.append(mGroupMarkUp);
 
   const eightGroupMarkUp = generateGroupMarkUp('8', allModelfilteredArray);
-  allModelContainer.append(eightGroupMarkUp);
+  if (eightGroupMarkUp.children.length > 0) allModelContainer.append(eightGroupMarkUp);
 
   const sevenGroupMarkUp = generateGroupMarkUp('7', allModelfilteredArray);
-  allModelContainer.append(sevenGroupMarkUp);
+  if (sevenGroupMarkUp.children.length > 0) allModelContainer.append(sevenGroupMarkUp);
 
   const sixGroupMarkUp = generateGroupMarkUp('6', allModelfilteredArray);
-  allModelContainer.append(sixGroupMarkUp);
+  if (sixGroupMarkUp.children.length > 0) allModelContainer.append(sixGroupMarkUp);
 
   const fiveGroupMarkUp = generateGroupMarkUp('5', allModelfilteredArray);
-  allModelContainer.append(fiveGroupMarkUp);
+  if (fiveGroupMarkUp.children.length > 0) allModelContainer.append(fiveGroupMarkUp);
 
   const fourGroupMarkUp = generateGroupMarkUp('4', allModelfilteredArray);
-  allModelContainer.append(fourGroupMarkUp);
+  if (fourGroupMarkUp.children.length > 0) allModelContainer.append(fourGroupMarkUp);
 
   const threeGroupMarkUp = generateGroupMarkUp('3', allModelfilteredArray);
-  allModelContainer.append(threeGroupMarkUp);
+  if (threeGroupMarkUp.children.length > 0) allModelContainer.append(threeGroupMarkUp);
 
   const twoGroupMarkUp = generateGroupMarkUp('2', allModelfilteredArray);
-  allModelContainer.append(twoGroupMarkUp);
+  if (twoGroupMarkUp.children.length > 0) allModelContainer.append(twoGroupMarkUp);
 
   const oneGroupMarkUp = generateGroupMarkUp('1', allModelfilteredArray);
-  allModelContainer.append(oneGroupMarkUp);
+  if (oneGroupMarkUp.children.length > 0) allModelContainer.append(oneGroupMarkUp);
 
   const z4GroupMarkUp = generateGroupMarkUp('Z4', allModelfilteredArray);
-  allModelContainer.append(z4GroupMarkUp);
+  if (z4GroupMarkUp.children.length > 0) allModelContainer.append(z4GroupMarkUp);
 }
 
 function generateAllModelUi(block) {
