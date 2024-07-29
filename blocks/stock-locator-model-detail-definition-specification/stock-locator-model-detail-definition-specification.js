@@ -384,7 +384,7 @@ async function constructShowMoreUrl(
   cardTiles(allFetchedVehicles);
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset >= pageCount) {
-    console.log()
+    console.log('+++++++++++++++++++ remove load more btn');
     const showMoreButton = document.querySelector('.show-more-button');
     if (showMoreButton) {
       showMoreButton.remove();
@@ -416,7 +416,6 @@ async function handleCheckBoxSelection() {
     const filterLabelHeading = filterList.previousElementSibling;
     const checkboxes = filterList.querySelectorAll('.filter-checkbox');
     const headingText = filterLabelHeading.textContent;
-
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener('change', async () => {
         if (checkbox.checked) {
@@ -440,17 +439,33 @@ async function handleCheckBoxSelection() {
           }
         }
 
-        // update the filter DOM value after selection // not applied
+        // update the filter DOM value after selection
         // update the Vehicle DOM after selection
         // eslint-disable-next-line no-use-before-define
         updateSelectedValues(selectedValues);
         // eslint-disable-next-line no-use-before-define
         vehicleURL = constructVehicleUrl(selectedValues);
+        const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
+        // eslint-disable-next-line no-use-before-define
+        updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
+        // createStockLocatorFilter(getStockLocatorSelectedFilter?.data?.attributes);
         const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
+        console.log(getStockLocatorSelectedFilter);
         cardTiles(getStockLocatorVehicles);
       });
     });
   });
+}
+
+function updateFilterDropDownValuePostSelection(newFilterData) {
+  console.log(newFilterData);
+  /* need to update the dropdown value on basis of new filteredData */
+  // eslint-disable-next-line no-use-before-define
+  newProcessFilterData(newFilterData?.series, 'series');
+  // eslint-disable-next-line no-use-before-define
+  newProcessFilterData(newFilterData?.driveType, 'driveType');
+  // eslint-disable-next-line no-use-before-define
+  newProcessFilterData(newFilterData?.fuel, 'fuel');
 }
 
 function constructVehicleUrl(selectedValues) {
@@ -589,7 +604,6 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   filterContainer.appendChild(boxContainer);
   dropDownContainer.append(filterContainer, selectedFilterList);
   document.querySelector('.stock-locator-model-detail-definition-specification').append(dropDownContainer);
-
   handleMobileSeriesFilter();
   return filterContainer;
 }
@@ -619,6 +633,50 @@ async function processFilterData(filterData, typeKey, dropDownContainer) {
     filterResponseData.push(responseData);
   });
   stockLocatorFilterDom(filterResponseData, typeKey, dropDownContainer);
+}
+
+async function newProcessFilterData(filterData, typeKey) {
+  if (!filterData) return;
+  const sortedFilterData = sortFilterResponse(filterData);
+  const filterResponseData = [];
+
+  sortedFilterData.forEach((data) => {
+    const responseData = data || '';
+    filterResponseData.push(responseData);
+  });
+  updateStockLocatorFilterDom(filterResponseData, typeKey);
+}
+
+function updateStockLocatorFilterDom(filterResponseData, typeKey) {
+  const filterList = document.querySelector(`.${typeKey}-list`);
+  if (!filterList) {
+    console.error(`Filter list with typeKey ${typeKey} not found.`);
+    return;
+  }
+
+  // Clear the existing list items
+  filterList.innerHTML = '';
+
+  // Populate with new filterResponseData
+  filterResponseData.forEach((item) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('filter-item', `${typeKey}-item`);
+
+    const checkbox = document.createElement('input');
+    checkbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+    checkbox.type = 'checkbox';
+    checkbox.id = item.id;
+    checkbox.disabled = item.count === 0;
+
+    const label = document.createElement('label');
+    label.htmlFor = item.id;
+    label.textContent = `${item.label} (${item.count})`;
+
+    listItem.appendChild(checkbox);
+    listItem.appendChild(label);
+    filterList.appendChild(listItem);
+  });
+  handleCheckBoxSelection();
 }
 
 function createStockLocatorFilter(filterResponse, dropDownContainer) {

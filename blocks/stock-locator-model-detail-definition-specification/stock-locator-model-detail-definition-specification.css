@@ -60,7 +60,6 @@
     .stocklocator-card-img {
         width : 350px;
         height: 150px;
-        background: red;
     }
 
     
@@ -139,6 +138,10 @@
         flex-wrap: wrap;
         padding-top: 20px;
     }
+
+    .filter-checkbox:disabled + label {
+        color: #ccc;
+      }
 
     .stock-locator-container.relevance .filter-item-relevance.selected::after {
         content: 'checkmark';
