@@ -287,7 +287,7 @@ function cardTiles(getStockLocatorVehicles) {
   cardContainer.append(cardList);
   cardWrapper.append(cardContainer);
   document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
-  // eslint-disable-next-line no-use-before-, no-use-before-define
+  // eslint-disable-next-line no-use-before-define
   pagination(getStockLocatorVehicles.meta, getStockLocatorVehicles);
 }
 
@@ -309,15 +309,25 @@ function pagination(meta, getStockLocatorVehicles) {
 
 // eslint-disable-next-line max-len
 function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles) {
+  const showMoreContainer = document.createElement('div');
+  showMoreContainer.classList.add('show-more-container');
+
+  const vehicleCountWrapper = document.createElement('div');
+  vehicleCountWrapper.classList.add('vehicle-count-wrapper');
+
   const showMoreButton = document.createElement('button');
   const countDetails = count?.textContent;
-  let newStr = countDetails.replace(/{count}/, currentPage);
-  newStr = newStr.replace(/{count}/, totalPages);
-  showMoreButton.textContent = newStr;
+
+  let newStr = countDetails.replace(/{count}/, getStockLocatorVehicles.data.length);
+  newStr = newStr.replace(/{count}/, pageCount);
+
+  showMoreButton.textContent = 'Load More';
+  showMoreContainer.appendChild(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
-  document.querySelector('.card-tile-wrapper').appendChild(showMoreButton);
+  showMoreContainer.appendChild(showMoreButton);
+  vehicleCountWrapper.textContent = newStr;
+  document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
-    showMoreButton.textContent = newStr;
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
     constructShowMoreUrl(
@@ -371,10 +381,10 @@ async function constructShowMoreUrl(
     allFetchedVehicles.meta = showMoreCardRes.meta || {};
   }
   console.log(allFetchedVehicles);
-  // Display the combined data
   cardTiles(allFetchedVehicles);
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset >= pageCount) {
+    console.log()
     const showMoreButton = document.querySelector('.show-more-button');
     if (showMoreButton) {
       showMoreButton.remove();
@@ -400,7 +410,6 @@ async function vehicleFiltersAPI() {
 }
 
 async function handleCheckBoxSelection() {
-  showLoadingIcon();
   const filterLists = document.querySelectorAll('.filter-list');
   const selectedValues = {};
   filterLists.forEach((filterList) => {
@@ -442,7 +451,6 @@ async function handleCheckBoxSelection() {
       });
     });
   });
-  hideLoadingIcon();
 }
 
 function constructVehicleUrl(selectedValues) {
@@ -544,7 +552,6 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
 
   const filterHeading = document.createElement('span');
   filterHeading.classList.add('filter-label', `${typeKey}-label`);
-  filterHeading.textContent = typeKey.charAt(0).toUpperCase() + typeKey.slice(1);
 
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
@@ -753,7 +760,11 @@ export function showLoadingIcon() {
 export default async function decorate(block) {
   const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
-  stockLocatorFiltersAPI(dropDownContainer);
+
+  // Call stockLocatorFiltersAPI and wait for it to finish
+  await stockLocatorFiltersAPI(dropDownContainer);
+
+  // Proceed with the rest of the operations
   const props = [...block.children].map((row) => row.firstElementChild);
   const env = document.querySelector('meta[name="env"]').content;
   let publishDomain = '';
@@ -778,11 +789,14 @@ export default async function decorate(block) {
     }
   });
 
+  // Clear block content and set up loading icon
   block.textContent = '';
-  setTimeout(() => {
-    createRelevanceDropdown(dropDownContainer);
-    vehicleFiltersAPI();
-    hideLoadingIcon();
-  }, 1000);
   createLoadingIconDom();
+
+  // Wait for relevance dropdown creation and vehicle filters API call
+  await createRelevanceDropdown(dropDownContainer);
+  await vehicleFiltersAPI();
+
+  // Hide loading icon after all tasks are complete
+  hideLoadingIcon();
 }
