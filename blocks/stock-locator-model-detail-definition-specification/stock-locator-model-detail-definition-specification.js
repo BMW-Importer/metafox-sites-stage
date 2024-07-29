@@ -458,7 +458,6 @@ async function handleCheckBoxSelection() {
 }
 
 function updateFilterDropDownValuePostSelection(newFilterData) {
-  console.log(newFilterData);
   /* need to update the dropdown value on basis of new filteredData */
   // eslint-disable-next-line no-use-before-define
   newProcessFilterData(newFilterData?.series, 'series');
