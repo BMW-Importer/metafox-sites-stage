@@ -500,25 +500,51 @@ function updateFilterDropDownValuePostSelection(newFilterData) {
   // eslint-disable-next-line no-use-before-define
   newProcessFilterData(newFilterData?.series, 'series');
   // eslint-disable-next-line no-use-before-define
-  newProcessFilterData(newFilterData?.driveType, 'driveType');
-  // eslint-disable-next-line no-use-before-define
   newProcessFilterData(newFilterData?.fuel, 'fuel');
+  // eslint-disable-next-line no-use-before-define
+  newProcessFilterData(newFilterData?.driveType, 'driveType');
 }
 
 function constructVehicleUrl(selectedValues) {
-  const urlParams = [];
-  if (selectedValues['Series'] && selectedValues['Series'].length > 0) {
-    urlParams.push(`series=${selectedValues['Series'].join(',')}`);
+  // Define a mapping for filter keys to their corresponding query parameter names
+  const keyMapping = {
+    Drivetrain: 'driveType',
+    'Fuel Type': 'fuel',
+    Series: 'series',
+  };
+
+  // Get the current URL
+  const currentUrl = new URL(window.location.href);
+  const searchParams = new URLSearchParams(currentUrl.search);
+  const mergeValues = (key, newValues) => {
+    if (newValues && newValues.length > 0) {
+      const existingValues = searchParams.get(key) ? searchParams.get(key).split(',') : [];
+      const mergedValues = Array.from(new Set([...existingValues, ...newValues]));
+      const encodedValues = mergedValues.map((value) => encodeURIComponent(value));
+      searchParams.set(key, encodedValues.join(','));
+    } else {
+      searchParams.delete(key);
+    }
+  };
+
+  // Iterate over selectedValues and update searchParams for each key
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, values] of Object.entries(selectedValues)) {
+    if (values && values.length > 0) {
+      const queryKey = keyMapping[key] || key;
+      mergeValues(queryKey, values);
+    } else {
+      const queryKey = keyMapping[key] || key;
+      searchParams.delete(queryKey);
+    }
   }
-  if (selectedValues['Fuel Type'] && selectedValues['Fuel Type'].length > 0) {
-    urlParams.push(`fuel=${selectedValues['Fuel Type'].join(',')}`);
-  }
-  if (selectedValues['Drive Train'] && selectedValues['Drive Train'].length > 0) {
-    urlParams.push(`driveType=${selectedValues['Drive Train'].join(',')}`);
-  }
-  const fullUrl = `${urlParams.join('&')}`;
-  document.querySelector('body').setAttribute('data-vehicle-url', fullUrl);
-  return fullUrl;
+
+  const paramsString = Array.from(searchParams).map(([key, value]) => `${key}=${value}`).join('&');
+  const newUrl = `${currentUrl.pathname}?${paramsString}`;
+  history.replaceState(null, '', newUrl);
+  document.querySelector('body').setAttribute('data-vehicle-url', paramsString);
+  console.log(paramsString);
+  return paramsString;
 }
 
 function resetAllFilters(values) {
@@ -535,9 +561,7 @@ function resetAllFilters(values) {
   values.DriveType = '';
   values.Fuel = '';
   values.Series = '';
-
   updateSelectedValues(values);
-
   currentlyOpenDropdown.style.display = 'none';
   currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   vehicleURL = constructVehicleUrl(values);
@@ -554,23 +578,32 @@ function createResetFilterButton(values) {
   resetAnchor.textContent = 'Reset The filters';
   resetFilterElement.append(resetAnchor);
   resetFilterElement.addEventListener('click', () => {
-    console.log('Reset filters button clicked');
     resetAllFilters(values); // Updated to not pass `values` directly
   });
   return resetFilterElement;
 }
 
-function updateSelectedValues(values) {
+function updateSelectedValues(newValues) {
+  const mergedValues = { ...newValues };
+  const existingSelectedValues = JSON.parse(document.querySelector('body').getAttribute('data-selected-values')) || {};
+  // Merge existing values with new values
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [heading, valuesArray] of Object.entries(existingSelectedValues)) {
+    if (valuesArray.length > 0) {
+      if (!mergedValues[heading]) {
+        mergedValues[heading] = [];
+      }
+      mergedValues[heading] = Array.from(new Set([...mergedValues[heading], ...valuesArray]));
+    }
+  }
   const selectedList = document.querySelector('.series-selected-list');
   selectedList.innerHTML = '';
-
   let hasSelectedValues = false;
 
   // eslint-disable-next-line no-restricted-syntax, no-unused-vars
-  for (const [heading, valuesArray] of Object.entries(values)) {
+  for (const [heading, valuesArray] of Object.entries(mergedValues)) {
     if (valuesArray.length > 0) {
       hasSelectedValues = true;
-
       valuesArray.forEach((value) => {
         const valueElement = document.createElement('div');
         valueElement.classList.add('selected-filter-value');
@@ -584,10 +617,14 @@ function updateSelectedValues(values) {
     }
   }
 
+  // Store the merged selected values back to data-attribute or other storage
+  document.querySelector('body').setAttribute('data-selected-values', JSON.stringify(mergedValues));
+
+  // Reset button management
   const existingResetButton = document.querySelector('.reset-filter-not-desktop');
   const viewport = window.innerWidth;
   if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
-    const resetFilterElement = createResetFilterButton(values);
+    const resetFilterElement = createResetFilterButton(mergedValues);
     document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
   }
 
@@ -602,17 +639,17 @@ function updateSelectedValues(values) {
 
     selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
     resetFilterElement.addEventListener('click', () => {
-      resetAllFilters(values);
+      resetAllFilters(mergedValues);
     });
   }
-  handleCancelSelectedValue(values);
+  handleCancelSelectedValue(mergedValues);
 }
 
 function showFilterLabel(typeKey) {
   let filterLabel;
   const filterLabelHeading = typeKey.charAt(0).toUpperCase() + typeKey.slice(1);
   if (filterLabelHeading === 'DriveType') {
-    filterLabel = 'Drive Train';
+    filterLabel = 'Drivetrain';
   }
   if (filterLabelHeading === 'Fuel') {
     filterLabel = 'Fuel Type';
@@ -643,26 +680,20 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
   filterLabelHeading.textContent = showFilterLabel(typeKey);
-  // (typeKey.charAt(0).toUpperCase() + typeKey.slice(1));
-  //  (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'DriveType' ? 'Drive Train': (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'Fule';
   const filterList = document.createElement('ul');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
   const selectedFilterList = document.createElement('div');
   selectedFilterList.classList.add('selected-filter-list', `${typeKey}-selected-list`);
-
   filterData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('filter-item', `${typeKey}-item`);
-
     const checkbox = document.createElement('input');
     checkbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
     checkbox.type = 'checkbox';
     checkbox.id = item.id;
-
     const label = document.createElement('label');
     label.htmlFor = item.id;
     label.textContent = `${item.label} (${item.count})`;
-
     listItem.appendChild(checkbox);
     listItem.appendChild(label);
     filterList.appendChild(listItem);
@@ -721,17 +752,14 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
   filterResponseData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('filter-item', `${typeKey}-item`);
-
     const checkbox = document.createElement('input');
     checkbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
     checkbox.type = 'checkbox';
     checkbox.id = item.id;
     checkbox.disabled = item.count === 0;
-
     const label = document.createElement('label');
     label.htmlFor = item.id;
     label.textContent = `${item.label} (${item.count})`;
-
     listItem.appendChild(checkbox);
     listItem.appendChild(label);
     filterList.appendChild(listItem);
@@ -743,7 +771,6 @@ async function newProcessFilterData(filterData, typeKey) {
   if (!filterData) return;
   const sortedFilterData = sortFilterResponse(filterData);
   const filterResponseData = [];
-
   sortedFilterData.forEach((data) => {
     const responseData = data || '';
     filterResponseData.push(responseData);
@@ -753,8 +780,8 @@ async function newProcessFilterData(filterData, typeKey) {
 
 function createStockLocatorFilter(filterResponse, dropDownContainer) {
   processFilterData(filterResponse?.series, 'series', dropDownContainer);
-  processFilterData(filterResponse?.driveType, 'driveType', dropDownContainer);
   processFilterData(filterResponse?.fuel, 'fuel', dropDownContainer);
+  processFilterData(filterResponse?.driveType, 'driveType', dropDownContainer);
   handleToggleFilterDropDown();
 }
 
@@ -764,8 +791,8 @@ function handleRelevanceSingleSelect() {
   const items = relevanceDropdown.querySelectorAll('.filter-item-relevance');
   items.forEach((item) => {
     item.addEventListener('click', () => {
-      items.forEach((i) => i.classList.remove('selected')); // Deselect all items
-      item.classList.add('selected'); // Select the clicked item
+      items.forEach((i) => i.classList.remove('selected'));
+      item.classList.add('selected');
     });
   });
 }
