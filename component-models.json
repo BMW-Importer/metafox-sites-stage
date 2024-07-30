@@ -4873,7 +4873,8 @@
         "component": "text-input",
         "name": "analytics_label",
         "label": "Analytics Label",
-        "valueType": "string"
+        "valueType": "string",
+        "description": "Defines a brief description of the content for analytics. Please fill out this field in English."
       }
     ]
   },
@@ -4939,25 +4940,11 @@
       "valueType": "string"
     },
     {
-      "component": "text",
-      "name": "content_spreadsheet1Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
-    },
-    {
       "component": "aem-content",
-      "name": "content_spreadsheet2",
+      "name": "model_spreadsheet2",
       "description": "Contains all models labels and details (e.g. model name, model code, price etc.).",
       "label": "Model Overview Spreadsheet",
       "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "content_spreadsheet2Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
     },
     {
       "component":"tab",
@@ -5086,7 +5073,7 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "mp_general_infoIcon",
         "label": "Info Icon Text",
         "valueType": "string",
@@ -5101,7 +5088,7 @@
         "description": "Defines the text displaying the number of results being displayed above the show more results button."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "mp_general_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
@@ -5165,7 +5152,7 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "content_infoIconText",
         "label": "Info Icon Text",
         "valueType": "string",
@@ -5179,7 +5166,7 @@
         "description": "Defines the fallback image to be displayed if there is no defined image for the vehicle options."
       },
       {
-        "component": "reference",
+        "component": "aem-content-fragment",
         "name": "content_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
