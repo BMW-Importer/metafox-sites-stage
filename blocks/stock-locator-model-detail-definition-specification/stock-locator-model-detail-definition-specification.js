@@ -316,10 +316,6 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, get
   vehicleCountWrapper.classList.add('vehicle-count-wrapper');
 
   const showMoreButton = document.createElement('button');
-  const countDetails = count?.textContent;
-
-  //  let newStr = countDetails.replace(/{count}/, getStockLocatorVehicles.data.length);
-  // newStr = newStr.replace(/{count}/, pageCount);
 
   showMoreButton.textContent = 'Load More';
   showMoreContainer.appendChild(vehicleCountWrapper);
@@ -397,6 +393,48 @@ function sortVehiclesByPrice(getStockLocatorVehicles) {
     const priceA = a.attributes.priceInformation.finalPriceWithTax.max;
     const priceB = b.attributes.priceInformation.finalPriceWithTax.max;
     return priceB - priceA; // Descending order
+  });
+}
+
+function popupButton() {
+  const infoButtons = document.querySelectorAll('.description-popup-button');
+  const popupTexts = document.querySelectorAll('.description-popup-container');
+  const closeButtons = document.querySelectorAll('.description-popup-close-button');
+  const toggleButtons = document.querySelectorAll('.popup-toggle-button');
+  const descriptionPopupDisclaimers = document.querySelectorAll('.description-popup-disclaimer');
+
+  infoButtons.forEach((infoButton, index) => {
+    const popupText = popupTexts[index];
+    const closeButton = closeButtons[index];
+    const toggleButton = toggleButtons[index];
+    const descriptionPopupDisclaimer = descriptionPopupDisclaimers[index];
+
+    infoButton.addEventListener('click', () => {
+      popupText.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+      popupText.style.display = 'none';
+    });
+
+    toggleButton.addEventListener('click', () => {
+      if (descriptionPopupDisclaimer.style.height === '100px' || descriptionPopupDisclaimer.style.height === '') {
+        descriptionPopupDisclaimer.style.height = 'max-content';
+        toggleButton.classList.add('up-arrow');
+        toggleButton.classList.remove('down-arrow');
+      } else {
+        descriptionPopupDisclaimer.style.height = '100px';
+        toggleButton.classList.add('down-arrow');
+        toggleButton.classList.remove('up-arrow');
+      }
+    });
+
+    // Optional: Click outside to close the popup
+    document.addEventListener('click', (event) => {
+      if (!popupText.contains(event.target) && !infoButton.contains(event.target)) {
+        popupText.style.display = 'none';
+      }
+    });
   });
 }
 
@@ -480,50 +518,7 @@ function constructVehicleUrl(selectedValues) {
   }
   const fullUrl = `${urlParams.join('&')}`;
   document.querySelector('body').setAttribute('data-vehicle-url', fullUrl);
-  console.log(fullUrl);
   return fullUrl;
-}
-
-function updateSelectedValues(values) {
-  const selectedList = document.querySelector('.series-selected-list');
-  selectedList.innerHTML = '';
-
-  let hasSelectedValues = false;
-
-  // eslint-disable-next-line no-restricted-syntax, no-unused-vars
-  for (const [heading, valuesArray] of Object.entries(values)) {
-    debugger
-    if (valuesArray.length > 0) {
-      hasSelectedValues = true;
-
-      valuesArray.forEach((value) => {
-        const valueElement = document.createElement('div');
-        valueElement.classList.add('selected-filter-value');
-        const eleSpan = document.createElement('span');
-        eleSpan.textContent = value;
-        const cancelElement = document.createElement('a');
-        cancelElement.classList.add('cancel-filter');
-        valueElement.append(eleSpan, cancelElement);
-        selectedList.append(valueElement);
-      });
-    }
-  }
-
-  if (!document.querySelector('.reset-filter') && hasSelectedValues) {
-    const resetFilterElement = document.createElement('div');
-    resetFilterElement.classList.add('reset-filter');
-    const resetSpan = document.createElement('span');
-    resetSpan.textContent = 'Reset The filters';
-    const resetAnchor = document.createElement('a');
-    resetAnchor.classList.add('reset-filter-link');
-    resetFilterElement.append(resetSpan, resetAnchor);
-
-    selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
-    resetFilterElement.addEventListener('click', () => {
-      resetAllFilters(values);
-    });
-  }
-  handleCancelSelectedValue(values);
 }
 
 function resetAllFilters(values) {
@@ -551,6 +546,68 @@ function resetAllFilters(values) {
   getStockLocatorVehiclesData(vehicleURL);
 }
 
+function createResetFilterButton(values) {
+  const resetFilterElement = document.createElement('div');
+  resetFilterElement.classList.add('reset-filter-not-desktop');
+
+  const resetAnchor = document.createElement('a');
+  resetAnchor.textContent = 'Reset The filters';
+  resetFilterElement.append(resetAnchor);
+  resetFilterElement.addEventListener('click', () => {
+    console.log('Reset filters button clicked');
+    resetAllFilters(values); // Updated to not pass `values` directly
+  });
+  return resetFilterElement;
+}
+
+function updateSelectedValues(values) {
+  const selectedList = document.querySelector('.series-selected-list');
+  selectedList.innerHTML = '';
+
+  let hasSelectedValues = false;
+
+  // eslint-disable-next-line no-restricted-syntax, no-unused-vars
+  for (const [heading, valuesArray] of Object.entries(values)) {
+    if (valuesArray.length > 0) {
+      hasSelectedValues = true;
+
+      valuesArray.forEach((value) => {
+        const valueElement = document.createElement('div');
+        valueElement.classList.add('selected-filter-value');
+        const eleSpan = document.createElement('span');
+        eleSpan.textContent = value;
+        const cancelElement = document.createElement('a');
+        cancelElement.classList.add('cancel-filter');
+        valueElement.append(eleSpan, cancelElement);
+        selectedList.append(valueElement);
+      });
+    }
+  }
+
+  const existingResetButton = document.querySelector('.reset-filter-not-desktop');
+  const viewport = window.innerWidth;
+  if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
+    const resetFilterElement = createResetFilterButton(values);
+    document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
+  }
+
+  if (!document.querySelector('.reset-filter') && hasSelectedValues) {
+    const resetFilterElement = document.createElement('div');
+    resetFilterElement.classList.add('reset-filter');
+    const resetSpan = document.createElement('span');
+    resetSpan.textContent = 'Reset The filters';
+    const resetAnchor = document.createElement('a');
+    resetAnchor.classList.add('reset-filter-link');
+    resetFilterElement.append(resetSpan, resetAnchor);
+
+    selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
+    resetFilterElement.addEventListener('click', () => {
+      resetAllFilters(values);
+    });
+  }
+  handleCancelSelectedValue(values);
+}
+
 function showFilterLabel(typeKey) {
   let filterLabel;
   const filterLabelHeading = typeKey.charAt(0).toUpperCase() + typeKey.slice(1);
@@ -560,11 +617,9 @@ function showFilterLabel(typeKey) {
   if (filterLabelHeading === 'Fuel') {
     filterLabel = 'Fuel Type';
   }
-
   if (filterLabelHeading === 'Series') {
     filterLabel = 'Series';
   }
-
   return filterLabel;
 }
 
@@ -588,14 +643,10 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
   filterLabelHeading.textContent = showFilterLabel(typeKey);
-
   // (typeKey.charAt(0).toUpperCase() + typeKey.slice(1));
-  
-  //(typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'DriveType' ? 'Drive Train': (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'Fule';
-  
+  //  (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'DriveType' ? 'Drive Train': (typeKey.charAt(0).toUpperCase() + typeKey.slice(1)) === 'Fule';
   const filterList = document.createElement('ul');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
-
   const selectedFilterList = document.createElement('div');
   selectedFilterList.classList.add('selected-filter-list', `${typeKey}-selected-list`);
 
@@ -656,18 +707,6 @@ async function processFilterData(filterData, typeKey, dropDownContainer) {
   stockLocatorFilterDom(filterResponseData, typeKey, dropDownContainer);
 }
 
-async function newProcessFilterData(filterData, typeKey) {
-  if (!filterData) return;
-  const sortedFilterData = sortFilterResponse(filterData);
-  const filterResponseData = [];
-
-  sortedFilterData.forEach((data) => {
-    const responseData = data || '';
-    filterResponseData.push(responseData);
-  });
-  updateStockLocatorFilterDom(filterResponseData, typeKey);
-}
-
 function updateStockLocatorFilterDom(filterResponseData, typeKey) {
   const filterList = document.querySelector(`.${typeKey}-list`);
   if (!filterList) {
@@ -700,59 +739,23 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
   handleCheckBoxSelection();
 }
 
+async function newProcessFilterData(filterData, typeKey) {
+  if (!filterData) return;
+  const sortedFilterData = sortFilterResponse(filterData);
+  const filterResponseData = [];
+
+  sortedFilterData.forEach((data) => {
+    const responseData = data || '';
+    filterResponseData.push(responseData);
+  });
+  updateStockLocatorFilterDom(filterResponseData, typeKey);
+}
+
 function createStockLocatorFilter(filterResponse, dropDownContainer) {
   processFilterData(filterResponse?.series, 'series', dropDownContainer);
   processFilterData(filterResponse?.driveType, 'driveType', dropDownContainer);
   processFilterData(filterResponse?.fuel, 'fuel', dropDownContainer);
   handleToggleFilterDropDown();
-}
-
-function popupButton() {
-  const infoButtons = document.querySelectorAll('.description-popup-button');
-  const popupTexts = document.querySelectorAll('.description-popup-container');
-  const closeButtons = document.querySelectorAll('.description-popup-close-button');
-  const toggleButtons = document.querySelectorAll('.popup-toggle-button');
-  const descriptionPopupDisclaimers = document.querySelectorAll('.description-popup-disclaimer');
-
-  infoButtons.forEach((infoButton, index) => {
-    const popupText = popupTexts[index];
-    const closeButton = closeButtons[index];
-    const toggleButton = toggleButtons[index];
-    const descriptionPopupDisclaimer = descriptionPopupDisclaimers[index];
-
-    infoButton.addEventListener('click', () => {
-      popupText.style.display = 'block';
-    });
-
-    closeButton.addEventListener('click', () => {
-      popupText.style.display = 'none';
-    });
-
-    toggleButton.addEventListener('click', () => {
-      if (descriptionPopupDisclaimer.style.height === '100px' || descriptionPopupDisclaimer.style.height === '') {
-        descriptionPopupDisclaimer.style.height = 'max-content';
-        toggleButton.classList.add('up-arrow');
-        toggleButton.classList.remove('down-arrow');
-      } else {
-        descriptionPopupDisclaimer.style.height = '100px';
-        toggleButton.classList.add('down-arrow');
-        toggleButton.classList.remove('up-arrow');
-      }
-    });
-
-    // Optional: Click outside to close the popup
-    document.addEventListener('click', (event) => {
-      if (!popupText.contains(event.target) && !infoButton.contains(event.target)) {
-        popupText.style.display = 'none';
-      }
-    });
-  });
-}
-
-async function stockLocatorFiltersAPI(dropDownContainer) {
-  const stockLocatorFilterResponse = await getStockLocatorFiltersData();
-  const stockLocatorFilterData = stockLocatorFilterResponse.data.attributes;
-  createStockLocatorFilter(stockLocatorFilterData, dropDownContainer);
 }
 
 // Function to handle single select for relevance dropdown
@@ -805,6 +808,70 @@ function createRelevanceDropdown(dropDownContainer) {
 
   document.querySelector('.stock-locator-model-detail-definition-specification').append(dropDownContainer);
   handleRelevanceSingleSelect();
+}
+
+//  added filterUi for Tablet
+function closeModelPopup() {
+  const parentWrapper = document.querySelector('.stock-locator-model-detail-definition-specification-wrapper');
+  parentWrapper.classList.remove('filter-model-popup');
+  const dropdown = document.querySelector('.dropdown-container');
+  const resetFilter = document.querySelector('.reset-filter-not-desktop');
+  const relevanceContent = document.querySelector('.relevance-container');
+  const filterBtn = document.querySelector('.filter-container');
+
+  dropdown.style.display = 'none';
+  if (resetFilter) {
+    resetFilter.style.display = 'none';
+  }
+  relevanceContent.style.display = 'flex';
+  filterBtn.style.display = 'flex';
+}
+
+// open filter button for tablet -
+function openFilterPopup() {
+  const parentWrapper = document.querySelector('.stock-locator-model-detail-definition-specification-wrapper');
+  parentWrapper.classList.add('filter-model-popup');
+  const filterPopupContainer = document.createElement('div');
+  filterPopupContainer.classList.add('filter-popup-container');
+  const closeFilterPopupButton = document.createElement('a');
+  closeFilterPopupButton.classList.add('close-filter-popup');
+  const dropdown = document.querySelector('.dropdown-container');
+  const relevanceContent = document.querySelector('.relevance-container');
+  const filterBtn = document.querySelector('.filter-container');
+  const resetFilter = document.querySelector('.reset-filter-not-desktop');
+  parentWrapper.append(closeFilterPopupButton);
+  dropdown.style.display = 'flex';
+  if (resetFilter) {
+    resetFilter.style.display = 'flex';
+  }
+  relevanceContent.style.display = 'none';
+  filterBtn.style.display = 'none';
+  closeFilterPopupButton.addEventListener('click', closeModelPopup);
+}
+
+function openFiltersBtn() {
+  const relevanceContainer = document.createElement('div');
+  relevanceContainer.classList.add('relevance-container');
+  const filterContainer = document.createElement('div');
+  filterContainer.classList.add('filter-container');
+  const filterBtnOpen = document.createElement('a');
+  filterBtnOpen.classList.add('filter-btn');
+  const icon = document.createElement('i');
+  icon.classList.add('icon-filter');
+  const btnSpan = document.createElement('span');
+  filterBtnOpen.append(icon, btnSpan);
+  btnSpan.innerHTML = 'All Filters';
+  filterContainer.append(filterBtnOpen);
+  const resetFilterElement = createResetFilterButton();
+  document?.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement, filterContainer);
+  createRelevanceDropdown(relevanceContainer);
+  filterBtnOpen.addEventListener('click', openFilterPopup);
+}
+
+async function stockLocatorFiltersAPI(dropDownContainer) {
+  const stockLocatorFilterResponse = await getStockLocatorFiltersData();
+  const stockLocatorFilterData = stockLocatorFilterResponse.data.attributes;
+  createStockLocatorFilter(stockLocatorFilterData, dropDownContainer);
 }
 
 async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
@@ -871,11 +938,13 @@ export default async function decorate(block) {
   // Clear block content and set up loading icon
   block.textContent = '';
   createLoadingIconDom();
-
+  const viewport = window.innerWidth;
+  if (viewport < 1024) {
+    openFiltersBtn();
+  }
   // Wait for relevance dropdown creation and vehicle filters API call
-  await createRelevanceDropdown(dropDownContainer);
+  createRelevanceDropdown(dropDownContainer);
   await vehicleFiltersAPI();
-
   // Hide loading icon after all tasks are complete
   hideLoadingIcon();
 }
