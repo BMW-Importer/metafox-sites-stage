@@ -316,11 +316,11 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, get
   const showMoreButton = document.createElement('button');
 
   showMoreButton.textContent = 'Load More';
-  showMoreContainer.appendChild(vehicleCountWrapper);
+  showMoreContainer.append(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
-  showMoreContainer.appendChild(showMoreButton);
+  showMoreContainer.append(showMoreButton);
   // vehicleCountWrapper.textContent = newStr;
-  document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showMoreContainer);
+  document.querySelector('.stock-locator-model-detail-definition-specification').append(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
@@ -378,6 +378,7 @@ async function constructShowMoreUrl(
   cardTiles(allFetchedVehicles);
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset >= pageCount) {
+    debugger
     console.log('+++++++++++++++++++ remove load more btn');
     const showMoreButton = document.querySelector('.show-more-button');
     if (showMoreButton) {
@@ -483,9 +484,7 @@ async function handleCheckBoxSelection() {
         const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
         // eslint-disable-next-line no-use-before-define
         updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
-        // createStockLocatorFilter(getStockLocatorSelectedFilter?.data?.attributes);
         const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
-        console.log(getStockLocatorSelectedFilter);
         cardTiles(getStockLocatorVehicles);
       });
     });
@@ -558,13 +557,18 @@ function resetAllFilters(values) {
   values.DriveTrain = '';
   values.FuelType = '';
   values.Series = '';
+  values.Drivetrain = '';
+  values['Fuel Type'] = '';
+
+  document.querySelector('body').removeAttribute('data-selected-values');
   updateSelectedValues(values);
-  currentlyOpenDropdown.style.display = 'none';
-  currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
+  // currentlyOpenDropdown.style.display = 'none';
+  // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   vehicleURL = constructVehicleUrl(values);
   vehicleFiltersAPI();
   cardTiles();
-  getStockLocatorVehiclesData(vehicleURL);
+  // eslint-disable-next-line no-use-before-define
+  stockLocatorFiltersAPI();
 }
 
 function createResetFilterButton(values) {
@@ -740,6 +744,13 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
     return;
   }
 
+  // Store previously selected checkbox ids
+  const previouslySelected = new Set(
+    Array.from(filterList.querySelectorAll('input[type="checkbox"]:checked')).map(
+      (checkbox) => checkbox.id,
+    ),
+  );
+
   // Clear the existing list items
   filterList.innerHTML = '';
 
@@ -747,18 +758,25 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
   filterResponseData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('filter-item', `${typeKey}-item`);
+
     const checkbox = document.createElement('input');
     checkbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
     checkbox.type = 'checkbox';
     checkbox.id = item.id;
     checkbox.disabled = item.count === 0;
+    // Restore the checked state if previously selected
+    checkbox.checked = previouslySelected.has(item.id);
+
     const label = document.createElement('label');
     label.htmlFor = item.id;
     label.textContent = `${item.label} (${item.count})`;
+
     listItem.appendChild(checkbox);
     listItem.appendChild(label);
     filterList.appendChild(listItem);
   });
+
+  // Call this function if necessary for additional functionality
   handleCheckBoxSelection();
 }
 
@@ -967,4 +985,3 @@ export default async function decorate(block) {
   hideLoadingIcon();
   handleToggleFilterDropDown();
 }
-

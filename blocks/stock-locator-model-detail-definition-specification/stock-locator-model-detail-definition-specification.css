@@ -672,11 +672,11 @@ li::marker {
         background-repeat: no-repeat
     }
 
-    .stock-locator-model-detail-definition-specification-container .show-more-container {
+    .stock-locator-model-detail-definition-specification .show-more-container {
         text-align: center;
     }
 
-    .stock-locator-model-detail-definition-specification-container .show-more-button {
+    .stock-locator-model-detail-definition-specification .show-more-container .show-more-button {
         background-color: #fff;
         color: #000;
         border: 1px solid #000;
@@ -1088,5 +1088,18 @@ li::marker {
     .stock-locator-card-button-container,
     .popup-toggle-button-container {
         display: block;
+    }
+
+    .stock-locator-model-detail-definition-specification .show-more-container {
+        text-align: center;
+    }
+
+    .stock-locator-model-detail-definition-specification .show-more-container .show-more-button {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+        padding: 20px 60px;
+        margin: 20px;
+        width: 33%;
     }
 }
