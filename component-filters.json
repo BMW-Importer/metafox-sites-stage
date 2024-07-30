@@ -284,7 +284,9 @@
   {
     "id": "all-models-section",
     "components": [
-      "all-models"
+      "all-models",
+      "headline",
+      "link-list"
     ]
   },
   {
