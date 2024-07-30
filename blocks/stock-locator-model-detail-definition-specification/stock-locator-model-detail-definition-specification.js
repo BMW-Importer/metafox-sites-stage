@@ -25,15 +25,6 @@ function handleToggleFilterDropDown() {
   handleCheckBoxSelection();
 }
 
-function handleMobileSeriesFilter() {
-  const filterItems = document.querySelectorAll('.filter-list.dropdown-list-wrapper .filter-item');
-  filterItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('selected-filter');
-    });
-  });
-}
-
 function handleCancelSelectedValue(values) {
   const cancelSelectors = document.querySelectorAll('.cancel-filter');
   cancelSelectors.forEach((item) => {
@@ -261,7 +252,6 @@ function cardTiles(getStockLocatorVehicles) {
     );
 
     descriptionPopupContainer.appendChild(descriptionPopupContent);
-    // stockModelDescriptionPopup.appendChild(descriptionPopupContainer);
 
     const price = document.createElement('span');
     price.classList.add('car-price');
@@ -362,7 +352,6 @@ async function constructShowMoreUrl(
 ) {
   // Calculate the new offset based on current page and limit
   const offset = currentPage * limit;
-
   // Construct the URL with necessary parameters
   const urlParams = new URLSearchParams({
     limit,
@@ -377,7 +366,7 @@ async function constructShowMoreUrl(
   const showMoreCardRes = await getShowMoreCards(fullUrl);
 
   // Concatenate the new data with the existing data
-  if (showMoreCardRes && showMoreCardRes.data) {
+  if (showMoreCardRes?.data) {
     allFetchedVehicles.data = Array.isArray(getStockLocatorVehicles.data)
       ? getStockLocatorVehicles.data : [];
     // Concatenate the existing data with the new data
@@ -389,7 +378,6 @@ async function constructShowMoreUrl(
   cardTiles(allFetchedVehicles);
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset >= pageCount) {
-    console.log('+++++++++++++++++++ remove load more btn');
     const showMoreButton = document.querySelector('.show-more-button');
     if (showMoreButton) {
       showMoreButton.remove();
@@ -496,11 +484,67 @@ async function handleCheckBoxSelection() {
         updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
         // createStockLocatorFilter(getStockLocatorSelectedFilter?.data?.attributes);
         const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
-        console.log(getStockLocatorSelectedFilter);
         cardTiles(getStockLocatorVehicles);
       });
     });
   });
+}
+
+async function handleMobileSeriesFilter() {
+  const dropdowns = document.querySelectorAll('.filter-list');
+  const selectedValue = {};
+  dropdowns.forEach((dropdown) => {
+    const filterLabelHeading = dropdown.previousElementSibling;
+    const headingText = filterLabelHeading.textContent;
+    const filterItems = dropdown.querySelectorAll('.filter-item');
+    const allItem = Array.from(filterItems).find((item) => item.children[0].id === 'All');
+
+    filterItems.forEach(async (item) => {
+      const checkbox = item.children[0];
+      // Initialize 'All' option
+      if (checkbox.id === 'All') {
+        checkbox.checked = true;
+        item.classList.add('selected-filter');
+      }
+      item.addEventListener('click', (event) => {
+        if (event.target.tagName.toLowerCase() === 'input') {
+          return;
+        }
+
+        if (checkbox.checked) {
+          if (!selectedValue[headingText]) {
+            selectedValue[headingText] = [];
+          }
+          if (!selectedValue[headingText].includes(checkbox.id)) {
+            selectedValue[headingText].push(checkbox.id);
+          }
+        } else {
+          const index = selectedValue[headingText].indexOf(checkbox.id);
+          if (index !== -1) {
+            selectedValue[headingText]?.splice(index, 1);
+          }
+        }
+        item.classList.toggle('selected-filter');
+        checkbox.checked = !checkbox.checked;
+        // Handle 'All' option logic
+        if (item === allItem) {
+          filterItems.forEach((otherItem) => {
+            if (otherItem !== allItem) {
+              otherItem.classList.remove('selected-filter');
+              otherItem.children[0].checked = false;
+            }
+          });
+        } else if (allItem.classList.contains('selected-filter')) {
+          // If any non-'All' item is clicked, ensure 'All' is unchecked
+          allItem.classList.remove('selected-filter');
+          allItem.children[0].checked = false;
+        }
+      });
+      updateSelectedValues(selectedValue);
+      // eslint-disable-next-line no-use-before-define
+      vehicleURL = constructVehicleUrl(selectedValue);
+    });
+  })
 }
 
 function updateFilterDropDownValuePostSelection(newFilterData) {
@@ -555,7 +599,6 @@ function constructVehicleUrl(selectedValues) {
 }
 
 function resetAllFilters(values) {
-  console.log(values);
   const checkboxes = document.querySelectorAll('.filter-checkbox');
   checkboxes.forEach((checkbox) => {
     checkbox.checked = false;
@@ -690,6 +733,21 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
   const selectedFilterList = document.createElement('div');
   selectedFilterList.classList.add('selected-filter-list', `${typeKey}-selected-list`);
+  // Add "All" option
+  const allListItem = document.createElement('li');
+  allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
+  const allCheckbox = document.createElement('input');
+  allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+  allCheckbox.type = 'checkbox';
+  allCheckbox.id = 'All';
+  allCheckbox.checked = true;
+  const allLabel = document.createElement('label');
+  allLabel.htmlFor = 'All';
+  allLabel.textContent = 'All';
+  allListItem.appendChild(allCheckbox);
+  allListItem.appendChild(allLabel);
+  filterList.appendChild(allListItem);
+
   filterData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('filter-item', `${typeKey}-item`);
@@ -976,4 +1034,3 @@ export default async function decorate(block) {
   hideLoadingIcon();
   handleToggleFilterDropDown();
 }
-

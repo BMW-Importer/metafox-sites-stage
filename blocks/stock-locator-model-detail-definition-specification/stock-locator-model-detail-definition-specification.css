@@ -529,8 +529,14 @@ li::marker {
     width: 100%;
 }
 
-/*  mobile view */
+.filter-model-popup .stock-locator-container.relevance .filter-wrapper .filter-label-heading, 
+.filter-model-popup .stock-locator-container.relevance .filter-list.dropdown-list-wrapper {
+    width: calc(100% - 50px);
+    margin: 0 auto;
+    left: 16px;
+}
 
+/*  mobile view */
 
 @media (width >=360px) and (width < 768px) {
     .stock-locator-container .series-label {
@@ -1090,5 +1096,9 @@ li::marker {
     .stock-locator-card-button-container,
     .popup-toggle-button-container {
         display: block;
+    }
+
+    .filter-item.not-desktop {
+        display: none;
     }
 }

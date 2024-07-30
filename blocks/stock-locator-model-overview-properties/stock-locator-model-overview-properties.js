@@ -29,6 +29,6 @@ export default function decorate(block) {
   window.gqlOrigin = window.location.hostname.match('^(.*.hlx\\.(page|live))|localhost$') ? publishDomain : '';
   getContentFragmentData(disclaimerCF, window.gqlOrigin).then((response) => {
     const cfData = response?.data;
-    propsData(modelButtonTxt, countText, cfData,bannerContent);
+    propsData(modelButtonTxt, countText, cfData, bannerContent);
   });
 }
