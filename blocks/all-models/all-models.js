@@ -632,29 +632,48 @@ function enableShowMoreBtnClickEvent(showMoreBtn) {
   });
 }
 
+// Function to clean up JSON values
+function cleanJsonValues(obj) {
+  if (Array.isArray(obj)) {
+      return obj.map(cleanJsonValues);
+  } else if (typeof obj === 'object' && obj !== null) {
+      const cleanedObj = {};
+      for (const key in obj) {
+          if (obj.hasOwnProperty(key)) {
+              cleanedObj[key] = cleanJsonValues(obj[key]);
+          }
+      }
+      return cleanedObj;
+  } else if (typeof obj === 'string') {
+      return obj.replace(/\n/g, '').trim();
+  } else {
+      return obj;
+  }
+}
+
 async function getSpreadSheetData(type, prop) {
   try {
-    // const spreadSheetPath = prop?.querySelector('a')?.textContent;
-    // const spreadSheetFile = prop?.querySelector('a')?.getAttribute('href');
+    const spreadSheetPath = prop?.querySelector('a')?.textContent;
+    const spreadSheetFile = prop?.querySelector('a')?.getAttribute('href');
 
-    // const isMatch = authorPageRegex.exec(window.location.host);
-    // const origin = isMatch ? `${spreadSheetPath}.json` : spreadSheetFile;
+    const isMatch = authorPageRegex.exec(window.location.host);
+    const origin = isMatch ? `${spreadSheetPath}.json` : spreadSheetFile;
 
-    // const spreadSheetResponse = await getTechnicalSpreadsheetData(origin);
+    const spreadSheetResponse = cleanJsonValues(await getTechnicalSpreadsheetData(origin));
 
-    // if (spreadSheetResponse) {
-    //   if (type === 'filter') {
-    //     allModelFilterJson.data = spreadSheetResponse?.responseJson?.data || [];
-    //   } else {
-    //     allModelOverviewJson.data = spreadSheetResponse?.responseJson?.data || [];
-    //   }
-    // }
-
-    if (type === 'filter') {
-      allModelFilterJson.data = filterJsonApiResponse?.data || [];
-    } else {
-      allModelOverviewJson.data = allModelOverViewApiResponse?.data || [];
+    if (spreadSheetResponse) {
+      if (type === 'filter') {
+        allModelFilterJson.data = spreadSheetResponse?.responseJson?.data || [];
+      } else {
+        allModelOverviewJson.data = spreadSheetResponse?.responseJson?.data || [];
+      }
     }
+
+    // if (type === 'filter') {
+    //   allModelFilterJson.data = filterJsonApiResponse?.data || [];
+    // } else {
+    //   allModelOverviewJson.data = allModelOverViewApiResponse?.data || [];
+    // }
   } catch (e) {
     console.error(e);
   }
