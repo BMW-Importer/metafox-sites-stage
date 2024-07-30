@@ -7,154 +7,154 @@ import {
 import { fetchPlaceholders } from '../../scripts/aem.js';
 const viewPortWidth = window.innerWidth;
 // delete - dummy json's - start
-const filterJsonApiResponse = {
-  total: 7,
-  offset: 0,
-  limit: 7,
-  data: [
-    {
-      'Filter Type': 'Body Type',
-      'Filter Type Serbian': 'Tip karoserije',
-      'Filter Name English': 'Sedan',
-      'Filter Name Serbian': 'Sedan',
-      'Filter Code': 'c',
-      'Show As Default': 'false',
-    },
-    {
-      'Filter Type': 'Body Type',
-      'Filter Type Serbian': 'Tip karoserije',
-      'Filter Name English': 'SUV',
-      'Filter Name Serbian': 'SUV',
-      'Filter Code': 'b',
-      'Show As Default': 'true',
-    },
-    {
-      'Filter Type': 'Body Type',
-      'Filter Type Serbian': 'Tip karoserije',
-      'Filter Name English': 'Hatchback',
-      'Filter Name Serbian': 'Hatchback',
-      'Filter Code': 'a',
-      'Show As Default': 'true',
-    },
-    {
-      'Filter Type': 'Fuel Type',
-      'Filter Type Serbian': 'Fuel Type',
-      'Filter Name English': 'Gasoline',
-      'Filter Name Serbian': 'Benzene',
-      'Filter Code': 'O',
-      'Show As Default': 'false',
-    },
-    {
-      'Filter Type': 'Fuel Type',
-      'Filter Type Serbian': 'Fuel Type',
-      'Filter Name English': 'Diesel',
-      'Filter Name Serbian': 'Dizel',
-      'Filter Code': 'D',
-      'Show As Default': 'false',
-    },
-    {
-      'Filter Type': 'Fuel Type',
-      'Filter Type Serbian': 'Fuel Type',
-      'Filter Name English': 'Plugin Hybrid',
-      'Filter Name Serbian': 'Plugin Hi-Brid',
-      'Filter Code': 'X',
-      'Show As Default': 'true',
-    },
-    {
-      'Filter Type': 'Fuel Type',
-      'Filter Type Serbian': 'Fuel Type',
-      'Filter Name English': 'Electric',
-      'Filter Name Serbian': 'Električni',
-      'Filter Code': 'E',
-      'Show As Default': 'true',
-    },
-  ],
-  ':type': 'sheet',
-};
+// const filterJsonApiResponse = {
+//   total: 7,
+//   offset: 0,
+//   limit: 7,
+//   data: [
+//     {
+//       'Filter Type': 'Body Type',
+//       'Filter Type Serbian': 'Tip karoserije',
+//       'Filter Name English': 'Sedan',
+//       'Filter Name Serbian': 'Sedan',
+//       'Filter Code': 'c',
+//       'Show As Default': 'false',
+//     },
+//     {
+//       'Filter Type': 'Body Type',
+//       'Filter Type Serbian': 'Tip karoserije',
+//       'Filter Name English': 'SUV',
+//       'Filter Name Serbian': 'SUV',
+//       'Filter Code': 'b',
+//       'Show As Default': 'true',
+//     },
+//     {
+//       'Filter Type': 'Body Type',
+//       'Filter Type Serbian': 'Tip karoserije',
+//       'Filter Name English': 'Hatchback',
+//       'Filter Name Serbian': 'Hatchback',
+//       'Filter Code': 'a',
+//       'Show As Default': 'true',
+//     },
+//     {
+//       'Filter Type': 'Fuel Type',
+//       'Filter Type Serbian': 'Fuel Type',
+//       'Filter Name English': 'Gasoline',
+//       'Filter Name Serbian': 'Benzene',
+//       'Filter Code': 'O',
+//       'Show As Default': 'false',
+//     },
+//     {
+//       'Filter Type': 'Fuel Type',
+//       'Filter Type Serbian': 'Fuel Type',
+//       'Filter Name English': 'Diesel',
+//       'Filter Name Serbian': 'Dizel',
+//       'Filter Code': 'D',
+//       'Show As Default': 'false',
+//     },
+//     {
+//       'Filter Type': 'Fuel Type',
+//       'Filter Type Serbian': 'Fuel Type',
+//       'Filter Name English': 'Plugin Hybrid',
+//       'Filter Name Serbian': 'Plugin Hi-Brid',
+//       'Filter Code': 'X',
+//       'Show As Default': 'true',
+//     },
+//     {
+//       'Filter Type': 'Fuel Type',
+//       'Filter Type Serbian': 'Fuel Type',
+//       'Filter Name English': 'Electric',
+//       'Filter Name Serbian': 'Električni',
+//       'Filter Code': 'E',
+//       'Show As Default': 'true',
+//     },
+//   ],
+//   ':type': 'sheet',
+// };
 
-const allModelOverViewApiResponse = {
-  total: 4,
-  offset: 0,
-  limit: 4,
-  data: [
-    {
-      'Model Name': 'BMW i5',
-      'Category/Group': 'i',
-      'Analytics': '',
-      'Model Code': '7K11',
-      'Price': '9812734',
-      'Sub brand Icon': 'i',
-      'New Label': 'true',
-      'Fuel Type': 'O,E',
-      'Body Type': 'Sedan',
-      'Show More Button': 'true',
-      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
-      'Configurator Button': 'true',
-      'Stock Locator Button': 'true',
-    },
-    {
-      'Model Name': 'BMW i5',
-      'Category/Group': 'i',
-      'Analytics': '',
-      'Model Code': '7K11',
-      'Price': '9812734',
-      'Sub brand Icon': 'i',
-      'New Label': 'true',
-      'Fuel Type': 'O,E',
-      'Body Type': 'Sedan',
-      'Show More Button': 'true',
-      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
-      'Configurator Button': 'true',
-      'Stock Locator Button': 'true',
-    },
-    {
-      'Model Name': 'BMW 5 Series 5 Sedan',
-      'Category/Group': '5',
-      'Analytics': '',
-      'Model Code': '7K12',
-      'Price': '1234',
-      'Sub brand Icon': 'M',
-      'New Label': 'true',
-      'Fuel Type': 'O, D',
-      'Body Type': 'Sedan',
-      'Show More Button': 'true',
-      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-serija-5-pregled/sedan/bmw-serija-5-limuzina-pregled.html',
-      'Configurator Button': 'true',
-      'Stock Locator Button': 'true',
-    },
-    {
-      'Model Name': 'BMW iX',
-      'Category/Group': 'i,X',
-      'Analytics': '',
-      'Model Code': '7K31',
-      'Price': '1234',
-      'Sub brand Icon': 'i',
-      'New Label': 'false',
-      'Fuel Type': 'O, D',
-      'Body Type': 'SUV',
-      'Show More Button': 'true',
-      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/bmw-ix/2021/bmw-ix.html',
-      'Configurator Button': 'true',
-      'Stock Locator Button': '',
-    },
-    {
-      'Model Name': 'BMW M5 Series Sedan',
-      'Category/Group': '5,M',
-      'Analytics': '',
-      'Model Code': '10FK',
-      'Price': '2346233',
-      'Sub brand Icon': 'M',
-      'New Label': 'true',
-      'Fuel Type': 'O,D,X',
-      'Body Type': 'Sedan',
-      'Show More Button': 'true',
-      'Show More Button Link': 'https://www.bmw.rs/sr/all-models/m-series/m5-series/bmw-m5-sedan.html',
-      'Configurator Button': 'true',
-      'Stock Locator Button': 'true',
-    },
-  ],
-  ':type': 'sheet',
-};
+// const allModelOverViewApiResponse = {
+//   total: 4,
+//   offset: 0,
+//   limit: 4,
+//   data: [
+//     {
+//       'Model Name': 'BMW i5',
+//       'Category/Group': 'i',
+//       'Analytics': '',
+//       'Model Code': '7K11',
+//       'Price': '9812734',
+//       'Sub brand Icon': 'i',
+//       'New Label': 'true',
+//       'Fuel Type': 'O,E',
+//       'Body Type': 'Sedan',
+//       'Show More Button': 'true',
+//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
+//       'Configurator Button': 'true',
+//       'Stock Locator Button': 'true',
+//     },
+//     {
+//       'Model Name': 'BMW i5',
+//       'Category/Group': 'i',
+//       'Analytics': '',
+//       'Model Code': '7K11',
+//       'Price': '9812734',
+//       'Sub brand Icon': 'i',
+//       'New Label': 'true',
+//       'Fuel Type': 'O,E',
+//       'Body Type': 'Sedan',
+//       'Show More Button': 'true',
+//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
+//       'Configurator Button': 'true',
+//       'Stock Locator Button': 'true',
+//     },
+//     {
+//       'Model Name': 'BMW 5 Series 5 Sedan',
+//       'Category/Group': '5',
+//       'Analytics': '',
+//       'Model Code': '7K12',
+//       'Price': '1234',
+//       'Sub brand Icon': 'M',
+//       'New Label': 'true',
+//       'Fuel Type': 'O, D',
+//       'Body Type': 'Sedan',
+//       'Show More Button': 'true',
+//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-serija-5-pregled/sedan/bmw-serija-5-limuzina-pregled.html',
+//       'Configurator Button': 'true',
+//       'Stock Locator Button': 'true',
+//     },
+//     {
+//       'Model Name': 'BMW iX',
+//       'Category/Group': 'i,X',
+//       'Analytics': '',
+//       'Model Code': '7K31',
+//       'Price': '1234',
+//       'Sub brand Icon': 'i',
+//       'New Label': 'false',
+//       'Fuel Type': 'O, D',
+//       'Body Type': 'SUV',
+//       'Show More Button': 'true',
+//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/bmw-ix/2021/bmw-ix.html',
+//       'Configurator Button': 'true',
+//       'Stock Locator Button': '',
+//     },
+//     {
+//       'Model Name': 'BMW M5 Series Sedan',
+//       'Category/Group': '5,M',
+//       'Analytics': '',
+//       'Model Code': '10FK',
+//       'Price': '2346233',
+//       'Sub brand Icon': 'M',
+//       'New Label': 'true',
+//       'Fuel Type': 'O,D,X',
+//       'Body Type': 'Sedan',
+//       'Show More Button': 'true',
+//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/m-series/m5-series/bmw-m5-sedan.html',
+//       'Configurator Button': 'true',
+//       'Stock Locator Button': 'true',
+//     },
+//   ],
+//   ':type': 'sheet',
+// };
 // delete - dummy json's - end
 
 const allModelFilterJson = {};
@@ -177,12 +177,15 @@ const placeholders2 = {
   allModelCategoryZ4: 'Z4',
   allModelFromText: 'From',
   allModelNewLabel: 'New',
+  allModelShowMoreText: 'Show More',
+  allModelConfigureText: 'Configure',
+  allModelVehicleInStockText: 'Vehicles in stock',
 };
 
 placeholders = { ...placeholders, ...placeholders2 };
 
 // Fetch the cozy image URL based on model code
-async function fetchCozyImageUrl(modelCode, isFirstChild) {
+async function fetchCozyImageUrl(modelCode, isFirstChild, isForDetail = false, quality = 20) {
   const pictureTag = document.createElement('picture');
   pictureTag.classList.add('all-model-picture-tag');
   try {
@@ -198,7 +201,7 @@ async function fetchCozyImageUrl(modelCode, isFirstChild) {
         sourceTag.srcset = getCosyImageUrl(
           response,
           getResolutionKey(resolution),
-          40,
+          isForDetail ? quality : 40,
         );
         sourceTag.media = `(min-width: ${resolution}px)`;
         pictureTag.appendChild(sourceTag);
@@ -206,13 +209,13 @@ async function fetchCozyImageUrl(modelCode, isFirstChild) {
 
       // Fallback img tag
       const imgTag = document.createElement('img');
-      imgTag.src = getCosyImageUrl(response, resolutionKey, isFirstChild === true ? 40 : 20);
+      imgTag.src = getCosyImageUrl(response, resolutionKey, isFirstChild === true ? 40 : quality);
       imgTag.alt = modelCode;
       imgTag.classList.add('all-model-image');
       pictureTag.appendChild(imgTag);
     };
 
-    createPictureTag(20);
+    createPictureTag(quality);
   } catch (error) {
     console.error('Error fetching image:', error);
   }
@@ -354,10 +357,12 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
   const bmwiGroup = document.createElement('div');
   bmwiGroup.classList.add('all-model-group-container');
 
+  let cardIndexInOneRow = 0;
   if (filterArrayBasedOnCategory.length) {
     const bmwiGroupHeading = document.createElement('h2');
     bmwiGroupHeading.classList.add('all-model-group-title');
     bmwiGroupHeading.textContent = placeholders[`allModelCategory${groupName}`];
+    bmwiGroupHeading.setAttribute('data-model-group-name', placeholders[`allModelCategory${groupName}`]);
     bmwiGroup.append(bmwiGroupHeading);
 
     const listOfModelsContainer = document.createElement('div');
@@ -392,8 +397,13 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
         }
       });
 
+      cardIndexInOneRow = cardIndexInOneRow + 1;
+      if(cardIndexInOneRow > 4) {
+        cardIndexInOneRow = 1;
+      }
+
       listOfModelsContainer.insertAdjacentHTML('beforeend', `
-    <div class='all-model-card-container'>
+    <div class='all-model-card-container' data-row-index=${cardIndexInOneRow} data-model-code='${model['Model Code']}'>
       <div class='all-model-card-img-container ${isFirstChild}' data-model-code='${model['Model Code']}'>
       <div class="all-model-card__subbrands"><div class="all-model-card__subbrands-wrap">${subBrandIcon}</div></div>
       <span class="all-model-card__new-model-label" aria-label="${newLabel}">${newLabel}</span>
@@ -497,7 +507,17 @@ function generateAllModelUi(block) {
 }
 
 function generateContentNavigation(block) {
+  const navList = block.querySelector('.nav-list');
+  navList.textContent = '';
+
   // function to generate content navigation based on selected filter
+  const listOfCategories = block.querySelectorAll('.all-model-group-title');
+
+  // loop through listOfCategories and fold li elements by emptying previous li of nav
+  listOfCategories.forEach((category) => {
+    navList.insertAdjacentHTML('beforeend',`
+    <li class='nav-list-item'><button class='nav-list-button'>${category.textContent}</button></li>`);
+  });  
 }
 
 // function to generate filter popui based on filter json
@@ -610,13 +630,13 @@ function generateSelectedFilterOptions(block, filterCode) {
       }
     });
     buttonRow.append(selectedFilterOptionsRow);
-  }
-
-  // function to generate navigation bar
-  generateContentNavigation();
+  } 
 
   // function to generate all model ui based on filter selection
   generateAllModelUi(block);
+
+  // function to generate navigation bar
+  generateContentNavigation(block);
 }
 
 // function to display filter overlay popup
@@ -762,6 +782,112 @@ function dropDownContentClick() {
   });
 }
 
+function enableContentNavClickEvent(block) {
+  const navListContainer = block.querySelector('.nav-list');
+
+  navListContainer.addEventListener('click', (event) => {
+    if (event?.target?.classList?.contains('nav-list-button')) {
+      const subCatName = event.target.textContent;
+      const subCategory = block.querySelector(`[data-model-group-name='${subCatName}']`);
+      if (subCategory) {
+        block.querySelector(`[data-model-group-name='${subCatName}']`).scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+}
+
+function findNextElement(currentElement) {
+  let nextSibling = currentElement;
+
+  while (nextSibling) {
+      if (nextSibling.getAttribute('data-row-index') === "4") {
+          return nextSibling;
+      }
+      nextSibling = nextSibling.nextElementSibling;
+  }
+
+  // Return null if no matching sibling is found
+  return null;
+}
+
+async function generateDetailDiv(lastElemInRow, modelCode, block) {
+  const model = allModelOverviewJson.data.find((modelDetail) => modelDetail['Model Code'] === modelCode);
+  const detailContainer = block.querySelector('.all-model-detail');
+  if(detailContainer) detailContainer.remove();
+
+  if (model) {
+    const pictureTag = await fetchCozyImageUrl(modelCode, false, true, 270);
+    let fuelTypeMarkUp = '';
+
+    let newLabel =  model['New Label'] === 'true' ? placeholders['allModelNewLabel'] : '';
+
+    let subBrandIcon = '';
+    if (model['Sub brand Icon'] === 'i') {
+      subBrandIcon = `<img src="../../icons/BMW_subrand_i.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-detail__subbrand-img">`;
+    } else if (model['Sub brand Icon'] === 'M') {
+      subBrandIcon = `<img src="../../icons/BMW_subrand_m.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-detail__subbrand-img">`;
+    }
+
+    const fuelDetails = model['Fuel Type'].split(',');
+
+    fuelDetails.forEach((fuelType, index) => {
+      if (index > 0) {
+        fuelTypeMarkUp += '<span class=\'all-model-fuel-type\'> • </span>';
+      }
+      fuelTypeMarkUp += `<span class='all-model-fuel-type'>${placeholders[fuelType?.toLowerCase()?.trim()]}</span>`;
+    });
+
+    const detailDivMarkUp = `    
+      <div class="all-model-detail__container">
+        <div class="all-model-detail__container-img-wrap">
+            ${pictureTag.outerHTML}
+        </div>
+        <div class="all-model-detail__container-links">
+          <div class="all-model-detail__container-details">
+            <div class="all-model-detail__container-detail-wrap">
+              <div class="all-model-detail__container-subrand">
+                <span class="all-model-detail__new-model-label" aria-label="${newLabel}">${newLabel}</span>
+                <div class="all-model-detail__subbrands"><div class="all-model-detail__subbrands-wrap">${subBrandIcon}</div></div>
+              </div>
+              <h5 class='all-model-detail__model-name'>${model['Model Name']}</h5>
+              <div class="all-model-detail__price-fuel">
+                <div class="all-model-detail__fuel">
+                  ${fuelTypeMarkUp}
+                </div>
+                <span>${placeholders.allModelFromText} &nbsp; ${model.Price}</span>
+              </div>
+            </div>
+            <a href='#'>${placeholders['allModelShowMoreText']}</a>
+          </div>
+          <div class="all-model-detail__container-links-configure">
+            <span class="all-model-detail__detail-view--cta-icon" data-icon="car_front"></span>
+            <a href='#'>${placeholders['allModelConfigureText']}</a>
+          </div>
+          <div class="all-model-detail__container-links-stock">
+            <span class="all-model-detail__detail-view--cta-icon" data-icon="car_front_double"></span>
+            <a href='#'>${placeholders['allModelVehicleInStockText']}</a>
+          </div>
+        </div>
+        <button class=""></button>
+      </div>
+    `;
+
+    const detailDiv = document.createElement('div');
+    detailDiv.classList.add('all-model-detail');
+    detailDiv.innerHTML = detailDivMarkUp;
+
+     // Insert the new div after the target element
+     const nextSibling = lastElemInRow.nextElementSibling;
+     if (nextSibling) {
+         // Insert before the next sibling
+         lastElemInRow.parentNode.insertBefore(detailDiv, nextSibling);
+     } else {
+         // If no next sibling, append the new div at the end
+         lastElemInRow.parentNode.appendChild(detailDiv);
+     }
+  }
+}
+
 function enableModelCardClickEvent(block) {
   const allModelContainer = block.querySelector('.all-model-container');
   
@@ -769,7 +895,14 @@ function enableModelCardClickEvent(block) {
   allModelContainer.addEventListener('click', (event) => {
     // Check if the clicked element is a button
     if (event.target?.classList.contains('all-model-card-btn')) {
-        alert('Button clicked: ' + event.target.textContent);
+      const parentContainer = event.target.closest('.all-model-card-container');
+      const modelCode = parentContainer.getAttribute('data-model-code');
+      const lastElemInRow = findNextElement(parentContainer);
+      if (lastElemInRow) {
+        generateDetailDiv(lastElemInRow, modelCode, block);
+      } else {
+        generateDetailDiv(parentContainer, modelCode, block);
+      }
     }
 });
 }
@@ -865,48 +998,6 @@ export default async function decorate(block) {
   <div class="nav-arrow-right"></div>
     <nav class='navbar-wrap'>
       <ul class='nav-list'>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>BMW i</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>X</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>M</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>8</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>7</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>6</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>5</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>4</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>3</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>2</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>1</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Z4</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Concept cars</button>
-        </li>
-        <li class='nav-list-item'>
-          <button class='nav-list-button'>Protection Vehicles</button>
-        </li>
       </ul>
     </nav>
   `;
@@ -919,6 +1010,7 @@ export default async function decorate(block) {
 
   generateSelectedFilterOptions(block);
   enableModelCardClickEvent(block);
+  enableContentNavClickEvent(block);
 
   handleContenNavMobile();
   

@@ -1129,6 +1129,30 @@
     .all-model-card-img-container .all-model-card__fuel-type-icon span  {
         font-size: calc(-11px + 10vw);
     }
+
+    .all-model-detail {
+        display: flex;
+        flex-direction: column;
+        grid-column: span 2;
+        padding: 0 0 3rem;
+        position: relative;
+    }
+
+    .all-model-detail__container-img-wrap {
+        margin: 0 auto;
+        width: 100%;
+        z-index: 10;
+        pointer-events: none;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    .all-model-detail__container-img-wrap .all-model-image {
+        min-height: auto;
+        margin: -23px auto 0;
+        width: 92.307692%;
+        transition: min-height .2s ease-in, opacity .2s ease-in;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -1181,6 +1205,12 @@
     .all-model-card-container:hover .all-model-image,
     .all-model-card-container:hover .all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
         transform: translate3d(0, -73%, 0) scale(1.1);
+    }
+
+    .all-model-detail {
+        grid-column: span 4;
+        padding: 0 0 3rem;
+        animation: slideToggle .5s cubic-bezier(0,.5,.5,1);
     }
 }
 
