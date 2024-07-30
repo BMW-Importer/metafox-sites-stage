@@ -319,7 +319,6 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, get
   showMoreContainer.appendChild(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
   showMoreContainer.appendChild(showMoreButton);
-  // vehicleCountWrapper.textContent = newStr;
   document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
@@ -332,6 +331,19 @@ function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, get
       pageCount,
       getStockLocatorVehicles,
     );
+  });
+}
+
+// eslint-disable-next-line max-len
+function showResulsHandler() {
+  const showResultContainer = document.createElement('div');
+  showResultContainer.classList.add('show-result-container');
+  const showResultButton = document.createElement('button');
+  showResultButton.textContent = 'Show results';
+  showResultButton.classList.add('show-result');
+  showResultContainer.appendChild(showResultButton);
+  document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showResultContainer);
+  showResultButton.addEventListener('click', () => {
   });
 }
 
@@ -374,7 +386,6 @@ async function constructShowMoreUrl(
     // Replace the meta object with the new metadata
     allFetchedVehicles.meta = showMoreCardRes.meta || {};
   }
-  console.log(allFetchedVehicles);
   cardTiles(allFetchedVehicles);
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset >= pageCount) {
@@ -957,10 +968,8 @@ export default async function decorate(block) {
   // Clear block content and set up loading icon
   block.textContent = '';
   createLoadingIconDom();
-  const viewport = window.innerWidth;
-  if (viewport < 1024) {
-    openFiltersBtn();
-  }
+  openFiltersBtn();
+  showResulsHandler();
   createRelevanceDropdown(dropDownContainer);
   await vehicleFiltersAPI();
   // Hide loading icon after all tasks are complete
