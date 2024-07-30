@@ -136,16 +136,19 @@ li::marker {
     height: 22px;
     cursor: pointer;
     border-style: solid;
-    line-height: 22px;
-    font-size: 1.25rem;
     border-color: #e6e6e6;
     border-radius: 9999px;
 }
 
+.description-icon-div:hover{
+    border-color: white;
+    box-shadow: 10px 10px 20px rgba(96, 96, 96, 0.5);
+}
+
 .description-popup-button::before {
     overflow-wrap: normal;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "liga";
     content: 'i';
@@ -1052,7 +1055,21 @@ li::marker {
         margin-top: 5px;
         width: 400px;
         top: -45px;
-        left: 160px;
+        left: 55%;
+    }
+
+    .description-popup-container::before {
+        content: " ";
+        position: absolute;
+        top: 55px;
+        right: 100%;
+        margin-top: -15px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent #e6e6e6 transparent transparent;
+        width: 0;
+        height: 0;
+        pointer-events: none;
     }
 
     .description-popup-close-button {

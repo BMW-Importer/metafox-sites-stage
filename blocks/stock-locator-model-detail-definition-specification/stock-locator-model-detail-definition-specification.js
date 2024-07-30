@@ -275,8 +275,6 @@ function cardTiles(getStockLocatorVehicles) {
     pictureTag.append(imgElem);
     cardImgContainer.append(pictureTag);
     stockLocatorCard.appendChild(cardImgContainer);
-    // stockLocatorCard.appendChild(detailContent);
-    //  stockLocatorCard.appendChild(stockLocatorCardButtonContainer);
     stockLocatorCard.appendChild(cardImgContainer);
     stockLocatorCard.appendChild(modelDetailsWrapper);
     stockLocatorCard.appendChild(stockLocatorCardButtonContainer);
@@ -287,8 +285,8 @@ function cardTiles(getStockLocatorVehicles) {
   cardContainer.append(cardList);
   cardWrapper.append(cardContainer);
   document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
-  // eslint-disable-next-line no-use-before-define
   pagination(getStockLocatorVehicles.meta, getStockLocatorVehicles);
+  popupButton();
 }
 
 function pagination(meta, getStockLocatorVehicles) {
@@ -398,7 +396,6 @@ function sortVehiclesByPrice(getStockLocatorVehicles) {
 
 function popupButton() {
   const infoButtons = document.querySelectorAll('.description-popup-button');
-  console.log(infoButtons);
   const popupTexts = document.querySelectorAll('.description-popup-container');
   const closeButtons = document.querySelectorAll('.description-popup-close-button');
   const toggleButtons = document.querySelectorAll('.popup-toggle-button');
@@ -543,7 +540,6 @@ function constructVehicleUrl(selectedValues) {
   const newUrl = `${currentUrl.pathname}?${paramsString}`;
   history.replaceState(null, '', newUrl);
   document.querySelector('body').setAttribute('data-vehicle-url', paramsString);
-  console.log(paramsString);
   return paramsString;
 }
 
@@ -970,6 +966,5 @@ export default async function decorate(block) {
   // Hide loading icon after all tasks are complete
   hideLoadingIcon();
   handleToggleFilterDropDown();
-  popupButton();
 }
 
