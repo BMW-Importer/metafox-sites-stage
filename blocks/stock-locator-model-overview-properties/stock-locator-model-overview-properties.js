@@ -11,8 +11,7 @@ async function getContentFragmentData(disclaimerCFPath, gqlOrigin) {
 
 export default function decorate(block) {
   const props = [...block.children].map((row) => row.firstElementChild);
-  
-  const [modelButtonTxt ,countAndDisclaimer, bannerContent] = props;
+  const [modelButtonTxt, countAndDisclaimer, bannerContent] = props;
   const pTags = countAndDisclaimer.querySelectorAll('p');
   const countText = pTags[0] || '';
   const disclaimerCF = pTags[1] || '';
