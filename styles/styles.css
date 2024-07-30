@@ -169,7 +169,7 @@ p, dl, ol, ul, pre, blockquote {
   margin-bottom: 1em;
 }
 
-.default-content-wrapper > p {
+.default-content-wrapper > h6 {
   font-size: 0.75rem; 
   line-height: 1rem;
   font-weight: 300;
@@ -498,7 +498,7 @@ main .section:first-child {
     padding: 0 var(--section-desktop-padding);
   } 
   
-  .default-content-wrapper > p {    
+  .default-content-wrapper > h6 {    
     margin: 0 0 .75rem;
   }
  
@@ -522,7 +522,7 @@ main .section:first-child {
     padding-right: calc((100vw - (var(--max-component-width) - (var(--section-desktop-padding) * 2)))/2);
   }
 
-  .default-content-wrapper > p {    
+  .default-content-wrapper > h6 {    
     margin: 0 0 1rem;
   }
 
