@@ -1,5 +1,8 @@
 .filter-title {
-    margin: 1.5rem 0;
+    font-size: 1.1875rem;
+    line-height: 1.75rem;
+    margin: 1rem 0;
+    text-transform: uppercase;
 }
 
 .filter-btn-row {
@@ -18,14 +21,14 @@
     background: transparent;
     box-shadow: inset 0 0 0 1px #bbb;
     color: var(--light-border-color);
-
+ 
     align-items: center;
     cursor: pointer;
     display: flex;
-    font-size: 0.9375rem;
+    font-size: .875rem;
     font-weight: 500;
     justify-content: center;
-    line-height: 1.5rem;
+    line-height: 1.375rem;
     margin-right: .5rem;
     min-height: 2.25rem;
     padding: 0 1rem;
@@ -48,6 +51,16 @@
 .filter-btn.active {
     background: var(--medium-text-color);
     color: var(--light-grey);
+    border: 0;
+    box-shadow: none;
+}
+
+.filter-btn.active:hover {
+    background-color: var(--light-text-color);
+}
+
+.filter-btn.active .filter-btn-icon {
+    transform: rotate(45deg);
 }
 
 .toggle-icon {
@@ -56,6 +69,8 @@
 
 .filter-btn-icon {
     margin-right: 0.5rem;
+    transition: transform .5s ease-in-out;
+    pointer-events: none;
 }
 
 .filter-btn-icon::before {
@@ -93,6 +108,20 @@
     display: inline-flex;
     align-items: center;
     font-weight: 500;
+    margin-bottom: 1.25rem;
+    margin-top: -1.25rem;
+}
+
+.show-more-btn:focus {
+    background: transparent;
+}
+
+.number-wrap {
+    margin-bottom: 1rem;
+}
+
+.selected-filter-btn-row{
+    display: flex;
 }
 
 .show-more-btn:hover {
@@ -655,6 +684,14 @@
     margin: 1rem 0 .5rem;
     pointer-events: none;
     position: relative;
+    display: block;    
+}
+
+.all-model-card-container:not(:first-child) {
+    grid-gap: 0 .5rem;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
 }
 
 .all-model-group-title {
@@ -669,14 +706,14 @@
 
 .all-model-card-btn {
     outline: none;
-    bottom: -.5rem;
-    height: calc(100% + 1rem);
-    left: -.5rem;
+    bottom: 0;
+    height: 100%;
+    left: 0;
     pointer-events: all;
     position: absolute;
-    right: -.5rem;
-    top: -.5rem;
-    width: calc(100% + 1rem);
+    right: 0;
+    top: 0;
+    width: 100%;
     background: none !important;
     padding: 0;
     border: none;
@@ -713,6 +750,210 @@
 .all-model-group-container {
     border-top: 1px solid #e6e6e6;
     padding-bottom: 2rem;
+}
+
+.all-model-image {
+    max-width: 100%;
+    height: auto;
+    transition: transform .15s ease-in;
+}
+
+.all-model-card-container:hover .all-model-image {
+    transform: scale(1.1);
+}
+
+.all-model-card__fuel-type-icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    left: 5.8%;
+    opacity: 1;
+    padding: 8.8% 0;
+    position: absolute;
+    top: 6.2%;
+    transition: opacity .2s ease-in;
+    width: 17.6%;
+}
+
+.all-model-card__fuel-type-icon span {
+    font-size: calc(-11px + 23vw);
+    line-height: 1;
+    color: #0066b1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.all-model-card__fuel-type-icon .electric-icon::before{
+    font-size: 4rem;
+    font-weight: 300;
+    word-wrap: normal;    
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    content: "fuel_type_bev";
+    direction: ltr;
+    display: block;
+    font-family: bmw_next_icons;
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    outline: 1px solid transparent;
+    text-align: left;
+    text-transform: none;
+    white-space: nowrap;
+    width: auto;
+}
+
+.all-model-card__fuel-type-icon .hybrid-icon::before {
+    font-size: 4rem;
+    font-weight: 300;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    content: "fuel_type_phev";
+    direction: ltr;
+    display: block;
+    font-family: bmw_next_icons;
+    font-style: normal;
+    height: 1em;
+    line-height: 1;
+    outline: 1px solid transparent;
+    text-align: left;
+    text-transform: none;
+    white-space: nowrap;
+    width: auto;    
+}
+
+.all-model-card-img-container {
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    padding: 23.5% 0;
+    position: relative;
+    transition: opacity .2s ease-in;
+    width: 100%;
+}
+
+.all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon{
+    left: 4px;
+    padding: 12.5% 0;
+    top: 10px;
+    width: 25%;
+}
+
+.all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span {
+    font-size: calc(-7px + 12vw);
+}
+
+.all-model-card-img-container.first-model-child {
+    padding: 23.5% 0;
+}
+
+.all-model-card-container .all-model-card__subbrands {
+    bottom: 0;
+    display: flex;
+    height: 12.5%;
+    left: 0;
+    position: absolute;
+    z-index: 20;
+}
+
+.all-model-card-container .all-model-card__subbrands-wrap {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column;
+    margin-right: .5rem;
+}
+
+.all-model-card-container.first-model-child .all-model-card__subbrands {
+    left: 0;
+    position: absolute;
+    z-index: 20;
+}
+
+.all-model-card-container:not(:first-child) .all-model-card__subbrands{
+    display: none;
+}
+
+.all-model-card__new-model-label {
+    background-color: #4d4d4d;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    font-family: var(--fixed-font-family);
+    margin-right: 0;
+    padding: 0 .25rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.all-model-card-container:not(:first-child) .all-model-card__new-model-label {
+    display: none;
+}
+
+.all-model-detail-label {
+    display: flex;
+    opacity: 1;
+    position: relative;
+    transition: opacity .2s ease-in;
+}
+
+.all-model-detail-label.first-model-child {
+    display: none;
+}
+
+.all-model-detail-label .all-model-card__subbrands {
+    display: flex !important;
+    margin-top: 0;
+    position: static;
+    padding: 0;
+    width: auto;
+}
+
+.all-model-detail-label .all-model-card__subbrands-wrap {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: column;
+    margin-right: .5rem;
+    padding: 0;
+}
+
+.all-model-detail-label .all-model-card__subbrands-wrap img {
+    height: 1rem;
+}
+
+.all-model-detail-label .all-model-card__new-model-label {
+    display: block !important;
+    margin-right: .5rem;
+    position: static;
+}
+
+.all-model-detail-container:not(.first-model-child) .all-model-detail-model-name {
+    padding: .5rem 0 .25rem;
+}
+
+.all-model-picture-tag {
+    width: 100%;
+    z-index: 20;
+}
+
+.all-model-picture-tag img {
+    margin-bottom: 0;
+    position: absolute;
+    top: -24.3%;
+    transition: transform .15s ease-in;
+    width: 100%;
+    will-change: transform;
+}
+
+.all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
+    top: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -766,6 +1007,7 @@
         line-height: var(--body-2-line-height);
         margin: 0;
         min-width: 0;
+        min-height: inherit;
         padding: 0 1rem;
         pointer-events: all;
         width: auto;
@@ -837,11 +1079,6 @@
         line-height: 30px;
     }
 
-    .all-model-card-btn {
-        height: calc(100% - 4rem);
-        top: 4.5rem;
-    }
-
     .all-model-detail-model-name {        
         padding: .25rem 0;
     }
@@ -850,8 +1087,49 @@
         grid-gap: 0 1rem;
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
+    .all-model-card-container:not(:first-child) {
+        grid-gap: unset;
+        align-items: unset;
+        display: unset;
+        grid-template-columns: unset;
+    }
+
+    .all-model-card-img-container {
+        padding: 24.3% 0;
+    }
+
+    .all-model-card-container .all-model-card__subbrands {
+        height: 10.82%;
+        display: flex !important;
+    }
+
+    .all-model-card-container:not(:first-child) .all-model-card__new-model-label {
+        display: block;
+    }
+
+    .all-model-detail-label {
+        display: none;
+    }
+
+    .all-model-picture-tag img,
+    .all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
+        top: -23.9%;
+    }
+
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon,
+    .all-model-card-img-container .all-model-card__fuel-type-icon{
+        left: 6.5%;
+        padding: 7.8% 0;
+        top: 10.8%;
+        width: 15.7%;
+    }
+    
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span,
+    .all-model-card-img-container .all-model-card__fuel-type-icon span  {
+        font-size: calc(-11px + 10vw);
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .filter-overlay-wrap .filter-content {
@@ -870,6 +1148,39 @@
     .all-model-group-list {
         grid-gap: 0 1.5rem;
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .all-model-card-img-container {
+        padding: 23.9% 0;
+    }
+
+    .all-model-card-container .all-model-card__subbrands {
+        height: 12.13%;
+    }
+
+    .all-model-picture-tag img,
+    .all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
+        margin-right: -4px;
+        top: 73%;
+        transform: translate3d(0, -73%, 0);
+    }
+
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon,
+    .all-model-card-img-container .all-model-card__fuel-type-icon{
+        left: 6.5%;
+        padding: 8.6% 0;
+        top: 10.6%;
+        width: 17.3%;
+    }
+    
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span,
+    .all-model-card-img-container .all-model-card__fuel-type-icon span  {
+        font-size: 62px;
+    }
+
+    .all-model-card-container:hover .all-model-image,
+    .all-model-card-container:hover .all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
+        transform: translate3d(0, -73%, 0) scale(1.1);
     }
 }
 
