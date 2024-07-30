@@ -6,16 +6,16 @@
     margin-right: 5px;
 }
 
-.card-tile-list-ele .stock-locator-card{
-    padding: 30px 25px;
-}
-
 .card-tile-list-ele:hover {
     box-shadow: 10px 10px 20px rgba(96, 96, 96, 0.5);
 }
 
 .card-tile-list-ele:hover > * {
     box-shadow: none;
+}
+
+.card-tile-list-ele .stock-locator-card{
+    padding: 30px 25px;
 }
 
 .image-container {
@@ -518,6 +518,17 @@ li::marker {
     display: none;
 }
 
+.show-result-container {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: none;
+}
+
+.show-result-container .show-result {
+    width: 100%;
+}
+
 /*  mobile view */
 
 
@@ -580,6 +591,10 @@ li::marker {
         display: none;
     }
 
+    .filter-model-popup .show-result-container {
+        display: block;
+    }
+
 }
 /*  tablet view */
 
@@ -608,8 +623,6 @@ li::marker {
     
     .card-tile-list-ele {
         width: 49%;
-        height: 346px;
-        margin-right: 5px;
     }
 
     .model-details-wrapper .model-container h4 {
@@ -787,8 +800,11 @@ li::marker {
         list-style-type: none;
         padding: 10px 15px;
     }
-}
 
+    .filter-model-popup .show-result-container {
+        display: block;
+    }
+}
 
 /******* stock locator Desktop ******/
 
@@ -1005,24 +1021,10 @@ li::marker {
     }
 
     .card-tile-list-ele {
-        /* width: 393.333px; */
         width: 32.5%;
         height: 437px;
         position: relative;
         transition: all .2s ease-in-out;
-        margin-right: 5px;
-    }
-
-    .card-tile-list-ele .stock-locator-card {
-        padding: 30px 25px;
-    }
-
-    .card-tile-list-ele:hover {
-        box-shadow: 10px 10px 20px rgba(96, 96, 96, 0.5);
-    }
-
-    .card-tile-list-ele:hover>* {
-        box-shadow: none;
     }
 
     .image-container {
