@@ -388,6 +388,14 @@ li::marker {
     color: #8e8e8e;
 }
 
+.filter-model-popup .filter-list {
+    padding: 0;
+}
+
+.filter-model-popup .stock-locator-container {
+    width: unset;
+}
+
 .relevance-container .filter-list.dropdown-list-wrapper,
 .stock-locator-container.relevance .filter-list.dropdown-list-wrapper {
     max-height: 150px;
@@ -471,7 +479,6 @@ li::marker {
 }
 
 .filter-model-popup .stock-locator-model-detail-definition-specification.block {
-    width: 100%;
     padding: 10px;
     overflow-y: auto;
     height: 100%;
@@ -685,7 +692,6 @@ li::marker {
 
     .filter-container {
         order: 0;
-        display: flex;
     }
 
     .filter-btn {
@@ -811,14 +817,12 @@ li::marker {
 
     .stock-locator-container.relevance {
         display: flex;
-        /* order: 3; */
         width: 25%;
     }
 
     .filter-container,
     .relevance-container {
-
-        display: none;
+        display: none !important;
     }
 
     .stock-locator-container.relevance .filter-wrapper {

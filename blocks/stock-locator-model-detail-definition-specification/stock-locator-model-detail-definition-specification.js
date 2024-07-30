@@ -231,7 +231,7 @@ function cardTiles(getStockLocatorVehicles) {
     descriptionPopupDisclaimer.classList.add('description-popup-disclaimer');
 
     const descriptionPopupDisclaimerText = document.createElement('p');
-    descriptionPopupDisclaimerText.append(disclaimerContent?.textContent);
+    descriptionPopupDisclaimerText.append(disclaimerContent?.textContent || '');
     descriptionPopupDisclaimer.appendChild(descriptionPopupDisclaimerText);
 
     const popupToggleButtonContainer = document.createElement('div');
@@ -398,6 +398,7 @@ function sortVehiclesByPrice(getStockLocatorVehicles) {
 
 function popupButton() {
   const infoButtons = document.querySelectorAll('.description-popup-button');
+  console.log(infoButtons);
   const popupTexts = document.querySelectorAll('.description-popup-container');
   const closeButtons = document.querySelectorAll('.description-popup-close-button');
   const toggleButtons = document.querySelectorAll('.popup-toggle-button');
@@ -444,7 +445,6 @@ async function vehicleFiltersAPI() {
   const getStockLocatorVehicles = await getStockLocatorVehiclesData();
   sortVehiclesByPrice(getStockLocatorVehicles);
   cardTiles(getStockLocatorVehicles);
-  popupButton();
 }
 
 async function handleCheckBoxSelection() {
@@ -548,6 +548,7 @@ function constructVehicleUrl(selectedValues) {
 }
 
 function resetAllFilters(values) {
+  console.log(values);
   const checkboxes = document.querySelectorAll('.filter-checkbox');
   checkboxes.forEach((checkbox) => {
     checkbox.checked = false;
@@ -558,8 +559,8 @@ function resetAllFilters(values) {
     label.classList.remove('is-active');
   });
 
-  values.DriveType = '';
-  values.Fuel = '';
+  values.DriveTrain = '';
+  values.FuelType = '';
   values.Series = '';
   updateSelectedValues(values);
   currentlyOpenDropdown.style.display = 'none';
@@ -626,9 +627,7 @@ function updateSelectedValues(newValues) {
   if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
     const resetFilterElement = createResetFilterButton(mergedValues);
     document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
-  }
-
-  if (!document.querySelector('.reset-filter') && hasSelectedValues) {
+  } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
     const resetFilterElement = document.createElement('div');
     resetFilterElement.classList.add('reset-filter');
     const resetSpan = document.createElement('span');
@@ -782,7 +781,6 @@ function createStockLocatorFilter(filterResponse, dropDownContainer) {
   processFilterData(filterResponse?.series, 'series', dropDownContainer);
   processFilterData(filterResponse?.fuel, 'fuel', dropDownContainer);
   processFilterData(filterResponse?.driveType, 'driveType', dropDownContainer);
-  handleToggleFilterDropDown();
 }
 
 // Function to handle single select for relevance dropdown
@@ -807,7 +805,7 @@ function createRelevanceDropdown(dropDownContainer) {
   filterLabelHeading.className = 'filter-label';
   filterLabelHeading.textContent = 'Sort by';
   filterWrapper.appendChild(filterLabelHeading);
-  const filterList = document.createElement('div');
+  const filterList = document.createElement('ul');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper');
   const filterLabelDefault = document.createElement('div');
   filterLabelDefault.className = 'filter-label-heading';
@@ -819,7 +817,7 @@ function createRelevanceDropdown(dropDownContainer) {
     { id: 'asc', text: 'ascending price' },
   ];
   sortOptions.forEach((option) => {
-    const listItem = document.createElement('div');
+    const listItem = document.createElement('li');
     listItem.className = 'filter-item-relevance';
 
     const label = document.createElement('label');
@@ -842,13 +840,12 @@ function closeModelPopup() {
   const parentWrapper = document.querySelector('.stock-locator-model-detail-definition-specification-wrapper');
   parentWrapper.classList.remove('filter-model-popup');
   const dropdown = document.querySelector('.dropdown-container');
-  const resetFilter = document.querySelector('.reset-filter-not-desktop');
+  const resetFilterNotDesktop = document.querySelector('.reset-filter-not-desktop');
   const relevanceContent = document.querySelector('.relevance-container');
   const filterBtn = document.querySelector('.filter-container');
-
   dropdown.style.display = 'none';
-  if (resetFilter) {
-    resetFilter.style.display = 'none';
+  if (resetFilterNotDesktop) {
+    resetFilterNotDesktop.style.display = 'none';
   }
   relevanceContent.style.display = 'flex';
   filterBtn.style.display = 'flex';
@@ -865,11 +862,11 @@ function openFilterPopup() {
   const dropdown = document.querySelector('.dropdown-container');
   const relevanceContent = document.querySelector('.relevance-container');
   const filterBtn = document.querySelector('.filter-container');
-  const resetFilter = document.querySelector('.reset-filter-not-desktop');
+  const resetFilterNotDesktop = document.querySelector('.reset-filter-not-desktop');
   parentWrapper.append(closeFilterPopupButton);
   dropdown.style.display = 'flex';
-  if (resetFilter) {
-    resetFilter.style.display = 'flex';
+  if (resetFilterNotDesktop) {
+    resetFilterNotDesktop.style.display = 'flex';
   }
   relevanceContent.style.display = 'none';
   filterBtn.style.display = 'none';
@@ -933,7 +930,6 @@ export function showLoadingIcon() {
 export default async function decorate(block) {
   const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
-
   // Call stockLocatorFiltersAPI and wait for it to finish
   await stockLocatorFiltersAPI(dropDownContainer);
 
@@ -969,9 +965,11 @@ export default async function decorate(block) {
   if (viewport < 1024) {
     openFiltersBtn();
   }
-  // Wait for relevance dropdown creation and vehicle filters API call
   createRelevanceDropdown(dropDownContainer);
   await vehicleFiltersAPI();
   // Hide loading icon after all tasks are complete
   hideLoadingIcon();
+  handleToggleFilterDropDown();
+  popupButton();
 }
+
