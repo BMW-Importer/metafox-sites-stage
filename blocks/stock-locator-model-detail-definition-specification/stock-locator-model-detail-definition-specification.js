@@ -156,13 +156,12 @@ function cardTiles(getStockLocatorVehicles) {
 
     const stockLocatorHideButtonLink = document.createElement('a');
     stockLocatorHideButtonLink.href = `#/details/${groupReference}`;
-    const StockLocatorHideButtonText = document.createElement('span');
-    stockLocatorHideButtonLink.appendChild(StockLocatorHideButtonText);
+    const stockLocatorHideButtonText = document.createElement('span');
+    stockLocatorHideButtonLink.appendChild(stockLocatorHideButtonText);
     stockLocatorHideButton.appendChild(stockLocatorHideButtonLink);
     stockLocatorCardButtonContainer.appendChild(stockLocatorHideButton);
-    StockLocatorHideButtonText.append(seeDetailBtn.textContent);
-
-    stockLocatorHideButtonLink.append(StockLocatorHideButtonText);
+    stockLocatorHideButtonText.append('See details');
+    stockLocatorHideButtonLink.append(stockLocatorHideButtonText);
 
     const cardLayerInfoItem = document.createElement('div');
     cardLayerInfoItem.classList.add('card-layer-info-item');
@@ -1055,7 +1054,7 @@ export default async function decorate(block) {
   });
 
   // Clear block content and set up loading icon
-  block.textContent = '';
+  // block.textContent = '';
   createLoadingIconDom();
   openFiltersBtn();
   showResulsHandler();
