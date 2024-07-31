@@ -79,14 +79,12 @@ function removeLastSelectedValue(values) {
 
 // eslint-disable-next-line import/no-mutable-exports
 export let vehicleURL;
-let detailBtn; let count; let cfDetails;
-let bannerTxt;
+// eslint-disable-next-line no-unused-vars
+let detailBtn; let cfDetails;
 
-export function propsData(modelButtonTxt, countText, cfData, bannerContent) {
+export function propsData(modelButtonTxt, countText, cfData) {
   detailBtn = modelButtonTxt;
-  count = countText;
   cfDetails = cfData;
-  bannerTxt = bannerContent;
 }
 
 function cardTiles(getStockLocatorVehicles) {
@@ -97,7 +95,7 @@ function cardTiles(getStockLocatorVehicles) {
   cardList.classList.add('card-tile-list');
   const cardContainer = document.createElement('div');
   cardContainer.classList.add('card-tile-container');
-  let seeDetailBtn;
+  const seeDetailBtn = 'See details';
   let disclaimerContent;
   if (document.querySelector('.section.stock-locator-model-detail-definition-specification-container.stock-locator-model-overview-properties-container')) {
     if (cfDetails) {
@@ -105,7 +103,7 @@ function cardTiles(getStockLocatorVehicles) {
       disclaimerContent = document.createElement('div');
       disclaimerContent.innerHTML = disclaimerHtml;
     }
-    seeDetailBtn = detailBtn?.querySelector('p') || '';
+    // seeDetailBtn = detailBtn?.querySelector('p') || '';
   }
   const vehicleData = getStockLocatorVehicles?.data;
   // eslint-disable-next-line array-callback-return
@@ -160,7 +158,7 @@ function cardTiles(getStockLocatorVehicles) {
     stockLocatorHideButtonLink.appendChild(stockLocatorHideButtonText);
     stockLocatorHideButton.appendChild(stockLocatorHideButtonLink);
     stockLocatorCardButtonContainer.appendChild(stockLocatorHideButton);
-    stockLocatorHideButtonText.append('See details');
+    stockLocatorHideButtonText.append(seeDetailBtn);
     stockLocatorHideButtonLink.append(stockLocatorHideButtonText);
 
     const cardLayerInfoItem = document.createElement('div');
@@ -274,7 +272,9 @@ function cardTiles(getStockLocatorVehicles) {
   cardContainer.append(cardList);
   cardWrapper.append(cardContainer);
   document.querySelector('.stock-locator-model-detail-definition-specification.block').appendChild(cardWrapper);
+  // eslint-disable-next-line no-use-before-define
   pagination(getStockLocatorVehicles.meta, getStockLocatorVehicles);
+  // eslint-disable-next-line no-use-before-define
   popupButton();
 }
 
@@ -540,13 +540,14 @@ async function handleMobileSeriesFilter() {
           allItem.children[0].checked = false;
           allItem.classList.add('all-disabled');
         }
-        // eslint-disable-next-line max-len
+        // eslint-disable-next-line max-len, no-shadow
         const anyChecked = Array.from(filterItems).some((item) => item !== allItem && item.children[0].checked);
         if (anyChecked) {
           allItem.classList.add('all-disabled');
         } else {
           allItem.classList.remove('all-disabled');
         }
+        // eslint-disable-next-line no-use-before-define
         updateSelectedValues(selectedValue);
         // eslint-disable-next-line no-use-before-define
         vehicleURL = constructVehicleUrl(selectedValue);
@@ -601,6 +602,7 @@ function constructVehicleUrl(selectedValues) {
 
   const paramsString = Array.from(searchParams).map(([key, value]) => `${key}=${value}`).join('&');
   const newUrl = `${currentUrl.pathname}?${paramsString}`;
+  // eslint-disable-next-line no-restricted-globals
   history.replaceState(null, '', newUrl);
   document.querySelector('body').setAttribute('data-vehicle-url', paramsString);
   return paramsString;
@@ -624,6 +626,7 @@ function resetAllFilters(values) {
   values['Fuel Type'] = '';
 
   document.querySelector('body').removeAttribute('data-selected-values');
+  // eslint-disable-next-line no-use-before-define
   updateSelectedValues(values);
   // currentlyOpenDropdown.style.display = 'none';
   // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
@@ -817,6 +820,7 @@ async function processFilterData(filterData, typeKey, dropDownContainer) {
 function updateStockLocatorFilterDom(filterResponseData, typeKey) {
   const filterList = document.querySelector(`.${typeKey}-list`);
   if (!filterList) {
+    // eslint-disable-next-line no-console
     console.error(`Filter list with typeKey ${typeKey} not found.`);
     return;
   }
