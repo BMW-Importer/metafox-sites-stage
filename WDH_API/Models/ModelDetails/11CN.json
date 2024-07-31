@@ -13,9 +13,9 @@
     "series": [
       "2"
     ],
-    "seriesDescription": "BMW Serije 2 Gran Coupe",
+    "seriesDescription": "BMW Serije 2 Active Tourer",
     "seriesDescriptions": [
-      "BMW Serije 2 Gran Coupe"
+      "BMW Serije 2 Active Tourer"
     ],
     "hybridCode": "NOHY",
     "fromPrice": 54572,
@@ -41,13 +41,13 @@
       "gearBox": "8 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "S02TE",
         "hybridCode": "NOHY",
         "iD_LEIST_KONST": "00",
-        "volt48": true,
+        "volt48": false,
         "technicalData": {
           "powerTrain": {
             "fuelType": "D",
@@ -63,7 +63,8 @@
             "nominalTorque": "400 / 1750 - 2500"
           },
           "electric": {
-            "systemPower": "-"
+            "systemPower": "-",
+            "systemMaxTorque": "-"
           },
           "performance": {
             "acceleration": "7",
@@ -71,9 +72,9 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "5.3–4.9",
-            "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "140–128",
+            "consumptionWltpCombined": "5.6–5.2",
+            "consumptionWltpCombinedChargeSustaining": "5.3–4.9",
+            "emissionsWltpCombined": "147–135",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
@@ -108,12 +109,6 @@
           "powerTrain": [
             "f1"
           ],
-          "powerTrain_systemPower_value": [
-            "f10"
-          ],
-          "powerTrain_systemMaxTorque_value": [
-            "f10"
-          ],
           "engine": [
             "f1"
           ],
@@ -129,9 +124,6 @@
           "emissionsConsumptionWltp": [
             "f1",
             "f4"
-          ],
-          "charging": [
-            "f7"
           ],
           "weightMeasurements_weightNotLoaded_label": [
             "f8"
@@ -149,7 +141,7 @@
         "transmissionCode": "S02TB",
         "hybridCode": "NOHY",
         "iD_LEIST_KONST": "00",
-        "volt48": true,
+        "volt48": false,
         "technicalData": {
           "powerTrain": {
             "fuelType": "D",
@@ -165,7 +157,8 @@
             "nominalTorque": "400 / 1750 - 2500"
           },
           "electric": {
-            "systemPower": "-"
+            "systemPower": "-",
+            "systemMaxTorque": "-"
           },
           "performance": {
             "acceleration": "7",
@@ -173,9 +166,9 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "5.3–4.9",
-            "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "140–128",
+            "consumptionWltpCombined": "5.6–5.2",
+            "consumptionWltpCombinedChargeSustaining": "5.3–4.9",
+            "emissionsWltpCombined": "147–135",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
@@ -210,12 +203,6 @@
           "powerTrain": [
             "f1"
           ],
-          "powerTrain_systemPower_value": [
-            "f10"
-          ],
-          "powerTrain_systemMaxTorque_value": [
-            "f10"
-          ],
           "engine": [
             "f1"
           ],
@@ -231,9 +218,6 @@
           "emissionsConsumptionWltp": [
             "f1",
             "f4"
-          ],
-          "charging": [
-            "f7"
           ],
           "weightMeasurements_weightNotLoaded_label": [
             "f8"
