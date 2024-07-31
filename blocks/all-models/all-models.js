@@ -180,6 +180,8 @@ const placeholders2 = {
   allModelShowMoreText: 'Show More',
   allModelConfigureText: 'Configure',
   allModelVehicleInStockText: 'Vehicles in stock',
+  allModelFoundVehicle: 'found vehicles',
+  allModelShowResults: 'Show results'
 };
 
 placeholders = { ...placeholders, ...placeholders2 };
@@ -470,6 +472,9 @@ function generateAllModelMarkUp(allModelfilteredArray, block) {
   // update number of results
   const totalNumberText = block.querySelector('.total-number');
   totalNumberText.textContent = block?.querySelectorAll('.all-model-card-container')?.length || 0;
+
+  const numOfVehicle = block.querySelector('.show-filter-btn .btn-text');
+  numOfVehicle.textContent = `${placeholders['allModelShowResults']} (${block?.querySelectorAll('.all-model-card-container')?.length})`;
 
   // lazy load cozy images
   lazyLoadCozyImages(block);
@@ -919,10 +924,6 @@ export default async function decorate(block) {
   const allModelParentContainer = document.createElement('div');
   allModelParentContainer.classList.add('all-model-parent-div');
 
-  const modelTitle = document.createElement('h2');
-  modelTitle.innerHTML = 'Find your BMW';
-  allModelParentContainer.append(modelTitle);
-
   const filterTitle = description.querySelector('h4');
   filterTitle.classList.add('filter-title');
   allModelParentContainer.append(filterTitle);
@@ -955,7 +956,7 @@ export default async function decorate(block) {
     </div>
     <div class="filter-footer">
       <button class="show-filter-btn">
-        <span class="btn-text">Show results (99)</span>
+        <span class="btn-text"></span>
       </button>
       <button class="clear-filter-btn">
         <span class="filter-trash-icon" data-icon="trash_can"></span>
@@ -979,7 +980,7 @@ export default async function decorate(block) {
 
   const numberWrap = document.createElement('div');
   numberWrap.classList.add('number-wrap');
-  numberWrap.innerHTML = '<span class="total-number">99</span>&nbsp;<span class="found-text">found vehicles</span>';
+  numberWrap.innerHTML = `<span class="total-number"></span>&nbsp;<span class="found-text">${placeholders['allModelFoundVehicle']}</span>`;
   allModelParentContainer.append(numberWrap);
 
   const navBar = document.createElement('div');
@@ -1017,4 +1018,6 @@ export default async function decorate(block) {
   handleTabletView();
   scrollToRight();
   scrollToLeft();
+  dropDownContentClick();
+  //window.addEventListener('scroll', applyStickyNav);
 }
