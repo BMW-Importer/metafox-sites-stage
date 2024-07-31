@@ -532,17 +532,25 @@ async function handleMobileSeriesFilter() {
             if (otherItem !== allItem) {
               otherItem.classList.remove('selected-filter');
               otherItem.children[0].checked = false;
+              otherItem.classList.remove('all-disabled');
             }
           });
         } else if (allItem.classList.contains('selected-filter')) {
           // If any non-'All' item is clicked, ensure 'All' is unchecked
           allItem.classList.remove('selected-filter');
           allItem.children[0].checked = false;
+          allItem.classList.add('all-disabled');
         }
-      });
-      updateSelectedValues(selectedValue);
-      // eslint-disable-next-line no-use-before-define
-      vehicleURL = constructVehicleUrl(selectedValue);
+        const anyChecked = Array.from(filterItems).some((item) => item !== allItem && item.children[0].checked);
+          if (anyChecked) {
+            allItem.classList.add('all-disabled');
+          } else {
+            allItem.classList.remove('all-disabled');
+          }
+          updateSelectedValues(selectedValue);
+          // eslint-disable-next-line no-use-before-define
+          vehicleURL = constructVehicleUrl(selectedValue);
+        });
     });
   })
 }
@@ -725,7 +733,7 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   filterWrapperContainer.classList.add('filter-wrapper', `${typeKey}-wrapper`);
 
   const mobilefilterWrapperLabel = document.createElement('span');
-  mobilefilterWrapperLabel.classList.add('mobile-filter-wrapper');
+  mobilefilterWrapperLabel.classList.add('mobile-filter-wrapper', `${typeKey}-wrapper`);
   mobilefilterWrapperLabel.textContent = 'Filter By:';
 
   const filterHeading = document.createElement('span');
@@ -958,6 +966,10 @@ function openFilterPopup() {
 }
 
 function openFiltersBtn() {
+  const sortAndFilterText = document.createElement('h2');
+  sortAndFilterText.classList.add('sort-filter-text-mobile')
+  // placeholder value needs to add here
+  sortAndFilterText.textContent = 'Sort and filter';
   const relevanceContainer = document.createElement('div');
   relevanceContainer.classList.add('relevance-container');
   const filterContainer = document.createElement('div');
@@ -971,7 +983,7 @@ function openFiltersBtn() {
   btnSpan.innerHTML = 'All Filters';
   filterContainer.append(filterBtnOpen);
   const resetFilterElement = createResetFilterButton();
-  document?.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement, filterContainer);
+  document?.querySelector('.stock-locator-model-detail-definition-specification.block').append(sortAndFilterText, resetFilterElement, filterContainer);
   createRelevanceDropdown(relevanceContainer);
   filterBtnOpen.addEventListener('click', openFilterPopup);
 }
