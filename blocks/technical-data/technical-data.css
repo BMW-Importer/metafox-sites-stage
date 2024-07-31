@@ -578,6 +578,10 @@
 .techdata-rte-btn-container h6:first-child {
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+    font-size: 1.4375rem;
+    font-weight: 300;
+    line-height: 2rem;
+    font-family: var(--fixed-font-family);
 }
 
 .techdata-rte-btn-container p:not(.button-container) {
@@ -659,6 +663,16 @@
     .techdata-rte-btn-container p:not(.button-container) {
         font-size: 1.0625rem;
         line-height: 1.75rem;
+    }
+    
+    .techdata-rte-btn-container h1:first-child,
+    .techdata-rte-btn-container h2:first-child,
+    .techdata-rte-btn-container h3:first-child,
+    .techdata-rte-btn-container h4:first-child,
+    .techdata-rte-btn-container h5:first-child,
+    .techdata-rte-btn-container h6:first-child {        
+        font-size: 1.5625rem;
+        line-height: 2.25rem;
     }
 }
 
@@ -812,6 +826,8 @@
     .techdata-rte-btn-container h6:first-child {
         margin-top: 2.5rem;
         margin-bottom: 2rem;
+        font-size: 1.75rem;
+        line-height: 2.5rem;
     }
 
     .techdata-rte-btn-container p:not(.button-container) {
@@ -885,6 +901,8 @@
     .techdata-rte-btn-container h6:first-child {
         margin-top: 3rem;
         margin-bottom: 2.5rem;
+        font-size: 2.125rem;
+        line-height: 3rem;
     }
 
     .techdata-rte-btn-container p:not(.button-container) {
