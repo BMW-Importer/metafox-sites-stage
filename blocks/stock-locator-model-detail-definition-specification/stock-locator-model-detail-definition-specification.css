@@ -530,6 +530,23 @@ li::marker {
     width: 100%;
 }
 
+.mobile-filter-wrapper.series-wrapper {
+    font-size: .75rem;
+    line-height: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 300;
+}
+
+.filter-label-heading {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
 .filter-model-popup .stock-locator-container.relevance .filter-wrapper .filter-label-heading, 
 .filter-model-popup .stock-locator-container.relevance .filter-list.dropdown-list-wrapper {
     width: calc(100% - 50px);
@@ -537,6 +554,53 @@ li::marker {
     left: 16px;
 }
 
+.sort-filter-text-mobile {
+    display: none;
+}
+
+.filter-model-popup .sort-filter-text-mobile {
+    display: flex;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-model-popup .filter-item {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+}
+
+.filter-model-popup  .filter-label {
+    font-size: .75rem;
+    line-height: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.filter-model-popup  .stock-locator-container.relevance {
+    display: none;
+}
+
+.filter-model-popup .stock-locator-container .filter-wrapper .filter-list.dropdown-list-wrapper .filter-item {
+    margin: 10px;
+}
+
+.filter-model-popup .filter-item.all-disabled {
+    color: #bbb;
+    border-color: #f2f2f2;
+    pointer-events: none; /* Disable click events */
+}
+
+.filter-model-popup .filter-item.selected-filter {
+    border: 2px solid #1c69d4;
+    color: #1c69d4;
+}
 /*  mobile view */
 
 @media (width >=360px) and (width < 768px) {
@@ -546,7 +610,6 @@ li::marker {
 
     .stock-locator-container .filter-wrapper .filter-list {
         margin: 0;
-        padding: 10px;
     }
 
     .stock-locator-container .filter-wrapper .filter-list li {
@@ -602,6 +665,10 @@ li::marker {
         display: block;
     }
 
+    .mobile-filter-wrapper.driveType-wrapper,
+    .mobile-filter-wrapper.fuel-wrapper {
+        display: none;
+    }
 }
 /*  tablet view */
 
@@ -790,7 +857,11 @@ li::marker {
     }
 
     .filter-item {
-        width: 27%;
+        width: 25%;
+    }
+
+    .filter-item.not-desktop {
+        width: 100%;
     }
 
     .filter-checkbox {
@@ -810,6 +881,11 @@ li::marker {
 
     .filter-model-popup .show-result-container {
         display: block;
+    }
+
+    .mobile-filter-wrapper.driveType-wrapper,
+    .mobile-filter-wrapper.fuel-wrapper {
+        display: none;
     }
 }
 
