@@ -1236,6 +1236,7 @@ li::marker {
 
     .vehicle-count-wrapper{
         margin-bottom: 1.5rem;
+        text-align: center;
     }
 }
 
