@@ -271,7 +271,7 @@
 }
 
 @font-face { 
-  font-family:BMW_iconFont;
+  font-family:"BMW_iconFont";
   src:url("../fonts/BMW_iconFont.20240715132940.woff") format("woff"),
   url("../fonts/BMW_iconFont.20240715132940.svg") format("svg");
   font-style:normal;
@@ -279,7 +279,15 @@
   font-display:block
 }
 
-[class*=' icon-'],[class^=icon-]{/* font-family:BMW_iconFont !important; */speak:none;font-style:normal;font-weight:400;font-feature-settings:normal;font-variant:normal;line-height:1;text-transform:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+[class*=' icon-'],[class^="icon-"]{
+  speak:none;
+  font-style:normal;
+  font-weight:400;
+  font-feature-settings:normal;
+  font-variant:normal;
+  line-height:1;text-transform:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale}
 
 
 
