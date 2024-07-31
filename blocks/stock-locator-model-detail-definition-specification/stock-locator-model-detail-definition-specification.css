@@ -461,6 +461,7 @@ li::marker {
     cursor: pointer;
     color: #fff;
     background: #4d4d4d;
+    font-weight: bold;
 }
 
 .stock-locator-model-detail-definition-specification .dropdown-container {
@@ -845,13 +846,20 @@ li::marker {
         width: 25%;
     }
 
+    .stock-locator-container.relevance .filter-label{
+        color: #666;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+
     .filter-container,
     .relevance-container {
         display: none !important;
     }
 
     .stock-locator-container.relevance .filter-wrapper {
-        margin-top: -20px;
+        margin-top: -16.5px;
     }
 
     .box-container {
@@ -988,8 +996,8 @@ li::marker {
     }
 
     .selected-filter-list .selected-filter-value {
-        border: 1px solid #000;
-        padding: 5px 30px 5px 15px;
+        border: 1px solid #ccc;
+        padding: 15px 40px 15px 15px;
         font-size: 0.75rem;
         margin: 10px;
         font-weight: 700;
@@ -1011,13 +1019,17 @@ li::marker {
         direction: ltr;
         font-family: var(--icon-font-family);
         opacity: var(--iconfont400-opacity);
-        font-size: 10px;
+        font-size: 15px;
         font-weight: 400;
         color: #8e8e8e;
         position: absolute;
-        right: 10px;
-        top: 7px;
+        right: 13px;
+        top: 13px;
         cursor: pointer;
+    }
+
+    .cancel-filter:hover::after {
+        color: #0653b6;
     }
 
 

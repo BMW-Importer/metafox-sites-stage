@@ -887,7 +887,7 @@ function createRelevanceDropdown(dropDownContainer) {
   filterWrapper.className = 'filter-wrapper';
   const filterLabelHeading = document.createElement('div');
   filterLabelHeading.className = 'filter-label';
-  filterLabelHeading.textContent = 'Sort by';
+  filterLabelHeading.textContent = 'Sort by:';
   filterWrapper.appendChild(filterLabelHeading);
   const filterList = document.createElement('ul');
   filterList.classList.add('filter-list', 'dropdown-list-wrapper');
