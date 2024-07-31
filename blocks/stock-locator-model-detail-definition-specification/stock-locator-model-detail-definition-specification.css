@@ -688,7 +688,7 @@ li::marker {
         color: #000;
         border: 1px solid #000;
         padding: 20px 60px;
-        margin-bottom: 20px;
+        margin-bottom: 1.5rem;
         width: 100%;
     }
 }
@@ -790,7 +790,7 @@ li::marker {
         color: #000;
         border: 1px solid #000;
         padding: 20px 60px;
-        margin: 20px;
+        margin-bottom: 1.5rem;
     }
 
     .stock-locator-model-detail-definition-specification-wrapper {
@@ -1226,12 +1226,16 @@ li::marker {
         color: #000;
         border: 1px solid #000;
         padding: 20px 60px;
-        margin: 20px;
+        margin-bottom: 1.5rem;
         width: 33%;
     }
 
     .filter-item.not-desktop {
         display: none;
+    }
+
+    .vehicle-count-wrapper{
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -1549,7 +1553,7 @@ li::marker {
         color: #000;
         border: 1px solid #000;
         padding: 20px 60px;
-        margin: 20px;
+        margin-bottom: 1.5rem;
         width: 33%;
     }
 

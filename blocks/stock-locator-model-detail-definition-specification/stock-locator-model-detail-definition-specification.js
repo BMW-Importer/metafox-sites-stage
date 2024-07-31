@@ -266,7 +266,6 @@ function cardTiles(getStockLocatorVehicles) {
     stockLocatorCard.appendChild(modelDetailsWrapper);
     stockLocatorCard.appendChild(stockLocatorCardButtonContainer);
     cardListElement.appendChild(stockLocatorCard);
-
     cardList.append(cardListElement);
   });
   cardContainer.append(cardList);
@@ -313,7 +312,7 @@ function loadMorePage(currentPage, totalPages, pageOffset, pageLimit, pageCount,
   showMoreButton.classList.add('show-more-button');
   showMoreContainer.append(showMoreButton);
   vehicleCountWrapper.textContent = `${Math.min(pageOffset + pageLimit, pageCount)} out of ${pageCount} vehicles`;
-  document.querySelector('.stock-locator-model-detail-definition-specification').append(showMoreContainer);
+  document.querySelector('.card-tile-wrapper').append(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
