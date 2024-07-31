@@ -1,25 +1,16 @@
-// eslint-disable-next-line import/no-unresolved
-const axios = require('axios');
 const fs = require('fs');
-const path = require('path');
+const { promisify } = require('util');
+const axios = require('axios');
 
-const ensureDirectoryExistence = (filePath) => {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
-    return true;
-  }
-  fs.mkdirSync(dirname);
-  return true;
-};
+const writeFileAsync = promisify(fs.writeFile);
+const appendFileAsync = promisify(fs.appendFile);
 
-const writeToFile = async (modelName, data, apiFolder) => {
-  try {
-    const filePath = apiFolder + modelName;
-    ensureDirectoryExistence(filePath);
-    await fs.writeFileSync(filePath, data);
-  } catch (error) {
-    console.error(`Error writing to file ${modelName}:`, error);
-  }
+const ERROR_LOG_FILE = 'wdh_error.txt';
+
+const logError = async (message) => {
+  const timestamp = new Date().toISOString();
+  const logMessage = `[${timestamp}] ${message}\n`;
+  await appendFileAsync(ERROR_LOG_FILE, logMessage);
 };
 
 const callApi = async (url, options = {}) => {
@@ -27,9 +18,17 @@ const callApi = async (url, options = {}) => {
     const response = await axios(url, options);
     return response.data;
   } catch (error) {
-    await writeToFile(`error_${url}.txt`, 'API call failed');
+    const errorMessage = error.response
+      ? `Error: ${error.response.status} ${error.response.statusText}`
+      : `Error: ${error.message}`;
+    const logMessage = `URL: ${url}, Message: ${errorMessage}`;
+    await logError(logMessage);
     return null;
   }
 };
 
-module.exports = { callApi, writeToFile };
+module.exports = {
+  callApi,
+  writeFileAsync,
+  logError,
+};

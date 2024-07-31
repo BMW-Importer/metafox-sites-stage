@@ -1,22 +1,24 @@
 const getData = require('./all_models.js');
 const getModelsData = require('./model-details.js');
 const getPreconData = require('./preconapi.js');
+const getConceptCarsDetails = require('./concept-cars.js');
 
-function getModelDetailsByModelCode(modelsArray) {
-  modelsArray.forEach((modelObject) => {
-    const modelName = modelObject.modelCode;
-    if (modelName) {
+async function getModelDetailsByModelCode(modelsArray) {
+  await Promise.all(
+    modelsArray.map(async (modelCodeObject) => {
       try {
-        getModelsData(modelName);
+        await getModelsData(modelCodeObject.modelCode);
+        console.log(`Processed model: ${modelCodeObject.modelCode}`);
       } catch (error) {
-        console.log(error);
+        console.error(`Error processing model ${modelCodeObject.modelCode}:`, error);
       }
-    }
-  });
+    }),
+  );
 }
 
 async function callWdhApi() {
   try {
+    await getConceptCarsDetails();
     const allModelsData = await getData();
     if (allModelsData) {
       const allModelsJson = JSON.parse(allModelsData);
