@@ -1,5 +1,5 @@
 const config = require('./config.js');
-const { callApi, writeToFile } = require('./api_handler.js');
+const { callApi, writeFileAsync } = require('./api_handler.js');
 
 async function fetchModelRange(seriesCode, apiEndpoint, apiHeaders) {
   try {
@@ -120,7 +120,7 @@ async function getPreconData() {
   const writePromise = Object.keys(preConGroupedData).map(async (modelRangeCode) => {
     const jsonData = JSON.stringify(preConGroupedData[modelRangeCode], null, 2);
     const modelRangeCodeFileName = `${modelRangeCode}.json`;
-    await writeToFile(modelRangeCodeFileName, jsonData, API_FOLDER);
+    await writeFileAsync(`${API_FOLDER}${modelRangeCodeFileName}`, jsonData);
   });
 
   await Promise.all(writePromise);
@@ -132,7 +132,7 @@ async function getPreconData() {
     if (result.status === 'fulfilled') {
       const { agModelCode, data } = result.value;
       const preConIdName = `${agModelCode}.json`;
-      await writeToFile(preConIdName, JSON.stringify(data, null, 2), PRE_CON_COSY_API);
+      await writeFileAsync(`${PRE_CON_COSY_API}${preConIdName}`, JSON.stringify(data, null, 2));
     } else {
       console.error('Error while fetching cosy images', result.reason.error);
     }

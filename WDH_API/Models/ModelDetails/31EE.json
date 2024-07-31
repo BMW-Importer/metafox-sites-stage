@@ -18,7 +18,7 @@
       "BMW X1"
     ],
     "hybridCode": "NOHY",
-    "fromPrice": 47762,
+    "fromPrice": 47754,
     "acceleration": "8.3",
     "trunkCapacity": 500,
     "seats": 5,
@@ -40,7 +40,7 @@
       "gearBox": "7 - automatisch",
       "driveType": "VR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "S02TF",
