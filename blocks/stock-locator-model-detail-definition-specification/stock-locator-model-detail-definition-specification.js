@@ -283,11 +283,15 @@ function pagination(meta, getStockLocatorVehicles) {
   const pageCount = meta.count;
   const totalPages = Math.ceil(pageCount / pageLimit);
   const currentPage = Math.floor(pageOffset / pageLimit) + 1;
-  const showMoreButton = document.querySelector('.show-more-button');
-  if (showMoreButton) {
-    showMoreButton.remove();
+
+  const vehicleCountWrapper = document.querySelector('.vehicle-count-wrapper');
+  if (vehicleCountWrapper) {
+    vehicleCountWrapper.remove();
   }
-  if (pageCount >= pageLimit) {
+  // eslint-disable-next-line no-use-before-define
+  createVehicleCountWrapper(pageOffset, pageLimit, pageCount);
+
+  if (pageCount > pageLimit) {
     // eslint-disable-next-line no-use-before-define
     loadMorePage(
       currentPage,
@@ -297,22 +301,43 @@ function pagination(meta, getStockLocatorVehicles) {
       pageCount,
       getStockLocatorVehicles,
     );
+  } else {
+    const showMoreButton = document.querySelector('.show-more-button');
+    if (showMoreButton) {
+      showMoreButton.remove();
+    }
   }
 }
 
-// eslint-disable-next-line max-len
-function loadMorePage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles) {
-  const showMoreContainer = document.createElement('div');
-  showMoreContainer.classList.add('show-more-container');
+function createVehicleCountWrapper(pageOffset, pageLimit, pageCount) {
   const vehicleCountWrapper = document.createElement('div');
   vehicleCountWrapper.classList.add('vehicle-count-wrapper');
+  vehicleCountWrapper.textContent = `${Math.min(pageOffset + pageLimit, pageCount)} out of ${pageCount} vehicles`;
+  document.querySelector('.card-tile-wrapper').appendChild(vehicleCountWrapper);
+}
+
+function loadMorePage(
+  currentPage,
+  totalPages,
+  pageOffset,
+  pageLimit,
+  pageCount,
+  getStockLocatorVehicles,
+) {
+  let showMoreContainer = document.querySelector('.show-more-container');
+  if (showMoreContainer) {
+    showMoreContainer.remove();
+  }
+  showMoreContainer = document.createElement('div');
+  showMoreContainer.classList.add('show-more-container');
+
   const showMoreButton = document.createElement('button');
   showMoreButton.textContent = 'Load More';
-  showMoreContainer.append(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
   showMoreContainer.append(showMoreButton);
-  vehicleCountWrapper.textContent = `${Math.min(pageOffset + pageLimit, pageCount)} out of ${pageCount} vehicles`;
+
   document.querySelector('.card-tile-wrapper').append(showMoreContainer);
+
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
     // eslint-disable-next-line no-use-before-define
