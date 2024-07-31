@@ -669,6 +669,19 @@ li::marker {
     .mobile-filter-wrapper.fuel-wrapper {
         display: none;
     }
+
+    .stock-locator-model-detail-definition-specification .show-more-container {
+        text-align: center;
+    }
+
+    .stock-locator-model-detail-definition-specification .show-more-container .show-more-button {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+        padding: 20px 60px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
 }
 /*  tablet view */
 
@@ -1198,6 +1211,7 @@ li::marker {
         margin: 20px;
         width: 33%;
     }
+
     .filter-item.not-desktop {
         display: none;
     }

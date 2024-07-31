@@ -541,18 +541,19 @@ async function handleMobileSeriesFilter() {
           allItem.children[0].checked = false;
           allItem.classList.add('all-disabled');
         }
+        // eslint-disable-next-line max-len
         const anyChecked = Array.from(filterItems).some((item) => item !== allItem && item.children[0].checked);
-          if (anyChecked) {
-            allItem.classList.add('all-disabled');
-          } else {
-            allItem.classList.remove('all-disabled');
-          }
-          updateSelectedValues(selectedValue);
-          // eslint-disable-next-line no-use-before-define
-          vehicleURL = constructVehicleUrl(selectedValue);
-        });
+        if (anyChecked) {
+          allItem.classList.add('all-disabled');
+        } else {
+          allItem.classList.remove('all-disabled');
+        }
+        updateSelectedValues(selectedValue);
+        // eslint-disable-next-line no-use-before-define
+        vehicleURL = constructVehicleUrl(selectedValue);
+      });
     });
-  })
+  });
 }
 
 function updateFilterDropDownValuePostSelection(newFilterData) {
@@ -784,7 +785,6 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   filterContainer.appendChild(boxContainer);
   dropDownContainer.append(filterContainer, selectedFilterList);
   document.querySelector('.stock-locator-model-detail-definition-specification').append(dropDownContainer);
-  handleMobileSeriesFilter();
   return filterContainer;
 }
 
@@ -967,7 +967,7 @@ function openFilterPopup() {
 
 function openFiltersBtn() {
   const sortAndFilterText = document.createElement('h2');
-  sortAndFilterText.classList.add('sort-filter-text-mobile')
+  sortAndFilterText.classList.add('sort-filter-text-mobile');
   // placeholder value needs to add here
   sortAndFilterText.textContent = 'Sort and filter';
   const relevanceContainer = document.createElement('div');
@@ -1064,4 +1064,5 @@ export default async function decorate(block) {
   // Hide loading icon after all tasks are complete
   hideLoadingIcon();
   handleToggleFilterDropDown();
+  handleMobileSeriesFilter();
 }
