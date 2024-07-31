@@ -921,7 +921,7 @@ li::marker {
     }
 
     .stock-locator-container {
-        width: 22%;
+        width: 23.5%;
         padding-bottom: 10px;
         padding-right: 10px;
     }
@@ -1019,6 +1019,15 @@ li::marker {
         color: #8e8e8e;
     }
 
+    .filter-label-heading {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 0;
+        font-weight: 300;
+    }
+
     .stock-locator-container .filter-wrapper .filter-label-heading.show-dropdown::after {
         content: "arrow_chevron_up";
         direction: ltr;
@@ -1047,13 +1056,13 @@ li::marker {
         max-height: 150px;
         overflow-y: auto;
         position: absolute;
-        width: calc(100% + 4px);
+        width: calc(100% - 20px);
         z-index: 100;
-        margin-left: -2px;
         background: white;
         border-color: transparent;
         border-top: 2px solid #f2f2f2;
         box-shadow: #0000001f 0 10px 17px 0, #00000026 0 4px 8px 0;
+        margin-left: 1px;
     }
 
     .selected-filter-list {
