@@ -345,6 +345,7 @@ li::marker {
     outline: transparent solid 1px;
     white-space: nowrap;
     color: black;
+    margin-right: 20px;
 }
 
 .relevance-container {

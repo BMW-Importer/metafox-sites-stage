@@ -290,25 +290,29 @@ function pagination(meta, getStockLocatorVehicles) {
   }
   if (pageCount >= pageLimit) {
     // eslint-disable-next-line no-use-before-define
-    showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles);
+    loadMorePage(
+      currentPage,
+      totalPages,
+      pageOffset,
+      pageLimit,
+      pageCount,
+      getStockLocatorVehicles,
+    );
   }
 }
 
 // eslint-disable-next-line max-len
-function showPage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles) {
+function loadMorePage(currentPage, totalPages, pageOffset, pageLimit, pageCount, getStockLocatorVehicles) {
   const showMoreContainer = document.createElement('div');
   showMoreContainer.classList.add('show-more-container');
-
   const vehicleCountWrapper = document.createElement('div');
   vehicleCountWrapper.classList.add('vehicle-count-wrapper');
-
   const showMoreButton = document.createElement('button');
-
   showMoreButton.textContent = 'Load More';
   showMoreContainer.append(vehicleCountWrapper);
   showMoreButton.classList.add('show-more-button');
   showMoreContainer.append(showMoreButton);
-  // vehicleCountWrapper.textContent = newStr;
+  vehicleCountWrapper.textContent = `${Math.min(pageOffset + pageLimit, pageCount)} out of ${pageCount} vehicles`;
   document.querySelector('.stock-locator-model-detail-definition-specification').append(showMoreContainer);
   showMoreButton.addEventListener('click', () => {
     const showMoreURLData = document.body.getAttribute('data-vehicle-url');
@@ -355,7 +359,7 @@ async function constructShowMoreUrl(
   // Construct the URL with necessary parameters
   const urlParams = new URLSearchParams({
     limit,
-    sortdirection: 'asc', // Adjust sort direction as required
+    sortdirection: 'asc',
     offset,
   });
 
@@ -364,7 +368,6 @@ async function constructShowMoreUrl(
 
   // Fetch the data for the new offset
   const showMoreCardRes = await getShowMoreCards(fullUrl);
-
   // Concatenate the new data with the existing data
   if (showMoreCardRes?.data) {
     allFetchedVehicles.data = Array.isArray(getStockLocatorVehicles.data)
@@ -375,13 +378,12 @@ async function constructShowMoreUrl(
     // Replace the meta object with the new metadata
     allFetchedVehicles.meta = showMoreCardRes.meta || {};
   }
-  cardTiles(allFetchedVehicles);
+  await cardTiles(allFetchedVehicles);
+
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
-  if (offset >= pageCount) {
+  if (offset + limit >= pageCount) {
     const showMoreButton = document.querySelector('.show-more-button');
-    if (showMoreButton) {
-      showMoreButton.remove();
-    }
+    showMoreButton.classList.add('hidden');
   }
 }
 
