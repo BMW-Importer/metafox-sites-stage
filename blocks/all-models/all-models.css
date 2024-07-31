@@ -956,6 +956,65 @@
     top: 0;
 }
 
+/* link list css */
+.section.all-models-container .link-list-wrapper .link-list-detail {
+    grid-gap: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    list-style: none;
+    margin-bottom: 2.5rem;
+    margin-top: 0px;
+}
+ 
+.section.all-models-container .link-list-wrapper .link-list-title {
+    margin-bottom: .5rem;
+    font-size: 1.8125rem;
+    line-height: 2.625rem;
+}
+ 
+.section.all-models-container .link-list-wrapper .link-list-detail p{
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    margin: 0px;
+}
+ 
+.section.all-models-container .link-list-wrapper .link-list-detail a {
+    display: flex;
+    align-items: center;
+    border: 0;
+    box-shadow: none;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    justify-content: space-between;
+    line-height: 1.75rem;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: start;
+    width: 100%;
+    color: var(--light-text-color);
+    min-height: 3.25rem;
+    padding: .25rem 0px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+ 
+.section.all-models-container .link-list-wrapper .link-list-detail a:after {
+    float: right;
+    -moz-osx-font-smoothing: grayscale;
+    color: #666;
+    content: "arrow_chevron_right";
+    font-family: bmw_next_icons;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    height: 1em;
+    line-height: 1;
+    margin-right: -.25rem;
+    outline: 1px solid #0000;
+}
+
 @media screen and (min-width: 768px) {
     .content-nav-selected-value {
         display: none;
@@ -1153,6 +1212,11 @@
         width: 92.307692%;
         transition: min-height .2s ease-in, opacity .2s ease-in;
     }
+
+    .section.all-models-container .link-list-wrapper .link-list-detail {
+        grid-gap: 0 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -1211,6 +1275,10 @@
         grid-column: span 4;
         padding: 0 0 3rem;
         animation: slideToggle .5s cubic-bezier(0,.5,.5,1);
+    }
+
+    .section.all-models-container .link-list-wrapper .link-list-detail {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
