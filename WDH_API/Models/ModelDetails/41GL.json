@@ -1,0 +1,152 @@
+{
+  "model": {
+    "modelCode": "41GL",
+    "brand": "BM",
+    "description": "BMW 330e Touring",
+    "shortName": "330e Touring",
+    "shortRangeName": "G21",
+    "modelRangeCode": "G21",
+    "modelRanges": [
+      "G21"
+    ],
+    "seriesCode": "3",
+    "series": [
+      "3"
+    ],
+    "seriesDescription": "3",
+    "seriesDescriptions": [
+      "3"
+    ],
+    "hybridCode": "PHEV",
+    "acceleration": "7.9",
+    "seats": 5,
+    "topSpeed": "220",
+    "bodyTypeCode": "TO",
+    "marketingBodyTypeCode": "TO",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "41GL",
+      "paint": "P0668",
+      "fabric": "FEHAT",
+      "options": "S01WG,S04P6,S02NH,S02PA,S02TB,S0302,S03AT,S0322,S03KA,S03MB,S0402,S0417,S0418,S0430,S0459,S0481,S0488,S0491,S0494,S04A2,S04NW,S04U0,S04UR,S0552,S05AC,S05AL,S05AR,S05DF,S05AU,S05DC,S05DF,S05DN,S0654,S0676,S06AE,S06AC,S06AK,S06C3,S06C4,S06C6,S06CP,S06DR,S06NS,S06NX,S06PA,S06U3,S0710,S0775,CTRLLIGHTSON",
+      "productionDate": "2024-09-03"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "150 (204)",
+      "systemMaxTorque": "",
+      "gearBox": "",
+      "driveType": ""
+    },
+    "vehicles": [
+      {
+        "transmissionCode": "Default",
+        "hybridCode": "PHEV",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "X",
+            "systemPower": "150 (204)",
+            "systemMaxTorque": "",
+            "gearBox": "",
+            "driveType": ""
+          },
+          "engine": {
+            "cylinders": "",
+            "technicalCapacity": "",
+            "nominalPower": "",
+            "nominalTorque": ""
+          },
+          "electric": {
+            "systemPower": "",
+            "systemMaxTorque": ""
+          },
+          "performance": {
+            "acceleration": "7.9",
+            "topSpeed": "220",
+            "electricTopSpeed": ""
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "",
+            "consumptionWltpCombinedBest": "",
+            "consumptionWltpCombinedChargeSustaining": "",
+            "emissionsWltpCombined": "",
+            "emissionsWltpCombinedBest": "",
+            "electricConsumption": "",
+            "electricConsumptionBest": "",
+            "electricRangeWltpCity": "",
+            "electricRangeWltpCombined": "",
+            "electricRangeWltpCombinedBest": "",
+            "efficiencyCategoryMin": "",
+            "efficiencyCategoryMax": "",
+            "efficiencyCategoryMinChargeSustaining": "",
+            "efficiencyCategoryMaxChargeSustaining": "",
+            "noiseDriving": "",
+            "noiseStationary": "",
+            "co2EquivalentOverallBest": "",
+            "co2EquivalentOverall": "",
+            "petrolEquivalentOverallBest": "",
+            "petrolEquivalentOverall": "",
+            "primaryEnergyPetrolEquivalentBest": "",
+            "primaryEnergyPetrolEquivalent": ""
+          },
+          "charging": {
+            "batteryCapacity": "",
+            "additionalRangeDC": "",
+            "chargeACDC": "",
+            "chargeAC": "",
+            "charge_AC_0_100": "",
+            "chargeDC": "",
+            "charge_DC_10_80": "",
+            "chargingMaxAC": ""
+          },
+          "weightMeasurements": {
+            "lengthWidthHeight": "",
+            "length": "",
+            "width": "",
+            "height": "",
+            "widthMirrors": "",
+            "wheelTurn": "",
+            "weightNotLoaded": "",
+            "weightMax": "",
+            "permittedLoad": "",
+            "permittedAxleLoad": "",
+            "trailerLoad": "",
+            "trunkCapacity": "",
+            "tankCapacity": ""
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1",
+            "f2"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "electric": [
+            "f2",
+            "f3"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "charging": [
+            "f7"
+          ]
+        },
+        "footnotesData": {}
+      }
+    ]
+  }
+}

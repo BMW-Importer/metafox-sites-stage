@@ -1,0 +1,165 @@
+{
+  "model": {
+    "modelCode": "31DT",
+    "brand": "BM",
+    "description": "X4 xDrive30i",
+    "shortName": "X4 xDrive30i",
+    "shortRangeName": "G02",
+    "modelRangeCode": "G02",
+    "modelRanges": [
+      "G02"
+    ],
+    "seriesCode": "X4",
+    "series": [
+      "X4"
+    ],
+    "seriesDescription": "BMW X4 - M verzije",
+    "seriesDescriptions": [
+      "BMW X4 - M verzije"
+    ],
+    "hybridCode": "NOHY",
+    "fromPrice": 72446,
+    "acceleration": "6.6",
+    "trunkCapacity": 525,
+    "seats": 5,
+    "horsePower": 245,
+    "topSpeed": "235",
+    "bodyTypeCode": "SC",
+    "marketingBodyTypeCode": "SUV",
+    "bodyTypeDescription": "SAC",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "11DT",
+      "paint": "P0C4P",
+      "fabric": "FKHSW",
+      "options": "S01CB,S01CE,S01DF,S01VT,S0230,S02PA,S02TE,S02VB,S0337,S0423, S0428,S0430,S0431,S0481,S0493,S0494,S04KN,S04NE,S04UR,S0534,S0548,S0552,S05AC,S05DA,S05DM,S0654,S06AE,S06AF,S06AK, S06C4,S06U2,S06UX,S06WD,S0704,S0710,S0715,S0760,S0775,S0801,S0851,S0879,S08KA,S08R9,S08TF,S08WC,S0925"
+    },
+    "powerTrain": {
+      "fuelType": "O",
+      "systemPower": "180 (245)",
+      "systemMaxTorque": "350",
+      "gearBox": "8 - automatisch",
+      "driveType": "AR"
+    },
+    "effectDate": "2024-07-30",
+    "vehicles": [
+      {
+        "transmissionCode": "S02TB",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "10",
+        "volt48": true,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "180 (245)",
+            "systemMaxTorque": "350",
+            "gearBox": "8 - automatisch",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "4",
+            "technicalCapacity": "1998",
+            "nominalPower": "180 (245) / 5000 - 6500",
+            "nominalTorque": "350 / 1560 - 4800"
+          },
+          "electric": {
+            "systemPower": "8 (11) / -",
+            "systemMaxTorque": "25"
+          },
+          "performance": {
+            "acceleration": "6.6",
+            "topSpeed": "235",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "8.5–7.5",
+            "regionConsumptionWltpCombined": "-",
+            "consumptionWltpCombinedBest": "7.5–8.5",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "193–171",
+            "regionEmissionsWltpCombined": "-",
+            "emissionsWltpCombinedBest": "171–193",
+            "electricConsumption": "-",
+            "regionElectricConsumption": "-",
+            "electricConsumptionBest": "-",
+            "electricRangeWltpCity": "-",
+            "electricRangeWltpCombined": "-",
+            "regionElectricRangeWltpCombined": "-",
+            "electricRangeWltpCombinedBest": "-",
+            "efficiencyCategoryMin": "-",
+            "efficiencyCategoryMax": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-",
+            "co2EquivalentOverallBest": "-",
+            "co2EquivalentOverall": "-",
+            "petrolEquivalentOverallBest": "-",
+            "petrolEquivalentOverall": "-",
+            "primaryEnergyPetrolEquivalentBest": "-",
+            "primaryEnergyPetrolEquivalent": "-"
+          },
+          "charging": {
+            "batteryCapacity": "0.4",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-",
+            "chargingMaxAC": "-"
+          },
+          "weightMeasurements": {
+            "lengthWidthHeight": "4751.0 / 1918.0 / 1621.0",
+            "length": "4751",
+            "width": "1918",
+            "height": "1621",
+            "widthMirrors": "2138 (1080 / 1058)",
+            "wheelTurn": "2864.0",
+            "weightNotLoaded": "1890",
+            "weightMax": "2450",
+            "permittedLoad": "635",
+            "permittedAxleLoad": "1160 / 1400",
+            "trailerLoad": "2000 / 100",
+            "trunkCapacity": "525–1430",
+            "tankCapacity": "65.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "charging": [
+            "f7"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      }
+    ]
+  }
+}

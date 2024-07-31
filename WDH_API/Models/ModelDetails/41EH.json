@@ -1,0 +1,200 @@
+{
+  "model": {
+    "modelCode": "41EH",
+    "brand": "BM",
+    "description": "750e xDrive",
+    "shortName": "750e xDrive",
+    "shortRangeName": "G70",
+    "modelRangeCode": "G70",
+    "modelRanges": [
+      "G70"
+    ],
+    "seriesCode": "7",
+    "series": [
+      "7"
+    ],
+    "seriesDescription": "BMW Serije 7",
+    "seriesDescriptions": [
+      "BMW Serije 7"
+    ],
+    "hybridCode": "PHEV",
+    "fromPrice": 132021,
+    "acceleration": "4.8",
+    "trunkCapacity": 525,
+    "seats": 5,
+    "horsePower": 489,
+    "topSpeed": "250",
+    "bodyTypeCode": "LI",
+    "marketingBodyTypeCode": "LI",
+    "bodyTypeDescription": "LIM",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "41EH",
+      "paint": "P0C4A",
+      "fabric": "FKVRI",
+      "options": "S01CB,S01DF,S01F6,S0230,S02PA,S02TB,S02VB,S02VH,S0302,S03DN,S0416,S0428,S0465,S04D7,S04HA,S04T2,S04T3,S04U9,S04V1,S0548,S05AS,S05AW,S05DN,S0654,S06AE,S06AF,S06AK,S06C4,S06NX,S06PA,S06U3,S06U7,S0801,S0851,S0879,S08KA,S08R9,S08TF,S09QV"
+    },
+    "powerTrain": {
+      "fuelType": "X",
+      "systemPower": "360 (489)",
+      "systemMaxTorque": "700",
+      "gearBox": "8 - automatisch",
+      "driveType": "AR"
+    },
+    "effectDate": "2024-07-30",
+    "vehicles": [
+      {
+        "transmissionCode": "S02TB",
+        "hybridCode": "PHEV",
+        "iD_LEIST_KONST": "20",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "X",
+            "systemPower": "360 (489)",
+            "systemMaxTorque": "700",
+            "gearBox": "8 - automatisch",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "6",
+            "technicalCapacity": "2998",
+            "nominalPower": "230 (313) / 5000 - 6500",
+            "nominalTorque": "450 / 1750 - 4700"
+          },
+          "electric": {
+            "systemPower": "145 (197)",
+            "systemMaxTorque": "280"
+          },
+          "performance": {
+            "acceleration": "4.8",
+            "topSpeed": "250",
+            "electricTopSpeed": "140"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "1.3–1",
+            "regionConsumptionWltpCombined": "-",
+            "consumptionWltpCombinedBest": "1–1.3",
+            "consumptionWltpCombinedChargeSustaining": "8.9–8",
+            "emissionsWltpCombined": "30–23",
+            "regionEmissionsWltpCombined": "-",
+            "emissionsWltpCombinedBest": "23–30",
+            "electricConsumption": "26–23.4",
+            "regionElectricConsumption": "-",
+            "electricConsumptionBest": "23.4–26",
+            "electricRangeWltpCity": "75–89",
+            "electricRangeWltpCombined": "72–80",
+            "regionElectricRangeWltpCombined": "-",
+            "electricRangeWltpCombinedBest": "80–72",
+            "efficiencyCategoryMin": "-",
+            "efficiencyCategoryMax": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-",
+            "co2EquivalentOverallBest": "-",
+            "co2EquivalentOverall": "-",
+            "petrolEquivalentOverallBest": "-",
+            "petrolEquivalentOverall": "-",
+            "primaryEnergyPetrolEquivalentBest": "-",
+            "primaryEnergyPetrolEquivalent": "-"
+          },
+          "charging": {
+            "batteryCapacity": "17.6",
+            "additionalRangeDC": "-",
+            "chargeACDC": "7.4 (-) / -",
+            "chargeAC": "7.4",
+            "charge_AC_0_100": "3:00",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-",
+            "chargingMaxAC": "7.4"
+          },
+          "weightMeasurements": {
+            "lengthWidthHeight": "5391.0 / 1950.0 / 1544.0",
+            "length": "5391",
+            "width": "1950",
+            "height": "1544",
+            "widthMirrors": "2192 (1099 / 1093)",
+            "wheelTurn": "3215.0",
+            "weightNotLoaded": "2455",
+            "weightMax": "3120",
+            "permittedLoad": "740",
+            "permittedAxleLoad": "1550 / 1665",
+            "trailerLoad": "2000 / 80",
+            "trunkCapacity": "525",
+            "tankCapacity": "65.0"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1",
+            "f2"
+          ],
+          "powerTrain_systemPower_value": [
+            "f11"
+          ],
+          "powerTrain_systemMaxTorque_value": [
+            "f11"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "electric": [
+            "f2",
+            "f3"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_consumptionWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombined_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_emissionsWltpCombinedBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumption_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricConsumptionBest_label": [
+            "f5"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombined_label": [
+            "f6"
+          ],
+          "emissionsConsumptionWltp_electricRangeWltpCombinedBest_label": [
+            "f6"
+          ],
+          "charging": [
+            "f7"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": 230,
+          "overboostKW": 145
+        }
+      }
+    ]
+  }
+}

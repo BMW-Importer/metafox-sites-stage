@@ -1,0 +1,152 @@
+{
+  "model": {
+    "modelCode": "31GP",
+    "brand": "BM",
+    "description": "BMW X3 20 xDrive",
+    "shortName": "X3 20 xDrive",
+    "shortRangeName": "X3",
+    "modelRangeCode": "G45",
+    "modelRanges": [
+      "G45"
+    ],
+    "seriesCode": "X3",
+    "series": [
+      "X3"
+    ],
+    "seriesDescription": "X3",
+    "seriesDescriptions": [
+      "X3"
+    ],
+    "hybridCode": "NOHY",
+    "acceleration": "7.8",
+    "topSpeed": "215",
+    "bodyTypeCode": "X3",
+    "marketingBodyTypeCode": "SUV",
+    "posiSpec": {
+      "cosyBrand": "WBBM",
+      "agCode": "31GP",
+      "paint": "P0C5A",
+      "fabric": "FKTSW",
+      "options": "S043X,S07VB,S07EW,S0337,S05CA,S03HR,S0320,S03DP,S0TSW,S043X,S03M1,S0223,S05AT,S05DN,S0428,S02VB,S06PA,S0688,S0654,S0302,S0494,S04HA,S04FL,S0413,S0248,S0552,S04UR,S0417,S0534,S01CR,S0402,S0801,S01CB,S01CE,S01DF,S02TE,S02VL,S04NR,S0548,S05AW,S06AF,S06NX,S0760,S0775,S08EB,S08KA,S08R3,S08R9,S09AD,S09T1,S09T2,S09TA,S09TB,S0322,S08TF,S0481,S0879,S0901,S0991,S0230,S06AE,S06U3,S0851,S0925,S09AD,S0710,S043W,S04FL,S0488,S08WC,S0704",
+      "productionDate": "2024-09-02"
+    },
+    "powerTrain": {
+      "fuelType": "O",
+      "systemPower": "153 (208)",
+      "systemMaxTorque": "330",
+      "gearBox": "8 brzina, automatik",
+      "driveType": "AR"
+    },
+    "vehicles": [
+      {
+        "transmissionCode": "Default",
+        "hybridCode": "NOHY",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "153 (208)",
+            "systemMaxTorque": "330",
+            "gearBox": "8 brzina, automatik",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "4",
+            "technicalCapacity": "1998",
+            "nominalPower": "140 (190)/4400–6500",
+            "nominalTorque": "310/1500–4000"
+          },
+          "electric": {
+            "systemPower": "13 (18)/10",
+            "systemMaxTorque": "200"
+          },
+          "performance": {
+            "acceleration": "7.8",
+            "topSpeed": "215",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "7.6–6.9",
+            "consumptionWltpCombinedBest": "",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "173–156",
+            "emissionsWltpCombinedBest": "",
+            "electricConsumption": "-",
+            "electricConsumptionBest": "",
+            "electricRangeWltpCity": "",
+            "electricRangeWltpCombined": "-",
+            "electricRangeWltpCombinedBest": "",
+            "efficiencyCategoryMin": "",
+            "efficiencyCategoryMax": "",
+            "noiseDriving": "-",
+            "noiseStationary": "-",
+            "co2EquivalentOverallBest": "",
+            "co2EquivalentOverall": "",
+            "petrolEquivalentOverallBest": "",
+            "petrolEquivalentOverall": "",
+            "primaryEnergyPetrolEquivalentBest": "",
+            "primaryEnergyPetrolEquivalent": ""
+          },
+          "charging": {
+            "batteryCapacity": "0.9",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-",
+            "chargingMaxAC": ""
+          },
+          "weightMeasurements": {
+            "lengthWidthHeight": "",
+            "length": "4755",
+            "width": "1920",
+            "height": "1660",
+            "widthMirrors": "-",
+            "wheelTurn": "2865",
+            "weightNotLoaded": "1930",
+            "weightMax": "-",
+            "permittedLoad": "-",
+            "permittedAxleLoad": "",
+            "trailerLoad": "2400/100",
+            "trunkCapacity": "570–1700",
+            "tankCapacity": "65"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "powerTrain_systemPower_value": [
+            "f9"
+          ],
+          "powerTrain_systemMaxTorque_value": [
+            "f9"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {}
+      }
+    ]
+  }
+}
