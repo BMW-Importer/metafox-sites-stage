@@ -5,6 +5,7 @@ import {
 } from '../../scripts/common/constants.js';
 
 let currentlyOpenDropdown = null;
+const viewport = window.innerWidth;
 function handleToggleFilterDropDown() {
   const filterSelectors = document.querySelectorAll('.filter-label-heading');
   filterSelectors.forEach((item) => {
@@ -22,7 +23,7 @@ function handleToggleFilterDropDown() {
     });
   });
   // eslint-disable-next-line no-use-before-define
-  handleCheckBoxSelection();
+  viewport >= 1024 && handleCheckBoxSelection()
 }
 
 function handleCancelSelectedValue(values) {
@@ -80,11 +81,12 @@ function removeLastSelectedValue(values) {
 // eslint-disable-next-line import/no-mutable-exports
 export let vehicleURL;
 // eslint-disable-next-line no-unused-vars
-let detailBtn; let cfDetails;
+let detailBtn; let cfDetails; let fallBackBanner;
 
-export function propsData(modelButtonTxt, countText, cfData) {
-  detailBtn = modelButtonTxt;
-  cfDetails = cfData;
+export function propsData(modelButtonTxt, countText, cfData, bannerContent) {
+  detailBtn = modelButtonTxt.textContent;
+  cfDetails = cfData.textContent;
+  fallBackBanner = bannerContent.textContent
 }
 
 function cardTiles(getStockLocatorVehicles) {
@@ -353,7 +355,7 @@ function loadMorePage(
 }
 
 // eslint-disable-next-line max-len
-function showResulsHandler() {
+function showResulsHandler(vehicleURL) {
   const showResultContainer = document.createElement('div');
   showResultContainer.classList.add('show-result-container');
   const showResultButton = document.createElement('button');
@@ -361,7 +363,13 @@ function showResulsHandler() {
   showResultButton.classList.add('show-result');
   showResultContainer.appendChild(showResultButton);
   document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showResultContainer);
-  showResultButton.addEventListener('click', () => {
+  showResultButton.addEventListener('click', async () => {
+    closeModelPopup();
+    const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
+    // eslint-disable-next-line no-use-before-define
+    updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
+    const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
+    cardTiles(getStockLocatorVehicles);
   });
 }
 
@@ -402,7 +410,7 @@ async function constructShowMoreUrl(
     // Replace the meta object with the new metadata
     allFetchedVehicles.meta = showMoreCardRes.meta || {};
   }
-  await cardTiles(allFetchedVehicles);
+  cardTiles(allFetchedVehicles);
 
   // Handle the removal of the "Show More" button if offset exceeds or equals pageCount
   if (offset + limit >= pageCount) {
@@ -518,23 +526,28 @@ async function handleCheckBoxSelection() {
 async function handleMobileSeriesFilter() {
   const dropdowns = document.querySelectorAll('.filter-list');
   const selectedValue = {};
+
   dropdowns.forEach((dropdown) => {
     const filterLabelHeading = dropdown.previousElementSibling;
     const headingText = filterLabelHeading.textContent;
     const filterItems = dropdown.querySelectorAll('.filter-item');
-    const allItem = Array.from(filterItems).find((item) => item.children[0].id === 'All');
+    const allItem = Array.from(filterItems).find((item) => item.children[0].id === 'all');
 
-    filterItems.forEach(async (item) => {
+    filterItems.forEach((item) => {
       const checkbox = item.children[0];
       // Initialize 'All' option
-      if (checkbox.id === 'All') {
+      if (checkbox.id === 'all') {
         checkbox.checked = true;
         item.classList.add('selected-filter');
-      }
+      } 
+
       item.addEventListener('click', (event) => {
         if (event.target.tagName.toLowerCase() === 'input') {
           return;
         }
+        // Toggle checkbox state and selected class
+        checkbox.checked = !checkbox.checked;
+        item.classList.toggle('selected-filter');
 
         if (checkbox.checked) {
           if (!selectedValue[headingText]) {
@@ -546,37 +559,37 @@ async function handleMobileSeriesFilter() {
         } else {
           const index = selectedValue[headingText].indexOf(checkbox.id);
           if (index !== -1) {
-            selectedValue[headingText]?.splice(index, 1);
+            selectedValue[headingText].splice(index, 1);
           }
         }
-        item.classList.toggle('selected-filter');
-        checkbox.checked = !checkbox.checked;
         // Handle 'All' option logic
         if (item === allItem) {
           filterItems.forEach((otherItem) => {
             if (otherItem !== allItem) {
               otherItem.classList.remove('selected-filter');
               otherItem.children[0].checked = false;
-              otherItem.classList.remove('all-disabled');
             }
           });
-        } else if (allItem.classList.contains('selected-filter')) {
-          // If any non-'All' item is clicked, ensure 'All' is unchecked
+          selectedValue[headingText] = ['All'];
+        } else {
+          if (selectedValue[headingText].includes('All')) {
+            const index = selectedValue[headingText].indexOf('All');
+            selectedValue[headingText].splice(index, 1);
+          }
           allItem.classList.remove('selected-filter');
           allItem.children[0].checked = false;
-          allItem.classList.add('all-disabled');
         }
-        // eslint-disable-next-line max-len, no-shadow
+
         const anyChecked = Array.from(filterItems).some((item) => item !== allItem && item.children[0].checked);
         if (anyChecked) {
           allItem.classList.add('all-disabled');
         } else {
           allItem.classList.remove('all-disabled');
         }
-        // eslint-disable-next-line no-use-before-define
         updateSelectedValues(selectedValue);
         // eslint-disable-next-line no-use-before-define
         vehicleURL = constructVehicleUrl(selectedValue);
+        showResulsHandler(vehicleURL);
       });
     });
   });
@@ -663,18 +676,18 @@ function resetAllFilters(values) {
   stockLocatorFiltersAPI();
 }
 
-function createResetFilterButton(values) {
-  const resetFilterElement = document.createElement('div');
-  resetFilterElement.classList.add('reset-filter-not-desktop');
+// function createResetFilterButton(values) {
+//   const resetFilterElement = document.createElement('div');
+//   resetFilterElement.classList.add('reset-filter-');
 
-  const resetAnchor = document.createElement('a');
-  resetAnchor.textContent = 'Reset The filters';
-  resetFilterElement.append(resetAnchor);
-  resetFilterElement.addEventListener('click', () => {
-    resetAllFilters(values); // Updated to not pass `values` directly
-  });
-  return resetFilterElement;
-}
+//   const resetAnchor = document.createElement('a');
+//   resetAnchor.textContent = 'Reset The filters';
+//   resetFilterElement.append(resetAnchor);
+//   resetFilterElement.addEventListener('click', () => {
+//     resetAllFilters(values); // Updated to not pass `values` directly
+//   });
+//   return resetFilterElement;
+// }
 
 function updateSelectedValues(newValues) {
   const mergedValues = { ...newValues };
@@ -714,12 +727,7 @@ function updateSelectedValues(newValues) {
   document.querySelector('body').setAttribute('data-selected-values', JSON.stringify(mergedValues));
 
   // Reset button management
-  const existingResetButton = document.querySelector('.reset-filter-not-desktop');
-  const viewport = window.innerWidth;
-  if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
-    const resetFilterElement = createResetFilterButton(mergedValues);
-    document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
-  } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
+if (!document.querySelector('.reset-filter') && hasSelectedValues) {
     const resetFilterElement = document.createElement('div');
     resetFilterElement.classList.add('reset-filter');
     const resetSpan = document.createElement('span');
@@ -781,7 +789,7 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
   const allCheckbox = document.createElement('input');
   allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
   allCheckbox.type = 'checkbox';
-  allCheckbox.id = 'All';
+  allCheckbox.id = 'all';
   allCheckbox.checked = true;
   const allLabel = document.createElement('label');
   allLabel.htmlFor = 'All';
@@ -860,7 +868,20 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
 
   // Clear the existing list items
   filterList.innerHTML = '';
-
+    // Add "All" option
+    const allListItem = document.createElement('li');
+    allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
+    const allCheckbox = document.createElement('input');
+    allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+    allCheckbox.type = 'checkbox';
+    allCheckbox.id = 'all';
+    allCheckbox.checked = true;
+    const allLabel = document.createElement('label');
+    allLabel.htmlFor = 'All';
+    allLabel.textContent = 'All';
+    allListItem.appendChild(allCheckbox);
+    allListItem.appendChild(allLabel);
+    filterList.appendChild(allListItem);
   // Populate with new filterResponseData
   filterResponseData.forEach((item) => {
     const listItem = document.createElement('li');
@@ -877,14 +898,12 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
     const label = document.createElement('label');
     label.htmlFor = item.id;
     label.textContent = `${item.label} (${item.count})`;
-
     listItem.appendChild(checkbox);
     listItem.appendChild(label);
     filterList.appendChild(listItem);
   });
 
-  // Call this function if necessary for additional functionality
-  handleCheckBoxSelection();
+  viewport >= 1024 ? handleCheckBoxSelection() : handleMobileSeriesFilter();
 }
 
 async function newProcessFilterData(filterData, typeKey) {
@@ -961,7 +980,7 @@ function closeModelPopup() {
   const parentWrapper = document.querySelector('.stock-locator-model-detail-definition-specification-wrapper');
   parentWrapper.classList.remove('filter-model-popup');
   const dropdown = document.querySelector('.dropdown-container');
-  const resetFilterNotDesktop = document.querySelector('.reset-filter-not-desktop');
+  const resetFilterNotDesktop = document.querySelector('.reset-filter');
   const relevanceContent = document.querySelector('.relevance-container');
   const filterBtn = document.querySelector('.filter-container');
   dropdown.style.display = 'none';
@@ -983,7 +1002,7 @@ function openFilterPopup() {
   const dropdown = document.querySelector('.dropdown-container');
   const relevanceContent = document.querySelector('.relevance-container');
   const filterBtn = document.querySelector('.filter-container');
-  const resetFilterNotDesktop = document.querySelector('.reset-filter-not-desktop');
+  const resetFilterNotDesktop = document.querySelector('.reset-filter');
   parentWrapper.append(closeFilterPopupButton);
   dropdown.style.display = 'flex';
   if (resetFilterNotDesktop) {
@@ -1011,8 +1030,8 @@ function openFiltersBtn() {
   filterBtnOpen.append(icon, btnSpan);
   btnSpan.innerHTML = 'All Filters';
   filterContainer.append(filterBtnOpen);
-  const resetFilterElement = createResetFilterButton();
-  document?.querySelector('.stock-locator-model-detail-definition-specification.block').append(sortAndFilterText, resetFilterElement, filterContainer);
+  // const resetFilterElement = createResetFilterButton();
+  document?.querySelector('.stock-locator-model-detail-definition-specification.block').append(sortAndFilterText, filterContainer);
   createRelevanceDropdown(relevanceContainer);
   filterBtnOpen.addEventListener('click', openFilterPopup);
 }

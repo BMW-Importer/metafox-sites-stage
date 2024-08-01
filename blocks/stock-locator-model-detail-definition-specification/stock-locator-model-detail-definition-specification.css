@@ -614,6 +614,18 @@ li::marker {
     color: #1c69d4;
 }
 
+.filter-model-popup .selected-filter-list {
+    display: flex;
+    align-items: center;
+    order: 0;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.filter-model-popup .selected-filter-value {
+    display: none;
+}
+
 /*  mobile view */
 
 @media (width >=360px) and (width < 768px) {
@@ -670,10 +682,6 @@ li::marker {
         order: 3;
     }
 
-    .selected-filter-list {
-        display: none;
-    }
-
     .filter-model-popup .show-result-container {
         display: block;
     }
@@ -715,10 +723,6 @@ li::marker {
     
     .stock-locator-container.fuel-container {
         order: 3;
-    }
-    
-    .selected-filter-list {
-        display: none;
     }
     
     .card-tile-list-ele {
