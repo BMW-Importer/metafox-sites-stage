@@ -80,11 +80,12 @@ function removeLastSelectedValue(values) {
 // eslint-disable-next-line import/no-mutable-exports
 export let vehicleURL;
 // eslint-disable-next-line no-unused-vars
-let detailBtn; let cfDetails;
+let detailBtn; let cfDetails; let fallbackBanner;
 
-export function propsData(modelButtonTxt, countText, cfData) {
+export function propsData(modelButtonTxt, countText, cfData, bannerContent) {
   detailBtn = modelButtonTxt;
   cfDetails = cfData;
+  fallbackBanner = bannerContent.textContent;
 }
 
 function cardTiles(getStockLocatorVehicles) {
@@ -290,7 +291,14 @@ function pagination(meta, getStockLocatorVehicles) {
   }
   // eslint-disable-next-line no-use-before-define
   createVehicleCountWrapper(pageOffset, pageLimit, pageCount);
-
+  if (getStockLocatorVehicles.data.length === 0) {
+    const noDataDiv = document.createElement('div');
+    noDataDiv.classList.add('fallback-container');
+    if (!document.querySelector('.fallback-container')) {
+      noDataDiv.textContent = fallbackBanner;
+      document.querySelector('.dropdown-container').appendChild(noDataDiv);
+    }
+  }
   if (pageCount > pageLimit) {
     // eslint-disable-next-line no-use-before-define
     loadMorePage(
