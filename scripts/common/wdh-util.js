@@ -213,7 +213,6 @@ export async function getStockLocatorFiltersData() {
 }
 
 export async function getStockLocatorVehiclesData() {
-  console.log(sortBySelctionData);
   const sortBy = sortBySelctionData || 'desc';
   showLoadingIcon();
   let url;
@@ -223,6 +222,7 @@ export async function getStockLocatorVehiclesData() {
   } else {
     url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}${filterData}`;
   }
+  console.log(vehicleURL);
   try {
     const response = await fetch(url);
     if (!response.ok) {
