@@ -7,7 +7,10 @@ import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEnd
 // eslint-disable-next-line import/no-cycle
 // import { vehicleURL } from '../../blocks/precon/precon.js';
 // eslint-disable-next-line import/no-cycle
-import { vehicleURL, showLoadingIcon, hideLoadingIcon } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
+import {
+  vehicleURL, showLoadingIcon, hideLoadingIcon, sortBySelctionData,
+  vehicleNameSortBy,
+} from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
 
 export async function getApiResponse(modelCode) {
   try {
@@ -210,9 +213,11 @@ export async function getStockLocatorFiltersData() {
 }
 
 export async function getStockLocatorVehiclesData() {
+  console.log(sortBySelctionData);
+  const sortBy = sortBySelctionData || 'desc';
   showLoadingIcon();
   let url;
-  const filterData = 'limit=9&sortdirection=asc&offset=0&';
+  const filterData = `limit=9&sortby=price&sortdirection=${sortBy}&offset=0&`;
   if (vehicleURL) {
     url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}&${filterData}`;
   } else {
