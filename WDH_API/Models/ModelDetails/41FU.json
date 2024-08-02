@@ -13,12 +13,12 @@
     "series": [
       "3"
     ],
-    "seriesDescription": "BMW Serije 3 Touring",
+    "seriesDescription": "BMW Serije 3 - M verzije",
     "seriesDescriptions": [
-      "BMW Serije 3 Touring"
+      "BMW Serije 3 - M verzije"
     ],
     "hybridCode": "NOHY",
-    "fromPrice": 56044,
+    "fromPrice": 60549,
     "acceleration": "7.3",
     "trunkCapacity": 480,
     "seats": 5,
@@ -41,7 +41,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "S02TE",
@@ -71,9 +71,9 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "5.4–5.1",
+            "consumptionWltpCombined": "5.9–5.2",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "142–135",
+            "emissionsWltpCombined": "156–137",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
@@ -173,9 +173,9 @@
             "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "5.4–5.1",
+            "consumptionWltpCombined": "5.9–5.2",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "142–135",
+            "emissionsWltpCombined": "156–137",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",

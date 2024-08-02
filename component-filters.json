@@ -233,9 +233,8 @@
       "disclaimer",
       "eyebrow",
       "headline",
-      "download",
-      "quote",
-      "custom-asset-one"
+      "columns",
+      "quote"
     ]
   },
   {
@@ -284,7 +283,9 @@
   {
     "id": "all-models-section",
     "components": [
-      "all-models"
+      "all-models",
+      "headline",
+      "link-list"
     ]
   },
   {
@@ -421,6 +422,17 @@
     "id": "technical-data",
     "components":[
       "model-data"
-    ]
+    ],
+    "rte": {
+      "format": [],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": [],
+      "insert": ["link"],
+      "advanced": ["h2"],
+      "extensions": [],
+       "editor": []
+    }
   }
 ]

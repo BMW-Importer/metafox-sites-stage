@@ -53,7 +53,7 @@
         "valueType": "string",
         "name": "type",
         "label": "Eyebrow",
-        "value": "p",
+        "value": "h6",
         "hidden": true
       }
     ]
@@ -4792,72 +4792,58 @@
         "required": true
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
-        "name": "content_headlineAndText1",
+        "name": "headline1_headlineAndText1",
         "label": "Headline and Text",
-        "value": "h2",
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
       },
       {
-        "component": "text",        
-        "name": "content_headlineAndText1Type",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1Link",
+        "name": "headline1_headline1Link",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1LinkText",
+        "name": "headline1_headline1LinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed as the Link Button."        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline1LinkType",
+        "name": "headline1_headline1LinkType",
         "label": "Link Label",
         "hidden": true        
       },
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
-        "name": "content_headlineAndText2",
-        "label": "Headline and Text",
-        "value": "h2",
+        "name": "headline2_headlineAndText2",
+        "label": "Headline and Text",        
         "description": "Defines the headline and copy text to be displayed underneath the technical data table."        
       },
       {
-        "component": "text",        
-        "name": "content_headlineAndText2Type",
-        "valueType": "string",
-        "hidden": true
-      },
-      {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2Link",
+        "name": "headline2_headline2Link",
         "label": "Link",
         "description": "Defines the page to which the user will be directed to. Please add the full URL including https://"        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2LinkText",
+        "name": "headline2_headline2LinkText",
         "label": "Link Label",
         "description": "Defines the text to be displayed as the Link Button."        
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_headline2LinkType",
+        "name": "headline2_headline2LinkType",
         "label": "Link Label",
         "hidden": true        
       }
@@ -4887,7 +4873,8 @@
         "component": "text-input",
         "name": "analytics_label",
         "label": "Analytics Label",
-        "valueType": "string"
+        "valueType": "string",
+        "description": "Defines a brief description of the content for analytics. Please fill out this field in English."
       }
     ]
   },
@@ -4953,25 +4940,11 @@
       "valueType": "string"
     },
     {
-      "component": "text",
-      "name": "content_spreadsheet1Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
-    },
-    {
       "component": "aem-content",
-      "name": "content_spreadsheet2",
+      "name": "model_spreadsheet2",
       "description": "Contains all models labels and details (e.g. model name, model code, price etc.).",
       "label": "Model Overview Spreadsheet",
       "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "content_spreadsheet2Type",        
-      "valueType": "string",
-      "value": "h5",
-      "hidden": true
     },
     {
       "component":"tab",
@@ -5067,7 +5040,7 @@
     "fields" :[
       {
         "component": "text",
-        "name": "stock-locator-label",        
+        "name": "stockLocatorLabel",        
         "valueType": "string",
         "label": "Section Label",
         "description": "Defines the name of the Section for analytics. Please define the Section Name in English."
@@ -5080,19 +5053,19 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "generalTab1"
+        "name": "content_modelPropertiesTab"
       },
       {
         "component": "text",
         "label": "Model Tile Button Label",
-        "name": "modelTitleButton",
+        "name": "content_modeltitlebtn",
         "valueType": "string",
         "description": "Defines the label of the button appearing in the model tile that directs the user to the more detailed overview.",
         "value": "See the details"
       },
       {
         "component": "select",
-        "name": "modelTitleButtonStyling",
+        "name": "content_modeltitlebtnstyle",
         "label": "Model Tile Button Styling",
         "valueType": "string",
         "hidden": true,
@@ -5100,23 +5073,23 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
-        "name": "info-icon-text",
+        "component": "aem-content-fragment",
+        "name": "mp_general_infoIcon",
         "label": "Info Icon Text",
         "valueType": "string",
         "description": "Defines the text appearing in the tooltip of the info icon displayed next to the price. Please select the relevant Info Icon Text per market and language under /content/dam/metafox/."
       },
       {
         "component": "text",
-        "name": "results-count-text",
+        "name": "mp_general_resultsCount",
         "label": "Results Count Text",
         "valueType": "string",
         "value": "{count} of {count}",
         "description": "Defines the text displaying the number of results being displayed above the show more results button."
       },
       {
-        "component": "reference",
-        "name": "disclaimer",
+        "component": "aem-content-fragment",
+        "name": "mp_general_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
@@ -5124,11 +5097,11 @@
       {
         "component": "tab",
         "label": "Fallback Banner",
-        "name": "content"
+        "name": "banner_modelPropertiesTab2"
       },
       {
         "component": "richtext",
-        "name": "rte",
+        "name": "banner_tabRte",
         "label": "Fallback Banner Content",
         "valueType": "string",
         "value": "Sorry, there are no vehicles in stock matching your filter criteria. (note: in headline styling) Please enter new filter criteria. (note: in paragraph styling)",
@@ -5142,19 +5115,19 @@
       {
         "component": "tab",
         "label": "General",
-        "name": "generalTab2"
+        "name": "content_modelDefinitionTab"
       },
       {
         "component": "text",
         "label": "RFO Form Button Label",
-        "name": "rfoFormButton",
+        "name": "content_button",
         "valueType": "string",
         "description": "Defines the label of the two buttons leading to the RFO form.",
         "value": "Request an offer"
       },
       {
         "component": "select",
-        "name": "rfoFormButtonStyling",
+        "name": "content_buttonstyling",
         "label": "RFO Form Button Styling",
         "valueType": "string",
         "hidden": true,
@@ -5164,14 +5137,14 @@
       {
         "component": "text",
         "label": "Dealer Location Button Label",
-        "name": "dealerLocatiobButton",
+        "name": "content_dealerButton",
         "valueType": "string",
         "description": "Defines the label of the button leading to the Google Maps link with the location of the Dealer with the vehicle in stock.",
         "value": "Find the dealer"
       },
       {
         "component": "select",
-        "name": "dealerLocatiobButtonStyling",
+        "name": "content_dealerButtonStyling",
         "label": "Dealer Location Button Styling",
         "valueType": "string",
         "hidden": true,
@@ -5179,22 +5152,22 @@
         "description": "Defines the styling applied to the button or if the button will displayed as a link."
       },
       {
-        "component": "reference",
-        "name": "info-icon-text",
+        "component": "aem-content-fragment",
+        "name": "content_infoIconText",
         "label": "Info Icon Text",
         "valueType": "string",
         "description": "Defines the text appearing in the tooltip of the info icon displayed next to the price. Please select the relevant Info Icon Text per market and language under /content/dam/metafox/"
       },
       {
         "component": "reference",
-        "name": "fallback-image-options",
+        "name": "content_fallbackImgOptions",
         "label": "Fallback Image for Options",
         "valueType": "string",
         "description": "Defines the fallback image to be displayed if there is no defined image for the vehicle options."
       },
       {
-        "component": "reference",
-        "name": "disclaimer",
+        "component": "aem-content-fragment",
+        "name": "content_disclaimer",
         "label": "Disclaimers",
         "valueType": "string",
         "description": "Defines the Disclaimer Content Fragment that will be displayed in the page. Please select the relevant disclaimers per market and language under /content/dam/metafox/"
@@ -5202,7 +5175,7 @@
       {
         "component": "tab",
         "label": "Analytics",
-        "name": "analytics"
+        "name": "analytics_tab"
       },
       {
         "component": "select",

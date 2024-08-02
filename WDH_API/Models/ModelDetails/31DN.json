@@ -18,7 +18,7 @@
       "BMW iX3"
     ],
     "hybridCode": "NOHY",
-    "fromPrice": 59631,
+    "fromPrice": 56485,
     "acceleration": "9.1",
     "trunkCapacity": 550,
     "seats": 5,
@@ -40,7 +40,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "S0205",
@@ -167,7 +167,7 @@
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "9.6–8.6",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "217–196",
+            "emissionsWltpCombined": "218–196",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",

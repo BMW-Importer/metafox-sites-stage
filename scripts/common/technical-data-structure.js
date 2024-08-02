@@ -342,7 +342,7 @@ export const techDataMarkUp = `
     <p class="techdata-table-td-text label">{placeholders.techDataTheVolumeOfTheReservoirUl}</p>
     </td>
     <td class="techdata-table-td value" role="rowheader">
-    <p class="techdata-table-td-text value">{technicalData.}</p>
+    <p class="techdata-table-td-text value"></p>
     </td>
 </tr>
 <tr class="techdata-table-tr" role="row">
@@ -350,7 +350,7 @@ export const techDataMarkUp = `
     <p class="techdata-table-td-text label">{placeholders.techDataBmwWheelsAndTires}</p>
     </td>
     <td class="techdata-table-td value" role="rowheader">
-    <p class="techdata-table-td-text value">{technicalData.}</p>
+    <p class="techdata-table-td-text value"></p>
     </td>
 </tr>
 </table>
@@ -361,7 +361,7 @@ export const techDataWdhResponsObject = `
     "model": {
         "modelCode": "{responseJson.ModelCode}",
         "brand": "",
-        "description": "",
+        "description": "{responseJson.ModelName}",
         "shortName": "",
         "shortRangeName": "",
         "modelRangeCode": "",
@@ -393,7 +393,7 @@ export const techDataWdhResponsObject = `
             "options": ""
         },
         "powerTrain": {
-            "fuelType": "",
+            "fuelType": "{responseJson.FuelType}",
             "systemPower": "",
             "systemMaxTorque": "",
             "gearBox": "",
@@ -402,14 +402,14 @@ export const techDataWdhResponsObject = `
         "effectDate": "",
         "vehicles": [
             {
-                "transmissionCode": "{responseJson.TransmissionType}",
+                "transmissionCode": "{responseJson.TransmissionCode}",
                 "hybridCode": "",
                 "iD_LEIST_KONST": "",
                 "volt48": true,
                 "technicalData": {
                     "powerTrain": {
-                        "fuelType": "{responseJson.EngineType}",
-                        "systemPower": "{responseJson.Power}",
+                        "fuelType": "{responseJson.FuelType}",
+                        "systemPower": "{responseJson.PowerkW}",
                         "systemMaxTorque": "{responseJson.TorqueNm}",
                         "gearBox": "{responseJson.Gearbox}",
                         "driveType": "{responseJson.Drive}"
@@ -417,11 +417,12 @@ export const techDataWdhResponsObject = `
                     "engine": {
                         "cylinders": "{responseJson.Cylinders}",
                         "technicalCapacity": "",
-                        "nominalPower": "{responseJson.NominalPower}",
+                        "nominalPower": "{responseJson.NominalPowerkW}",
                         "nominalTorque": "{responseJson.NominalTorqueNm}"
                     },
                     "electric": {
-                        "systemPower": "{responseJson.ElectricNominalPowerkW"
+                        "systemPower": "{responseJson.ElectricNominalPowerkW}",
+                        "systemMaxTorque": ""
                     },
                     "performance": {
                         "acceleration": "{responseJson.Acceleration}",
@@ -456,7 +457,7 @@ export const techDataWdhResponsObject = `
                         "wheelTurn": "{responseJson.Wheelbase}",
                         "weightNotLoaded": "{responseJson.EmptyWeight}",
                         "weightMax": "{responseJson.MaximumWeight}",
-                        "permittedLoad": "",
+                        "permittedLoad": "{responseJson.LoadCapacity}",
                         "trailerLoad": "{responseJson.TowingHook}",
                         "trunkCapacity": "{responseJson.LuggageSpaceCapacity}",
                         "tankCapacity": "{responseJson.TankVolume}"

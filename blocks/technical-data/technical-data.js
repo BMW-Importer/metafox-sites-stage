@@ -10,6 +10,7 @@ import { techDataMarkUp, techDataWdhResponsObject } from '../../scripts/common/t
 import {
   DEV, STAGE, PROD, disclaimerTechDataEndPoint,
 } from '../../scripts/common/constants.js';
+import { pushCustomLinkAnalyticData } from '../../scripts/analytics-util.js';
 
 const env = document.querySelector('meta[name="env"]').content;
 const savedListOfModels = [];
@@ -178,7 +179,7 @@ function replacePlaceholders(template, data) {
 }
 
 function replaceSpreadSheetPlaceholders(template, data) {
-  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : match));
+  return template.replace(/\{responseJson\.(\w+)\}/g, (match, key) => (data[key] !== undefined ? data[key] : ''));
 }
 
 function sortFootNotesArray(uniqueFootnotesArray) {
@@ -304,6 +305,34 @@ function bindClickEventForFootNotesLink(parentBlock) {
   });
 }
 
+/* eslint-disable no-console */
+function triggerAnalytics(clickedElem) {
+  try {
+    if (clickedElem?.target) {
+      const anchorTag = clickedElem.target;
+      const analyticsLabel = anchorTag.getAttribute('data-analytics-label');
+      const primaryCategory = anchorTag.getAttribute('data-analytics-link-type');
+      const subCategory = anchorTag.getAttribute('data-analytics-subcategory-1');
+      const subCategory2 = anchorTag.getAttribute('data-analytics-subcategory-2');
+      const blockName = anchorTag.getAttribute('data-analytics-block-name');
+      const sectionId = anchorTag.getAttribute('data-analytics-section-id');
+
+      pushCustomLinkAnalyticData([
+        analyticsLabel,
+        primaryCategory,
+        subCategory,
+        blockName,
+        sectionId,
+        '',
+        '',
+        subCategory2,
+      ]);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function generateTechUi(parentBlock) {
   const technicalDataTableContainer = parentBlock.querySelector('.techdata-tables-container');
   const selectedModel = parentBlock.querySelector('.models-type-ddl .techdata-model-ddl-model-item.active');
@@ -324,8 +353,8 @@ async function generateTechUi(parentBlock) {
     technicalData = transCodeArray[0].technicalData;
     footNotes = transCodeArray[0].footnotes;
   } else {
-    technicalData = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicle[0]?.technicalData;
-    footNotes = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicle[0]?.footnotes;
+    technicalData = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicles[0]?.technicalData;
+    footNotes = agCodeArrayObj[0]?.json?.responseJson?.model?.vehicles[0]?.footnotes;
   }
 
   if (technicalData) {
@@ -339,6 +368,13 @@ async function generateTechUi(parentBlock) {
     const data = { placeholders, technicalData };
     const replacedHtml = replacePlaceholders(techDataMarkUp, data);
     technicalDataTableContainer.innerHTML = replacedHtml;
+
+    // replace engine type with placeholder
+    const fuelTypeElem = technicalDataTableContainer.querySelector('.value.powerTrain_fuelType');
+    if (fuelTypeElem) {
+      const fuelValue = fuelTypeElem.textContent.toLowerCase();
+      fuelTypeElem.textContent = placeholders[fuelValue] || fuelTypeElem.textContent;
+    }
 
     // generate disclaimer data
     const disclaimerData = await generateDisclaimer(footNotes);
@@ -372,7 +408,9 @@ async function generateTechUi(parentBlock) {
     });
 
     if (disclaimerContainer.children.length > 0) {
-      technicalDataTableContainer.append(disclaimerContainer);
+      const container = parentBlock.querySelector('.techdata-disclaimer-container');
+      container.textContent = '';
+      container.append(disclaimerContainer);
     }
 
     // bind click event for disclaimer navigation
@@ -511,7 +549,7 @@ function generateTransTypeDdl(agCode, parentBlock) {
             data-analytics-subcategory-2='${fuel?.transmissionCode || ''}'
             data-analytics-block-name='${parentBlock?.dataset?.blockName?.trim() || ''}'
             data-analytics-section-id='${parentBlock?.closest('.section')?.dataset?.analyticsLabel || ''}'
-            data-analytics-custom-click='true'>
+            >
             <span class="techdata-model-ddl-model-item-title">${fuel.transmissionCode || ''}</span>
             <i class="techdata-model-ddl-model-selected-icon" aria-hidden="true">
             </button></li>`);
@@ -558,6 +596,9 @@ function generateTransTypeDdl(agCode, parentBlock) {
         const ddlTriggerBtn = parentContainer.querySelector('.techdata-model-ddl-selected');
         if (ddlTriggerBtn) ddlTriggerBtn.click();
       });
+
+      // trigger analytics
+      triggerAnalytics(e);
 
       // generate UI
       generateTechUi(parentBlockElem);
@@ -733,18 +774,24 @@ function generateAuthoredModels(
 }
 
 /* eslint-disable no-console */
-function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp) {
+function formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData) {
   try {
-    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj) => {
-      if (modelObj[0].ModelCode === authoredAgCode) {
-        const responseJson = modelObj[0];
+    let isAuthoredModelFound = false;
+    savedSpreadSheetModels?.responseJson?.data?.forEach((modelObj, index) => {
+      if (modelObj[index].ModelCode === authoredAgCode) {
+        isAuthoredModelFound = true;
+        const responseJson = modelObj[index];
         const newObj = replaceSpreadSheetPlaceholders(techDataWdhResponsObject, responseJson);
         const responseObj = {
           responseJson: JSON.parse(newObj),
         };
-        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp);
+        generateAuthoredModels(responseObj, authoredAgCode, listOfModels, analyticsProp, modelData);
       }
     });
+
+    if (!isAuthoredModelFound) {
+      generateAuthoredModels({}, authoredAgCode, listOfModels, analyticsProp, modelData);
+    }
   } catch (e) {
     console.log(e);
   }
@@ -813,7 +860,7 @@ async function loopModelsToFetchDetails(emptyModels, rows, enableAutoData, listO
             modelData,
           );
         } else {
-          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp);
+          formateSpreadSheetResponse(authoredAgCode, listOfModels, analyticsProp, modelData);
         }
       } catch (error) {
         console.error('fetch model detail failed');
@@ -830,13 +877,18 @@ export default async function decorate(block) {
   block.classList.add('technical-data-block');
   const [
     techDataProp,
+    headline1,
+    headline2,
     ...rows
   ] = [...block.children].map((row, index) => {
-    if (index < 1) {
+    if (index < 3) {
       return row;
     }
     return row;
   });
+
+  headline1.classList.add('techdata-rte-btn-container');
+  headline2.classList.add('techdata-rte-btn-container');
 
   const heading = document.createElement('h2');
   heading.classList.add('techdata-selected-model-title');
@@ -847,6 +899,14 @@ export default async function decorate(block) {
 
   const techDetailsTableContainer = document.createElement('div');
   techDetailsTableContainer.classList.add('techdata-tables-container');
+
+  const rteContainer = document.createElement('div');
+  rteContainer.classList.add('techdata-rte-container');
+  rteContainer.append(headline1);
+  rteContainer.append(headline2);
+
+  const disclaimerContainer = document.createElement('div');
+  disclaimerContainer.classList.add('techdata-disclaimer-container');
 
   const enableAutoData = techDataProp?.querySelector('h2');
   const enableAccordion = techDataProp?.querySelector('h3');
@@ -881,6 +941,8 @@ export default async function decorate(block) {
   block.append(dropDownContainer);
   if (emptyModels.children.length > 0) block.append(emptyModels);
   block.append(techDetailsTableContainer);
+  block.append(rteContainer);
+  block.append(disclaimerContainer);
 
   // click first model to select it
   const firstModelDdlItem = block.querySelector('.techdata-model-ddl-model-btn.models-ddl');

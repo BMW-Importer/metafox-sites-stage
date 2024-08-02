@@ -3,6 +3,12 @@ import {
   fetchSetPlaceholderObject, fetchModelPlaceholderObject, fetchTechDataPlaceholderObject,
 } from './wdh-placeholders.js';
 
+import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEndPoint } from './constants.js';
+// eslint-disable-next-line import/no-cycle
+// import { vehicleURL } from '../../blocks/precon/precon.js';
+// eslint-disable-next-line import/no-cycle
+import { vehicleURL, showLoadingIcon, hideLoadingIcon } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
+
 export async function getApiResponse(modelCode) {
   try {
     const endpointUrl = `/WDH_API/Models/ModelDetails/${modelCode}.json`;
@@ -165,6 +171,78 @@ export async function getPreConCosyImage(modelCode) {
     const response = await fetch(`${origin}${endpointUrl}`);
     const preConCosyResJSON = await response.json();
     return preConCosyResJSON;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+/* stock loctor base API Calls */
+
+export function dynamicData() {
+  const url = 'bmw';
+  const lang = 'rs'; // document.querySelector('meta[name="language"]').content;
+  const georegion = document.querySelector('meta[name="georegion"]').content;
+  const formedURL = `${url}_${lang}?locale=sr_${georegion}&`;
+  return formedURL;
+}
+
+const dynamicURLData = dynamicData();
+
+export async function getStockLocatorFiltersData() {
+  showLoadingIcon();
+  let url;
+  if (vehicleURL) {
+    url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}${vehicleURL}`;
+  } else {
+    url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
+  }
+  try {
+    // url = `${stockLocatorOrigin}${stockLocatorFilterEndPoint}${dynamicURLData}`;
+    const response = await fetch(`${url}`);
+    const responseJson = await response.json();
+    hideLoadingIcon();
+    return responseJson;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+export async function getStockLocatorVehiclesData() {
+  showLoadingIcon();
+  let url;
+  const filterData = 'limit=9&sortdirection=asc&offset=0&';
+  if (vehicleURL) {
+    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${vehicleURL}&${filterData}`;
+  } else {
+    url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}${filterData}`;
+  }
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseJson = await response.json();
+    hideLoadingIcon();
+    return responseJson;
+  } catch (error) {
+    console.log('Error fetching data for building get placeholder', error);
+    throw error;
+  }
+}
+
+export async function getShowMoreCards(cardUrl) {
+  showLoadingIcon();
+  const url = `${stockLocatorOrigin}${stockLocatorVehiclesEndPoint}${dynamicURLData}&${cardUrl}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const responseJson = await response.json();
+    hideLoadingIcon();
+    return responseJson;
   } catch (error) {
     console.log('Error fetching data for building get placeholder', error);
     throw error;
