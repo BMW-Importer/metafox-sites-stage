@@ -321,28 +321,6 @@ function addButtons(preconLeftWrapper, preconRightWrapper) {
   preconRightWrapper.append(nextButton);
 }
 
-// function updateItemsToShow(preconGalleryContent) {
-//   const viewport = window.innerWidth;
-
-//   const totalItems = preconGalleryContent.childElementCount;
-//   const computedStyle = getComputedStyle(preconGalleryContent);
-//   const paddingLeft = parseFloat(computedStyle.paddingLeft);
-//   const paddingRight = parseFloat(computedStyle.paddingRight);
-//   const desktopScreenWidth = viewport - (paddingLeft + paddingRight);
-
-//   // padding only for more than 1280 viewport
-//   const desktopContentPadding = document.querySelector('.section.precon-container');
-//   const computedStyleDesktop = getComputedStyle(desktopContentPadding);
-//   const paddingLeftDesktop = parseFloat(computedStyleDesktop.paddingLeft);
-//   const paddingRightDesktop = parseFloat(computedStyleDesktop.paddingRight);
-//   const ultraScreenWidth = viewport - (paddingLeftDesktop + paddingRightDesktop);
-
-//   const cardsToShow = 1;
-//   const availableWidth = viewport >= 1920 ? ultraScreenWidth : desktopScreenWidth;
-//   console.log(viewport);
-//   return { cardsToShow, availableWidth, totalItems };
-// }
-
 export function resizePreconBlock() {
   const viewport = window.innerWidth;
   const carousels = document.querySelectorAll('.precon-image-container');
@@ -438,6 +416,7 @@ export default async function decorate(block) {
         preConModelResponse = await getPreConApiResponse(selectedModelRange); // calling PRECon API
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
     if (preConModelResponse) {
