@@ -383,17 +383,6 @@ img.card-animation-left {
 }
 
 @media (width >= 768px) and (width < 1024px) {
-    .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
-        padding-left: 16.667%;
-        padding-right: 16.667%;
-    }
-
-    .precon-wrapper .precon-wrapper-lft-area, .precon-wrapper .precon-wrapper-rth-area{
-        display: none;
-    }
-}
-
-@media (width >= 768px) and (width < 1280px) {
     .precon-wrapper .precon-image-container {
         padding-left: 3rem;
         padding-right: 3rem;
@@ -406,6 +395,15 @@ img.card-animation-left {
 
     .section.precon-container {
         padding: 0;
+    }
+
+    .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
+        padding-left: 16.667%;
+        padding-right: 16.667%;
+    }
+
+    .precon-wrapper .precon-wrapper-lft-area, .precon-wrapper .precon-wrapper-rth-area{
+        display: none;
     }
 
     .headerline-wrapper {
@@ -426,6 +424,73 @@ img.card-animation-left {
     }
 
 }
+
+@media (width >= 1024px) and (width < 1280px){
+    .precon-wrapper .precon-image-container {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }  
+
+    .precon-wrapper .precon-content-data .pre-content-outer-wrapper {
+        padding: 8.333%;
+        padding-top: 1.5rem;
+    }
+
+    .precon-title {
+        font-size: 1.4375rem;
+        line-height: 2.25rem;
+        text-align: left;
+    }
+
+    .precon-wrapper .precon-content-data .price-details-wrapper {
+        --grid-gutter: .75rem;
+
+        display: flex;
+        gap: calc(var(--grid-gutter)* 2);
+    }
+
+    .precon-wrapper .precon-content-data .price-details-wrapper .pre-price-details {
+        flex: 9;
+    }
+
+    .headerline-wrapper {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        text-align: left;
+    }
+
+    .precon-wrapper .precon-content-data .precon-link a {
+        margin: unset;
+        width: unset;
+    }
+
+    .price-details-inner-wrapper {
+        flex-direction: row;
+    }
+
+    .price-details-inner-wrapper:last-child {
+        margin-bottom: 0;
+    }
+
+    .price-details-inner-wrapper .swatches .options-count {
+        margin-right: 1.5rem;
+    }
+
+    .price-details-inner-wrapper .swatches .swatches-image {
+        border: .125rem solid #f2f2f2;
+        border-radius: 50%;
+        overflow-clip-margin: content-box;
+        overflow: clip;
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .precon-wrapper .precon-content-data .precon-link {
+        flex: 3;
+    }
+
+}
+
 
 @media (width >= 360px) and (width < 768px) {
     .section.precon-container {
