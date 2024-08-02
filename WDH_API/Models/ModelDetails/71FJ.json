@@ -68,9 +68,7 @@
             "consumptionWltpCombined": "0,8–0,6",
             "emissionsWltpCombined": "19–14",
             "electricConsumption": "21,4–18,9",
-            "electricRangeWltpCombined": "87–102",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-"
+            "electricRangeWltpCombined": "87–102"
           },
           "charging": {
             "batteryCapacity": "-",

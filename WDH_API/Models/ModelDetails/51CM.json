@@ -14,10 +14,9 @@
     "series": [
       "2"
     ],
-    "seriesDescription": "BMW Serije 2 Gran Coupe",
+    "seriesDescription": "BMW Serije 2 Active Tourer",
     "seriesDescriptions": [
-      "BMW Serije 2 Active Tourer",
-      "BMW Serije 2 Gran Coupe"
+      "BMW Serije 2 Active Tourer"
     ],
     "hybridCode": "NOHY",
     "fromPrice": 69458,
@@ -44,7 +43,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-30",
+    "effectDate": "2024-08-01",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -76,31 +75,14 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "8.8–8.1",
-            "regionConsumptionWltpCombined": "-",
-            "consumptionWltpCombinedBest": "8.1–8.8",
             "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "200–185",
-            "regionEmissionsWltpCombined": "-",
-            "emissionsWltpCombinedBest": "185–200",
             "electricConsumption": "-",
-            "regionElectricConsumption": "-",
-            "electricConsumptionBest": "-",
-            "electricRangeWltpCity": "-",
             "electricRangeWltpCombined": "-",
-            "regionElectricRangeWltpCombined": "-",
-            "electricRangeWltpCombinedBest": "-",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
             "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-",
-            "petrolEquivalentOverallBest": "-",
-            "petrolEquivalentOverall": "-",
-            "primaryEnergyPetrolEquivalentBest": "-",
-            "primaryEnergyPetrolEquivalent": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "-",
@@ -109,11 +91,9 @@
             "chargeAC": "-",
             "charge_AC_0_100": "-",
             "chargeDC": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "-"
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "lengthWidthHeight": "4548.0 / 1838.0 / 1404.0",
             "length": "4548",
             "width": "1838",
             "height": "1404",
@@ -122,7 +102,6 @@
             "weightNotLoaded": "1765",
             "weightMax": "2165",
             "permittedLoad": "475",
-            "permittedAxleLoad": "1090 / 1160",
             "trailerLoad": "1600 / 75",
             "trunkCapacity": "390",
             "tankCapacity": "52.0"

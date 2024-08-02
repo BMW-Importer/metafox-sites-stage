@@ -42,7 +42,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-30",
+    "effectDate": "2024-08-01",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -74,31 +74,14 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "7.7–7",
-            "regionConsumptionWltpCombined": "-",
-            "consumptionWltpCombinedBest": "7–7.7",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "203–182",
-            "regionEmissionsWltpCombined": "-",
-            "emissionsWltpCombinedBest": "182–203",
+            "emissionsWltpCombined": "202–182",
             "electricConsumption": "-",
-            "regionElectricConsumption": "-",
-            "electricConsumptionBest": "-",
-            "electricRangeWltpCity": "-",
             "electricRangeWltpCombined": "-",
-            "regionElectricRangeWltpCombined": "-",
-            "electricRangeWltpCombinedBest": "-",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
             "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-",
-            "petrolEquivalentOverallBest": "-",
-            "petrolEquivalentOverall": "-",
-            "primaryEnergyPetrolEquivalentBest": "-",
-            "primaryEnergyPetrolEquivalent": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "0.4",
@@ -107,11 +90,9 @@
             "chargeAC": "-",
             "charge_AC_0_100": "-",
             "chargeDC": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "-"
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "lengthWidthHeight": "4752.0 / 1938.0 / 1621.0",
             "length": "4752",
             "width": "1938",
             "height": "1621",
@@ -120,7 +101,6 @@
             "weightNotLoaded": "2095",
             "weightMax": "2560",
             "permittedLoad": "540",
-            "permittedAxleLoad": "1230 / 1430",
             "trailerLoad": "2000 / 100",
             "trunkCapacity": "525–1430",
             "tankCapacity": "68.0"

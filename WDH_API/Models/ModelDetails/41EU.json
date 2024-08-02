@@ -18,7 +18,7 @@
       "BMW X5 - M verzije"
     ],
     "hybridCode": "PHEV",
-    "fromPrice": 102682,
+    "fromPrice": 104255,
     "acceleration": "4.8",
     "trunkCapacity": 500,
     "seats": 5,
@@ -40,7 +40,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-30",
+    "effectDate": "2024-08-01",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
@@ -72,44 +72,25 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
-            "regionConsumptionWltpCombined": "-",
-            "consumptionWltpCombinedBest": "-",
             "consumptionWltpCombinedChargeSustaining": "-",
             "emissionsWltpCombined": "-",
-            "regionEmissionsWltpCombined": "-",
-            "emissionsWltpCombinedBest": "-",
             "electricConsumption": "-",
-            "regionElectricConsumption": "-",
-            "electricConsumptionBest": "-",
-            "electricRangeWltpCity": "-",
             "electricRangeWltpCombined": "-",
-            "regionElectricRangeWltpCombined": "-",
-            "electricRangeWltpCombinedBest": "-",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
             "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-",
-            "petrolEquivalentOverallBest": "-",
-            "petrolEquivalentOverall": "-",
-            "primaryEnergyPetrolEquivalentBest": "-",
-            "primaryEnergyPetrolEquivalent": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "25.7",
             "additionalRangeDC": "-",
             "chargeACDC": "7.4 (-) / -",
             "chargeAC": "7.4",
-            "charge_AC_0_100": "4.5",
+            "charge_AC_0_100": "4:30",
             "chargeDC": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "7.4"
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "lengthWidthHeight": "4935.0 / 2004.0 / 1755.0",
             "length": "4935",
             "width": "2004",
             "height": "1755",
@@ -118,7 +99,6 @@
             "weightNotLoaded": "2495",
             "weightMax": "3200",
             "permittedLoad": "780",
-            "permittedAxleLoad": "1400 / 1875",
             "trailerLoad": "2700 / 140",
             "trunkCapacity": "500–1720",
             "tankCapacity": "69.0"

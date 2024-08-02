@@ -26,7 +26,11 @@
     "bodyTypeCode": "GF",
     "marketingBodyTypeCode": "SUV",
     "posiSpec": {
-      "cosyBrand": "WBBM"
+      "cosyBrand": "WBBM",
+      "agCode": "21CS",
+      "paint": "P0C5Y",
+      "fabric": "FVDIP",
+      "options": "S01CB,S01DF,S01FZ,S0230,S02PA,S02T4,S02TB,S02VB,S02VC,S02VW,S0302,S0322,S0323,S03DN,S03M3,S0420,S0423,S0428,S044A,S0453,S04FL,S04HA,S04HB,S04MA,S04MC,S04T2,S04T3,S04T7,S04U9,S04UR,S04V1,S0548,S05AC,S05AL,S05AU,S05AV,S05AX,S05DN,S05YA,S0654,S06AE,S06AF,S06AK,S06C4,S06F1,S06NX,S06PA,S06U3,S06U8,S0801,S0851,S0879,S08KA,S08R3,S08R9,S08WN,S0925"
     },
     "powerTrain": {
       "fuelType": "X",
@@ -66,24 +70,11 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "1.7 - 1.3",
-            "consumptionWltpCombinedBest": "1.3 - 1.7",
             "emissionsWltpCombined": "37 - 30",
-            "emissionsWltpCombinedBest": "30 - 37",
             "electricConsumption": "32.2 - 31.5",
-            "electricConsumptionBest": "31.5 - 32.2",
-            "electricRangeWltpCity": "95 - 102",
             "electricRangeWltpCombined": "78 - 84",
-            "electricRangeWltpCombinedBest": "84 - 78",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-",
-            "petrolEquivalentOverallBest": "-",
-            "petrolEquivalentOverall": "-",
-            "primaryEnergyPetrolEquivalentBest": "-",
-            "primaryEnergyPetrolEquivalent": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "25.7",
@@ -92,11 +83,9 @@
             "chargeAC": "7.4 (-) ",
             "charge_AC_0_100": "4.5",
             "chargeDC": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "7.4"
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "lengthWidthHeight": "5110 / 2005 / 1755",
             "length": "5110",
             "width": "2005",
             "height": "1755",
@@ -105,7 +94,6 @@
             "weightNotLoaded": "2695",
             "weightMax": "3220",
             "permittedLoad": "600",
-            "permittedAxleLoad": "1450 / 1825",
             "trailerLoad": "2700 / 140",
             "trunkCapacity": "527 - 1820",
             "tankCapacity": "69"
