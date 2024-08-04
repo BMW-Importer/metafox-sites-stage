@@ -24,59 +24,104 @@ function handleToggleFilterDropDown() {
   // eslint-disable-next-line no-use-before-define
   handleCheckBoxSelection();
 }
-
 function handleCancelSelectedValue(values) {
   const cancelSelectors = document.querySelectorAll('.cancel-filter');
   cancelSelectors.forEach((item) => {
     item.addEventListener('click', () => {
+      debugger
       const valueElement = item.parentElement;
       valueElement.remove();
-      if (Object.entries(values).length === 0 && values.constructor === Object) {
-        const checkboxes = document.querySelectorAll('.filter-checkbox');
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = false;
-        });
-
-        const filterLabels = document.querySelectorAll('.filter-label-heading');
-        filterLabels.forEach((label) => {
-          label.classList.remove('is-active');
-        });
-      }
       const fromRemove = document.querySelector('.appear').getAttribute('data-vehicle-url');
-      removeValueFromCommaSeparatedQueryString(fromRemove, item.parentElement.textContent);
+      // eslint-disable-next-line no-use-before-define
+      removeLastSelectedValue(values, fromRemove, encodeURI(valueElement.textContent));
+      // eslint-disable-next-line max-len, no-use-before-define
+      removeValueFromCommaSeparatedQueryString(fromRemove, encodeURI(valueElement.textContent));
     });
   });
 }
 
-function removeValueFromCommaSeparatedQueryString(queryString, valueToRemove) {
-  // Split the query string into individual key-value pairs
-  const keyValuePairs = queryString.split('&');
+function removeLastSelectedValue(values, fromRemove, itemValue) {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [heading, valuesArray] of Object.entries(values)) {
+    if (valuesArray.length > 0) {
+      // Remove the last value from the array
+      valuesArray.pop();
+      if (valuesArray.length === 0) {
+        delete values[heading];
+      }
+      break;
+    }
+  }
+  removeValueFromCommaSeparatedQueryString(fromRemove, itemValue);
+  getStockLocatorVehiclesData(vehicleURL);
+  if (Object.entries(values).length === 0 && values.constructor === Object) {
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
 
-  // Process each key-value pair
+    const filterLabels = document.querySelectorAll('.filter-label-heading');
+    filterLabels.forEach((label) => {
+      label.classList.remove('is-active');
+    });
+  }
+}
+
+function removeValueFromCommaSeparatedQueryString(queryString, valueToRemove) {
+  const keyValuePairs = queryString.split('&');
   const processedPairs = keyValuePairs.map((pair) => {
     const [key, value] = pair.split('=');
-
     if (value.includes(',')) {
-      // Split comma-separated values
       const values = value.split(',');
-
-      // Filter out the value to remove
       const filteredValues = values.filter((v) => v !== valueToRemove);
-
-      // Reconstruct the value string
-      return `${key}=${filteredValues.join(',')}`;
+      return filteredValues.length > 0 ? `${key}=${filteredValues.join(',')}` : null;
     }
-    // For single values, return the pair if it doesn't match the value to remove
     return value !== valueToRemove ? pair : null;
-  }).filter(Boolean); // Remove null values
-
-  // Reconstruct the query string
-  const resetURL = (processedPairs.join('&'));
+  }).filter(Boolean);
+  const resetURL = processedPairs.join('&');
   document.querySelector('.appear').setAttribute('data-vehicle-url', resetURL);
+  const hasEmptyValue = processedPairs.length;
+  if (hasEmptyValue === 0) {
+    removeResetFilterDOM();
+    removeFallbackBannerDOM();
+    // resetAllFilters();
+  }
+
+  // Update the vehicle URL and make an API call
+  // eslint-disable-next-line no-use-before-define
   vehicleURL = resetURL;
+  // eslint-disable-next-line no-use-before-define
   const resetResponse = getStockLocatorVehiclesData(vehicleURL);
+  // eslint-disable-next-line no-use-before-define
   vehicleFiltersAPI(resetResponse?.data);
+
+  // Update the browser's URL with the new query parameters
+  // eslint-disable-next-line no-use-before-define
+  updateBrowserURL(resetURL);
+
   return resetURL;
+}
+
+function updateBrowserURL(queryString) {
+  const baseUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+  const newUrl = `${baseUrl}?${queryString}`;
+  window.history.pushState({ path: newUrl }, '', newUrl);
+}
+
+function removeResetFilterDOM() {
+  // Logic to remove the reset filter DOM element
+  const resetFilterElement = document.querySelector('.reset-filter');
+  if (resetFilterElement) {
+    resetFilterElement.remove();
+  }
+}
+
+function removeFallbackBannerDOM() {
+  // Logic to remove the reset filter DOM element
+  const removeFallbackDomElement = document.querySelector('.fallback-container');
+  if (removeFallbackDomElement) {
+    removeFallbackDomElement.remove();
+  }
 }
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -656,6 +701,7 @@ function resetAllFilters(values) {
   updateSelectedValues(values);
   // currentlyOpenDropdown.style.display = 'none';
   // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
+  removeFallbackBannerDOM();
   vehicleURL = constructVehicleUrl(values);
   console.log(vehicleURL);
   vehicleFiltersAPI();
