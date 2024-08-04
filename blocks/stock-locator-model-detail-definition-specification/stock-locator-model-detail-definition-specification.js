@@ -514,6 +514,8 @@ async function vehicleFiltersAPI() {
   cardTiles(getStockLocatorVehicles);
 }
 
+let debounceTimer;
+
 async function handleCheckBoxSelection() {
   const filterLists = document.querySelectorAll('.filter-list');
   const selectedValues = {};
@@ -544,20 +546,81 @@ async function handleCheckBoxSelection() {
           }
         }
 
-        // update the filter DOM value after selection
-        // update the Vehicle DOM after selection
-        // eslint-disable-next-line no-use-before-define
-        updateSelectedValues(selectedValues);
-        // eslint-disable-next-line no-use-before-define
-        vehicleURL = constructVehicleUrl(selectedValues);
-        const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
-        // eslint-disable-next-line no-use-before-define
-        updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
-        const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
-        cardTiles(getStockLocatorVehicles);
+        // Debounce the API call
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(async () => {
+          // update the filter DOM value after selection
+          // update the Vehicle DOM after selection
+          updateSelectedValues(selectedValues);
+          vehicleURL = constructVehicleUrl(selectedValues);
+          const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
+          updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
+          const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
+          cardTiles(getStockLocatorVehicles);
+        }, 300); // 300ms delay
       });
     });
   });
+}
+
+async function updateSelectedValues(newValues) {
+  const mergedValues = { ...newValues };
+  const existingSelectedValues = JSON.parse(document.querySelector('body').getAttribute('data-selected-values')) || {};
+  // Merge existing values with new values
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [heading, valuesArray] of Object.entries(existingSelectedValues)) {
+    if (valuesArray.length > 0) {
+      if (!mergedValues[heading]) {
+        mergedValues[heading] = [];
+      }
+      mergedValues[heading] = Array.from(new Set([...mergedValues[heading], ...valuesArray]));
+    }
+  }
+  const selectedList = document.querySelector('.series-selected-list');
+  selectedList.innerHTML = '';
+  let hasSelectedValues = false;
+
+  // eslint-disable-next-line no-restricted-syntax, no-unused-vars
+  for (const [heading, valuesArray] of Object.entries(mergedValues)) {
+    if (valuesArray.length > 0) {
+      hasSelectedValues = true;
+      valuesArray.forEach((value) => {
+        const valueElement = document.createElement('div');
+        valueElement.classList.add('selected-filter-value');
+        const eleSpan = document.createElement('span');
+        eleSpan.textContent = value;
+        const cancelElement = document.createElement('a');
+        cancelElement.classList.add('cancel-filter');
+        valueElement.append(eleSpan, cancelElement);
+        selectedList.append(valueElement);
+      });
+    }
+  }
+
+  // Store the merged selected values back to data-attribute or other storage
+  document.querySelector('body').setAttribute('data-selected-values', JSON.stringify(mergedValues));
+
+  // Reset button management
+  const existingResetButton = document.querySelector('.reset-filter-not-desktop');
+  const viewport = window.innerWidth;
+  if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
+    const resetFilterElement = createResetFilterButton(mergedValues);
+    document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
+  } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
+    const resetFilterElement = document.createElement('div');
+    resetFilterElement.classList.add('reset-filter');
+    const resetSpan = document.createElement('span');
+    resetSpan.textContent = 'Reset The filters';
+    const resetAnchor = document.createElement('a');
+    resetAnchor.classList.add('reset-filter-link');
+    resetFilterElement.append(resetSpan, resetAnchor);
+
+    selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
+    resetFilterElement.addEventListener('click', () => {
+      resetAllFilters(mergedValues);
+    });
+  }
+  handleCancelSelectedValue(mergedValues);
 }
 
 async function handleMobileSeriesFilter() {
@@ -721,66 +784,6 @@ function createResetFilterButton(values) {
     resetAllFilters(values); // Updated to not pass `values` directly
   });
   return resetFilterElement;
-}
-
-function updateSelectedValues(newValues) {
-  const mergedValues = { ...newValues };
-  const existingSelectedValues = JSON.parse(document.querySelector('body').getAttribute('data-selected-values')) || {};
-  // Merge existing values with new values
-  // eslint-disable-next-line no-restricted-syntax
-  for (const [heading, valuesArray] of Object.entries(existingSelectedValues)) {
-    if (valuesArray.length > 0) {
-      if (!mergedValues[heading]) {
-        mergedValues[heading] = [];
-      }
-      mergedValues[heading] = Array.from(new Set([...mergedValues[heading], ...valuesArray]));
-    }
-  }
-  const selectedList = document.querySelector('.series-selected-list');
-  selectedList.innerHTML = '';
-  let hasSelectedValues = false;
-
-  // eslint-disable-next-line no-restricted-syntax, no-unused-vars
-  for (const [heading, valuesArray] of Object.entries(mergedValues)) {
-    if (valuesArray.length > 0) {
-      hasSelectedValues = true;
-      valuesArray.forEach((value) => {
-        const valueElement = document.createElement('div');
-        valueElement.classList.add('selected-filter-value');
-        const eleSpan = document.createElement('span');
-        eleSpan.textContent = value;
-        const cancelElement = document.createElement('a');
-        cancelElement.classList.add('cancel-filter');
-        valueElement.append(eleSpan, cancelElement);
-        selectedList.append(valueElement);
-      });
-    }
-  }
-
-  // Store the merged selected values back to data-attribute or other storage
-  document.querySelector('body').setAttribute('data-selected-values', JSON.stringify(mergedValues));
-
-  // Reset button management
-  const existingResetButton = document.querySelector('.reset-filter-not-desktop');
-  const viewport = window.innerWidth;
-  if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
-    const resetFilterElement = createResetFilterButton(mergedValues);
-    document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
-  } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
-    const resetFilterElement = document.createElement('div');
-    resetFilterElement.classList.add('reset-filter');
-    const resetSpan = document.createElement('span');
-    resetSpan.textContent = 'Reset The filters';
-    const resetAnchor = document.createElement('a');
-    resetAnchor.classList.add('reset-filter-link');
-    resetFilterElement.append(resetSpan, resetAnchor);
-
-    selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
-    resetFilterElement.addEventListener('click', () => {
-      resetAllFilters(mergedValues);
-    });
-  }
-  handleCancelSelectedValue(mergedValues);
 }
 
 function showFilterLabel(typeKey) {
