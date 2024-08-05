@@ -102,8 +102,10 @@ function removeValueFromCommaSeparatedQueryString(queryString, valueToRemove) {
     removeFallbackBannerDOM();
     document.querySelector('.appear').removeAttribute('data-selected-vehicle');
     // resetAllFilters();
+    createStockLocatorFilter(globalFilterData, dropDownContainer);
+    vehicleFiltersAPI();
+    handleCheckBoxSelection();
   }
-
   // Update the vehicle URL and make an API call
   // eslint-disable-next-line no-use-before-define
   vehicleURL = resetURL;
@@ -366,6 +368,8 @@ function pagination(meta, getStockLocatorVehicles) {
       noDataDiv.textContent = fallbackBanner;
       document.querySelector('.dropdown-container').appendChild(noDataDiv);
     }
+  } else {
+    removeFallbackBannerDOM();
   }
   if (pageCount > pageLimit) {
     // eslint-disable-next-line no-use-before-define
@@ -783,7 +787,6 @@ function resetAllFilters(values) {
   // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   removeFallbackBannerDOM();
   vehicleURL = constructVehicleUrl(values);
-  console.log(globalFilterData);
   createStockLocatorFilter(globalFilterData, dropDownContainer);
   vehicleFiltersAPI();
   handleCheckBoxSelection();
