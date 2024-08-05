@@ -5,158 +5,9 @@ import {
   getTechnicalSpreadsheetData,
 } from '../../scripts/common/wdh-util.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
+
 const viewPortWidth = window.innerWidth;
-// delete - dummy json's - start
-// const filterJsonApiResponse = {
-//   total: 7,
-//   offset: 0,
-//   limit: 7,
-//   data: [
-//     {
-//       'Filter Type': 'Body Type',
-//       'Filter Type Serbian': 'Tip karoserije',
-//       'Filter Name English': 'Sedan',
-//       'Filter Name Serbian': 'Sedan',
-//       'Filter Code': 'c',
-//       'Show As Default': 'false',
-//     },
-//     {
-//       'Filter Type': 'Body Type',
-//       'Filter Type Serbian': 'Tip karoserije',
-//       'Filter Name English': 'SUV',
-//       'Filter Name Serbian': 'SUV',
-//       'Filter Code': 'b',
-//       'Show As Default': 'true',
-//     },
-//     {
-//       'Filter Type': 'Body Type',
-//       'Filter Type Serbian': 'Tip karoserije',
-//       'Filter Name English': 'Hatchback',
-//       'Filter Name Serbian': 'Hatchback',
-//       'Filter Code': 'a',
-//       'Show As Default': 'true',
-//     },
-//     {
-//       'Filter Type': 'Fuel Type',
-//       'Filter Type Serbian': 'Fuel Type',
-//       'Filter Name English': 'Gasoline',
-//       'Filter Name Serbian': 'Benzene',
-//       'Filter Code': 'O',
-//       'Show As Default': 'false',
-//     },
-//     {
-//       'Filter Type': 'Fuel Type',
-//       'Filter Type Serbian': 'Fuel Type',
-//       'Filter Name English': 'Diesel',
-//       'Filter Name Serbian': 'Dizel',
-//       'Filter Code': 'D',
-//       'Show As Default': 'false',
-//     },
-//     {
-//       'Filter Type': 'Fuel Type',
-//       'Filter Type Serbian': 'Fuel Type',
-//       'Filter Name English': 'Plugin Hybrid',
-//       'Filter Name Serbian': 'Plugin Hi-Brid',
-//       'Filter Code': 'X',
-//       'Show As Default': 'true',
-//     },
-//     {
-//       'Filter Type': 'Fuel Type',
-//       'Filter Type Serbian': 'Fuel Type',
-//       'Filter Name English': 'Electric',
-//       'Filter Name Serbian': 'Električni',
-//       'Filter Code': 'E',
-//       'Show As Default': 'true',
-//     },
-//   ],
-//   ':type': 'sheet',
-// };
-
-// const allModelOverViewApiResponse = {
-//   total: 4,
-//   offset: 0,
-//   limit: 4,
-//   data: [
-//     {
-//       'Model Name': 'BMW i5',
-//       'Category/Group': 'i',
-//       'Analytics': '',
-//       'Model Code': '7K11',
-//       'Price': '9812734',
-//       'Sub brand Icon': 'i',
-//       'New Label': 'true',
-//       'Fuel Type': 'O,E',
-//       'Body Type': 'Sedan',
-//       'Show More Button': 'true',
-//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
-//       'Configurator Button': 'true',
-//       'Stock Locator Button': 'true',
-//     },
-//     {
-//       'Model Name': 'BMW i5',
-//       'Category/Group': 'i',
-//       'Analytics': '',
-//       'Model Code': '7K11',
-//       'Price': '9812734',
-//       'Sub brand Icon': 'i',
-//       'New Label': 'true',
-//       'Fuel Type': 'O,E',
-//       'Body Type': 'Sedan',
-//       'Show More Button': 'true',
-//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/i5/bmw-i5-pregled.html',
-//       'Configurator Button': 'true',
-//       'Stock Locator Button': 'true',
-//     },
-//     {
-//       'Model Name': 'BMW 5 Series 5 Sedan',
-//       'Category/Group': '5',
-//       'Analytics': '',
-//       'Model Code': '7K12',
-//       'Price': '1234',
-//       'Sub brand Icon': 'M',
-//       'New Label': 'true',
-//       'Fuel Type': 'O, D',
-//       'Body Type': 'Sedan',
-//       'Show More Button': 'true',
-//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-serija-5-pregled/sedan/bmw-serija-5-limuzina-pregled.html',
-//       'Configurator Button': 'true',
-//       'Stock Locator Button': 'true',
-//     },
-//     {
-//       'Model Name': 'BMW iX',
-//       'Category/Group': 'i,X',
-//       'Analytics': '',
-//       'Model Code': '7K31',
-//       'Price': '1234',
-//       'Sub brand Icon': 'i',
-//       'New Label': 'false',
-//       'Fuel Type': 'O, D',
-//       'Body Type': 'SUV',
-//       'Show More Button': 'true',
-//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/bmw-i/bmw-ix/2021/bmw-ix.html',
-//       'Configurator Button': 'true',
-//       'Stock Locator Button': '',
-//     },
-//     {
-//       'Model Name': 'BMW M5 Series Sedan',
-//       'Category/Group': '5,M',
-//       'Analytics': '',
-//       'Model Code': '10FK',
-//       'Price': '2346233',
-//       'Sub brand Icon': 'M',
-//       'New Label': 'true',
-//       'Fuel Type': 'O,D,X',
-//       'Body Type': 'Sedan',
-//       'Show More Button': 'true',
-//       'Show More Button Link': 'https://www.bmw.rs/sr/all-models/m-series/m5-series/bmw-m5-sedan.html',
-//       'Configurator Button': 'true',
-//       'Stock Locator Button': 'true',
-//     },
-//   ],
-//   ':type': 'sheet',
-// };
-// delete - dummy json's - end
-
+let scrollAmount = 0;
 const allModelFilterJson = {};
 const allModelOverviewJson = {};
 const lang = document.querySelector('meta[name="language"]').content;
@@ -181,29 +32,36 @@ const placeholders2 = {
   allModelConfigureText: 'Configure',
   allModelVehicleInStockText: 'Vehicles in stock',
   allModelFoundVehicle: 'found vehicles',
-  allModelShowResults: 'Show results'
+  allModelShowResults: 'Show results',
 };
 
 placeholders = { ...placeholders, ...placeholders2 };
 
 // Fetch the cozy image URL based on model code
+/* eslint-disable no-console */
 async function fetchCozyImageUrl(modelCode, isFirstChild, isForDetail = false, quality = 20) {
   const pictureTag = document.createElement('picture');
-  pictureTag.classList.add('all-model-picture-tag');
+  let pictureTagClassName = 'all-model-picture-tag';
+  let imageClassName = 'all-model-image';
+  if (isForDetail) {
+    pictureTagClassName = 'all-model-detail-picture-tag';
+    imageClassName = 'all-model-detail-image';
+  }
+  pictureTag.classList.add(pictureTagClassName);
   try {
     const response = await getCosyImage(modelCode);
 
     const screenWidth = window.innerWidth;
     const resolutionKey = getResolutionKey(screenWidth);
 
-    const createPictureTag = (quality) => {      
+    const createPictureTag = (angel) => {
       const resolutions = [1025, 768];
       resolutions.forEach((resolution) => {
-        const sourceTag = document.createElement('source');        
+        const sourceTag = document.createElement('source');
         sourceTag.srcset = getCosyImageUrl(
           response,
           getResolutionKey(resolution),
-          isForDetail ? quality : 40,
+          isForDetail ? angel : 40,
         );
         sourceTag.media = `(min-width: ${resolution}px)`;
         pictureTag.appendChild(sourceTag);
@@ -211,9 +69,9 @@ async function fetchCozyImageUrl(modelCode, isFirstChild, isForDetail = false, q
 
       // Fallback img tag
       const imgTag = document.createElement('img');
-      imgTag.src = getCosyImageUrl(response, resolutionKey, isFirstChild === true ? 40 : quality);
+      imgTag.src = getCosyImageUrl(response, resolutionKey, isFirstChild === true ? 40 : angel);
       imgTag.alt = modelCode;
-      imgTag.classList.add('all-model-image');
+      imgTag.classList.add(imageClassName);
       pictureTag.appendChild(imgTag);
     };
 
@@ -230,63 +88,6 @@ function filterCloseBtnClick(button, showMoreButton) {
   });
 }
 
-function filterClearBtnClick(button) {
-  button.addEventListener('click', (event) => {
-    const parentBlock = event.target.closest('.all-model-parent-div');
-    allModelFilterJson.data.forEach((item) => item.isSelected = false);
-    generateSelectedFilterOptions(parentBlock);
-    generateFilterPopup(parentBlock);
-  });
-}
-
-function selectModelClick(button) {
-  button.addEventListener('click', (e) => {
-    const parentElem = e.target.parentElement;
-    if (parentElem.localName === 'button') {
-      if (!parentElem.firstChild.classList.contains('toggle-icon')) {
-        parentElem.firstChild.classList.add('toggle-icon');
-        parentElem.style.background = '#4d4d4d';
-        parentElem.style.color = '#f6f6f6';
-      } else {
-        parentElem.firstChild.classList.remove('toggle-icon');
-        parentElem.style.background = 'transparent';
-        parentElem.style.color = '#666';
-      }
-    }
-  });
-}
-
-let scrollAmount = 0;
-function scrollToRight() {
-  const leftButton = document.querySelector('.nav-arrow-left');
-  const rightButton = document.querySelector('.nav-arrow-right');
-  const list = document.querySelector('.nav-list');
-  const parentDiv = document.querySelector('.content-navigation');
-  
-  rightButton.addEventListener('click', (e) => {
-    scrollAmount = list.scrollWidth - parentDiv.clientWidth;
-    if (e.target.parentElement.classList.contains('arrow-right-active')) {
-    list.style.transition = 'margin-left .25s ease-in';
-    list.style.marginLeft = `-${scrollAmount + 10}px`;
-    updateButtons(leftButton, rightButton, parentDiv, list);
-    }
-  });
-}
-function scrollToLeft() {
-  const leftButton = document.querySelector('.nav-arrow-left');
-  const rightButton = document.querySelector('.nav-arrow-right');
-  const list = document.querySelector('.nav-list');
-  const parentDiv = document.querySelector('.content-navigation');
-  
-  leftButton.addEventListener('click', (e) => {
-    scrollAmount = -10;
-    if (e.target.parentElement.classList.contains('arrow-left-active')) {
-    list.style.transition = 'margin-left .25s ease-in';
-    list.style.marginLeft = '0px';
-    updateButtons(leftButton, rightButton, parentDiv, list);
-    }
-  });
-}
 function updateButtons(leftBtn, rightBtn, parentDiv, list) {
   if (scrollAmount > 0) {
     leftBtn.style.visibility = 'visible';
@@ -305,6 +106,37 @@ function updateButtons(leftBtn, rightBtn, parentDiv, list) {
   }
 }
 
+function scrollToRight() {
+  const leftButton = document.querySelector('.nav-arrow-left');
+  const rightButton = document.querySelector('.nav-arrow-right');
+  const list = document.querySelector('.nav-list');
+  const parentDiv = document.querySelector('.content-navigation');
+
+  rightButton.addEventListener('click', (e) => {
+    scrollAmount = list.scrollWidth - parentDiv.clientWidth;
+    if (e.target.parentElement.classList.contains('arrow-right-active')) {
+      list.style.transition = 'margin-left .25s ease-in';
+      list.style.marginLeft = `-${scrollAmount + 10}px`;
+      updateButtons(leftButton, rightButton, parentDiv, list);
+    }
+  });
+}
+function scrollToLeft() {
+  const leftButton = document.querySelector('.nav-arrow-left');
+  const rightButton = document.querySelector('.nav-arrow-right');
+  const list = document.querySelector('.nav-list');
+  const parentDiv = document.querySelector('.content-navigation');
+
+  leftButton.addEventListener('click', (e) => {
+    scrollAmount = -10;
+    if (e.target.parentElement.classList.contains('arrow-left-active')) {
+      list.style.transition = 'margin-left .25s ease-in';
+      list.style.marginLeft = '0px';
+      updateButtons(leftButton, rightButton, parentDiv, list);
+    }
+  });
+}
+
 function handleContenNavMobile() {
   const buttonSelector = document.getElementById('navMenuBtn');
   const navList = document.querySelector('.nav-list');
@@ -315,12 +147,12 @@ function handleContenNavMobile() {
       navList.classList.add('mobile-only');
       navList.children[0].children[0].classList.add('nav-list-button-active');
       items.forEach((item) => {
-        if(buttonSelector.innerText === item.innerText) {
+        if (buttonSelector.innerText === item.innerText) {
           item.children[0].classList.add('nav-list-button-active');
         } else {
           item.children[0].classList.remove('nav-list-button-active');
         }
-      })
+      });
     } else {
       e.target.parentElement.classList.remove('content-navigation-active');
     }
@@ -332,18 +164,18 @@ function handleContenNavMobile() {
 function lazyLoadCozyImages(block) {
   const imageContainer = block.querySelectorAll('.all-model-card-img-container');
 
-  const lazyLoad = async (imageContainer) => {
-    const modelCode = imageContainer.getAttribute('data-model-code');
-    const isFirstChild = imageContainer.classList.contains('first-model-child');
+  const lazyLoad = async (imageParentContainer) => {
+    const modelCode = imageParentContainer.getAttribute('data-model-code');
+    const isFirstChild = imageParentContainer.classList.contains('first-model-child');
     const pictureTag = await fetchCozyImageUrl(modelCode, isFirstChild);
-    imageContainer.append(pictureTag);
+    imageParentContainer.append(pictureTag);
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const imageContainer = entry.target;
-        lazyLoad(imageContainer).then(() => observer.unobserve(imageContainer));
+        const imageContainerElm = entry.target;
+        lazyLoad(imageContainerElm).then(() => observer.unobserve(imageContainerElm));
       }
     });
   });
@@ -374,20 +206,20 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
     filterArrayBasedOnCategory.forEach((model, index) => {
       let fuelTypeMarkUp = '';
       let electricOrHybridClass = '';
-      let isFirstChild = index === 0 ? 'first-model-child' : '';
-      let newLabel =  model['New Label'] === 'true' ? placeholders['allModelNewLabel'] : '';
+      const isFirstChild = index === 0 ? 'first-model-child' : '';
+      const newLabel = model['New Label']?.toLowerCase() === 'true' ? placeholders.allModelNewLabel : '';
+      const newLableMarkUp = newLabel ? `<span class="all-model-detail__new-model-label" aria-label="${newLabel}">${newLabel}</span>` : '';
       const fuelDetails = model['Fuel Type'].split(',');
 
       let subBrandIcon = '';
-      if (model['Sub brand Icon'] === 'i') {
+      if (model['Sub brand Icon']?.toLowerCase() === 'i') {
         subBrandIcon = `<img src="../../icons/BMW_subrand_i.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-card____subbrand-img">`;
-      } else if(model['Sub brand Icon'] === 'M') {
+      } else if (model['Sub brand Icon']?.toLowerCase() === 'm') {
         subBrandIcon = `<img src="../../icons/BMW_subrand_m.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-card____subbrand-img">`;
       }
 
-
-      fuelDetails.forEach((fuelType, index) => {
-        if (index > 0) {
+      fuelDetails.forEach((fuelType, fuelIndex) => {
+        if (fuelIndex > 0) {
           fuelTypeMarkUp += '<span class=\'all-model-fuel-type\'> • </span>';
         }
         fuelTypeMarkUp += `<span class='all-model-fuel-type'>${placeholders[fuelType?.toLowerCase()?.trim()]}</span>`;
@@ -399,8 +231,8 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
         }
       });
 
-      cardIndexInOneRow = cardIndexInOneRow + 1;
-      if(cardIndexInOneRow > 4) {
+      cardIndexInOneRow += 1;
+      if (cardIndexInOneRow > 4) {
         cardIndexInOneRow = 1;
       }
 
@@ -415,7 +247,7 @@ function generateGroupMarkUp(groupName, allModelfilteredArray) {
       <div class='all-model-detail-container ${isFirstChild}'>
         <div class='all-model-detail-label ${isFirstChild}'>
           <div class="all-model-card__subbrands"><div class="all-model-card__subbrands-wrap">${subBrandIcon}</div></div>
-          <span class="all-model-card__new-model-label" aria-label="${newLabel}">${newLabel}</span>
+          ${newLableMarkUp}
         </div>
         <h5 class='all-model-detail-model-name'>${model['Model Name']}</h5>
         <p class='all-model-detail-model-fuel'>${fuelTypeMarkUp}</p>
@@ -474,7 +306,7 @@ function generateAllModelMarkUp(allModelfilteredArray, block) {
   totalNumberText.textContent = block?.querySelectorAll('.all-model-card-container')?.length || 0;
 
   const numOfVehicle = block.querySelector('.show-filter-btn .btn-text');
-  numOfVehicle.textContent = `${placeholders['allModelShowResults']} (${block?.querySelectorAll('.all-model-card-container')?.length})`;
+  numOfVehicle.textContent = `${placeholders.allModelShowResults} (${block?.querySelectorAll('.all-model-card-container')?.length})`;
 
   // lazy load cozy images
   lazyLoadCozyImages(block);
@@ -489,15 +321,6 @@ function generateAllModelUi(block) {
   if (selectedFilterArray.length > 0) {
     allModelOverviewJson.data.forEach((item) => {
       selectedFilterArray.forEach((selectedItem) => {
-        let convertedFuelTypes = '';
-        const fuelTypes = item['Fuel Type'].toLowerCase().split(',');
-        fuelTypes.forEach((fuelType, index) => {
-          if (index > 0) {
-            convertedFuelTypes += ',';
-          }
-          convertedFuelTypes += placeholders[fuelType.trim()]
-        });
-
         if ((selectedItem['Filter Type'] === 'Fuel Type' && item['Fuel Type']?.toLowerCase().includes(selectedItem['Filter Code'].toLowerCase()))
           || (selectedItem['Filter Type'] === 'Body Type' && item['Body Type'].includes(selectedItem['Filter Name English']))) {
           allModelfilteredArray.push(item);
@@ -520,9 +343,9 @@ function generateContentNavigation(block) {
 
   // loop through listOfCategories and fold li elements by emptying previous li of nav
   listOfCategories.forEach((category) => {
-    navList.insertAdjacentHTML('beforeend',`
+    navList.insertAdjacentHTML('beforeend', `
     <li class='nav-list-item'><button class='nav-list-button'>${category.textContent}</button></li>`);
-  });  
+  });
 }
 
 // function to generate filter popui based on filter json
@@ -635,13 +458,26 @@ function generateSelectedFilterOptions(block, filterCode) {
       }
     });
     buttonRow.append(selectedFilterOptionsRow);
-  } 
+  }
 
   // function to generate all model ui based on filter selection
   generateAllModelUi(block);
 
   // function to generate navigation bar
   generateContentNavigation(block);
+}
+
+function deselectItem(item) {
+  item.isSelected = false;
+}
+
+function filterClearBtnClick(button) {
+  button.addEventListener('click', (event) => {
+    const parentBlock = event.target.closest('.all-model-parent-div');
+    allModelFilterJson.data.forEach(deselectItem);
+    generateSelectedFilterOptions(parentBlock);
+    generateFilterPopup(parentBlock);
+  });
 }
 
 // function to display filter overlay popup
@@ -660,22 +496,25 @@ function enableShowMoreBtnClickEvent(showMoreBtn) {
 // Function to clean up JSON values
 function cleanJsonValues(obj) {
   if (Array.isArray(obj)) {
-      return obj.map(cleanJsonValues);
-  } else if (typeof obj === 'object' && obj !== null) {
-      const cleanedObj = {};
-      for (const key in obj) {
-          if (obj.hasOwnProperty(key)) {
-              cleanedObj[key] = cleanJsonValues(obj[key]);
-          }
-      }
-      return cleanedObj;
-  } else if (typeof obj === 'string') {
-      return obj.replace(/\n/g, '').trim();
-  } else {
-      return obj;
+    return obj.map(cleanJsonValues);
   }
+
+  if (typeof obj === 'object' && obj !== null) {
+    const cleanedObj = {};
+    Object.keys(obj).forEach((key) => {
+      cleanedObj[key] = cleanJsonValues(obj[key]);
+    });
+    return cleanedObj;
+  }
+
+  if (typeof obj === 'string') {
+    return obj.replace(/\n/g, '').trim();
+  }
+
+  return obj;
 }
 
+/* eslint-disable no-console */
 async function getSpreadSheetData(type, prop) {
   try {
     const spreadSheetPath = prop?.querySelector('a')?.textContent;
@@ -693,12 +532,6 @@ async function getSpreadSheetData(type, prop) {
         allModelOverviewJson.data = spreadSheetResponse?.responseJson?.data || [];
       }
     }
-
-    // if (type === 'filter') {
-    //   allModelFilterJson.data = filterJsonApiResponse?.data || [];
-    // } else {
-    //   allModelOverviewJson.data = allModelOverViewApiResponse?.data || [];
-    // }
   } catch (e) {
     console.error(e);
   }
@@ -754,9 +587,9 @@ function applyStickyNav() {
   const nav = document.querySelector('.content-navigation');
   const sticky = nav.offsetTop;
   if (window.pageYOffset < sticky) {
-    nav.classList.add("sticky");
+    nav.classList.add('sticky');
   } else {
-    nav.classList.remove("sticky");
+    nav.classList.remove('sticky');
   }
 }
 
@@ -777,7 +610,7 @@ function dropDownContentClick() {
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
       const model = e.target;
-      if(model.textContent === link.textContent){
+      if (model.textContent === link.textContent) {
         model.classList.add('nav-list-button-active');
         links[0].classList.remove('nav-list-button-active');
         menuBtn.textContent = model.textContent;
@@ -802,13 +635,15 @@ function enableContentNavClickEvent(block) {
 }
 
 function findNextElement(currentElement) {
+  const isTabletResolution = window.screen.width < 1024;
   let nextSibling = currentElement;
 
   while (nextSibling) {
-      if (nextSibling.getAttribute('data-row-index') === "4") {
-          return nextSibling;
-      }
-      nextSibling = nextSibling.nextElementSibling;
+    const rowIndex = nextSibling.getAttribute('data-row-index');
+    if ((!isTabletResolution && rowIndex === '4') || (isTabletResolution && (rowIndex === '2' || rowIndex === '4'))) {
+      return nextSibling;
+    }
+    nextSibling = nextSibling.nextElementSibling;
   }
 
   // Return null if no matching sibling is found
@@ -818,18 +653,19 @@ function findNextElement(currentElement) {
 async function generateDetailDiv(lastElemInRow, modelCode, block) {
   const model = allModelOverviewJson.data.find((modelDetail) => modelDetail['Model Code'] === modelCode);
   const detailContainer = block.querySelector('.all-model-detail');
-  if(detailContainer) detailContainer.remove();
+  if (detailContainer) detailContainer.remove();
 
   if (model) {
     const pictureTag = await fetchCozyImageUrl(modelCode, false, true, 270);
     let fuelTypeMarkUp = '';
 
-    let newLabel =  model['New Label'] === 'true' ? placeholders['allModelNewLabel'] : '';
+    const newLabel = model['New Label']?.toLowerCase() === 'true' ? placeholders.allModelNewLabel : '';
+    const newLableMarkUp = newLabel ? `<span class="all-model-detail__new-model-label" aria-label="${newLabel}">${newLabel}</span>` : '';
 
     let subBrandIcon = '';
-    if (model['Sub brand Icon'] === 'i') {
+    if (model['Sub brand Icon']?.toLowerCase() === 'i') {
       subBrandIcon = `<img src="../../icons/BMW_subrand_i.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-detail__subbrand-img">`;
-    } else if (model['Sub brand Icon'] === 'M') {
+    } else if (model['Sub brand Icon']?.toLowerCase() === 'm') {
       subBrandIcon = `<img src="../../icons/BMW_subrand_m.png" alt="${model['Model Name']}" title="${model['Model Name']}" class="all-model-detail__subbrand-img">`;
     }
 
@@ -851,7 +687,7 @@ async function generateDetailDiv(lastElemInRow, modelCode, block) {
           <div class="all-model-detail__container-details">
             <div class="all-model-detail__container-detail-wrap">
               <div class="all-model-detail__container-subrand">
-                <span class="all-model-detail__new-model-label" aria-label="${newLabel}">${newLabel}</span>
+                ${newLableMarkUp}
                 <div class="all-model-detail__subbrands"><div class="all-model-detail__subbrands-wrap">${subBrandIcon}</div></div>
               </div>
               <h5 class='all-model-detail__model-name'>${model['Model Name']}</h5>
@@ -859,21 +695,22 @@ async function generateDetailDiv(lastElemInRow, modelCode, block) {
                 <div class="all-model-detail__fuel">
                   ${fuelTypeMarkUp}
                 </div>
-                <span>${placeholders.allModelFromText} &nbsp; ${model.Price}</span>
+                <span class='all-model-detail__price'>${placeholders.allModelFromText} &nbsp; ${model.Price}</span>
               </div>
             </div>
-            <a href='#'>${placeholders['allModelShowMoreText']}</a>
+            <div class='all-model-detail__showmore-btn-container mobile-hidden'><a href='#' class='all-model-detail__showmore-btn'>${placeholders.allModelShowMoreText}</a></div>
           </div>
+          <div class='all-model-detail__showmore-btn-container desktop-hidden'><a href='#' class='all-model-detail__showmore-btn'>${placeholders.allModelShowMoreText}</a></div>
           <div class="all-model-detail__container-links-configure">
             <span class="all-model-detail__detail-view--cta-icon" data-icon="car_front"></span>
-            <a href='#'>${placeholders['allModelConfigureText']}</a>
+            <a href='#' class="all-model-detail__configure-btn">${placeholders.allModelConfigureText}</a>
           </div>
           <div class="all-model-detail__container-links-stock">
             <span class="all-model-detail__detail-view--cta-icon" data-icon="car_front_double"></span>
-            <a href='#'>${placeholders['allModelVehicleInStockText']}</a>
+            <a href='#' class="all-model-detail__instock-btn">${placeholders.allModelVehicleInStockText}</a>
           </div>
         </div>
-        <button class=""></button>
+        <button class="all-model-detail__close-btn"></button>
       </div>
     `;
 
@@ -881,26 +718,33 @@ async function generateDetailDiv(lastElemInRow, modelCode, block) {
     detailDiv.classList.add('all-model-detail');
     detailDiv.innerHTML = detailDivMarkUp;
 
-     // Insert the new div after the target element
-     const nextSibling = lastElemInRow.nextElementSibling;
-     if (nextSibling) {
-         // Insert before the next sibling
-         lastElemInRow.parentNode.insertBefore(detailDiv, nextSibling);
-     } else {
-         // If no next sibling, append the new div at the end
-         lastElemInRow.parentNode.appendChild(detailDiv);
-     }
+    // Insert the new div after the target element
+    const nextSibling = lastElemInRow.nextElementSibling;
+    if (nextSibling) {
+      // Insert before the next sibling
+      lastElemInRow.parentNode.insertBefore(detailDiv, nextSibling);
+    } else {
+      // If no next sibling, append the new div at the end
+      lastElemInRow.parentNode.appendChild(detailDiv);
+    }
   }
 }
 
 function enableModelCardClickEvent(block) {
   const allModelContainer = block.querySelector('.all-model-container');
-  
+
   // Event delegation: handle clicks on buttons inside the test div
   allModelContainer.addEventListener('click', (event) => {
     // Check if the clicked element is a button
     if (event.target?.classList.contains('all-model-card-btn')) {
+      const listOfClickedModelCard = document.querySelectorAll('.all-model-card-container.model-clicked');
+      listOfClickedModelCard.forEach((model) => {
+        model.classList.remove('model-clicked');
+      });
+
       const parentContainer = event.target.closest('.all-model-card-container');
+      parentContainer.classList.add('model-clicked');
+
       const modelCode = parentContainer.getAttribute('data-model-code');
       const lastElemInRow = findNextElement(parentContainer);
       if (lastElemInRow) {
@@ -908,8 +752,15 @@ function enableModelCardClickEvent(block) {
       } else {
         generateDetailDiv(parentContainer, modelCode, block);
       }
+    } else if (event.target?.classList.contains('all-model-detail__close-btn')) {
+      document.querySelector('.all-model-detail')?.remove();
+
+      const listOfClickedModelCard = document.querySelectorAll('.all-model-card-container.model-clicked');
+      listOfClickedModelCard.forEach((model) => {
+        model.classList.remove('model-clicked');
+      });
     }
-});
+  });
 }
 
 export default async function decorate(block) {
@@ -980,7 +831,7 @@ export default async function decorate(block) {
 
   const numberWrap = document.createElement('div');
   numberWrap.classList.add('number-wrap');
-  numberWrap.innerHTML = `<span class="total-number"></span>&nbsp;<span class="found-text">${placeholders['allModelFoundVehicle']}</span>`;
+  numberWrap.innerHTML = `<span class="total-number"></span>&nbsp;<span class="found-text">${placeholders.allModelFoundVehicle}</span>`;
   allModelParentContainer.append(numberWrap);
 
   const navBar = document.createElement('div');
@@ -990,7 +841,6 @@ export default async function decorate(block) {
   leftBtn.classList.add('nav-arrow-left');
   const rightBtn = document.createElement('button');
   rightBtn.classList.add('nav-arrow-right');
-
 
   navBar.innerHTML = `
   <button class='content-nav-selected-value' id='navMenuBtn'>BMW i</button>
@@ -1014,10 +864,10 @@ export default async function decorate(block) {
   enableContentNavClickEvent(block);
 
   handleContenNavMobile();
-  
+
   handleTabletView();
   scrollToRight();
   scrollToLeft();
   dropDownContentClick();
-  //window.addEventListener('scroll', applyStickyNav);
+  window.addEventListener('scroll', applyStickyNav);
 }
