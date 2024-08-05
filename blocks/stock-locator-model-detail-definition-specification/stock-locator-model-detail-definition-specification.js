@@ -24,15 +24,31 @@ function handleToggleFilterDropDown() {
   // eslint-disable-next-line no-use-before-define
   handleCheckBoxSelection();
 }
+
+function removeSelectedValueFromFilters(values, removeSelectedItem) {
+  console.log(values);
+  Object.keys(values).forEach((key) => {
+    const valueArray = values[key];
+    const index = valueArray.indexOf(removeSelectedItem);
+    if (index !== -1) {
+      valueArray.splice(index, 1); // Remove the matching value
+
+      if (valueArray.length === 0) {
+        delete values[key]; // Delete the key if no values are left
+      }
+    }
+  });
+}
+
 function handleCancelSelectedValue(values) {
   const cancelSelectors = document.querySelectorAll('.cancel-filter');
   cancelSelectors.forEach((item) => {
     item.addEventListener('click', () => {
-      debugger
       const valueElement = item.parentElement;
       valueElement.remove();
       const fromRemove = document.querySelector('.appear').getAttribute('data-vehicle-url');
       // eslint-disable-next-line no-use-before-define
+      removeSelectedValueFromFilters(values, valueElement.textContent);
       removeLastSelectedValue(values, fromRemove, encodeURI(valueElement.textContent));
       // eslint-disable-next-line max-len, no-use-before-define
       removeValueFromCommaSeparatedQueryString(fromRemove, encodeURI(valueElement.textContent));
@@ -84,6 +100,7 @@ function removeValueFromCommaSeparatedQueryString(queryString, valueToRemove) {
   if (hasEmptyValue === 0) {
     removeResetFilterDOM();
     removeFallbackBannerDOM();
+    document.querySelector('.appear').removeAttribute('data-selected-vehicle');
     // resetAllFilters();
   }
 
@@ -766,11 +783,12 @@ function resetAllFilters(values) {
   // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   removeFallbackBannerDOM();
   vehicleURL = constructVehicleUrl(values);
-  console.log(vehicleURL);
+  console.log(globalFilterData);  
+  createStockLocatorFilter(globalFilterData, dropDownContainer);
   vehicleFiltersAPI();
   cardTiles();
   // eslint-disable-next-line no-use-before-define
-  stockLocatorFiltersAPI();
+  // stockLocatorFiltersAPI();
 }
 
 function createResetFilterButton(values) {
@@ -1077,9 +1095,11 @@ function openFiltersBtn() {
   filterBtnOpen.addEventListener('click', openFilterPopup);
 }
 
+let globalFilterData = {};
 async function stockLocatorFiltersAPI(dropDownContainer) {
   const stockLocatorFilterResponse = await getStockLocatorFiltersData();
   const stockLocatorFilterData = stockLocatorFilterResponse.data.attributes;
+  globalFilterData = stockLocatorFilterData;
   createStockLocatorFilter(stockLocatorFilterData, dropDownContainer);
 }
 
@@ -1111,9 +1131,8 @@ export function showLoadingIcon() {
     loadSpinnerContainer.classList.remove('hidden');
   }
 }
-
+const dropDownContainer = document.createElement('div');
 export default async function decorate(block) {
-  const dropDownContainer = document.createElement('div');
   dropDownContainer.classList.add('dropdown-container');
   // Call stockLocatorFiltersAPI and wait for it to finish
   await stockLocatorFiltersAPI(dropDownContainer);
