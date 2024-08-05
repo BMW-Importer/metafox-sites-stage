@@ -437,7 +437,7 @@
     text-align: center;
     text-decoration: none;
     width: 100%;
-    background-color: var(--text-color);
+    background-color: transparent;
     color: var(--light-border-color);
     font-size: 0.9375rem;
     font-weight: 500;
@@ -997,7 +997,7 @@
     height: 1em;
     line-height: 1;
     margin-right: -.25rem;
-    outline: 1px solid var(--text-color);
+    outline: 1px solid transparent;
 }
 
 .all-model-detail {
