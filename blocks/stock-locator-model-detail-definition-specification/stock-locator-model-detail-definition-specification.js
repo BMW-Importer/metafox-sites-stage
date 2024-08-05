@@ -23,7 +23,7 @@ function handleToggleFilterDropDown() {
     });
   });
   // eslint-disable-next-line no-use-before-define
-  viewport >= 1024 && handleCheckBoxSelection()
+  viewport >= 1024 && handleCheckBoxSelection();
 }
 
 function handleCancelSelectedValue(values) {
@@ -86,7 +86,7 @@ let detailBtn; let cfDetails; let fallBackBanner;
 export function propsData(modelButtonTxt, countText, cfData, bannerContent) {
   detailBtn = modelButtonTxt.textContent;
   cfDetails = cfData.textContent;
-  fallBackBanner = bannerContent.textContent
+  fallBackBanner = bannerContent.textContent;
 }
 
 function cardTiles(getStockLocatorVehicles) {
@@ -539,7 +539,7 @@ async function handleMobileSeriesFilter() {
       if (checkbox.id === 'all') {
         checkbox.checked = true;
         item.classList.add('selected-filter');
-      } 
+      }
 
       item.addEventListener('click', (event) => {
         if (event.target.tagName.toLowerCase() === 'input') {
@@ -727,7 +727,7 @@ function updateSelectedValues(newValues) {
   document.querySelector('body').setAttribute('data-selected-values', JSON.stringify(mergedValues));
 
   // Reset button management
-if (!document.querySelector('.reset-filter') && hasSelectedValues) {
+  if (!document.querySelector('.reset-filter') && hasSelectedValues) {
     const resetFilterElement = document.createElement('div');
     resetFilterElement.classList.add('reset-filter');
     const resetSpan = document.createElement('span');
@@ -868,20 +868,20 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
 
   // Clear the existing list items
   filterList.innerHTML = '';
-    // Add "All" option
-    const allListItem = document.createElement('li');
-    allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
-    const allCheckbox = document.createElement('input');
-    allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
-    allCheckbox.type = 'checkbox';
-    allCheckbox.id = 'all';
-    allCheckbox.checked = true;
-    const allLabel = document.createElement('label');
-    allLabel.htmlFor = 'All';
-    allLabel.textContent = 'All';
-    allListItem.appendChild(allCheckbox);
-    allListItem.appendChild(allLabel);
-    filterList.appendChild(allListItem);
+  // Add "All" option
+  const allListItem = document.createElement('li');
+  allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
+  const allCheckbox = document.createElement('input');
+  allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+  allCheckbox.type = 'checkbox';
+  allCheckbox.id = 'all';
+  allCheckbox.checked = true;
+  const allLabel = document.createElement('label');
+  allLabel.htmlFor = 'All';
+  allLabel.textContent = 'All';
+  allListItem.appendChild(allCheckbox);
+  allListItem.appendChild(allLabel);
+  filterList.appendChild(allListItem);
   // Populate with new filterResponseData
   filterResponseData.forEach((item) => {
     const listItem = document.createElement('li');
@@ -903,6 +903,7 @@ function updateStockLocatorFilterDom(filterResponseData, typeKey) {
     filterList.appendChild(listItem);
   });
 
+  // eslint-disable-next-line no-unused-expressions
   viewport >= 1024 ? handleCheckBoxSelection() : handleMobileSeriesFilter();
 }
 
