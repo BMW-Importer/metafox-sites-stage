@@ -13,13 +13,17 @@
     "series": [
       "3"
     ],
-    "seriesDescription": "BMW Serije 3 Touring",
+    "seriesDescription": "BMW Serije 3 - M verzije",
     "seriesDescriptions": [
-      "BMW Serije 3 Touring"
+      "BMW Serije 3 - M verzije"
     ],
     "hybridCode": "NOHY",
-    "fromPrice": 76876,
-    "acceleration": "-",
+    "fromPrice": 76823,
+    "acceleration": "4.7",
+    "trunkCapacity": 500,
+    "seats": 5,
+    "horsePower": 340,
+    "topSpeed": "250",
     "marketingVehicleType": "M",
     "bodyTypeCode": "TO",
     "marketingBodyTypeCode": "TO",
@@ -33,38 +37,45 @@
     },
     "powerTrain": {
       "fuelType": "D",
-      "systemPower": "-",
-      "systemMaxTorque": "-",
-      "gearBox": "-",
+      "systemPower": "250 (340)",
+      "systemMaxTorque": "700",
+      "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "S02TB",
         "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "10",
         "volt48": true,
         "technicalData": {
           "powerTrain": {
             "fuelType": "D",
-            "systemPower": "-",
-            "systemMaxTorque": "-",
-            "gearBox": "-",
+            "systemPower": "250 (340)",
+            "systemMaxTorque": "700",
+            "gearBox": "8 - automatisch",
             "driveType": "AR"
           },
           "engine": {
-            "cylinders": "-",
-            "technicalCapacity": "-",
-            "nominalPower": "-",
-            "nominalTorque": "-"
+            "cylinders": "6",
+            "technicalCapacity": "2993",
+            "nominalPower": "250 (340) / 4400",
+            "nominalTorque": "700 / 1750 - 2250"
           },
           "electric": {
-            "systemPower": "-"
+            "systemPower": "8 (11) / -",
+            "systemMaxTorque": "25"
+          },
+          "performance": {
+            "acceleration": "4.7",
+            "topSpeed": "250",
+            "electricTopSpeed": "-"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "6.6–6",
+            "consumptionWltpCombined": "6.8–6.1",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "173–157",
+            "emissionsWltpCombined": "178–161",
             "electricConsumption": "-",
             "electricRangeWltpCombined": "-",
             "efficiencyCategoryMinChargeSustaining": "-",
@@ -73,7 +84,7 @@
             "noiseStationary": "-"
           },
           "charging": {
-            "batteryCapacity": "-",
+            "batteryCapacity": "0.4",
             "additionalRangeDC": "-",
             "chargeACDC": "-",
             "chargeAC": "-",
@@ -82,8 +93,17 @@
             "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "trunkCapacity": "-",
-            "tankCapacity": "-"
+            "length": "4713",
+            "width": "1827",
+            "height": "1445",
+            "widthMirrors": "2068 (1040 / 1028)",
+            "wheelTurn": "2851.0",
+            "weightNotLoaded": "1945",
+            "weightMax": "2430",
+            "permittedLoad": "560",
+            "trailerLoad": "1800 / 75",
+            "trunkCapacity": "500–1510",
+            "tankCapacity": "59.0"
           }
         },
         "footnotes": {
@@ -108,9 +128,18 @@
           ],
           "charging": [
             "f7"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
           ]
         },
-        "footnotesData": {}
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
       }
     ]
   }

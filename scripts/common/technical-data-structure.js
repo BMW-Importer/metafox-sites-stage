@@ -345,7 +345,7 @@ export const techDataWdhResponsObject = `
     "model": {
         "modelCode": "{responseJson.ModelCode}",
         "brand": "",
-        "description": "",
+        "description": "{responseJson.ModelName}",
         "shortName": "",
         "shortRangeName": "",
         "modelRangeCode": "",
@@ -377,7 +377,7 @@ export const techDataWdhResponsObject = `
             "options": ""
         },
         "powerTrain": {
-            "fuelType": "",
+            "fuelType": "{responseJson.FuelType}",
             "systemPower": "",
             "systemMaxTorque": "",
             "gearBox": "",
@@ -386,13 +386,13 @@ export const techDataWdhResponsObject = `
         "effectDate": "",
         "vehicles": [
             {
-                "transmissionCode": "{responseJson.TransmissionType}",
+                "transmissionCode": "{responseJson.TransmissionCode}",
                 "hybridCode": "",
                 "iD_LEIST_KONST": "",
                 "volt48": true,
                 "technicalData": {
                     "powerTrain": {
-                        "fuelType": "{responseJson.EngineType}",
+                        "fuelType": "{responseJson.FuelType}",
                         "systemPower": "{responseJson.PowerkW}",
                         "systemMaxTorque": "{responseJson.TorqueNm}",
                         "gearBox": "{responseJson.Gearbox}",
@@ -405,7 +405,8 @@ export const techDataWdhResponsObject = `
                         "nominalTorque": "{responseJson.NominalTorqueNm}"
                     },
                     "electric": {
-                        "systemPower": "{responseJson.ElectricNominalPowerkW}"
+                        "systemPower": "{responseJson.ElectricNominalPowerkW}",
+                        "systemMaxTorque": ""
                     },
                     "performance": {
                         "acceleration": "{responseJson.Acceleration}",
@@ -440,7 +441,7 @@ export const techDataWdhResponsObject = `
                         "wheelTurn": "{responseJson.Wheelbase}",
                         "weightNotLoaded": "{responseJson.EmptyWeight}",
                         "weightMax": "{responseJson.MaximumWeight}",
-                        "permittedLoad": "",
+                        "permittedLoad": "{responseJson.LoadCapacity}",
                         "trailerLoad": "{responseJson.TowingHook}",
                         "trunkCapacity": "{responseJson.LuggageSpaceCapacity}",
                         "tankCapacity": "{responseJson.TankVolume}"

@@ -41,7 +41,7 @@
       "gearBox": "1 - automatisch",
       "driveType": "HR"
     },
-    "effectDate": "2024-06-24",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "A",
@@ -74,7 +74,7 @@
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "-",
             "consumptionWltpCombinedChargeSustaining": "-",
-            "emissionsWltpCombined": "0",
+            "emissionsWltpCombined": "-",
             "electricConsumption": "18–17.6",
             "electricRangeWltpCombined": "461–471",
             "efficiencyCategoryMinChargeSustaining": "-",
@@ -106,6 +106,15 @@
           }
         },
         "footnotes": {
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
           "emissionsConsumptionWltp": [
             "f4"
           ],

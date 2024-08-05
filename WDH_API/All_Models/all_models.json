@@ -676,6 +676,15 @@
       "seriesCode": "X1"
     },
     {
+      "modelCode": "41EG",
+      "description": "X1 xDrive20d",
+      "modelRangeCode": "U11",
+      "shortName": "X1 xDrive20d",
+      "shortRangeName": "U11",
+      "marketingSeries": "X1",
+      "seriesCode": "X1"
+    },
+    {
       "modelCode": "11EE",
       "description": "X1 sDrive18i",
       "modelRangeCode": "U11",
@@ -689,15 +698,6 @@
       "description": "X1 xDrive25e",
       "modelRangeCode": "U11",
       "shortName": "X1 xDrive25e",
-      "shortRangeName": "U11",
-      "marketingSeries": "X1",
-      "seriesCode": "X1"
-    },
-    {
-      "modelCode": "41EG",
-      "description": "X1 xDrive20d",
-      "modelRangeCode": "U11",
-      "shortName": "X1 xDrive20d",
       "shortRangeName": "U11",
       "marketingSeries": "X1",
       "seriesCode": "X1"

@@ -13,9 +13,9 @@
     "series": [
       "X5"
     ],
-    "seriesDescription": "BMW X5 - M verzije",
+    "seriesDescription": "BMW X5",
     "seriesDescriptions": [
-      "BMW X5 - M verzije"
+      "BMW X5"
     ],
     "hybridCode": "NOHY",
     "fromPrice": 178260,
@@ -41,7 +41,7 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
-    "effectDate": "2024-07-16",
+    "effectDate": "2024-07-30",
     "vehicles": [
       {
         "transmissionCode": "A",
