@@ -783,7 +783,7 @@ function resetAllFilters(values) {
   // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   removeFallbackBannerDOM();
   vehicleURL = constructVehicleUrl(values);
-  console.log(globalFilterData);  
+  console.log(globalFilterData);
   createStockLocatorFilter(globalFilterData, dropDownContainer);
   vehicleFiltersAPI();
   cardTiles();
@@ -820,44 +820,82 @@ function showFilterLabel(typeKey) {
 }
 
 function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
-  const boxContainer = document.createElement('div');
-  boxContainer.classList.add('box-container', `${typeKey}-box`);
+  // Check if the filter list already exists
+  let filterList = document.querySelector(`.${typeKey}-list`);
+  let selectedFilterList = document.querySelector(`.${typeKey}-selected-list`);
 
-  const filterContainer = document.createElement('div');
-  filterContainer.classList.add('stock-locator-container', `${typeKey}-container`);
+  if (!filterList) {
+    // Create DOM elements if they do not exist
+    const boxContainer = document.createElement('div');
+    boxContainer.classList.add('box-container', `${typeKey}-box`);
 
-  const filterWrapperContainer = document.createElement('div');
-  filterWrapperContainer.classList.add('filter-wrapper', `${typeKey}-wrapper`);
+    const filterContainer = document.createElement('div');
+    filterContainer.classList.add('stock-locator-container', `${typeKey}-container`);
 
-  const mobilefilterWrapperLabel = document.createElement('span');
-  mobilefilterWrapperLabel.classList.add('mobile-filter-wrapper', `${typeKey}-wrapper`);
-  mobilefilterWrapperLabel.textContent = 'Filter By:';
+    const filterWrapperContainer = document.createElement('div');
+    filterWrapperContainer.classList.add('filter-wrapper', `${typeKey}-wrapper`);
 
-  const filterHeading = document.createElement('span');
-  filterHeading.classList.add('filter-label', `${typeKey}-label`);
+    const mobilefilterWrapperLabel = document.createElement('span');
+    mobilefilterWrapperLabel.classList.add('mobile-filter-wrapper', `${typeKey}-wrapper`);
+    mobilefilterWrapperLabel.textContent = 'Filter By:';
 
-  const filterLabelHeading = document.createElement('div');
-  filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
-  filterLabelHeading.textContent = showFilterLabel(typeKey);
-  const filterList = document.createElement('ul');
-  filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
-  const selectedFilterList = document.createElement('div');
-  selectedFilterList.classList.add('selected-filter-list', `${typeKey}-selected-list`);
-  // Add "All" option
-  const allListItem = document.createElement('li');
-  allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
-  const allCheckbox = document.createElement('input');
-  allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
-  allCheckbox.type = 'checkbox';
-  allCheckbox.id = 'All';
-  allCheckbox.checked = true;
-  const allLabel = document.createElement('label');
-  allLabel.htmlFor = 'All';
-  allLabel.textContent = 'All';
-  allListItem.appendChild(allCheckbox);
-  allListItem.appendChild(allLabel);
-  filterList.appendChild(allListItem);
+    const filterHeading = document.createElement('span');
+    filterHeading.classList.add('filter-label', `${typeKey}-label`);
 
+    const filterLabelHeading = document.createElement('div');
+    filterLabelHeading.classList.add('filter-label-heading', `${typeKey}-heading`);
+    filterLabelHeading.textContent = showFilterLabel(typeKey);
+
+    filterList = document.createElement('ul');
+    filterList.classList.add('filter-list', 'dropdown-list-wrapper', `${typeKey}-list`);
+    selectedFilterList = document.createElement('div');
+    selectedFilterList.classList.add('selected-filter-list', `${typeKey}-selected-list`);
+
+    // Add "All" option
+    const allListItem = document.createElement('li');
+    allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
+    const allCheckbox = document.createElement('input');
+    allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+    allCheckbox.type = 'checkbox';
+    allCheckbox.id = 'All';
+    allCheckbox.checked = true;
+    const allLabel = document.createElement('label');
+    allLabel.htmlFor = 'All';
+    allLabel.textContent = 'All';
+    allListItem.appendChild(allCheckbox);
+    allListItem.appendChild(allLabel);
+    filterList.appendChild(allListItem);
+
+    filterWrapperContainer.appendChild(mobilefilterWrapperLabel);
+    filterContainer.appendChild(filterHeading);
+    filterContainer.appendChild(filterWrapperContainer);
+    filterWrapperContainer.appendChild(filterLabelHeading);
+    filterWrapperContainer.appendChild(filterList);
+    boxContainer.appendChild(filterWrapperContainer);
+    filterContainer.appendChild(boxContainer);
+    dropDownContainer.append(filterContainer, selectedFilterList);
+    document.querySelector('.stock-locator-model-detail-definition-specification').append(dropDownContainer);
+  } else {
+    // Clear existing filter list items
+    filterList.innerHTML = '';
+
+    // Update "All" option
+    const allListItem = document.createElement('li');
+    allListItem.classList.add('filter-item', `${typeKey}-item`, 'not-desktop');
+    const allCheckbox = document.createElement('input');
+    allCheckbox.classList.add(`${typeKey}-checkbox`, 'filter-checkbox');
+    allCheckbox.type = 'checkbox';
+    allCheckbox.id = 'All';
+    allCheckbox.checked = true;
+    const allLabel = document.createElement('label');
+    allLabel.htmlFor = 'All';
+    allLabel.textContent = 'All';
+    allListItem.appendChild(allCheckbox);
+    allListItem.appendChild(allLabel);
+    filterList.appendChild(allListItem);
+  }
+
+  // Add filter data
   filterData.forEach((item) => {
     const listItem = document.createElement('li');
     listItem.classList.add('filter-item', `${typeKey}-item`);
@@ -872,16 +910,8 @@ function stockLocatorFilterDom(filterData, typeKey, dropDownContainer) {
     listItem.appendChild(label);
     filterList.appendChild(listItem);
   });
-  filterContainer.appendChild(filterHeading);
-  filterWrapperContainer.appendChild(mobilefilterWrapperLabel);
-  filterContainer.appendChild(filterWrapperContainer);
-  filterWrapperContainer.appendChild(filterLabelHeading);
-  filterWrapperContainer.appendChild(filterList);
-  boxContainer.appendChild(filterWrapperContainer);
-  filterContainer.appendChild(boxContainer);
-  dropDownContainer.append(filterContainer, selectedFilterList);
-  document.querySelector('.stock-locator-model-detail-definition-specification').append(dropDownContainer);
-  return filterContainer;
+
+  return filterList;
 }
 
 function sortFilterResponse(data) {
