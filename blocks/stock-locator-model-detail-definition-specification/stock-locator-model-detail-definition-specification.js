@@ -786,7 +786,7 @@ function resetAllFilters(values) {
   console.log(globalFilterData);
   createStockLocatorFilter(globalFilterData, dropDownContainer);
   vehicleFiltersAPI();
-  cardTiles();
+  handleCheckBoxSelection();
   // eslint-disable-next-line no-use-before-define
   // stockLocatorFiltersAPI();
 }
