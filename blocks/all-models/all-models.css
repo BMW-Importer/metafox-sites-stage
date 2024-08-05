@@ -17,8 +17,7 @@
     margin-bottom: 1.5rem;
     margin-left: -1.5rem;
     margin-top: -.5rem;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     padding: .25rem 1.5rem;
     width: 100%;
 }
@@ -26,8 +25,7 @@
 .filter-btn {
     background: transparent;
     box-shadow: inset 0 0 0 1px #bbb;
-    color: var(--light-border-color);
- 
+    color: var(--light-border-color); 
     align-items: center;
     cursor: pointer;
     display: flex;
@@ -65,6 +63,12 @@
     background-color: var(--light-text-color);
 }
 
+.filter-btn-icon {
+    margin-right: 0.5rem;
+    transition: transform .5s ease-in-out;
+    pointer-events: none;
+}
+
 .filter-btn.active .filter-btn-icon {
     transform: rotate(45deg);
 }
@@ -73,22 +77,15 @@
     transform: rotate(45deg);
 }
 
-.filter-btn-icon {
-    margin-right: 0.5rem;
-    transition: transform .5s ease-in-out;
-    pointer-events: none;
-}
-
 .filter-btn-icon::before {
     word-wrap: normal;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;    
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "plus";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -141,13 +138,12 @@
 .show-more-icon::before {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -228,11 +224,7 @@
     width: calc(100% + 2rem);
 }
 
-.content-navigation-active .content-nav-selected-value:after {
-    transform: rotate(-180deg);
-}
-
-.content-nav-selected-value:after {
+.content-nav-selected-value::after {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -241,7 +233,7 @@
     direction: ltr;
     display: block;
     display: inline-flex;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -251,11 +243,14 @@
     outline: 1px solid #0000;
     position: relative;
     text-align: left;
-    text-rendering: optimizeLegibility;
     text-transform: none;
     transition: transform .5s ease-in-out;
     white-space: nowrap;
     width: auto;
+}
+
+.content-navigation-active .content-nav-selected-value::after {
+    transform: rotate(-180deg);
 }
 
 .nav-background {
@@ -312,47 +307,43 @@
     align-items: center;
 }
 
-.content-navigation .nav-arrow-left:before {
+.content-navigation .nav-arrow-left::before {
     font-size: 1.25rem;
     font-weight: 400;
     word-wrap: normal;
-    speak: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "arrow_chevron_left";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
     outline: 1px solid #0000;
     text-align: left;
-    text-rendering: optimizeLegibility;
     text-transform: none;
     white-space: nowrap;
     width: auto;
 }
 
-.content-navigation .nav-arrow-right:before {
+.content-navigation .nav-arrow-right::before {
     font-size: 1.25rem;
     font-weight: 400;
     word-wrap: normal;
-    speak: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "arrow_chevron_right";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
     outline: 1px solid #0000;
     text-align: left;
-    text-rendering: optimizeLegibility;
     text-transform: none;
     white-space: nowrap;
     width: auto;
@@ -372,15 +363,8 @@
     position: fixed;
 }
 
-.content-navigation-active .navbar-wrap {
-    clip-path: inset(0 0 0 0);
-    height: 100%;
-    visibility: visible;
-}
-
 .navbar-wrap {
     clip-path: inset(0 0 100% 0);
-    overflow-x: hidden;
     overflow: hidden;
     position: absolute;
     transition: clip-path ease-in;
@@ -391,11 +375,29 @@
     will-change: clip-path;
 }
 
+.content-navigation-active .navbar-wrap {
+    clip-path: inset(0 0 0 0);
+    height: 100%;
+    visibility: visible;
+}
+
 .nav-list.mobile-only {
     float: none;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: scroll hidden;
     scrollbar-width: none;
+    width: 100%;
+}
+
+.nav-list {
+    color: var(--light-border-color);
+    background-color: #fff;
+    flex-flow: row nowrap;
+    float: left;
+    left: 0;
+    list-style: none;
+    overflow: hidden;
+    transition: padding .25s ease-in;
+    white-space: nowrap;
     width: 100%;
 }
 
@@ -407,45 +409,14 @@
     margin-top: 0;
 }
 
-.nav-list {
-    color: var(--light-border-color);
-    background-color: #fff;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    float: left;
-    left: 0;
-    list-style: none;
-    overflow: hidden;
-    transition: padding .25s ease-in;
-    white-space: nowrap;
-    width: 100%;
-}
-
 .nav-list-item {
     width: auto;
 }
-
 
 .content-navigation-active .nav-list-button-active {
     border-left: .25rem solid #4d4d4d;
     outline: none;
     padding: .75rem 1.25rem;
-}
-
-.content-navigation-active .nav-list-button:focus {
-    border-left: .25rem solid #4d4d4d;
-    outline: none;
-    padding: .75rem 1.25rem;
-}
-
-.content-navigation-active .nav-list-button {
-    padding: .75rem 1.5rem;
-    pointer-events: all;
-}
-
-.content-navigation-active .nav-list-button:hover {
-    background-color: #0000;
-    color: #666;
 }
 
 .nav-list-button {
@@ -473,7 +444,22 @@
     line-height: 1.5rem;
 }
 
-/*Filter Popover Styles started*/
+.content-navigation-active .nav-list-button {
+    padding: .75rem 1.5rem;
+    pointer-events: all;
+}
+
+.content-navigation-active .nav-list-button:focus {
+    border-left: .25rem solid #4d4d4d;
+    outline: none;
+    padding: .75rem 1.25rem;
+}
+
+.content-navigation-active .nav-list-button:hover {
+    background-color: #0000;
+    color: #666;
+}
+
 .filter-overlay-wrap {
     display: none;
 }
@@ -485,13 +471,12 @@
 .filter-overlay-wrap.active {
     -webkit-overflow-scrolling: auto;
     align-items: flex-start;
-    background: rgba(0, 0, 0, 80%);
+    background: #000c;
     display: flex;
     height: 100%;
     justify-content: center;
     left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
     position: fixed;
     top: 0;
     width: 100vw;
@@ -564,7 +549,6 @@
     left: 0;
     pointer-events: none;
     position: absolute;
-    top: 0;
     transition: background-color .25s ease-in-out, border .25s ease-in-out;
     width: 1.25rem;
     top: auto;
@@ -575,16 +559,15 @@
     border-color: transparent
 }
 
-.filter-overlay-wrap .filter-checkbox input:checked+.filter-checkbox-icon:after {
+.filter-overlay-wrap .filter-checkbox input:checked+.filter-checkbox-icon::after {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "checkmark";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -607,7 +590,7 @@
     padding: .25rem;
     text-align: center;
     color: var(--light-text-color);
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .filter-overlay-wrap .show-filter-btn {
@@ -632,12 +615,9 @@
     row-gap: 1rem;
     z-index: 30;
     border-top: 1px solid var(--light-grey-1);
-    position: -webkit-sticky;
     position: sticky;
     padding: 1rem 1.5rem 0;
-
     bottom: 0;
-
 }
 
 .filter-overlay-wrap .filter-close-button {
@@ -652,17 +632,16 @@
     width: 3rem;
 }
 
-.filter-overlay-wrap .filter-close-button:before {
+.filter-overlay-wrap .filter-close-button::before {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "close";
     direction: ltr;
     display: block;
     display: inline-block;
-    font-family: 'bmw_next_icons';
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
@@ -675,7 +654,7 @@
     width: auto;
 }
 
-.filter-overlay-wrap .clear-filter-btn span:before {
+.filter-overlay-wrap .clear-filter-btn span::before {
     font-size: 1rem;
     font-weight: 400;
 }
@@ -719,13 +698,10 @@
 
 .all-model-card-btn {
     outline: none;
-    bottom: 0;
     height: 100%;
-    left: 0;
     pointer-events: all;
     position: absolute;
-    right: 0;
-    top: 0;
+    inset: 0;
     width: 100%;
     background: none !important;
     padding: 0;
@@ -802,13 +778,12 @@
     font-weight: 300;
     word-wrap: normal;    
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "fuel_type_bev";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -824,13 +799,12 @@
     font-weight: 300;
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "fuel_type_phev";
     direction: ltr;
     display: block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-style: normal;
     height: 1em;
     line-height: 1;
@@ -882,6 +856,14 @@
     margin-right: .5rem;
 }
 
+.all-model-detail-label .all-model-card__subbrands {
+    display: flex !important;
+    margin-top: 0;
+    position: static;
+    padding: 0;
+    width: auto;
+}
+
 .all-model-card-container.first-model-child .all-model-card__subbrands {
     left: 0;
     position: absolute;
@@ -906,6 +888,12 @@
     top: 0;
 }
 
+.all-model-detail-label .all-model-card__new-model-label {
+    display: block !important;
+    margin-right: .5rem;
+    position: static;
+}
+
 .all-model-card-container:not(:first-child) .all-model-card__new-model-label {
     display: none;
 }
@@ -921,12 +909,13 @@
     display: none;
 }
 
-.all-model-detail-label .all-model-card__subbrands {
-    display: flex !important;
-    margin-top: 0;
-    position: static;
-    padding: 0;
-    width: auto;
+.all-model-picture-tag img {
+    margin-bottom: 0;
+    position: absolute;
+    top: -24.3%;
+    transition: transform .15s ease-in;
+    width: 100%;
+    will-change: transform;
 }
 
 .all-model-detail-label .all-model-card__subbrands-wrap {
@@ -941,12 +930,6 @@
     height: 1rem;
 }
 
-.all-model-detail-label .all-model-card__new-model-label {
-    display: block !important;
-    margin-right: .5rem;
-    position: static;
-}
-
 .all-model-detail-container:not(.first-model-child) .all-model-detail-model-name {
     padding: .5rem 0 .25rem;
 }
@@ -954,15 +937,6 @@
 .all-model-picture-tag {
     width: 100%;
     z-index: 20;
-}
-
-.all-model-picture-tag img {
-    margin-bottom: 0;
-    position: absolute;
-    top: -24.3%;
-    transition: transform .15s ease-in;
-    width: 100%;
-    will-change: transform;
 }
 
 .all-model-card-img-container:not(.first-model-child) .all-model-picture-tag img {
@@ -976,7 +950,7 @@
     grid-template-columns: 1fr;
     list-style: none;
     margin-bottom: 2.5rem;
-    margin-top: 0px;
+    margin-top: 0;
 }
  
 .section.all-models-container .link-list-wrapper .link-list-title {
@@ -989,7 +963,7 @@
     align-items: center;
     border-bottom: 1px solid #e6e6e6;
     display: flex;
-    margin: 0px;
+    margin: 0;
 }
  
 .section.all-models-container .link-list-wrapper .link-list-detail a {
@@ -1002,23 +976,21 @@
     justify-content: space-between;
     line-height: 1.75rem;
     margin: 0;
-    padding-left: 0;
-    padding-right: 0;
     text-align: start;
     width: 100%;
     color: var(--light-text-color);
     min-height: 3.25rem;
-    padding: .25rem 0px;
+    padding: 0.25rem 0;
     text-decoration: none;
     box-sizing: border-box;
 }
  
-.section.all-models-container .link-list-wrapper .link-list-detail a:after {
+.section.all-models-container .link-list-wrapper .link-list-detail a::after {
     float: right;
     -moz-osx-font-smoothing: grayscale;
     color: #666;
     content: "arrow_chevron_right";
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -1062,8 +1034,7 @@
 }
 
 .all-model-detail__container-links {
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
+    grid-gap: 4px;
     display: grid;
     grid-template-columns: 1fr;
     margin-top: -65px;
@@ -1244,14 +1215,13 @@
 .all-model-detail__close-btn::before {
     word-wrap: normal;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "liga";
     content: "close";
     direction: ltr;
     display: block;
     display: inline-block;
-    font-family: bmw_next_icons;
+    font-family: "bmw_next_icons", arial, helvetica, roboto, sans-serif;
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
@@ -1336,12 +1306,10 @@
     }
 
     .content-navigation.arrow-left-active .navbar-wrap {
-        -webkit-mask: linear-gradient(90deg, #fff0 0, #fff0 35px, #fff 107px);
         mask: linear-gradient(90deg, #fff0 0, #fff0 35px, #fff 107px);
     }
 
     .content-navigation.arrow-right-active .navbar-wrap {
-        -webkit-mask: linear-gradient(270deg, #fff0 0, #fff0 35px, #fff 107px);
         mask: linear-gradient(270deg, #fff0 0, #fff0 35px, #fff 107px);
     }
 
@@ -1361,7 +1329,7 @@
     .filter-overlay-wrap .filter-footer {
         column-gap: 1.5rem;
         grid-template-columns: 1fr 1fr;
-        padding: 1.5rem 3rem 1.5rem;
+        padding: 1.5rem 3rem;
 
     }
 
@@ -1380,8 +1348,6 @@
 
     .filter-overlay-wrap .clear-filter-btn {
         justify-content: flex-start;
-        max-width: -webkit-fit-content;
-        max-width: -moz-fit-content;
         max-width: fit-content;
         padding-left: .5rem;
     }
@@ -1431,16 +1397,16 @@
         top: -23.9%;
     }
 
-    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon,
-    .all-model-card-img-container .all-model-card__fuel-type-icon{
+    .all-model-card-img-container .all-model-card__fuel-type-icon,
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon {
         left: 6.5%;
         padding: 7.8% 0;
         top: 10.8%;
         width: 15.7%;
     }
     
-    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span,
-    .all-model-card-img-container .all-model-card__fuel-type-icon span  {
+    .all-model-card-img-container .all-model-card__fuel-type-icon span,
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span {
         font-size: calc(-11px + 10vw);
     }
 
@@ -1507,7 +1473,6 @@
 }
 
 @media (width >= 1024px) {
-
     .section.all-models-container {
         margin-top: 64px !important;
         margin-left: auto !important;
@@ -1549,16 +1514,16 @@
         transform: translate3d(0, -73%, 0);
     }
 
-    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon,
-    .all-model-card-img-container .all-model-card__fuel-type-icon{
+    .all-model-card-img-container .all-model-card__fuel-type-icon,
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon {
         left: 6.5%;
         padding: 8.6% 0;
         top: 10.6%;
         width: 17.3%;
     }
     
-    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span,
-    .all-model-card-img-container .all-model-card__fuel-type-icon span  {
+    .all-model-card-img-container .all-model-card__fuel-type-icon span,
+    .all-model-card-img-container:not(.first-model-child) .all-model-card__fuel-type-icon span {
         font-size: 62px;
     }
 
