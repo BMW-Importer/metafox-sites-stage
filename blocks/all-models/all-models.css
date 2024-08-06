@@ -244,7 +244,7 @@ main .section.allmodel-section {
     height: 1em;
     line-height: 1;
     margin-right: -1rem;
-    outline: 1px solid var(--text-color);
+    outline: 1px solid var(--black-shade-1);
     position: relative;
     text-align: left;
     text-transform: none;
