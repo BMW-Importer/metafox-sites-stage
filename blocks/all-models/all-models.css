@@ -272,9 +272,6 @@ main .section.allmodel-section {
 
 .content-navigation {
     flex-direction: column;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
 .sticky {
@@ -1284,7 +1281,7 @@ main .section.allmodel-section {
     }
 
     .nav-list-button {
-        border-color: var(--text-color);
+        border-color: var(--black-shade-1);
         border-style: solid;
         border-width: .25rem 0;
         font-size: 0.875rem;
@@ -1301,12 +1298,12 @@ main .section.allmodel-section {
 
     .nav-list-button:focus {
         border-bottom-color: var(--medium-text-color);
-        background: var(--text-color);
+        background: var(--black-shade-1);
     }
 
     .nav-list-button:hover {
         border-bottom-color: var(--medium-text-color);
-        background: var(--text-color);
+        background: var(--black-shade-1);
     }
 
     .content-navigation.arrow-left-active .navbar-wrap {
