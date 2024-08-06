@@ -588,9 +588,9 @@ function applyStickyNav() {
   const container = document.querySelector('.content-navigation');
   const top = nav.offsetTop;
   if (window.scrollY > top) {
-    container.classList.add("sticky");
+    container.classList.add('sticky');
   } else {
-    container.classList.remove("sticky");
+    container.classList.remove('sticky');
   }
 }
 
