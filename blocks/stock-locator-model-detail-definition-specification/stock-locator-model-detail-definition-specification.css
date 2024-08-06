@@ -978,6 +978,7 @@ li::marker {
         margin: 0;
         padding: 0;
         list-style-type: none;
+        padding: 3px;
     }
 
     .stock-locator-container .filter-wrapper .filter-list.dropdown-list-wrapper {
@@ -1010,14 +1011,19 @@ li::marker {
         direction: ltr;
         font-family: var(--icon-font-family);
         opacity: var(--iconfont400-opacity);
-        font-weight: 400;
         color: var(--text-color);
         border-color: var(--text-color);
         position: absolute;
-        font-size: 1rem;
-        right: 0.625rem;
+        font-size: 1.5rem;
+        right: 1.5rem;
         width: 1.4375rem;
         height: 1.4375rem;        
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .stock-locator-container.relevance .filter-item-relevance:hover {
+        background-color: var(--light-grey-1);
         cursor: pointer;
     }
 

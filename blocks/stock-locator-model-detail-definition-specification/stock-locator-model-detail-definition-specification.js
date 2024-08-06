@@ -184,7 +184,7 @@ function cardTiles(getStockLocatorVehicles) {
     const pictureTag = document.createElement('picture');
     const anchorWrapper = document.createElement('a');
     anchorWrapper.classList.add('anchor-image-wrapper');
-    anchorWrapper.href = `#deatils/${groupReference}`;
+    anchorWrapper.href = `#details/${groupReference}`;
 
     const imgElem = document.createElement('img');
     imgElem.classList.add('stocklocator-card-img');
