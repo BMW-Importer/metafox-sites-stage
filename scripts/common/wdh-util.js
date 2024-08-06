@@ -9,7 +9,6 @@ import { stockLocatorOrigin, stockLocatorFilterEndPoint, stockLocatorVehiclesEnd
 // eslint-disable-next-line import/no-cycle
 import {
   vehicleURL, showLoadingIcon, hideLoadingIcon, sortBySelctionData,
-  vehicleNameSortBy,
 } from '../../blocks/stock-locator-model-detail-definition-specification/stock-locator-model-detail-definition-specification.js';
 
 export async function getApiResponse(modelCode) {

@@ -32,6 +32,7 @@ function handleCancelSelectedValue(values) {
       const valueElement = item.parentElement;
       valueElement.remove();
       const fromRemove = document.querySelector('.appear').getAttribute('data-vehicle-url');
+      // eslint-disable-next-line no-use-before-define
       removeLastSelectedValue(values, fromRemove, encodeURI(valueElement.textContent));
       // eslint-disable-next-line max-len, no-use-before-define
       removeValueFromCommaSeparatedQueryString(fromRemove, encodeURI(valueElement.textContent));
@@ -51,7 +52,9 @@ function removeLastSelectedValue(values, fromRemove, itemValue) {
       break;
     }
   }
+  // eslint-disable-next-line no-use-before-define
   removeValueFromCommaSeparatedQueryString(fromRemove, itemValue);
+  // eslint-disable-next-line no-use-before-define
   getStockLocatorVehiclesData(vehicleURL);
   if (Object.entries(values).length === 0 && values.constructor === Object) {
     const checkboxes = document.querySelectorAll('.filter-checkbox');
@@ -81,12 +84,17 @@ function removeValueFromCommaSeparatedQueryString(queryString, valueToRemove) {
   document.querySelector('.appear').setAttribute('data-vehicle-url', resetURL);
   const hasEmptyValue = processedPairs.length;
   if (hasEmptyValue === 0) {
+    // eslint-disable-next-line no-use-before-define
     removeResetFilterDOM();
+    // eslint-disable-next-line no-use-before-define
     removeFallbackBannerDOM();
     document.querySelector('.appear').removeAttribute('data-selected-vehicle');
     // resetAllFilters();
+    // eslint-disable-next-line no-use-before-define
     createStockLocatorFilter(globalFilterData, dropDownContainer);
+    // eslint-disable-next-line no-use-before-define
     vehicleFiltersAPI();
+    // eslint-disable-next-line no-use-before-define
     handleCheckBoxSelection();
   }
   // Update the vehicle URL and make an API call
@@ -555,9 +563,12 @@ async function handleCheckBoxSelection() {
         debounceTimer = setTimeout(async () => {
           // update the filter DOM value after selection
           // update the Vehicle DOM after selection
+          // eslint-disable-next-line no-use-before-define
           updateSelectedValues(selectedValues);
+          // eslint-disable-next-line no-use-before-define
           vehicleURL = constructVehicleUrl(selectedValues);
           const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
+          // eslint-disable-next-line no-use-before-define
           updateFilterDropDownValuePostSelection(getStockLocatorSelectedFilter?.data?.attributes);
           const getStockLocatorVehicles = await getStockLocatorVehiclesData(vehicleURL);
           cardTiles(getStockLocatorVehicles);
@@ -608,6 +619,7 @@ async function updateSelectedValues(newValues) {
   const existingResetButton = document.querySelector('.reset-filter-not-desktop');
   const viewport = window.innerWidth;
   if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
+    // eslint-disable-next-line no-use-before-define
     const resetFilterElement = createResetFilterButton(mergedValues);
     document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
   } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
@@ -621,6 +633,7 @@ async function updateSelectedValues(newValues) {
 
     selectedList.insertBefore(resetFilterElement, selectedList.firstChild);
     resetFilterElement.addEventListener('click', () => {
+      // eslint-disable-next-line no-use-before-define
       resetAllFilters(mergedValues);
     });
   }
@@ -766,15 +779,12 @@ function resetAllFilters(values) {
   document.querySelector('body').removeAttribute('data-selected-values');
   // eslint-disable-next-line no-use-before-define
   updateSelectedValues(values);
-  // currentlyOpenDropdown.style.display = 'none';
-  // currentlyOpenDropdown.previousElementSibling.classList.remove('show-dropdown');
   removeFallbackBannerDOM();
   vehicleURL = constructVehicleUrl(values);
+  // eslint-disable-next-line no-use-before-define
   createStockLocatorFilter(globalFilterData, dropDownContainer);
   vehicleFiltersAPI();
   handleCheckBoxSelection();
-  // eslint-disable-next-line no-use-before-define
-  // stockLocatorFiltersAPI();
 }
 
 function createResetFilterButton(values) {
