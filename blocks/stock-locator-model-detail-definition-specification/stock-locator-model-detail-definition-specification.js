@@ -22,7 +22,7 @@ function handleToggleFilterDropDown() {
       }
     });
   });
-  // eslint-disable-next-line no-use-before-define
+  // eslint-disable-next-line no-use-before-define, no-unused-expressions
   viewport >= 1024 && handleCheckBoxSelection();
 }
 
@@ -179,12 +179,13 @@ function cardTiles(getStockLocatorVehicles) {
     modelCard.classList.add('model-card');
 
     const cardImgContainer = document.createElement('div');
-    cardImgContainer.classList.add('image-container');
+    cardImgContainer.classList.add('image-container', 'stock-image');
 
     const pictureTag = document.createElement('picture');
     const anchorWrapper = document.createElement('a');
     anchorWrapper.classList.add('anchor-image-wrapper');
     anchorWrapper.href = `#details/${groupReference}`;
+    anchorWrapper.setAttribute('data-reference', groupReference);
 
     const imgElem = document.createElement('img');
     imgElem.classList.add('stocklocator-card-img');
@@ -212,9 +213,11 @@ function cardTiles(getStockLocatorVehicles) {
     stockLocatorCardButtonContainer.classList.add('stock-locator-card-button-container');
 
     const stockLocatorHideButton = document.createElement('div');
-    stockLocatorHideButton.classList.add('stock-locator-hide-button');
+    stockLocatorHideButton.classList.add('stock-locator-hide-button1');
 
     const stockLocatorHideButtonLink = document.createElement('a');
+    stockLocatorHideButtonLink.setAttribute('data-reference', groupReference);
+    stockLocatorHideButtonLink.classList.add('stock-locator-btn-details');
     stockLocatorHideButtonLink.href = `#/details/${groupReference}`;
     const stockLocatorHideButtonText = document.createElement('span');
     stockLocatorHideButtonLink.appendChild(stockLocatorHideButtonText);
@@ -424,7 +427,7 @@ function loadMorePage(
   });
 }
 
-// eslint-disable-next-line max-len
+// eslint-disable-next-line max-len, no-shadow
 function showResulsHandler(vehicleURL) {
   const showResultContainer = document.createElement('div');
   showResultContainer.classList.add('show-result-container');
@@ -434,6 +437,7 @@ function showResulsHandler(vehicleURL) {
   showResultContainer.appendChild(showResultButton);
   document.querySelector('.stock-locator-model-detail-definition-specification').appendChild(showResultContainer);
   showResultButton.addEventListener('click', async () => {
+    // eslint-disable-next-line no-use-before-define
     closeModelPopup();
     const getStockLocatorSelectedFilter = await getStockLocatorFiltersData(vehicleURL);
     // eslint-disable-next-line no-use-before-define
@@ -624,9 +628,10 @@ async function updateSelectedValues(newValues) {
 
   // Reset button management
   const existingResetButton = document.querySelector('.reset-filter-not-desktop');
+  // eslint-disable-next-line no-shadow
   const viewport = window.innerWidth;
   if (viewport <= 768 && hasSelectedValues && !existingResetButton) {
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line no-use-before-define, no-undef
     const resetFilterElement = createResetFilterButton(mergedValues);
     document.querySelector('.stock-locator-model-detail-definition-specification.block').append(resetFilterElement);
   } else if (viewport > 768 && !document.querySelector('.reset-filter') && hasSelectedValues) {
@@ -704,6 +709,7 @@ async function handleMobileSeriesFilter() {
           allItem.children[0].checked = false;
         }
 
+        // eslint-disable-next-line max-len, no-shadow
         const anyChecked = Array.from(filterItems).some((item) => item !== allItem && item.children[0].checked);
         if (anyChecked) {
           allItem.classList.add('all-disabled');

@@ -64,7 +64,7 @@
 }
 
 .stock-locator-card-button-container .stock-locator-hide-button {
-    display: none;
+    /* display: none; */
     width: 100%;
     text-decoration: none;
     background-color: var(--light-link-hover-color);
