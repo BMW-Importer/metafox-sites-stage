@@ -110,7 +110,7 @@ export default function decorate(block) {
         mediaTitleWrapper.setAttribute(attr.name, attr.value);
       });
       content.replaceChild(mediaTitleWrapper, headlineMedia);
-    }    
+    }
 
     // add class to content div
     content.classList.add('media-detail-container');
