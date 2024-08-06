@@ -213,7 +213,7 @@ function cardTiles(getStockLocatorVehicles) {
     stockLocatorCardButtonContainer.classList.add('stock-locator-card-button-container');
 
     const stockLocatorHideButton = document.createElement('div');
-    stockLocatorHideButton.classList.add('stock-locator-hide-button1');
+    stockLocatorHideButton.classList.add('stock-locator-hide-button');
 
     const stockLocatorHideButtonLink = document.createElement('a');
     stockLocatorHideButtonLink.setAttribute('data-reference', groupReference);
