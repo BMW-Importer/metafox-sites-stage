@@ -1,5 +1,9 @@
 /* stylelint-disable selector-class-pattern */
 
+main .section.allmodel-section {
+    padding: 0 8px;
+}
+
 .section.all-models-container {
     margin-top: 1.5rem !important;
 }
