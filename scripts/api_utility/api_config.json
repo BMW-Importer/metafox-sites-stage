@@ -1,10 +1,10 @@
 {
-    "cosyApiBaseUrl": "https://prod.cosy.bmw.cloud/image-urls/dynamic-images/mandators/metafox/collections/walkaround/brands/bmwCar/models/",
-    "cosyApiHub": "CLOUD_PROD_INTERNET",
-    "wdhModelDetailsApiUrl": "https://productdata.api.bmw/pdh/categoryhub/v1.0/model/bmw+marketB4R1+bmw_rs+sr_RS/latest/",
-    "wdhModelTechnicalDataApiUrl": "https://productdata.api.bmw/pdh/technicaldata/v2.0/model/bmw+marketB4R1+bmw_rs+sr_RS/latest/",
-    "preConDataApi": "https://productdata.api.bmw/pdh/precons/v1.0",
+    "cosyApiBaseUrl": "https://int.cosy.bmw.cloud/image-urls/dynamic-images/mandators/metafox/collections/walkaround/brands/bmwCar/models/",
+    "cosyApiHub": "CLOUD_INT_INTERNET",
+    "wdhModelDetailsApiUrl": "https://productdata-int1.api.bmw/pdh/categoryhub/v1.0/model/bmw+marketB4R1+bmw_rs+sr_RS/latest/",
+    "wdhModelTechnicalDataApiUrl": "https://productdata-int1.api.bmw/pdh/technicaldata/v2.0/model/bmw+marketB4R1+bmw_rs+sr_RS/latest/",
+    "preConDataApi": "https://productdata-int1.api.bmw/pdh/precons/v1.0",
     "marketTenant": "bmw+marketB4R1+bmw_rs+sr_RS",
-    "wdhAllModelApiUrl": "https://productdata.api.bmw//pdh/categoryhub/v1.0/all/bmw+marketB4R1+bmw_rs+sr_RS/latest",
+    "wdhAllModelApiUrl": "https://productdata-int1.api.bmw//pdh/categoryhub/v1.0/all/bmw+marketB4R1+bmw_rs+sr_RS/latest",
     "edsHostConceptCars": "https://main--metafox-sites--bmw-importer.hlx.page/sr/concept-cars-details.json"
 }
