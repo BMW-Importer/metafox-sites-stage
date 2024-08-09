@@ -4027,7 +4027,7 @@
         "component": "custom-asset-namespace:custom-asset",
         "name": "image",
         "label": "Image",
-        "configUrl": "https://raw.githubusercontent.com/BMW-Importer/metafox-sites/main/tools/image-config.json",
+        "configUrl": "https://raw.githubusercontent.com/BMW-Importer/metafox-sites-stage/main/tools/image-config.json",
         "valueType": "string"
       },
       {
