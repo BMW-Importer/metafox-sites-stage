@@ -2,7 +2,7 @@
   "model": {
     "modelCode": "11CS",
     "brand": "BM",
-    "description": "BMW XM 50e",
+    "description": "XM 50e",
     "shortName": "XM 50e",
     "shortRangeName": "G09",
     "modelRangeCode": "G09",
@@ -18,19 +18,21 @@
       "XM"
     ],
     "hybridCode": "PHEV",
-    "fromPrice": 132400,
+    "fromPrice": 143600,
     "acceleration": "5.1",
+    "trunkCapacity": 527,
     "seats": 5,
+    "horsePower": 476,
     "topSpeed": "250",
     "marketingVehicleType": "M",
     "bodyTypeCode": "GF",
     "marketingBodyTypeCode": "SUV",
     "posiSpec": {
       "cosyBrand": "WBBM",
-      "agCode": "21CS",
-      "paint": "P0C5Y",
-      "fabric": "FVDIP",
-      "options": "S01CB,S01DF,S01FZ,S0230,S02PA,S02T4,S02TB,S02VB,S02VC,S02VW,S0302,S0322,S0323,S03DN,S03M3,S0420,S0423,S0428,S044A,S0453,S04FL,S04HA,S04HB,S04MA,S04MC,S04T2,S04T3,S04T7,S04U9,S04UR,S04V1,S0548,S05AC,S05AL,S05AU,S05AV,S05AX,S05DN,S05YA,S0654,S06AE,S06AF,S06AK,S06C4,S06F1,S06NX,S06PA,S06U3,S06U8,S0801,S0851,S0879,S08KA,S08R3,S08R9,S08WN,S0925"
+      "agCode": "11CS",
+      "paint": "P0C4H",
+      "fabric": "FVCSW",
+      "options": "S0230,S04FL,S08R3,S0494,S01CB,S04GQ,S02TB,S0925,S05DN,S08KH,S04T8,S0302,S0548,S044A,S04V1,S04UR,S0688,S04U9,S0322,S0323,S05AC,S08WN,S04NB,S03M3,S05AV,S05AL,S0888,S06U8,S0760,S06U3,S0715,S02VB,S02VC,S08R9,S08S3,S01DF,S02VW,S04MA,S06AF,S0851,S04M5"
     },
     "powerTrain": {
       "fuelType": "X",
@@ -39,9 +41,10 @@
       "gearBox": "8 - automatisch",
       "driveType": "AR"
     },
+    "effectDate": "2024-08-09",
     "vehicles": [
       {
-        "transmissionCode": "Default",
+        "transmissionCode": "S02TB",
         "hybridCode": "PHEV",
         "iD_LEIST_KONST": "20",
         "volt48": false,
@@ -69,10 +72,13 @@
             "electricTopSpeed": "140"
           },
           "emissionsConsumptionWltp": {
-            "consumptionWltpCombined": "1.7 - 1.3",
-            "emissionsWltpCombined": "37 - 30",
-            "electricConsumption": "32.2 - 31.5",
-            "electricRangeWltpCombined": "78 - 84",
+            "consumptionWltpCombined": "1.7–1.4",
+            "consumptionWltpCombinedChargeSustaining": "11.4–11",
+            "emissionsWltpCombined": "38–32",
+            "electricConsumption": "32.2–31.7",
+            "electricRangeWltpCombined": "78–83",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
             "noiseDriving": "-",
             "noiseStationary": "-"
           },
@@ -80,8 +86,8 @@
             "batteryCapacity": "25.7",
             "additionalRangeDC": "-",
             "chargeACDC": "7.4 (-) / -",
-            "chargeAC": "7.4 (-) ",
-            "charge_AC_0_100": "4.5",
+            "chargeAC": "7.4",
+            "charge_AC_0_100": "4:30",
             "chargeDC": "-",
             "charge_DC_10_80": "-"
           },
@@ -90,13 +96,13 @@
             "width": "2005",
             "height": "1755",
             "widthMirrors": "2235 (1127 / 1108)",
-            "wheelTurn": "3105",
+            "wheelTurn": "3105.0",
             "weightNotLoaded": "2695",
             "weightMax": "3220",
             "permittedLoad": "600",
             "trailerLoad": "2700 / 140",
-            "trunkCapacity": "527 - 1820",
-            "tankCapacity": "69"
+            "trunkCapacity": "527–1820",
+            "tankCapacity": "69.0"
           }
         },
         "footnotes": {
@@ -164,7 +170,10 @@
             "f13"
           ]
         },
-        "footnotesData": {}
+        "footnotesData": {
+          "overboostMax": 230,
+          "overboostKW": 145
+        }
       }
     ]
   }

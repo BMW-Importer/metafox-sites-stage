@@ -37,6 +37,107 @@
       "systemMaxTorque": "500",
       "gearBox": "8-speed, automatic",
       "driveType": "AR"
-    }
+    },
+    "vehicles": [
+      {
+        "transmissionCode": "Default",
+        "hybridCode": "NOHY",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "275 (374)",
+            "systemMaxTorque": "500",
+            "gearBox": "8-speed, automatic",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "6",
+            "technicalCapacity": "2998",
+            "nominalPower": "275 (374)/5500–6500",
+            "nominalTorque": "500/1900–5000"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "performance": {
+            "acceleration": "4.3",
+            "topSpeed": "250",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "8.8–8.1",
+            "consumptionWltpCombinedChargeSustaining": "",
+            "emissionsWltpCombined": "200–185",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "",
+            "efficiencyCategoryMaxChargeSustaining": "",
+            "noiseDriving": "68",
+            "noiseStationary": "91/3.750"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "",
+            "charge_AC_0_100": "-",
+            "chargeDC": "",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "length": "4548",
+            "width": "1838",
+            "height": "1404",
+            "widthMirrors": "-",
+            "wheelTurn": "-",
+            "weightNotLoaded": "1765",
+            "weightMax": "-",
+            "permittedLoad": "-",
+            "trailerLoad": "-",
+            "trunkCapacity": "390",
+            "tankCapacity": "52"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "powerTrain_systemPower_value": [
+            "f9"
+          ],
+          "powerTrain_systemMaxTorque_value": [
+            "f9"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "emissionsConsumptionWltp_noiseStationary_value": [
+            "f14"
+          ],
+          "emissionsConsumptionWltp_noiseDriving_value": [
+            "f14"
+          ]
+        },
+        "footnotesData": {}
+      }
+    ]
   }
 }

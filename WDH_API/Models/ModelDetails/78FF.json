@@ -37,6 +37,102 @@
       "systemMaxTorque": "300",
       "gearBox": "8-brzinski, Automatski",
       "driveType": "AR"
-    }
+    },
+    "vehicles": [
+      {
+        "transmissionCode": "Default",
+        "hybridCode": "NOHY",
+        "iD_LEIST_KONST": "00",
+        "volt48": false,
+        "technicalData": {
+          "powerTrain": {
+            "fuelType": "O",
+            "systemPower": "135 (184)",
+            "systemMaxTorque": "300",
+            "gearBox": "8-brzinski, Automatski",
+            "driveType": "AR"
+          },
+          "engine": {
+            "cylinders": "4",
+            "technicalCapacity": "1998",
+            "nominalPower": "135 (184) / 5000 - 6500",
+            "nominalTorque": "300 / 1350 - 4000"
+          },
+          "electric": {
+            "systemPower": "-",
+            "systemMaxTorque": "-"
+          },
+          "performance": {
+            "acceleration": "7.7",
+            "topSpeed": "230",
+            "electricTopSpeed": "-"
+          },
+          "emissionsConsumptionWltp": {
+            "consumptionWltpCombined": "7.6–6.8",
+            "consumptionWltpCombinedChargeSustaining": "-",
+            "emissionsWltpCombined": "172–153",
+            "electricConsumption": "-",
+            "electricRangeWltpCombined": "-",
+            "efficiencyCategoryMinChargeSustaining": "-",
+            "efficiencyCategoryMaxChargeSustaining": "-",
+            "noiseDriving": "-",
+            "noiseStationary": "-"
+          },
+          "charging": {
+            "batteryCapacity": "-",
+            "additionalRangeDC": "-",
+            "chargeACDC": "-",
+            "chargeAC": "-",
+            "charge_AC_0_100": "-",
+            "chargeDC": "-",
+            "charge_DC_10_80": "-"
+          },
+          "weightMeasurements": {
+            "length": "4713",
+            "width": "1827",
+            "height": "1445",
+            "widthMirrors": "",
+            "wheelTurn": "2851",
+            "weightNotLoaded": "1655",
+            "weightMax": "",
+            "permittedLoad": "",
+            "trailerLoad": "1800 / 75",
+            "trunkCapacity": "480",
+            "tankCapacity": "59"
+          }
+        },
+        "footnotes": {
+          "powerTrain": [
+            "f1"
+          ],
+          "engine": [
+            "f1"
+          ],
+          "performance_acceleration_value": [
+            "f16"
+          ],
+          "performance_topSpeed_value": [
+            "f17"
+          ],
+          "performance_electricTopSpeed_value": [
+            "f17"
+          ],
+          "emissionsConsumptionWltp": [
+            "f1",
+            "f4"
+          ],
+          "weightMeasurements_weightNotLoaded_label": [
+            "f8"
+          ],
+          "weightMeasurements_trailerLoad_label": [
+            "f13"
+          ]
+        },
+        "footnotesData": {
+          "overboostMax": "-",
+          "overboostKW": "-"
+        }
+      }
+    ]
   }
 }

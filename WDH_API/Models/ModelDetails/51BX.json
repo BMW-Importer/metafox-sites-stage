@@ -2,7 +2,7 @@
   "model": {
     "modelCode": "51BX",
     "brand": "BM",
-    "description": "BMW 230e xDrive",
+    "description": "230e xDrive",
     "shortName": "230e xDrive",
     "shortRangeName": "U06",
     "modelRangeCode": "U06",
@@ -13,14 +13,13 @@
     "series": [
       "2"
     ],
-    "seriesDescription": "BMW Serije 2 Gran Coupe",
+    "seriesDescription": "BMW Serije 2 Active Tourer",
     "seriesDescriptions": [
-      "BMW Serije 2 Gran Coupe"
+      "BMW Serije 2 Active Tourer"
     ],
     "hybridCode": "PHEV",
     "fromPrice": 50304,
-    "acceleration": "",
-    "topSpeed": "",
+    "acceleration": "-",
     "bodyTypeCode": "ST",
     "marketingBodyTypeCode": "TO",
     "bodyTypeDescription": "SAT",
@@ -38,7 +37,7 @@
       "gearBox": "-",
       "driveType": "AR"
     },
-    "effectDate": "2024-08-01",
+    "effectDate": "2024-08-09",
     "vehicles": [
       {
         "transmissionCode": "S02TF",

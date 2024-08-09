@@ -69,35 +69,20 @@
           },
           "emissionsConsumptionWltp": {
             "consumptionWltpCombined": "7.9–7.1",
-            "consumptionWltpCombinedBest": "6.8 - 7.6",
             "emissionsWltpCombined": "179–162",
-            "emissionsWltpCombinedBest": "156 - 173",
             "electricConsumption": "-",
-            "electricConsumptionBest": "-",
-            "electricRangeWltpCity": "-",
             "electricRangeWltpCombined": "-",
-            "electricRangeWltpCombinedBest": "-",
-            "efficiencyCategoryMin": "-",
-            "efficiencyCategoryMax": "-",
             "noiseDriving": "-",
-            "noiseStationary": "-",
-            "co2EquivalentOverallBest": "-",
-            "co2EquivalentOverall": "-",
-            "petrolEquivalentOverallBest": "-",
-            "petrolEquivalentOverall": "-",
-            "primaryEnergyPetrolEquivalentBest": "-",
-            "primaryEnergyPetrolEquivalent": "-"
+            "noiseStationary": "-"
           },
           "charging": {
             "batteryCapacity": "-",
             "additionalRangeDC": "-",
             "chargeACDC": "-",
             "charge_AC_0_100": "-",
-            "charge_DC_10_80": "-",
-            "chargingMaxAC": "-"
+            "charge_DC_10_80": "-"
           },
           "weightMeasurements": {
-            "lengthWidthHeight": "4783 / 1852 / 1442",
             "length": "4783",
             "width": "1852",
             "height": "1442",
@@ -106,7 +91,6 @@
             "weightNotLoaded": "1775",
             "weightMax": "2200",
             "permittedLoad": "555",
-            "permittedAxleLoad": "1025 / 1255",
             "trailerLoad": "750 / 75",
             "trunkCapacity": "470 - 1290",
             "tankCapacity": "59"
